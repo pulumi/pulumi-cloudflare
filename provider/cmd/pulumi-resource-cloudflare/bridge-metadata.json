@@ -2425,6 +2425,23 @@
                 "current": "cloudflare:index/workerSecret:WorkerSecret",
                 "majorVersion": 5
             },
+            "cloudflare_workers_cron_trigger": {
+                "current": "cloudflare:index/workersCronTrigger:WorkersCronTrigger",
+                "majorVersion": 5,
+                "fields": {
+                    "schedules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_workers_domain": {
+                "current": "cloudflare:index/workersDomain:WorkersDomain",
+                "majorVersion": 5
+            },
+            "cloudflare_workers_for_platforms_dispatch_namespace": {
+                "current": "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace",
+                "majorVersion": 5
+            },
             "cloudflare_workers_for_platforms_namespace": {
                 "current": "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace",
                 "majorVersion": 5
@@ -2435,6 +2452,56 @@
             },
             "cloudflare_workers_kv_namespace": {
                 "current": "cloudflare:index/workersKvNamespace:WorkersKvNamespace",
+                "majorVersion": 5
+            },
+            "cloudflare_workers_route": {
+                "current": "cloudflare:index/workersRoute:WorkersRoute",
+                "majorVersion": 5
+            },
+            "cloudflare_workers_script": {
+                "current": "cloudflare:index/workersScript:WorkersScript",
+                "majorVersion": 5,
+                "fields": {
+                    "analytics_engine_binding": {
+                        "maxItemsOne": false
+                    },
+                    "compatibility_flags": {
+                        "maxItemsOne": false
+                    },
+                    "d1_database_binding": {
+                        "maxItemsOne": false
+                    },
+                    "kv_namespace_binding": {
+                        "maxItemsOne": false
+                    },
+                    "placement": {
+                        "maxItemsOne": false
+                    },
+                    "plain_text_binding": {
+                        "maxItemsOne": false
+                    },
+                    "queue_binding": {
+                        "maxItemsOne": false
+                    },
+                    "r2_bucket_binding": {
+                        "maxItemsOne": false
+                    },
+                    "secret_text_binding": {
+                        "maxItemsOne": false
+                    },
+                    "service_binding": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "webassembly_binding": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_workers_secret": {
+                "current": "cloudflare:index/workersSecret:WorkersSecret",
                 "majorVersion": 5
             },
             "cloudflare_zone": {
@@ -2620,6 +2687,15 @@
                 "majorVersion": 5,
                 "fields": {
                     "datasets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_gateway_app_types": {
+                "current": "cloudflare:index/getGatewayAppTypes:getGatewayAppTypes",
+                "majorVersion": 5,
+                "fields": {
+                    "app_types": {
                         "maxItemsOne": false
                     }
                 }
@@ -3118,9 +3194,15 @@
             "cloudflare:index/workerRoute:WorkerRoute": 0,
             "cloudflare:index/workerScript:WorkerScript": 0,
             "cloudflare:index/workerSecret:WorkerSecret": 0,
+            "cloudflare:index/workersCronTrigger:WorkersCronTrigger": 0,
+            "cloudflare:index/workersDomain:WorkersDomain": 0,
+            "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace": 1,
             "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": 1,
             "cloudflare:index/workersKv:WorkersKv": 0,
             "cloudflare:index/workersKvNamespace:WorkersKvNamespace": 0,
+            "cloudflare:index/workersRoute:WorkersRoute": 0,
+            "cloudflare:index/workersScript:WorkersScript": 0,
+            "cloudflare:index/workersSecret:WorkersSecret": 0,
             "cloudflare:index/zone:Zone": 0,
             "cloudflare:index/zoneCacheReserve:ZoneCacheReserve": 0,
             "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": 0,
@@ -3138,6 +3220,7 @@
             "cloudflare:index/getDevicePostureRules:getDevicePostureRules": 0,
             "cloudflare:index/getDevices:getDevices": 0,
             "cloudflare:index/getDlpDatasets:getDlpDatasets": 1,
+            "cloudflare:index/getGatewayAppTypes:getGatewayAppTypes": 1,
             "cloudflare:index/getGatewayCategories:getGatewayCategories": 1,
             "cloudflare:index/getIpRanges:getIpRanges": 0,
             "cloudflare:index/getList:getList": 0,

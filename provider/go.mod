@@ -68,7 +68,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
-	github.com/cloudflare/cloudflare-go v0.99.0 // indirect
+	github.com/cloudflare/cloudflare-go v0.101.0 // indirect
 	github.com/cloudflare/cloudflare-go/v2 v2.4.0 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect

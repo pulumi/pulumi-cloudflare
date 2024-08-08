@@ -2694,11 +2694,11 @@
                 },
                 "complianceStatus": {
                     "type": "string",
-                    "description": "The workspace one device compliance status. Available values: `compliant`, `noncompliant`.\n"
+                    "description": "The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.\n"
                 },
                 "connectionId": {
                     "type": "string",
-                    "description": "The workspace one connection id.\n"
+                    "description": "The workspace one or intune connection id.\n"
                 },
                 "countOperator": {
                     "type": "string",
@@ -3028,6 +3028,14 @@
                 "disabled": {
                     "type": "boolean",
                     "description": "Disable caching for this Hyperdrive configuration.\n"
+                },
+                "maxAge": {
+                    "type": "integer",
+                    "description": "Configure the `max_age` value of this Hyperdrive configuration.\n"
+                },
+                "staleWhileRevalidate": {
+                    "type": "integer",
+                    "description": "Disable caching for this Hyperdrive configuration.\n"
                 }
             },
             "type": "object",
@@ -3041,6 +3049,14 @@
         },
         "cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin": {
             "properties": {
+                "accessClientId": {
+                    "type": "string",
+                    "description": "Client ID associated with the Cloudflare Access Service Token used to connect via Access.\n"
+                },
+                "accessClientSecret": {
+                    "type": "string",
+                    "description": "Client Secret associated with the Cloudflare Access Service Token used to connect via Access.\n"
+                },
                 "database": {
                     "type": "string",
                     "description": "The name of your origin database.\n"
@@ -3072,7 +3088,6 @@
                 "database",
                 "host",
                 "password",
-                "port",
                 "scheme",
                 "user"
             ]
@@ -6384,8 +6399,7 @@
         "cloudflare:index/TeamsListItemsWithDescription:TeamsListItemsWithDescription": {
             "properties": {
                 "description": {
-                    "type": "string",
-                    "description": "The description of the teams list.\n"
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -6526,6 +6540,10 @@
         },
         "cloudflare:index/TeamsRuleRuleSettingsBisoAdminControls:TeamsRuleRuleSettingsBisoAdminControls": {
             "properties": {
+                "disableClipboardRedirection": {
+                    "type": "boolean",
+                    "description": "Disable clipboard redirection.\n"
+                },
                 "disableCopyPaste": {
                     "type": "boolean",
                     "description": "Disable copy-paste.\n"
@@ -7233,6 +7251,176 @@
             ]
         },
         "cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding": {
+            "properties": {
+                "module": {
+                    "type": "string",
+                    "description": "The base64 encoded wasm module you want to store.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "module",
+                "name"
+            ]
+        },
+        "cloudflare:index/WorkersScriptAnalyticsEngineBinding:WorkersScriptAnalyticsEngineBinding": {
+            "properties": {
+                "dataset": {
+                    "type": "string",
+                    "description": "The name of the Analytics Engine dataset to write to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataset",
+                "name"
+            ]
+        },
+        "cloudflare:index/WorkersScriptD1DatabaseBinding:WorkersScriptD1DatabaseBinding": {
+            "properties": {
+                "databaseId": {
+                    "type": "string",
+                    "description": "Database ID of D1 database to use.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "databaseId",
+                "name"
+            ]
+        },
+        "cloudflare:index/WorkersScriptKvNamespaceBinding:WorkersScriptKvNamespaceBinding": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "namespaceId": {
+                    "type": "string",
+                    "description": "ID of the KV namespace you want to use.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "namespaceId"
+            ]
+        },
+        "cloudflare:index/WorkersScriptPlacement:WorkersScriptPlacement": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "The placement mode for the Worker. Available values: `smart`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ]
+        },
+        "cloudflare:index/WorkersScriptPlainTextBinding:WorkersScriptPlainTextBinding": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The plain text you want to store.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "text"
+            ]
+        },
+        "cloudflare:index/WorkersScriptQueueBinding:WorkersScriptQueueBinding": {
+            "properties": {
+                "binding": {
+                    "type": "string",
+                    "description": "The name of the global variable for the binding in your Worker code.\n"
+                },
+                "queue": {
+                    "type": "string",
+                    "description": "Name of the queue you want to use.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "binding",
+                "queue"
+            ]
+        },
+        "cloudflare:index/WorkersScriptR2BucketBinding:WorkersScriptR2BucketBinding": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The name of the Bucket to bind to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bucketName",
+                "name"
+            ]
+        },
+        "cloudflare:index/WorkersScriptSecretTextBinding:WorkersScriptSecretTextBinding": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The secret text you want to store.\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "text"
+            ]
+        },
+        "cloudflare:index/WorkersScriptServiceBinding:WorkersScriptServiceBinding": {
+            "properties": {
+                "environment": {
+                    "type": "string",
+                    "description": "The name of the Worker environment to bind to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The name of the Worker to bind to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "service"
+            ]
+        },
+        "cloudflare:index/WorkersScriptWebassemblyBinding:WorkersScriptWebassemblyBinding": {
             "properties": {
                 "module": {
                     "type": "string",
@@ -8107,6 +8295,38 @@
                 "name",
                 "secret",
                 "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getGatewayAppTypesAppType:getGatewayAppTypesAppType": {
+            "properties": {
+                "applicationTypeId": {
+                    "type": "integer",
+                    "description": "The identifier for the application type of this app.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A short summary of the app type.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The identifier for this app type. There is only one app type per ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the app type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "applicationTypeId",
+                "description",
+                "id",
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -9659,6 +9879,10 @@
                     "type": "string",
                     "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
                 },
+                "skipAppLauncherLoginPage": {
+                    "type": "boolean",
+                    "description": "Option to skip the App Launcher landing page. Defaults to `false`.\n"
+                },
                 "skipInterstitial": {
                     "type": "boolean",
                     "description": "Option to skip the authorization interstitial when using the CLI. Defaults to `false`.\n"
@@ -9817,6 +10041,10 @@
                     "type": "string",
                     "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
                 },
+                "skipAppLauncherLoginPage": {
+                    "type": "boolean",
+                    "description": "Option to skip the App Launcher landing page. Defaults to `false`.\n"
+                },
                 "skipInterstitial": {
                     "type": "boolean",
                     "description": "Option to skip the authorization interstitial when using the CLI. Defaults to `false`.\n"
@@ -9973,6 +10201,10 @@
                     "sessionDuration": {
                         "type": "string",
                         "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                    },
+                    "skipAppLauncherLoginPage": {
+                        "type": "boolean",
+                        "description": "Option to skip the App Launcher landing page. Defaults to `false`.\n"
                     },
                     "skipInterstitial": {
                         "type": "boolean",
@@ -10796,8 +11028,7 @@
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
-                    "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications."
+                    "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "approvalGroups": {
                     "type": "array",
@@ -10836,8 +11067,7 @@
                 },
                 "precedence": {
                     "type": "integer",
-                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
-                    "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
+                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n"
                 },
                 "purposeJustificationPrompt": {
                     "type": "string",
@@ -10877,7 +11107,6 @@
                 "applicationId": {
                     "type": "string",
                     "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
-                    "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.",
                     "willReplaceOnChanges": true
                 },
                 "approvalGroups": {
@@ -10917,8 +11146,7 @@
                 },
                 "precedence": {
                     "type": "integer",
-                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
-                    "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
+                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n"
                 },
                 "purposeJustificationPrompt": {
                     "type": "string",
@@ -10961,7 +11189,6 @@
                     "applicationId": {
                         "type": "string",
                         "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
-                        "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.",
                         "willReplaceOnChanges": true
                     },
                     "approvalGroups": {
@@ -11001,8 +11228,7 @@
                     },
                     "precedence": {
                         "type": "integer",
-                        "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
-                        "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
+                        "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n"
                     },
                     "purposeJustificationPrompt": {
                         "type": "string",
@@ -18534,7 +18760,7 @@
             }
         },
         "cloudflare:index/record:Record": {
-            "description": "Provides a Cloudflare record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a record to the domain\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: cloudflareZoneId,\n    name: \"example\",\n    value: \"192.0.2.1\",\n    type: \"A\",\n    ttl: 3600,\n});\n// Add a record requiring a data map\nconst _sipTls = new cloudflare.Record(\"_sip_tls\", {\n    zoneId: cloudflareZoneId,\n    name: \"_sip._tls\",\n    type: \"SRV\",\n    data: {\n        service: \"_sip\",\n        proto: \"_tls\",\n        name: \"example-srv\",\n        priority: 0,\n        weight: 0,\n        port: 443,\n        target: \"example.com\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a record to the domain\nexample = cloudflare.Record(\"example\",\n    zone_id=cloudflare_zone_id,\n    name=\"example\",\n    value=\"192.0.2.1\",\n    type=\"A\",\n    ttl=3600)\n# Add a record requiring a data map\n_sip_tls = cloudflare.Record(\"_sip_tls\",\n    zone_id=cloudflare_zone_id,\n    name=\"_sip._tls\",\n    type=\"SRV\",\n    data=cloudflare.RecordDataArgs(\n        service=\"_sip\",\n        proto=\"_tls\",\n        name=\"example-srv\",\n        priority=0,\n        weight=0,\n        port=443,\n        target=\"example.com\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to the domain\n    var example = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"example\",\n        Value = \"192.0.2.1\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n    // Add a record requiring a data map\n    var _sipTls = new Cloudflare.Record(\"_sip_tls\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"_sip._tls\",\n        Type = \"SRV\",\n        Data = new Cloudflare.Inputs.RecordDataArgs\n        {\n            Service = \"_sip\",\n            Proto = \"_tls\",\n            Name = \"example-srv\",\n            Priority = 0,\n            Weight = 0,\n            Port = 443,\n            Target = \"example.com\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to the domain\n\t\t_, err := cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.Any(cloudflareZoneId),\n\t\t\tName:   pulumi.String(\"example\"),\n\t\t\tValue:  pulumi.String(\"192.0.2.1\"),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tTtl:    pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a record requiring a data map\n\t\t_, err = cloudflare.NewRecord(ctx, \"_sip_tls\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.Any(cloudflareZoneId),\n\t\t\tName:   pulumi.String(\"_sip._tls\"),\n\t\t\tType:   pulumi.String(\"SRV\"),\n\t\t\tData: \u0026cloudflare.RecordDataArgs{\n\t\t\t\tService:  pulumi.String(\"_sip\"),\n\t\t\t\tProto:    pulumi.String(\"_tls\"),\n\t\t\t\tName:     pulumi.String(\"example-srv\"),\n\t\t\t\tPriority: pulumi.Int(0),\n\t\t\t\tWeight:   pulumi.Int(0),\n\t\t\t\tPort:     pulumi.Int(443),\n\t\t\t\tTarget:   pulumi.String(\"example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport com.pulumi.cloudflare.inputs.RecordDataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to the domain\n        var example = new Record(\"example\", RecordArgs.builder()\n            .zoneId(cloudflareZoneId)\n            .name(\"example\")\n            .value(\"192.0.2.1\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n        // Add a record requiring a data map\n        var _sipTls = new Record(\"_sipTls\", RecordArgs.builder()\n            .zoneId(cloudflareZoneId)\n            .name(\"_sip._tls\")\n            .type(\"SRV\")\n            .data(RecordDataArgs.builder()\n                .service(\"_sip\")\n                .proto(\"_tls\")\n                .name(\"example-srv\")\n                .priority(0)\n                .weight(0)\n                .port(443)\n                .target(\"example.com\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to the domain\n  example:\n    type: cloudflare:Record\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: example\n      value: 192.0.2.1\n      type: A\n      ttl: 3600\n  # Add a record requiring a data map\n  _sipTls:\n    type: cloudflare:Record\n    name: _sip_tls\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: _sip._tls\n      type: SRV\n      data:\n        service: _sip\n        proto: _tls\n        name: example-srv\n        priority: 0\n        weight: 0\n        port: 443\n        target: example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/record:Record example \u003czone_id\u003e/\u003crecord_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a record to the domain\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: cloudflareZoneId,\n    name: \"terraform\",\n    content: \"192.0.2.1\",\n    type: \"A\",\n    ttl: 3600,\n});\n// Add a record requiring a data map\nconst _sipTls = new cloudflare.Record(\"_sip_tls\", {\n    zoneId: cloudflareZoneId,\n    name: \"_sip._tls\",\n    type: \"SRV\",\n    data: {\n        service: \"_sip\",\n        proto: \"_tls\",\n        name: \"terraform-srv\",\n        priority: 0,\n        weight: 0,\n        port: 443,\n        target: \"example.com\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a record to the domain\nexample = cloudflare.Record(\"example\",\n    zone_id=cloudflare_zone_id,\n    name=\"terraform\",\n    content=\"192.0.2.1\",\n    type=\"A\",\n    ttl=3600)\n# Add a record requiring a data map\n_sip_tls = cloudflare.Record(\"_sip_tls\",\n    zone_id=cloudflare_zone_id,\n    name=\"_sip._tls\",\n    type=\"SRV\",\n    data=cloudflare.RecordDataArgs(\n        service=\"_sip\",\n        proto=\"_tls\",\n        name=\"terraform-srv\",\n        priority=0,\n        weight=0,\n        port=443,\n        target=\"example.com\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to the domain\n    var example = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"terraform\",\n        Content = \"192.0.2.1\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n    // Add a record requiring a data map\n    var _sipTls = new Cloudflare.Record(\"_sip_tls\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"_sip._tls\",\n        Type = \"SRV\",\n        Data = new Cloudflare.Inputs.RecordDataArgs\n        {\n            Service = \"_sip\",\n            Proto = \"_tls\",\n            Name = \"terraform-srv\",\n            Priority = 0,\n            Weight = 0,\n            Port = 443,\n            Target = \"example.com\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to the domain\n\t\t_, err := cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId:  pulumi.Any(cloudflareZoneId),\n\t\t\tName:    pulumi.String(\"terraform\"),\n\t\t\tContent: pulumi.String(\"192.0.2.1\"),\n\t\t\tType:    pulumi.String(\"A\"),\n\t\t\tTtl:     pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a record requiring a data map\n\t\t_, err = cloudflare.NewRecord(ctx, \"_sip_tls\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.Any(cloudflareZoneId),\n\t\t\tName:   pulumi.String(\"_sip._tls\"),\n\t\t\tType:   pulumi.String(\"SRV\"),\n\t\t\tData: \u0026cloudflare.RecordDataArgs{\n\t\t\t\tService:  pulumi.String(\"_sip\"),\n\t\t\t\tProto:    pulumi.String(\"_tls\"),\n\t\t\t\tName:     pulumi.String(\"terraform-srv\"),\n\t\t\t\tPriority: pulumi.Int(0),\n\t\t\t\tWeight:   pulumi.Int(0),\n\t\t\t\tPort:     pulumi.Int(443),\n\t\t\t\tTarget:   pulumi.String(\"example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport com.pulumi.cloudflare.inputs.RecordDataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to the domain\n        var example = new Record(\"example\", RecordArgs.builder()\n            .zoneId(cloudflareZoneId)\n            .name(\"terraform\")\n            .content(\"192.0.2.1\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n        // Add a record requiring a data map\n        var _sipTls = new Record(\"_sipTls\", RecordArgs.builder()\n            .zoneId(cloudflareZoneId)\n            .name(\"_sip._tls\")\n            .type(\"SRV\")\n            .data(RecordDataArgs.builder()\n                .service(\"_sip\")\n                .proto(\"_tls\")\n                .name(\"terraform-srv\")\n                .priority(0)\n                .weight(0)\n                .port(443)\n                .target(\"example.com\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to the domain\n  example:\n    type: cloudflare:Record\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: terraform\n      content: 192.0.2.1\n      type: A\n      ttl: 3600\n  # Add a record requiring a data map\n  _sipTls:\n    type: cloudflare:Record\n    name: _sip_tls\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: _sip._tls\n      type: SRV\n      data:\n        service: _sip\n        proto: _tls\n        name: terraform-srv\n        priority: 0\n        weight: 0\n        port: 443\n        target: example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/record:Record example \u003czone_id\u003e/\u003crecord_id\u003e\n```\n\n",
             "properties": {
                 "allowOverwrite": {
                     "type": "boolean"
@@ -18542,6 +18768,10 @@
                 "comment": {
                     "type": "string",
                     "description": "Comments or notes about the DNS record. This field has no effect on DNS responses.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The content of the record. Conflicts with `data`.\n"
                 },
                 "createdOn": {
                     "type": "string",
@@ -18599,7 +18829,8 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the record. Conflicts with `data`.\n"
+                    "description": "The value of the record. Conflicts with `data`.\n",
+                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
                 },
                 "zoneId": {
                     "type": "string",
@@ -18607,6 +18838,7 @@
                 }
             },
             "required": [
+                "content",
                 "createdOn",
                 "hostname",
                 "metadata",
@@ -18625,6 +18857,10 @@
                 "comment": {
                     "type": "string",
                     "description": "Comments or notes about the DNS record. This field has no effect on DNS responses.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The content of the record. Conflicts with `data`.\n"
                 },
                 "data": {
                     "$ref": "#/types/cloudflare:index/RecordData:RecordData",
@@ -18661,7 +18897,8 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the record. Conflicts with `data`.\n"
+                    "description": "The value of the record. Conflicts with `data`.\n",
+                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
                 },
                 "zoneId": {
                     "type": "string",
@@ -18683,6 +18920,10 @@
                     "comment": {
                         "type": "string",
                         "description": "Comments or notes about the DNS record. This field has no effect on DNS responses.\n"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The content of the record. Conflicts with `data`.\n"
                     },
                     "createdOn": {
                         "type": "string",
@@ -18742,7 +18983,8 @@
                     },
                     "value": {
                         "type": "string",
-                        "description": "The value of the record. Conflicts with `data`.\n"
+                        "description": "The value of the record. Conflicts with `data`.\n",
+                        "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
                     },
                     "zoneId": {
                         "type": "string",
@@ -18754,7 +18996,7 @@
             }
         },
         "cloudflare:index/regionalHostname:RegionalHostname": {
-            "description": "Provides a Data Localization Suite Regional Hostname.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Regionalized hostname record resources are managed independently from the\n// Regionalized Hostname resources.\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    name: \"example.com\",\n    value: \"192.0.2.1\",\n    type: \"A\",\n    ttl: 3600,\n});\n// The cloudflare_regional_hostname resource may exist with or without its\n// corresponding record resource.\nconst exampleRegionalHostname = new cloudflare.RegionalHostname(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    hostname: \"example.com\",\n    regionKey: \"eu\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Regionalized hostname record resources are managed independently from the\n# Regionalized Hostname resources.\nexample = cloudflare.Record(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    name=\"example.com\",\n    value=\"192.0.2.1\",\n    type=\"A\",\n    ttl=3600)\n# The cloudflare_regional_hostname resource may exist with or without its\n# corresponding record resource.\nexample_regional_hostname = cloudflare.RegionalHostname(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    hostname=\"example.com\",\n    region_key=\"eu\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Regionalized hostname record resources are managed independently from the\n    // Regionalized Hostname resources.\n    var example = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Name = \"example.com\",\n        Value = \"192.0.2.1\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n    // The cloudflare_regional_hostname resource may exist with or without its\n    // corresponding record resource.\n    var exampleRegionalHostname = new Cloudflare.RegionalHostname(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Hostname = \"example.com\",\n        RegionKey = \"eu\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Regionalized hostname record resources are managed independently from the\n\t\t// Regionalized Hostname resources.\n\t\t_, err := cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tName:   pulumi.String(\"example.com\"),\n\t\t\tValue:  pulumi.String(\"192.0.2.1\"),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tTtl:    pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The cloudflare_regional_hostname resource may exist with or without its\n\t\t// corresponding record resource.\n\t\t_, err = cloudflare.NewRegionalHostname(ctx, \"example\", \u0026cloudflare.RegionalHostnameArgs{\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tHostname:  pulumi.String(\"example.com\"),\n\t\t\tRegionKey: pulumi.String(\"eu\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport com.pulumi.cloudflare.RegionalHostname;\nimport com.pulumi.cloudflare.RegionalHostnameArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Regionalized hostname record resources are managed independently from the\n        // Regionalized Hostname resources.\n        var example = new Record(\"example\", RecordArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .name(\"example.com\")\n            .value(\"192.0.2.1\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n        // The cloudflare_regional_hostname resource may exist with or without its\n        // corresponding record resource.\n        var exampleRegionalHostname = new RegionalHostname(\"exampleRegionalHostname\", RegionalHostnameArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .hostname(\"example.com\")\n            .regionKey(\"eu\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Regionalized hostname record resources are managed independently from the\n  # Regionalized Hostname resources.\n  example:\n    type: cloudflare:Record\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      name: example.com\n      value: 192.0.2.1\n      type: A\n      ttl: 3600\n  # The cloudflare_regional_hostname resource may exist with or without its\n  # corresponding record resource.\n  exampleRegionalHostname:\n    type: cloudflare:RegionalHostname\n    name: example\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      hostname: example.com\n      regionKey: eu\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Data Localization Suite Regional Hostname.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Regionalized hostname record resources are managed independently from the\n// Regionalized Hostname resources.\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    name: \"example.com\",\n    content: \"192.0.2.1\",\n    type: \"A\",\n    ttl: 3600,\n});\n// The cloudflare_regional_hostname resource may exist with or without its\n// corresponding record resource.\nconst exampleRegionalHostname = new cloudflare.RegionalHostname(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    hostname: \"example.com\",\n    regionKey: \"eu\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Regionalized hostname record resources are managed independently from the\n# Regionalized Hostname resources.\nexample = cloudflare.Record(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    name=\"example.com\",\n    content=\"192.0.2.1\",\n    type=\"A\",\n    ttl=3600)\n# The cloudflare_regional_hostname resource may exist with or without its\n# corresponding record resource.\nexample_regional_hostname = cloudflare.RegionalHostname(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    hostname=\"example.com\",\n    region_key=\"eu\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Regionalized hostname record resources are managed independently from the\n    // Regionalized Hostname resources.\n    var example = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Name = \"example.com\",\n        Content = \"192.0.2.1\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n    // The cloudflare_regional_hostname resource may exist with or without its\n    // corresponding record resource.\n    var exampleRegionalHostname = new Cloudflare.RegionalHostname(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Hostname = \"example.com\",\n        RegionKey = \"eu\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Regionalized hostname record resources are managed independently from the\n\t\t// Regionalized Hostname resources.\n\t\t_, err := cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId:  pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tName:    pulumi.String(\"example.com\"),\n\t\t\tContent: pulumi.String(\"192.0.2.1\"),\n\t\t\tType:    pulumi.String(\"A\"),\n\t\t\tTtl:     pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The cloudflare_regional_hostname resource may exist with or without its\n\t\t// corresponding record resource.\n\t\t_, err = cloudflare.NewRegionalHostname(ctx, \"example\", \u0026cloudflare.RegionalHostnameArgs{\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tHostname:  pulumi.String(\"example.com\"),\n\t\t\tRegionKey: pulumi.String(\"eu\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport com.pulumi.cloudflare.RegionalHostname;\nimport com.pulumi.cloudflare.RegionalHostnameArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Regionalized hostname record resources are managed independently from the\n        // Regionalized Hostname resources.\n        var example = new Record(\"example\", RecordArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .name(\"example.com\")\n            .content(\"192.0.2.1\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n        // The cloudflare_regional_hostname resource may exist with or without its\n        // corresponding record resource.\n        var exampleRegionalHostname = new RegionalHostname(\"exampleRegionalHostname\", RegionalHostnameArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .hostname(\"example.com\")\n            .regionKey(\"eu\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Regionalized hostname record resources are managed independently from the\n  # Regionalized Hostname resources.\n  example:\n    type: cloudflare:Record\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      name: example.com\n      content: 192.0.2.1\n      type: A\n      ttl: 3600\n  # The cloudflare_regional_hostname resource may exist with or without its\n  # corresponding record resource.\n  exampleRegionalHostname:\n    type: cloudflare:RegionalHostname\n    name: example\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      hostname: example.com\n      regionKey: eu\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "createdOn": {
                     "type": "string",
@@ -22445,8 +22687,210 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/workersCronTrigger:WorkersCronTrigger": {
+            "description": "Worker Cron Triggers allow users to map a cron expression to a Worker script\nusing a `ScheduledEvent` listener that enables Workers to be executed on a\nschedule. Worker Cron Triggers are ideal for running periodic jobs for\nmaintenance or calling third-party APIs to collect up-to-date data.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as std from \"@pulumi/std\";\n\nconst exampleScript = new cloudflare.WorkersScript(\"example_script\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example-script\",\n    content: std.file({\n        input: \"path/to/my.js\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst exampleTrigger = new cloudflare.WorkersCronTrigger(\"example_trigger\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    scriptName: exampleScriptCloudflareWorkerScript.name,\n    schedules: [\n        \"*/5 * * * *\",\n        \"10 7 * * mon-fri\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_std as std\n\nexample_script = cloudflare.WorkersScript(\"example_script\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example-script\",\n    content=std.file(input=\"path/to/my.js\").result)\nexample_trigger = cloudflare.WorkersCronTrigger(\"example_trigger\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    script_name=example_script_cloudflare_worker_script[\"name\"],\n    schedules=[\n        \"*/5 * * * *\",\n        \"10 7 * * mon-fri\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleScript = new Cloudflare.WorkersScript(\"example_script\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example-script\",\n        Content = Std.File.Invoke(new()\n        {\n            Input = \"path/to/my.js\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var exampleTrigger = new Cloudflare.WorkersCronTrigger(\"example_trigger\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ScriptName = exampleScriptCloudflareWorkerScript.Name,\n        Schedules = new[]\n        {\n            \"*/5 * * * *\",\n            \"10 7 * * mon-fri\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"path/to/my.js\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkersScript(ctx, \"example_script\", \u0026cloudflare.WorkersScriptArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example-script\"),\n\t\t\tContent:   pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkersCronTrigger(ctx, \"example_trigger\", \u0026cloudflare.WorkersCronTriggerArgs{\n\t\t\tAccountId:  pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tScriptName: pulumi.Any(exampleScriptCloudflareWorkerScript.Name),\n\t\t\tSchedules: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"*/5 * * * *\"),\n\t\t\t\tpulumi.String(\"10 7 * * mon-fri\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersScript;\nimport com.pulumi.cloudflare.WorkersScriptArgs;\nimport com.pulumi.cloudflare.WorkersCronTrigger;\nimport com.pulumi.cloudflare.WorkersCronTriggerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleScript = new WorkersScript(\"exampleScript\", WorkersScriptArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example-script\")\n            .content(StdFunctions.file(FileArgs.builder()\n                .input(\"path/to/my.js\")\n                .build()).result())\n            .build());\n\n        var exampleTrigger = new WorkersCronTrigger(\"exampleTrigger\", WorkersCronTriggerArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .scriptName(exampleScriptCloudflareWorkerScript.name())\n            .schedules(            \n                \"*/5 * * * *\",\n                \"10 7 * * mon-fri\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleScript:\n    type: cloudflare:WorkersScript\n    name: example_script\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example-script\n      content:\n        fn::invoke:\n          Function: std:file\n          Arguments:\n            input: path/to/my.js\n          Return: result\n  exampleTrigger:\n    type: cloudflare:WorkersCronTrigger\n    name: example_trigger\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      scriptName: ${exampleScriptCloudflareWorkerScript.name}\n      schedules:\n        - '*/5 * * * *'\n        - 10 7 * * mon-fri\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example \u003caccount_id\u003e/\u003cscript_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "schedules": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Cron expressions to execute the Worker script.\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script to target for the schedules.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "schedules",
+                "scriptName"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "schedules": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Cron expressions to execute the Worker script.\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script to target for the schedules.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "schedules",
+                "scriptName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersCronTrigger resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "schedules": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Cron expressions to execute the Worker script.\n"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "Worker script to target for the schedules.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersDomain:WorkersDomain": {
+            "description": "Creates a Worker Custom Domain.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WorkersDomain(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"subdomain.example.com\",\n    service: \"my-service\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WorkersDomain(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"subdomain.example.com\",\n    service=\"my-service\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkersDomain(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"subdomain.example.com\",\n        Service = \"my-service\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkersDomain(ctx, \"example\", \u0026cloudflare.WorkersDomainArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"subdomain.example.com\"),\n\t\t\tService:   pulumi.String(\"my-service\"),\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersDomain;\nimport com.pulumi.cloudflare.WorkersDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkersDomain(\"example\", WorkersDomainArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"subdomain.example.com\")\n            .service(\"my-service\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkersDomain\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: subdomain.example.com\n      service: my-service\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersDomain:WorkersDomain example \u003caccount_id\u003e/\u003cworker_domain_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "environment": {
+                    "type": "string",
+                    "description": "The name of the Worker environment. Defaults to `production`.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname of the Worker Domain.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Name of worker script to attach the domain to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "hostname",
+                "service",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "environment": {
+                    "type": "string",
+                    "description": "The name of the Worker environment. Defaults to `production`.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname of the Worker Domain.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Name of worker script to attach the domain to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "hostname",
+                "service",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersDomain resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "environment": {
+                        "type": "string",
+                        "description": "The name of the Worker environment. Defaults to `production`.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname of the Worker Domain.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Name of worker script to attach the domain to.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace": {
+            "description": "The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you\nto manage Cloudflare Workers for Platforms dispatch namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as std from \"@pulumi/std\";\n\nconst example = new cloudflare.WorkersForPlatformsDispatchNamespace(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example-namespace\",\n});\nconst customerWorker1 = new cloudflare.WorkersScript(\"customer_worker_1\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"customer-worker-1\",\n    content: std.file({\n        input: \"script.js\",\n    }).then(invoke =\u003e invoke.result),\n    dispatchNamespace: exampleCloudflareWorkersForPlatformsNamespace.name,\n    tags: [\"free\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_std as std\n\nexample = cloudflare.WorkersForPlatformsDispatchNamespace(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example-namespace\")\ncustomer_worker1 = cloudflare.WorkersScript(\"customer_worker_1\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"customer-worker-1\",\n    content=std.file(input=\"script.js\").result,\n    dispatch_namespace=example_cloudflare_workers_for_platforms_namespace[\"name\"],\n    tags=[\"free\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkersForPlatformsDispatchNamespace(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example-namespace\",\n    });\n\n    var customerWorker1 = new Cloudflare.WorkersScript(\"customer_worker_1\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"customer-worker-1\",\n        Content = Std.File.Invoke(new()\n        {\n            Input = \"script.js\",\n        }).Apply(invoke =\u003e invoke.Result),\n        DispatchNamespace = exampleCloudflareWorkersForPlatformsNamespace.Name,\n        Tags = new[]\n        {\n            \"free\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, \"example\", \u0026cloudflare.WorkersForPlatformsDispatchNamespaceArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example-namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"script.js\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkersScript(ctx, \"customer_worker_1\", \u0026cloudflare.WorkersScriptArgs{\n\t\t\tAccountId:         pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:              pulumi.String(\"customer-worker-1\"),\n\t\t\tContent:           pulumi.String(invokeFile.Result),\n\t\t\tDispatchNamespace: pulumi.Any(exampleCloudflareWorkersForPlatformsNamespace.Name),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"free\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespace;\nimport com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespaceArgs;\nimport com.pulumi.cloudflare.WorkersScript;\nimport com.pulumi.cloudflare.WorkersScriptArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkersForPlatformsDispatchNamespace(\"example\", WorkersForPlatformsDispatchNamespaceArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example-namespace\")\n            .build());\n\n        var customerWorker1 = new WorkersScript(\"customerWorker1\", WorkersScriptArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"customer-worker-1\")\n            .content(StdFunctions.file(FileArgs.builder()\n                .input(\"script.js\")\n                .build()).result())\n            .dispatchNamespace(exampleCloudflareWorkersForPlatformsNamespace.name())\n            .tags(\"free\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkersForPlatformsDispatchNamespace\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example-namespace\n  customerWorker1:\n    type: cloudflare:WorkersScript\n    name: customer_worker_1\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: customer-worker-1\n      content:\n        fn::invoke:\n          Function: std:file\n          Arguments:\n            input: script.js\n          Return: result\n      dispatchNamespace: ${exampleCloudflareWorkersForPlatformsNamespace.name}\n      tags:\n        - free\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example \u003caccount_id\u003e/\u003cnamespace_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Workers for Platforms namespace.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Workers for Platforms namespace.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersForPlatformsDispatchNamespace resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Workers for Platforms namespace.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": {
-            "description": "The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you\nto manage Cloudflare Workers for Platforms namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as std from \"@pulumi/std\";\n\nconst example = new cloudflare.WorkersForPlatformsNamespace(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example-namespace\",\n});\nconst customerWorker1 = new cloudflare.WorkerScript(\"customer_worker_1\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"customer-worker-1\",\n    content: std.file({\n        input: \"script.js\",\n    }).then(invoke =\u003e invoke.result),\n    dispatchNamespace: example.name,\n    tags: [\"free\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_std as std\n\nexample = cloudflare.WorkersForPlatformsNamespace(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example-namespace\")\ncustomer_worker1 = cloudflare.WorkerScript(\"customer_worker_1\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"customer-worker-1\",\n    content=std.file(input=\"script.js\").result,\n    dispatch_namespace=example.name,\n    tags=[\"free\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkersForPlatformsNamespace(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example-namespace\",\n    });\n\n    var customerWorker1 = new Cloudflare.WorkerScript(\"customer_worker_1\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"customer-worker-1\",\n        Content = Std.File.Invoke(new()\n        {\n            Input = \"script.js\",\n        }).Apply(invoke =\u003e invoke.Result),\n        DispatchNamespace = example.Name,\n        Tags = new[]\n        {\n            \"free\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.NewWorkersForPlatformsNamespace(ctx, \"example\", \u0026cloudflare.WorkersForPlatformsNamespaceArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example-namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"script.js\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkerScript(ctx, \"customer_worker_1\", \u0026cloudflare.WorkerScriptArgs{\n\t\t\tAccountId:         pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:              pulumi.String(\"customer-worker-1\"),\n\t\t\tContent:           pulumi.String(invokeFile.Result),\n\t\t\tDispatchNamespace: example.Name,\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"free\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespace;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;\nimport com.pulumi.cloudflare.WorkerScript;\nimport com.pulumi.cloudflare.WorkerScriptArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkersForPlatformsNamespace(\"example\", WorkersForPlatformsNamespaceArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example-namespace\")\n            .build());\n\n        var customerWorker1 = new WorkerScript(\"customerWorker1\", WorkerScriptArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"customer-worker-1\")\n            .content(StdFunctions.file(FileArgs.builder()\n                .input(\"script.js\")\n                .build()).result())\n            .dispatchNamespace(example.name())\n            .tags(\"free\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkersForPlatformsNamespace\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example-namespace\n  customerWorker1:\n    type: cloudflare:WorkerScript\n    name: customer_worker_1\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: customer-worker-1\n      content:\n        fn::invoke:\n          Function: std:file\n          Arguments:\n            input: script.js\n          Return: result\n      dispatchNamespace: ${example.name}\n      tags:\n        - free\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example \u003caccount_id\u003e/\u003cnamespace_name\u003e\n```\n\n",
+            "description": "The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you\nto manage Cloudflare Workers for Platforms namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as std from \"@pulumi/std\";\n\nconst example = new cloudflare.WorkersForPlatformsNamespace(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example-namespace\",\n});\nconst customerWorker1 = new cloudflare.WorkersScript(\"customer_worker_1\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"customer-worker-1\",\n    content: std.file({\n        input: \"script.js\",\n    }).then(invoke =\u003e invoke.result),\n    dispatchNamespace: example.name,\n    tags: [\"free\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_std as std\n\nexample = cloudflare.WorkersForPlatformsNamespace(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example-namespace\")\ncustomer_worker1 = cloudflare.WorkersScript(\"customer_worker_1\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"customer-worker-1\",\n    content=std.file(input=\"script.js\").result,\n    dispatch_namespace=example.name,\n    tags=[\"free\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkersForPlatformsNamespace(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example-namespace\",\n    });\n\n    var customerWorker1 = new Cloudflare.WorkersScript(\"customer_worker_1\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"customer-worker-1\",\n        Content = Std.File.Invoke(new()\n        {\n            Input = \"script.js\",\n        }).Apply(invoke =\u003e invoke.Result),\n        DispatchNamespace = example.Name,\n        Tags = new[]\n        {\n            \"free\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.NewWorkersForPlatformsNamespace(ctx, \"example\", \u0026cloudflare.WorkersForPlatformsNamespaceArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example-namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"script.js\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkersScript(ctx, \"customer_worker_1\", \u0026cloudflare.WorkersScriptArgs{\n\t\t\tAccountId:         pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:              pulumi.String(\"customer-worker-1\"),\n\t\t\tContent:           pulumi.String(invokeFile.Result),\n\t\t\tDispatchNamespace: example.Name,\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"free\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespace;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;\nimport com.pulumi.cloudflare.WorkersScript;\nimport com.pulumi.cloudflare.WorkersScriptArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkersForPlatformsNamespace(\"example\", WorkersForPlatformsNamespaceArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example-namespace\")\n            .build());\n\n        var customerWorker1 = new WorkersScript(\"customerWorker1\", WorkersScriptArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"customer-worker-1\")\n            .content(StdFunctions.file(FileArgs.builder()\n                .input(\"script.js\")\n                .build()).result())\n            .dispatchNamespace(example.name())\n            .tags(\"free\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkersForPlatformsNamespace\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example-namespace\n  customerWorker1:\n    type: cloudflare:WorkersScript\n    name: customer_worker_1\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: customer-worker-1\n      content:\n        fn::invoke:\n          Function: std:file\n          Arguments:\n            input: script.js\n          Return: result\n      dispatchNamespace: ${example.name}\n      tags:\n        - free\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example \u003caccount_id\u003e/\u003cnamespace_name\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -22607,6 +23051,477 @@
                     "title": {
                         "type": "string",
                         "description": "Title value of the Worker KV Namespace.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersRoute:WorkersRoute": {
+            "description": "Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Runs the specified worker script for all URLs that match `example.com/*`\nconst myRoute = new cloudflare.WorkersRoute(\"my_route\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    pattern: \"example.com/*\",\n    scriptName: myScriptCloudflareWorkerScript.name,\n});\nconst myScript = new cloudflare.WorkersScript(\"my_script\", {});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Runs the specified worker script for all URLs that match `example.com/*`\nmy_route = cloudflare.WorkersRoute(\"my_route\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    pattern=\"example.com/*\",\n    script_name=my_script_cloudflare_worker_script[\"name\"])\nmy_script = cloudflare.WorkersScript(\"my_script\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Runs the specified worker script for all URLs that match `example.com/*`\n    var myRoute = new Cloudflare.WorkersRoute(\"my_route\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Pattern = \"example.com/*\",\n        ScriptName = myScriptCloudflareWorkerScript.Name,\n    });\n\n    var myScript = new Cloudflare.WorkersScript(\"my_script\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Runs the specified worker script for all URLs that match `example.com/*`\n\t\t_, err := cloudflare.NewWorkersRoute(ctx, \"my_route\", \u0026cloudflare.WorkersRouteArgs{\n\t\t\tZoneId:     pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tPattern:    pulumi.String(\"example.com/*\"),\n\t\t\tScriptName: pulumi.Any(myScriptCloudflareWorkerScript.Name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkersScript(ctx, \"my_script\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersRoute;\nimport com.pulumi.cloudflare.WorkersRouteArgs;\nimport com.pulumi.cloudflare.WorkersScript;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Runs the specified worker script for all URLs that match `example.com/*`\n        var myRoute = new WorkersRoute(\"myRoute\", WorkersRouteArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .pattern(\"example.com/*\")\n            .scriptName(myScriptCloudflareWorkerScript.name())\n            .build());\n\n        var myScript = new WorkersScript(\"myScript\");\n\n    }\n}\n```\n```yaml\nresources:\n  # Runs the specified worker script for all URLs that match `example.com/*`\n  myRoute:\n    type: cloudflare:WorkersRoute\n    name: my_route\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      pattern: example.com/*\n      scriptName: ${myScriptCloudflareWorkerScript.name}\n  myScript:\n    type: cloudflare:WorkersScript\n    name: my_script\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersRoute:WorkersRoute example \u003czone_id\u003e/\u003croute_id\u003e\n```\n\n",
+            "properties": {
+                "pattern": {
+                    "type": "string",
+                    "description": "The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script name to invoke for requests that match the route pattern.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "pattern",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "pattern": {
+                    "type": "string",
+                    "description": "The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script name to invoke for requests that match the route pattern.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "pattern",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersRoute resources.\n",
+                "properties": {
+                    "pattern": {
+                        "type": "string",
+                        "description": "The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.\n"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "Worker script name to invoke for requests that match the route pattern.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersScript:WorkersScript": {
+            "description": "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as std from \"@pulumi/std\";\n\nconst myNamespace = new cloudflare.WorkersKvNamespace(\"my_namespace\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    title: \"example\",\n});\n// Sets the script with the name \"script_1\"\nconst myScript = new cloudflare.WorkersScript(\"my_script\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"script_1\",\n    content: std.file({\n        input: \"script.js\",\n    }).then(invoke =\u003e invoke.result),\n    kvNamespaceBindings: [{\n        name: \"MY_EXAMPLE_KV_NAMESPACE\",\n        namespaceId: myNamespace.id,\n    }],\n    plainTextBindings: [{\n        name: \"MY_EXAMPLE_PLAIN_TEXT\",\n        text: \"foobar\",\n    }],\n    secretTextBindings: [{\n        name: \"MY_EXAMPLE_SECRET_TEXT\",\n        text: secretFooValue,\n    }],\n    webassemblyBindings: [{\n        name: \"MY_EXAMPLE_WASM\",\n        module: std.filebase64({\n            input: \"example.wasm\",\n        }).then(invoke =\u003e invoke.result),\n    }],\n    serviceBindings: [{\n        name: \"MY_SERVICE_BINDING\",\n        service: \"MY_SERVICE\",\n        environment: \"production\",\n    }],\n    r2BucketBindings: [{\n        name: \"MY_BUCKET\",\n        bucketName: \"MY_BUCKET_NAME\",\n    }],\n    analyticsEngineBindings: [{\n        name: \"MY_DATASET\",\n        dataset: \"dataset1\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_std as std\n\nmy_namespace = cloudflare.WorkersKvNamespace(\"my_namespace\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    title=\"example\")\n# Sets the script with the name \"script_1\"\nmy_script = cloudflare.WorkersScript(\"my_script\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"script_1\",\n    content=std.file(input=\"script.js\").result,\n    kv_namespace_bindings=[cloudflare.WorkersScriptKvNamespaceBindingArgs(\n        name=\"MY_EXAMPLE_KV_NAMESPACE\",\n        namespace_id=my_namespace.id,\n    )],\n    plain_text_bindings=[cloudflare.WorkersScriptPlainTextBindingArgs(\n        name=\"MY_EXAMPLE_PLAIN_TEXT\",\n        text=\"foobar\",\n    )],\n    secret_text_bindings=[cloudflare.WorkersScriptSecretTextBindingArgs(\n        name=\"MY_EXAMPLE_SECRET_TEXT\",\n        text=secret_foo_value,\n    )],\n    webassembly_bindings=[cloudflare.WorkersScriptWebassemblyBindingArgs(\n        name=\"MY_EXAMPLE_WASM\",\n        module=std.filebase64(input=\"example.wasm\").result,\n    )],\n    service_bindings=[cloudflare.WorkersScriptServiceBindingArgs(\n        name=\"MY_SERVICE_BINDING\",\n        service=\"MY_SERVICE\",\n        environment=\"production\",\n    )],\n    r2_bucket_bindings=[cloudflare.WorkersScriptR2BucketBindingArgs(\n        name=\"MY_BUCKET\",\n        bucket_name=\"MY_BUCKET_NAME\",\n    )],\n    analytics_engine_bindings=[cloudflare.WorkersScriptAnalyticsEngineBindingArgs(\n        name=\"MY_DATASET\",\n        dataset=\"dataset1\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myNamespace = new Cloudflare.WorkersKvNamespace(\"my_namespace\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Title = \"example\",\n    });\n\n    // Sets the script with the name \"script_1\"\n    var myScript = new Cloudflare.WorkersScript(\"my_script\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"script_1\",\n        Content = Std.File.Invoke(new()\n        {\n            Input = \"script.js\",\n        }).Apply(invoke =\u003e invoke.Result),\n        KvNamespaceBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptKvNamespaceBindingArgs\n            {\n                Name = \"MY_EXAMPLE_KV_NAMESPACE\",\n                NamespaceId = myNamespace.Id,\n            },\n        },\n        PlainTextBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptPlainTextBindingArgs\n            {\n                Name = \"MY_EXAMPLE_PLAIN_TEXT\",\n                Text = \"foobar\",\n            },\n        },\n        SecretTextBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptSecretTextBindingArgs\n            {\n                Name = \"MY_EXAMPLE_SECRET_TEXT\",\n                Text = secretFooValue,\n            },\n        },\n        WebassemblyBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptWebassemblyBindingArgs\n            {\n                Name = \"MY_EXAMPLE_WASM\",\n                Module = Std.Filebase64.Invoke(new()\n                {\n                    Input = \"example.wasm\",\n                }).Apply(invoke =\u003e invoke.Result),\n            },\n        },\n        ServiceBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptServiceBindingArgs\n            {\n                Name = \"MY_SERVICE_BINDING\",\n                Service = \"MY_SERVICE\",\n                Environment = \"production\",\n            },\n        },\n        R2BucketBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptR2BucketBindingArgs\n            {\n                Name = \"MY_BUCKET\",\n                BucketName = \"MY_BUCKET_NAME\",\n            },\n        },\n        AnalyticsEngineBindings = new[]\n        {\n            new Cloudflare.Inputs.WorkersScriptAnalyticsEngineBindingArgs\n            {\n                Name = \"MY_DATASET\",\n                Dataset = \"dataset1\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, \"my_namespace\", \u0026cloudflare.WorkersKvNamespaceArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tTitle:     pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"script.js\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFilebase641, err := std.Filebase64(ctx, \u0026std.Filebase64Args{\n\t\t\tInput: \"example.wasm\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Sets the script with the name \"script_1\"\n\t\t_, err = cloudflare.NewWorkersScript(ctx, \"my_script\", \u0026cloudflare.WorkersScriptArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"script_1\"),\n\t\t\tContent:   pulumi.String(invokeFile.Result),\n\t\t\tKvNamespaceBindings: cloudflare.WorkersScriptKvNamespaceBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptKvNamespaceBindingArgs{\n\t\t\t\t\tName:        pulumi.String(\"MY_EXAMPLE_KV_NAMESPACE\"),\n\t\t\t\t\tNamespaceId: myNamespace.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPlainTextBindings: cloudflare.WorkersScriptPlainTextBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptPlainTextBindingArgs{\n\t\t\t\t\tName: pulumi.String(\"MY_EXAMPLE_PLAIN_TEXT\"),\n\t\t\t\t\tText: pulumi.String(\"foobar\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecretTextBindings: cloudflare.WorkersScriptSecretTextBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptSecretTextBindingArgs{\n\t\t\t\t\tName: pulumi.String(\"MY_EXAMPLE_SECRET_TEXT\"),\n\t\t\t\t\tText: pulumi.Any(secretFooValue),\n\t\t\t\t},\n\t\t\t},\n\t\t\tWebassemblyBindings: cloudflare.WorkersScriptWebassemblyBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptWebassemblyBindingArgs{\n\t\t\t\t\tName:   pulumi.String(\"MY_EXAMPLE_WASM\"),\n\t\t\t\t\tModule: pulumi.String(invokeFilebase641.Result),\n\t\t\t\t},\n\t\t\t},\n\t\t\tServiceBindings: cloudflare.WorkersScriptServiceBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptServiceBindingArgs{\n\t\t\t\t\tName:        pulumi.String(\"MY_SERVICE_BINDING\"),\n\t\t\t\t\tService:     pulumi.String(\"MY_SERVICE\"),\n\t\t\t\t\tEnvironment: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tR2BucketBindings: cloudflare.WorkersScriptR2BucketBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptR2BucketBindingArgs{\n\t\t\t\t\tName:       pulumi.String(\"MY_BUCKET\"),\n\t\t\t\t\tBucketName: pulumi.String(\"MY_BUCKET_NAME\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAnalyticsEngineBindings: cloudflare.WorkersScriptAnalyticsEngineBindingArray{\n\t\t\t\t\u0026cloudflare.WorkersScriptAnalyticsEngineBindingArgs{\n\t\t\t\t\tName:    pulumi.String(\"MY_DATASET\"),\n\t\t\t\t\tDataset: pulumi.String(\"dataset1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersKvNamespace;\nimport com.pulumi.cloudflare.WorkersKvNamespaceArgs;\nimport com.pulumi.cloudflare.WorkersScript;\nimport com.pulumi.cloudflare.WorkersScriptArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptKvNamespaceBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptPlainTextBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptSecretTextBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptWebassemblyBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptServiceBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptR2BucketBindingArgs;\nimport com.pulumi.cloudflare.inputs.WorkersScriptAnalyticsEngineBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myNamespace = new WorkersKvNamespace(\"myNamespace\", WorkersKvNamespaceArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .title(\"example\")\n            .build());\n\n        // Sets the script with the name \"script_1\"\n        var myScript = new WorkersScript(\"myScript\", WorkersScriptArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"script_1\")\n            .content(StdFunctions.file(FileArgs.builder()\n                .input(\"script.js\")\n                .build()).result())\n            .kvNamespaceBindings(WorkersScriptKvNamespaceBindingArgs.builder()\n                .name(\"MY_EXAMPLE_KV_NAMESPACE\")\n                .namespaceId(myNamespace.id())\n                .build())\n            .plainTextBindings(WorkersScriptPlainTextBindingArgs.builder()\n                .name(\"MY_EXAMPLE_PLAIN_TEXT\")\n                .text(\"foobar\")\n                .build())\n            .secretTextBindings(WorkersScriptSecretTextBindingArgs.builder()\n                .name(\"MY_EXAMPLE_SECRET_TEXT\")\n                .text(secretFooValue)\n                .build())\n            .webassemblyBindings(WorkersScriptWebassemblyBindingArgs.builder()\n                .name(\"MY_EXAMPLE_WASM\")\n                .module(StdFunctions.filebase64(Filebase64Args.builder()\n                    .input(\"example.wasm\")\n                    .build()).result())\n                .build())\n            .serviceBindings(WorkersScriptServiceBindingArgs.builder()\n                .name(\"MY_SERVICE_BINDING\")\n                .service(\"MY_SERVICE\")\n                .environment(\"production\")\n                .build())\n            .r2BucketBindings(WorkersScriptR2BucketBindingArgs.builder()\n                .name(\"MY_BUCKET\")\n                .bucketName(\"MY_BUCKET_NAME\")\n                .build())\n            .analyticsEngineBindings(WorkersScriptAnalyticsEngineBindingArgs.builder()\n                .name(\"MY_DATASET\")\n                .dataset(\"dataset1\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myNamespace:\n    type: cloudflare:WorkersKvNamespace\n    name: my_namespace\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      title: example\n  # Sets the script with the name \"script_1\"\n  myScript:\n    type: cloudflare:WorkersScript\n    name: my_script\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: script_1\n      content:\n        fn::invoke:\n          Function: std:file\n          Arguments:\n            input: script.js\n          Return: result\n      kvNamespaceBindings:\n        - name: MY_EXAMPLE_KV_NAMESPACE\n          namespaceId: ${myNamespace.id}\n      plainTextBindings:\n        - name: MY_EXAMPLE_PLAIN_TEXT\n          text: foobar\n      secretTextBindings:\n        - name: MY_EXAMPLE_SECRET_TEXT\n          text: ${secretFooValue}\n      webassemblyBindings:\n        - name: MY_EXAMPLE_WASM\n          module:\n            fn::invoke:\n              Function: std:filebase64\n              Arguments:\n                input: example.wasm\n              Return: result\n      serviceBindings:\n        - name: MY_SERVICE_BINDING\n          service: MY_SERVICE\n          environment: production\n      r2BucketBindings:\n        - name: MY_BUCKET\n          bucketName: MY_BUCKET_NAME\n      analyticsEngineBindings:\n        - name: MY_DATASET\n          dataset: dataset1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersScript:WorkersScript example \u003caccount_id\u003e/\u003cscript_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "analyticsEngineBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptAnalyticsEngineBinding:WorkersScriptAnalyticsEngineBinding"
+                    }
+                },
+                "compatibilityDate": {
+                    "type": "string",
+                    "description": "The date to use for the compatibility flag.\n"
+                },
+                "compatibilityFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Compatibility flags used for Worker Scripts.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The script content.\n"
+                },
+                "d1DatabaseBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptD1DatabaseBinding:WorkersScriptD1DatabaseBinding"
+                    }
+                },
+                "dispatchNamespace": {
+                    "type": "string",
+                    "description": "Name of the Workers for Platforms dispatch namespace.\n"
+                },
+                "kvNamespaceBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptKvNamespaceBinding:WorkersScriptKvNamespaceBinding"
+                    }
+                },
+                "logpush": {
+                    "type": "boolean",
+                    "description": "Enabling allows Worker events to be sent to a defined Logpush destination.\n"
+                },
+                "module": {
+                    "type": "boolean",
+                    "description": "Whether to upload Worker as a module.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "placements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptPlacement:WorkersScriptPlacement"
+                    }
+                },
+                "plainTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptPlainTextBinding:WorkersScriptPlainTextBinding"
+                    }
+                },
+                "queueBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptQueueBinding:WorkersScriptQueueBinding"
+                    }
+                },
+                "r2BucketBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptR2BucketBinding:WorkersScriptR2BucketBinding"
+                    }
+                },
+                "secretTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptSecretTextBinding:WorkersScriptSecretTextBinding"
+                    }
+                },
+                "serviceBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptServiceBinding:WorkersScriptServiceBinding"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "webassemblyBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptWebassemblyBinding:WorkersScriptWebassemblyBinding"
+                    }
+                }
+            },
+            "required": [
+                "accountId",
+                "compatibilityFlags",
+                "content",
+                "name",
+                "tags"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "analyticsEngineBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptAnalyticsEngineBinding:WorkersScriptAnalyticsEngineBinding"
+                    }
+                },
+                "compatibilityDate": {
+                    "type": "string",
+                    "description": "The date to use for the compatibility flag.\n"
+                },
+                "compatibilityFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Compatibility flags used for Worker Scripts.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The script content.\n"
+                },
+                "d1DatabaseBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptD1DatabaseBinding:WorkersScriptD1DatabaseBinding"
+                    }
+                },
+                "dispatchNamespace": {
+                    "type": "string",
+                    "description": "Name of the Workers for Platforms dispatch namespace.\n"
+                },
+                "kvNamespaceBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptKvNamespaceBinding:WorkersScriptKvNamespaceBinding"
+                    }
+                },
+                "logpush": {
+                    "type": "boolean",
+                    "description": "Enabling allows Worker events to be sent to a defined Logpush destination.\n"
+                },
+                "module": {
+                    "type": "boolean",
+                    "description": "Whether to upload Worker as a module.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "placements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptPlacement:WorkersScriptPlacement"
+                    }
+                },
+                "plainTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptPlainTextBinding:WorkersScriptPlainTextBinding"
+                    }
+                },
+                "queueBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptQueueBinding:WorkersScriptQueueBinding"
+                    }
+                },
+                "r2BucketBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptR2BucketBinding:WorkersScriptR2BucketBinding"
+                    }
+                },
+                "secretTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptSecretTextBinding:WorkersScriptSecretTextBinding"
+                    }
+                },
+                "serviceBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptServiceBinding:WorkersScriptServiceBinding"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "webassemblyBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkersScriptWebassemblyBinding:WorkersScriptWebassemblyBinding"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "content",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersScript resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "analyticsEngineBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptAnalyticsEngineBinding:WorkersScriptAnalyticsEngineBinding"
+                        }
+                    },
+                    "compatibilityDate": {
+                        "type": "string",
+                        "description": "The date to use for the compatibility flag.\n"
+                    },
+                    "compatibilityFlags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Compatibility flags used for Worker Scripts.\n"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "The script content.\n"
+                    },
+                    "d1DatabaseBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptD1DatabaseBinding:WorkersScriptD1DatabaseBinding"
+                        }
+                    },
+                    "dispatchNamespace": {
+                        "type": "string",
+                        "description": "Name of the Workers for Platforms dispatch namespace.\n"
+                    },
+                    "kvNamespaceBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptKvNamespaceBinding:WorkersScriptKvNamespaceBinding"
+                        }
+                    },
+                    "logpush": {
+                        "type": "boolean",
+                        "description": "Enabling allows Worker events to be sent to a defined Logpush destination.\n"
+                    },
+                    "module": {
+                        "type": "boolean",
+                        "description": "Whether to upload Worker as a module.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "placements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptPlacement:WorkersScriptPlacement"
+                        }
+                    },
+                    "plainTextBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptPlainTextBinding:WorkersScriptPlainTextBinding"
+                        }
+                    },
+                    "queueBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptQueueBinding:WorkersScriptQueueBinding"
+                        }
+                    },
+                    "r2BucketBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptR2BucketBinding:WorkersScriptR2BucketBinding"
+                        }
+                    },
+                    "secretTextBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptSecretTextBinding:WorkersScriptSecretTextBinding"
+                        }
+                    },
+                    "serviceBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptServiceBinding:WorkersScriptServiceBinding"
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "webassemblyBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkersScriptWebassemblyBinding:WorkersScriptWebassemblyBinding"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersSecret:WorkersSecret": {
+            "description": "Provides a Cloudflare Worker secret resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst mySecret = new cloudflare.WorkersSecret(\"my_secret\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"MY_EXAMPLE_SECRET_TEXT\",\n    scriptName: \"script_1\",\n    secretText: \"my_secret_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_secret = cloudflare.WorkersSecret(\"my_secret\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"MY_EXAMPLE_SECRET_TEXT\",\n    script_name=\"script_1\",\n    secret_text=\"my_secret_value\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySecret = new Cloudflare.WorkersSecret(\"my_secret\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"MY_EXAMPLE_SECRET_TEXT\",\n        ScriptName = \"script_1\",\n        SecretText = \"my_secret_value\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkersSecret(ctx, \"my_secret\", \u0026cloudflare.WorkersSecretArgs{\n\t\t\tAccountId:  pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:       pulumi.String(\"MY_EXAMPLE_SECRET_TEXT\"),\n\t\t\tScriptName: pulumi.String(\"script_1\"),\n\t\t\tSecretText: pulumi.String(\"my_secret_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersSecret;\nimport com.pulumi.cloudflare.WorkersSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySecret = new WorkersSecret(\"mySecret\", WorkersSecretArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"MY_EXAMPLE_SECRET_TEXT\")\n            .scriptName(\"script_1\")\n            .secretText(\"my_secret_value\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySecret:\n    type: cloudflare:WorkersSecret\n    name: my_secret\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: MY_EXAMPLE_SECRET_TEXT\n      scriptName: script_1\n      secretText: my_secret_value\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersSecret:WorkersSecret example \u003caccount_id\u003e/\u003cscript_name\u003e/\u003csecret_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "secretText": {
+                    "type": "string",
+                    "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "accountId",
+                "name",
+                "scriptName",
+                "secretText"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "secretText": {
+                    "type": "string",
+                    "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "scriptName",
+                "secretText"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersSecret resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "secretText": {
+                        "type": "string",
+                        "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -23905,6 +24820,48 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/getGatewayAppTypes:getGatewayAppTypes": {
+            "description": "Use this data source to retrieve all Gateway application types for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getGatewayAppTypes({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_gateway_app_types(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetGatewayAppTypes.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetGatewayAppTypes(ctx, \u0026cloudflare.GetGatewayAppTypesArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getGatewayAppTypes(GetGatewayAppTypesArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getGatewayAppTypes\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGatewayAppTypes.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID to fetch Gateway App Types from.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGatewayAppTypes.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The account ID to fetch Gateway App Types from.\n",
+                        "type": "string"
+                    },
+                    "appTypes": {
+                        "description": "A list of Gateway App Types.\n",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getGatewayAppTypesAppType:getGatewayAppTypesAppType"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "appTypes",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "cloudflare:index/getGatewayCategories:getGatewayCategories": {
             "description": "Use this data source to retrieve all Gateway categories for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getGatewayCategories({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_gateway_categories(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetGatewayCategories.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetGatewayCategories(ctx, \u0026cloudflare.GetGatewayCategoriesArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetGatewayCategoriesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getGatewayCategories(GetGatewayCategoriesArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getGatewayCategories\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -24559,7 +25516,7 @@
             }
         },
         "cloudflare:index/getZone:getZone": {
-            "description": "Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)\ninfo. This is the singular alternative to `cloudflare.getZones`.\n\n\u003e **Note** Cloudflare zone names **are not unique**. It is possible for multiple\naccounts to have the same zone created but in different states. If you are\nusing this setup, it is advised to use the `account_id` attribute on this\nresource or swap to `cloudflare.getZones` to further filter the results.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getZone({\n    name: \"example.com\",\n});\nconst exampleRecord = new cloudflare.Record(\"example\", {\n    zoneId: example.then(example =\u003e example.id),\n    name: \"www\",\n    value: \"203.0.113.1\",\n    type: \"A\",\n    proxied: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zone(name=\"example.com\")\nexample_record = cloudflare.Record(\"example\",\n    zone_id=example.id,\n    name=\"www\",\n    value=\"203.0.113.1\",\n    type=\"A\",\n    proxied=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetZone.Invoke(new()\n    {\n        Name = \"example.com\",\n    });\n\n    var exampleRecord = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = example.Apply(getZoneResult =\u003e getZoneResult.Id),\n        Name = \"www\",\n        Value = \"203.0.113.1\",\n        Type = \"A\",\n        Proxied = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.LookupZone(ctx, \u0026cloudflare.LookupZoneArgs{\n\t\t\tName: pulumi.StringRef(\"example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId:  pulumi.String(example.Id),\n\t\t\tName:    pulumi.String(\"www\"),\n\t\t\tValue:   pulumi.String(\"203.0.113.1\"),\n\t\t\tType:    pulumi.String(\"A\"),\n\t\t\tProxied: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetZoneArgs;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()\n            .name(\"example.com\")\n            .build());\n\n        var exampleRecord = new Record(\"exampleRecord\", RecordArgs.builder()\n            .zoneId(example.applyValue(getZoneResult -\u003e getZoneResult.id()))\n            .name(\"www\")\n            .value(\"203.0.113.1\")\n            .type(\"A\")\n            .proxied(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleRecord:\n    type: cloudflare:Record\n    name: example\n    properties:\n      zoneId: ${example.id}\n      name: www\n      value: 203.0.113.1\n      type: A\n      proxied: true\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getZone\n      Arguments:\n        name: example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)\ninfo. This is the singular alternative to `cloudflare.getZones`.\n\n\u003e **Note** Cloudflare zone names **are not unique**. It is possible for multiple\naccounts to have the same zone created but in different states. If you are\nusing this setup, it is advised to use the `account_id` attribute on this\nresource or swap to `cloudflare.getZones` to further filter the results.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getZone({\n    name: \"example.com\",\n});\nconst exampleRecord = new cloudflare.Record(\"example\", {\n    zoneId: example.then(example =\u003e example.id),\n    name: \"www\",\n    content: \"203.0.113.1\",\n    type: \"A\",\n    proxied: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zone(name=\"example.com\")\nexample_record = cloudflare.Record(\"example\",\n    zone_id=example.id,\n    name=\"www\",\n    content=\"203.0.113.1\",\n    type=\"A\",\n    proxied=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetZone.Invoke(new()\n    {\n        Name = \"example.com\",\n    });\n\n    var exampleRecord = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = example.Apply(getZoneResult =\u003e getZoneResult.Id),\n        Name = \"www\",\n        Content = \"203.0.113.1\",\n        Type = \"A\",\n        Proxied = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.LookupZone(ctx, \u0026cloudflare.LookupZoneArgs{\n\t\t\tName: pulumi.StringRef(\"example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId:  pulumi.String(example.Id),\n\t\t\tName:    pulumi.String(\"www\"),\n\t\t\tContent: pulumi.String(\"203.0.113.1\"),\n\t\t\tType:    pulumi.String(\"A\"),\n\t\t\tProxied: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetZoneArgs;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()\n            .name(\"example.com\")\n            .build());\n\n        var exampleRecord = new Record(\"exampleRecord\", RecordArgs.builder()\n            .zoneId(example.applyValue(getZoneResult -\u003e getZoneResult.id()))\n            .name(\"www\")\n            .content(\"203.0.113.1\")\n            .type(\"A\")\n            .proxied(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleRecord:\n    type: cloudflare:Record\n    name: example\n    properties:\n      zoneId: ${example.id}\n      name: www\n      content: 203.0.113.1\n      type: A\n      proxied: true\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getZone\n      Arguments:\n        name: example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getZone.\n",
                 "properties": {
