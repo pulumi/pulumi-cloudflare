@@ -13,6 +13,6 @@ new cloudflare.Record("my-record", {
     name: "my-record-ts",
     zoneId: zone.id,
     type: "A",
-    value: "192.168.0.11",
+    content: "192.168.0.11",
     ttl: 3600,
 })

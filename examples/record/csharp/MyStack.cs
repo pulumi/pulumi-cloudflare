@@ -18,7 +18,7 @@ class MyStack : Stack
         {
             Name = "my-record-csharp",
             ZoneId = zone.Id,
-            Value = "162.168.0.14",
+            Content = "162.168.0.14",
             Type = "A",
             Ttl = 3600,
         });
