@@ -88,6 +88,8 @@ type AccessApplication struct {
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	// Option to skip the App Launcher landing page. Defaults to `false`.
+	SkipAppLauncherLoginPage pulumi.BoolPtrOutput `pulumi:"skipAppLauncherLoginPage"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
@@ -186,6 +188,8 @@ type accessApplicationState struct {
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
+	// Option to skip the App Launcher landing page. Defaults to `false`.
+	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
@@ -255,6 +259,8 @@ type AccessApplicationState struct {
 	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
+	// Option to skip the App Launcher landing page. Defaults to `false`.
+	SkipAppLauncherLoginPage pulumi.BoolPtrInput
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
@@ -326,6 +332,8 @@ type accessApplicationArgs struct {
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
+	// Option to skip the App Launcher landing page. Defaults to `false`.
+	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
@@ -394,6 +402,8 @@ type AccessApplicationArgs struct {
 	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
+	// Option to skip the App Launcher landing page. Defaults to `false`.
+	SkipAppLauncherLoginPage pulumi.BoolPtrInput
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
@@ -634,6 +644,11 @@ func (o AccessApplicationOutput) ServiceAuth401Redirect() pulumi.BoolPtrOutput {
 // How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
 func (o AccessApplicationOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
+}
+
+// Option to skip the App Launcher landing page. Defaults to `false`.
+func (o AccessApplicationOutput) SkipAppLauncherLoginPage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.SkipAppLauncherLoginPage }).(pulumi.BoolPtrOutput)
 }
 
 // Option to skip the authorization interstitial when using the CLI. Defaults to `false`.

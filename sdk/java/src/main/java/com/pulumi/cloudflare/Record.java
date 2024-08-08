@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *         // Add a record to the domain
  *         var example = new Record("example", RecordArgs.builder()
  *             .zoneId(cloudflareZoneId)
- *             .name("example")
- *             .value("192.0.2.1")
+ *             .name("terraform")
+ *             .content("192.0.2.1")
  *             .type("A")
  *             .ttl(3600)
  *             .build());
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .data(RecordDataArgs.builder()
  *                 .service("_sip")
  *                 .proto("_tls")
- *                 .name("example-srv")
+ *                 .name("terraform-srv")
  *                 .priority(0)
  *                 .weight(0)
  *                 .port(443)
@@ -108,6 +108,20 @@ public class Record extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    /**
+     * The content of the record. Conflicts with `data`.
+     * 
+     */
+    @Export(name="content", refs={String.class}, tree="[0]")
+    private Output<String> content;
+
+    /**
+     * @return The content of the record. Conflicts with `data`.
+     * 
+     */
+    public Output<String> content() {
+        return this.content;
     }
     /**
      * The RFC3339 timestamp of when the record was created.
@@ -280,7 +294,11 @@ public class Record extends com.pulumi.resources.CustomResource {
     /**
      * The value of the record. Conflicts with `data`.
      * 
+     * @deprecated
+     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
@@ -328,11 +346,18 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Record(String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/record:Record", name, args == null ? RecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/record:Record", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Record(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/record:Record", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RecordArgs makeArgs(RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RecordArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

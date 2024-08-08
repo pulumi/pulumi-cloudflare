@@ -324,11 +324,18 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkerScript(String name, WorkerScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerScript:WorkerScript", name, args == null ? WorkerScriptArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workerScript:WorkerScript", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkerScript(String name, Output<String> id, @Nullable WorkerScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workerScript:WorkerScript", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkerScriptArgs makeArgs(WorkerScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerScriptArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

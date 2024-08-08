@@ -16,6 +16,21 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     public static final TeamsRuleRuleSettingsBisoAdminControlsArgs Empty = new TeamsRuleRuleSettingsBisoAdminControlsArgs();
 
     /**
+     * Disable clipboard redirection.
+     * 
+     */
+    @Import(name="disableClipboardRedirection")
+    private @Nullable Output<Boolean> disableClipboardRedirection;
+
+    /**
+     * @return Disable clipboard redirection.
+     * 
+     */
+    public Optional<Output<Boolean>> disableClipboardRedirection() {
+        return Optional.ofNullable(this.disableClipboardRedirection);
+    }
+
+    /**
      * Disable copy-paste.
      * 
      */
@@ -93,6 +108,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     private TeamsRuleRuleSettingsBisoAdminControlsArgs() {}
 
     private TeamsRuleRuleSettingsBisoAdminControlsArgs(TeamsRuleRuleSettingsBisoAdminControlsArgs $) {
+        this.disableClipboardRedirection = $.disableClipboardRedirection;
         this.disableCopyPaste = $.disableCopyPaste;
         this.disableDownload = $.disableDownload;
         this.disableKeyboard = $.disableKeyboard;
@@ -116,6 +132,27 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
 
         public Builder(TeamsRuleRuleSettingsBisoAdminControlsArgs defaults) {
             $ = new TeamsRuleRuleSettingsBisoAdminControlsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disableClipboardRedirection Disable clipboard redirection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableClipboardRedirection(@Nullable Output<Boolean> disableClipboardRedirection) {
+            $.disableClipboardRedirection = disableClipboardRedirection;
+            return this;
+        }
+
+        /**
+         * @param disableClipboardRedirection Disable clipboard redirection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableClipboardRedirection(Boolean disableClipboardRedirection) {
+            return disableClipboardRedirection(Output.of(disableClipboardRedirection));
         }
 
         /**

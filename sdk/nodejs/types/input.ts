@@ -1249,11 +1249,11 @@ export interface DevicePostureRuleInput {
      */
     cn?: pulumi.Input<string>;
     /**
-     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      */
     complianceStatus?: pulumi.Input<string>;
     /**
-     * The workspace one connection id.
+     * The workspace one or intune connection id.
      */
     connectionId?: pulumi.Input<string>;
     /**
@@ -1843,9 +1843,25 @@ export interface HyperdriveConfigCaching {
      * Disable caching for this Hyperdrive configuration.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * Configure the `maxAge` value of this Hyperdrive configuration.
+     */
+    maxAge?: pulumi.Input<number>;
+    /**
+     * Disable caching for this Hyperdrive configuration.
+     */
+    staleWhileRevalidate?: pulumi.Input<number>;
 }
 
 export interface HyperdriveConfigOrigin {
+    /**
+     * Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     */
+    accessClientId?: pulumi.Input<string>;
+    /**
+     * Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     */
+    accessClientSecret?: pulumi.Input<string>;
     /**
      * The name of your origin database.
      */
@@ -1861,7 +1877,7 @@ export interface HyperdriveConfigOrigin {
     /**
      * The port (default: 5432 for Postgres) of your origin database.
      */
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Specifies the URL scheme used to connect to your origin database.
      */
@@ -4173,9 +4189,6 @@ export interface TeamsAccountSshSessionLog {
 }
 
 export interface TeamsListItemsWithDescription {
-    /**
-     * The description of the teams list.
-     */
     description: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
@@ -4282,6 +4295,10 @@ export interface TeamsRuleRuleSettingsAuditSsh {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Disable clipboard redirection.
+     */
+    disableClipboardRedirection?: pulumi.Input<boolean>;
     /**
      * Disable copy-paste.
      */
@@ -4813,6 +4830,116 @@ export interface WorkerScriptServiceBinding {
 }
 
 export interface WorkerScriptWebassemblyBinding {
+    /**
+     * The base64 encoded wasm module you want to store.
+     */
+    module: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkersScriptAnalyticsEngineBinding {
+    /**
+     * The name of the Analytics Engine dataset to write to.
+     */
+    dataset: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkersScriptD1DatabaseBinding {
+    /**
+     * Database ID of D1 database to use.
+     */
+    databaseId: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkersScriptKvNamespaceBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ID of the KV namespace you want to use.
+     */
+    namespaceId: pulumi.Input<string>;
+}
+
+export interface WorkersScriptPlacement {
+    /**
+     * The placement mode for the Worker. Available values: `smart`.
+     */
+    mode: pulumi.Input<string>;
+}
+
+export interface WorkersScriptPlainTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The plain text you want to store.
+     */
+    text: pulumi.Input<string>;
+}
+
+export interface WorkersScriptQueueBinding {
+    /**
+     * The name of the global variable for the binding in your Worker code.
+     */
+    binding: pulumi.Input<string>;
+    /**
+     * Name of the queue you want to use.
+     */
+    queue: pulumi.Input<string>;
+}
+
+export interface WorkersScriptR2BucketBinding {
+    /**
+     * The name of the Bucket to bind to.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkersScriptSecretTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The secret text you want to store.
+     */
+    text: pulumi.Input<string>;
+}
+
+export interface WorkersScriptServiceBinding {
+    /**
+     * The name of the Worker environment to bind to.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Worker to bind to.
+     */
+    service: pulumi.Input<string>;
+}
+
+export interface WorkersScriptWebassemblyBinding {
     /**
      * The base64 encoded wasm module you want to store.
      */

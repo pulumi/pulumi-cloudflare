@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,42 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * Configure the `max_age` value of this Hyperdrive configuration.
+     * 
+     */
+    @Import(name="maxAge")
+    private @Nullable Output<Integer> maxAge;
+
+    /**
+     * @return Configure the `max_age` value of this Hyperdrive configuration.
+     * 
+     */
+    public Optional<Output<Integer>> maxAge() {
+        return Optional.ofNullable(this.maxAge);
+    }
+
+    /**
+     * Disable caching for this Hyperdrive configuration.
+     * 
+     */
+    @Import(name="staleWhileRevalidate")
+    private @Nullable Output<Integer> staleWhileRevalidate;
+
+    /**
+     * @return Disable caching for this Hyperdrive configuration.
+     * 
+     */
+    public Optional<Output<Integer>> staleWhileRevalidate() {
+        return Optional.ofNullable(this.staleWhileRevalidate);
+    }
+
     private HyperdriveConfigCachingArgs() {}
 
     private HyperdriveConfigCachingArgs(HyperdriveConfigCachingArgs $) {
         this.disabled = $.disabled;
+        this.maxAge = $.maxAge;
+        this.staleWhileRevalidate = $.staleWhileRevalidate;
     }
 
     public static Builder builder() {
@@ -73,6 +106,48 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param maxAge Configure the `max_age` value of this Hyperdrive configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxAge(@Nullable Output<Integer> maxAge) {
+            $.maxAge = maxAge;
+            return this;
+        }
+
+        /**
+         * @param maxAge Configure the `max_age` value of this Hyperdrive configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxAge(Integer maxAge) {
+            return maxAge(Output.of(maxAge));
+        }
+
+        /**
+         * @param staleWhileRevalidate Disable caching for this Hyperdrive configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleWhileRevalidate(@Nullable Output<Integer> staleWhileRevalidate) {
+            $.staleWhileRevalidate = staleWhileRevalidate;
+            return this;
+        }
+
+        /**
+         * @param staleWhileRevalidate Disable caching for this Hyperdrive configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleWhileRevalidate(Integer staleWhileRevalidate) {
+            return staleWhileRevalidate(Output.of(staleWhileRevalidate));
         }
 
         public HyperdriveConfigCachingArgs build() {

@@ -168,6 +168,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
+     * Option to skip the App Launcher landing page. Defaults to `false`.
+     */
+    public readonly skipAppLauncherLoginPage!: pulumi.Output<boolean | undefined>;
+    /**
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
@@ -226,6 +230,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["selfHostedDomains"] = state ? state.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["skipAppLauncherLoginPage"] = state ? state.skipAppLauncherLoginPage : undefined;
             resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -260,6 +265,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["selfHostedDomains"] = args ? args.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["skipAppLauncherLoginPage"] = args ? args.skipAppLauncherLoginPage : undefined;
             resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -391,6 +397,10 @@ export interface AccessApplicationState {
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * Option to skip the App Launcher landing page. Defaults to `false`.
+     */
+    skipAppLauncherLoginPage?: pulumi.Input<boolean>;
     /**
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
@@ -525,6 +535,10 @@ export interface AccessApplicationArgs {
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * Option to skip the App Launcher landing page. Defaults to `false`.
+     */
+    skipAppLauncherLoginPage?: pulumi.Input<boolean>;
     /**
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */

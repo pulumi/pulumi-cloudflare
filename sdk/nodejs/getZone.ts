@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * const exampleRecord = new cloudflare.Record("example", {
  *     zoneId: example.then(example => example.id),
  *     name: "www",
- *     value: "203.0.113.1",
+ *     content: "203.0.113.1",
  *     type: "A",
  *     proxied: true,
  * });
@@ -122,7 +122,7 @@ export interface GetZoneResult {
  * const exampleRecord = new cloudflare.Record("example", {
  *     zoneId: example.then(example => example.id),
  *     name: "www",
- *     value: "203.0.113.1",
+ *     content: "203.0.113.1",
  *     type: "A",
  *     proxied: true,
  * });

@@ -458,6 +458,21 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Option to skip the App Launcher landing page. Defaults to `false`.
+     * 
+     */
+    @Import(name="skipAppLauncherLoginPage")
+    private @Nullable Output<Boolean> skipAppLauncherLoginPage;
+
+    /**
+     * @return Option to skip the App Launcher landing page. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipAppLauncherLoginPage() {
+        return Optional.ofNullable(this.skipAppLauncherLoginPage);
+    }
+
+    /**
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      * 
      */
@@ -549,6 +564,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.selfHostedDomains = $.selfHostedDomains;
         this.serviceAuth401Redirect = $.serviceAuth401Redirect;
         this.sessionDuration = $.sessionDuration;
+        this.skipAppLauncherLoginPage = $.skipAppLauncherLoginPage;
         this.skipInterstitial = $.skipInterstitial;
         this.tags = $.tags;
         this.type = $.type;
@@ -1240,6 +1256,27 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder sessionDuration(String sessionDuration) {
             return sessionDuration(Output.of(sessionDuration));
+        }
+
+        /**
+         * @param skipAppLauncherLoginPage Option to skip the App Launcher landing page. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAppLauncherLoginPage(@Nullable Output<Boolean> skipAppLauncherLoginPage) {
+            $.skipAppLauncherLoginPage = skipAppLauncherLoginPage;
+            return this;
+        }
+
+        /**
+         * @param skipAppLauncherLoginPage Option to skip the App Launcher landing page. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAppLauncherLoginPage(Boolean skipAppLauncherLoginPage) {
+            return skipAppLauncherLoginPage(Output.of(skipAppLauncherLoginPage));
         }
 
         /**

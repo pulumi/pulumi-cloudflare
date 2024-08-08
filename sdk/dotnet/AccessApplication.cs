@@ -204,6 +204,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
+        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// </summary>
+        [Output("skipAppLauncherLoginPage")]
+        public Output<bool?> SkipAppLauncherLoginPage { get; private set; } = null!;
+
+        /// <summary>
         /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         /// </summary>
         [Output("skipInterstitial")]
@@ -478,6 +484,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
+        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// </summary>
+        [Input("skipAppLauncherLoginPage")]
+        public Input<bool>? SkipAppLauncherLoginPage { get; set; }
+
+        /// <summary>
         /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         /// </summary>
         [Input("skipInterstitial")]
@@ -724,6 +736,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
+        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// </summary>
+        [Input("skipAppLauncherLoginPage")]
+        public Input<bool>? SkipAppLauncherLoginPage { get; set; }
 
         /// <summary>
         /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.

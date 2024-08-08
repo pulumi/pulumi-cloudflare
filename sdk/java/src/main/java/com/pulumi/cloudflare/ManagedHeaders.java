@@ -136,11 +136,18 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ManagedHeaders(String name, ManagedHeadersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/managedHeaders:ManagedHeaders", name, args == null ? ManagedHeadersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/managedHeaders:ManagedHeaders", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ManagedHeaders(String name, Output<String> id, @Nullable ManagedHeadersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/managedHeaders:ManagedHeaders", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ManagedHeadersArgs makeArgs(ManagedHeadersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagedHeadersArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

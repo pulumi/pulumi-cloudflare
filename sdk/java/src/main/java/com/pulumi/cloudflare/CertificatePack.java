@@ -182,11 +182,18 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CertificatePack(String name, CertificatePackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/certificatePack:CertificatePack", name, args == null ? CertificatePackArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/certificatePack:CertificatePack", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CertificatePack(String name, Output<String> id, @Nullable CertificatePackState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/certificatePack:CertificatePack", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CertificatePackArgs makeArgs(CertificatePackArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificatePackArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

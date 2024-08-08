@@ -9,11 +9,43 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final HyperdriveConfigOriginArgs Empty = new HyperdriveConfigOriginArgs();
+
+    /**
+     * Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    @Import(name="accessClientId")
+    private @Nullable Output<String> accessClientId;
+
+    /**
+     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    public Optional<Output<String>> accessClientId() {
+        return Optional.ofNullable(this.accessClientId);
+    }
+
+    /**
+     * Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    @Import(name="accessClientSecret")
+    private @Nullable Output<String> accessClientSecret;
+
+    /**
+     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    public Optional<Output<String>> accessClientSecret() {
+        return Optional.ofNullable(this.accessClientSecret);
+    }
 
     /**
      * The name of your origin database.
@@ -64,15 +96,15 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
      * The port (default: 5432 for Postgres) of your origin database.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
      * @return The port (default: 5432 for Postgres) of your origin database.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -108,6 +140,8 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     private HyperdriveConfigOriginArgs() {}
 
     private HyperdriveConfigOriginArgs(HyperdriveConfigOriginArgs $) {
+        this.accessClientId = $.accessClientId;
+        this.accessClientSecret = $.accessClientSecret;
         this.database = $.database;
         this.host = $.host;
         this.password = $.password;
@@ -132,6 +166,48 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
 
         public Builder(HyperdriveConfigOriginArgs defaults) {
             $ = new HyperdriveConfigOriginArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessClientId Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientId(@Nullable Output<String> accessClientId) {
+            $.accessClientId = accessClientId;
+            return this;
+        }
+
+        /**
+         * @param accessClientId Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientId(String accessClientId) {
+            return accessClientId(Output.of(accessClientId));
+        }
+
+        /**
+         * @param accessClientSecret Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientSecret(@Nullable Output<String> accessClientSecret) {
+            $.accessClientSecret = accessClientSecret;
+            return this;
+        }
+
+        /**
+         * @param accessClientSecret Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientSecret(String accessClientSecret) {
+            return accessClientSecret(Output.of(accessClientSecret));
         }
 
         /**
@@ -203,7 +279,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -269,9 +345,6 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
             }
             if ($.password == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "password");
-            }
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "port");
             }
             if ($.scheme == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "scheme");

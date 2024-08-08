@@ -134,11 +134,18 @@ public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessMutualTlsHostnameSettings(String name, @Nullable AccessMutualTlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, args == null ? AccessMutualTlsHostnameSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessMutualTlsHostnameSettings(String name, Output<String> id, @Nullable AccessMutualTlsHostnameSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessMutualTlsHostnameSettingsArgs makeArgs(@Nullable AccessMutualTlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessMutualTlsHostnameSettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

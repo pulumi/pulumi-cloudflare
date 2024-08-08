@@ -1249,11 +1249,11 @@ export interface DevicePostureRuleInput {
      */
     cn?: string;
     /**
-     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      */
     complianceStatus?: string;
     /**
-     * The workspace one connection id.
+     * The workspace one or intune connection id.
      */
     connectionId?: string;
     /**
@@ -1636,6 +1636,25 @@ export interface GetDlpDatasetsDataset {
     name: string;
     secret: boolean;
     status: string;
+}
+
+export interface GetGatewayAppTypesAppType {
+    /**
+     * The identifier for the application type of this app.
+     */
+    applicationTypeId: number;
+    /**
+     * A short summary of the app type.
+     */
+    description: string;
+    /**
+     * The identifier for this app type. There is only one app type per ID.
+     */
+    id: number;
+    /**
+     * The name of the app type.
+     */
+    name: string;
 }
 
 export interface GetGatewayCategoriesCategory {
@@ -2636,9 +2655,25 @@ export interface HyperdriveConfigCaching {
      * Disable caching for this Hyperdrive configuration.
      */
     disabled: boolean;
+    /**
+     * Configure the `maxAge` value of this Hyperdrive configuration.
+     */
+    maxAge?: number;
+    /**
+     * Disable caching for this Hyperdrive configuration.
+     */
+    staleWhileRevalidate?: number;
 }
 
 export interface HyperdriveConfigOrigin {
+    /**
+     * Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     */
+    accessClientId?: string;
+    /**
+     * Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     */
+    accessClientSecret?: string;
     /**
      * The name of your origin database.
      */
@@ -2654,7 +2689,7 @@ export interface HyperdriveConfigOrigin {
     /**
      * The port (default: 5432 for Postgres) of your origin database.
      */
-    port: number;
+    port?: number;
     /**
      * Specifies the URL scheme used to connect to your origin database.
      */
@@ -4966,9 +5001,6 @@ export interface TeamsAccountSshSessionLog {
 }
 
 export interface TeamsListItemsWithDescription {
-    /**
-     * The description of the teams list.
-     */
     description: string;
     value: string;
 }
@@ -5075,6 +5107,10 @@ export interface TeamsRuleRuleSettingsAuditSsh {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Disable clipboard redirection.
+     */
+    disableClipboardRedirection?: boolean;
     /**
      * Disable copy-paste.
      */
@@ -5606,6 +5642,116 @@ export interface WorkerScriptServiceBinding {
 }
 
 export interface WorkerScriptWebassemblyBinding {
+    /**
+     * The base64 encoded wasm module you want to store.
+     */
+    module: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+}
+
+export interface WorkersScriptAnalyticsEngineBinding {
+    /**
+     * The name of the Analytics Engine dataset to write to.
+     */
+    dataset: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+}
+
+export interface WorkersScriptD1DatabaseBinding {
+    /**
+     * Database ID of D1 database to use.
+     */
+    databaseId: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+}
+
+export interface WorkersScriptKvNamespaceBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * ID of the KV namespace you want to use.
+     */
+    namespaceId: string;
+}
+
+export interface WorkersScriptPlacement {
+    /**
+     * The placement mode for the Worker. Available values: `smart`.
+     */
+    mode: string;
+}
+
+export interface WorkersScriptPlainTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * The plain text you want to store.
+     */
+    text: string;
+}
+
+export interface WorkersScriptQueueBinding {
+    /**
+     * The name of the global variable for the binding in your Worker code.
+     */
+    binding: string;
+    /**
+     * Name of the queue you want to use.
+     */
+    queue: string;
+}
+
+export interface WorkersScriptR2BucketBinding {
+    /**
+     * The name of the Bucket to bind to.
+     */
+    bucketName: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+}
+
+export interface WorkersScriptSecretTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * The secret text you want to store.
+     */
+    text: string;
+}
+
+export interface WorkersScriptServiceBinding {
+    /**
+     * The name of the Worker environment to bind to.
+     */
+    environment?: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * The name of the Worker to bind to.
+     */
+    service: string;
+}
+
+export interface WorkersScriptWebassemblyBinding {
     /**
      * The base64 encoded wasm module you want to store.
      */

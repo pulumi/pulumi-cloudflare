@@ -357,11 +357,18 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DeviceSettingsPolicy(String name, DeviceSettingsPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy", name, args == null ? DeviceSettingsPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DeviceSettingsPolicy(String name, Output<String> id, @Nullable DeviceSettingsPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DeviceSettingsPolicyArgs makeArgs(DeviceSettingsPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceSettingsPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

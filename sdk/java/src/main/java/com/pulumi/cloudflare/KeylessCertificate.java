@@ -204,11 +204,18 @@ public class KeylessCertificate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KeylessCertificate(String name, KeylessCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/keylessCertificate:KeylessCertificate", name, args == null ? KeylessCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/keylessCertificate:KeylessCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeylessCertificate(String name, Output<String> id, @Nullable KeylessCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/keylessCertificate:KeylessCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeylessCertificateArgs makeArgs(KeylessCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeylessCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

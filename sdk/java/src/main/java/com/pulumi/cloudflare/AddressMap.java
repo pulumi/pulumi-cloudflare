@@ -222,11 +222,18 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AddressMap(String name, AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/addressMap:AddressMap", name, args == null ? AddressMapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/addressMap:AddressMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AddressMap(String name, Output<String> id, @Nullable AddressMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/addressMap:AddressMap", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AddressMapArgs makeArgs(AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressMapArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -259,11 +259,18 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TeamsRule(String name, TeamsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsRule:TeamsRule", name, args == null ? TeamsRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/teamsRule:TeamsRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TeamsRule(String name, Output<String> id, @Nullable TeamsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/teamsRule:TeamsRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TeamsRuleArgs makeArgs(TeamsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

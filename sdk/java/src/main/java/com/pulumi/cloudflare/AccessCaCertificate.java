@@ -177,11 +177,18 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessCaCertificate(String name, AccessCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessCaCertificate:AccessCaCertificate", name, args == null ? AccessCaCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessCaCertificate:AccessCaCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessCaCertificate(String name, Output<String> id, @Nullable AccessCaCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessCaCertificate:AccessCaCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessCaCertificateArgs makeArgs(AccessCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessCaCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

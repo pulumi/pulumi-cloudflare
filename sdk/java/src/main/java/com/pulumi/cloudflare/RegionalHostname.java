@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new Record("example", RecordArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .name("example.com")
- *             .value("192.0.2.1")
+ *             .content("192.0.2.1")
  *             .type("A")
  *             .ttl(3600)
  *             .build());
@@ -149,11 +149,18 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionalHostname(String name, RegionalHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalHostname:RegionalHostname", name, args == null ? RegionalHostnameArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/regionalHostname:RegionalHostname", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionalHostname(String name, Output<String> id, @Nullable RegionalHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/regionalHostname:RegionalHostname", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionalHostnameArgs makeArgs(RegionalHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionalHostnameArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -167,11 +167,18 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessCustomPage(String name, AccessCustomPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, args == null ? AccessCustomPageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessCustomPage(String name, Output<String> id, @Nullable AccessCustomPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessCustomPage:AccessCustomPage", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessCustomPageArgs makeArgs(AccessCustomPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessCustomPageArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

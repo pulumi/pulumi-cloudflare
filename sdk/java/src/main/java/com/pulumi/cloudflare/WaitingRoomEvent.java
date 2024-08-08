@@ -331,11 +331,18 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WaitingRoomEvent(String name, WaitingRoomEventArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/waitingRoomEvent:WaitingRoomEvent", name, args == null ? WaitingRoomEventArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/waitingRoomEvent:WaitingRoomEvent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WaitingRoomEvent(String name, Output<String> id, @Nullable WaitingRoomEventState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/waitingRoomEvent:WaitingRoomEvent", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WaitingRoomEventArgs makeArgs(WaitingRoomEventArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WaitingRoomEventArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

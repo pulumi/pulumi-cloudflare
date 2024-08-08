@@ -121,11 +121,18 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public UrlNormalizationSettings(String name, UrlNormalizationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", name, args == null ? UrlNormalizationSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private UrlNormalizationSettings(String name, Output<String> id, @Nullable UrlNormalizationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static UrlNormalizationSettingsArgs makeArgs(UrlNormalizationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UrlNormalizationSettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -171,11 +171,18 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PageRule(String name, PageRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/pageRule:PageRule", name, args == null ? PageRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/pageRule:PageRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PageRule(String name, Output<String> id, @Nullable PageRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/pageRule:PageRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PageRuleArgs makeArgs(PageRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PageRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

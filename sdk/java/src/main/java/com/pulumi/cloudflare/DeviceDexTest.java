@@ -207,11 +207,18 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DeviceDexTest(String name, DeviceDexTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, args == null ? DeviceDexTestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DeviceDexTest(String name, Output<String> id, @Nullable DeviceDexTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/deviceDexTest:DeviceDexTest", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DeviceDexTestArgs makeArgs(DeviceDexTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceDexTestArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

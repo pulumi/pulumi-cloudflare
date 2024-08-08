@@ -178,11 +178,18 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CustomSsl(String name, CustomSslArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/customSsl:CustomSsl", name, args == null ? CustomSslArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/customSsl:CustomSsl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CustomSsl(String name, Output<String> id, @Nullable CustomSslState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/customSsl:CustomSsl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CustomSslArgs makeArgs(CustomSslArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomSslArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

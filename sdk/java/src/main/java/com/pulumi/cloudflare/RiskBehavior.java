@@ -73,11 +73,18 @@ public class RiskBehavior extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RiskBehavior(String name, RiskBehaviorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/riskBehavior:RiskBehavior", name, args == null ? RiskBehaviorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/riskBehavior:RiskBehavior", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RiskBehavior(String name, Output<String> id, @Nullable RiskBehaviorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/riskBehavior:RiskBehavior", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RiskBehaviorArgs makeArgs(RiskBehaviorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RiskBehaviorArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

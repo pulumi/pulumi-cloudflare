@@ -11900,9 +11900,9 @@ type DevicePostureRuleInputType struct {
 	CheckDisks []string `pulumi:"checkDisks"`
 	// The common name for a certificate.
 	Cn *string `pulumi:"cn"`
-	// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+	// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
 	ComplianceStatus *string `pulumi:"complianceStatus"`
-	// The workspace one connection id.
+	// The workspace one or intune connection id.
 	ConnectionId *string `pulumi:"connectionId"`
 	// The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	CountOperator *string `pulumi:"countOperator"`
@@ -11982,9 +11982,9 @@ type DevicePostureRuleInputTypeArgs struct {
 	CheckDisks pulumi.StringArrayInput `pulumi:"checkDisks"`
 	// The common name for a certificate.
 	Cn pulumi.StringPtrInput `pulumi:"cn"`
-	// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+	// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
 	ComplianceStatus pulumi.StringPtrInput `pulumi:"complianceStatus"`
-	// The workspace one connection id.
+	// The workspace one or intune connection id.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
@@ -12115,12 +12115,12 @@ func (o DevicePostureRuleInputTypeOutput) Cn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Cn }).(pulumi.StringPtrOutput)
 }
 
-// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
 func (o DevicePostureRuleInputTypeOutput) ComplianceStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ComplianceStatus }).(pulumi.StringPtrOutput)
 }
 
-// The workspace one connection id.
+// The workspace one or intune connection id.
 func (o DevicePostureRuleInputTypeOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
@@ -13600,6 +13600,10 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 type HyperdriveConfigCaching struct {
 	// Disable caching for this Hyperdrive configuration.
 	Disabled *bool `pulumi:"disabled"`
+	// Configure the `maxAge` value of this Hyperdrive configuration.
+	MaxAge *int `pulumi:"maxAge"`
+	// Disable caching for this Hyperdrive configuration.
+	StaleWhileRevalidate *int `pulumi:"staleWhileRevalidate"`
 }
 
 // HyperdriveConfigCachingInput is an input type that accepts HyperdriveConfigCachingArgs and HyperdriveConfigCachingOutput values.
@@ -13616,6 +13620,10 @@ type HyperdriveConfigCachingInput interface {
 type HyperdriveConfigCachingArgs struct {
 	// Disable caching for this Hyperdrive configuration.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Configure the `maxAge` value of this Hyperdrive configuration.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	// Disable caching for this Hyperdrive configuration.
+	StaleWhileRevalidate pulumi.IntPtrInput `pulumi:"staleWhileRevalidate"`
 }
 
 func (HyperdriveConfigCachingArgs) ElementType() reflect.Type {
@@ -13700,6 +13708,16 @@ func (o HyperdriveConfigCachingOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Configure the `maxAge` value of this Hyperdrive configuration.
+func (o HyperdriveConfigCachingOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+// Disable caching for this Hyperdrive configuration.
+func (o HyperdriveConfigCachingOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.StaleWhileRevalidate }).(pulumi.IntPtrOutput)
+}
+
 type HyperdriveConfigCachingPtrOutput struct{ *pulumi.OutputState }
 
 func (HyperdriveConfigCachingPtrOutput) ElementType() reflect.Type {
@@ -13734,7 +13752,31 @@ func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configure the `maxAge` value of this Hyperdrive configuration.
+func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Disable caching for this Hyperdrive configuration.
+func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StaleWhileRevalidate
+	}).(pulumi.IntPtrOutput)
+}
+
 type HyperdriveConfigOrigin struct {
+	// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+	AccessClientId *string `pulumi:"accessClientId"`
+	// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+	AccessClientSecret *string `pulumi:"accessClientSecret"`
 	// The name of your origin database.
 	Database string `pulumi:"database"`
 	// The host (hostname or IP) of your origin database.
@@ -13742,7 +13784,7 @@ type HyperdriveConfigOrigin struct {
 	// The password of the Hyperdrive configuration.
 	Password string `pulumi:"password"`
 	// The port (default: 5432 for Postgres) of your origin database.
-	Port int `pulumi:"port"`
+	Port *int `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	Scheme string `pulumi:"scheme"`
 	// The user of your origin database.
@@ -13761,6 +13803,10 @@ type HyperdriveConfigOriginInput interface {
 }
 
 type HyperdriveConfigOriginArgs struct {
+	// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+	AccessClientId pulumi.StringPtrInput `pulumi:"accessClientId"`
+	// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+	AccessClientSecret pulumi.StringPtrInput `pulumi:"accessClientSecret"`
 	// The name of your origin database.
 	Database pulumi.StringInput `pulumi:"database"`
 	// The host (hostname or IP) of your origin database.
@@ -13768,7 +13814,7 @@ type HyperdriveConfigOriginArgs struct {
 	// The password of the Hyperdrive configuration.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The port (default: 5432 for Postgres) of your origin database.
-	Port pulumi.IntInput `pulumi:"port"`
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 	// The user of your origin database.
@@ -13852,6 +13898,16 @@ func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginPtrOutputWithConte
 	}).(HyperdriveConfigOriginPtrOutput)
 }
 
+// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+func (o HyperdriveConfigOriginOutput) AccessClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) *string { return v.AccessClientId }).(pulumi.StringPtrOutput)
+}
+
+// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+func (o HyperdriveConfigOriginOutput) AccessClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) *string { return v.AccessClientSecret }).(pulumi.StringPtrOutput)
+}
+
 // The name of your origin database.
 func (o HyperdriveConfigOriginOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Database }).(pulumi.StringOutput)
@@ -13868,8 +13924,8 @@ func (o HyperdriveConfigOriginOutput) Password() pulumi.StringOutput {
 }
 
 // The port (default: 5432 for Postgres) of your origin database.
-func (o HyperdriveConfigOriginOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v HyperdriveConfigOrigin) int { return v.Port }).(pulumi.IntOutput)
+func (o HyperdriveConfigOriginOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the URL scheme used to connect to your origin database.
@@ -13904,6 +13960,26 @@ func (o HyperdriveConfigOriginPtrOutput) Elem() HyperdriveConfigOriginOutput {
 		var ret HyperdriveConfigOrigin
 		return ret
 	}).(HyperdriveConfigOriginOutput)
+}
+
+// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+func (o HyperdriveConfigOriginPtrOutput) AccessClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+func (o HyperdriveConfigOriginPtrOutput) AccessClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 // The name of your origin database.
@@ -13942,7 +14018,7 @@ func (o HyperdriveConfigOriginPtrOutput) Port() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -34735,7 +34811,6 @@ func (o TeamsAccountSshSessionLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type TeamsListItemsWithDescription struct {
-	// The description of the teams list.
 	Description string `pulumi:"description"`
 	Value       string `pulumi:"value"`
 }
@@ -34752,7 +34827,6 @@ type TeamsListItemsWithDescriptionInput interface {
 }
 
 type TeamsListItemsWithDescriptionArgs struct {
-	// The description of the teams list.
 	Description pulumi.StringInput `pulumi:"description"`
 	Value       pulumi.StringInput `pulumi:"value"`
 }
@@ -34808,7 +34882,6 @@ func (o TeamsListItemsWithDescriptionOutput) ToTeamsListItemsWithDescriptionOutp
 	return o
 }
 
-// The description of the teams list.
 func (o TeamsListItemsWithDescriptionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TeamsListItemsWithDescription) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -35581,6 +35654,8 @@ func (o TeamsRuleRuleSettingsAuditSshPtrOutput) CommandLogging() pulumi.BoolPtrO
 }
 
 type TeamsRuleRuleSettingsBisoAdminControls struct {
+	// Disable clipboard redirection.
+	DisableClipboardRedirection *bool `pulumi:"disableClipboardRedirection"`
 	// Disable copy-paste.
 	DisableCopyPaste *bool `pulumi:"disableCopyPaste"`
 	// Disable download.
@@ -35605,6 +35680,8 @@ type TeamsRuleRuleSettingsBisoAdminControlsInput interface {
 }
 
 type TeamsRuleRuleSettingsBisoAdminControlsArgs struct {
+	// Disable clipboard redirection.
+	DisableClipboardRedirection pulumi.BoolPtrInput `pulumi:"disableClipboardRedirection"`
 	// Disable copy-paste.
 	DisableCopyPaste pulumi.BoolPtrInput `pulumi:"disableCopyPaste"`
 	// Disable download.
@@ -35694,6 +35771,11 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBis
 	}).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
 }
 
+// Disable clipboard redirection.
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableClipboardRedirection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableClipboardRedirection }).(pulumi.BoolPtrOutput)
+}
+
 // Disable copy-paste.
 func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableCopyPaste }).(pulumi.BoolPtrOutput)
@@ -35741,6 +35823,16 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) Elem() TeamsRuleRuleSet
 		var ret TeamsRuleRuleSettingsBisoAdminControls
 		return ret
 	}).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
+}
+
+// Disable clipboard redirection.
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableClipboardRedirection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableClipboardRedirection
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Disable copy-paste.
@@ -40532,6 +40624,1066 @@ func (o WorkerScriptWebassemblyBindingArrayOutput) Index(i pulumi.IntInput) Work
 	}).(WorkerScriptWebassemblyBindingOutput)
 }
 
+type WorkersScriptAnalyticsEngineBinding struct {
+	// The name of the Analytics Engine dataset to write to.
+	Dataset string `pulumi:"dataset"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkersScriptAnalyticsEngineBindingInput is an input type that accepts WorkersScriptAnalyticsEngineBindingArgs and WorkersScriptAnalyticsEngineBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptAnalyticsEngineBindingInput` via:
+//
+//	WorkersScriptAnalyticsEngineBindingArgs{...}
+type WorkersScriptAnalyticsEngineBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptAnalyticsEngineBindingOutput() WorkersScriptAnalyticsEngineBindingOutput
+	ToWorkersScriptAnalyticsEngineBindingOutputWithContext(context.Context) WorkersScriptAnalyticsEngineBindingOutput
+}
+
+type WorkersScriptAnalyticsEngineBindingArgs struct {
+	// The name of the Analytics Engine dataset to write to.
+	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkersScriptAnalyticsEngineBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptAnalyticsEngineBindingArgs) ToWorkersScriptAnalyticsEngineBindingOutput() WorkersScriptAnalyticsEngineBindingOutput {
+	return i.ToWorkersScriptAnalyticsEngineBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptAnalyticsEngineBindingArgs) ToWorkersScriptAnalyticsEngineBindingOutputWithContext(ctx context.Context) WorkersScriptAnalyticsEngineBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptAnalyticsEngineBindingOutput)
+}
+
+// WorkersScriptAnalyticsEngineBindingArrayInput is an input type that accepts WorkersScriptAnalyticsEngineBindingArray and WorkersScriptAnalyticsEngineBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptAnalyticsEngineBindingArrayInput` via:
+//
+//	WorkersScriptAnalyticsEngineBindingArray{ WorkersScriptAnalyticsEngineBindingArgs{...} }
+type WorkersScriptAnalyticsEngineBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptAnalyticsEngineBindingArrayOutput() WorkersScriptAnalyticsEngineBindingArrayOutput
+	ToWorkersScriptAnalyticsEngineBindingArrayOutputWithContext(context.Context) WorkersScriptAnalyticsEngineBindingArrayOutput
+}
+
+type WorkersScriptAnalyticsEngineBindingArray []WorkersScriptAnalyticsEngineBindingInput
+
+func (WorkersScriptAnalyticsEngineBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptAnalyticsEngineBindingArray) ToWorkersScriptAnalyticsEngineBindingArrayOutput() WorkersScriptAnalyticsEngineBindingArrayOutput {
+	return i.ToWorkersScriptAnalyticsEngineBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptAnalyticsEngineBindingArray) ToWorkersScriptAnalyticsEngineBindingArrayOutputWithContext(ctx context.Context) WorkersScriptAnalyticsEngineBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptAnalyticsEngineBindingArrayOutput)
+}
+
+type WorkersScriptAnalyticsEngineBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptAnalyticsEngineBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptAnalyticsEngineBindingOutput) ToWorkersScriptAnalyticsEngineBindingOutput() WorkersScriptAnalyticsEngineBindingOutput {
+	return o
+}
+
+func (o WorkersScriptAnalyticsEngineBindingOutput) ToWorkersScriptAnalyticsEngineBindingOutputWithContext(ctx context.Context) WorkersScriptAnalyticsEngineBindingOutput {
+	return o
+}
+
+// The name of the Analytics Engine dataset to write to.
+func (o WorkersScriptAnalyticsEngineBindingOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptAnalyticsEngineBinding) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptAnalyticsEngineBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptAnalyticsEngineBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkersScriptAnalyticsEngineBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptAnalyticsEngineBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptAnalyticsEngineBindingArrayOutput) ToWorkersScriptAnalyticsEngineBindingArrayOutput() WorkersScriptAnalyticsEngineBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptAnalyticsEngineBindingArrayOutput) ToWorkersScriptAnalyticsEngineBindingArrayOutputWithContext(ctx context.Context) WorkersScriptAnalyticsEngineBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptAnalyticsEngineBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptAnalyticsEngineBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptAnalyticsEngineBinding {
+		return vs[0].([]WorkersScriptAnalyticsEngineBinding)[vs[1].(int)]
+	}).(WorkersScriptAnalyticsEngineBindingOutput)
+}
+
+type WorkersScriptD1DatabaseBinding struct {
+	// Database ID of D1 database to use.
+	DatabaseId string `pulumi:"databaseId"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkersScriptD1DatabaseBindingInput is an input type that accepts WorkersScriptD1DatabaseBindingArgs and WorkersScriptD1DatabaseBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptD1DatabaseBindingInput` via:
+//
+//	WorkersScriptD1DatabaseBindingArgs{...}
+type WorkersScriptD1DatabaseBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptD1DatabaseBindingOutput() WorkersScriptD1DatabaseBindingOutput
+	ToWorkersScriptD1DatabaseBindingOutputWithContext(context.Context) WorkersScriptD1DatabaseBindingOutput
+}
+
+type WorkersScriptD1DatabaseBindingArgs struct {
+	// Database ID of D1 database to use.
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkersScriptD1DatabaseBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptD1DatabaseBindingArgs) ToWorkersScriptD1DatabaseBindingOutput() WorkersScriptD1DatabaseBindingOutput {
+	return i.ToWorkersScriptD1DatabaseBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptD1DatabaseBindingArgs) ToWorkersScriptD1DatabaseBindingOutputWithContext(ctx context.Context) WorkersScriptD1DatabaseBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptD1DatabaseBindingOutput)
+}
+
+// WorkersScriptD1DatabaseBindingArrayInput is an input type that accepts WorkersScriptD1DatabaseBindingArray and WorkersScriptD1DatabaseBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptD1DatabaseBindingArrayInput` via:
+//
+//	WorkersScriptD1DatabaseBindingArray{ WorkersScriptD1DatabaseBindingArgs{...} }
+type WorkersScriptD1DatabaseBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptD1DatabaseBindingArrayOutput() WorkersScriptD1DatabaseBindingArrayOutput
+	ToWorkersScriptD1DatabaseBindingArrayOutputWithContext(context.Context) WorkersScriptD1DatabaseBindingArrayOutput
+}
+
+type WorkersScriptD1DatabaseBindingArray []WorkersScriptD1DatabaseBindingInput
+
+func (WorkersScriptD1DatabaseBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptD1DatabaseBindingArray) ToWorkersScriptD1DatabaseBindingArrayOutput() WorkersScriptD1DatabaseBindingArrayOutput {
+	return i.ToWorkersScriptD1DatabaseBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptD1DatabaseBindingArray) ToWorkersScriptD1DatabaseBindingArrayOutputWithContext(ctx context.Context) WorkersScriptD1DatabaseBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptD1DatabaseBindingArrayOutput)
+}
+
+type WorkersScriptD1DatabaseBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptD1DatabaseBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptD1DatabaseBindingOutput) ToWorkersScriptD1DatabaseBindingOutput() WorkersScriptD1DatabaseBindingOutput {
+	return o
+}
+
+func (o WorkersScriptD1DatabaseBindingOutput) ToWorkersScriptD1DatabaseBindingOutputWithContext(ctx context.Context) WorkersScriptD1DatabaseBindingOutput {
+	return o
+}
+
+// Database ID of D1 database to use.
+func (o WorkersScriptD1DatabaseBindingOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptD1DatabaseBinding) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptD1DatabaseBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptD1DatabaseBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkersScriptD1DatabaseBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptD1DatabaseBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptD1DatabaseBindingArrayOutput) ToWorkersScriptD1DatabaseBindingArrayOutput() WorkersScriptD1DatabaseBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptD1DatabaseBindingArrayOutput) ToWorkersScriptD1DatabaseBindingArrayOutputWithContext(ctx context.Context) WorkersScriptD1DatabaseBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptD1DatabaseBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptD1DatabaseBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptD1DatabaseBinding {
+		return vs[0].([]WorkersScriptD1DatabaseBinding)[vs[1].(int)]
+	}).(WorkersScriptD1DatabaseBindingOutput)
+}
+
+type WorkersScriptKvNamespaceBinding struct {
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// ID of the KV namespace you want to use.
+	NamespaceId string `pulumi:"namespaceId"`
+}
+
+// WorkersScriptKvNamespaceBindingInput is an input type that accepts WorkersScriptKvNamespaceBindingArgs and WorkersScriptKvNamespaceBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptKvNamespaceBindingInput` via:
+//
+//	WorkersScriptKvNamespaceBindingArgs{...}
+type WorkersScriptKvNamespaceBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptKvNamespaceBindingOutput() WorkersScriptKvNamespaceBindingOutput
+	ToWorkersScriptKvNamespaceBindingOutputWithContext(context.Context) WorkersScriptKvNamespaceBindingOutput
+}
+
+type WorkersScriptKvNamespaceBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// ID of the KV namespace you want to use.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+}
+
+func (WorkersScriptKvNamespaceBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptKvNamespaceBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptKvNamespaceBindingArgs) ToWorkersScriptKvNamespaceBindingOutput() WorkersScriptKvNamespaceBindingOutput {
+	return i.ToWorkersScriptKvNamespaceBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptKvNamespaceBindingArgs) ToWorkersScriptKvNamespaceBindingOutputWithContext(ctx context.Context) WorkersScriptKvNamespaceBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptKvNamespaceBindingOutput)
+}
+
+// WorkersScriptKvNamespaceBindingArrayInput is an input type that accepts WorkersScriptKvNamespaceBindingArray and WorkersScriptKvNamespaceBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptKvNamespaceBindingArrayInput` via:
+//
+//	WorkersScriptKvNamespaceBindingArray{ WorkersScriptKvNamespaceBindingArgs{...} }
+type WorkersScriptKvNamespaceBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptKvNamespaceBindingArrayOutput() WorkersScriptKvNamespaceBindingArrayOutput
+	ToWorkersScriptKvNamespaceBindingArrayOutputWithContext(context.Context) WorkersScriptKvNamespaceBindingArrayOutput
+}
+
+type WorkersScriptKvNamespaceBindingArray []WorkersScriptKvNamespaceBindingInput
+
+func (WorkersScriptKvNamespaceBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptKvNamespaceBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptKvNamespaceBindingArray) ToWorkersScriptKvNamespaceBindingArrayOutput() WorkersScriptKvNamespaceBindingArrayOutput {
+	return i.ToWorkersScriptKvNamespaceBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptKvNamespaceBindingArray) ToWorkersScriptKvNamespaceBindingArrayOutputWithContext(ctx context.Context) WorkersScriptKvNamespaceBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptKvNamespaceBindingArrayOutput)
+}
+
+type WorkersScriptKvNamespaceBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptKvNamespaceBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptKvNamespaceBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptKvNamespaceBindingOutput) ToWorkersScriptKvNamespaceBindingOutput() WorkersScriptKvNamespaceBindingOutput {
+	return o
+}
+
+func (o WorkersScriptKvNamespaceBindingOutput) ToWorkersScriptKvNamespaceBindingOutputWithContext(ctx context.Context) WorkersScriptKvNamespaceBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptKvNamespaceBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptKvNamespaceBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the KV namespace you want to use.
+func (o WorkersScriptKvNamespaceBindingOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptKvNamespaceBinding) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+type WorkersScriptKvNamespaceBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptKvNamespaceBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptKvNamespaceBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptKvNamespaceBindingArrayOutput) ToWorkersScriptKvNamespaceBindingArrayOutput() WorkersScriptKvNamespaceBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptKvNamespaceBindingArrayOutput) ToWorkersScriptKvNamespaceBindingArrayOutputWithContext(ctx context.Context) WorkersScriptKvNamespaceBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptKvNamespaceBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptKvNamespaceBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptKvNamespaceBinding {
+		return vs[0].([]WorkersScriptKvNamespaceBinding)[vs[1].(int)]
+	}).(WorkersScriptKvNamespaceBindingOutput)
+}
+
+type WorkersScriptPlacement struct {
+	// The placement mode for the Worker. Available values: `smart`.
+	Mode string `pulumi:"mode"`
+}
+
+// WorkersScriptPlacementInput is an input type that accepts WorkersScriptPlacementArgs and WorkersScriptPlacementOutput values.
+// You can construct a concrete instance of `WorkersScriptPlacementInput` via:
+//
+//	WorkersScriptPlacementArgs{...}
+type WorkersScriptPlacementInput interface {
+	pulumi.Input
+
+	ToWorkersScriptPlacementOutput() WorkersScriptPlacementOutput
+	ToWorkersScriptPlacementOutputWithContext(context.Context) WorkersScriptPlacementOutput
+}
+
+type WorkersScriptPlacementArgs struct {
+	// The placement mode for the Worker. Available values: `smart`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (WorkersScriptPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptPlacement)(nil)).Elem()
+}
+
+func (i WorkersScriptPlacementArgs) ToWorkersScriptPlacementOutput() WorkersScriptPlacementOutput {
+	return i.ToWorkersScriptPlacementOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptPlacementArgs) ToWorkersScriptPlacementOutputWithContext(ctx context.Context) WorkersScriptPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptPlacementOutput)
+}
+
+// WorkersScriptPlacementArrayInput is an input type that accepts WorkersScriptPlacementArray and WorkersScriptPlacementArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptPlacementArrayInput` via:
+//
+//	WorkersScriptPlacementArray{ WorkersScriptPlacementArgs{...} }
+type WorkersScriptPlacementArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptPlacementArrayOutput() WorkersScriptPlacementArrayOutput
+	ToWorkersScriptPlacementArrayOutputWithContext(context.Context) WorkersScriptPlacementArrayOutput
+}
+
+type WorkersScriptPlacementArray []WorkersScriptPlacementInput
+
+func (WorkersScriptPlacementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptPlacement)(nil)).Elem()
+}
+
+func (i WorkersScriptPlacementArray) ToWorkersScriptPlacementArrayOutput() WorkersScriptPlacementArrayOutput {
+	return i.ToWorkersScriptPlacementArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptPlacementArray) ToWorkersScriptPlacementArrayOutputWithContext(ctx context.Context) WorkersScriptPlacementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptPlacementArrayOutput)
+}
+
+type WorkersScriptPlacementOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptPlacement)(nil)).Elem()
+}
+
+func (o WorkersScriptPlacementOutput) ToWorkersScriptPlacementOutput() WorkersScriptPlacementOutput {
+	return o
+}
+
+func (o WorkersScriptPlacementOutput) ToWorkersScriptPlacementOutputWithContext(ctx context.Context) WorkersScriptPlacementOutput {
+	return o
+}
+
+// The placement mode for the Worker. Available values: `smart`.
+func (o WorkersScriptPlacementOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptPlacement) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type WorkersScriptPlacementArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptPlacementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptPlacement)(nil)).Elem()
+}
+
+func (o WorkersScriptPlacementArrayOutput) ToWorkersScriptPlacementArrayOutput() WorkersScriptPlacementArrayOutput {
+	return o
+}
+
+func (o WorkersScriptPlacementArrayOutput) ToWorkersScriptPlacementArrayOutputWithContext(ctx context.Context) WorkersScriptPlacementArrayOutput {
+	return o
+}
+
+func (o WorkersScriptPlacementArrayOutput) Index(i pulumi.IntInput) WorkersScriptPlacementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptPlacement {
+		return vs[0].([]WorkersScriptPlacement)[vs[1].(int)]
+	}).(WorkersScriptPlacementOutput)
+}
+
+type WorkersScriptPlainTextBinding struct {
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The plain text you want to store.
+	Text string `pulumi:"text"`
+}
+
+// WorkersScriptPlainTextBindingInput is an input type that accepts WorkersScriptPlainTextBindingArgs and WorkersScriptPlainTextBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptPlainTextBindingInput` via:
+//
+//	WorkersScriptPlainTextBindingArgs{...}
+type WorkersScriptPlainTextBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptPlainTextBindingOutput() WorkersScriptPlainTextBindingOutput
+	ToWorkersScriptPlainTextBindingOutputWithContext(context.Context) WorkersScriptPlainTextBindingOutput
+}
+
+type WorkersScriptPlainTextBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The plain text you want to store.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WorkersScriptPlainTextBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptPlainTextBindingArgs) ToWorkersScriptPlainTextBindingOutput() WorkersScriptPlainTextBindingOutput {
+	return i.ToWorkersScriptPlainTextBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptPlainTextBindingArgs) ToWorkersScriptPlainTextBindingOutputWithContext(ctx context.Context) WorkersScriptPlainTextBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptPlainTextBindingOutput)
+}
+
+// WorkersScriptPlainTextBindingArrayInput is an input type that accepts WorkersScriptPlainTextBindingArray and WorkersScriptPlainTextBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptPlainTextBindingArrayInput` via:
+//
+//	WorkersScriptPlainTextBindingArray{ WorkersScriptPlainTextBindingArgs{...} }
+type WorkersScriptPlainTextBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptPlainTextBindingArrayOutput() WorkersScriptPlainTextBindingArrayOutput
+	ToWorkersScriptPlainTextBindingArrayOutputWithContext(context.Context) WorkersScriptPlainTextBindingArrayOutput
+}
+
+type WorkersScriptPlainTextBindingArray []WorkersScriptPlainTextBindingInput
+
+func (WorkersScriptPlainTextBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptPlainTextBindingArray) ToWorkersScriptPlainTextBindingArrayOutput() WorkersScriptPlainTextBindingArrayOutput {
+	return i.ToWorkersScriptPlainTextBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptPlainTextBindingArray) ToWorkersScriptPlainTextBindingArrayOutputWithContext(ctx context.Context) WorkersScriptPlainTextBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptPlainTextBindingArrayOutput)
+}
+
+type WorkersScriptPlainTextBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptPlainTextBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptPlainTextBindingOutput) ToWorkersScriptPlainTextBindingOutput() WorkersScriptPlainTextBindingOutput {
+	return o
+}
+
+func (o WorkersScriptPlainTextBindingOutput) ToWorkersScriptPlainTextBindingOutputWithContext(ctx context.Context) WorkersScriptPlainTextBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptPlainTextBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptPlainTextBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The plain text you want to store.
+func (o WorkersScriptPlainTextBindingOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptPlainTextBinding) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WorkersScriptPlainTextBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptPlainTextBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptPlainTextBindingArrayOutput) ToWorkersScriptPlainTextBindingArrayOutput() WorkersScriptPlainTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptPlainTextBindingArrayOutput) ToWorkersScriptPlainTextBindingArrayOutputWithContext(ctx context.Context) WorkersScriptPlainTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptPlainTextBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptPlainTextBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptPlainTextBinding {
+		return vs[0].([]WorkersScriptPlainTextBinding)[vs[1].(int)]
+	}).(WorkersScriptPlainTextBindingOutput)
+}
+
+type WorkersScriptQueueBinding struct {
+	// The name of the global variable for the binding in your Worker code.
+	Binding string `pulumi:"binding"`
+	// Name of the queue you want to use.
+	Queue string `pulumi:"queue"`
+}
+
+// WorkersScriptQueueBindingInput is an input type that accepts WorkersScriptQueueBindingArgs and WorkersScriptQueueBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptQueueBindingInput` via:
+//
+//	WorkersScriptQueueBindingArgs{...}
+type WorkersScriptQueueBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptQueueBindingOutput() WorkersScriptQueueBindingOutput
+	ToWorkersScriptQueueBindingOutputWithContext(context.Context) WorkersScriptQueueBindingOutput
+}
+
+type WorkersScriptQueueBindingArgs struct {
+	// The name of the global variable for the binding in your Worker code.
+	Binding pulumi.StringInput `pulumi:"binding"`
+	// Name of the queue you want to use.
+	Queue pulumi.StringInput `pulumi:"queue"`
+}
+
+func (WorkersScriptQueueBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptQueueBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptQueueBindingArgs) ToWorkersScriptQueueBindingOutput() WorkersScriptQueueBindingOutput {
+	return i.ToWorkersScriptQueueBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptQueueBindingArgs) ToWorkersScriptQueueBindingOutputWithContext(ctx context.Context) WorkersScriptQueueBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptQueueBindingOutput)
+}
+
+// WorkersScriptQueueBindingArrayInput is an input type that accepts WorkersScriptQueueBindingArray and WorkersScriptQueueBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptQueueBindingArrayInput` via:
+//
+//	WorkersScriptQueueBindingArray{ WorkersScriptQueueBindingArgs{...} }
+type WorkersScriptQueueBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptQueueBindingArrayOutput() WorkersScriptQueueBindingArrayOutput
+	ToWorkersScriptQueueBindingArrayOutputWithContext(context.Context) WorkersScriptQueueBindingArrayOutput
+}
+
+type WorkersScriptQueueBindingArray []WorkersScriptQueueBindingInput
+
+func (WorkersScriptQueueBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptQueueBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptQueueBindingArray) ToWorkersScriptQueueBindingArrayOutput() WorkersScriptQueueBindingArrayOutput {
+	return i.ToWorkersScriptQueueBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptQueueBindingArray) ToWorkersScriptQueueBindingArrayOutputWithContext(ctx context.Context) WorkersScriptQueueBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptQueueBindingArrayOutput)
+}
+
+type WorkersScriptQueueBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptQueueBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptQueueBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptQueueBindingOutput) ToWorkersScriptQueueBindingOutput() WorkersScriptQueueBindingOutput {
+	return o
+}
+
+func (o WorkersScriptQueueBindingOutput) ToWorkersScriptQueueBindingOutputWithContext(ctx context.Context) WorkersScriptQueueBindingOutput {
+	return o
+}
+
+// The name of the global variable for the binding in your Worker code.
+func (o WorkersScriptQueueBindingOutput) Binding() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptQueueBinding) string { return v.Binding }).(pulumi.StringOutput)
+}
+
+// Name of the queue you want to use.
+func (o WorkersScriptQueueBindingOutput) Queue() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptQueueBinding) string { return v.Queue }).(pulumi.StringOutput)
+}
+
+type WorkersScriptQueueBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptQueueBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptQueueBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptQueueBindingArrayOutput) ToWorkersScriptQueueBindingArrayOutput() WorkersScriptQueueBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptQueueBindingArrayOutput) ToWorkersScriptQueueBindingArrayOutputWithContext(ctx context.Context) WorkersScriptQueueBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptQueueBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptQueueBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptQueueBinding {
+		return vs[0].([]WorkersScriptQueueBinding)[vs[1].(int)]
+	}).(WorkersScriptQueueBindingOutput)
+}
+
+type WorkersScriptR2BucketBinding struct {
+	// The name of the Bucket to bind to.
+	BucketName string `pulumi:"bucketName"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkersScriptR2BucketBindingInput is an input type that accepts WorkersScriptR2BucketBindingArgs and WorkersScriptR2BucketBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptR2BucketBindingInput` via:
+//
+//	WorkersScriptR2BucketBindingArgs{...}
+type WorkersScriptR2BucketBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptR2BucketBindingOutput() WorkersScriptR2BucketBindingOutput
+	ToWorkersScriptR2BucketBindingOutputWithContext(context.Context) WorkersScriptR2BucketBindingOutput
+}
+
+type WorkersScriptR2BucketBindingArgs struct {
+	// The name of the Bucket to bind to.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkersScriptR2BucketBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptR2BucketBindingArgs) ToWorkersScriptR2BucketBindingOutput() WorkersScriptR2BucketBindingOutput {
+	return i.ToWorkersScriptR2BucketBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptR2BucketBindingArgs) ToWorkersScriptR2BucketBindingOutputWithContext(ctx context.Context) WorkersScriptR2BucketBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptR2BucketBindingOutput)
+}
+
+// WorkersScriptR2BucketBindingArrayInput is an input type that accepts WorkersScriptR2BucketBindingArray and WorkersScriptR2BucketBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptR2BucketBindingArrayInput` via:
+//
+//	WorkersScriptR2BucketBindingArray{ WorkersScriptR2BucketBindingArgs{...} }
+type WorkersScriptR2BucketBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptR2BucketBindingArrayOutput() WorkersScriptR2BucketBindingArrayOutput
+	ToWorkersScriptR2BucketBindingArrayOutputWithContext(context.Context) WorkersScriptR2BucketBindingArrayOutput
+}
+
+type WorkersScriptR2BucketBindingArray []WorkersScriptR2BucketBindingInput
+
+func (WorkersScriptR2BucketBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptR2BucketBindingArray) ToWorkersScriptR2BucketBindingArrayOutput() WorkersScriptR2BucketBindingArrayOutput {
+	return i.ToWorkersScriptR2BucketBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptR2BucketBindingArray) ToWorkersScriptR2BucketBindingArrayOutputWithContext(ctx context.Context) WorkersScriptR2BucketBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptR2BucketBindingArrayOutput)
+}
+
+type WorkersScriptR2BucketBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptR2BucketBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptR2BucketBindingOutput) ToWorkersScriptR2BucketBindingOutput() WorkersScriptR2BucketBindingOutput {
+	return o
+}
+
+func (o WorkersScriptR2BucketBindingOutput) ToWorkersScriptR2BucketBindingOutputWithContext(ctx context.Context) WorkersScriptR2BucketBindingOutput {
+	return o
+}
+
+// The name of the Bucket to bind to.
+func (o WorkersScriptR2BucketBindingOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptR2BucketBinding) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptR2BucketBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptR2BucketBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkersScriptR2BucketBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptR2BucketBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptR2BucketBindingArrayOutput) ToWorkersScriptR2BucketBindingArrayOutput() WorkersScriptR2BucketBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptR2BucketBindingArrayOutput) ToWorkersScriptR2BucketBindingArrayOutputWithContext(ctx context.Context) WorkersScriptR2BucketBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptR2BucketBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptR2BucketBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptR2BucketBinding {
+		return vs[0].([]WorkersScriptR2BucketBinding)[vs[1].(int)]
+	}).(WorkersScriptR2BucketBindingOutput)
+}
+
+type WorkersScriptSecretTextBinding struct {
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The secret text you want to store.
+	Text string `pulumi:"text"`
+}
+
+// WorkersScriptSecretTextBindingInput is an input type that accepts WorkersScriptSecretTextBindingArgs and WorkersScriptSecretTextBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptSecretTextBindingInput` via:
+//
+//	WorkersScriptSecretTextBindingArgs{...}
+type WorkersScriptSecretTextBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptSecretTextBindingOutput() WorkersScriptSecretTextBindingOutput
+	ToWorkersScriptSecretTextBindingOutputWithContext(context.Context) WorkersScriptSecretTextBindingOutput
+}
+
+type WorkersScriptSecretTextBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The secret text you want to store.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WorkersScriptSecretTextBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptSecretTextBindingArgs) ToWorkersScriptSecretTextBindingOutput() WorkersScriptSecretTextBindingOutput {
+	return i.ToWorkersScriptSecretTextBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptSecretTextBindingArgs) ToWorkersScriptSecretTextBindingOutputWithContext(ctx context.Context) WorkersScriptSecretTextBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptSecretTextBindingOutput)
+}
+
+// WorkersScriptSecretTextBindingArrayInput is an input type that accepts WorkersScriptSecretTextBindingArray and WorkersScriptSecretTextBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptSecretTextBindingArrayInput` via:
+//
+//	WorkersScriptSecretTextBindingArray{ WorkersScriptSecretTextBindingArgs{...} }
+type WorkersScriptSecretTextBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptSecretTextBindingArrayOutput() WorkersScriptSecretTextBindingArrayOutput
+	ToWorkersScriptSecretTextBindingArrayOutputWithContext(context.Context) WorkersScriptSecretTextBindingArrayOutput
+}
+
+type WorkersScriptSecretTextBindingArray []WorkersScriptSecretTextBindingInput
+
+func (WorkersScriptSecretTextBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptSecretTextBindingArray) ToWorkersScriptSecretTextBindingArrayOutput() WorkersScriptSecretTextBindingArrayOutput {
+	return i.ToWorkersScriptSecretTextBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptSecretTextBindingArray) ToWorkersScriptSecretTextBindingArrayOutputWithContext(ctx context.Context) WorkersScriptSecretTextBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptSecretTextBindingArrayOutput)
+}
+
+type WorkersScriptSecretTextBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptSecretTextBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptSecretTextBindingOutput) ToWorkersScriptSecretTextBindingOutput() WorkersScriptSecretTextBindingOutput {
+	return o
+}
+
+func (o WorkersScriptSecretTextBindingOutput) ToWorkersScriptSecretTextBindingOutputWithContext(ctx context.Context) WorkersScriptSecretTextBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptSecretTextBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptSecretTextBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret text you want to store.
+func (o WorkersScriptSecretTextBindingOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptSecretTextBinding) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WorkersScriptSecretTextBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptSecretTextBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptSecretTextBindingArrayOutput) ToWorkersScriptSecretTextBindingArrayOutput() WorkersScriptSecretTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptSecretTextBindingArrayOutput) ToWorkersScriptSecretTextBindingArrayOutputWithContext(ctx context.Context) WorkersScriptSecretTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptSecretTextBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptSecretTextBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptSecretTextBinding {
+		return vs[0].([]WorkersScriptSecretTextBinding)[vs[1].(int)]
+	}).(WorkersScriptSecretTextBindingOutput)
+}
+
+type WorkersScriptServiceBinding struct {
+	// The name of the Worker environment to bind to.
+	Environment *string `pulumi:"environment"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The name of the Worker to bind to.
+	Service string `pulumi:"service"`
+}
+
+// WorkersScriptServiceBindingInput is an input type that accepts WorkersScriptServiceBindingArgs and WorkersScriptServiceBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptServiceBindingInput` via:
+//
+//	WorkersScriptServiceBindingArgs{...}
+type WorkersScriptServiceBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptServiceBindingOutput() WorkersScriptServiceBindingOutput
+	ToWorkersScriptServiceBindingOutputWithContext(context.Context) WorkersScriptServiceBindingOutput
+}
+
+type WorkersScriptServiceBindingArgs struct {
+	// The name of the Worker environment to bind to.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Worker to bind to.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (WorkersScriptServiceBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptServiceBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptServiceBindingArgs) ToWorkersScriptServiceBindingOutput() WorkersScriptServiceBindingOutput {
+	return i.ToWorkersScriptServiceBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptServiceBindingArgs) ToWorkersScriptServiceBindingOutputWithContext(ctx context.Context) WorkersScriptServiceBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptServiceBindingOutput)
+}
+
+// WorkersScriptServiceBindingArrayInput is an input type that accepts WorkersScriptServiceBindingArray and WorkersScriptServiceBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptServiceBindingArrayInput` via:
+//
+//	WorkersScriptServiceBindingArray{ WorkersScriptServiceBindingArgs{...} }
+type WorkersScriptServiceBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptServiceBindingArrayOutput() WorkersScriptServiceBindingArrayOutput
+	ToWorkersScriptServiceBindingArrayOutputWithContext(context.Context) WorkersScriptServiceBindingArrayOutput
+}
+
+type WorkersScriptServiceBindingArray []WorkersScriptServiceBindingInput
+
+func (WorkersScriptServiceBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptServiceBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptServiceBindingArray) ToWorkersScriptServiceBindingArrayOutput() WorkersScriptServiceBindingArrayOutput {
+	return i.ToWorkersScriptServiceBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptServiceBindingArray) ToWorkersScriptServiceBindingArrayOutputWithContext(ctx context.Context) WorkersScriptServiceBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptServiceBindingArrayOutput)
+}
+
+type WorkersScriptServiceBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptServiceBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptServiceBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptServiceBindingOutput) ToWorkersScriptServiceBindingOutput() WorkersScriptServiceBindingOutput {
+	return o
+}
+
+func (o WorkersScriptServiceBindingOutput) ToWorkersScriptServiceBindingOutputWithContext(ctx context.Context) WorkersScriptServiceBindingOutput {
+	return o
+}
+
+// The name of the Worker environment to bind to.
+func (o WorkersScriptServiceBindingOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkersScriptServiceBinding) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptServiceBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptServiceBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Worker to bind to.
+func (o WorkersScriptServiceBindingOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptServiceBinding) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type WorkersScriptServiceBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptServiceBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptServiceBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptServiceBindingArrayOutput) ToWorkersScriptServiceBindingArrayOutput() WorkersScriptServiceBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptServiceBindingArrayOutput) ToWorkersScriptServiceBindingArrayOutputWithContext(ctx context.Context) WorkersScriptServiceBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptServiceBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptServiceBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptServiceBinding {
+		return vs[0].([]WorkersScriptServiceBinding)[vs[1].(int)]
+	}).(WorkersScriptServiceBindingOutput)
+}
+
+type WorkersScriptWebassemblyBinding struct {
+	// The base64 encoded wasm module you want to store.
+	Module string `pulumi:"module"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkersScriptWebassemblyBindingInput is an input type that accepts WorkersScriptWebassemblyBindingArgs and WorkersScriptWebassemblyBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptWebassemblyBindingInput` via:
+//
+//	WorkersScriptWebassemblyBindingArgs{...}
+type WorkersScriptWebassemblyBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptWebassemblyBindingOutput() WorkersScriptWebassemblyBindingOutput
+	ToWorkersScriptWebassemblyBindingOutputWithContext(context.Context) WorkersScriptWebassemblyBindingOutput
+}
+
+type WorkersScriptWebassemblyBindingArgs struct {
+	// The base64 encoded wasm module you want to store.
+	Module pulumi.StringInput `pulumi:"module"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkersScriptWebassemblyBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptWebassemblyBindingArgs) ToWorkersScriptWebassemblyBindingOutput() WorkersScriptWebassemblyBindingOutput {
+	return i.ToWorkersScriptWebassemblyBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptWebassemblyBindingArgs) ToWorkersScriptWebassemblyBindingOutputWithContext(ctx context.Context) WorkersScriptWebassemblyBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptWebassemblyBindingOutput)
+}
+
+// WorkersScriptWebassemblyBindingArrayInput is an input type that accepts WorkersScriptWebassemblyBindingArray and WorkersScriptWebassemblyBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptWebassemblyBindingArrayInput` via:
+//
+//	WorkersScriptWebassemblyBindingArray{ WorkersScriptWebassemblyBindingArgs{...} }
+type WorkersScriptWebassemblyBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptWebassemblyBindingArrayOutput() WorkersScriptWebassemblyBindingArrayOutput
+	ToWorkersScriptWebassemblyBindingArrayOutputWithContext(context.Context) WorkersScriptWebassemblyBindingArrayOutput
+}
+
+type WorkersScriptWebassemblyBindingArray []WorkersScriptWebassemblyBindingInput
+
+func (WorkersScriptWebassemblyBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptWebassemblyBindingArray) ToWorkersScriptWebassemblyBindingArrayOutput() WorkersScriptWebassemblyBindingArrayOutput {
+	return i.ToWorkersScriptWebassemblyBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptWebassemblyBindingArray) ToWorkersScriptWebassemblyBindingArrayOutputWithContext(ctx context.Context) WorkersScriptWebassemblyBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptWebassemblyBindingArrayOutput)
+}
+
+type WorkersScriptWebassemblyBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptWebassemblyBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptWebassemblyBindingOutput) ToWorkersScriptWebassemblyBindingOutput() WorkersScriptWebassemblyBindingOutput {
+	return o
+}
+
+func (o WorkersScriptWebassemblyBindingOutput) ToWorkersScriptWebassemblyBindingOutputWithContext(ctx context.Context) WorkersScriptWebassemblyBindingOutput {
+	return o
+}
+
+// The base64 encoded wasm module you want to store.
+func (o WorkersScriptWebassemblyBindingOutput) Module() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptWebassemblyBinding) string { return v.Module }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptWebassemblyBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptWebassemblyBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkersScriptWebassemblyBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptWebassemblyBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptWebassemblyBindingArrayOutput) ToWorkersScriptWebassemblyBindingArrayOutput() WorkersScriptWebassemblyBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptWebassemblyBindingArrayOutput) ToWorkersScriptWebassemblyBindingArrayOutputWithContext(ctx context.Context) WorkersScriptWebassemblyBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptWebassemblyBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptWebassemblyBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptWebassemblyBinding {
+		return vs[0].([]WorkersScriptWebassemblyBinding)[vs[1].(int)]
+	}).(WorkersScriptWebassemblyBindingOutput)
+}
+
 type ZoneLockdownConfiguration struct {
 	// The request property to target. Available values: `ip`, `ipRange`.
 	Target string `pulumi:"target"`
@@ -44147,6 +45299,130 @@ func (o GetDlpDatasetsDatasetArrayOutput) Index(i pulumi.IntInput) GetDlpDataset
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDlpDatasetsDataset {
 		return vs[0].([]GetDlpDatasetsDataset)[vs[1].(int)]
 	}).(GetDlpDatasetsDatasetOutput)
+}
+
+type GetGatewayAppTypesAppType struct {
+	// The identifier for the application type of this app.
+	ApplicationTypeId int `pulumi:"applicationTypeId"`
+	// A short summary of the app type.
+	Description string `pulumi:"description"`
+	// The identifier for this app type. There is only one app type per ID.
+	Id int `pulumi:"id"`
+	// The name of the app type.
+	Name string `pulumi:"name"`
+}
+
+// GetGatewayAppTypesAppTypeInput is an input type that accepts GetGatewayAppTypesAppTypeArgs and GetGatewayAppTypesAppTypeOutput values.
+// You can construct a concrete instance of `GetGatewayAppTypesAppTypeInput` via:
+//
+//	GetGatewayAppTypesAppTypeArgs{...}
+type GetGatewayAppTypesAppTypeInput interface {
+	pulumi.Input
+
+	ToGetGatewayAppTypesAppTypeOutput() GetGatewayAppTypesAppTypeOutput
+	ToGetGatewayAppTypesAppTypeOutputWithContext(context.Context) GetGatewayAppTypesAppTypeOutput
+}
+
+type GetGatewayAppTypesAppTypeArgs struct {
+	// The identifier for the application type of this app.
+	ApplicationTypeId pulumi.IntInput `pulumi:"applicationTypeId"`
+	// A short summary of the app type.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The identifier for this app type. There is only one app type per ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the app type.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGatewayAppTypesAppTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayAppTypesAppType)(nil)).Elem()
+}
+
+func (i GetGatewayAppTypesAppTypeArgs) ToGetGatewayAppTypesAppTypeOutput() GetGatewayAppTypesAppTypeOutput {
+	return i.ToGetGatewayAppTypesAppTypeOutputWithContext(context.Background())
+}
+
+func (i GetGatewayAppTypesAppTypeArgs) ToGetGatewayAppTypesAppTypeOutputWithContext(ctx context.Context) GetGatewayAppTypesAppTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayAppTypesAppTypeOutput)
+}
+
+// GetGatewayAppTypesAppTypeArrayInput is an input type that accepts GetGatewayAppTypesAppTypeArray and GetGatewayAppTypesAppTypeArrayOutput values.
+// You can construct a concrete instance of `GetGatewayAppTypesAppTypeArrayInput` via:
+//
+//	GetGatewayAppTypesAppTypeArray{ GetGatewayAppTypesAppTypeArgs{...} }
+type GetGatewayAppTypesAppTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayAppTypesAppTypeArrayOutput() GetGatewayAppTypesAppTypeArrayOutput
+	ToGetGatewayAppTypesAppTypeArrayOutputWithContext(context.Context) GetGatewayAppTypesAppTypeArrayOutput
+}
+
+type GetGatewayAppTypesAppTypeArray []GetGatewayAppTypesAppTypeInput
+
+func (GetGatewayAppTypesAppTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayAppTypesAppType)(nil)).Elem()
+}
+
+func (i GetGatewayAppTypesAppTypeArray) ToGetGatewayAppTypesAppTypeArrayOutput() GetGatewayAppTypesAppTypeArrayOutput {
+	return i.ToGetGatewayAppTypesAppTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayAppTypesAppTypeArray) ToGetGatewayAppTypesAppTypeArrayOutputWithContext(ctx context.Context) GetGatewayAppTypesAppTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayAppTypesAppTypeArrayOutput)
+}
+
+type GetGatewayAppTypesAppTypeOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayAppTypesAppTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayAppTypesAppType)(nil)).Elem()
+}
+
+func (o GetGatewayAppTypesAppTypeOutput) ToGetGatewayAppTypesAppTypeOutput() GetGatewayAppTypesAppTypeOutput {
+	return o
+}
+
+func (o GetGatewayAppTypesAppTypeOutput) ToGetGatewayAppTypesAppTypeOutputWithContext(ctx context.Context) GetGatewayAppTypesAppTypeOutput {
+	return o
+}
+
+// The identifier for the application type of this app.
+func (o GetGatewayAppTypesAppTypeOutput) ApplicationTypeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayAppTypesAppType) int { return v.ApplicationTypeId }).(pulumi.IntOutput)
+}
+
+// A short summary of the app type.
+func (o GetGatewayAppTypesAppTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayAppTypesAppType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The identifier for this app type. There is only one app type per ID.
+func (o GetGatewayAppTypesAppTypeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayAppTypesAppType) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the app type.
+func (o GetGatewayAppTypesAppTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayAppTypesAppType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGatewayAppTypesAppTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayAppTypesAppTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayAppTypesAppType)(nil)).Elem()
+}
+
+func (o GetGatewayAppTypesAppTypeArrayOutput) ToGetGatewayAppTypesAppTypeArrayOutput() GetGatewayAppTypesAppTypeArrayOutput {
+	return o
+}
+
+func (o GetGatewayAppTypesAppTypeArrayOutput) ToGetGatewayAppTypesAppTypeArrayOutputWithContext(ctx context.Context) GetGatewayAppTypesAppTypeArrayOutput {
+	return o
+}
+
+func (o GetGatewayAppTypesAppTypeArrayOutput) Index(i pulumi.IntInput) GetGatewayAppTypesAppTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayAppTypesAppType {
+		return vs[0].([]GetGatewayAppTypesAppType)[vs[1].(int)]
+	}).(GetGatewayAppTypesAppTypeOutput)
 }
 
 type GetGatewayCategoriesCategory struct {
@@ -52426,6 +53702,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptServiceBindingArrayInput)(nil)).Elem(), WorkerScriptServiceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingArrayInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptAnalyticsEngineBindingInput)(nil)).Elem(), WorkersScriptAnalyticsEngineBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkersScriptAnalyticsEngineBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptD1DatabaseBindingInput)(nil)).Elem(), WorkersScriptD1DatabaseBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptD1DatabaseBindingArrayInput)(nil)).Elem(), WorkersScriptD1DatabaseBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptKvNamespaceBindingInput)(nil)).Elem(), WorkersScriptKvNamespaceBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkersScriptKvNamespaceBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlacementInput)(nil)).Elem(), WorkersScriptPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlacementArrayInput)(nil)).Elem(), WorkersScriptPlacementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlainTextBindingInput)(nil)).Elem(), WorkersScriptPlainTextBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlainTextBindingArrayInput)(nil)).Elem(), WorkersScriptPlainTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptQueueBindingInput)(nil)).Elem(), WorkersScriptQueueBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptQueueBindingArrayInput)(nil)).Elem(), WorkersScriptQueueBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptR2BucketBindingInput)(nil)).Elem(), WorkersScriptR2BucketBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptR2BucketBindingArrayInput)(nil)).Elem(), WorkersScriptR2BucketBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptSecretTextBindingInput)(nil)).Elem(), WorkersScriptSecretTextBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptSecretTextBindingArrayInput)(nil)).Elem(), WorkersScriptSecretTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptServiceBindingInput)(nil)).Elem(), WorkersScriptServiceBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptServiceBindingArrayInput)(nil)).Elem(), WorkersScriptServiceBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptWebassemblyBindingInput)(nil)).Elem(), WorkersScriptWebassemblyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptWebassemblyBindingArrayInput)(nil)).Elem(), WorkersScriptWebassemblyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationInput)(nil)).Elem(), ZoneLockdownConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationArrayInput)(nil)).Elem(), ZoneLockdownConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingArgs{})
@@ -52458,6 +53754,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetInput)(nil)).Elem(), GetDlpDatasetsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetArrayInput)(nil)).Elem(), GetDlpDatasetsDatasetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayAppTypesAppTypeInput)(nil)).Elem(), GetGatewayAppTypesAppTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayAppTypesAppTypeArrayInput)(nil)).Elem(), GetGatewayAppTypesAppTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategoryInput)(nil)).Elem(), GetGatewayCategoriesCategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategoryArrayInput)(nil)).Elem(), GetGatewayCategoriesCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategorySubcategoryInput)(nil)).Elem(), GetGatewayCategoriesCategorySubcategoryArgs{})
@@ -53046,6 +54344,26 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptServiceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptAnalyticsEngineBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptAnalyticsEngineBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptD1DatabaseBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptD1DatabaseBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptKvNamespaceBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptKvNamespaceBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptPlacementOutput{})
+	pulumi.RegisterOutputType(WorkersScriptPlacementArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptPlainTextBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptPlainTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptQueueBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptQueueBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptR2BucketBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptR2BucketBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptSecretTextBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptSecretTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptServiceBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptServiceBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptWebassemblyBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptWebassemblyBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingOutput{})
@@ -53078,6 +54396,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetDlpDatasetsDatasetOutput{})
 	pulumi.RegisterOutputType(GetDlpDatasetsDatasetArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayAppTypesAppTypeOutput{})
+	pulumi.RegisterOutputType(GetGatewayAppTypesAppTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategoryOutput{})
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategoryArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategorySubcategoryOutput{})

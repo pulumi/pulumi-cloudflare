@@ -138,11 +138,18 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public LogpushOwnershipChallenge(String name, LogpushOwnershipChallengeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, args == null ? LogpushOwnershipChallengeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogpushOwnershipChallenge(String name, Output<String> id, @Nullable LogpushOwnershipChallengeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LogpushOwnershipChallengeArgs makeArgs(LogpushOwnershipChallengeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogpushOwnershipChallengeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

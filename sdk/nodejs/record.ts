@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * // Add a record to the domain
  * const example = new cloudflare.Record("example", {
  *     zoneId: cloudflareZoneId,
- *     name: "example",
- *     value: "192.0.2.1",
+ *     name: "terraform",
+ *     content: "192.0.2.1",
  *     type: "A",
  *     ttl: 3600,
  * });
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     data: {
  *         service: "_sip",
  *         proto: "_tls",
- *         name: "example-srv",
+ *         name: "terraform-srv",
  *         priority: 0,
  *         weight: 0,
  *         port: 443,
@@ -79,6 +79,10 @@ export class Record extends pulumi.CustomResource {
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * The content of the record. Conflicts with `data`.
+     */
+    public readonly content!: pulumi.Output<string>;
     /**
      * The RFC3339 timestamp of when the record was created.
      */
@@ -129,6 +133,8 @@ export class Record extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string>;
     /**
      * The value of the record. Conflicts with `data`.
+     *
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -151,6 +157,7 @@ export class Record extends pulumi.CustomResource {
             const state = argsOrState as RecordState | undefined;
             resourceInputs["allowOverwrite"] = state ? state.allowOverwrite : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -178,6 +185,7 @@ export class Record extends pulumi.CustomResource {
             }
             resourceInputs["allowOverwrite"] = args ? args.allowOverwrite : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
@@ -207,6 +215,10 @@ export interface RecordState {
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * The content of the record. Conflicts with `data`.
+     */
+    content?: pulumi.Input<string>;
     /**
      * The RFC3339 timestamp of when the record was created.
      */
@@ -257,6 +269,8 @@ export interface RecordState {
     type?: pulumi.Input<string>;
     /**
      * The value of the record. Conflicts with `data`.
+     *
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */
     value?: pulumi.Input<string>;
     /**
@@ -274,6 +288,10 @@ export interface RecordArgs {
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * The content of the record. Conflicts with `data`.
+     */
+    content?: pulumi.Input<string>;
     /**
      * Map of attributes that constitute the record value. Conflicts with `value`.
      */
@@ -304,6 +322,8 @@ export interface RecordArgs {
     type: pulumi.Input<string>;
     /**
      * The value of the record. Conflicts with `data`.
+     *
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */
     value?: pulumi.Input<string>;
     /**

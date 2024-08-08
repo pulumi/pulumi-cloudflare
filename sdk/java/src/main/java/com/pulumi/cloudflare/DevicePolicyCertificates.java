@@ -115,11 +115,18 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public DevicePolicyCertificates(String name, DevicePolicyCertificatesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, args == null ? DevicePolicyCertificatesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DevicePolicyCertificates(String name, Output<String> id, @Nullable DevicePolicyCertificatesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DevicePolicyCertificatesArgs makeArgs(DevicePolicyCertificatesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DevicePolicyCertificatesArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

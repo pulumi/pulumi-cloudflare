@@ -8,9 +8,21 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class HyperdriveConfigOrigin {
+    /**
+     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    private @Nullable String accessClientId;
+    /**
+     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    private @Nullable String accessClientSecret;
     /**
      * @return The name of your origin database.
      * 
@@ -30,7 +42,7 @@ public final class HyperdriveConfigOrigin {
      * @return The port (default: 5432 for Postgres) of your origin database.
      * 
      */
-    private Integer port;
+    private @Nullable Integer port;
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
      * 
@@ -43,6 +55,20 @@ public final class HyperdriveConfigOrigin {
     private String user;
 
     private HyperdriveConfigOrigin() {}
+    /**
+     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    public Optional<String> accessClientId() {
+        return Optional.ofNullable(this.accessClientId);
+    }
+    /**
+     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * 
+     */
+    public Optional<String> accessClientSecret() {
+        return Optional.ofNullable(this.accessClientSecret);
+    }
     /**
      * @return The name of your origin database.
      * 
@@ -68,8 +94,8 @@ public final class HyperdriveConfigOrigin {
      * @return The port (default: 5432 for Postgres) of your origin database.
      * 
      */
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
@@ -95,15 +121,19 @@ public final class HyperdriveConfigOrigin {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accessClientId;
+        private @Nullable String accessClientSecret;
         private String database;
         private String host;
         private String password;
-        private Integer port;
+        private @Nullable Integer port;
         private String scheme;
         private String user;
         public Builder() {}
         public Builder(HyperdriveConfigOrigin defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessClientId = defaults.accessClientId;
+    	      this.accessClientSecret = defaults.accessClientSecret;
     	      this.database = defaults.database;
     	      this.host = defaults.host;
     	      this.password = defaults.password;
@@ -112,6 +142,18 @@ public final class HyperdriveConfigOrigin {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
+        public Builder accessClientId(@Nullable String accessClientId) {
+
+            this.accessClientId = accessClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessClientSecret(@Nullable String accessClientSecret) {
+
+            this.accessClientSecret = accessClientSecret;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(String database) {
             if (database == null) {
@@ -137,10 +179,8 @@ public final class HyperdriveConfigOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("HyperdriveConfigOrigin", "port");
-            }
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
@@ -162,6 +202,8 @@ public final class HyperdriveConfigOrigin {
         }
         public HyperdriveConfigOrigin build() {
             final var _resultValue = new HyperdriveConfigOrigin();
+            _resultValue.accessClientId = accessClientId;
+            _resultValue.accessClientSecret = accessClientSecret;
             _resultValue.database = database;
             _resultValue.host = host;
             _resultValue.password = password;

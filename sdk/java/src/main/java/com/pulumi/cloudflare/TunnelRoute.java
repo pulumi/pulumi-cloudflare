@@ -121,11 +121,18 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelRoute(String name, TunnelRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/tunnelRoute:TunnelRoute", name, args == null ? TunnelRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/tunnelRoute:TunnelRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelRoute(String name, Output<String> id, @Nullable TunnelRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/tunnelRoute:TunnelRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelRouteArgs makeArgs(TunnelRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

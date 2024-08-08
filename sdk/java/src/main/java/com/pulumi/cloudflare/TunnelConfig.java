@@ -184,11 +184,18 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelConfig(String name, TunnelConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/tunnelConfig:TunnelConfig", name, args == null ? TunnelConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/tunnelConfig:TunnelConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelConfig(String name, Output<String> id, @Nullable TunnelConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/tunnelConfig:TunnelConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelConfigArgs makeArgs(TunnelConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

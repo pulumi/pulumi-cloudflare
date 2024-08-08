@@ -122,11 +122,18 @@ public class ApiShieldSchemaValidationSettings extends com.pulumi.resources.Cust
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiShieldSchemaValidationSettings(String name, ApiShieldSchemaValidationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings", name, args == null ? ApiShieldSchemaValidationSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiShieldSchemaValidationSettings(String name, Output<String> id, @Nullable ApiShieldSchemaValidationSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiShieldSchemaValidationSettingsArgs makeArgs(ApiShieldSchemaValidationSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiShieldSchemaValidationSettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

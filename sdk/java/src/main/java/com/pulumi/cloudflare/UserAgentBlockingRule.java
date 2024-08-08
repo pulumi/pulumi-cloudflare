@@ -174,11 +174,18 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public UserAgentBlockingRule(String name, UserAgentBlockingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, args == null ? UserAgentBlockingRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private UserAgentBlockingRule(String name, Output<String> id, @Nullable UserAgentBlockingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static UserAgentBlockingRuleArgs makeArgs(UserAgentBlockingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserAgentBlockingRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

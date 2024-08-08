@@ -35,12 +35,12 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String cn;
     /**
-     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      * 
      */
     private @Nullable String complianceStatus;
     /**
-     * @return The workspace one connection id.
+     * @return The workspace one or intune connection id.
      * 
      */
     private @Nullable String connectionId;
@@ -215,14 +215,14 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.cn);
     }
     /**
-     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      * 
      */
     public Optional<String> complianceStatus() {
         return Optional.ofNullable(this.complianceStatus);
     }
     /**
-     * @return The workspace one connection id.
+     * @return The workspace one or intune connection id.
      * 
      */
     public Optional<String> connectionId() {

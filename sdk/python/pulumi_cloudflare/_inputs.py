@@ -262,6 +262,16 @@ __all__ = [
     'WorkerScriptSecretTextBindingArgs',
     'WorkerScriptServiceBindingArgs',
     'WorkerScriptWebassemblyBindingArgs',
+    'WorkersScriptAnalyticsEngineBindingArgs',
+    'WorkersScriptD1DatabaseBindingArgs',
+    'WorkersScriptKvNamespaceBindingArgs',
+    'WorkersScriptPlacementArgs',
+    'WorkersScriptPlainTextBindingArgs',
+    'WorkersScriptQueueBindingArgs',
+    'WorkersScriptR2BucketBindingArgs',
+    'WorkersScriptSecretTextBindingArgs',
+    'WorkersScriptServiceBindingArgs',
+    'WorkersScriptWebassemblyBindingArgs',
     'ZoneLockdownConfigurationArgs',
     'ZoneSettingsOverrideInitialSettingArgs',
     'ZoneSettingsOverrideInitialSettingMinifyArgs',
@@ -6671,8 +6681,8 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[str] certificate_id: The UUID of a Cloudflare managed certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_disks: Specific volume(s) to check for encryption.
         :param pulumi.Input[str] cn: The common name for a certificate.
-        :param pulumi.Input[str] compliance_status: The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
-        :param pulumi.Input[str] connection_id: The workspace one connection id.
+        :param pulumi.Input[str] compliance_status: The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        :param pulumi.Input[str] connection_id: The workspace one or intune connection id.
         :param pulumi.Input[str] count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] domain: The domain that the client must join.
         :param pulumi.Input[str] eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
@@ -6823,7 +6833,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter(name="complianceStatus")
     def compliance_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+        The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
         """
         return pulumi.get(self, "compliance_status")
 
@@ -6835,7 +6845,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The workspace one connection id.
+        The workspace one or intune connection id.
         """
         return pulumi.get(self, "connection_id")
 
@@ -7612,12 +7622,20 @@ class HealthcheckHeaderArgs:
 @pulumi.input_type
 class HyperdriveConfigCachingArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[bool]] = None):
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 max_age: Optional[pulumi.Input[int]] = None,
+                 stale_while_revalidate: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] disabled: Disable caching for this Hyperdrive configuration.
+        :param pulumi.Input[int] max_age: Configure the `max_age` value of this Hyperdrive configuration.
+        :param pulumi.Input[int] stale_while_revalidate: Disable caching for this Hyperdrive configuration.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+        if stale_while_revalidate is not None:
+            pulumi.set(__self__, "stale_while_revalidate", stale_while_revalidate)
 
     @property
     @pulumi.getter
@@ -7631,6 +7649,30 @@ class HyperdriveConfigCachingArgs:
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
 
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the `max_age` value of this Hyperdrive configuration.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_age", value)
+
+    @property
+    @pulumi.getter(name="staleWhileRevalidate")
+    def stale_while_revalidate(self) -> Optional[pulumi.Input[int]]:
+        """
+        Disable caching for this Hyperdrive configuration.
+        """
+        return pulumi.get(self, "stale_while_revalidate")
+
+    @stale_while_revalidate.setter
+    def stale_while_revalidate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stale_while_revalidate", value)
+
 
 @pulumi.input_type
 class HyperdriveConfigOriginArgs:
@@ -7638,23 +7680,32 @@ class HyperdriveConfigOriginArgs:
                  database: pulumi.Input[str],
                  host: pulumi.Input[str],
                  password: pulumi.Input[str],
-                 port: pulumi.Input[int],
                  scheme: pulumi.Input[str],
-                 user: pulumi.Input[str]):
+                 user: pulumi.Input[str],
+                 access_client_id: Optional[pulumi.Input[str]] = None,
+                 access_client_secret: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] database: The name of your origin database.
         :param pulumi.Input[str] host: The host (hostname or IP) of your origin database.
         :param pulumi.Input[str] password: The password of the Hyperdrive configuration.
-        :param pulumi.Input[int] port: The port (default: 5432 for Postgres) of your origin database.
         :param pulumi.Input[str] scheme: Specifies the URL scheme used to connect to your origin database.
         :param pulumi.Input[str] user: The user of your origin database.
+        :param pulumi.Input[str] access_client_id: Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        :param pulumi.Input[str] access_client_secret: Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        :param pulumi.Input[int] port: The port (default: 5432 for Postgres) of your origin database.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "scheme", scheme)
         pulumi.set(__self__, "user", user)
+        if access_client_id is not None:
+            pulumi.set(__self__, "access_client_id", access_client_id)
+        if access_client_secret is not None:
+            pulumi.set(__self__, "access_client_secret", access_client_secret)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -7694,18 +7745,6 @@ class HyperdriveConfigOriginArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Input[int]:
-        """
-        The port (default: 5432 for Postgres) of your origin database.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: pulumi.Input[int]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
     def scheme(self) -> pulumi.Input[str]:
         """
         Specifies the URL scheme used to connect to your origin database.
@@ -7727,6 +7766,42 @@ class HyperdriveConfigOriginArgs:
     @user.setter
     def user(self, value: pulumi.Input[str]):
         pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter(name="accessClientId")
+    def access_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        return pulumi.get(self, "access_client_id")
+
+    @access_client_id.setter
+    def access_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_client_id", value)
+
+    @property
+    @pulumi.getter(name="accessClientSecret")
+    def access_client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        return pulumi.get(self, "access_client_secret")
+
+    @access_client_secret.setter
+    def access_client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_client_secret", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port (default: 5432 for Postgres) of your origin database.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 
 @pulumi.input_type
@@ -16609,18 +16684,12 @@ class TeamsListItemsWithDescriptionArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] description: The description of the teams list.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
-        """
-        The description of the teams list.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -17027,18 +17096,22 @@ class TeamsRuleRuleSettingsAuditSshArgs:
 @pulumi.input_type
 class TeamsRuleRuleSettingsBisoAdminControlsArgs:
     def __init__(__self__, *,
+                 disable_clipboard_redirection: Optional[pulumi.Input[bool]] = None,
                  disable_copy_paste: Optional[pulumi.Input[bool]] = None,
                  disable_download: Optional[pulumi.Input[bool]] = None,
                  disable_keyboard: Optional[pulumi.Input[bool]] = None,
                  disable_printing: Optional[pulumi.Input[bool]] = None,
                  disable_upload: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[bool] disable_clipboard_redirection: Disable clipboard redirection.
         :param pulumi.Input[bool] disable_copy_paste: Disable copy-paste.
         :param pulumi.Input[bool] disable_download: Disable download.
         :param pulumi.Input[bool] disable_keyboard: Disable keyboard usage.
         :param pulumi.Input[bool] disable_printing: Disable printing.
         :param pulumi.Input[bool] disable_upload: Disable upload.
         """
+        if disable_clipboard_redirection is not None:
+            pulumi.set(__self__, "disable_clipboard_redirection", disable_clipboard_redirection)
         if disable_copy_paste is not None:
             pulumi.set(__self__, "disable_copy_paste", disable_copy_paste)
         if disable_download is not None:
@@ -17049,6 +17122,18 @@ class TeamsRuleRuleSettingsBisoAdminControlsArgs:
             pulumi.set(__self__, "disable_printing", disable_printing)
         if disable_upload is not None:
             pulumi.set(__self__, "disable_upload", disable_upload)
+
+    @property
+    @pulumi.getter(name="disableClipboardRedirection")
+    def disable_clipboard_redirection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable clipboard redirection.
+        """
+        return pulumi.get(self, "disable_clipboard_redirection")
+
+    @disable_clipboard_redirection.setter
+    def disable_clipboard_redirection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_clipboard_redirection", value)
 
     @property
     @pulumi.getter(name="disableCopyPaste")
@@ -18978,6 +19063,377 @@ class WorkerScriptServiceBindingArgs:
 
 @pulumi.input_type
 class WorkerScriptWebassemblyBindingArgs:
+    def __init__(__self__, *,
+                 module: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "module", module)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def module(self) -> pulumi.Input[str]:
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        return pulumi.get(self, "module")
+
+    @module.setter
+    def module(self, value: pulumi.Input[str]):
+        pulumi.set(self, "module", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkersScriptAnalyticsEngineBindingArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset: The name of the Analytics Engine dataset to write to.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input[str]:
+        """
+        The name of the Analytics Engine dataset to write to.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkersScriptD1DatabaseBindingArgs:
+    def __init__(__self__, *,
+                 database_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] database_id: Database ID of D1 database to use.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Input[str]:
+        """
+        Database ID of D1 database to use.
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkersScriptKvNamespaceBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] namespace_id: ID of the KV namespace you want to use.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        """
+        ID of the KV namespace you want to use.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
+
+
+@pulumi.input_type
+class WorkersScriptPlacementArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] mode: The placement mode for the Worker. Available values: `smart`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        The placement mode for the Worker. Available values: `smart`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
+class WorkersScriptPlainTextBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 text: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] text: The plain text you want to store.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        The plain text you want to store.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class WorkersScriptQueueBindingArgs:
+    def __init__(__self__, *,
+                 binding: pulumi.Input[str],
+                 queue: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] binding: The name of the global variable for the binding in your Worker code.
+        :param pulumi.Input[str] queue: Name of the queue you want to use.
+        """
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "queue", queue)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> pulumi.Input[str]:
+        """
+        The name of the global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "binding")
+
+    @binding.setter
+    def binding(self, value: pulumi.Input[str]):
+        pulumi.set(self, "binding", value)
+
+    @property
+    @pulumi.getter
+    def queue(self) -> pulumi.Input[str]:
+        """
+        Name of the queue you want to use.
+        """
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue", value)
+
+
+@pulumi.input_type
+class WorkersScriptR2BucketBindingArgs:
+    def __init__(__self__, *,
+                 bucket_name: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket_name: The name of the Bucket to bind to.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Bucket to bind to.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkersScriptSecretTextBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 text: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] text: The secret text you want to store.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        The secret text you want to store.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class WorkersScriptServiceBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 environment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] service: The name of the Worker to bind to.
+        :param pulumi.Input[str] environment: The name of the Worker environment to bind to.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The name of the Worker to bind to.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Worker environment to bind to.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+
+@pulumi.input_type
+class WorkersScriptWebassemblyBindingArgs:
     def __init__(__self__, *,
                  module: pulumi.Input[str],
                  name: pulumi.Input[str]):

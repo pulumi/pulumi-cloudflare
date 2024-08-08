@@ -270,11 +270,18 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LogpushJob(String name, LogpushJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/logpushJob:LogpushJob", name, args == null ? LogpushJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/logpushJob:LogpushJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogpushJob(String name, Output<String> id, @Nullable LogpushJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/logpushJob:LogpushJob", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LogpushJobArgs makeArgs(LogpushJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogpushJobArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

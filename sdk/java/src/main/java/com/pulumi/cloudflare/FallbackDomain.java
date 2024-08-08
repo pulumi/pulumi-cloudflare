@@ -90,11 +90,18 @@ public class FallbackDomain extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FallbackDomain(String name, FallbackDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/fallbackDomain:FallbackDomain", name, args == null ? FallbackDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/fallbackDomain:FallbackDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FallbackDomain(String name, Output<String> id, @Nullable FallbackDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/fallbackDomain:FallbackDomain", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FallbackDomainArgs makeArgs(FallbackDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FallbackDomainArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

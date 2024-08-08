@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsListItemsWithDescriptionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the teams list.
-        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 

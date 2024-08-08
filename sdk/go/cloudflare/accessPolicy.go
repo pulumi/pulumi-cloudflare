@@ -36,8 +36,6 @@ type AccessPolicy struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrOutput               `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
@@ -52,8 +50,6 @@ type AccessPolicy struct {
 	// Friendly name of the Access Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	//
-	// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
 	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
@@ -109,8 +105,6 @@ type accessPolicyState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
@@ -125,8 +119,6 @@ type accessPolicyState struct {
 	// Friendly name of the Access Policy.
 	Name *string `pulumi:"name"`
 	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	//
-	// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 	Precedence *int `pulumi:"precedence"`
 	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
@@ -144,8 +136,6 @@ type AccessPolicyState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
@@ -160,8 +150,6 @@ type AccessPolicyState struct {
 	// Friendly name of the Access Policy.
 	Name pulumi.StringPtrInput
 	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	//
-	// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 	Precedence pulumi.IntPtrInput
 	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrInput
@@ -183,8 +171,6 @@ type accessPolicyArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
@@ -199,8 +185,6 @@ type accessPolicyArgs struct {
 	// Friendly name of the Access Policy.
 	Name string `pulumi:"name"`
 	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	//
-	// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 	Precedence *int `pulumi:"precedence"`
 	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
@@ -219,8 +203,6 @@ type AccessPolicyArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
@@ -235,8 +217,6 @@ type AccessPolicyArgs struct {
 	// Friendly name of the Access Policy.
 	Name pulumi.StringInput
 	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	//
-	// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 	Precedence pulumi.IntPtrInput
 	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrInput
@@ -343,8 +323,6 @@ func (o AccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-//
-// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 func (o AccessPolicyOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
@@ -383,8 +361,6 @@ func (o AccessPolicyOutput) Name() pulumi.StringOutput {
 }
 
 // The unique precedence for policies on a single application. Required when using `applicationId`.
-//
-// Deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
 func (o AccessPolicyOutput) Precedence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
 }

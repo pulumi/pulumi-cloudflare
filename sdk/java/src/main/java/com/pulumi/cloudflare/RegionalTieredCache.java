@@ -113,11 +113,18 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionalTieredCache(String name, RegionalTieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, args == null ? RegionalTieredCacheArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionalTieredCache(String name, Output<String> id, @Nullable RegionalTieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionalTieredCacheArgs makeArgs(RegionalTieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionalTieredCacheArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

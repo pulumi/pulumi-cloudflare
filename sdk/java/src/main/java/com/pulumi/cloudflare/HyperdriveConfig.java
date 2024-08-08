@@ -151,11 +151,18 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HyperdriveConfig(String name, HyperdriveConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, args == null ? HyperdriveConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HyperdriveConfig(String name, Output<String> id, @Nullable HyperdriveConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HyperdriveConfigArgs makeArgs(HyperdriveConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HyperdriveConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -21,6 +21,7 @@ class RecordArgs:
                  zone_id: pulumi.Input[str],
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
@@ -33,6 +34,7 @@ class RecordArgs:
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
         :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[int] priority: The priority of the record.
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
@@ -47,6 +49,8 @@ class RecordArgs:
             pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if priority is not None:
@@ -57,6 +61,9 @@ class RecordArgs:
             pulumi.set(__self__, "tags", tags)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+        if value is not None:
+            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.""")
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -116,6 +123,18 @@ class RecordArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the record. Conflicts with `data`.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
 
     @property
     @pulumi.getter
@@ -179,6 +198,7 @@ class RecordArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value of the record. Conflicts with `data`.
@@ -195,6 +215,7 @@ class _RecordState:
     def __init__(__self__, *,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
                  created_on: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -212,6 +233,7 @@ class _RecordState:
         """
         Input properties used for looking up and filtering Record resources.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
@@ -231,6 +253,8 @@ class _RecordState:
             pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if data is not None:
@@ -256,6 +280,9 @@ class _RecordState:
         if type is not None:
             pulumi.set(__self__, "type", type)
         if value is not None:
+            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.""")
+        if value is not None:
             pulumi.set(__self__, "value", value)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
@@ -280,6 +307,18 @@ class _RecordState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the record. Conflicts with `data`.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -427,6 +466,7 @@ class _RecordState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value of the record. Conflicts with `data`.
@@ -457,6 +497,7 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -479,8 +520,8 @@ class Record(pulumi.CustomResource):
         # Add a record to the domain
         example = cloudflare.Record("example",
             zone_id=cloudflare_zone_id,
-            name="example",
-            value="192.0.2.1",
+            name="terraform",
+            content="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
@@ -491,7 +532,7 @@ class Record(pulumi.CustomResource):
             data=cloudflare.RecordDataArgs(
                 service="_sip",
                 proto="_tls",
-                name="example-srv",
+                name="terraform-srv",
                 priority=0,
                 weight=0,
                 port=443,
@@ -508,6 +549,7 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
         :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] priority: The priority of the record.
@@ -536,8 +578,8 @@ class Record(pulumi.CustomResource):
         # Add a record to the domain
         example = cloudflare.Record("example",
             zone_id=cloudflare_zone_id,
-            name="example",
-            value="192.0.2.1",
+            name="terraform",
+            content="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
@@ -548,7 +590,7 @@ class Record(pulumi.CustomResource):
             data=cloudflare.RecordDataArgs(
                 service="_sip",
                 proto="_tls",
-                name="example-srv",
+                name="terraform-srv",
                 priority=0,
                 weight=0,
                 port=443,
@@ -579,6 +621,7 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -599,6 +642,7 @@ class Record(pulumi.CustomResource):
 
             __props__.__dict__["allow_overwrite"] = allow_overwrite
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["content"] = content
             __props__.__dict__["data"] = data
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -631,6 +675,7 @@ class Record(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_overwrite: Optional[pulumi.Input[bool]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            content: Optional[pulumi.Input[str]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -653,6 +698,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
@@ -674,6 +720,7 @@ class Record(pulumi.CustomResource):
 
         __props__.__dict__["allow_overwrite"] = allow_overwrite
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["content"] = content
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["data"] = data
         __props__.__dict__["hostname"] = hostname
@@ -702,6 +749,14 @@ class Record(pulumi.CustomResource):
         Comments or notes about the DNS record. This field has no effect on DNS responses.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Output[str]:
+        """
+        The content of the record. Conflicts with `data`.
+        """
+        return pulumi.get(self, "content")
 
     @property
     @pulumi.getter(name="createdOn")
@@ -801,6 +856,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> pulumi.Output[str]:
         """
         The value of the record. Conflicts with `data`.

@@ -133,11 +133,18 @@ public class Argo extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Argo(String name, ArgoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/argo:Argo", name, args == null ? ArgoArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/argo:Argo", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Argo(String name, Output<String> id, @Nullable ArgoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/argo:Argo", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ArgoArgs makeArgs(ArgoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ArgoArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

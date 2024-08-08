@@ -14,17 +14,9 @@ public final class TeamsListItemsWithDescriptionArgs extends com.pulumi.resource
 
     public static final TeamsListItemsWithDescriptionArgs Empty = new TeamsListItemsWithDescriptionArgs();
 
-    /**
-     * The description of the teams list.
-     * 
-     */
     @Import(name="description", required=true)
     private Output<String> description;
 
-    /**
-     * @return The description of the teams list.
-     * 
-     */
     public Output<String> description() {
         return this.description;
     }
@@ -61,23 +53,11 @@ public final class TeamsListItemsWithDescriptionArgs extends com.pulumi.resource
             $ = new TeamsListItemsWithDescriptionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description The description of the teams list.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the teams list.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

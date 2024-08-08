@@ -44,6 +44,7 @@ class AccessApplicationArgs:
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -78,6 +79,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -139,6 +141,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if skip_app_launcher_login_page is not None:
+            pulumi.set(__self__, "skip_app_launcher_login_page", skip_app_launcher_login_page)
         if skip_interstitial is not None:
             pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
@@ -485,6 +489,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "session_duration", value)
 
     @property
+    @pulumi.getter(name="skipAppLauncherLoginPage")
+    def skip_app_launcher_login_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to skip the App Launcher landing page. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_app_launcher_login_page")
+
+    @skip_app_launcher_login_page.setter
+    def skip_app_launcher_login_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_app_launcher_login_page", value)
+
+    @property
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -565,6 +581,7 @@ class _AccessApplicationState:
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -600,6 +617,7 @@ class _AccessApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -663,6 +681,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if skip_app_launcher_login_page is not None:
+            pulumi.set(__self__, "skip_app_launcher_login_page", skip_app_launcher_login_page)
         if skip_interstitial is not None:
             pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
@@ -1021,6 +1041,18 @@ class _AccessApplicationState:
         pulumi.set(self, "session_duration", value)
 
     @property
+    @pulumi.getter(name="skipAppLauncherLoginPage")
+    def skip_app_launcher_login_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to skip the App Launcher landing page. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_app_launcher_login_page")
+
+    @skip_app_launcher_login_page.setter
+    def skip_app_launcher_login_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_app_launcher_login_page", value)
+
+    @property
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1102,6 +1134,7 @@ class AccessApplication(pulumi.CustomResource):
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1154,6 +1187,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -1225,6 +1259,7 @@ class AccessApplication(pulumi.CustomResource):
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1266,6 +1301,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["self_hosted_domains"] = self_hosted_domains
             __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
             __props__.__dict__["session_duration"] = session_duration
+            __props__.__dict__["skip_app_launcher_login_page"] = skip_app_launcher_login_page
             __props__.__dict__["skip_interstitial"] = skip_interstitial
             __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
@@ -1310,6 +1346,7 @@ class AccessApplication(pulumi.CustomResource):
             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
+            skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
             skip_interstitial: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1350,6 +1387,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -1388,6 +1426,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["self_hosted_domains"] = self_hosted_domains
         __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
         __props__.__dict__["session_duration"] = session_duration
+        __props__.__dict__["skip_app_launcher_login_page"] = skip_app_launcher_login_page
         __props__.__dict__["skip_interstitial"] = skip_interstitial
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
@@ -1625,6 +1664,14 @@ class AccessApplication(pulumi.CustomResource):
         How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         """
         return pulumi.get(self, "session_duration")
+
+    @property
+    @pulumi.getter(name="skipAppLauncherLoginPage")
+    def skip_app_launcher_login_page(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Option to skip the App Launcher landing page. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_app_launcher_login_page")
 
     @property
     @pulumi.getter(name="skipInterstitial")

@@ -10,18 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsListItemsWithDescription {
-    /**
-     * @return The description of the teams list.
-     * 
-     */
     private String description;
     private String value;
 
     private TeamsListItemsWithDescription() {}
-    /**
-     * @return The description of the teams list.
-     * 
-     */
     public String description() {
         return this.description;
     }

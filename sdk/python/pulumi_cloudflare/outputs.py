@@ -263,6 +263,16 @@ __all__ = [
     'WorkerScriptSecretTextBinding',
     'WorkerScriptServiceBinding',
     'WorkerScriptWebassemblyBinding',
+    'WorkersScriptAnalyticsEngineBinding',
+    'WorkersScriptD1DatabaseBinding',
+    'WorkersScriptKvNamespaceBinding',
+    'WorkersScriptPlacement',
+    'WorkersScriptPlainTextBinding',
+    'WorkersScriptQueueBinding',
+    'WorkersScriptR2BucketBinding',
+    'WorkersScriptSecretTextBinding',
+    'WorkersScriptServiceBinding',
+    'WorkersScriptWebassemblyBinding',
     'ZoneLockdownConfiguration',
     'ZoneSettingsOverrideInitialSetting',
     'ZoneSettingsOverrideInitialSettingMinify',
@@ -279,6 +289,7 @@ __all__ = [
     'GetDevicePostureRulesRuleResult',
     'GetDevicesDeviceResult',
     'GetDlpDatasetsDatasetResult',
+    'GetGatewayAppTypesAppTypeResult',
     'GetGatewayCategoriesCategoryResult',
     'GetGatewayCategoriesCategorySubcategoryResult',
     'GetListsListResult',
@@ -6698,8 +6709,8 @@ class DevicePostureRuleInput(dict):
         :param str certificate_id: The UUID of a Cloudflare managed certificate.
         :param Sequence[str] check_disks: Specific volume(s) to check for encryption.
         :param str cn: The common name for a certificate.
-        :param str compliance_status: The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
-        :param str connection_id: The workspace one connection id.
+        :param str compliance_status: The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        :param str connection_id: The workspace one or intune connection id.
         :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str domain: The domain that the client must join.
         :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
@@ -6834,7 +6845,7 @@ class DevicePostureRuleInput(dict):
     @pulumi.getter(name="complianceStatus")
     def compliance_status(self) -> Optional[str]:
         """
-        The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+        The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
         """
         return pulumi.get(self, "compliance_status")
 
@@ -6842,7 +6853,7 @@ class DevicePostureRuleInput(dict):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[str]:
         """
-        The workspace one connection id.
+        The workspace one or intune connection id.
         """
         return pulumi.get(self, "connection_id")
 
@@ -7427,13 +7438,40 @@ class HealthcheckHeader(dict):
 
 @pulumi.output_type
 class HyperdriveConfigCaching(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAge":
+            suggest = "max_age"
+        elif key == "staleWhileRevalidate":
+            suggest = "stale_while_revalidate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HyperdriveConfigCaching. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HyperdriveConfigCaching.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HyperdriveConfigCaching.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 disabled: Optional[bool] = None):
+                 disabled: Optional[bool] = None,
+                 max_age: Optional[int] = None,
+                 stale_while_revalidate: Optional[int] = None):
         """
         :param bool disabled: Disable caching for this Hyperdrive configuration.
+        :param int max_age: Configure the `max_age` value of this Hyperdrive configuration.
+        :param int stale_while_revalidate: Disable caching for this Hyperdrive configuration.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+        if stale_while_revalidate is not None:
+            pulumi.set(__self__, "stale_while_revalidate", stale_while_revalidate)
 
     @property
     @pulumi.getter
@@ -7443,30 +7481,74 @@ class HyperdriveConfigCaching(dict):
         """
         return pulumi.get(self, "disabled")
 
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[int]:
+        """
+        Configure the `max_age` value of this Hyperdrive configuration.
+        """
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter(name="staleWhileRevalidate")
+    def stale_while_revalidate(self) -> Optional[int]:
+        """
+        Disable caching for this Hyperdrive configuration.
+        """
+        return pulumi.get(self, "stale_while_revalidate")
+
 
 @pulumi.output_type
 class HyperdriveConfigOrigin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessClientId":
+            suggest = "access_client_id"
+        elif key == "accessClientSecret":
+            suggest = "access_client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HyperdriveConfigOrigin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HyperdriveConfigOrigin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HyperdriveConfigOrigin.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database: str,
                  host: str,
                  password: str,
-                 port: int,
                  scheme: str,
-                 user: str):
+                 user: str,
+                 access_client_id: Optional[str] = None,
+                 access_client_secret: Optional[str] = None,
+                 port: Optional[int] = None):
         """
         :param str database: The name of your origin database.
         :param str host: The host (hostname or IP) of your origin database.
         :param str password: The password of the Hyperdrive configuration.
-        :param int port: The port (default: 5432 for Postgres) of your origin database.
         :param str scheme: Specifies the URL scheme used to connect to your origin database.
         :param str user: The user of your origin database.
+        :param str access_client_id: Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        :param str access_client_secret: Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        :param int port: The port (default: 5432 for Postgres) of your origin database.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "scheme", scheme)
         pulumi.set(__self__, "user", user)
+        if access_client_id is not None:
+            pulumi.set(__self__, "access_client_id", access_client_id)
+        if access_client_secret is not None:
+            pulumi.set(__self__, "access_client_secret", access_client_secret)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -7494,14 +7576,6 @@ class HyperdriveConfigOrigin(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> int:
-        """
-        The port (default: 5432 for Postgres) of your origin database.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
     def scheme(self) -> str:
         """
         Specifies the URL scheme used to connect to your origin database.
@@ -7515,6 +7589,30 @@ class HyperdriveConfigOrigin(dict):
         The user of your origin database.
         """
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="accessClientId")
+    def access_client_id(self) -> Optional[str]:
+        """
+        Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        return pulumi.get(self, "access_client_id")
+
+    @property
+    @pulumi.getter(name="accessClientSecret")
+    def access_client_secret(self) -> Optional[str]:
+        """
+        Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        return pulumi.get(self, "access_client_secret")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port (default: 5432 for Postgres) of your origin database.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -15909,18 +16007,12 @@ class TeamsListItemsWithDescription(dict):
     def __init__(__self__, *,
                  description: str,
                  value: str):
-        """
-        :param str description: The description of the teams list.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the teams list.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -16297,7 +16389,9 @@ class TeamsRuleRuleSettingsBisoAdminControls(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "disableCopyPaste":
+        if key == "disableClipboardRedirection":
+            suggest = "disable_clipboard_redirection"
+        elif key == "disableCopyPaste":
             suggest = "disable_copy_paste"
         elif key == "disableDownload":
             suggest = "disable_download"
@@ -16320,18 +16414,22 @@ class TeamsRuleRuleSettingsBisoAdminControls(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 disable_clipboard_redirection: Optional[bool] = None,
                  disable_copy_paste: Optional[bool] = None,
                  disable_download: Optional[bool] = None,
                  disable_keyboard: Optional[bool] = None,
                  disable_printing: Optional[bool] = None,
                  disable_upload: Optional[bool] = None):
         """
+        :param bool disable_clipboard_redirection: Disable clipboard redirection.
         :param bool disable_copy_paste: Disable copy-paste.
         :param bool disable_download: Disable download.
         :param bool disable_keyboard: Disable keyboard usage.
         :param bool disable_printing: Disable printing.
         :param bool disable_upload: Disable upload.
         """
+        if disable_clipboard_redirection is not None:
+            pulumi.set(__self__, "disable_clipboard_redirection", disable_clipboard_redirection)
         if disable_copy_paste is not None:
             pulumi.set(__self__, "disable_copy_paste", disable_copy_paste)
         if disable_download is not None:
@@ -16342,6 +16440,14 @@ class TeamsRuleRuleSettingsBisoAdminControls(dict):
             pulumi.set(__self__, "disable_printing", disable_printing)
         if disable_upload is not None:
             pulumi.set(__self__, "disable_upload", disable_upload)
+
+    @property
+    @pulumi.getter(name="disableClipboardRedirection")
+    def disable_clipboard_redirection(self) -> Optional[bool]:
+        """
+        Disable clipboard redirection.
+        """
+        return pulumi.get(self, "disable_clipboard_redirection")
 
     @property
     @pulumi.getter(name="disableCopyPaste")
@@ -18124,6 +18230,348 @@ class WorkerScriptServiceBinding(dict):
 
 @pulumi.output_type
 class WorkerScriptWebassemblyBinding(dict):
+    def __init__(__self__, *,
+                 module: str,
+                 name: str):
+        """
+        :param str module: The base64 encoded wasm module you want to store.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "module", module)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def module(self) -> str:
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        return pulumi.get(self, "module")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class WorkersScriptAnalyticsEngineBinding(dict):
+    def __init__(__self__, *,
+                 dataset: str,
+                 name: str):
+        """
+        :param str dataset: The name of the Analytics Engine dataset to write to.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> str:
+        """
+        The name of the Analytics Engine dataset to write to.
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class WorkersScriptD1DatabaseBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseId":
+            suggest = "database_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkersScriptD1DatabaseBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkersScriptD1DatabaseBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkersScriptD1DatabaseBinding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_id: str,
+                 name: str):
+        """
+        :param str database_id: Database ID of D1 database to use.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> str:
+        """
+        Database ID of D1 database to use.
+        """
+        return pulumi.get(self, "database_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class WorkersScriptKvNamespaceBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceId":
+            suggest = "namespace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkersScriptKvNamespaceBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkersScriptKvNamespaceBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkersScriptKvNamespaceBinding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 namespace_id: str):
+        """
+        :param str name: The global variable for the binding in your Worker code.
+        :param str namespace_id: ID of the KV namespace you want to use.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        ID of the KV namespace you want to use.
+        """
+        return pulumi.get(self, "namespace_id")
+
+
+@pulumi.output_type
+class WorkersScriptPlacement(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        :param str mode: The placement mode for the Worker. Available values: `smart`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The placement mode for the Worker. Available values: `smart`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class WorkersScriptPlainTextBinding(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 text: str):
+        """
+        :param str name: The global variable for the binding in your Worker code.
+        :param str text: The plain text you want to store.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        The plain text you want to store.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class WorkersScriptQueueBinding(dict):
+    def __init__(__self__, *,
+                 binding: str,
+                 queue: str):
+        """
+        :param str binding: The name of the global variable for the binding in your Worker code.
+        :param str queue: Name of the queue you want to use.
+        """
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "queue", queue)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> str:
+        """
+        The name of the global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "binding")
+
+    @property
+    @pulumi.getter
+    def queue(self) -> str:
+        """
+        Name of the queue you want to use.
+        """
+        return pulumi.get(self, "queue")
+
+
+@pulumi.output_type
+class WorkersScriptR2BucketBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkersScriptR2BucketBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkersScriptR2BucketBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkersScriptR2BucketBinding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 name: str):
+        """
+        :param str bucket_name: The name of the Bucket to bind to.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        The name of the Bucket to bind to.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class WorkersScriptSecretTextBinding(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 text: str):
+        """
+        :param str name: The global variable for the binding in your Worker code.
+        :param str text: The secret text you want to store.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        The secret text you want to store.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class WorkersScriptServiceBinding(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 service: str,
+                 environment: Optional[str] = None):
+        """
+        :param str name: The global variable for the binding in your Worker code.
+        :param str service: The name of the Worker to bind to.
+        :param str environment: The name of the Worker environment to bind to.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of the Worker to bind to.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        """
+        The name of the Worker environment to bind to.
+        """
+        return pulumi.get(self, "environment")
+
+
+@pulumi.output_type
+class WorkersScriptWebassemblyBinding(dict):
     def __init__(__self__, *,
                  module: str,
                  name: str):
@@ -20078,6 +20526,57 @@ class GetDlpDatasetsDatasetResult(dict):
     @pulumi.getter
     def status(self) -> str:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayAppTypesAppTypeResult(dict):
+    def __init__(__self__, *,
+                 application_type_id: int,
+                 description: str,
+                 id: int,
+                 name: str):
+        """
+        :param int application_type_id: The identifier for the application type of this app.
+        :param str description: A short summary of the app type.
+        :param int id: The identifier for this app type. There is only one app type per ID.
+        :param str name: The name of the app type.
+        """
+        pulumi.set(__self__, "application_type_id", application_type_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="applicationTypeId")
+    def application_type_id(self) -> int:
+        """
+        The identifier for the application type of this app.
+        """
+        return pulumi.get(self, "application_type_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A short summary of the app type.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The identifier for this app type. There is only one app type per ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the app type.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

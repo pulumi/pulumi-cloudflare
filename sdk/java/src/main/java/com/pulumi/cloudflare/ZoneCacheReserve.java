@@ -117,11 +117,18 @@ public class ZoneCacheReserve extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ZoneCacheReserve(String name, ZoneCacheReserveArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneCacheReserve:ZoneCacheReserve", name, args == null ? ZoneCacheReserveArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/zoneCacheReserve:ZoneCacheReserve", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ZoneCacheReserve(String name, Output<String> id, @Nullable ZoneCacheReserveState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zoneCacheReserve:ZoneCacheReserve", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneCacheReserveArgs makeArgs(ZoneCacheReserveArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneCacheReserveArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
