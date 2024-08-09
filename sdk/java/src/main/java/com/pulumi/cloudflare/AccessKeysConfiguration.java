@@ -54,7 +54,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessKeysConfiguration(String name) {
+    public AccessKeysConfiguration(java.lang.String name) {
         this(name, AccessKeysConfigurationArgs.Empty);
     }
     /**
@@ -62,7 +62,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessKeysConfiguration(String name, AccessKeysConfigurationArgs args) {
+    public AccessKeysConfiguration(java.lang.String name, AccessKeysConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -71,12 +71,12 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessKeysConfiguration(String name, AccessKeysConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessKeysConfiguration(java.lang.String name, AccessKeysConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessKeysConfiguration(String name, Output<String> id, @Nullable AccessKeysConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, state, makeResourceOptions(options, id));
+    private AccessKeysConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable AccessKeysConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessKeysConfigurationArgs makeArgs(AccessKeysConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -86,7 +86,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
         return args == null ? AccessKeysConfigurationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -102,7 +102,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessKeysConfiguration get(String name, Output<String> id, @Nullable AccessKeysConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessKeysConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessKeysConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessKeysConfiguration(name, id, state, options);
     }
 }

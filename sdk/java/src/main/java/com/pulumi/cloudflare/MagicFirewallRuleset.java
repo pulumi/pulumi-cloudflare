@@ -135,7 +135,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MagicFirewallRuleset(String name) {
+    public MagicFirewallRuleset(java.lang.String name) {
         this(name, MagicFirewallRulesetArgs.Empty);
     }
     /**
@@ -143,7 +143,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MagicFirewallRuleset(String name, MagicFirewallRulesetArgs args) {
+    public MagicFirewallRuleset(java.lang.String name, MagicFirewallRulesetArgs args) {
         this(name, args, null);
     }
     /**
@@ -152,12 +152,12 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MagicFirewallRuleset(String name, MagicFirewallRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MagicFirewallRuleset(java.lang.String name, MagicFirewallRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MagicFirewallRuleset(String name, Output<String> id, @Nullable MagicFirewallRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset", name, state, makeResourceOptions(options, id));
+    private MagicFirewallRuleset(java.lang.String name, Output<java.lang.String> id, @Nullable MagicFirewallRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MagicFirewallRulesetArgs makeArgs(MagicFirewallRulesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -167,7 +167,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
         return args == null ? MagicFirewallRulesetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -183,7 +183,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MagicFirewallRuleset get(String name, Output<String> id, @Nullable MagicFirewallRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MagicFirewallRuleset get(java.lang.String name, Output<java.lang.String> id, @Nullable MagicFirewallRulesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MagicFirewallRuleset(name, id, state, options);
     }
 }

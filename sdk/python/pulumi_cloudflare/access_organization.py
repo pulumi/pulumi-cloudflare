@@ -444,9 +444,9 @@ class AccessOrganization(pulumi.CustomResource):
                  allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationCustomPageArgs', 'AccessOrganizationCustomPageArgsDict']]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
-                 login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
+                 login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
@@ -470,13 +470,13 @@ class AccessOrganization(pulumi.CustomResource):
             is_ui_read_only=False,
             user_seat_expiration_inactive_time="720h",
             auto_redirect_to_identity=False,
-            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
-                background_color="#ffffff",
-                text_color="#000000",
-                logo_path="https://example.com/logo.png",
-                header_text="My header text",
-                footer_text="My footer text",
-            )])
+            login_designs=[{
+                "background_color": "#ffffff",
+                "text_color": "#000000",
+                "logo_path": "https://example.com/logo.png",
+                "header_text": "My header text",
+                "footer_text": "My footer text",
+            }])
         ```
 
         ## Import
@@ -491,7 +491,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationCustomPageArgs', 'AccessOrganizationCustomPageArgsDict']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
@@ -522,13 +522,13 @@ class AccessOrganization(pulumi.CustomResource):
             is_ui_read_only=False,
             user_seat_expiration_inactive_time="720h",
             auto_redirect_to_identity=False,
-            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
-                background_color="#ffffff",
-                text_color="#000000",
-                logo_path="https://example.com/logo.png",
-                header_text="My header text",
-                footer_text="My footer text",
-            )])
+            login_designs=[{
+                "background_color": "#ffffff",
+                "text_color": "#000000",
+                "logo_path": "https://example.com/logo.png",
+                "header_text": "My header text",
+                "footer_text": "My footer text",
+            }])
         ```
 
         ## Import
@@ -556,9 +556,9 @@ class AccessOrganization(pulumi.CustomResource):
                  allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationCustomPageArgs', 'AccessOrganizationCustomPageArgsDict']]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
-                 login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
+                 login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
@@ -605,9 +605,9 @@ class AccessOrganization(pulumi.CustomResource):
             allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
             auth_domain: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-            custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
+            custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationCustomPageArgs', 'AccessOrganizationCustomPageArgsDict']]]]] = None,
             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
-            login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
+            login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
@@ -625,7 +625,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessOrganizationCustomPageArgs', 'AccessOrganizationCustomPageArgsDict']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.

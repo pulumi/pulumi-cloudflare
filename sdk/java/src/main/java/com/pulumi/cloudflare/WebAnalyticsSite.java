@@ -182,7 +182,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WebAnalyticsSite(String name) {
+    public WebAnalyticsSite(java.lang.String name) {
         this(name, WebAnalyticsSiteArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebAnalyticsSite(String name, WebAnalyticsSiteArgs args) {
+    public WebAnalyticsSite(java.lang.String name, WebAnalyticsSiteArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,12 +199,12 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebAnalyticsSite(String name, WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WebAnalyticsSite(java.lang.String name, WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WebAnalyticsSite(String name, Output<String> id, @Nullable WebAnalyticsSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, state, makeResourceOptions(options, id));
+    private WebAnalyticsSite(java.lang.String name, Output<java.lang.String> id, @Nullable WebAnalyticsSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WebAnalyticsSiteArgs makeArgs(WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -214,7 +214,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
         return args == null ? WebAnalyticsSiteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -234,7 +234,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WebAnalyticsSite get(String name, Output<String> id, @Nullable WebAnalyticsSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WebAnalyticsSite get(java.lang.String name, Output<java.lang.String> id, @Nullable WebAnalyticsSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WebAnalyticsSite(name, id, state, options);
     }
 }

@@ -193,7 +193,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NotificationPolicy(String name) {
+    public NotificationPolicy(java.lang.String name) {
         this(name, NotificationPolicyArgs.Empty);
     }
     /**
@@ -201,7 +201,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NotificationPolicy(String name, NotificationPolicyArgs args) {
+    public NotificationPolicy(java.lang.String name, NotificationPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,12 +210,12 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NotificationPolicy(String name, NotificationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/notificationPolicy:NotificationPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NotificationPolicy(java.lang.String name, NotificationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/notificationPolicy:NotificationPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NotificationPolicy(String name, Output<String> id, @Nullable NotificationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/notificationPolicy:NotificationPolicy", name, state, makeResourceOptions(options, id));
+    private NotificationPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/notificationPolicy:NotificationPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NotificationPolicyArgs makeArgs(NotificationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -225,7 +225,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? NotificationPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +241,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NotificationPolicy get(String name, Output<String> id, @Nullable NotificationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NotificationPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NotificationPolicy(name, id, state, options);
     }
 }

@@ -41,12 +41,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleScript = new WorkersScript("exampleScript", WorkersScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example-script")
@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .scriptName(exampleScriptCloudflareWorkerScript.name())
  *             .schedules(            
- *                 "*{@literal /}5 * * * *",
+ *                 "*}&#47;{@code 5 * * * *",
  *                 "10 7 * * mon-fri")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -125,7 +125,7 @@ public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkersCronTrigger(String name) {
+    public WorkersCronTrigger(java.lang.String name) {
         this(name, WorkersCronTriggerArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersCronTrigger(String name, WorkersCronTriggerArgs args) {
+    public WorkersCronTrigger(java.lang.String name, WorkersCronTriggerArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,12 +142,12 @@ public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersCronTrigger(String name, WorkersCronTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersCronTrigger:WorkersCronTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkersCronTrigger(java.lang.String name, WorkersCronTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersCronTrigger:WorkersCronTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkersCronTrigger(String name, Output<String> id, @Nullable WorkersCronTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersCronTrigger:WorkersCronTrigger", name, state, makeResourceOptions(options, id));
+    private WorkersCronTrigger(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersCronTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersCronTrigger:WorkersCronTrigger", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkersCronTriggerArgs makeArgs(WorkersCronTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -157,7 +157,7 @@ public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
         return args == null ? WorkersCronTriggerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -173,7 +173,7 @@ public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkersCronTrigger get(String name, Output<String> id, @Nullable WorkersCronTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkersCronTrigger get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersCronTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkersCronTrigger(name, id, state, options);
     }
 }

@@ -193,7 +193,7 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -214,19 +214,19 @@ class AccessRule(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from known Tor exit nodes",
             mode="challenge",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="T1",
-            ))
+            configuration={
+                "target": "country",
+                "value": "T1",
+            })
         # Allowlist requests coming from Antarctica, but only for single zone.
         antarctica = cloudflare.AccessRule("antarctica",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from Antarctica",
             mode="whitelist",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="AQ",
-            ))
+            configuration={
+                "target": "country",
+                "value": "AQ",
+            })
         config = pulumi.Config()
         my_office = config.get_object("myOffice")
         if my_office is None:
@@ -241,10 +241,10 @@ class AccessRule(pulumi.CustomResource):
                 account_id="f037e56e89293a057740de681ac9abbe",
                 notes="Requests coming from office network",
                 mode="whitelist",
-                configuration=cloudflare.AccessRuleConfigurationArgs(
-                    target="ip_range",
-                    value=my_office[range["value"]],
-                )))
+                configuration={
+                    "target": "ip_range",
+                    "value": my_office[range["value"]],
+                }))
         ```
 
         ## Import
@@ -270,7 +270,7 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
@@ -297,19 +297,19 @@ class AccessRule(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from known Tor exit nodes",
             mode="challenge",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="T1",
-            ))
+            configuration={
+                "target": "country",
+                "value": "T1",
+            })
         # Allowlist requests coming from Antarctica, but only for single zone.
         antarctica = cloudflare.AccessRule("antarctica",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from Antarctica",
             mode="whitelist",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="AQ",
-            ))
+            configuration={
+                "target": "country",
+                "value": "AQ",
+            })
         config = pulumi.Config()
         my_office = config.get_object("myOffice")
         if my_office is None:
@@ -324,10 +324,10 @@ class AccessRule(pulumi.CustomResource):
                 account_id="f037e56e89293a057740de681ac9abbe",
                 notes="Requests coming from office network",
                 mode="whitelist",
-                configuration=cloudflare.AccessRuleConfigurationArgs(
-                    target="ip_range",
-                    value=my_office[range["value"]],
-                )))
+                configuration={
+                    "target": "ip_range",
+                    "value": my_office[range["value"]],
+                }))
         ```
 
         ## Import
@@ -366,7 +366,7 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -399,7 +399,7 @@ class AccessRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessRule':
@@ -411,7 +411,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**

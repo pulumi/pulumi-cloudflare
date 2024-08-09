@@ -711,7 +711,7 @@ class Healthcheck(pulumi.CustomResource):
                  expected_body: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  follow_redirects: Optional[pulumi.Input[bool]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HealthcheckHeaderArgs']]]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HealthcheckHeaderArgs', 'HealthcheckHeaderArgsDict']]]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -755,10 +755,10 @@ class Healthcheck(pulumi.CustomResource):
             ],
             follow_redirects=True,
             allow_insecure=False,
-            headers=[cloudflare.HealthcheckHeaderArgs(
-                header="Host",
-                values=["example.com"],
-            )],
+            headers=[{
+                "header": "Host",
+                "values": ["example.com"],
+            }],
             timeout=10,
             retries=2,
             interval=60,
@@ -804,7 +804,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expected_codes: The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
         :param pulumi.Input[bool] follow_redirects: Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HealthcheckHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HealthcheckHeaderArgs', 'HealthcheckHeaderArgsDict']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
@@ -854,10 +854,10 @@ class Healthcheck(pulumi.CustomResource):
             ],
             follow_redirects=True,
             allow_insecure=False,
-            headers=[cloudflare.HealthcheckHeaderArgs(
-                header="Host",
-                values=["example.com"],
-            )],
+            headers=[{
+                "header": "Host",
+                "values": ["example.com"],
+            }],
             timeout=10,
             retries=2,
             interval=60,
@@ -916,7 +916,7 @@ class Healthcheck(pulumi.CustomResource):
                  expected_body: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  follow_redirects: Optional[pulumi.Input[bool]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HealthcheckHeaderArgs']]]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HealthcheckHeaderArgs', 'HealthcheckHeaderArgsDict']]]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -986,7 +986,7 @@ class Healthcheck(pulumi.CustomResource):
             expected_body: Optional[pulumi.Input[str]] = None,
             expected_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             follow_redirects: Optional[pulumi.Input[bool]] = None,
-            headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HealthcheckHeaderArgs']]]]] = None,
+            headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HealthcheckHeaderArgs', 'HealthcheckHeaderArgsDict']]]]] = None,
             interval: Optional[pulumi.Input[int]] = None,
             method: Optional[pulumi.Input[str]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
@@ -1015,7 +1015,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expected_codes: The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
         :param pulumi.Input[bool] follow_redirects: Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HealthcheckHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HealthcheckHeaderArgs', 'HealthcheckHeaderArgsDict']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
         :param pulumi.Input[str] modified_on: Last modified time.

@@ -498,7 +498,7 @@ class Record(pulumi.CustomResource):
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
@@ -529,15 +529,15 @@ class Record(pulumi.CustomResource):
             zone_id=cloudflare_zone_id,
             name="_sip._tls",
             type="SRV",
-            data=cloudflare.RecordDataArgs(
-                service="_sip",
-                proto="_tls",
-                name="terraform-srv",
-                priority=0,
-                weight=0,
-                port=443,
-                target="example.com",
-            ))
+            data={
+                "service": "_sip",
+                "proto": "_tls",
+                "name": "terraform-srv",
+                "priority": 0,
+                "weight": 0,
+                "port": 443,
+                "target": "example.com",
+            })
         ```
 
         ## Import
@@ -550,7 +550,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
-        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] priority: The priority of the record.
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
@@ -587,15 +587,15 @@ class Record(pulumi.CustomResource):
             zone_id=cloudflare_zone_id,
             name="_sip._tls",
             type="SRV",
-            data=cloudflare.RecordDataArgs(
-                service="_sip",
-                proto="_tls",
-                name="terraform-srv",
-                priority=0,
-                weight=0,
-                port=443,
-                target="example.com",
-            ))
+            data={
+                "service": "_sip",
+                "proto": "_tls",
+                "name": "terraform-srv",
+                "priority": 0,
+                "weight": 0,
+                "port": 443,
+                "target": "example.com",
+            })
         ```
 
         ## Import
@@ -622,7 +622,7 @@ class Record(pulumi.CustomResource):
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
@@ -677,7 +677,7 @@ class Record(pulumi.CustomResource):
             comment: Optional[pulumi.Input[str]] = None,
             content: Optional[pulumi.Input[str]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
-            data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+            data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
@@ -700,7 +700,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
-        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
         :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.

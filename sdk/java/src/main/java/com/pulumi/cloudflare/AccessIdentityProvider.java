@@ -207,7 +207,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessIdentityProvider(String name) {
+    public AccessIdentityProvider(java.lang.String name) {
         this(name, AccessIdentityProviderArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessIdentityProvider(String name, AccessIdentityProviderArgs args) {
+    public AccessIdentityProvider(java.lang.String name, AccessIdentityProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,12 +224,12 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessIdentityProvider(String name, AccessIdentityProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessIdentityProvider(java.lang.String name, AccessIdentityProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessIdentityProvider(String name, Output<String> id, @Nullable AccessIdentityProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, state, makeResourceOptions(options, id));
+    private AccessIdentityProvider(java.lang.String name, Output<java.lang.String> id, @Nullable AccessIdentityProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessIdentityProviderArgs makeArgs(AccessIdentityProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -239,7 +239,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
         return args == null ? AccessIdentityProviderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +255,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessIdentityProvider get(String name, Output<String> id, @Nullable AccessIdentityProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessIdentityProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessIdentityProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessIdentityProvider(name, id, state, options);
     }
 }

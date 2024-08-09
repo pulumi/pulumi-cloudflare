@@ -497,17 +497,17 @@ class AccessPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
                  isolation_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -535,14 +535,14 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -588,17 +588,17 @@ class AccessPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
                  isolation_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -643,17 +643,17 @@ class AccessPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+            approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
             approval_required: Optional[pulumi.Input[bool]] = None,
             decision: Optional[pulumi.Input[str]] = None,
-            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
-            includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
+            includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
             isolation_required: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             precedence: Optional[pulumi.Input[int]] = None,
             purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
             purpose_justification_required: Optional[pulumi.Input[bool]] = None,
-            requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+            requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessPolicy':
         """
@@ -666,14 +666,14 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """

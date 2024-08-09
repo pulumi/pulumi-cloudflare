@@ -259,10 +259,10 @@ class ListItem(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 hostname: Optional[pulumi.Input[pulumi.InputType['ListItemHostnameArgs']]] = None,
+                 hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  list_id: Optional[pulumi.Input[str]] = None,
-                 redirect: Optional[pulumi.Input[pulumi.InputType['ListItemRedirectArgs']]] = None,
+                 redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
                  __props__=None):
         """
         Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
@@ -296,12 +296,12 @@ class ListItem(pulumi.CustomResource):
         example_redirect_item = cloudflare.ListItem("example_redirect_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
-            redirect=cloudflare.ListItemRedirectArgs(
-                source_url="https://source.tld/",
-                target_url="https://target.tld",
-                status_code=302,
-                subpath_matching=True,
-            ))
+            redirect={
+                "source_url": "https://source.tld/",
+                "target_url": "https://target.tld",
+                "status_code": 302,
+                "subpath_matching": True,
+            })
         # ASN List
         example_asn_list = cloudflare.List("example_asn_list",
             account_id="f037e56e89293a057740de681ac9abbe",
@@ -325,9 +325,9 @@ class ListItem(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",
-            hostname=cloudflare.ListItemHostnameArgs(
-                url_hostname="example.com",
-            ))
+            hostname={
+                "url_hostname": "example.com",
+            })
         ```
 
         ## Import
@@ -341,10 +341,10 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['ListItemRedirectArgs']] redirect: Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         """
         ...
     @overload
@@ -384,12 +384,12 @@ class ListItem(pulumi.CustomResource):
         example_redirect_item = cloudflare.ListItem("example_redirect_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
-            redirect=cloudflare.ListItemRedirectArgs(
-                source_url="https://source.tld/",
-                target_url="https://target.tld",
-                status_code=302,
-                subpath_matching=True,
-            ))
+            redirect={
+                "source_url": "https://source.tld/",
+                "target_url": "https://target.tld",
+                "status_code": 302,
+                "subpath_matching": True,
+            })
         # ASN List
         example_asn_list = cloudflare.List("example_asn_list",
             account_id="f037e56e89293a057740de681ac9abbe",
@@ -413,9 +413,9 @@ class ListItem(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",
-            hostname=cloudflare.ListItemHostnameArgs(
-                url_hostname="example.com",
-            ))
+            hostname={
+                "url_hostname": "example.com",
+            })
         ```
 
         ## Import
@@ -442,10 +442,10 @@ class ListItem(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 hostname: Optional[pulumi.Input[pulumi.InputType['ListItemHostnameArgs']]] = None,
+                 hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  list_id: Optional[pulumi.Input[str]] = None,
-                 redirect: Optional[pulumi.Input[pulumi.InputType['ListItemRedirectArgs']]] = None,
+                 redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,10 +479,10 @@ class ListItem(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             asn: Optional[pulumi.Input[int]] = None,
             comment: Optional[pulumi.Input[str]] = None,
-            hostname: Optional[pulumi.Input[pulumi.InputType['ListItemHostnameArgs']]] = None,
+            hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             list_id: Optional[pulumi.Input[str]] = None,
-            redirect: Optional[pulumi.Input[pulumi.InputType['ListItemRedirectArgs']]] = None) -> 'ListItem':
+            redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None) -> 'ListItem':
         """
         Get an existing ListItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -493,10 +493,10 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['ListItemRedirectArgs']] redirect: Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -310,12 +310,12 @@ class RateLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
+                 action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
                  bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 correlate: Optional[pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']]] = None,
+                 correlate: Optional[pulumi.Input[Union['RateLimitCorrelateArgs', 'RateLimitCorrelateArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RateLimitMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -341,14 +341,14 @@ class RateLimit(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             threshold=2000,
             period=2,
-            match=cloudflare.RateLimitMatchArgs(
-                request=cloudflare.RateLimitMatchRequestArgs(
-                    url_pattern=f"{cloudflare_zone}/*",
-                    schemes=[
+            match={
+                "request": {
+                    "url_pattern": f"{cloudflare_zone}/*",
+                    "schemes": [
                         "HTTP",
                         "HTTPS",
                     ],
-                    methods=[
+                    "methods": [
                         "GET",
                         "POST",
                         "PUT",
@@ -356,17 +356,17 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
-                ),
-                response=cloudflare.RateLimitMatchResponseArgs(
-                    statuses=[
+                },
+                "response": {
+                    "statuses": [
                         200,
                         201,
                         202,
                         301,
                         429,
                     ],
-                    origin_traffic=False,
-                    headers=[
+                    "origin_traffic": False,
+                    "headers": [
                         {
                             "name": "Host",
                             "op": "eq",
@@ -378,19 +378,19 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
-                ),
-            ),
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                timeout=43200,
-                response=cloudflare.RateLimitActionResponseArgs(
-                    content_type="text/plain",
-                    body="custom response body",
-                ),
-            ),
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
+                },
+            },
+            action={
+                "mode": "simulate",
+                "timeout": 43200,
+                "response": {
+                    "content_type": "text/plain",
+                    "body": "custom response body",
+                },
+            },
+            correlate={
+                "by": "nat",
+            },
             disabled=False,
             description="example rate limit for a zone",
             bypass_url_patterns=[
@@ -407,11 +407,11 @@ class RateLimit(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        :param pulumi.Input[Union['RateLimitCorrelateArgs', 'RateLimitCorrelateArgsDict']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -443,14 +443,14 @@ class RateLimit(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             threshold=2000,
             period=2,
-            match=cloudflare.RateLimitMatchArgs(
-                request=cloudflare.RateLimitMatchRequestArgs(
-                    url_pattern=f"{cloudflare_zone}/*",
-                    schemes=[
+            match={
+                "request": {
+                    "url_pattern": f"{cloudflare_zone}/*",
+                    "schemes": [
                         "HTTP",
                         "HTTPS",
                     ],
-                    methods=[
+                    "methods": [
                         "GET",
                         "POST",
                         "PUT",
@@ -458,17 +458,17 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
-                ),
-                response=cloudflare.RateLimitMatchResponseArgs(
-                    statuses=[
+                },
+                "response": {
+                    "statuses": [
                         200,
                         201,
                         202,
                         301,
                         429,
                     ],
-                    origin_traffic=False,
-                    headers=[
+                    "origin_traffic": False,
+                    "headers": [
                         {
                             "name": "Host",
                             "op": "eq",
@@ -480,19 +480,19 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
-                ),
-            ),
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                timeout=43200,
-                response=cloudflare.RateLimitActionResponseArgs(
-                    content_type="text/plain",
-                    body="custom response body",
-                ),
-            ),
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
+                },
+            },
+            action={
+                "mode": "simulate",
+                "timeout": 43200,
+                "response": {
+                    "content_type": "text/plain",
+                    "body": "custom response body",
+                },
+            },
+            correlate={
+                "by": "nat",
+            },
             disabled=False,
             description="example rate limit for a zone",
             bypass_url_patterns=[
@@ -522,12 +522,12 @@ class RateLimit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
+                 action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
                  bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 correlate: Optional[pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']]] = None,
+                 correlate: Optional[pulumi.Input[Union['RateLimitCorrelateArgs', 'RateLimitCorrelateArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RateLimitMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -567,12 +567,12 @@ class RateLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
+            action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
             bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            correlate: Optional[pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']]] = None,
+            correlate: Optional[pulumi.Input[Union['RateLimitCorrelateArgs', 'RateLimitCorrelateArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['RateLimitMatchArgs']]] = None,
+            match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
             period: Optional[pulumi.Input[int]] = None,
             threshold: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'RateLimit':
@@ -583,11 +583,11 @@ class RateLimit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        :param pulumi.Input[Union['RateLimitCorrelateArgs', 'RateLimitCorrelateArgsDict']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**

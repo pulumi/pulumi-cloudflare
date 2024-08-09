@@ -70,13 +70,13 @@ class AwaitableGetZonesResult(GetZonesResult):
             zones=self.zones)
 
 
-def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
+def get_zones(filter: Optional[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     Use this data source to look up Zone results for use in other resources.
 
 
-    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+    :param Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -90,12 +90,12 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
 
 
 @_utilities.lift_output_func(get_zones)
-def get_zones_output(filter: Optional[pulumi.Input[pulumi.InputType['GetZonesFilterArgs']]] = None,
+def get_zones_output(filter: Optional[pulumi.Input[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     Use this data source to look up Zone results for use in other resources.
 
 
-    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+    :param Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
     """
     ...

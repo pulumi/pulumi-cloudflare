@@ -253,7 +253,7 @@ class DeviceDexTest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['DeviceDexTestDataArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['DeviceDexTestDataArgs', 'DeviceDexTestDataArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
@@ -274,11 +274,11 @@ class DeviceDexTest(pulumi.CustomResource):
             description="Send a HTTP GET request to the home endpoint every half hour.",
             interval="0h30m0s",
             enabled=True,
-            data=cloudflare.DeviceDexTestDataArgs(
-                host="https://example.com/home",
-                kind="http",
-                method="GET",
-            ))
+            data={
+                "host": "https://example.com/home",
+                "kind": "http",
+                "method": "GET",
+            })
         ```
 
         ## Import
@@ -290,7 +290,7 @@ class DeviceDexTest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[pulumi.InputType['DeviceDexTestDataArgs']] data: The configuration object which contains the details for the WARP client to conduct the test.
+        :param pulumi.Input[Union['DeviceDexTestDataArgs', 'DeviceDexTestDataArgsDict']] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[str] description: Additional details about the test.
         :param pulumi.Input[bool] enabled: Determines whether or not the test is active.
         :param pulumi.Input[str] interval: How often the test will run.
@@ -317,11 +317,11 @@ class DeviceDexTest(pulumi.CustomResource):
             description="Send a HTTP GET request to the home endpoint every half hour.",
             interval="0h30m0s",
             enabled=True,
-            data=cloudflare.DeviceDexTestDataArgs(
-                host="https://example.com/home",
-                kind="http",
-                method="GET",
-            ))
+            data={
+                "host": "https://example.com/home",
+                "kind": "http",
+                "method": "GET",
+            })
         ```
 
         ## Import
@@ -346,7 +346,7 @@ class DeviceDexTest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['DeviceDexTestDataArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['DeviceDexTestDataArgs', 'DeviceDexTestDataArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
@@ -392,7 +392,7 @@ class DeviceDexTest(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             created: Optional[pulumi.Input[str]] = None,
-            data: Optional[pulumi.Input[pulumi.InputType['DeviceDexTestDataArgs']]] = None,
+            data: Optional[pulumi.Input[Union['DeviceDexTestDataArgs', 'DeviceDexTestDataArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             interval: Optional[pulumi.Input[str]] = None,
@@ -407,7 +407,7 @@ class DeviceDexTest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] created: Timestamp of when the Dex Test was created.
-        :param pulumi.Input[pulumi.InputType['DeviceDexTestDataArgs']] data: The configuration object which contains the details for the WARP client to conduct the test.
+        :param pulumi.Input[Union['DeviceDexTestDataArgs', 'DeviceDexTestDataArgsDict']] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[str] description: Additional details about the test.
         :param pulumi.Input[bool] enabled: Determines whether or not the test is active.
         :param pulumi.Input[str] interval: How often the test will run.
