@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class HyperdriveConfigOrigin
     {
         /// <summary>
+        /// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        /// </summary>
+        public readonly string? AccessClientId;
+        /// <summary>
+        /// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        /// </summary>
+        public readonly string? AccessClientSecret;
+        /// <summary>
         /// The name of your origin database.
         /// </summary>
         public readonly string Database;
@@ -28,7 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The port (default: 5432 for Postgres) of your origin database.
         /// </summary>
-        public readonly int Port;
+        public readonly int? Port;
         /// <summary>
         /// Specifies the URL scheme used to connect to your origin database.
         /// </summary>
@@ -40,18 +48,24 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private HyperdriveConfigOrigin(
+            string? accessClientId,
+
+            string? accessClientSecret,
+
             string database,
 
             string host,
 
             string password,
 
-            int port,
+            int? port,
 
             string scheme,
 
             string user)
         {
+            AccessClientId = accessClientId;
+            AccessClientSecret = accessClientSecret;
             Database = database;
             Host = host;
             Password = password;

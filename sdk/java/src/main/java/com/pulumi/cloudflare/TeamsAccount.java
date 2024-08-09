@@ -375,11 +375,18 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TeamsAccount(String name, TeamsAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsAccount:TeamsAccount", name, args == null ? TeamsAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/teamsAccount:TeamsAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TeamsAccount(String name, Output<String> id, @Nullable TeamsAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/teamsAccount:TeamsAccount", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TeamsAccountArgs makeArgs(TeamsAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsAccountArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

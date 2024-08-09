@@ -143,11 +143,18 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkerCronTrigger(String name, WorkerCronTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerCronTrigger:WorkerCronTrigger", name, args == null ? WorkerCronTriggerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workerCronTrigger:WorkerCronTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkerCronTrigger(String name, Output<String> id, @Nullable WorkerCronTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workerCronTrigger:WorkerCronTrigger", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkerCronTriggerArgs makeArgs(WorkerCronTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerCronTriggerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

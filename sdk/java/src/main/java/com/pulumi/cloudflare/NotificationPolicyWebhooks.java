@@ -191,11 +191,18 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public NotificationPolicyWebhooks(String name, NotificationPolicyWebhooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, args == null ? NotificationPolicyWebhooksArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NotificationPolicyWebhooks(String name, Output<String> id, @Nullable NotificationPolicyWebhooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NotificationPolicyWebhooksArgs makeArgs(NotificationPolicyWebhooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NotificationPolicyWebhooksArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

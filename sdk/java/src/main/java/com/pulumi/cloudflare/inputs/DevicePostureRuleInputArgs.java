@@ -79,14 +79,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      * 
      */
     @Import(name="complianceStatus")
     private @Nullable Output<String> complianceStatus;
 
     /**
-     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
      * 
      */
     public Optional<Output<String>> complianceStatus() {
@@ -94,14 +94,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The workspace one connection id.
+     * The workspace one or intune connection id.
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return The workspace one connection id.
+     * @return The workspace one or intune connection id.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -680,7 +680,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param complianceStatus The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+         * @param complianceStatus The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param complianceStatus The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+         * @param complianceStatus The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectionId The workspace one connection id.
+         * @param connectionId The workspace one or intune connection id.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectionId The workspace one connection id.
+         * @param connectionId The workspace one or intune connection id.
          * 
          * @return builder
          * 

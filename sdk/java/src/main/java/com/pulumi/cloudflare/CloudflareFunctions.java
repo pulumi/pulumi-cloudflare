@@ -18,6 +18,8 @@ import com.pulumi.cloudflare.inputs.GetDevicesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
 import com.pulumi.cloudflare.inputs.GetDlpDatasetsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
+import com.pulumi.cloudflare.inputs.GetGatewayAppTypesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetGatewayCategoriesArgs;
 import com.pulumi.cloudflare.inputs.GetGatewayCategoriesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListArgs;
@@ -54,6 +56,7 @@ import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
 import com.pulumi.cloudflare.outputs.GetDevicePostureRulesResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetDlpDatasetsResult;
+import com.pulumi.cloudflare.outputs.GetGatewayAppTypesResult;
 import com.pulumi.cloudflare.outputs.GetGatewayCategoriesResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
@@ -1409,6 +1412,174 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetDlpDatasetsResult> getDlpDatasetsPlain(GetDlpDatasetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDlpDatasets:getDlpDatasets", TypeShape.of(GetDlpDatasetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Gateway application types for an account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getGatewayAppTypes(GetGatewayAppTypesArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayAppTypesResult> getGatewayAppTypes(GetGatewayAppTypesArgs args) {
+        return getGatewayAppTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Gateway application types for an account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getGatewayAppTypes(GetGatewayAppTypesArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGatewayAppTypesResult> getGatewayAppTypesPlain(GetGatewayAppTypesPlainArgs args) {
+        return getGatewayAppTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Gateway application types for an account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getGatewayAppTypes(GetGatewayAppTypesArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGatewayAppTypesResult> getGatewayAppTypes(GetGatewayAppTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", TypeShape.of(GetGatewayAppTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Gateway application types for an account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getGatewayAppTypes(GetGatewayAppTypesArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGatewayAppTypesResult> getGatewayAppTypesPlain(GetGatewayAppTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", TypeShape.of(GetGatewayAppTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve all Gateway categories for an account.
@@ -3881,7 +4052,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());
@@ -3939,7 +4110,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());
@@ -3997,7 +4168,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());
@@ -4055,7 +4226,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());
@@ -4113,7 +4284,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());
@@ -4171,7 +4342,7 @@ public final class CloudflareFunctions {
      *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
-     *             .value("203.0.113.1")
+     *             .content("203.0.113.1")
      *             .type("A")
      *             .proxied(true)
      *             .build());

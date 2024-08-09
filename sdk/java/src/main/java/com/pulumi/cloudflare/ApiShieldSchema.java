@@ -155,11 +155,18 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiShieldSchema(String name, ApiShieldSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShieldSchema:ApiShieldSchema", name, args == null ? ApiShieldSchemaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/apiShieldSchema:ApiShieldSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiShieldSchema(String name, Output<String> id, @Nullable ApiShieldSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/apiShieldSchema:ApiShieldSchema", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiShieldSchemaArgs makeArgs(ApiShieldSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiShieldSchemaArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

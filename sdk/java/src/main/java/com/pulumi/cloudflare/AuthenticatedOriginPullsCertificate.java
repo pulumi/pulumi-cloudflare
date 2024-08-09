@@ -238,11 +238,18 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * @param options A bag of options that control this resource's behavior.
      */
     public AuthenticatedOriginPullsCertificate(String name, AuthenticatedOriginPullsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, args == null ? AuthenticatedOriginPullsCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AuthenticatedOriginPullsCertificate(String name, Output<String> id, @Nullable AuthenticatedOriginPullsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AuthenticatedOriginPullsCertificateArgs makeArgs(AuthenticatedOriginPullsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthenticatedOriginPullsCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -275,11 +275,18 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RateLimit(String name, RateLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/rateLimit:RateLimit", name, args == null ? RateLimitArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/rateLimit:RateLimit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RateLimit(String name, Output<String> id, @Nullable RateLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/rateLimit:RateLimit", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RateLimitArgs makeArgs(RateLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RateLimitArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

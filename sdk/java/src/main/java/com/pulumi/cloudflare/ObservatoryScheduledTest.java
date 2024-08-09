@@ -142,11 +142,18 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ObservatoryScheduledTest(String name, ObservatoryScheduledTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, args == null ? ObservatoryScheduledTestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ObservatoryScheduledTest(String name, Output<String> id, @Nullable ObservatoryScheduledTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ObservatoryScheduledTestArgs makeArgs(ObservatoryScheduledTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObservatoryScheduledTestArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

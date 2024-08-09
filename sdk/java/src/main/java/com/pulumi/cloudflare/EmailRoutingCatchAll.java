@@ -177,11 +177,18 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EmailRoutingCatchAll(String name, EmailRoutingCatchAllArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll", name, args == null ? EmailRoutingCatchAllArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EmailRoutingCatchAll(String name, Output<String> id, @Nullable EmailRoutingCatchAllState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EmailRoutingCatchAllArgs makeArgs(EmailRoutingCatchAllArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EmailRoutingCatchAllArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

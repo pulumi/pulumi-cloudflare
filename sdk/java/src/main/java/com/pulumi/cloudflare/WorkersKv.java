@@ -149,11 +149,18 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkersKv(String name, WorkersKvArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersKv:WorkersKv", name, args == null ? WorkersKvArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workersKv:WorkersKv", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkersKv(String name, Output<String> id, @Nullable WorkersKvState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workersKv:WorkersKv", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkersKvArgs makeArgs(WorkersKvArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkersKvArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

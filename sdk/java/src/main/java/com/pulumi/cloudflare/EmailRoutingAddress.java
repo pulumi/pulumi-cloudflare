@@ -168,11 +168,18 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EmailRoutingAddress(String name, EmailRoutingAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, args == null ? EmailRoutingAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EmailRoutingAddress(String name, Output<String> id, @Nullable EmailRoutingAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EmailRoutingAddressArgs makeArgs(EmailRoutingAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EmailRoutingAddressArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

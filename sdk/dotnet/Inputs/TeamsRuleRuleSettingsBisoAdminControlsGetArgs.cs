@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsBisoAdminControlsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Disable clipboard redirection.
+        /// </summary>
+        [Input("disableClipboardRedirection")]
+        public Input<bool>? DisableClipboardRedirection { get; set; }
+
+        /// <summary>
         /// Disable copy-paste.
         /// </summary>
         [Input("disableCopyPaste")]

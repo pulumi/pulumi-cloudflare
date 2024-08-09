@@ -179,11 +179,18 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TeamsList(String name, TeamsListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsList:TeamsList", name, args == null ? TeamsListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/teamsList:TeamsList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TeamsList(String name, Output<String> id, @Nullable TeamsListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/teamsList:TeamsList", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TeamsListArgs makeArgs(TeamsListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsListArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

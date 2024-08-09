@@ -59,8 +59,6 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-     *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     public readonly applicationId!: pulumi.Output<string | undefined>;
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
@@ -87,8 +85,6 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The unique precedence for policies on a single application. Required when using `applicationId`.
-     *
-     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
     public readonly precedence!: pulumi.Output<number | undefined>;
     /**
@@ -182,8 +178,6 @@ export interface AccessPolicyState {
     accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-     *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
@@ -210,8 +204,6 @@ export interface AccessPolicyState {
     name?: pulumi.Input<string>;
     /**
      * The unique precedence for policies on a single application. Required when using `applicationId`.
-     *
-     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
     precedence?: pulumi.Input<number>;
     /**
@@ -246,8 +238,6 @@ export interface AccessPolicyArgs {
     accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-     *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
@@ -274,8 +264,6 @@ export interface AccessPolicyArgs {
     name: pulumi.Input<string>;
     /**
      * The unique precedence for policies on a single application. Required when using `applicationId`.
-     *
-     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
     precedence?: pulumi.Input<number>;
     /**

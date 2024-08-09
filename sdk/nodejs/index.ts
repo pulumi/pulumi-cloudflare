@@ -280,6 +280,11 @@ export const getDlpDatasets: typeof import("./getDlpDatasets").getDlpDatasets = 
 export const getDlpDatasetsOutput: typeof import("./getDlpDatasets").getDlpDatasetsOutput = null as any;
 utilities.lazyLoad(exports, ["getDlpDatasets","getDlpDatasetsOutput"], () => require("./getDlpDatasets"));
 
+export { GetGatewayAppTypesArgs, GetGatewayAppTypesResult, GetGatewayAppTypesOutputArgs } from "./getGatewayAppTypes";
+export const getGatewayAppTypes: typeof import("./getGatewayAppTypes").getGatewayAppTypes = null as any;
+export const getGatewayAppTypesOutput: typeof import("./getGatewayAppTypes").getGatewayAppTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayAppTypes","getGatewayAppTypesOutput"], () => require("./getGatewayAppTypes"));
+
 export { GetGatewayCategoriesArgs, GetGatewayCategoriesResult, GetGatewayCategoriesOutputArgs } from "./getGatewayCategories";
 export const getGatewayCategories: typeof import("./getGatewayCategories").getGatewayCategories = null as any;
 export const getGatewayCategoriesOutput: typeof import("./getGatewayCategories").getGatewayCategoriesOutput = null as any;
@@ -675,6 +680,21 @@ export type WorkerSecret = import("./workerSecret").WorkerSecret;
 export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
 utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
 
+export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
+export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
+export const WorkersCronTrigger: typeof import("./workersCronTrigger").WorkersCronTrigger = null as any;
+utilities.lazyLoad(exports, ["WorkersCronTrigger"], () => require("./workersCronTrigger"));
+
+export { WorkersDomainArgs, WorkersDomainState } from "./workersDomain";
+export type WorkersDomain = import("./workersDomain").WorkersDomain;
+export const WorkersDomain: typeof import("./workersDomain").WorkersDomain = null as any;
+utilities.lazyLoad(exports, ["WorkersDomain"], () => require("./workersDomain"));
+
+export { WorkersForPlatformsDispatchNamespaceArgs, WorkersForPlatformsDispatchNamespaceState } from "./workersForPlatformsDispatchNamespace";
+export type WorkersForPlatformsDispatchNamespace = import("./workersForPlatformsDispatchNamespace").WorkersForPlatformsDispatchNamespace;
+export const WorkersForPlatformsDispatchNamespace: typeof import("./workersForPlatformsDispatchNamespace").WorkersForPlatformsDispatchNamespace = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsDispatchNamespace"], () => require("./workersForPlatformsDispatchNamespace"));
+
 export { WorkersForPlatformsNamespaceArgs, WorkersForPlatformsNamespaceState } from "./workersForPlatformsNamespace";
 export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace;
 export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
@@ -689,6 +709,21 @@ export { WorkersKvNamespaceArgs, WorkersKvNamespaceState } from "./workersKvName
 export type WorkersKvNamespace = import("./workersKvNamespace").WorkersKvNamespace;
 export const WorkersKvNamespace: typeof import("./workersKvNamespace").WorkersKvNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersKvNamespace"], () => require("./workersKvNamespace"));
+
+export { WorkersRouteArgs, WorkersRouteState } from "./workersRoute";
+export type WorkersRoute = import("./workersRoute").WorkersRoute;
+export const WorkersRoute: typeof import("./workersRoute").WorkersRoute = null as any;
+utilities.lazyLoad(exports, ["WorkersRoute"], () => require("./workersRoute"));
+
+export { WorkersScriptArgs, WorkersScriptState } from "./workersScript";
+export type WorkersScript = import("./workersScript").WorkersScript;
+export const WorkersScript: typeof import("./workersScript").WorkersScript = null as any;
+utilities.lazyLoad(exports, ["WorkersScript"], () => require("./workersScript"));
+
+export { WorkersSecretArgs, WorkersSecretState } from "./workersSecret";
+export type WorkersSecret = import("./workersSecret").WorkersSecret;
+export const WorkersSecret: typeof import("./workersSecret").WorkersSecret = null as any;
+utilities.lazyLoad(exports, ["WorkersSecret"], () => require("./workersSecret"));
 
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
@@ -957,12 +992,24 @@ const _module = {
                 return new WorkerScript(name, <any>undefined, { urn })
             case "cloudflare:index/workerSecret:WorkerSecret":
                 return new WorkerSecret(name, <any>undefined, { urn })
+            case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
+                return new WorkersCronTrigger(name, <any>undefined, { urn })
+            case "cloudflare:index/workersDomain:WorkersDomain":
+                return new WorkersDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace":
+                return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
                 return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
                 return new WorkersKvNamespace(name, <any>undefined, { urn })
+            case "cloudflare:index/workersRoute:WorkersRoute":
+                return new WorkersRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/workersScript:WorkersScript":
+                return new WorkersScript(name, <any>undefined, { urn })
+            case "cloudflare:index/workersSecret:WorkersSecret":
+                return new WorkersSecret(name, <any>undefined, { urn })
             case "cloudflare:index/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
@@ -1091,9 +1138,15 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheReserve", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _module)

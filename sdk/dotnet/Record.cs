@@ -26,8 +26,8 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.Record("example", new()
     ///     {
     ///         ZoneId = cloudflareZoneId,
-    ///         Name = "example",
-    ///         Value = "192.0.2.1",
+    ///         Name = "terraform",
+    ///         Content = "192.0.2.1",
     ///         Type = "A",
     ///         Ttl = 3600,
     ///     });
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Service = "_sip",
     ///             Proto = "_tls",
-    ///             Name = "example-srv",
+    ///             Name = "terraform-srv",
     ///             Priority = 0,
     ///             Weight = 0,
     ///             Port = 443,
@@ -70,6 +70,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
+
+        /// <summary>
+        /// The content of the record. Conflicts with `data`.
+        /// </summary>
+        [Output("content")]
+        public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
         /// The RFC3339 timestamp of when the record was created.
@@ -211,6 +217,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
+        /// The content of the record. Conflicts with `data`.
+        /// </summary>
+        [Input("content")]
+        public Input<string>? Content { get; set; }
+
+        /// <summary>
         /// Map of attributes that constitute the record value. Conflicts with `value`.
         /// </summary>
         [Input("data")]
@@ -286,6 +298,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// The content of the record. Conflicts with `data`.
+        /// </summary>
+        [Input("content")]
+        public Input<string>? Content { get; set; }
 
         /// <summary>
         /// The RFC3339 timestamp of when the record was created.

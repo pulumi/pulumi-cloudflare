@@ -144,11 +144,18 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TeamsProxyEndpoint(String name, TeamsProxyEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, args == null ? TeamsProxyEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TeamsProxyEndpoint(String name, Output<String> id, @Nullable TeamsProxyEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TeamsProxyEndpointArgs makeArgs(TeamsProxyEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsProxyEndpointArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

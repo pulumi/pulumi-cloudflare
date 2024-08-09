@@ -174,11 +174,18 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public DevicePostureIntegration(String name, DevicePostureIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePostureIntegration:DevicePostureIntegration", name, args == null ? DevicePostureIntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/devicePostureIntegration:DevicePostureIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DevicePostureIntegration(String name, Output<String> id, @Nullable DevicePostureIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/devicePostureIntegration:DevicePostureIntegration", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DevicePostureIntegrationArgs makeArgs(DevicePostureIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DevicePostureIntegrationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

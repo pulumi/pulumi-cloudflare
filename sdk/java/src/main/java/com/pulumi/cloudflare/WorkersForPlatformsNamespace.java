@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WorkersForPlatformsNamespace;
  * import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
- * import com.pulumi.cloudflare.WorkerScript;
- * import com.pulumi.cloudflare.WorkerScriptArgs;
+ * import com.pulumi.cloudflare.WorkersScript;
+ * import com.pulumi.cloudflare.WorkersScriptArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .name("example-namespace")
  *             .build());
  * 
- *         var customerWorker1 = new WorkerScript("customerWorker1", WorkerScriptArgs.builder()
+ *         var customerWorker1 = new WorkersScript("customerWorker1", WorkersScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("customer-worker-1")
  *             .content(StdFunctions.file(FileArgs.builder()
@@ -125,11 +125,18 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkersForPlatformsNamespace(String name, WorkersForPlatformsNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, args == null ? WorkersForPlatformsNamespaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkersForPlatformsNamespace(String name, Output<String> id, @Nullable WorkersForPlatformsNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkersForPlatformsNamespaceArgs makeArgs(WorkersForPlatformsNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkersForPlatformsNamespaceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

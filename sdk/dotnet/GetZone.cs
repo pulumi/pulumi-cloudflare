@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = example.Apply(getZoneResult =&gt; getZoneResult.Id),
         ///         Name = "www",
-        ///         Value = "203.0.113.1",
+        ///         Content = "203.0.113.1",
         ///         Type = "A",
         ///         Proxied = true,
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = example.Apply(getZoneResult =&gt; getZoneResult.Id),
         ///         Name = "www",
-        ///         Value = "203.0.113.1",
+        ///         Content = "203.0.113.1",
         ///         Type = "A",
         ///         Proxied = true,
         ///     });

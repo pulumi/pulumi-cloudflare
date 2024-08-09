@@ -182,11 +182,18 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessMutualTlsCertificate(String name, AccessMutualTlsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate", name, args == null ? AccessMutualTlsCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessMutualTlsCertificate(String name, Output<String> id, @Nullable AccessMutualTlsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessMutualTlsCertificateArgs makeArgs(AccessMutualTlsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessMutualTlsCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

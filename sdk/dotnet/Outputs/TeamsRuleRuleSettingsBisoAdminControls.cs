@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsBisoAdminControls
     {
         /// <summary>
+        /// Disable clipboard redirection.
+        /// </summary>
+        public readonly bool? DisableClipboardRedirection;
+        /// <summary>
         /// Disable copy-paste.
         /// </summary>
         public readonly bool? DisableCopyPaste;
@@ -36,6 +40,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsRuleRuleSettingsBisoAdminControls(
+            bool? disableClipboardRedirection,
+
             bool? disableCopyPaste,
 
             bool? disableDownload,
@@ -46,6 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? disableUpload)
         {
+            DisableClipboardRedirection = disableClipboardRedirection;
             DisableCopyPaste = disableCopyPaste;
             DisableDownload = disableDownload;
             DisableKeyboard = disableKeyboard;

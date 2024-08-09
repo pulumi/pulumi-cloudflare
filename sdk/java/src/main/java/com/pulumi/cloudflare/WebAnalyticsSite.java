@@ -200,11 +200,18 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WebAnalyticsSite(String name, WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, args == null ? WebAnalyticsSiteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WebAnalyticsSite(String name, Output<String> id, @Nullable WebAnalyticsSiteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WebAnalyticsSiteArgs makeArgs(WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebAnalyticsSiteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

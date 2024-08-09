@@ -166,11 +166,18 @@ public class ZoneSettingsOverride extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ZoneSettingsOverride(String name, ZoneSettingsOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, args == null ? ZoneSettingsOverrideArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ZoneSettingsOverride(String name, Output<String> id, @Nullable ZoneSettingsOverrideState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneSettingsOverrideArgs makeArgs(ZoneSettingsOverrideArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneSettingsOverrideArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

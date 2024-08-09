@@ -43,13 +43,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Cn { get; set; }
 
         /// <summary>
-        /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
+        /// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
         /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
 
         /// <summary>
-        /// The workspace one connection id.
+        /// The workspace one or intune connection id.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }

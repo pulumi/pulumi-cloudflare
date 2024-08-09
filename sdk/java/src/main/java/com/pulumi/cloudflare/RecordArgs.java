@@ -43,6 +43,21 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The content of the record. Conflicts with `data`.
+     * 
+     */
+    @Import(name="content")
+    private @Nullable Output<String> content;
+
+    /**
+     * @return The content of the record. Conflicts with `data`.
+     * 
+     */
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
+    }
+
+    /**
      * Map of attributes that constitute the record value. Conflicts with `value`.
      * 
      */
@@ -150,14 +165,22 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The value of the record. Conflicts with `data`.
      * 
+     * @deprecated
+     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
      * @return The value of the record. Conflicts with `data`.
      * 
+     * @deprecated
+     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -182,6 +205,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     private RecordArgs(RecordArgs $) {
         this.allowOverwrite = $.allowOverwrite;
         this.comment = $.comment;
+        this.content = $.content;
         this.data = $.data;
         this.name = $.name;
         this.priority = $.priority;
@@ -239,6 +263,27 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param content The content of the record. Conflicts with `data`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder content(@Nullable Output<String> content) {
+            $.content = content;
+            return this;
+        }
+
+        /**
+         * @param content The content of the record. Conflicts with `data`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder content(String content) {
+            return content(Output.of(content));
         }
 
         /**
@@ -403,7 +448,11 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * `value` is deprecated in favour of `content` and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
@@ -414,7 +463,11 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * `value` is deprecated in favour of `content` and will be removed in the next major release.
+         * 
          */
+        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
         public Builder value(String value) {
             return value(Output.of(value));
         }

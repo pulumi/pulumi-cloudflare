@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsListItemsWithDescription
     {
-        /// <summary>
-        /// The description of the teams list.
-        /// </summary>
         public readonly string Description;
         public readonly string Value;
 

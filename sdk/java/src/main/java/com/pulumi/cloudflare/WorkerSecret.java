@@ -143,11 +143,18 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkerSecret(String name, WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerSecret:WorkerSecret", name, args == null ? WorkerSecretArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workerSecret:WorkerSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkerSecret(String name, Output<String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workerSecret:WorkerSecret", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkerSecretArgs makeArgs(WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerSecretArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -448,6 +448,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionDuration);
     }
     /**
+     * Option to skip the App Launcher landing page. Defaults to `false`.
+     * 
+     */
+    @Export(name="skipAppLauncherLoginPage", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipAppLauncherLoginPage;
+
+    /**
+     * @return Option to skip the App Launcher landing page. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> skipAppLauncherLoginPage() {
+        return Codegen.optional(this.skipAppLauncherLoginPage);
+    }
+    /**
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      * 
      */
@@ -526,11 +540,18 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessApplication(String name, @Nullable AccessApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessApplication:AccessApplication", name, args == null ? AccessApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessApplication:AccessApplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessApplication(String name, Output<String> id, @Nullable AccessApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessApplication:AccessApplication", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessApplicationArgs makeArgs(@Nullable AccessApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessApplicationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

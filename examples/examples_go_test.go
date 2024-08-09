@@ -21,12 +21,9 @@ func TestAccRecordGo(t *testing.T) {
 }
 
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions(t)
-	baseGo := base.With(integration.ProgramTestOptions{
+	return getBaseOptions(t).With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-cloudflare/sdk/v3",
+			"github.com/pulumi/pulumi-cloudflare/sdk/v5",
 		},
 	})
-
-	return baseGo
 }

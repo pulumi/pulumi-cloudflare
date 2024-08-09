@@ -42,7 +42,7 @@ import (
 //			_, err = cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
 //				ZoneId:  pulumi.String(example.Id),
 //				Name:    pulumi.String("www"),
-//				Value:   pulumi.String("203.0.113.1"),
+//				Content: pulumi.String("203.0.113.1"),
 //				Type:    pulumi.String("A"),
 //				Proxied: pulumi.Bool(true),
 //			})

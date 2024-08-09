@@ -163,7 +163,7 @@ def get_zone(account_id: Optional[str] = None,
     example_record = cloudflare.Record("example",
         zone_id=example.id,
         name="www",
-        value="203.0.113.1",
+        content="203.0.113.1",
         type="A",
         proxied=True)
     ```
@@ -216,7 +216,7 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     example_record = cloudflare.Record("example",
         zone_id=example.id,
         name="www",
-        value="203.0.113.1",
+        content="203.0.113.1",
         type="A",
         proxied=True)
     ```

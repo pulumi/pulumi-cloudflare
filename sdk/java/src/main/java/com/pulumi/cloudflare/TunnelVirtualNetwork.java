@@ -146,11 +146,18 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelVirtualNetwork(String name, TunnelVirtualNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, args == null ? TunnelVirtualNetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelVirtualNetwork(String name, Output<String> id, @Nullable TunnelVirtualNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelVirtualNetworkArgs makeArgs(TunnelVirtualNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelVirtualNetworkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

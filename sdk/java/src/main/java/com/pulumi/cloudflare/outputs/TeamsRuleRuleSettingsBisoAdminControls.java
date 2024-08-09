@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsBisoAdminControls {
     /**
+     * @return Disable clipboard redirection.
+     * 
+     */
+    private @Nullable Boolean disableClipboardRedirection;
+    /**
      * @return Disable copy-paste.
      * 
      */
@@ -38,6 +43,13 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
     private @Nullable Boolean disableUpload;
 
     private TeamsRuleRuleSettingsBisoAdminControls() {}
+    /**
+     * @return Disable clipboard redirection.
+     * 
+     */
+    public Optional<Boolean> disableClipboardRedirection() {
+        return Optional.ofNullable(this.disableClipboardRedirection);
+    }
     /**
      * @return Disable copy-paste.
      * 
@@ -83,6 +95,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disableClipboardRedirection;
         private @Nullable Boolean disableCopyPaste;
         private @Nullable Boolean disableDownload;
         private @Nullable Boolean disableKeyboard;
@@ -91,6 +104,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         public Builder() {}
         public Builder(TeamsRuleRuleSettingsBisoAdminControls defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableClipboardRedirection = defaults.disableClipboardRedirection;
     	      this.disableCopyPaste = defaults.disableCopyPaste;
     	      this.disableDownload = defaults.disableDownload;
     	      this.disableKeyboard = defaults.disableKeyboard;
@@ -98,6 +112,12 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
     	      this.disableUpload = defaults.disableUpload;
         }
 
+        @CustomType.Setter
+        public Builder disableClipboardRedirection(@Nullable Boolean disableClipboardRedirection) {
+
+            this.disableClipboardRedirection = disableClipboardRedirection;
+            return this;
+        }
         @CustomType.Setter
         public Builder disableCopyPaste(@Nullable Boolean disableCopyPaste) {
 
@@ -130,6 +150,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         }
         public TeamsRuleRuleSettingsBisoAdminControls build() {
             final var _resultValue = new TeamsRuleRuleSettingsBisoAdminControls();
+            _resultValue.disableClipboardRedirection = disableClipboardRedirection;
             _resultValue.disableCopyPaste = disableCopyPaste;
             _resultValue.disableDownload = disableDownload;
             _resultValue.disableKeyboard = disableKeyboard;

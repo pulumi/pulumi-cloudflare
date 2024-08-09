@@ -18,6 +18,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Configure the `max_age` value of this Hyperdrive configuration.
+        /// </summary>
+        [Input("maxAge")]
+        public Input<int>? MaxAge { get; set; }
+
+        /// <summary>
+        /// Disable caching for this Hyperdrive configuration.
+        /// </summary>
+        [Input("staleWhileRevalidate")]
+        public Input<int>? StaleWhileRevalidate { get; set; }
+
         public HyperdriveConfigCachingGetArgs()
         {
         }

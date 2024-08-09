@@ -143,11 +143,18 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ByoIpPrefix(String name, ByoIpPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, args == null ? ByoIpPrefixArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ByoIpPrefix(String name, Output<String> id, @Nullable ByoIpPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ByoIpPrefixArgs makeArgs(ByoIpPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ByoIpPrefixArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

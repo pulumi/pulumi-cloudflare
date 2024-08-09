@@ -167,11 +167,18 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiToken(String name, ApiTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiToken:ApiToken", name, args == null ? ApiTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/apiToken:ApiToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiToken(String name, Output<String> id, @Nullable ApiTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/apiToken:ApiToken", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiTokenArgs makeArgs(ApiTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiTokenArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

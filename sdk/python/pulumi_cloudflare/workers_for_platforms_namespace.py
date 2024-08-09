@@ -111,7 +111,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         example = cloudflare.WorkersForPlatformsNamespace("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-namespace")
-        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
+        customer_worker1 = cloudflare.WorkersScript("customer_worker_1",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
             content=std.file(input="script.js").result,
@@ -150,7 +150,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         example = cloudflare.WorkersForPlatformsNamespace("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-namespace")
-        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
+        customer_worker1 = cloudflare.WorkersScript("customer_worker_1",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
             content=std.file(input="script.js").result,

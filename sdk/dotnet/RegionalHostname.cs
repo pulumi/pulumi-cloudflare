@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Name = "example.com",
-    ///         Value = "192.0.2.1",
+    ///         Content = "192.0.2.1",
     ///         Type = "A",
     ///         Ttl = 3600,
     ///     });

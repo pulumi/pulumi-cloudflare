@@ -112,11 +112,18 @@ public class List extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public List(String name, ListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/list:List", name, args == null ? ListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/list:List", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private List(String name, Output<String> id, @Nullable ListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/list:List", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ListArgs makeArgs(ListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

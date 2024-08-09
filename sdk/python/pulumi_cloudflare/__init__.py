@@ -60,6 +60,7 @@ from .get_api_token_permission_groups import *
 from .get_device_posture_rules import *
 from .get_devices import *
 from .get_dlp_datasets import *
+from .get_gateway_app_types import *
 from .get_gateway_categories import *
 from .get_ip_ranges import *
 from .get_list import *
@@ -139,9 +140,15 @@ from .worker_domain import *
 from .worker_route import *
 from .worker_script import *
 from .worker_secret import *
+from .workers_cron_trigger import *
+from .workers_domain import *
+from .workers_for_platforms_dispatch_namespace import *
 from .workers_for_platforms_namespace import *
 from .workers_kv import *
 from .workers_kv_namespace import *
+from .workers_route import *
+from .workers_script import *
+from .workers_secret import *
 from .zone import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
@@ -1036,6 +1043,30 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/workersCronTrigger",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersCronTrigger:WorkersCronTrigger": "WorkersCronTrigger"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersDomain:WorkersDomain": "WorkersDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersForPlatformsDispatchNamespace",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace": "WorkersForPlatformsDispatchNamespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/workersForPlatformsNamespace",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1056,6 +1087,30 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersKvNamespace:WorkersKvNamespace": "WorkersKvNamespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersRoute:WorkersRoute": "WorkersRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersScript",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersScript:WorkersScript": "WorkersScript"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersSecret:WorkersSecret": "WorkersSecret"
   }
  },
  {

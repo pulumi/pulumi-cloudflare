@@ -239,12 +239,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkerScript{}
 	case "cloudflare:index/workerSecret:WorkerSecret":
 		r = &WorkerSecret{}
+	case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
+		r = &WorkersCronTrigger{}
+	case "cloudflare:index/workersDomain:WorkersDomain":
+		r = &WorkersDomain{}
+	case "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace":
+		r = &WorkersForPlatformsDispatchNamespace{}
 	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
 		r = &WorkersForPlatformsNamespace{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
 		r = &WorkersKvNamespace{}
+	case "cloudflare:index/workersRoute:WorkersRoute":
+		r = &WorkersRoute{}
+	case "cloudflare:index/workersScript:WorkersScript":
+		r = &WorkersScript{}
+	case "cloudflare:index/workersSecret:WorkersSecret":
+		r = &WorkersSecret{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
 	case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
@@ -837,6 +849,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/workersCronTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersForPlatformsDispatchNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/workersForPlatformsNamespace",
 		&module{version},
 	)
@@ -848,6 +875,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersKvNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

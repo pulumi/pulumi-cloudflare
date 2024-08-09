@@ -31,11 +31,11 @@ import (
 //			// Regionalized hostname record resources are managed independently from the
 //			// Regionalized Hostname resources.
 //			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:   pulumi.String("example.com"),
-//				Value:  pulumi.String("192.0.2.1"),
-//				Type:   pulumi.String("A"),
-//				Ttl:    pulumi.Int(3600),
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:    pulumi.String("example.com"),
+//				Content: pulumi.String("192.0.2.1"),
+//				Type:    pulumi.String("A"),
+//				Ttl:     pulumi.Int(3600),
 //			})
 //			if err != nil {
 //				return err

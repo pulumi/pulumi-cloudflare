@@ -202,11 +202,18 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TurnstileWidget(String name, TurnstileWidgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, args == null ? TurnstileWidgetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TurnstileWidget(String name, Output<String> id, @Nullable TurnstileWidgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/turnstileWidget:TurnstileWidget", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TurnstileWidgetArgs makeArgs(TurnstileWidgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TurnstileWidgetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

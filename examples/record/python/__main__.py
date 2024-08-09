@@ -9,4 +9,4 @@ zone = cloudflare.Zone("my-zone", zone="py-test-cloudflare-pulumi.com", account_
 
 record = cloudflare.Record("my-record-py",
                            name="my-record-py", zone_id=zone.id,
-                           type="A", value="192.168.0.11", ttl=3600)
+                           type="A", content="192.168.0.11", ttl=3600)

@@ -129,11 +129,18 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public D1Database(String name, D1DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/d1Database:D1Database", name, args == null ? D1DatabaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/d1Database:D1Database", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private D1Database(String name, Output<String> id, @Nullable D1DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/d1Database:D1Database", name, state, makeResourceOptions(options, id));
+    }
+
+    private static D1DatabaseArgs makeArgs(D1DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? D1DatabaseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -17,11 +17,26 @@ namespace Pulumi.Cloudflare.Outputs
         /// Disable caching for this Hyperdrive configuration.
         /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// Configure the `max_age` value of this Hyperdrive configuration.
+        /// </summary>
+        public readonly int? MaxAge;
+        /// <summary>
+        /// Disable caching for this Hyperdrive configuration.
+        /// </summary>
+        public readonly int? StaleWhileRevalidate;
 
         [OutputConstructor]
-        private HyperdriveConfigCaching(bool? disabled)
+        private HyperdriveConfigCaching(
+            bool? disabled,
+
+            int? maxAge,
+
+            int? staleWhileRevalidate)
         {
             Disabled = disabled;
+            MaxAge = maxAge;
+            StaleWhileRevalidate = staleWhileRevalidate;
         }
     }
 }

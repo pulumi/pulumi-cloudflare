@@ -209,11 +209,18 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessRule(String name, AccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessRule:AccessRule", name, args == null ? AccessRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/accessRule:AccessRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessRule(String name, Output<String> id, @Nullable AccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessRule:AccessRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessRuleArgs makeArgs(AccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

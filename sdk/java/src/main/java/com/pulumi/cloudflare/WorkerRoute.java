@@ -132,11 +132,18 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkerRoute(String name, WorkerRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerRoute:WorkerRoute", name, args == null ? WorkerRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/workerRoute:WorkerRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkerRoute(String name, Output<String> id, @Nullable WorkerRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workerRoute:WorkerRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkerRouteArgs makeArgs(WorkerRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

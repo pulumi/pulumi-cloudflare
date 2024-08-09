@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example-namespace",
  * });
- * const customerWorker1 = new cloudflare.WorkerScript("customer_worker_1", {
+ * const customerWorker1 = new cloudflare.WorkersScript("customer_worker_1", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "customer-worker-1",
  *     content: std.file({

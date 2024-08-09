@@ -136,11 +136,18 @@ public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiShieldOperation(String name, ApiShieldOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShieldOperation:ApiShieldOperation", name, args == null ? ApiShieldOperationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("cloudflare:index/apiShieldOperation:ApiShieldOperation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiShieldOperation(String name, Output<String> id, @Nullable ApiShieldOperationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/apiShieldOperation:ApiShieldOperation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiShieldOperationArgs makeArgs(ApiShieldOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiShieldOperationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
