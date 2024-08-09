@@ -123,7 +123,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessMutualTlsHostnameSettingsSettingArgs']]]]] = None,
+                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessMutualTlsHostnameSettingsSettingArgs', 'AccessMutualTlsHostnameSettingsSettingArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -137,11 +137,11 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         example = cloudflare.AccessMutualTlsHostnameSettings("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=[cloudflare.AccessMutualTlsHostnameSettingsSettingArgs(
-                hostname="example.com",
-                client_certificate_forwarding=True,
-                china_network=False,
-            )])
+            settings=[{
+                "hostname": "example.com",
+                "client_certificate_forwarding": True,
+                "china_network": False,
+            }])
         ```
 
         ## Import
@@ -180,11 +180,11 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         example = cloudflare.AccessMutualTlsHostnameSettings("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=[cloudflare.AccessMutualTlsHostnameSettingsSettingArgs(
-                hostname="example.com",
-                client_certificate_forwarding=True,
-                china_network=False,
-            )])
+            settings=[{
+                "hostname": "example.com",
+                "client_certificate_forwarding": True,
+                "china_network": False,
+            }])
         ```
 
         ## Import
@@ -217,7 +217,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessMutualTlsHostnameSettingsSettingArgs']]]]] = None,
+                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessMutualTlsHostnameSettingsSettingArgs', 'AccessMutualTlsHostnameSettingsSettingArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -242,7 +242,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessMutualTlsHostnameSettingsSettingArgs']]]]] = None,
+            settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessMutualTlsHostnameSettingsSettingArgs', 'AccessMutualTlsHostnameSettingsSettingArgsDict']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessMutualTlsHostnameSettings':
         """
         Get an existing AccessMutualTlsHostnameSettings resource's state with the given name, id, and optional extra

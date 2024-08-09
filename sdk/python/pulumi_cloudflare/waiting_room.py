@@ -605,7 +605,7 @@ class WaitingRoom(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
                  cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
@@ -643,13 +643,13 @@ class WaitingRoom(pulumi.CustomResource):
             total_active_users=200,
             cookie_suffix="queue1",
             additional_routes=[
-                cloudflare.WaitingRoomAdditionalRouteArgs(
-                    host="shop1.example.com",
-                    path="/example-path",
-                ),
-                cloudflare.WaitingRoomAdditionalRouteArgs(
-                    host="shop2.example.com",
-                ),
+                {
+                    "host": "shop1.example.com",
+                    "path": "/example-path",
+                },
+                {
+                    "host": "shop2.example.com",
+                },
             ],
             queueing_status_code=200)
         ```
@@ -664,7 +664,7 @@ class WaitingRoom(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -708,13 +708,13 @@ class WaitingRoom(pulumi.CustomResource):
             total_active_users=200,
             cookie_suffix="queue1",
             additional_routes=[
-                cloudflare.WaitingRoomAdditionalRouteArgs(
-                    host="shop1.example.com",
-                    path="/example-path",
-                ),
-                cloudflare.WaitingRoomAdditionalRouteArgs(
-                    host="shop2.example.com",
-                ),
+                {
+                    "host": "shop1.example.com",
+                    "path": "/example-path",
+                },
+                {
+                    "host": "shop2.example.com",
+                },
             ],
             queueing_status_code=200)
         ```
@@ -742,7 +742,7 @@ class WaitingRoom(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
                  cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
@@ -807,7 +807,7 @@ class WaitingRoom(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+            additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
             cookie_suffix: Optional[pulumi.Input[str]] = None,
             custom_page_html: Optional[pulumi.Input[str]] = None,
             default_template_language: Optional[pulumi.Input[str]] = None,
@@ -832,7 +832,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.

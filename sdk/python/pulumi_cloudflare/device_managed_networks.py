@@ -159,7 +159,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DeviceManagedNetworksConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -176,10 +176,10 @@ class DeviceManagedNetworks(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="managed-network-1",
             type="tls",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                tls_sockaddr="foobar:1234",
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-            ))
+            config={
+                "tls_sockaddr": "foobar:1234",
+                "sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+            })
         ```
 
         ## Import
@@ -191,7 +191,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['DeviceManagedNetworksConfigArgs']] config: The configuration containing information for the WARP client to detect the managed network.
+        :param pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']] config: The configuration containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
         :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
         """
@@ -214,10 +214,10 @@ class DeviceManagedNetworks(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="managed-network-1",
             type="tls",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                tls_sockaddr="foobar:1234",
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-            ))
+            config={
+                "tls_sockaddr": "foobar:1234",
+                "sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+            })
         ```
 
         ## Import
@@ -242,7 +242,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DeviceManagedNetworksConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -277,7 +277,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['DeviceManagedNetworksConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DeviceManagedNetworks':
         """
@@ -288,7 +288,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['DeviceManagedNetworksConfigArgs']] config: The configuration containing information for the WARP client to detect the managed network.
+        :param pulumi.Input[Union['DeviceManagedNetworksConfigArgs', 'DeviceManagedNetworksConfigArgsDict']] config: The configuration containing information for the WARP client to detect the managed network.
         :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
         :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
         """

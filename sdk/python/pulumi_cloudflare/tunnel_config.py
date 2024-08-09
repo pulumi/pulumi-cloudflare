@@ -128,7 +128,7 @@ class TunnelConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['TunnelConfigConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
                  tunnel_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -147,54 +147,54 @@ class TunnelConfig(pulumi.CustomResource):
         example_config = cloudflare.TunnelConfig("example_config",
             account_id="f037e56e89293a057740de681ac9abbe",
             tunnel_id=example_tunnel.id,
-            config=cloudflare.TunnelConfigConfigArgs(
-                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
-                    enabled=True,
-                ),
-                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
-                    connect_timeout="1m0s",
-                    tls_timeout="1m0s",
-                    tcp_keep_alive="1m0s",
-                    no_happy_eyeballs=False,
-                    keep_alive_connections=1024,
-                    keep_alive_timeout="1m0s",
-                    http_host_header="baz",
-                    origin_server_name="foobar",
-                    ca_pool="/path/to/unsigned/ca/pool",
-                    no_tls_verify=False,
-                    disable_chunked_encoding=False,
-                    bastion_mode=False,
-                    proxy_address="10.0.0.1",
-                    proxy_port=8123,
-                    proxy_type="socks",
-                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
-                        prefix="/web",
-                        ports=[
+            config={
+                "warp_routing": {
+                    "enabled": True,
+                },
+                "origin_request": {
+                    "connect_timeout": "1m0s",
+                    "tls_timeout": "1m0s",
+                    "tcp_keep_alive": "1m0s",
+                    "no_happy_eyeballs": False,
+                    "keep_alive_connections": 1024,
+                    "keep_alive_timeout": "1m0s",
+                    "http_host_header": "baz",
+                    "origin_server_name": "foobar",
+                    "ca_pool": "/path/to/unsigned/ca/pool",
+                    "no_tls_verify": False,
+                    "disable_chunked_encoding": False,
+                    "bastion_mode": False,
+                    "proxy_address": "10.0.0.1",
+                    "proxy_port": 8123,
+                    "proxy_type": "socks",
+                    "ip_rules": [{
+                        "prefix": "/web",
+                        "ports": [
                             80,
                             443,
                         ],
-                        allow=False,
-                    )],
-                ),
-                ingress_rules=[
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        hostname="foo",
-                        path="/bar",
-                        service="http://10.0.0.2:8080",
-                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
-                            connect_timeout="2m0s",
-                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
-                                required=True,
-                                team_name="terraform",
-                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            ),
-                        ),
-                    ),
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        service="https://10.0.0.3:8081",
-                    ),
+                        "allow": False,
+                    }],
+                },
+                "ingress_rules": [
+                    {
+                        "hostname": "foo",
+                        "path": "/bar",
+                        "service": "http://10.0.0.2:8080",
+                        "origin_request": {
+                            "connect_timeout": "2m0s",
+                            "access": {
+                                "required": True,
+                                "team_name": "terraform",
+                                "aud_tags": ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+                            },
+                        },
+                    },
+                    {
+                        "service": "https://10.0.0.3:8081",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -206,7 +206,7 @@ class TunnelConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['TunnelConfigConfigArgs']] config: Configuration block for Tunnel Configuration.
+        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
         ...
@@ -231,54 +231,54 @@ class TunnelConfig(pulumi.CustomResource):
         example_config = cloudflare.TunnelConfig("example_config",
             account_id="f037e56e89293a057740de681ac9abbe",
             tunnel_id=example_tunnel.id,
-            config=cloudflare.TunnelConfigConfigArgs(
-                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
-                    enabled=True,
-                ),
-                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
-                    connect_timeout="1m0s",
-                    tls_timeout="1m0s",
-                    tcp_keep_alive="1m0s",
-                    no_happy_eyeballs=False,
-                    keep_alive_connections=1024,
-                    keep_alive_timeout="1m0s",
-                    http_host_header="baz",
-                    origin_server_name="foobar",
-                    ca_pool="/path/to/unsigned/ca/pool",
-                    no_tls_verify=False,
-                    disable_chunked_encoding=False,
-                    bastion_mode=False,
-                    proxy_address="10.0.0.1",
-                    proxy_port=8123,
-                    proxy_type="socks",
-                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
-                        prefix="/web",
-                        ports=[
+            config={
+                "warp_routing": {
+                    "enabled": True,
+                },
+                "origin_request": {
+                    "connect_timeout": "1m0s",
+                    "tls_timeout": "1m0s",
+                    "tcp_keep_alive": "1m0s",
+                    "no_happy_eyeballs": False,
+                    "keep_alive_connections": 1024,
+                    "keep_alive_timeout": "1m0s",
+                    "http_host_header": "baz",
+                    "origin_server_name": "foobar",
+                    "ca_pool": "/path/to/unsigned/ca/pool",
+                    "no_tls_verify": False,
+                    "disable_chunked_encoding": False,
+                    "bastion_mode": False,
+                    "proxy_address": "10.0.0.1",
+                    "proxy_port": 8123,
+                    "proxy_type": "socks",
+                    "ip_rules": [{
+                        "prefix": "/web",
+                        "ports": [
                             80,
                             443,
                         ],
-                        allow=False,
-                    )],
-                ),
-                ingress_rules=[
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        hostname="foo",
-                        path="/bar",
-                        service="http://10.0.0.2:8080",
-                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
-                            connect_timeout="2m0s",
-                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
-                                required=True,
-                                team_name="terraform",
-                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            ),
-                        ),
-                    ),
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        service="https://10.0.0.3:8081",
-                    ),
+                        "allow": False,
+                    }],
+                },
+                "ingress_rules": [
+                    {
+                        "hostname": "foo",
+                        "path": "/bar",
+                        "service": "http://10.0.0.2:8080",
+                        "origin_request": {
+                            "connect_timeout": "2m0s",
+                            "access": {
+                                "required": True,
+                                "team_name": "terraform",
+                                "aud_tags": ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+                            },
+                        },
+                    },
+                    {
+                        "service": "https://10.0.0.3:8081",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -303,7 +303,7 @@ class TunnelConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['TunnelConfigConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
                  tunnel_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -334,7 +334,7 @@ class TunnelConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['TunnelConfigConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']]] = None,
             tunnel_id: Optional[pulumi.Input[str]] = None) -> 'TunnelConfig':
         """
         Get an existing TunnelConfig resource's state with the given name, id, and optional extra
@@ -344,7 +344,7 @@ class TunnelConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['TunnelConfigConfigArgs']] config: Configuration block for Tunnel Configuration.
+        :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

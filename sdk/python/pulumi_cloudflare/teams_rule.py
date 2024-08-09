@@ -402,7 +402,7 @@ class TeamsRule(pulumi.CustomResource):
                  identity: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
-                 rule_settings: Optional[pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']]] = None,
+                 rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
                  traffic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -422,10 +422,10 @@ class TeamsRule(pulumi.CustomResource):
             action="block",
             filters=["http"],
             traffic="http.request.uri == \\"https://www.example.com/malicious\\"",
-            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=True,
-                block_page_reason="access not permitted",
-            ))
+            rule_settings={
+                "block_page_enabled": True,
+                "block_page_reason": "access not permitted",
+            })
         ```
 
         ## Import
@@ -445,7 +445,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
+        :param pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         ...
@@ -471,10 +471,10 @@ class TeamsRule(pulumi.CustomResource):
             action="block",
             filters=["http"],
             traffic="http.request.uri == \\"https://www.example.com/malicious\\"",
-            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=True,
-                block_page_reason="access not permitted",
-            ))
+            rule_settings={
+                "block_page_enabled": True,
+                "block_page_reason": "access not permitted",
+            })
         ```
 
         ## Import
@@ -507,7 +507,7 @@ class TeamsRule(pulumi.CustomResource):
                  identity: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
-                 rule_settings: Optional[pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']]] = None,
+                 rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
                  traffic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -559,7 +559,7 @@ class TeamsRule(pulumi.CustomResource):
             identity: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             precedence: Optional[pulumi.Input[int]] = None,
-            rule_settings: Optional[pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']]] = None,
+            rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
             traffic: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'TeamsRule':
         """
@@ -578,7 +578,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
+        :param pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

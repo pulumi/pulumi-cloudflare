@@ -178,7 +178,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OriginCaCertificate(String name) {
+    public OriginCaCertificate(java.lang.String name) {
         this(name, OriginCaCertificateArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OriginCaCertificate(String name, OriginCaCertificateArgs args) {
+    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,12 +195,12 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OriginCaCertificate(String name, OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OriginCaCertificate(String name, Output<String> id, @Nullable OriginCaCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, state, makeResourceOptions(options, id));
+    private OriginCaCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable OriginCaCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OriginCaCertificateArgs makeArgs(OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -210,7 +210,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
         return args == null ? OriginCaCertificateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -226,7 +226,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OriginCaCertificate get(String name, Output<String> id, @Nullable OriginCaCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OriginCaCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable OriginCaCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OriginCaCertificate(name, id, state, options);
     }
 }

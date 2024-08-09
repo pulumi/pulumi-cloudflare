@@ -125,7 +125,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ZoneHold(String name) {
+    public ZoneHold(java.lang.String name) {
         this(name, ZoneHoldArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneHold(String name, ZoneHoldArgs args) {
+    public ZoneHold(java.lang.String name, ZoneHoldArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,12 +142,12 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneHold(String name, ZoneHoldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneHold:ZoneHold", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ZoneHold(java.lang.String name, ZoneHoldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneHold:ZoneHold", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ZoneHold(String name, Output<String> id, @Nullable ZoneHoldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneHold:ZoneHold", name, state, makeResourceOptions(options, id));
+    private ZoneHold(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneHoldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneHold:ZoneHold", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ZoneHoldArgs makeArgs(ZoneHoldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -157,7 +157,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
         return args == null ? ZoneHoldArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -173,7 +173,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ZoneHold get(String name, Output<String> id, @Nullable ZoneHoldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ZoneHold get(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneHoldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ZoneHold(name, id, state, options);
     }
 }

@@ -121,7 +121,7 @@ class FallbackDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FallbackDomainDomainArgs']]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FallbackDomainDomainArgs', 'FallbackDomainDomainArgsDict']]]]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -179,7 +179,7 @@ class FallbackDomain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FallbackDomainDomainArgs']]]]] = None,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FallbackDomainDomainArgs', 'FallbackDomainDomainArgsDict']]]]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -208,7 +208,7 @@ class FallbackDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FallbackDomainDomainArgs']]]]] = None,
+            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FallbackDomainDomainArgs', 'FallbackDomainDomainArgsDict']]]]] = None,
             policy_id: Optional[pulumi.Input[str]] = None) -> 'FallbackDomain':
         """
         Get an existing FallbackDomain resource's state with the given name, id, and optional extra

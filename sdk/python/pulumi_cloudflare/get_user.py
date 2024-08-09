@@ -82,12 +82,12 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
     all = cloudflare.get_api_token_permission_groups()
     example = cloudflare.ApiToken("example",
         name="Terraform Cloud (Terraform)",
-        policies=[cloudflare.ApiTokenPolicyArgs(
-            permission_groups=[all.user["User Details Read"]],
-            resources={
-                f"com.cloudflare.api.user.{me.id}": "*",
+        policies=[{
+            "permission_groups": [all.user["User Details Read"]],
+            "resources": {
+                "": "*",
             },
-        )])
+        }])
     ```
     """
     __args__ = dict()
@@ -115,12 +115,12 @@ def get_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outpu
     all = cloudflare.get_api_token_permission_groups()
     example = cloudflare.ApiToken("example",
         name="Terraform Cloud (Terraform)",
-        policies=[cloudflare.ApiTokenPolicyArgs(
-            permission_groups=[all.user["User Details Read"]],
-            resources={
-                f"com.cloudflare.api.user.{me.id}": "*",
+        policies=[{
+            "permission_groups": [all.user["User Details Read"]],
+            "resources": {
+                "": "*",
             },
-        )])
+        }])
     ```
     """
     ...

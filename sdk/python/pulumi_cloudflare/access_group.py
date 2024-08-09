@@ -193,10 +193,10 @@ class AccessGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -260,10 +260,10 @@ class AccessGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,10 +295,10 @@ class AccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
-            includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
+            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+            includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+            requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra

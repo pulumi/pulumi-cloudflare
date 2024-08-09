@@ -206,9 +206,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllMatcherArgs']]]]] = None,
+                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -225,20 +225,20 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example catch all",
             enabled=True,
-            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
-                type="all",
-            )],
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )])
+            matchers=[{
+                "type": "all",
+            }],
+            actions=[{
+                "type": "forward",
+                "values": ["destinationaddress@example.net"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions patterns.
         :param pulumi.Input[bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllMatcherArgs']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[str] name: Routing rule name.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
@@ -261,13 +261,13 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example catch all",
             enabled=True,
-            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
-                type="all",
-            )],
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )])
+            matchers=[{
+                "type": "all",
+            }],
+            actions=[{
+                "type": "forward",
+                "values": ["destinationaddress@example.net"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,9 +285,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllMatcherArgs']]]]] = None,
+                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -323,9 +323,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllMatcherArgs']]]]] = None,
+            matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tag: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'EmailRoutingCatchAll':
@@ -336,9 +336,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions patterns.
         :param pulumi.Input[bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllMatcherArgs']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[str] name: Routing rule name.
         :param pulumi.Input[str] tag: Routing rule identifier.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.

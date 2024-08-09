@@ -257,7 +257,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessOrganization(String name) {
+    public AccessOrganization(java.lang.String name) {
         this(name, AccessOrganizationArgs.Empty);
     }
     /**
@@ -265,7 +265,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessOrganization(String name, AccessOrganizationArgs args) {
+    public AccessOrganization(java.lang.String name, AccessOrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -274,12 +274,12 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessOrganization(String name, AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessOrganization:AccessOrganization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessOrganization(java.lang.String name, AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessOrganization:AccessOrganization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessOrganization(String name, Output<String> id, @Nullable AccessOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessOrganization:AccessOrganization", name, state, makeResourceOptions(options, id));
+    private AccessOrganization(java.lang.String name, Output<java.lang.String> id, @Nullable AccessOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessOrganization:AccessOrganization", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessOrganizationArgs makeArgs(AccessOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -289,7 +289,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return args == null ? AccessOrganizationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -305,7 +305,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessOrganization get(String name, Output<String> id, @Nullable AccessOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessOrganization get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessOrganization(name, id, state, options);
     }
 }

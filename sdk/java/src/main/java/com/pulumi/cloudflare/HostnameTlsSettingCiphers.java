@@ -138,7 +138,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostnameTlsSettingCiphers(String name) {
+    public HostnameTlsSettingCiphers(java.lang.String name) {
         this(name, HostnameTlsSettingCiphersArgs.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostnameTlsSettingCiphers(String name, HostnameTlsSettingCiphersArgs args) {
+    public HostnameTlsSettingCiphers(java.lang.String name, HostnameTlsSettingCiphersArgs args) {
         this(name, args, null);
     }
     /**
@@ -155,12 +155,12 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostnameTlsSettingCiphers(String name, HostnameTlsSettingCiphersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public HostnameTlsSettingCiphers(java.lang.String name, HostnameTlsSettingCiphersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostnameTlsSettingCiphers(String name, Output<String> id, @Nullable HostnameTlsSettingCiphersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers", name, state, makeResourceOptions(options, id));
+    private HostnameTlsSettingCiphers(java.lang.String name, Output<java.lang.String> id, @Nullable HostnameTlsSettingCiphersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HostnameTlsSettingCiphersArgs makeArgs(HostnameTlsSettingCiphersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -170,7 +170,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
         return args == null ? HostnameTlsSettingCiphersArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -186,7 +186,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostnameTlsSettingCiphers get(String name, Output<String> id, @Nullable HostnameTlsSettingCiphersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostnameTlsSettingCiphers get(java.lang.String name, Output<java.lang.String> id, @Nullable HostnameTlsSettingCiphersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostnameTlsSettingCiphers(name, id, state, options);
     }
 }

@@ -33,7 +33,7 @@ import (
 //			// Add a page rule to the domain
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 //				ZoneId:   pulumi.Any(cloudflareZoneId),
-//				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", cloudflareZone)),
+//				Target:   pulumi.Sprintf("sub.%v/page", cloudflareZone),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					Ssl:              pulumi.String("flexible"),

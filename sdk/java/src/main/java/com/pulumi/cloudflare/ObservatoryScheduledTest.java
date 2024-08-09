@@ -124,7 +124,7 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ObservatoryScheduledTest(String name) {
+    public ObservatoryScheduledTest(java.lang.String name) {
         this(name, ObservatoryScheduledTestArgs.Empty);
     }
     /**
@@ -132,7 +132,7 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ObservatoryScheduledTest(String name, ObservatoryScheduledTestArgs args) {
+    public ObservatoryScheduledTest(java.lang.String name, ObservatoryScheduledTestArgs args) {
         this(name, args, null);
     }
     /**
@@ -141,12 +141,12 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ObservatoryScheduledTest(String name, ObservatoryScheduledTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ObservatoryScheduledTest(java.lang.String name, ObservatoryScheduledTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ObservatoryScheduledTest(String name, Output<String> id, @Nullable ObservatoryScheduledTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, state, makeResourceOptions(options, id));
+    private ObservatoryScheduledTest(java.lang.String name, Output<java.lang.String> id, @Nullable ObservatoryScheduledTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ObservatoryScheduledTestArgs makeArgs(ObservatoryScheduledTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -156,7 +156,7 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
         return args == null ? ObservatoryScheduledTestArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -172,7 +172,7 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ObservatoryScheduledTest get(String name, Output<String> id, @Nullable ObservatoryScheduledTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ObservatoryScheduledTest get(java.lang.String name, Output<java.lang.String> id, @Nullable ObservatoryScheduledTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ObservatoryScheduledTest(name, id, state, options);
     }
 }

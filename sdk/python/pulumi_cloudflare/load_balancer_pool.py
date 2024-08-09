@@ -484,14 +484,14 @@ class LoadBalancerPool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  latitude: Optional[pulumi.Input[float]] = None,
-                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]]]] = None,
                  longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None,
-                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]]]] = None,
+                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Load Balancer pool resource. This provides a
@@ -507,23 +507,23 @@ class LoadBalancerPool(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-pool",
             origins=[
-                cloudflare.LoadBalancerPoolOriginArgs(
-                    name="example-1",
-                    address="192.0.2.1",
-                    enabled=False,
-                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
-                        header="Host",
-                        values=["example-1"],
-                    )],
-                ),
-                cloudflare.LoadBalancerPoolOriginArgs(
-                    name="example-2",
-                    address="192.0.2.2",
-                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
-                        header="Host",
-                        values=["example-2"],
-                    )],
-                ),
+                {
+                    "name": "example-1",
+                    "address": "192.0.2.1",
+                    "enabled": False,
+                    "headers": [{
+                        "header": "Host",
+                        "values": ["example-1"],
+                    }],
+                },
+                {
+                    "name": "example-2",
+                    "address": "192.0.2.2",
+                    "headers": [{
+                        "header": "Host",
+                        "values": ["example-2"],
+                    }],
+                },
             ],
             latitude=55,
             longitude=-12,
@@ -531,15 +531,15 @@ class LoadBalancerPool(pulumi.CustomResource):
             enabled=False,
             minimum_origins=1,
             notification_email="someone@example.com",
-            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
-                default_percent=55,
-                default_policy="random",
-                session_percent=12,
-                session_policy="hash",
-            )],
-            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
-                policy="random",
-            )])
+            load_sheddings=[{
+                "default_percent": 55,
+                "default_policy": "random",
+                "session_percent": 12,
+                "session_policy": "hash",
+            }],
+            origin_steerings=[{
+                "policy": "random",
+            }])
         ```
 
         ## Import
@@ -555,14 +555,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         """
         ...
     @overload
@@ -584,23 +584,23 @@ class LoadBalancerPool(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-pool",
             origins=[
-                cloudflare.LoadBalancerPoolOriginArgs(
-                    name="example-1",
-                    address="192.0.2.1",
-                    enabled=False,
-                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
-                        header="Host",
-                        values=["example-1"],
-                    )],
-                ),
-                cloudflare.LoadBalancerPoolOriginArgs(
-                    name="example-2",
-                    address="192.0.2.2",
-                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
-                        header="Host",
-                        values=["example-2"],
-                    )],
-                ),
+                {
+                    "name": "example-1",
+                    "address": "192.0.2.1",
+                    "enabled": False,
+                    "headers": [{
+                        "header": "Host",
+                        "values": ["example-1"],
+                    }],
+                },
+                {
+                    "name": "example-2",
+                    "address": "192.0.2.2",
+                    "headers": [{
+                        "header": "Host",
+                        "values": ["example-2"],
+                    }],
+                },
             ],
             latitude=55,
             longitude=-12,
@@ -608,15 +608,15 @@ class LoadBalancerPool(pulumi.CustomResource):
             enabled=False,
             minimum_origins=1,
             notification_email="someone@example.com",
-            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
-                default_percent=55,
-                default_policy="random",
-                session_percent=12,
-                session_policy="hash",
-            )],
-            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
-                policy="random",
-            )])
+            load_sheddings=[{
+                "default_percent": 55,
+                "default_policy": "random",
+                "session_percent": 12,
+                "session_policy": "hash",
+            }],
+            origin_steerings=[{
+                "policy": "random",
+            }])
         ```
 
         ## Import
@@ -645,14 +645,14 @@ class LoadBalancerPool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  latitude: Optional[pulumi.Input[float]] = None,
-                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]]]] = None,
                  longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None,
-                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]]]] = None,
+                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -699,15 +699,15 @@ class LoadBalancerPool(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             latitude: Optional[pulumi.Input[float]] = None,
-            load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+            load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]]]] = None,
             longitude: Optional[pulumi.Input[float]] = None,
             minimum_origins: Optional[pulumi.Input[int]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             monitor: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_email: Optional[pulumi.Input[str]] = None,
-            origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
-            origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None) -> 'LoadBalancerPool':
+            origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]]]] = None,
+            origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None) -> 'LoadBalancerPool':
         """
         Get an existing LoadBalancerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -721,15 +721,15 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -328,7 +328,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Record(String name) {
+    public Record(java.lang.String name) {
         this(name, RecordArgs.Empty);
     }
     /**
@@ -336,7 +336,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Record(String name, RecordArgs args) {
+    public Record(java.lang.String name, RecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -345,12 +345,12 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Record(String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/record:Record", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Record(java.lang.String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/record:Record", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Record(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/record:Record", name, state, makeResourceOptions(options, id));
+    private Record(java.lang.String name, Output<java.lang.String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/record:Record", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RecordArgs makeArgs(RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -360,7 +360,7 @@ public class Record extends com.pulumi.resources.CustomResource {
         return args == null ? RecordArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -376,7 +376,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Record get(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Record get(java.lang.String name, Output<java.lang.String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Record(name, id, state, options);
     }
 }

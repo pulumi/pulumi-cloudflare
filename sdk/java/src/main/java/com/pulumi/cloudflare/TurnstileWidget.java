@@ -184,7 +184,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TurnstileWidget(String name) {
+    public TurnstileWidget(java.lang.String name) {
         this(name, TurnstileWidgetArgs.Empty);
     }
     /**
@@ -192,7 +192,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TurnstileWidget(String name, TurnstileWidgetArgs args) {
+    public TurnstileWidget(java.lang.String name, TurnstileWidgetArgs args) {
         this(name, args, null);
     }
     /**
@@ -201,12 +201,12 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TurnstileWidget(String name, TurnstileWidgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TurnstileWidget(java.lang.String name, TurnstileWidgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TurnstileWidget(String name, Output<String> id, @Nullable TurnstileWidgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, state, makeResourceOptions(options, id));
+    private TurnstileWidget(java.lang.String name, Output<java.lang.String> id, @Nullable TurnstileWidgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/turnstileWidget:TurnstileWidget", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TurnstileWidgetArgs makeArgs(TurnstileWidgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -216,7 +216,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
         return args == null ? TurnstileWidgetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -235,7 +235,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TurnstileWidget get(String name, Output<String> id, @Nullable TurnstileWidgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TurnstileWidget get(java.lang.String name, Output<java.lang.String> id, @Nullable TurnstileWidgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TurnstileWidget(name, id, state, options);
     }
 }

@@ -304,7 +304,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoadBalancerMonitor(String name) {
+    public LoadBalancerMonitor(java.lang.String name) {
         this(name, LoadBalancerMonitorArgs.Empty);
     }
     /**
@@ -312,7 +312,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerMonitor(String name, LoadBalancerMonitorArgs args) {
+    public LoadBalancerMonitor(java.lang.String name, LoadBalancerMonitorArgs args) {
         this(name, args, null);
     }
     /**
@@ -321,12 +321,12 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerMonitor(String name, LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LoadBalancerMonitor(java.lang.String name, LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoadBalancerMonitor(String name, Output<String> id, @Nullable LoadBalancerMonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, state, makeResourceOptions(options, id));
+    private LoadBalancerMonitor(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerMonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LoadBalancerMonitorArgs makeArgs(LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -336,7 +336,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return args == null ? LoadBalancerMonitorArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -352,7 +352,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoadBalancerMonitor get(String name, Output<String> id, @Nullable LoadBalancerMonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoadBalancerMonitor get(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerMonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoadBalancerMonitor(name, id, state, options);
     }
 }

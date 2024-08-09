@@ -149,7 +149,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessCustomPage(String name) {
+    public AccessCustomPage(java.lang.String name) {
         this(name, AccessCustomPageArgs.Empty);
     }
     /**
@@ -157,7 +157,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessCustomPage(String name, AccessCustomPageArgs args) {
+    public AccessCustomPage(java.lang.String name, AccessCustomPageArgs args) {
         this(name, args, null);
     }
     /**
@@ -166,12 +166,12 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessCustomPage(String name, AccessCustomPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessCustomPage(java.lang.String name, AccessCustomPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessCustomPage(String name, Output<String> id, @Nullable AccessCustomPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, state, makeResourceOptions(options, id));
+    private AccessCustomPage(java.lang.String name, Output<java.lang.String> id, @Nullable AccessCustomPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessCustomPage:AccessCustomPage", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessCustomPageArgs makeArgs(AccessCustomPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -181,7 +181,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
         return args == null ? AccessCustomPageArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +197,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessCustomPage get(String name, Output<String> id, @Nullable AccessCustomPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessCustomPage get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessCustomPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessCustomPage(name, id, state, options);
     }
 }

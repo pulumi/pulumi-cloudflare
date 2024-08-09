@@ -215,7 +215,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -241,10 +241,10 @@ class ZoneLockdown(pulumi.CustomResource):
             paused=False,
             description="Restrict access to these endpoints to requests from a known IP address range",
             urls=["api.mysite.com/some/endpoint*"],
-            configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip_range",
-                value="192.0.2.0/24",
-            )])
+            configurations=[{
+                "target": "ip_range",
+                "value": "192.0.2.0/24",
+            }])
         ```
 
         ## Import
@@ -255,7 +255,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
@@ -286,10 +286,10 @@ class ZoneLockdown(pulumi.CustomResource):
             paused=False,
             description="Restrict access to these endpoints to requests from a known IP address range",
             urls=["api.mysite.com/some/endpoint*"],
-            configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip_range",
-                value="192.0.2.0/24",
-            )])
+            configurations=[{
+                "target": "ip_range",
+                "value": "192.0.2.0/24",
+            }])
         ```
 
         ## Import
@@ -313,7 +313,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -350,7 +350,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+            configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -363,7 +363,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.

@@ -101,7 +101,7 @@ class AwaitableGetRulesetsResult(GetRulesetsResult):
 
 
 def get_rulesets(account_id: Optional[str] = None,
-                 filter: Optional[pulumi.InputType['GetRulesetsFilterArgs']] = None,
+                 filter: Optional[Union['GetRulesetsFilterArgs', 'GetRulesetsFilterArgsDict']] = None,
                  include_rules: Optional[bool] = None,
                  zone_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRulesetsResult:
@@ -115,9 +115,9 @@ def get_rulesets(account_id: Optional[str] = None,
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        filter=cloudflare.GetRulesetsFilterArgs(
-            name=".*OWASP.*",
-        ))
+        filter={
+            "name": ".*OWASP.*",
+        })
     ```
 
 
@@ -144,7 +144,7 @@ def get_rulesets(account_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_rulesets)
 def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetRulesetsFilterArgs']]]] = None,
+                        filter: Optional[pulumi.Input[Optional[Union['GetRulesetsFilterArgs', 'GetRulesetsFilterArgsDict']]]] = None,
                         include_rules: Optional[pulumi.Input[Optional[bool]]] = None,
                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesetsResult]:
@@ -158,9 +158,9 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        filter=cloudflare.GetRulesetsFilterArgs(
-            name=".*OWASP.*",
-        ))
+        filter={
+            "name": ".*OWASP.*",
+        })
     ```
 
 

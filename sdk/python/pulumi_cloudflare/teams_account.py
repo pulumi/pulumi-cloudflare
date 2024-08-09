@@ -539,18 +539,18 @@ class TeamsAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
-                 antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
-                 block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
-                 body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
-                 custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
-                 extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
-                 fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 antivirus: Optional[pulumi.Input[Union['TeamsAccountAntivirusArgs', 'TeamsAccountAntivirusArgsDict']]] = None,
+                 block_page: Optional[pulumi.Input[Union['TeamsAccountBlockPageArgs', 'TeamsAccountBlockPageArgsDict']]] = None,
+                 body_scanning: Optional[pulumi.Input[Union['TeamsAccountBodyScanningArgs', 'TeamsAccountBodyScanningArgsDict']]] = None,
+                 custom_certificate: Optional[pulumi.Input[Union['TeamsAccountCustomCertificateArgs', 'TeamsAccountCustomCertificateArgsDict']]] = None,
+                 extended_email_matching: Optional[pulumi.Input[Union['TeamsAccountExtendedEmailMatchingArgs', 'TeamsAccountExtendedEmailMatchingArgsDict']]] = None,
+                 fips: Optional[pulumi.Input[Union['TeamsAccountFipsArgs', 'TeamsAccountFipsArgsDict']]] = None,
+                 logging: Optional[pulumi.Input[Union['TeamsAccountLoggingArgs', 'TeamsAccountLoggingArgsDict']]] = None,
                  non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-                 payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
+                 payload_log: Optional[pulumi.Input[Union['TeamsAccountPayloadLogArgs', 'TeamsAccountPayloadLogArgsDict']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
-                 ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['TeamsAccountProxyArgs', 'TeamsAccountProxyArgsDict']]] = None,
+                 ssh_session_log: Optional[pulumi.Input[Union['TeamsAccountSshSessionLogArgs', 'TeamsAccountSshSessionLogArgsDict']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -568,55 +568,55 @@ class TeamsAccount(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             tls_decrypt_enabled=True,
             protocol_detection_enabled=True,
-            block_page=cloudflare.TeamsAccountBlockPageArgs(
-                footer_text="hello",
-                header_text="hello",
-                logo_path="https://example.com/logo.jpg",
-                background_color="#000000",
-            ),
-            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
-                inspection_mode="deep",
-            ),
-            antivirus=cloudflare.TeamsAccountAntivirusArgs(
-                enabled_download_phase=True,
-                enabled_upload_phase=False,
-                fail_closed=True,
-                notification_settings=cloudflare.TeamsAccountAntivirusNotificationSettingsArgs(
-                    enabled=True,
-                    message="you are blocked",
-                    support_url="https://example.com/blocked",
-                ),
-            ),
-            fips=cloudflare.TeamsAccountFipsArgs(
-                tls=True,
-            ),
-            proxy=cloudflare.TeamsAccountProxyArgs(
-                tcp=True,
-                udp=True,
-                root_ca=True,
-                virtual_ip=False,
-            ),
+            block_page={
+                "footer_text": "hello",
+                "header_text": "hello",
+                "logo_path": "https://example.com/logo.jpg",
+                "background_color": "#000000",
+            },
+            body_scanning={
+                "inspection_mode": "deep",
+            },
+            antivirus={
+                "enabled_download_phase": True,
+                "enabled_upload_phase": False,
+                "fail_closed": True,
+                "notification_settings": {
+                    "enabled": True,
+                    "message": "you are blocked",
+                    "support_url": "https://example.com/blocked",
+                },
+            },
+            fips={
+                "tls": True,
+            },
+            proxy={
+                "tcp": True,
+                "udp": True,
+                "root_ca": True,
+                "virtual_ip": False,
+            },
             url_browser_isolation_enabled=True,
-            logging=cloudflare.TeamsAccountLoggingArgs(
-                redact_pii=True,
-                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
-                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
-                        log_all=False,
-                        log_blocks=True,
-                    ),
-                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
-                        log_all=True,
-                        log_blocks=True,
-                    ),
-                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
-                        log_all=False,
-                        log_blocks=True,
-                    ),
-                ),
-            ),
-            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
-                enabled=True,
-            ))
+            logging={
+                "redact_pii": True,
+                "settings_by_rule_type": {
+                    "dns": {
+                        "log_all": False,
+                        "log_blocks": True,
+                    },
+                    "http": {
+                        "log_all": True,
+                        "log_blocks": True,
+                    },
+                    "l4": {
+                        "log_all": False,
+                        "log_blocks": True,
+                    },
+                },
+            },
+            extended_email_matching={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -629,17 +629,17 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']] custom_certificate: Configuration for custom certificates / BYO-PKI.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[Union['TeamsAccountAntivirusArgs', 'TeamsAccountAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
+        :param pulumi.Input[Union['TeamsAccountBlockPageArgs', 'TeamsAccountBlockPageArgsDict']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[Union['TeamsAccountBodyScanningArgs', 'TeamsAccountBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
+        :param pulumi.Input[Union['TeamsAccountCustomCertificateArgs', 'TeamsAccountCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input[Union['TeamsAccountExtendedEmailMatchingArgs', 'TeamsAccountExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
+        :param pulumi.Input[Union['TeamsAccountFipsArgs', 'TeamsAccountFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
+        :param pulumi.Input[Union['TeamsAccountPayloadLogArgs', 'TeamsAccountPayloadLogArgsDict']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
+        :param pulumi.Input[Union['TeamsAccountProxyArgs', 'TeamsAccountProxyArgsDict']] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input[Union['TeamsAccountSshSessionLogArgs', 'TeamsAccountSshSessionLogArgsDict']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
@@ -663,55 +663,55 @@ class TeamsAccount(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             tls_decrypt_enabled=True,
             protocol_detection_enabled=True,
-            block_page=cloudflare.TeamsAccountBlockPageArgs(
-                footer_text="hello",
-                header_text="hello",
-                logo_path="https://example.com/logo.jpg",
-                background_color="#000000",
-            ),
-            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
-                inspection_mode="deep",
-            ),
-            antivirus=cloudflare.TeamsAccountAntivirusArgs(
-                enabled_download_phase=True,
-                enabled_upload_phase=False,
-                fail_closed=True,
-                notification_settings=cloudflare.TeamsAccountAntivirusNotificationSettingsArgs(
-                    enabled=True,
-                    message="you are blocked",
-                    support_url="https://example.com/blocked",
-                ),
-            ),
-            fips=cloudflare.TeamsAccountFipsArgs(
-                tls=True,
-            ),
-            proxy=cloudflare.TeamsAccountProxyArgs(
-                tcp=True,
-                udp=True,
-                root_ca=True,
-                virtual_ip=False,
-            ),
+            block_page={
+                "footer_text": "hello",
+                "header_text": "hello",
+                "logo_path": "https://example.com/logo.jpg",
+                "background_color": "#000000",
+            },
+            body_scanning={
+                "inspection_mode": "deep",
+            },
+            antivirus={
+                "enabled_download_phase": True,
+                "enabled_upload_phase": False,
+                "fail_closed": True,
+                "notification_settings": {
+                    "enabled": True,
+                    "message": "you are blocked",
+                    "support_url": "https://example.com/blocked",
+                },
+            },
+            fips={
+                "tls": True,
+            },
+            proxy={
+                "tcp": True,
+                "udp": True,
+                "root_ca": True,
+                "virtual_ip": False,
+            },
             url_browser_isolation_enabled=True,
-            logging=cloudflare.TeamsAccountLoggingArgs(
-                redact_pii=True,
-                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
-                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
-                        log_all=False,
-                        log_blocks=True,
-                    ),
-                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
-                        log_all=True,
-                        log_blocks=True,
-                    ),
-                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
-                        log_all=False,
-                        log_blocks=True,
-                    ),
-                ),
-            ),
-            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
-                enabled=True,
-            ))
+            logging={
+                "redact_pii": True,
+                "settings_by_rule_type": {
+                    "dns": {
+                        "log_all": False,
+                        "log_blocks": True,
+                    },
+                    "http": {
+                        "log_all": True,
+                        "log_blocks": True,
+                    },
+                    "l4": {
+                        "log_all": False,
+                        "log_blocks": True,
+                    },
+                },
+            },
+            extended_email_matching={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -737,18 +737,18 @@ class TeamsAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
-                 antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
-                 block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
-                 body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
-                 custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
-                 extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
-                 fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 antivirus: Optional[pulumi.Input[Union['TeamsAccountAntivirusArgs', 'TeamsAccountAntivirusArgsDict']]] = None,
+                 block_page: Optional[pulumi.Input[Union['TeamsAccountBlockPageArgs', 'TeamsAccountBlockPageArgsDict']]] = None,
+                 body_scanning: Optional[pulumi.Input[Union['TeamsAccountBodyScanningArgs', 'TeamsAccountBodyScanningArgsDict']]] = None,
+                 custom_certificate: Optional[pulumi.Input[Union['TeamsAccountCustomCertificateArgs', 'TeamsAccountCustomCertificateArgsDict']]] = None,
+                 extended_email_matching: Optional[pulumi.Input[Union['TeamsAccountExtendedEmailMatchingArgs', 'TeamsAccountExtendedEmailMatchingArgsDict']]] = None,
+                 fips: Optional[pulumi.Input[Union['TeamsAccountFipsArgs', 'TeamsAccountFipsArgsDict']]] = None,
+                 logging: Optional[pulumi.Input[Union['TeamsAccountLoggingArgs', 'TeamsAccountLoggingArgsDict']]] = None,
                  non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-                 payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
+                 payload_log: Optional[pulumi.Input[Union['TeamsAccountPayloadLogArgs', 'TeamsAccountPayloadLogArgsDict']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
-                 ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['TeamsAccountProxyArgs', 'TeamsAccountProxyArgsDict']]] = None,
+                 ssh_session_log: Optional[pulumi.Input[Union['TeamsAccountSshSessionLogArgs', 'TeamsAccountSshSessionLogArgsDict']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -790,18 +790,18 @@ class TeamsAccount(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
-            antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
-            block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
-            body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
-            custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
-            extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
-            fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
-            logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+            antivirus: Optional[pulumi.Input[Union['TeamsAccountAntivirusArgs', 'TeamsAccountAntivirusArgsDict']]] = None,
+            block_page: Optional[pulumi.Input[Union['TeamsAccountBlockPageArgs', 'TeamsAccountBlockPageArgsDict']]] = None,
+            body_scanning: Optional[pulumi.Input[Union['TeamsAccountBodyScanningArgs', 'TeamsAccountBodyScanningArgsDict']]] = None,
+            custom_certificate: Optional[pulumi.Input[Union['TeamsAccountCustomCertificateArgs', 'TeamsAccountCustomCertificateArgsDict']]] = None,
+            extended_email_matching: Optional[pulumi.Input[Union['TeamsAccountExtendedEmailMatchingArgs', 'TeamsAccountExtendedEmailMatchingArgsDict']]] = None,
+            fips: Optional[pulumi.Input[Union['TeamsAccountFipsArgs', 'TeamsAccountFipsArgsDict']]] = None,
+            logging: Optional[pulumi.Input[Union['TeamsAccountLoggingArgs', 'TeamsAccountLoggingArgsDict']]] = None,
             non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-            payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
+            payload_log: Optional[pulumi.Input[Union['TeamsAccountPayloadLogArgs', 'TeamsAccountPayloadLogArgsDict']]] = None,
             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
-            proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
-            ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
+            proxy: Optional[pulumi.Input[Union['TeamsAccountProxyArgs', 'TeamsAccountProxyArgsDict']]] = None,
+            ssh_session_log: Optional[pulumi.Input[Union['TeamsAccountSshSessionLogArgs', 'TeamsAccountSshSessionLogArgsDict']]] = None,
             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None) -> 'TeamsAccount':
         """
@@ -813,17 +813,17 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']] custom_certificate: Configuration for custom certificates / BYO-PKI.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']] extended_email_matching: Configuration for extended e-mail matching.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[Union['TeamsAccountAntivirusArgs', 'TeamsAccountAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
+        :param pulumi.Input[Union['TeamsAccountBlockPageArgs', 'TeamsAccountBlockPageArgsDict']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[Union['TeamsAccountBodyScanningArgs', 'TeamsAccountBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
+        :param pulumi.Input[Union['TeamsAccountCustomCertificateArgs', 'TeamsAccountCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input[Union['TeamsAccountExtendedEmailMatchingArgs', 'TeamsAccountExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
+        :param pulumi.Input[Union['TeamsAccountFipsArgs', 'TeamsAccountFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
+        :param pulumi.Input[Union['TeamsAccountPayloadLogArgs', 'TeamsAccountPayloadLogArgsDict']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
+        :param pulumi.Input[Union['TeamsAccountProxyArgs', 'TeamsAccountProxyArgsDict']] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input[Union['TeamsAccountSshSessionLogArgs', 'TeamsAccountSshSessionLogArgsDict']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """

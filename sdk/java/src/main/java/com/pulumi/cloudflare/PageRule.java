@@ -153,7 +153,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PageRule(String name) {
+    public PageRule(java.lang.String name) {
         this(name, PageRuleArgs.Empty);
     }
     /**
@@ -161,7 +161,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PageRule(String name, PageRuleArgs args) {
+    public PageRule(java.lang.String name, PageRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -170,12 +170,12 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PageRule(String name, PageRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/pageRule:PageRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PageRule(java.lang.String name, PageRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/pageRule:PageRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PageRule(String name, Output<String> id, @Nullable PageRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/pageRule:PageRule", name, state, makeResourceOptions(options, id));
+    private PageRule(java.lang.String name, Output<java.lang.String> id, @Nullable PageRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/pageRule:PageRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PageRuleArgs makeArgs(PageRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -185,7 +185,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
         return args == null ? PageRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -201,7 +201,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PageRule get(String name, Output<String> id, @Nullable PageRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PageRule get(java.lang.String name, Output<java.lang.String> id, @Nullable PageRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PageRule(name, id, state, options);
     }
 }

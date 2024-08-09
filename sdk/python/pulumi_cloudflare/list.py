@@ -185,7 +185,7 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListItemArgs']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -237,7 +237,7 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListItemArgs']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -272,7 +272,7 @@ class List(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListItemArgs']]]]] = None,
+            items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'List':
         """

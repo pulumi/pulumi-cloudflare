@@ -330,7 +330,7 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpsecTunnel(String name) {
+    public IpsecTunnel(java.lang.String name) {
         this(name, IpsecTunnelArgs.Empty);
     }
     /**
@@ -338,7 +338,7 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpsecTunnel(String name, IpsecTunnelArgs args) {
+    public IpsecTunnel(java.lang.String name, IpsecTunnelArgs args) {
         this(name, args, null);
     }
     /**
@@ -347,12 +347,12 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpsecTunnel(String name, IpsecTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/ipsecTunnel:IpsecTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IpsecTunnel(java.lang.String name, IpsecTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/ipsecTunnel:IpsecTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpsecTunnel(String name, Output<String> id, @Nullable IpsecTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/ipsecTunnel:IpsecTunnel", name, state, makeResourceOptions(options, id));
+    private IpsecTunnel(java.lang.String name, Output<java.lang.String> id, @Nullable IpsecTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/ipsecTunnel:IpsecTunnel", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IpsecTunnelArgs makeArgs(IpsecTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -362,7 +362,7 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
         return args == null ? IpsecTunnelArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -381,7 +381,7 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpsecTunnel get(String name, Output<String> id, @Nullable IpsecTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpsecTunnel get(java.lang.String name, Output<java.lang.String> id, @Nullable IpsecTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpsecTunnel(name, id, state, options);
     }
 }

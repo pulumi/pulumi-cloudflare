@@ -272,7 +272,7 @@ class TeamsLocation(pulumi.CustomResource):
                  client_default: Optional[pulumi.Input[bool]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Teams Location resource. Teams Locations are
@@ -290,12 +290,12 @@ class TeamsLocation(pulumi.CustomResource):
             client_default=True,
             ecs_support=False,
             networks=[
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.1/32",
-                ),
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.2/32",
-                ),
+                {
+                    "network": "203.0.113.1/32",
+                },
+                {
+                    "network": "203.0.113.2/32",
+                },
             ])
         ```
 
@@ -311,7 +311,7 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
         :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
         """
         ...
     @overload
@@ -335,12 +335,12 @@ class TeamsLocation(pulumi.CustomResource):
             client_default=True,
             ecs_support=False,
             networks=[
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.1/32",
-                ),
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.2/32",
-                ),
+                {
+                    "network": "203.0.113.1/32",
+                },
+                {
+                    "network": "203.0.113.2/32",
+                },
             ])
         ```
 
@@ -369,7 +369,7 @@ class TeamsLocation(pulumi.CustomResource):
                  client_default: Optional[pulumi.Input[bool]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,7 +411,7 @@ class TeamsLocation(pulumi.CustomResource):
             ip: Optional[pulumi.Input[str]] = None,
             ipv4_destination: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
             policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'TeamsLocation':
         """
         Get an existing TeamsLocation resource's state with the given name, id, and optional extra
@@ -428,7 +428,7 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.Input[str] ip: Client IP address.
         :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

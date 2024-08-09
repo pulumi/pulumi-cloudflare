@@ -160,7 +160,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomSsl(String name) {
+    public CustomSsl(java.lang.String name) {
         this(name, CustomSslArgs.Empty);
     }
     /**
@@ -168,7 +168,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomSsl(String name, CustomSslArgs args) {
+    public CustomSsl(java.lang.String name, CustomSslArgs args) {
         this(name, args, null);
     }
     /**
@@ -177,12 +177,12 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomSsl(String name, CustomSslArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/customSsl:CustomSsl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CustomSsl(java.lang.String name, CustomSslArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/customSsl:CustomSsl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomSsl(String name, Output<String> id, @Nullable CustomSslState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/customSsl:CustomSsl", name, state, makeResourceOptions(options, id));
+    private CustomSsl(java.lang.String name, Output<java.lang.String> id, @Nullable CustomSslState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/customSsl:CustomSsl", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CustomSslArgs makeArgs(CustomSslArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -192,7 +192,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
         return args == null ? CustomSslArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +208,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomSsl get(String name, Output<String> id, @Nullable CustomSslState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomSsl get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomSslState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomSsl(name, id, state, options);
     }
 }

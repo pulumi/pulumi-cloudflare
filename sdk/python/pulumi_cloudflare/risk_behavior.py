@@ -98,7 +98,7 @@ class RiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RiskBehaviorBehaviorArgs']]]]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None,
                  __props__=None):
         """
         The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
@@ -106,7 +106,7 @@ class RiskBehavior(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RiskBehaviorBehaviorArgs']]]] behaviors: Zero Trust risk behaviors configured on this account
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]] behaviors: Zero Trust risk behaviors configured on this account
         """
         ...
     @overload
@@ -133,7 +133,7 @@ class RiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RiskBehaviorBehaviorArgs']]]]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -158,7 +158,7 @@ class RiskBehavior(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RiskBehaviorBehaviorArgs']]]]] = None) -> 'RiskBehavior':
+            behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None) -> 'RiskBehavior':
         """
         Get an existing RiskBehavior resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -167,7 +167,7 @@ class RiskBehavior(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RiskBehaviorBehaviorArgs']]]] behaviors: Zero Trust risk behaviors configured on this account
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]] behaviors: Zero Trust risk behaviors configured on this account
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

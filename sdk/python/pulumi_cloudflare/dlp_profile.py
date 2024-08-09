@@ -287,9 +287,9 @@ class DlpProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
-                 context_awareness: Optional[pulumi.Input[pulumi.InputType['DlpProfileContextAwarenessArgs']]] = None,
+                 context_awareness: Optional[pulumi.Input[Union['DlpProfileContextAwarenessArgs', 'DlpProfileContextAwarenessArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
+                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpProfileEntryArgs', 'DlpProfileEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocr_enabled: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -312,31 +312,31 @@ class DlpProfile(pulumi.CustomResource):
             type="predefined",
             allowed_match_count=3,
             entries=[
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    name="Amazon AWS Access Key ID",
-                    id="d8fcfc9c-773c-405e-8426-21ecbb67ba93",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=False,
-                    id="2c0e33e1-71da-40c8-aad3-32e674ad3d96",
-                    name="Amazon AWS Secret Access Key",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    id="4e92c006-3802-4dff-bbe1-8e1513b1c92a",
-                    name="Microsoft Azure Client Secret",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=False,
-                    id="5c713294-2375-4904-abcf-e4a15be4d592",
-                    name="SSH Private Key",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    id="6c6579e4-d832-42d5-905c-8e53340930f2",
-                    name="Google GCP API Key",
-                ),
+                {
+                    "enabled": True,
+                    "name": "Amazon AWS Access Key ID",
+                    "id": "d8fcfc9c-773c-405e-8426-21ecbb67ba93",
+                },
+                {
+                    "enabled": False,
+                    "id": "2c0e33e1-71da-40c8-aad3-32e674ad3d96",
+                    "name": "Amazon AWS Secret Access Key",
+                },
+                {
+                    "enabled": True,
+                    "id": "4e92c006-3802-4dff-bbe1-8e1513b1c92a",
+                    "name": "Microsoft Azure Client Secret",
+                },
+                {
+                    "enabled": False,
+                    "id": "5c713294-2375-4904-abcf-e4a15be4d592",
+                    "name": "SSH Private Key",
+                },
+                {
+                    "enabled": True,
+                    "id": "6c6579e4-d832-42d5-905c-8e53340930f2",
+                    "name": "Google GCP API Key",
+                },
             ])
         # Custom profile
         example_custom = cloudflare.DlpProfile("example_custom",
@@ -346,22 +346,22 @@ class DlpProfile(pulumi.CustomResource):
             type="custom",
             allowed_match_count=0,
             entries=[
-                cloudflare.DlpProfileEntryArgs(
-                    name="Matches visa credit cards",
-                    enabled=True,
-                    pattern=cloudflare.DlpProfileEntryPatternArgs(
-                        regex="4\\\\d{3}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}",
-                        validation="luhn",
-                    ),
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    name="Matches diners club card",
-                    enabled=True,
-                    pattern=cloudflare.DlpProfileEntryPatternArgs(
-                        regex="(?:0[0-5]|[68][0-9])[0-9]{11}",
-                        validation="luhn",
-                    ),
-                ),
+                {
+                    "name": "Matches visa credit cards",
+                    "enabled": True,
+                    "pattern": {
+                        "regex": "4\\\\d{3}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}",
+                        "validation": "luhn",
+                    },
+                },
+                {
+                    "name": "Matches diners club card",
+                    "enabled": True,
+                    "pattern": {
+                        "regex": "(?:0[0-5]|[68][0-9])[0-9]{11}",
+                        "validation": "luhn",
+                    },
+                },
             ])
         ```
 
@@ -375,9 +375,9 @@ class DlpProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
-        :param pulumi.Input[pulumi.InputType['DlpProfileContextAwarenessArgs']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input[Union['DlpProfileContextAwarenessArgs', 'DlpProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DlpProfileEntryArgs', 'DlpProfileEntryArgsDict']]]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] ocr_enabled: If true, scan images via OCR to determine if any text present matches filters.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
@@ -406,31 +406,31 @@ class DlpProfile(pulumi.CustomResource):
             type="predefined",
             allowed_match_count=3,
             entries=[
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    name="Amazon AWS Access Key ID",
-                    id="d8fcfc9c-773c-405e-8426-21ecbb67ba93",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=False,
-                    id="2c0e33e1-71da-40c8-aad3-32e674ad3d96",
-                    name="Amazon AWS Secret Access Key",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    id="4e92c006-3802-4dff-bbe1-8e1513b1c92a",
-                    name="Microsoft Azure Client Secret",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=False,
-                    id="5c713294-2375-4904-abcf-e4a15be4d592",
-                    name="SSH Private Key",
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    enabled=True,
-                    id="6c6579e4-d832-42d5-905c-8e53340930f2",
-                    name="Google GCP API Key",
-                ),
+                {
+                    "enabled": True,
+                    "name": "Amazon AWS Access Key ID",
+                    "id": "d8fcfc9c-773c-405e-8426-21ecbb67ba93",
+                },
+                {
+                    "enabled": False,
+                    "id": "2c0e33e1-71da-40c8-aad3-32e674ad3d96",
+                    "name": "Amazon AWS Secret Access Key",
+                },
+                {
+                    "enabled": True,
+                    "id": "4e92c006-3802-4dff-bbe1-8e1513b1c92a",
+                    "name": "Microsoft Azure Client Secret",
+                },
+                {
+                    "enabled": False,
+                    "id": "5c713294-2375-4904-abcf-e4a15be4d592",
+                    "name": "SSH Private Key",
+                },
+                {
+                    "enabled": True,
+                    "id": "6c6579e4-d832-42d5-905c-8e53340930f2",
+                    "name": "Google GCP API Key",
+                },
             ])
         # Custom profile
         example_custom = cloudflare.DlpProfile("example_custom",
@@ -440,22 +440,22 @@ class DlpProfile(pulumi.CustomResource):
             type="custom",
             allowed_match_count=0,
             entries=[
-                cloudflare.DlpProfileEntryArgs(
-                    name="Matches visa credit cards",
-                    enabled=True,
-                    pattern=cloudflare.DlpProfileEntryPatternArgs(
-                        regex="4\\\\d{3}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}",
-                        validation="luhn",
-                    ),
-                ),
-                cloudflare.DlpProfileEntryArgs(
-                    name="Matches diners club card",
-                    enabled=True,
-                    pattern=cloudflare.DlpProfileEntryPatternArgs(
-                        regex="(?:0[0-5]|[68][0-9])[0-9]{11}",
-                        validation="luhn",
-                    ),
-                ),
+                {
+                    "name": "Matches visa credit cards",
+                    "enabled": True,
+                    "pattern": {
+                        "regex": "4\\\\d{3}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}([-\\\\. ])?\\\\d{4}",
+                        "validation": "luhn",
+                    },
+                },
+                {
+                    "name": "Matches diners club card",
+                    "enabled": True,
+                    "pattern": {
+                        "regex": "(?:0[0-5]|[68][0-9])[0-9]{11}",
+                        "validation": "luhn",
+                    },
+                },
             ])
         ```
 
@@ -482,9 +482,9 @@ class DlpProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_match_count: Optional[pulumi.Input[int]] = None,
-                 context_awareness: Optional[pulumi.Input[pulumi.InputType['DlpProfileContextAwarenessArgs']]] = None,
+                 context_awareness: Optional[pulumi.Input[Union['DlpProfileContextAwarenessArgs', 'DlpProfileContextAwarenessArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
+                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpProfileEntryArgs', 'DlpProfileEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocr_enabled: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -527,9 +527,9 @@ class DlpProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             allowed_match_count: Optional[pulumi.Input[int]] = None,
-            context_awareness: Optional[pulumi.Input[pulumi.InputType['DlpProfileContextAwarenessArgs']]] = None,
+            context_awareness: Optional[pulumi.Input[Union['DlpProfileContextAwarenessArgs', 'DlpProfileContextAwarenessArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
+            entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpProfileEntryArgs', 'DlpProfileEntryArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocr_enabled: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DlpProfile':
@@ -542,9 +542,9 @@ class DlpProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
-        :param pulumi.Input[pulumi.InputType['DlpProfileContextAwarenessArgs']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input[Union['DlpProfileContextAwarenessArgs', 'DlpProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DlpProfileEntryArgs', 'DlpProfileEntryArgsDict']]]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] ocr_enabled: If true, scan images via OCR to determine if any text present matches filters.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
