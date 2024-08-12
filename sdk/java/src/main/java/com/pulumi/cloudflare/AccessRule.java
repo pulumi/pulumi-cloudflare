@@ -191,7 +191,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessRule(String name) {
+    public AccessRule(java.lang.String name) {
         this(name, AccessRuleArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessRule(String name, AccessRuleArgs args) {
+    public AccessRule(java.lang.String name, AccessRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,12 +208,12 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessRule(String name, AccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessRule:AccessRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccessRule(java.lang.String name, AccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessRule:AccessRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessRule(String name, Output<String> id, @Nullable AccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessRule:AccessRule", name, state, makeResourceOptions(options, id));
+    private AccessRule(java.lang.String name, Output<java.lang.String> id, @Nullable AccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessRule:AccessRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccessRuleArgs makeArgs(AccessRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -223,7 +223,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
         return args == null ? AccessRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +239,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessRule get(String name, Output<String> id, @Nullable AccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessRule get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessRule(name, id, state, options);
     }
 }

@@ -35,19 +35,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new EmailRoutingAddress("example", EmailRoutingAddressArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .email("user{@literal @}example.com")
+ *             .email("user}{@literal @}{@code example.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -150,7 +150,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EmailRoutingAddress(String name) {
+    public EmailRoutingAddress(java.lang.String name) {
         this(name, EmailRoutingAddressArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailRoutingAddress(String name, EmailRoutingAddressArgs args) {
+    public EmailRoutingAddress(java.lang.String name, EmailRoutingAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,12 +167,12 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailRoutingAddress(String name, EmailRoutingAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EmailRoutingAddress(java.lang.String name, EmailRoutingAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EmailRoutingAddress(String name, Output<String> id, @Nullable EmailRoutingAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, state, makeResourceOptions(options, id));
+    private EmailRoutingAddress(java.lang.String name, Output<java.lang.String> id, @Nullable EmailRoutingAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EmailRoutingAddressArgs makeArgs(EmailRoutingAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -182,7 +182,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
         return args == null ? EmailRoutingAddressArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -198,7 +198,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EmailRoutingAddress get(String name, Output<String> id, @Nullable EmailRoutingAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EmailRoutingAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable EmailRoutingAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EmailRoutingAddress(name, id, state, options);
     }
 }

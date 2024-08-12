@@ -189,7 +189,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
@@ -209,19 +209,19 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             mode="js_challenge",
             paused=False,
             description="My description 1",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Chrome",
-            ))
+            configuration={
+                "target": "ua",
+                "value": "Chrome",
+            })
         example2 = cloudflare.UserAgentBlockingRule("example_2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             mode="challenge",
             paused=True,
             description="My description 22",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Mozilla",
-            ))
+            configuration={
+                "target": "ua",
+                "value": "Mozilla",
+            })
         ```
 
         ## Import
@@ -232,7 +232,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']] configuration: The configuration object for the current rule.
+        :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The configuration object for the current rule.
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
@@ -258,19 +258,19 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             mode="js_challenge",
             paused=False,
             description="My description 1",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Chrome",
-            ))
+            configuration={
+                "target": "ua",
+                "value": "Chrome",
+            })
         example2 = cloudflare.UserAgentBlockingRule("example_2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             mode="challenge",
             paused=True,
             description="My description 22",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Mozilla",
-            ))
+            configuration={
+                "target": "ua",
+                "value": "Mozilla",
+            })
         ```
 
         ## Import
@@ -294,7 +294,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
@@ -333,7 +333,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
@@ -345,7 +345,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']] configuration: The configuration object for the current rule.
+        :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The configuration object for the current rule.
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.

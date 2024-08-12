@@ -254,7 +254,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoadBalancerPool(String name) {
+    public LoadBalancerPool(java.lang.String name) {
         this(name, LoadBalancerPoolArgs.Empty);
     }
     /**
@@ -262,7 +262,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerPool(String name, LoadBalancerPoolArgs args) {
+    public LoadBalancerPool(java.lang.String name, LoadBalancerPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -271,12 +271,12 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerPool(String name, LoadBalancerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LoadBalancerPool(java.lang.String name, LoadBalancerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoadBalancerPool(String name, Output<String> id, @Nullable LoadBalancerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, state, makeResourceOptions(options, id));
+    private LoadBalancerPool(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LoadBalancerPoolArgs makeArgs(LoadBalancerPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -286,7 +286,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return args == null ? LoadBalancerPoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +302,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoadBalancerPool get(String name, Output<String> id, @Nullable LoadBalancerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoadBalancerPool get(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoadBalancerPool(name, id, state, options);
     }
 }

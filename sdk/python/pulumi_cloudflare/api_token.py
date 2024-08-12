@@ -252,11 +252,11 @@ class ApiToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
                  expires_on: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  not_before: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a resource which manages Cloudflare API tokens.
@@ -266,11 +266,11 @@ class ApiToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Conditions under which the token should be considered valid.
+        :param pulumi.Input[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']] condition: Conditions under which the token should be considered valid.
         :param pulumi.Input[str] expires_on: The expiration time on or after which the token MUST NOT be accepted for processing.
         :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]] policies: Permissions policy. Multiple policy blocks can be defined.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Permissions policy. Multiple policy blocks can be defined.
         """
         ...
     @overload
@@ -299,11 +299,11 @@ class ApiToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
                  expires_on: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  not_before: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,13 +338,13 @@ class ApiToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
             expires_on: Optional[pulumi.Input[str]] = None,
             issued_on: Optional[pulumi.Input[str]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             not_before: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'ApiToken':
         """
@@ -354,13 +354,13 @@ class ApiToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Conditions under which the token should be considered valid.
+        :param pulumi.Input[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']] condition: Conditions under which the token should be considered valid.
         :param pulumi.Input[str] expires_on: The expiration time on or after which the token MUST NOT be accepted for processing.
         :param pulumi.Input[str] issued_on: Timestamp of when the token was issued.
         :param pulumi.Input[str] modified_on: Timestamp of when the token was last modified.
         :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]] policies: Permissions policy. Multiple policy blocks can be defined.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Permissions policy. Multiple policy blocks can be defined.
         :param pulumi.Input[str] value: The value of the API Token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

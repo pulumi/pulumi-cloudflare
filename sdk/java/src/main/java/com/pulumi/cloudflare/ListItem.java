@@ -238,7 +238,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ListItem(String name) {
+    public ListItem(java.lang.String name) {
         this(name, ListItemArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ListItem(String name, ListItemArgs args) {
+    public ListItem(java.lang.String name, ListItemArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,12 +255,12 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ListItem(String name, ListItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/listItem:ListItem", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ListItem(java.lang.String name, ListItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/listItem:ListItem", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ListItem(String name, Output<String> id, @Nullable ListItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/listItem:ListItem", name, state, makeResourceOptions(options, id));
+    private ListItem(java.lang.String name, Output<java.lang.String> id, @Nullable ListItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/listItem:ListItem", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ListItemArgs makeArgs(ListItemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -270,7 +270,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return args == null ? ListItemArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -286,7 +286,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ListItem get(String name, Output<String> id, @Nullable ListItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ListItem get(java.lang.String name, Output<java.lang.String> id, @Nullable ListItemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ListItem(name, id, state, options);
     }
 }

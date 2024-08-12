@@ -36,22 +36,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new AccountMember("example", AccountMemberArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .emailAddress("user{@literal @}example.com")
+ *             .emailAddress("user}{@literal @}{@code example.com")
  *             .roleIds(            
  *                 "68b329da9893e34099c7d8ad5cb9c940",
  *                 "d784fa8b6d98d27699781bd9a7cf19f0")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -126,7 +126,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccountMember(String name) {
+    public AccountMember(java.lang.String name) {
         this(name, AccountMemberArgs.Empty);
     }
     /**
@@ -134,7 +134,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountMember(String name, AccountMemberArgs args) {
+    public AccountMember(java.lang.String name, AccountMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -143,12 +143,12 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountMember(String name, AccountMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accountMember:AccountMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AccountMember(java.lang.String name, AccountMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accountMember:AccountMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccountMember(String name, Output<String> id, @Nullable AccountMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accountMember:AccountMember", name, state, makeResourceOptions(options, id));
+    private AccountMember(java.lang.String name, Output<java.lang.String> id, @Nullable AccountMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accountMember:AccountMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AccountMemberArgs makeArgs(AccountMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -158,7 +158,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
         return args == null ? AccountMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +174,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccountMember get(String name, Output<String> id, @Nullable AccountMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccountMember get(java.lang.String name, Output<java.lang.String> id, @Nullable AccountMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccountMember(name, id, state, options);
     }
 }

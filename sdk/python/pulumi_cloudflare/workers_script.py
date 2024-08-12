@@ -552,24 +552,24 @@ class WorkersScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptAnalyticsEngineBindingArgs']]]]] = None,
+                 analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptAnalyticsEngineBindingArgs', 'WorkersScriptAnalyticsEngineBindingArgsDict']]]]] = None,
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptD1DatabaseBindingArgs']]]]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptD1DatabaseBindingArgs', 'WorkersScriptD1DatabaseBindingArgsDict']]]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
-                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptKvNamespaceBindingArgs']]]]] = None,
+                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptKvNamespaceBindingArgs', 'WorkersScriptKvNamespaceBindingArgsDict']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlacementArgs']]]]] = None,
-                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlainTextBindingArgs']]]]] = None,
-                 queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptQueueBindingArgs']]]]] = None,
-                 r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptR2BucketBindingArgs']]]]] = None,
-                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptSecretTextBindingArgs']]]]] = None,
-                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptServiceBindingArgs']]]]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]]]] = None,
+                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlainTextBindingArgs', 'WorkersScriptPlainTextBindingArgsDict']]]]] = None,
+                 queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptQueueBindingArgs', 'WorkersScriptQueueBindingArgsDict']]]]] = None,
+                 r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptR2BucketBindingArgs', 'WorkersScriptR2BucketBindingArgsDict']]]]] = None,
+                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptSecretTextBindingArgs', 'WorkersScriptSecretTextBindingArgsDict']]]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptServiceBindingArgs', 'WorkersScriptServiceBindingArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptWebassemblyBindingArgs']]]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptWebassemblyBindingArgs', 'WorkersScriptWebassemblyBindingArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
@@ -589,35 +589,35 @@ class WorkersScript(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
             content=std.file(input="script.js").result,
-            kv_namespace_bindings=[cloudflare.WorkersScriptKvNamespaceBindingArgs(
-                name="MY_EXAMPLE_KV_NAMESPACE",
-                namespace_id=my_namespace.id,
-            )],
-            plain_text_bindings=[cloudflare.WorkersScriptPlainTextBindingArgs(
-                name="MY_EXAMPLE_PLAIN_TEXT",
-                text="foobar",
-            )],
-            secret_text_bindings=[cloudflare.WorkersScriptSecretTextBindingArgs(
-                name="MY_EXAMPLE_SECRET_TEXT",
-                text=secret_foo_value,
-            )],
-            webassembly_bindings=[cloudflare.WorkersScriptWebassemblyBindingArgs(
-                name="MY_EXAMPLE_WASM",
-                module=std.filebase64(input="example.wasm").result,
-            )],
-            service_bindings=[cloudflare.WorkersScriptServiceBindingArgs(
-                name="MY_SERVICE_BINDING",
-                service="MY_SERVICE",
-                environment="production",
-            )],
-            r2_bucket_bindings=[cloudflare.WorkersScriptR2BucketBindingArgs(
-                name="MY_BUCKET",
-                bucket_name="MY_BUCKET_NAME",
-            )],
-            analytics_engine_bindings=[cloudflare.WorkersScriptAnalyticsEngineBindingArgs(
-                name="MY_DATASET",
-                dataset="dataset1",
-            )])
+            kv_namespace_bindings=[{
+                "name": "MY_EXAMPLE_KV_NAMESPACE",
+                "namespace_id": my_namespace.id,
+            }],
+            plain_text_bindings=[{
+                "name": "MY_EXAMPLE_PLAIN_TEXT",
+                "text": "foobar",
+            }],
+            secret_text_bindings=[{
+                "name": "MY_EXAMPLE_SECRET_TEXT",
+                "text": secret_foo_value,
+            }],
+            webassembly_bindings=[{
+                "name": "MY_EXAMPLE_WASM",
+                "module": std.filebase64(input="example.wasm").result,
+            }],
+            service_bindings=[{
+                "name": "MY_SERVICE_BINDING",
+                "service": "MY_SERVICE",
+                "environment": "production",
+            }],
+            r2_bucket_bindings=[{
+                "name": "MY_BUCKET",
+                "bucket_name": "MY_BUCKET_NAME",
+            }],
+            analytics_engine_bindings=[{
+                "name": "MY_DATASET",
+                "dataset": "dataset1",
+            }])
         ```
 
         ## Import
@@ -661,35 +661,35 @@ class WorkersScript(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
             content=std.file(input="script.js").result,
-            kv_namespace_bindings=[cloudflare.WorkersScriptKvNamespaceBindingArgs(
-                name="MY_EXAMPLE_KV_NAMESPACE",
-                namespace_id=my_namespace.id,
-            )],
-            plain_text_bindings=[cloudflare.WorkersScriptPlainTextBindingArgs(
-                name="MY_EXAMPLE_PLAIN_TEXT",
-                text="foobar",
-            )],
-            secret_text_bindings=[cloudflare.WorkersScriptSecretTextBindingArgs(
-                name="MY_EXAMPLE_SECRET_TEXT",
-                text=secret_foo_value,
-            )],
-            webassembly_bindings=[cloudflare.WorkersScriptWebassemblyBindingArgs(
-                name="MY_EXAMPLE_WASM",
-                module=std.filebase64(input="example.wasm").result,
-            )],
-            service_bindings=[cloudflare.WorkersScriptServiceBindingArgs(
-                name="MY_SERVICE_BINDING",
-                service="MY_SERVICE",
-                environment="production",
-            )],
-            r2_bucket_bindings=[cloudflare.WorkersScriptR2BucketBindingArgs(
-                name="MY_BUCKET",
-                bucket_name="MY_BUCKET_NAME",
-            )],
-            analytics_engine_bindings=[cloudflare.WorkersScriptAnalyticsEngineBindingArgs(
-                name="MY_DATASET",
-                dataset="dataset1",
-            )])
+            kv_namespace_bindings=[{
+                "name": "MY_EXAMPLE_KV_NAMESPACE",
+                "namespace_id": my_namespace.id,
+            }],
+            plain_text_bindings=[{
+                "name": "MY_EXAMPLE_PLAIN_TEXT",
+                "text": "foobar",
+            }],
+            secret_text_bindings=[{
+                "name": "MY_EXAMPLE_SECRET_TEXT",
+                "text": secret_foo_value,
+            }],
+            webassembly_bindings=[{
+                "name": "MY_EXAMPLE_WASM",
+                "module": std.filebase64(input="example.wasm").result,
+            }],
+            service_bindings=[{
+                "name": "MY_SERVICE_BINDING",
+                "service": "MY_SERVICE",
+                "environment": "production",
+            }],
+            r2_bucket_bindings=[{
+                "name": "MY_BUCKET",
+                "bucket_name": "MY_BUCKET_NAME",
+            }],
+            analytics_engine_bindings=[{
+                "name": "MY_DATASET",
+                "dataset": "dataset1",
+            }])
         ```
 
         ## Import
@@ -714,24 +714,24 @@ class WorkersScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptAnalyticsEngineBindingArgs']]]]] = None,
+                 analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptAnalyticsEngineBindingArgs', 'WorkersScriptAnalyticsEngineBindingArgsDict']]]]] = None,
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptD1DatabaseBindingArgs']]]]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptD1DatabaseBindingArgs', 'WorkersScriptD1DatabaseBindingArgsDict']]]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
-                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptKvNamespaceBindingArgs']]]]] = None,
+                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptKvNamespaceBindingArgs', 'WorkersScriptKvNamespaceBindingArgsDict']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlacementArgs']]]]] = None,
-                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlainTextBindingArgs']]]]] = None,
-                 queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptQueueBindingArgs']]]]] = None,
-                 r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptR2BucketBindingArgs']]]]] = None,
-                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptSecretTextBindingArgs']]]]] = None,
-                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptServiceBindingArgs']]]]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]]]] = None,
+                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlainTextBindingArgs', 'WorkersScriptPlainTextBindingArgsDict']]]]] = None,
+                 queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptQueueBindingArgs', 'WorkersScriptQueueBindingArgsDict']]]]] = None,
+                 r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptR2BucketBindingArgs', 'WorkersScriptR2BucketBindingArgsDict']]]]] = None,
+                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptSecretTextBindingArgs', 'WorkersScriptSecretTextBindingArgsDict']]]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptServiceBindingArgs', 'WorkersScriptServiceBindingArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptWebassemblyBindingArgs']]]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptWebassemblyBindingArgs', 'WorkersScriptWebassemblyBindingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -777,24 +777,24 @@ class WorkersScript(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptAnalyticsEngineBindingArgs']]]]] = None,
+            analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptAnalyticsEngineBindingArgs', 'WorkersScriptAnalyticsEngineBindingArgsDict']]]]] = None,
             compatibility_date: Optional[pulumi.Input[str]] = None,
             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             content: Optional[pulumi.Input[str]] = None,
-            d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptD1DatabaseBindingArgs']]]]] = None,
+            d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptD1DatabaseBindingArgs', 'WorkersScriptD1DatabaseBindingArgsDict']]]]] = None,
             dispatch_namespace: Optional[pulumi.Input[str]] = None,
-            kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptKvNamespaceBindingArgs']]]]] = None,
+            kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptKvNamespaceBindingArgs', 'WorkersScriptKvNamespaceBindingArgsDict']]]]] = None,
             logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlacementArgs']]]]] = None,
-            plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptPlainTextBindingArgs']]]]] = None,
-            queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptQueueBindingArgs']]]]] = None,
-            r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptR2BucketBindingArgs']]]]] = None,
-            secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptSecretTextBindingArgs']]]]] = None,
-            service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptServiceBindingArgs']]]]] = None,
+            placements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]]]] = None,
+            plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPlainTextBindingArgs', 'WorkersScriptPlainTextBindingArgsDict']]]]] = None,
+            queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptQueueBindingArgs', 'WorkersScriptQueueBindingArgsDict']]]]] = None,
+            r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptR2BucketBindingArgs', 'WorkersScriptR2BucketBindingArgsDict']]]]] = None,
+            secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptSecretTextBindingArgs', 'WorkersScriptSecretTextBindingArgsDict']]]]] = None,
+            service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptServiceBindingArgs', 'WorkersScriptServiceBindingArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkersScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkersScript':
+            webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptWebassemblyBindingArgs', 'WorkersScriptWebassemblyBindingArgsDict']]]]] = None) -> 'WorkersScript':
         """
         Get an existing WorkersScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

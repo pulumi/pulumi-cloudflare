@@ -147,7 +147,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Filter(String name) {
+    public Filter(java.lang.String name) {
         this(name, FilterArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Filter(String name, FilterArgs args) {
+    public Filter(java.lang.String name, FilterArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,12 +164,12 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Filter(String name, FilterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/filter:Filter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Filter(java.lang.String name, FilterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/filter:Filter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Filter(String name, Output<String> id, @Nullable FilterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/filter:Filter", name, state, makeResourceOptions(options, id));
+    private Filter(java.lang.String name, Output<java.lang.String> id, @Nullable FilterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/filter:Filter", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FilterArgs makeArgs(FilterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -179,7 +179,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
         return args == null ? FilterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -195,7 +195,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Filter get(String name, Output<String> id, @Nullable FilterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Filter get(java.lang.String name, Output<java.lang.String> id, @Nullable FilterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Filter(name, id, state, options);
     }
 }

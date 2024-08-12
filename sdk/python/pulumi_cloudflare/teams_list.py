@@ -226,7 +226,7 @@ class TeamsList(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemsWithDescriptionArgs', 'TeamsListItemsWithDescriptionArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -264,7 +264,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]] items_with_descriptions: The items of the teams list that has explicit description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemsWithDescriptionArgs', 'TeamsListItemsWithDescriptionArgsDict']]]] items_with_descriptions: The items of the teams list that has explicit description.
         :param pulumi.Input[str] name: Name of the teams list.
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
@@ -321,7 +321,7 @@ class TeamsList(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemsWithDescriptionArgs', 'TeamsListItemsWithDescriptionArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -358,7 +358,7 @@ class TeamsList(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
+            items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemsWithDescriptionArgs', 'TeamsListItemsWithDescriptionArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'TeamsList':
         """
@@ -371,7 +371,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]] items_with_descriptions: The items of the teams list that has explicit description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemsWithDescriptionArgs', 'TeamsListItemsWithDescriptionArgsDict']]]] items_with_descriptions: The items of the teams list that has explicit description.
         :param pulumi.Input[str] name: Name of the teams list.
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """

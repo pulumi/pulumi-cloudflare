@@ -217,8 +217,8 @@ class CustomSsl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+                 custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -232,13 +232,13 @@ class CustomSsl(pulumi.CustomResource):
 
         example = cloudflare.CustomSsl("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
-                certificate="-----INSERT CERTIFICATE-----",
-                private_key="-----INSERT PRIVATE KEY-----",
-                bundle_method="ubiquitous",
-                geo_restrictions="us",
-                type="legacy_custom",
-            ))
+            custom_ssl_options={
+                "certificate": "-----INSERT CERTIFICATE-----",
+                "private_key": "-----INSERT PRIVATE KEY-----",
+                "bundle_method": "ubiquitous",
+                "geo_restrictions": "us",
+                "type": "legacy_custom",
+            })
         ```
 
         ## Import
@@ -249,7 +249,7 @@ class CustomSsl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
@@ -269,13 +269,13 @@ class CustomSsl(pulumi.CustomResource):
 
         example = cloudflare.CustomSsl("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
-                certificate="-----INSERT CERTIFICATE-----",
-                private_key="-----INSERT PRIVATE KEY-----",
-                bundle_method="ubiquitous",
-                geo_restrictions="us",
-                type="legacy_custom",
-            ))
+            custom_ssl_options={
+                "certificate": "-----INSERT CERTIFICATE-----",
+                "private_key": "-----INSERT PRIVATE KEY-----",
+                "bundle_method": "ubiquitous",
+                "geo_restrictions": "us",
+                "type": "legacy_custom",
+            })
         ```
 
         ## Import
@@ -299,8 +299,8 @@ class CustomSsl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+                 custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -334,8 +334,8 @@ class CustomSsl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
-            custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+            custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
+            custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
             expires_on: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             issuer: Optional[pulumi.Input[str]] = None,
@@ -352,7 +352,7 @@ class CustomSsl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

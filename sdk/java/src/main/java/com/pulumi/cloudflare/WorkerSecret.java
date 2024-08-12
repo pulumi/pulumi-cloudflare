@@ -125,7 +125,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerSecret(String name) {
+    public WorkerSecret(java.lang.String name) {
         this(name, WorkerSecretArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerSecret(String name, WorkerSecretArgs args) {
+    public WorkerSecret(java.lang.String name, WorkerSecretArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,12 +142,12 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerSecret(String name, WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerSecret:WorkerSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkerSecret(java.lang.String name, WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerSecret:WorkerSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerSecret(String name, Output<String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerSecret:WorkerSecret", name, state, makeResourceOptions(options, id));
+    private WorkerSecret(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerSecret:WorkerSecret", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkerSecretArgs makeArgs(WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -157,7 +157,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
         return args == null ? WorkerSecretArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -176,7 +176,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerSecret get(String name, Output<String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkerSecret get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkerSecret(name, id, state, options);
     }
 }

@@ -133,7 +133,7 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HyperdriveConfig(String name) {
+    public HyperdriveConfig(java.lang.String name) {
         this(name, HyperdriveConfigArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HyperdriveConfig(String name, HyperdriveConfigArgs args) {
+    public HyperdriveConfig(java.lang.String name, HyperdriveConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,12 +150,12 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HyperdriveConfig(String name, HyperdriveConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public HyperdriveConfig(java.lang.String name, HyperdriveConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HyperdriveConfig(String name, Output<String> id, @Nullable HyperdriveConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, state, makeResourceOptions(options, id));
+    private HyperdriveConfig(java.lang.String name, Output<java.lang.String> id, @Nullable HyperdriveConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hyperdriveConfig:HyperdriveConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HyperdriveConfigArgs makeArgs(HyperdriveConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -165,7 +165,7 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
         return args == null ? HyperdriveConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -181,7 +181,7 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HyperdriveConfig get(String name, Output<String> id, @Nullable HyperdriveConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HyperdriveConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable HyperdriveConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HyperdriveConfig(name, id, state, options);
     }
 }
