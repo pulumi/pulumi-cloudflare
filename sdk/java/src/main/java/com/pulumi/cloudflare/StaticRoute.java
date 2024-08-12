@@ -189,7 +189,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StaticRoute(String name) {
+    public StaticRoute(java.lang.String name) {
         this(name, StaticRouteArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StaticRoute(String name, StaticRouteArgs args) {
+    public StaticRoute(java.lang.String name, StaticRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,12 +206,12 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StaticRoute(String name, StaticRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/staticRoute:StaticRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public StaticRoute(java.lang.String name, StaticRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/staticRoute:StaticRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StaticRoute(String name, Output<String> id, @Nullable StaticRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/staticRoute:StaticRoute", name, state, makeResourceOptions(options, id));
+    private StaticRoute(java.lang.String name, Output<java.lang.String> id, @Nullable StaticRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/staticRoute:StaticRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StaticRouteArgs makeArgs(StaticRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -221,7 +221,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
         return args == null ? StaticRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +237,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StaticRoute get(String name, Output<String> id, @Nullable StaticRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StaticRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable StaticRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StaticRoute(name, id, state, options);
     }
 }

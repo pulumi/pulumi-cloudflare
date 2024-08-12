@@ -149,7 +149,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['ZoneSettingsOverrideSettingsArgs', 'ZoneSettingsOverrideSettingsArgsDict']]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -179,23 +179,23 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
         test = cloudflare.ZoneSettingsOverride("test",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
-                brotli="on",
-                challenge_ttl=2700,
-                security_level="high",
-                opportunistic_encryption="on",
-                automatic_https_rewrites="on",
-                mirage="on",
-                waf="on",
-                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
-                    css="on",
-                    js="off",
-                    html="off",
-                ),
-                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
-                    enabled=True,
-                ),
-            ))
+            settings={
+                "brotli": "on",
+                "challenge_ttl": 2700,
+                "security_level": "high",
+                "opportunistic_encryption": "on",
+                "automatic_https_rewrites": "on",
+                "mirage": "on",
+                "waf": "on",
+                "minify": {
+                    "css": "on",
+                    "js": "off",
+                    "html": "off",
+                },
+                "security_header": {
+                    "enabled": True,
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -235,23 +235,23 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
         test = cloudflare.ZoneSettingsOverride("test",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
-                brotli="on",
-                challenge_ttl=2700,
-                security_level="high",
-                opportunistic_encryption="on",
-                automatic_https_rewrites="on",
-                mirage="on",
-                waf="on",
-                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
-                    css="on",
-                    js="off",
-                    html="off",
-                ),
-                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
-                    enabled=True,
-                ),
-            ))
+            settings={
+                "brotli": "on",
+                "challenge_ttl": 2700,
+                "security_level": "high",
+                "opportunistic_encryption": "on",
+                "automatic_https_rewrites": "on",
+                "mirage": "on",
+                "waf": "on",
+                "minify": {
+                    "css": "on",
+                    "js": "off",
+                    "html": "off",
+                },
+                "security_header": {
+                    "enabled": True,
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -269,7 +269,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['ZoneSettingsOverrideSettingsArgs', 'ZoneSettingsOverrideSettingsArgsDict']]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -299,10 +299,10 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            initial_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingArgs']]]]] = None,
+            initial_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneSettingsOverrideInitialSettingArgs', 'ZoneSettingsOverrideInitialSettingArgsDict']]]]] = None,
             initial_settings_read_at: Optional[pulumi.Input[str]] = None,
             readonly_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+            settings: Optional[pulumi.Input[Union['ZoneSettingsOverrideSettingsArgs', 'ZoneSettingsOverrideSettingsArgsDict']]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
             zone_status: Optional[pulumi.Input[str]] = None,
             zone_type: Optional[pulumi.Input[str]] = None) -> 'ZoneSettingsOverride':

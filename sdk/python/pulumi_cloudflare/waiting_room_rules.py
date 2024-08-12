@@ -128,7 +128,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
                  waiting_room_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -145,18 +145,18 @@ class WaitingRoomRules(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
             rules=[
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    description="bypass ip list",
-                    expression="src.ip in {192.0.2.0 192.0.2.1}",
-                    action="bypass_waiting_room",
-                    status="enabled",
-                ),
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    description="bypass query string",
-                    expression="http.request.uri.query contains \\"bypass=true\\"",
-                    action="bypass_waiting_room",
-                    status="enabled",
-                ),
+                {
+                    "description": "bypass ip list",
+                    "expression": "src.ip in {192.0.2.0 192.0.2.1}",
+                    "action": "bypass_waiting_room",
+                    "status": "enabled",
+                },
+                {
+                    "description": "bypass query string",
+                    "expression": "http.request.uri.query contains \\"bypass=true\\"",
+                    "action": "bypass_waiting_room",
+                    "status": "enabled",
+                },
             ])
         ```
 
@@ -168,7 +168,7 @@ class WaitingRoomRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]] rules: List of rules to apply to the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
@@ -191,18 +191,18 @@ class WaitingRoomRules(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
             rules=[
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    description="bypass ip list",
-                    expression="src.ip in {192.0.2.0 192.0.2.1}",
-                    action="bypass_waiting_room",
-                    status="enabled",
-                ),
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    description="bypass query string",
-                    expression="http.request.uri.query contains \\"bypass=true\\"",
-                    action="bypass_waiting_room",
-                    status="enabled",
-                ),
+                {
+                    "description": "bypass ip list",
+                    "expression": "src.ip in {192.0.2.0 192.0.2.1}",
+                    "action": "bypass_waiting_room",
+                    "status": "enabled",
+                },
+                {
+                    "description": "bypass query string",
+                    "expression": "http.request.uri.query contains \\"bypass=true\\"",
+                    "action": "bypass_waiting_room",
+                    "status": "enabled",
+                },
             ])
         ```
 
@@ -227,7 +227,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
                  waiting_room_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -256,7 +256,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
             waiting_room_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'WaitingRoomRules':
         """
@@ -266,7 +266,7 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]] rules: List of rules to apply to the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """

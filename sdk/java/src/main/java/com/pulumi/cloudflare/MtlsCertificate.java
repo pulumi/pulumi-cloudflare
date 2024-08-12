@@ -217,7 +217,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MtlsCertificate(String name) {
+    public MtlsCertificate(java.lang.String name) {
         this(name, MtlsCertificateArgs.Empty);
     }
     /**
@@ -225,7 +225,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MtlsCertificate(String name, MtlsCertificateArgs args) {
+    public MtlsCertificate(java.lang.String name, MtlsCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -234,12 +234,12 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MtlsCertificate(String name, MtlsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/mtlsCertificate:MtlsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MtlsCertificate(java.lang.String name, MtlsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/mtlsCertificate:MtlsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MtlsCertificate(String name, Output<String> id, @Nullable MtlsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/mtlsCertificate:MtlsCertificate", name, state, makeResourceOptions(options, id));
+    private MtlsCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable MtlsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/mtlsCertificate:MtlsCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MtlsCertificateArgs makeArgs(MtlsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -249,7 +249,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
         return args == null ? MtlsCertificateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -265,7 +265,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MtlsCertificate get(String name, Output<String> id, @Nullable MtlsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MtlsCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable MtlsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MtlsCertificate(name, id, state, options);
     }
 }

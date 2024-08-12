@@ -107,7 +107,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkersForPlatformsDispatchNamespace(String name) {
+    public WorkersForPlatformsDispatchNamespace(java.lang.String name) {
         this(name, WorkersForPlatformsDispatchNamespaceArgs.Empty);
     }
     /**
@@ -115,7 +115,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersForPlatformsDispatchNamespace(String name, WorkersForPlatformsDispatchNamespaceArgs args) {
+    public WorkersForPlatformsDispatchNamespace(java.lang.String name, WorkersForPlatformsDispatchNamespaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -124,12 +124,12 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersForPlatformsDispatchNamespace(String name, WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkersForPlatformsDispatchNamespace(java.lang.String name, WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkersForPlatformsDispatchNamespace(String name, Output<String> id, @Nullable WorkersForPlatformsDispatchNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, state, makeResourceOptions(options, id));
+    private WorkersForPlatformsDispatchNamespace(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsDispatchNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkersForPlatformsDispatchNamespaceArgs makeArgs(WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -139,7 +139,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
         return args == null ? WorkersForPlatformsDispatchNamespaceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -155,7 +155,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkersForPlatformsDispatchNamespace get(String name, Output<String> id, @Nullable WorkersForPlatformsDispatchNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkersForPlatformsDispatchNamespace get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsDispatchNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkersForPlatformsDispatchNamespace(name, id, state, options);
     }
 }

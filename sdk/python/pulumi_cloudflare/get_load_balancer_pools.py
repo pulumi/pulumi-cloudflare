@@ -83,8 +83,8 @@ class AwaitableGetLoadBalancerPoolsResult(GetLoadBalancerPoolsResult):
 
 
 def get_load_balancer_pools(account_id: Optional[str] = None,
-                            filter: Optional[pulumi.InputType['GetLoadBalancerPoolsFilterArgs']] = None,
-                            pools: Optional[Sequence[pulumi.InputType['GetLoadBalancerPoolsPoolArgs']]] = None,
+                            filter: Optional[Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict']] = None,
+                            pools: Optional[Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerPoolsResult:
     """
     A datasource to find Load Balancer Pools.
@@ -96,15 +96,15 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter=cloudflare.GetLoadBalancerPoolsFilterArgs(
-            name="example-lb-pool",
-        ))
+        filter={
+            "name": "example-lb-pool",
+        })
     ```
 
 
     :param str account_id: The account identifier to target for the datasource lookups.
-    :param pulumi.InputType['GetLoadBalancerPoolsFilterArgs'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-    :param Sequence[pulumi.InputType['GetLoadBalancerPoolsPoolArgs']] pools: A list of Load Balancer Pools details.
+    :param Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+    :param Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']] pools: A list of Load Balancer Pools details.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -122,8 +122,8 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_load_balancer_pools)
 def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = None,
-                                   filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetLoadBalancerPoolsFilterArgs']]]] = None,
-                                   pools: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetLoadBalancerPoolsPoolArgs']]]]] = None,
+                                   filter: Optional[pulumi.Input[Optional[Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict']]]] = None,
+                                   pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerPoolsResult]:
     """
     A datasource to find Load Balancer Pools.
@@ -135,14 +135,14 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = Non
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter=cloudflare.GetLoadBalancerPoolsFilterArgs(
-            name="example-lb-pool",
-        ))
+        filter={
+            "name": "example-lb-pool",
+        })
     ```
 
 
     :param str account_id: The account identifier to target for the datasource lookups.
-    :param pulumi.InputType['GetLoadBalancerPoolsFilterArgs'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-    :param Sequence[pulumi.InputType['GetLoadBalancerPoolsPoolArgs']] pools: A list of Load Balancer Pools details.
+    :param Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+    :param Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']] pools: A list of Load Balancer Pools details.
     """
     ...

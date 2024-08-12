@@ -306,7 +306,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerScript(String name) {
+    public WorkerScript(java.lang.String name) {
         this(name, WorkerScriptArgs.Empty);
     }
     /**
@@ -314,7 +314,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerScript(String name, WorkerScriptArgs args) {
+    public WorkerScript(java.lang.String name, WorkerScriptArgs args) {
         this(name, args, null);
     }
     /**
@@ -323,12 +323,12 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerScript(String name, WorkerScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerScript:WorkerScript", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public WorkerScript(java.lang.String name, WorkerScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerScript:WorkerScript", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerScript(String name, Output<String> id, @Nullable WorkerScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerScript:WorkerScript", name, state, makeResourceOptions(options, id));
+    private WorkerScript(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerScript:WorkerScript", name, state, makeResourceOptions(options, id), false);
     }
 
     private static WorkerScriptArgs makeArgs(WorkerScriptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -338,7 +338,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return args == null ? WorkerScriptArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -354,7 +354,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerScript get(String name, Output<String> id, @Nullable WorkerScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkerScript get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerScriptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkerScript(name, id, state, options);
     }
 }

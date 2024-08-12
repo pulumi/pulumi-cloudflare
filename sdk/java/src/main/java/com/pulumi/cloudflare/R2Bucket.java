@@ -109,7 +109,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public R2Bucket(String name) {
+    public R2Bucket(java.lang.String name) {
         this(name, R2BucketArgs.Empty);
     }
     /**
@@ -117,7 +117,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public R2Bucket(String name, R2BucketArgs args) {
+    public R2Bucket(java.lang.String name, R2BucketArgs args) {
         this(name, args, null);
     }
     /**
@@ -126,12 +126,12 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public R2Bucket(String name, R2BucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/r2Bucket:R2Bucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public R2Bucket(java.lang.String name, R2BucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/r2Bucket:R2Bucket", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private R2Bucket(String name, Output<String> id, @Nullable R2BucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/r2Bucket:R2Bucket", name, state, makeResourceOptions(options, id));
+    private R2Bucket(java.lang.String name, Output<java.lang.String> id, @Nullable R2BucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/r2Bucket:R2Bucket", name, state, makeResourceOptions(options, id), false);
     }
 
     private static R2BucketArgs makeArgs(R2BucketArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -141,7 +141,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
         return args == null ? R2BucketArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -157,7 +157,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static R2Bucket get(String name, Output<String> id, @Nullable R2BucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static R2Bucket get(java.lang.String name, Output<java.lang.String> id, @Nullable R2BucketState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new R2Bucket(name, id, state, options);
     }
 }

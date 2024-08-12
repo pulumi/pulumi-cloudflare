@@ -225,9 +225,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -258,37 +258,37 @@ class AccessIdentityProvider(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="GitHub OAuth",
             type="github",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                client_id="example",
-                client_secret="secret_key",
-            )])
+            configs=[{
+                "client_id": "example",
+                "client_secret": "secret_key",
+            }])
         # saml
         jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloud_saml",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="JumpCloud SAML",
             type="saml",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                issuer_url="jumpcloud",
-                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
-                attributes=[
+            configs=[{
+                "issuer_url": "jumpcloud",
+                "sso_target_url": "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+                "attributes": [
                     "email",
                     "username",
                 ],
-                sign_request=False,
-                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+                "sign_request": False,
+                "idp_public_cert": \"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
         uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\"\"\",
-            )])
+            }])
         # okta
         okta = cloudflare.AccessIdentityProvider("okta",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="Okta",
             type="okta",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                client_id="example",
-                client_secret="secret_key",
-                api_token="okta_api_token",
-                okta_account="https://example.com",
-            )])
+            configs=[{
+                "client_id": "example",
+                "client_secret": "secret_key",
+                "api_token": "okta_api_token",
+                "okta_account": "https://example.com",
+            }])
         ```
 
         ## Import
@@ -300,9 +300,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -339,37 +339,37 @@ class AccessIdentityProvider(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="GitHub OAuth",
             type="github",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                client_id="example",
-                client_secret="secret_key",
-            )])
+            configs=[{
+                "client_id": "example",
+                "client_secret": "secret_key",
+            }])
         # saml
         jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloud_saml",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="JumpCloud SAML",
             type="saml",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                issuer_url="jumpcloud",
-                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
-                attributes=[
+            configs=[{
+                "issuer_url": "jumpcloud",
+                "sso_target_url": "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+                "attributes": [
                     "email",
                     "username",
                 ],
-                sign_request=False,
-                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+                "sign_request": False,
+                "idp_public_cert": \"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
         uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\"\"\",
-            )])
+            }])
         # okta
         okta = cloudflare.AccessIdentityProvider("okta",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="Okta",
             type="okta",
-            configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                client_id="example",
-                client_secret="secret_key",
-                api_token="okta_api_token",
-                okta_account="https://example.com",
-            )])
+            configs=[{
+                "client_id": "example",
+                "client_secret": "secret_key",
+                "api_token": "okta_api_token",
+                "okta_account": "https://example.com",
+            }])
         ```
 
         ## Import
@@ -394,9 +394,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -429,9 +429,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
+            scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessIdentityProvider':
         """
@@ -442,9 +442,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """

@@ -162,7 +162,7 @@ class SplitTunnel(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None,
+                 tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SplitTunnelTunnelArgs', 'SplitTunnelTunnelArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
@@ -181,7 +181,7 @@ class SplitTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SplitTunnelTunnelArgs', 'SplitTunnelTunnelArgsDict']]]] tunnels: The value of the tunnel attributes.
         """
         ...
     @overload
@@ -219,7 +219,7 @@ class SplitTunnel(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None,
+                 tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SplitTunnelTunnelArgs', 'SplitTunnelTunnelArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,7 +252,7 @@ class SplitTunnel(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
-            tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None) -> 'SplitTunnel':
+            tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SplitTunnelTunnelArgs', 'SplitTunnelTunnelArgsDict']]]]] = None) -> 'SplitTunnel':
         """
         Get an existing SplitTunnel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -263,7 +263,7 @@ class SplitTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SplitTunnelTunnelArgs', 'SplitTunnelTunnelArgsDict']]]] tunnels: The value of the tunnel attributes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

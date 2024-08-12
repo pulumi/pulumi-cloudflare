@@ -272,11 +272,11 @@ class PagesProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']]] = None,
-                 deployment_configs: Optional[pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
+                 deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  production_branch: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         """
         Provides a resource which manages Cloudflare Pages projects.
@@ -296,11 +296,11 @@ class PagesProject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
-        :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
+        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         ...
     @overload
@@ -339,11 +339,11 @@ class PagesProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']]] = None,
-                 deployment_configs: Optional[pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
+                 deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  production_branch: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,13 +379,13 @@ class PagesProject(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            build_config: Optional[pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']]] = None,
+            build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
-            deployment_configs: Optional[pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']]] = None,
+            deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             production_branch: Optional[pulumi.Input[str]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']]] = None,
+            source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
             subdomain: Optional[pulumi.Input[str]] = None) -> 'PagesProject':
         """
         Get an existing PagesProject resource's state with the given name, id, and optional extra
@@ -395,13 +395,13 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[str] created_on: When the project was created.
-        :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
+        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
         :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -283,8 +283,8 @@ class DevicePostureRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]]]] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -305,17 +305,17 @@ class DevicePostureRule(pulumi.CustomResource):
             description="Device posture rule for corporate devices.",
             schedule="24h",
             expiration="24h",
-            matches=[cloudflare.DevicePostureRuleMatchArgs(
-                platform="linux",
-            )],
-            inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=corporate_devices["id"],
-                version="1.0.0",
-                operator="<",
-                os_distro_name="ubuntu",
-                os_distro_revision="1.0.0",
-                os_version_extra="(a)",
-            )])
+            matches=[{
+                "platform": "linux",
+            }],
+            inputs=[{
+                "id": corporate_devices["id"],
+                "version": "1.0.0",
+                "operator": "<",
+                "os_distro_name": "ubuntu",
+                "os_distro_revision": "1.0.0",
+                "os_version_extra": "(a)",
+            }])
         ```
 
         ## Import
@@ -328,8 +328,8 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
@@ -356,17 +356,17 @@ class DevicePostureRule(pulumi.CustomResource):
             description="Device posture rule for corporate devices.",
             schedule="24h",
             expiration="24h",
-            matches=[cloudflare.DevicePostureRuleMatchArgs(
-                platform="linux",
-            )],
-            inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=corporate_devices["id"],
-                version="1.0.0",
-                operator="<",
-                os_distro_name="ubuntu",
-                os_distro_revision="1.0.0",
-                os_version_extra="(a)",
-            )])
+            matches=[{
+                "platform": "linux",
+            }],
+            inputs=[{
+                "id": corporate_devices["id"],
+                "version": "1.0.0",
+                "operator": "<",
+                "os_distro_name": "ubuntu",
+                "os_distro_revision": "1.0.0",
+                "os_version_extra": "(a)",
+            }])
         ```
 
         ## Import
@@ -393,8 +393,8 @@ class DevicePostureRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]]]] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -432,8 +432,8 @@ class DevicePostureRule(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expiration: Optional[pulumi.Input[str]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
-            matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
+            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]]]] = None,
+            matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'DevicePostureRule':
@@ -446,8 +446,8 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.

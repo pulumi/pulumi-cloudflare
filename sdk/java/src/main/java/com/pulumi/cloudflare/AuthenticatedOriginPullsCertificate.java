@@ -220,7 +220,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthenticatedOriginPullsCertificate(String name) {
+    public AuthenticatedOriginPullsCertificate(java.lang.String name) {
         this(name, AuthenticatedOriginPullsCertificateArgs.Empty);
     }
     /**
@@ -228,7 +228,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthenticatedOriginPullsCertificate(String name, AuthenticatedOriginPullsCertificateArgs args) {
+    public AuthenticatedOriginPullsCertificate(java.lang.String name, AuthenticatedOriginPullsCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -237,12 +237,12 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthenticatedOriginPullsCertificate(String name, AuthenticatedOriginPullsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AuthenticatedOriginPullsCertificate(java.lang.String name, AuthenticatedOriginPullsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthenticatedOriginPullsCertificate(String name, Output<String> id, @Nullable AuthenticatedOriginPullsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, state, makeResourceOptions(options, id));
+    private AuthenticatedOriginPullsCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticatedOriginPullsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AuthenticatedOriginPullsCertificateArgs makeArgs(AuthenticatedOriginPullsCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -252,7 +252,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
         return args == null ? AuthenticatedOriginPullsCertificateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -271,7 +271,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthenticatedOriginPullsCertificate get(String name, Output<String> id, @Nullable AuthenticatedOriginPullsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthenticatedOriginPullsCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticatedOriginPullsCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthenticatedOriginPullsCertificate(name, id, state, options);
     }
 }

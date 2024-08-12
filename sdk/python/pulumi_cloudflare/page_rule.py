@@ -191,7 +191,7 @@ class PageRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
+                 actions: Optional[pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -211,15 +211,15 @@ class PageRule(pulumi.CustomResource):
             zone_id=cloudflare_zone_id,
             target=f"sub.{cloudflare_zone}/page",
             priority=1,
-            actions=cloudflare.PageRuleActionsArgs(
-                ssl="flexible",
-                email_obfuscation="on",
-                minifies=[cloudflare.PageRuleActionsMinifyArgs(
-                    html="off",
-                    css="on",
-                    js="on",
-                )],
-            ))
+            actions={
+                "ssl": "flexible",
+                "email_obfuscation": "on",
+                "minifies": [{
+                    "html": "off",
+                    "css": "on",
+                    "js": "on",
+                }],
+            })
         ```
 
         ## Import
@@ -232,7 +232,7 @@ class PageRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PageRuleActionsArgs']] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
@@ -258,15 +258,15 @@ class PageRule(pulumi.CustomResource):
             zone_id=cloudflare_zone_id,
             target=f"sub.{cloudflare_zone}/page",
             priority=1,
-            actions=cloudflare.PageRuleActionsArgs(
-                ssl="flexible",
-                email_obfuscation="on",
-                minifies=[cloudflare.PageRuleActionsMinifyArgs(
-                    html="off",
-                    css="on",
-                    js="on",
-                )],
-            ))
+            actions={
+                "ssl": "flexible",
+                "email_obfuscation": "on",
+                "minifies": [{
+                    "html": "off",
+                    "css": "on",
+                    "js": "on",
+                }],
+            })
         ```
 
         ## Import
@@ -292,7 +292,7 @@ class PageRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
+                 actions: Optional[pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class PageRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
+            actions: Optional[pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None,
@@ -339,7 +339,7 @@ class PageRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PageRuleActionsArgs']] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
