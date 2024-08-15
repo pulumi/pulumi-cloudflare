@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewServiceB
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -71,13 +70,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="d1Databases")
-    private @Nullable Output<Map<String,Object>> d1Databases;
+    private @Nullable Output<Map<String,String>> d1Databases;
 
     /**
      * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> d1Databases() {
+    public Optional<Output<Map<String,String>>> d1Databases() {
         return Optional.ofNullable(this.d1Databases);
     }
 
@@ -86,13 +85,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="durableObjectNamespaces")
-    private @Nullable Output<Map<String,Object>> durableObjectNamespaces;
+    private @Nullable Output<Map<String,String>> durableObjectNamespaces;
 
     /**
      * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> durableObjectNamespaces() {
+    public Optional<Output<Map<String,String>>> durableObjectNamespaces() {
         return Optional.ofNullable(this.durableObjectNamespaces);
     }
 
@@ -101,13 +100,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="environmentVariables")
-    private @Nullable Output<Map<String,Object>> environmentVariables;
+    private @Nullable Output<Map<String,String>> environmentVariables;
 
     /**
      * @return Environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> environmentVariables() {
+    public Optional<Output<Map<String,String>>> environmentVariables() {
         return Optional.ofNullable(this.environmentVariables);
     }
 
@@ -131,13 +130,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="kvNamespaces")
-    private @Nullable Output<Map<String,Object>> kvNamespaces;
+    private @Nullable Output<Map<String,String>> kvNamespaces;
 
     /**
      * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kvNamespaces() {
+    public Optional<Output<Map<String,String>>> kvNamespaces() {
         return Optional.ofNullable(this.kvNamespaces);
     }
 
@@ -161,13 +160,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="r2Buckets")
-    private @Nullable Output<Map<String,Object>> r2Buckets;
+    private @Nullable Output<Map<String,String>> r2Buckets;
 
     /**
      * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> r2Buckets() {
+    public Optional<Output<Map<String,String>>> r2Buckets() {
         return Optional.ofNullable(this.r2Buckets);
     }
 
@@ -176,13 +175,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
      * 
      */
     @Import(name="secrets")
-    private @Nullable Output<Map<String,Object>> secrets;
+    private @Nullable Output<Map<String,String>> secrets;
 
     /**
      * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> secrets() {
+    public Optional<Output<Map<String,String>>> secrets() {
         return Optional.ofNullable(this.secrets);
     }
 
@@ -331,7 +330,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder d1Databases(@Nullable Output<Map<String,Object>> d1Databases) {
+        public Builder d1Databases(@Nullable Output<Map<String,String>> d1Databases) {
             $.d1Databases = d1Databases;
             return this;
         }
@@ -342,7 +341,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder d1Databases(Map<String,Object> d1Databases) {
+        public Builder d1Databases(Map<String,String> d1Databases) {
             return d1Databases(Output.of(d1Databases));
         }
 
@@ -352,7 +351,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder durableObjectNamespaces(@Nullable Output<Map<String,Object>> durableObjectNamespaces) {
+        public Builder durableObjectNamespaces(@Nullable Output<Map<String,String>> durableObjectNamespaces) {
             $.durableObjectNamespaces = durableObjectNamespaces;
             return this;
         }
@@ -363,7 +362,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder durableObjectNamespaces(Map<String,Object> durableObjectNamespaces) {
+        public Builder durableObjectNamespaces(Map<String,String> durableObjectNamespaces) {
             return durableObjectNamespaces(Output.of(durableObjectNamespaces));
         }
 
@@ -373,7 +372,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder environmentVariables(@Nullable Output<Map<String,Object>> environmentVariables) {
+        public Builder environmentVariables(@Nullable Output<Map<String,String>> environmentVariables) {
             $.environmentVariables = environmentVariables;
             return this;
         }
@@ -384,7 +383,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder environmentVariables(Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
             return environmentVariables(Output.of(environmentVariables));
         }
 
@@ -415,7 +414,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder kvNamespaces(@Nullable Output<Map<String,Object>> kvNamespaces) {
+        public Builder kvNamespaces(@Nullable Output<Map<String,String>> kvNamespaces) {
             $.kvNamespaces = kvNamespaces;
             return this;
         }
@@ -426,7 +425,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder kvNamespaces(Map<String,Object> kvNamespaces) {
+        public Builder kvNamespaces(Map<String,String> kvNamespaces) {
             return kvNamespaces(Output.of(kvNamespaces));
         }
 
@@ -457,7 +456,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder r2Buckets(@Nullable Output<Map<String,Object>> r2Buckets) {
+        public Builder r2Buckets(@Nullable Output<Map<String,String>> r2Buckets) {
             $.r2Buckets = r2Buckets;
             return this;
         }
@@ -468,7 +467,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder r2Buckets(Map<String,Object> r2Buckets) {
+        public Builder r2Buckets(Map<String,String> r2Buckets) {
             return r2Buckets(Output.of(r2Buckets));
         }
 
@@ -478,7 +477,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder secrets(@Nullable Output<Map<String,Object>> secrets) {
+        public Builder secrets(@Nullable Output<Map<String,String>> secrets) {
             $.secrets = secrets;
             return this;
         }
@@ -489,7 +488,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder secrets(Map<String,Object> secrets) {
+        public Builder secrets(Map<String,String> secrets) {
             return secrets(Output.of(secrets));
         }
 

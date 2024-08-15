@@ -83,7 +83,7 @@ type Record struct {
 	// The FQDN of the record.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The name of the record. **Modifying this attribute will force creation of a new resource.**
@@ -159,7 +159,7 @@ type recordState struct {
 	// The FQDN of the record.
 	Hostname *string `pulumi:"hostname"`
 	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The name of the record. **Modifying this attribute will force creation of a new resource.**
@@ -197,7 +197,7 @@ type RecordState struct {
 	// The FQDN of the record.
 	Hostname pulumi.StringPtrInput
 	// A key-value map of string metadata Cloudflare associates with the record.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// The name of the record. **Modifying this attribute will force creation of a new resource.**
@@ -400,8 +400,8 @@ func (o RecordOutput) Hostname() pulumi.StringOutput {
 }
 
 // A key-value map of string metadata Cloudflare associates with the record.
-func (o RecordOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Record) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o RecordOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The RFC3339 timestamp of when the record was last modified.

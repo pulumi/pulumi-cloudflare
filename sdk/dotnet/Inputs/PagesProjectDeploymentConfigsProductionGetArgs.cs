@@ -37,38 +37,38 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         [Input("d1Databases")]
-        private InputMap<object>? _d1Databases;
+        private InputMap<string>? _d1Databases;
 
         /// <summary>
         /// D1 Databases used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> D1Databases
+        public InputMap<string> D1Databases
         {
-            get => _d1Databases ?? (_d1Databases = new InputMap<object>());
+            get => _d1Databases ?? (_d1Databases = new InputMap<string>());
             set => _d1Databases = value;
         }
 
         [Input("durableObjectNamespaces")]
-        private InputMap<object>? _durableObjectNamespaces;
+        private InputMap<string>? _durableObjectNamespaces;
 
         /// <summary>
         /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> DurableObjectNamespaces
+        public InputMap<string> DurableObjectNamespaces
         {
-            get => _durableObjectNamespaces ?? (_durableObjectNamespaces = new InputMap<object>());
+            get => _durableObjectNamespaces ?? (_durableObjectNamespaces = new InputMap<string>());
             set => _durableObjectNamespaces = value;
         }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// Environment variables for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -79,14 +79,14 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? FailOpen { get; set; }
 
         [Input("kvNamespaces")]
-        private InputMap<object>? _kvNamespaces;
+        private InputMap<string>? _kvNamespaces;
 
         /// <summary>
         /// KV namespaces used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> KvNamespaces
+        public InputMap<string> KvNamespaces
         {
-            get => _kvNamespaces ?? (_kvNamespaces = new InputMap<object>());
+            get => _kvNamespaces ?? (_kvNamespaces = new InputMap<string>());
             set => _kvNamespaces = value;
         }
 
@@ -97,29 +97,29 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.PagesProjectDeploymentConfigsProductionPlacementGetArgs>? Placement { get; set; }
 
         [Input("r2Buckets")]
-        private InputMap<object>? _r2Buckets;
+        private InputMap<string>? _r2Buckets;
 
         /// <summary>
         /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> R2Buckets
+        public InputMap<string> R2Buckets
         {
-            get => _r2Buckets ?? (_r2Buckets = new InputMap<object>());
+            get => _r2Buckets ?? (_r2Buckets = new InputMap<string>());
             set => _r2Buckets = value;
         }
 
         [Input("secrets")]
-        private InputMap<object>? _secrets;
+        private InputMap<string>? _secrets;
 
         /// <summary>
         /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public InputMap<object> Secrets
+        public InputMap<string> Secrets
         {
-            get => _secrets ?? (_secrets = new InputMap<object>());
+            get => _secrets ?? (_secrets = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

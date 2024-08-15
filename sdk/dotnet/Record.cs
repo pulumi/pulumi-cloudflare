@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// A key-value map of string metadata Cloudflare associates with the record.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The RFC3339 timestamp of when the record was last modified.
@@ -324,14 +324,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// A key-value map of string metadata Cloudflare associates with the record.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

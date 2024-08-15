@@ -22011,21 +22011,21 @@ type PagesProjectDeploymentConfigsPreview struct {
 	// Compatibility flags used for Pages Functions.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// D1 Databases used for Pages Functions. Defaults to `map[]`.
-	D1Databases map[string]interface{} `pulumi:"d1Databases"`
+	D1Databases map[string]string `pulumi:"d1Databases"`
 	// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-	DurableObjectNamespaces map[string]interface{} `pulumi:"durableObjectNamespaces"`
+	DurableObjectNamespaces map[string]string `pulumi:"durableObjectNamespaces"`
 	// Environment variables for Pages Functions. Defaults to `map[]`.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// Fail open used for Pages Functions. Defaults to `false`.
 	FailOpen *bool `pulumi:"failOpen"`
 	// KV namespaces used for Pages Functions. Defaults to `map[]`.
-	KvNamespaces map[string]interface{} `pulumi:"kvNamespaces"`
+	KvNamespaces map[string]string `pulumi:"kvNamespaces"`
 	// Configuration for placement in the Cloudflare Pages project.
 	Placement *PagesProjectDeploymentConfigsPreviewPlacement `pulumi:"placement"`
 	// R2 Buckets used for Pages Functions. Defaults to `map[]`.
-	R2Buckets map[string]interface{} `pulumi:"r2Buckets"`
+	R2Buckets map[string]string `pulumi:"r2Buckets"`
 	// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-	Secrets map[string]interface{} `pulumi:"secrets"`
+	Secrets map[string]string `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings []PagesProjectDeploymentConfigsPreviewServiceBinding `pulumi:"serviceBindings"`
 	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
@@ -22051,21 +22051,21 @@ type PagesProjectDeploymentConfigsPreviewArgs struct {
 	// Compatibility flags used for Pages Functions.
 	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
 	// D1 Databases used for Pages Functions. Defaults to `map[]`.
-	D1Databases pulumi.MapInput `pulumi:"d1Databases"`
+	D1Databases pulumi.StringMapInput `pulumi:"d1Databases"`
 	// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-	DurableObjectNamespaces pulumi.MapInput `pulumi:"durableObjectNamespaces"`
+	DurableObjectNamespaces pulumi.StringMapInput `pulumi:"durableObjectNamespaces"`
 	// Environment variables for Pages Functions. Defaults to `map[]`.
-	EnvironmentVariables pulumi.MapInput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// Fail open used for Pages Functions. Defaults to `false`.
 	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
 	// KV namespaces used for Pages Functions. Defaults to `map[]`.
-	KvNamespaces pulumi.MapInput `pulumi:"kvNamespaces"`
+	KvNamespaces pulumi.StringMapInput `pulumi:"kvNamespaces"`
 	// Configuration for placement in the Cloudflare Pages project.
 	Placement PagesProjectDeploymentConfigsPreviewPlacementPtrInput `pulumi:"placement"`
 	// R2 Buckets used for Pages Functions. Defaults to `map[]`.
-	R2Buckets pulumi.MapInput `pulumi:"r2Buckets"`
+	R2Buckets pulumi.StringMapInput `pulumi:"r2Buckets"`
 	// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-	Secrets pulumi.MapInput `pulumi:"secrets"`
+	Secrets pulumi.StringMapInput `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings PagesProjectDeploymentConfigsPreviewServiceBindingArrayInput `pulumi:"serviceBindings"`
 	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
@@ -22165,18 +22165,18 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) CompatibilityFlags() pulumi.
 }
 
 // D1 Databases used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) D1Databases() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.D1Databases }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) D1Databases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.D1Databases }).(pulumi.StringMapOutput)
 }
 
 // Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) DurableObjectNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.DurableObjectNamespaces }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) DurableObjectNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.DurableObjectNamespaces }).(pulumi.StringMapOutput)
 }
 
 // Environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // Fail open used for Pages Functions. Defaults to `false`.
@@ -22185,8 +22185,8 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) FailOpen() pulumi.BoolPtrOut
 }
 
 // KV namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) KvNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) KvNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.KvNamespaces }).(pulumi.StringMapOutput)
 }
 
 // Configuration for placement in the Cloudflare Pages project.
@@ -22197,13 +22197,13 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) Placement() PagesProjectDepl
 }
 
 // R2 Buckets used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) R2Buckets() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.R2Buckets }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) R2Buckets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.R2Buckets }).(pulumi.StringMapOutput)
 }
 
 // Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewOutput) Secrets() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.Secrets }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsPreviewOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]string { return v.Secrets }).(pulumi.StringMapOutput)
 }
 
 // Services used for Pages Functions.
@@ -22273,33 +22273,33 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) CompatibilityFlags() pulu
 }
 
 // D1 Databases used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) D1Databases() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) D1Databases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.D1Databases
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) DurableObjectNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) DurableObjectNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DurableObjectNamespaces
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.EnvironmentVariables
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Fail open used for Pages Functions. Defaults to `false`.
@@ -22313,13 +22313,13 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) FailOpen() pulumi.BoolPtr
 }
 
 // KV namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) KvNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) KvNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.KvNamespaces
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Configuration for placement in the Cloudflare Pages project.
@@ -22333,23 +22333,23 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Placement() PagesProjectD
 }
 
 // R2 Buckets used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) R2Buckets() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) R2Buckets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.R2Buckets
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Secrets() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Secrets
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Services used for Pages Functions.
@@ -22632,21 +22632,21 @@ type PagesProjectDeploymentConfigsProduction struct {
 	// Compatibility flags used for Pages Functions.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// D1 Databases used for Pages Functions. Defaults to `map[]`.
-	D1Databases map[string]interface{} `pulumi:"d1Databases"`
+	D1Databases map[string]string `pulumi:"d1Databases"`
 	// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-	DurableObjectNamespaces map[string]interface{} `pulumi:"durableObjectNamespaces"`
+	DurableObjectNamespaces map[string]string `pulumi:"durableObjectNamespaces"`
 	// Environment variables for Pages Functions. Defaults to `map[]`.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// Fail open used for Pages Functions. Defaults to `false`.
 	FailOpen *bool `pulumi:"failOpen"`
 	// KV namespaces used for Pages Functions. Defaults to `map[]`.
-	KvNamespaces map[string]interface{} `pulumi:"kvNamespaces"`
+	KvNamespaces map[string]string `pulumi:"kvNamespaces"`
 	// Configuration for placement in the Cloudflare Pages project.
 	Placement *PagesProjectDeploymentConfigsProductionPlacement `pulumi:"placement"`
 	// R2 Buckets used for Pages Functions. Defaults to `map[]`.
-	R2Buckets map[string]interface{} `pulumi:"r2Buckets"`
+	R2Buckets map[string]string `pulumi:"r2Buckets"`
 	// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-	Secrets map[string]interface{} `pulumi:"secrets"`
+	Secrets map[string]string `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings []PagesProjectDeploymentConfigsProductionServiceBinding `pulumi:"serviceBindings"`
 	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
@@ -22672,21 +22672,21 @@ type PagesProjectDeploymentConfigsProductionArgs struct {
 	// Compatibility flags used for Pages Functions.
 	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
 	// D1 Databases used for Pages Functions. Defaults to `map[]`.
-	D1Databases pulumi.MapInput `pulumi:"d1Databases"`
+	D1Databases pulumi.StringMapInput `pulumi:"d1Databases"`
 	// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-	DurableObjectNamespaces pulumi.MapInput `pulumi:"durableObjectNamespaces"`
+	DurableObjectNamespaces pulumi.StringMapInput `pulumi:"durableObjectNamespaces"`
 	// Environment variables for Pages Functions. Defaults to `map[]`.
-	EnvironmentVariables pulumi.MapInput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// Fail open used for Pages Functions. Defaults to `false`.
 	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
 	// KV namespaces used for Pages Functions. Defaults to `map[]`.
-	KvNamespaces pulumi.MapInput `pulumi:"kvNamespaces"`
+	KvNamespaces pulumi.StringMapInput `pulumi:"kvNamespaces"`
 	// Configuration for placement in the Cloudflare Pages project.
 	Placement PagesProjectDeploymentConfigsProductionPlacementPtrInput `pulumi:"placement"`
 	// R2 Buckets used for Pages Functions. Defaults to `map[]`.
-	R2Buckets pulumi.MapInput `pulumi:"r2Buckets"`
+	R2Buckets pulumi.StringMapInput `pulumi:"r2Buckets"`
 	// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-	Secrets pulumi.MapInput `pulumi:"secrets"`
+	Secrets pulumi.StringMapInput `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings PagesProjectDeploymentConfigsProductionServiceBindingArrayInput `pulumi:"serviceBindings"`
 	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
@@ -22786,20 +22786,18 @@ func (o PagesProjectDeploymentConfigsProductionOutput) CompatibilityFlags() pulu
 }
 
 // D1 Databases used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) D1Databases() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.D1Databases }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) D1Databases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.D1Databases }).(pulumi.StringMapOutput)
 }
 
 // Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) DurableObjectNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} {
-		return v.DurableObjectNamespaces
-	}).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) DurableObjectNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.DurableObjectNamespaces }).(pulumi.StringMapOutput)
 }
 
 // Environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // Fail open used for Pages Functions. Defaults to `false`.
@@ -22808,8 +22806,8 @@ func (o PagesProjectDeploymentConfigsProductionOutput) FailOpen() pulumi.BoolPtr
 }
 
 // KV namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) KvNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) KvNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.KvNamespaces }).(pulumi.StringMapOutput)
 }
 
 // Configuration for placement in the Cloudflare Pages project.
@@ -22820,13 +22818,13 @@ func (o PagesProjectDeploymentConfigsProductionOutput) Placement() PagesProjectD
 }
 
 // R2 Buckets used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) R2Buckets() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.R2Buckets }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) R2Buckets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.R2Buckets }).(pulumi.StringMapOutput)
 }
 
 // Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionOutput) Secrets() pulumi.MapOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.Secrets }).(pulumi.MapOutput)
+func (o PagesProjectDeploymentConfigsProductionOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]string { return v.Secrets }).(pulumi.StringMapOutput)
 }
 
 // Services used for Pages Functions.
@@ -22896,33 +22894,33 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) CompatibilityFlags() p
 }
 
 // D1 Databases used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) D1Databases() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) D1Databases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.D1Databases
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) DurableObjectNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) DurableObjectNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.DurableObjectNamespaces
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.EnvironmentVariables
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Fail open used for Pages Functions. Defaults to `false`.
@@ -22936,13 +22934,13 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) FailOpen() pulumi.Bool
 }
 
 // KV namespaces used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) KvNamespaces() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) KvNamespaces() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.KvNamespaces
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Configuration for placement in the Cloudflare Pages project.
@@ -22956,23 +22954,23 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) Placement() PagesProje
 }
 
 // R2 Buckets used for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) R2Buckets() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) R2Buckets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.R2Buckets
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-func (o PagesProjectDeploymentConfigsProductionPtrOutput) Secrets() pulumi.MapOutput {
-	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) Secrets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Secrets
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Services used for Pages Functions.

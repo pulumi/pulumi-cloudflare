@@ -219,7 +219,7 @@ class _RecordState:
                  created_on: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  modified_on: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -237,7 +237,7 @@ class _RecordState:
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
-        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A key-value map of string metadata Cloudflare associates with the record.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] priority: The priority of the record.
@@ -358,14 +358,14 @@ class _RecordState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A key-value map of string metadata Cloudflare associates with the record.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -679,7 +679,7 @@ class Record(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -702,7 +702,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
-        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A key-value map of string metadata Cloudflare associates with the record.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] priority: The priority of the record.
@@ -784,7 +784,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A key-value map of string metadata Cloudflare associates with the record.
         """

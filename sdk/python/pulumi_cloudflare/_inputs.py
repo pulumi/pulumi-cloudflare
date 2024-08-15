@@ -11644,28 +11644,28 @@ class PagesProjectDeploymentConfigsPreviewArgs:
                  always_use_latest_compatibility_date: Optional[pulumi.Input[bool]] = None,
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 d1_databases: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 durable_object_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 d1_databases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 durable_object_namespaces: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fail_open: Optional[pulumi.Input[bool]] = None,
-                 kv_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kv_namespaces: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  placement: Optional[pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgs']] = None,
-                 r2_buckets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 r2_buckets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsPreviewServiceBindingArgs']]]] = None,
                  usage_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] always_use_latest_compatibility_date: Use latest compatibility date for Pages Functions. Defaults to `false`.
         :param pulumi.Input[str] compatibility_date: Compatibility date used for Pages Functions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Pages Functions.
-        :param pulumi.Input[Mapping[str, Any]] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input[bool] fail_open: Fail open used for Pages Functions. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, Any]] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgs'] placement: Configuration for placement in the Cloudflare Pages project.
-        :param pulumi.Input[Mapping[str, Any]] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsPreviewServiceBindingArgs']]] service_bindings: Services used for Pages Functions.
         :param pulumi.Input[str] usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
@@ -11734,38 +11734,38 @@ class PagesProjectDeploymentConfigsPreviewArgs:
 
     @property
     @pulumi.getter(name="d1Databases")
-    def d1_databases(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def d1_databases(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         D1 Databases used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "d1_databases")
 
     @d1_databases.setter
-    def d1_databases(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def d1_databases(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "d1_databases", value)
 
     @property
     @pulumi.getter(name="durableObjectNamespaces")
-    def durable_object_namespaces(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def durable_object_namespaces(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "durable_object_namespaces")
 
     @durable_object_namespaces.setter
-    def durable_object_namespaces(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def durable_object_namespaces(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "durable_object_namespaces", value)
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Environment variables for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -11782,14 +11782,14 @@ class PagesProjectDeploymentConfigsPreviewArgs:
 
     @property
     @pulumi.getter(name="kvNamespaces")
-    def kv_namespaces(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kv_namespaces(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         KV namespaces used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "kv_namespaces")
 
     @kv_namespaces.setter
-    def kv_namespaces(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kv_namespaces(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kv_namespaces", value)
 
     @property
@@ -11806,26 +11806,26 @@ class PagesProjectDeploymentConfigsPreviewArgs:
 
     @property
     @pulumi.getter(name="r2Buckets")
-    def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         R2 Buckets used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "r2_buckets")
 
     @r2_buckets.setter
-    def r2_buckets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def r2_buckets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "r2_buckets", value)
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def secrets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def secrets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "secrets", value)
 
     @property
@@ -11935,28 +11935,28 @@ class PagesProjectDeploymentConfigsProductionArgs:
                  always_use_latest_compatibility_date: Optional[pulumi.Input[bool]] = None,
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 d1_databases: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 durable_object_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 d1_databases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 durable_object_namespaces: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fail_open: Optional[pulumi.Input[bool]] = None,
-                 kv_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kv_namespaces: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  placement: Optional[pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgs']] = None,
-                 r2_buckets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 r2_buckets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsProductionServiceBindingArgs']]]] = None,
                  usage_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] always_use_latest_compatibility_date: Use latest compatibility date for Pages Functions. Defaults to `false`.
         :param pulumi.Input[str] compatibility_date: Compatibility date used for Pages Functions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Pages Functions.
-        :param pulumi.Input[Mapping[str, Any]] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input[bool] fail_open: Fail open used for Pages Functions. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, Any]] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgs'] placement: Configuration for placement in the Cloudflare Pages project.
-        :param pulumi.Input[Mapping[str, Any]] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
-        :param pulumi.Input[Mapping[str, Any]] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsProductionServiceBindingArgs']]] service_bindings: Services used for Pages Functions.
         :param pulumi.Input[str] usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
@@ -12025,38 +12025,38 @@ class PagesProjectDeploymentConfigsProductionArgs:
 
     @property
     @pulumi.getter(name="d1Databases")
-    def d1_databases(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def d1_databases(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         D1 Databases used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "d1_databases")
 
     @d1_databases.setter
-    def d1_databases(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def d1_databases(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "d1_databases", value)
 
     @property
     @pulumi.getter(name="durableObjectNamespaces")
-    def durable_object_namespaces(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def durable_object_namespaces(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "durable_object_namespaces")
 
     @durable_object_namespaces.setter
-    def durable_object_namespaces(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def durable_object_namespaces(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "durable_object_namespaces", value)
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Environment variables for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -12073,14 +12073,14 @@ class PagesProjectDeploymentConfigsProductionArgs:
 
     @property
     @pulumi.getter(name="kvNamespaces")
-    def kv_namespaces(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kv_namespaces(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         KV namespaces used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "kv_namespaces")
 
     @kv_namespaces.setter
-    def kv_namespaces(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kv_namespaces(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kv_namespaces", value)
 
     @property
@@ -12097,26 +12097,26 @@ class PagesProjectDeploymentConfigsProductionArgs:
 
     @property
     @pulumi.getter(name="r2Buckets")
-    def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         R2 Buckets used for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "r2_buckets")
 
     @r2_buckets.setter
-    def r2_buckets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def r2_buckets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "r2_buckets", value)
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def secrets(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def secrets(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "secrets", value)
 
     @property
