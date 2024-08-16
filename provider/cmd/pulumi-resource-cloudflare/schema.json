@@ -4570,21 +4570,21 @@
                 "d1Databases": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "D1 Databases used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "durableObjectNamespaces": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Durable Object namespaces used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "environmentVariables": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Environment variables for Pages Functions. Defaults to `map[]`.\n"
                 },
@@ -4595,7 +4595,7 @@
                 "kvNamespaces": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "KV namespaces used for Pages Functions. Defaults to `map[]`.\n"
                 },
@@ -4606,14 +4606,14 @@
                 "r2Buckets": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "R2 Buckets used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "secrets": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Encrypted environment variables for Pages Functions. Defaults to `map[]`.\n",
                     "secret": true
@@ -4698,21 +4698,21 @@
                 "d1Databases": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "D1 Databases used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "durableObjectNamespaces": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Durable Object namespaces used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "environmentVariables": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Environment variables for Pages Functions. Defaults to `map[]`.\n"
                 },
@@ -4723,7 +4723,7 @@
                 "kvNamespaces": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "KV namespaces used for Pages Functions. Defaults to `map[]`.\n"
                 },
@@ -4734,14 +4734,14 @@
                 "r2Buckets": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "R2 Buckets used for Pages Functions. Defaults to `map[]`.\n"
                 },
                 "secrets": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Encrypted environment variables for Pages Functions. Defaults to `map[]`.\n",
                     "secret": true
@@ -18788,7 +18788,7 @@
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "A key-value map of string metadata Cloudflare associates with the record.\n"
                 },
@@ -18940,7 +18940,7 @@
                     "metadata": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A key-value map of string metadata Cloudflare associates with the record.\n"
                     },

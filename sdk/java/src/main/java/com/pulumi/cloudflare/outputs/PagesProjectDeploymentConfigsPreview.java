@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewPlaceme
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewServiceBinding;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,17 +35,17 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> d1Databases;
+    private @Nullable Map<String,String> d1Databases;
     /**
      * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> durableObjectNamespaces;
+    private @Nullable Map<String,String> durableObjectNamespaces;
     /**
      * @return Environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> environmentVariables;
+    private @Nullable Map<String,String> environmentVariables;
     /**
      * @return Fail open used for Pages Functions. Defaults to `false`.
      * 
@@ -56,7 +55,7 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> kvNamespaces;
+    private @Nullable Map<String,String> kvNamespaces;
     /**
      * @return Configuration for placement in the Cloudflare Pages project.
      * 
@@ -66,12 +65,12 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> r2Buckets;
+    private @Nullable Map<String,String> r2Buckets;
     /**
      * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    private @Nullable Map<String,Object> secrets;
+    private @Nullable Map<String,String> secrets;
     /**
      * @return Services used for Pages Functions.
      * 
@@ -109,21 +108,21 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> d1Databases() {
+    public Map<String,String> d1Databases() {
         return this.d1Databases == null ? Map.of() : this.d1Databases;
     }
     /**
      * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> durableObjectNamespaces() {
+    public Map<String,String> durableObjectNamespaces() {
         return this.durableObjectNamespaces == null ? Map.of() : this.durableObjectNamespaces;
     }
     /**
      * @return Environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> environmentVariables() {
+    public Map<String,String> environmentVariables() {
         return this.environmentVariables == null ? Map.of() : this.environmentVariables;
     }
     /**
@@ -137,7 +136,7 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> kvNamespaces() {
+    public Map<String,String> kvNamespaces() {
         return this.kvNamespaces == null ? Map.of() : this.kvNamespaces;
     }
     /**
@@ -151,14 +150,14 @@ public final class PagesProjectDeploymentConfigsPreview {
      * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> r2Buckets() {
+    public Map<String,String> r2Buckets() {
         return this.r2Buckets == null ? Map.of() : this.r2Buckets;
     }
     /**
      * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      * 
      */
-    public Map<String,Object> secrets() {
+    public Map<String,String> secrets() {
         return this.secrets == null ? Map.of() : this.secrets;
     }
     /**
@@ -188,14 +187,14 @@ public final class PagesProjectDeploymentConfigsPreview {
         private @Nullable Boolean alwaysUseLatestCompatibilityDate;
         private @Nullable String compatibilityDate;
         private @Nullable List<String> compatibilityFlags;
-        private @Nullable Map<String,Object> d1Databases;
-        private @Nullable Map<String,Object> durableObjectNamespaces;
-        private @Nullable Map<String,Object> environmentVariables;
+        private @Nullable Map<String,String> d1Databases;
+        private @Nullable Map<String,String> durableObjectNamespaces;
+        private @Nullable Map<String,String> environmentVariables;
         private @Nullable Boolean failOpen;
-        private @Nullable Map<String,Object> kvNamespaces;
+        private @Nullable Map<String,String> kvNamespaces;
         private @Nullable PagesProjectDeploymentConfigsPreviewPlacement placement;
-        private @Nullable Map<String,Object> r2Buckets;
-        private @Nullable Map<String,Object> secrets;
+        private @Nullable Map<String,String> r2Buckets;
+        private @Nullable Map<String,String> secrets;
         private @Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings;
         private @Nullable String usageModel;
         public Builder() {}
@@ -238,19 +237,19 @@ public final class PagesProjectDeploymentConfigsPreview {
             return compatibilityFlags(List.of(compatibilityFlags));
         }
         @CustomType.Setter
-        public Builder d1Databases(@Nullable Map<String,Object> d1Databases) {
+        public Builder d1Databases(@Nullable Map<String,String> d1Databases) {
 
             this.d1Databases = d1Databases;
             return this;
         }
         @CustomType.Setter
-        public Builder durableObjectNamespaces(@Nullable Map<String,Object> durableObjectNamespaces) {
+        public Builder durableObjectNamespaces(@Nullable Map<String,String> durableObjectNamespaces) {
 
             this.durableObjectNamespaces = durableObjectNamespaces;
             return this;
         }
         @CustomType.Setter
-        public Builder environmentVariables(@Nullable Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
 
             this.environmentVariables = environmentVariables;
             return this;
@@ -262,7 +261,7 @@ public final class PagesProjectDeploymentConfigsPreview {
             return this;
         }
         @CustomType.Setter
-        public Builder kvNamespaces(@Nullable Map<String,Object> kvNamespaces) {
+        public Builder kvNamespaces(@Nullable Map<String,String> kvNamespaces) {
 
             this.kvNamespaces = kvNamespaces;
             return this;
@@ -274,13 +273,13 @@ public final class PagesProjectDeploymentConfigsPreview {
             return this;
         }
         @CustomType.Setter
-        public Builder r2Buckets(@Nullable Map<String,Object> r2Buckets) {
+        public Builder r2Buckets(@Nullable Map<String,String> r2Buckets) {
 
             this.r2Buckets = r2Buckets;
             return this;
         }
         @CustomType.Setter
-        public Builder secrets(@Nullable Map<String,Object> secrets) {
+        public Builder secrets(@Nullable Map<String,String> secrets) {
 
             this.secrets = secrets;
             return this;

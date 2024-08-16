@@ -2936,15 +2936,15 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * D1 Databases used for Pages Functions. Defaults to `map[]`.
      */
-    d1Databases?: pulumi.Input<{[key: string]: any}>;
+    d1Databases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
+    durableObjectNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment variables for Pages Functions. Defaults to `map[]`.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Fail open used for Pages Functions. Defaults to `false`.
      */
@@ -2952,7 +2952,7 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * KV namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    kvNamespaces?: pulumi.Input<{[key: string]: any}>;
+    kvNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration for placement in the Cloudflare Pages project.
      */
@@ -2960,11 +2960,11 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * R2 Buckets used for Pages Functions. Defaults to `map[]`.
      */
-    r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    r2Buckets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      */
-    secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Services used for Pages Functions.
      */
@@ -3013,15 +3013,15 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * D1 Databases used for Pages Functions. Defaults to `map[]`.
      */
-    d1Databases?: pulumi.Input<{[key: string]: any}>;
+    d1Databases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
+    durableObjectNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment variables for Pages Functions. Defaults to `map[]`.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Fail open used for Pages Functions. Defaults to `false`.
      */
@@ -3029,7 +3029,7 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * KV namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    kvNamespaces?: pulumi.Input<{[key: string]: any}>;
+    kvNamespaces?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration for placement in the Cloudflare Pages project.
      */
@@ -3037,11 +3037,11 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * R2 Buckets used for Pages Functions. Defaults to `map[]`.
      */
-    r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    r2Buckets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      */
-    secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Services used for Pages Functions.
      */

@@ -28,15 +28,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// D1 Databases used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? D1Databases;
+        public readonly ImmutableDictionary<string, string>? D1Databases;
         /// <summary>
         /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? DurableObjectNamespaces;
+        public readonly ImmutableDictionary<string, string>? DurableObjectNamespaces;
         /// <summary>
         /// Environment variables for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? EnvironmentVariables;
+        public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
         /// <summary>
         /// Fail open used for Pages Functions. Defaults to `false`.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// KV namespaces used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? KvNamespaces;
+        public readonly ImmutableDictionary<string, string>? KvNamespaces;
         /// <summary>
         /// Configuration for placement in the Cloudflare Pages project.
         /// </summary>
@@ -52,11 +52,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? R2Buckets;
+        public readonly ImmutableDictionary<string, string>? R2Buckets;
         /// <summary>
         /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Secrets;
+        public readonly ImmutableDictionary<string, string>? Secrets;
         /// <summary>
         /// Services used for Pages Functions.
         /// </summary>
@@ -74,21 +74,21 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> compatibilityFlags,
 
-            ImmutableDictionary<string, object>? d1Databases,
+            ImmutableDictionary<string, string>? d1Databases,
 
-            ImmutableDictionary<string, object>? durableObjectNamespaces,
+            ImmutableDictionary<string, string>? durableObjectNamespaces,
 
-            ImmutableDictionary<string, object>? environmentVariables,
+            ImmutableDictionary<string, string>? environmentVariables,
 
             bool? failOpen,
 
-            ImmutableDictionary<string, object>? kvNamespaces,
+            ImmutableDictionary<string, string>? kvNamespaces,
 
             Outputs.PagesProjectDeploymentConfigsPreviewPlacement? placement,
 
-            ImmutableDictionary<string, object>? r2Buckets,
+            ImmutableDictionary<string, string>? r2Buckets,
 
-            ImmutableDictionary<string, object>? secrets,
+            ImmutableDictionary<string, string>? secrets,
 
             ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings,
 
