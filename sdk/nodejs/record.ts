@@ -98,7 +98,7 @@ export class Record extends pulumi.CustomResource {
     /**
      * A key-value map of string metadata Cloudflare associates with the record.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * The RFC3339 timestamp of when the record was last modified.
      */
@@ -234,7 +234,7 @@ export interface RecordState {
     /**
      * A key-value map of string metadata Cloudflare associates with the record.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The RFC3339 timestamp of when the record was last modified.
      */

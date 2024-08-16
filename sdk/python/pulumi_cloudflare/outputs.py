@@ -11358,28 +11358,28 @@ class PagesProjectDeploymentConfigsPreview(dict):
                  always_use_latest_compatibility_date: Optional[bool] = None,
                  compatibility_date: Optional[str] = None,
                  compatibility_flags: Optional[Sequence[str]] = None,
-                 d1_databases: Optional[Mapping[str, Any]] = None,
-                 durable_object_namespaces: Optional[Mapping[str, Any]] = None,
-                 environment_variables: Optional[Mapping[str, Any]] = None,
+                 d1_databases: Optional[Mapping[str, str]] = None,
+                 durable_object_namespaces: Optional[Mapping[str, str]] = None,
+                 environment_variables: Optional[Mapping[str, str]] = None,
                  fail_open: Optional[bool] = None,
-                 kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 kv_namespaces: Optional[Mapping[str, str]] = None,
                  placement: Optional['outputs.PagesProjectDeploymentConfigsPreviewPlacement'] = None,
-                 r2_buckets: Optional[Mapping[str, Any]] = None,
-                 secrets: Optional[Mapping[str, Any]] = None,
+                 r2_buckets: Optional[Mapping[str, str]] = None,
+                 secrets: Optional[Mapping[str, str]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsPreviewServiceBinding']] = None,
                  usage_model: Optional[str] = None):
         """
         :param bool always_use_latest_compatibility_date: Use latest compatibility date for Pages Functions. Defaults to `false`.
         :param str compatibility_date: Compatibility date used for Pages Functions.
         :param Sequence[str] compatibility_flags: Compatibility flags used for Pages Functions.
-        :param Mapping[str, Any] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
         :param bool fail_open: Fail open used for Pages Functions. Defaults to `false`.
-        :param Mapping[str, Any] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
         :param 'PagesProjectDeploymentConfigsPreviewPlacementArgs' placement: Configuration for placement in the Cloudflare Pages project.
-        :param Mapping[str, Any] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param Sequence['PagesProjectDeploymentConfigsPreviewServiceBindingArgs'] service_bindings: Services used for Pages Functions.
         :param str usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
@@ -11436,7 +11436,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter(name="d1Databases")
-    def d1_databases(self) -> Optional[Mapping[str, Any]]:
+    def d1_databases(self) -> Optional[Mapping[str, str]]:
         """
         D1 Databases used for Pages Functions. Defaults to `map[]`.
         """
@@ -11444,7 +11444,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter(name="durableObjectNamespaces")
-    def durable_object_namespaces(self) -> Optional[Mapping[str, Any]]:
+    def durable_object_namespaces(self) -> Optional[Mapping[str, str]]:
         """
         Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         """
@@ -11452,7 +11452,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+    def environment_variables(self) -> Optional[Mapping[str, str]]:
         """
         Environment variables for Pages Functions. Defaults to `map[]`.
         """
@@ -11468,7 +11468,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter(name="kvNamespaces")
-    def kv_namespaces(self) -> Optional[Mapping[str, Any]]:
+    def kv_namespaces(self) -> Optional[Mapping[str, str]]:
         """
         KV namespaces used for Pages Functions. Defaults to `map[]`.
         """
@@ -11484,7 +11484,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter(name="r2Buckets")
-    def r2_buckets(self) -> Optional[Mapping[str, Any]]:
+    def r2_buckets(self) -> Optional[Mapping[str, str]]:
         """
         R2 Buckets used for Pages Functions. Defaults to `map[]`.
         """
@@ -11492,7 +11492,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[Mapping[str, Any]]:
+    def secrets(self) -> Optional[Mapping[str, str]]:
         """
         Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         """
@@ -11618,28 +11618,28 @@ class PagesProjectDeploymentConfigsProduction(dict):
                  always_use_latest_compatibility_date: Optional[bool] = None,
                  compatibility_date: Optional[str] = None,
                  compatibility_flags: Optional[Sequence[str]] = None,
-                 d1_databases: Optional[Mapping[str, Any]] = None,
-                 durable_object_namespaces: Optional[Mapping[str, Any]] = None,
-                 environment_variables: Optional[Mapping[str, Any]] = None,
+                 d1_databases: Optional[Mapping[str, str]] = None,
+                 durable_object_namespaces: Optional[Mapping[str, str]] = None,
+                 environment_variables: Optional[Mapping[str, str]] = None,
                  fail_open: Optional[bool] = None,
-                 kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 kv_namespaces: Optional[Mapping[str, str]] = None,
                  placement: Optional['outputs.PagesProjectDeploymentConfigsProductionPlacement'] = None,
-                 r2_buckets: Optional[Mapping[str, Any]] = None,
-                 secrets: Optional[Mapping[str, Any]] = None,
+                 r2_buckets: Optional[Mapping[str, str]] = None,
+                 secrets: Optional[Mapping[str, str]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsProductionServiceBinding']] = None,
                  usage_model: Optional[str] = None):
         """
         :param bool always_use_latest_compatibility_date: Use latest compatibility date for Pages Functions. Defaults to `false`.
         :param str compatibility_date: Compatibility date used for Pages Functions.
         :param Sequence[str] compatibility_flags: Compatibility flags used for Pages Functions.
-        :param Mapping[str, Any] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] d1_databases: D1 Databases used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] durable_object_namespaces: Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] environment_variables: Environment variables for Pages Functions. Defaults to `map[]`.
         :param bool fail_open: Fail open used for Pages Functions. Defaults to `false`.
-        :param Mapping[str, Any] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] kv_namespaces: KV namespaces used for Pages Functions. Defaults to `map[]`.
         :param 'PagesProjectDeploymentConfigsProductionPlacementArgs' placement: Configuration for placement in the Cloudflare Pages project.
-        :param Mapping[str, Any] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
-        :param Mapping[str, Any] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        :param Mapping[str, str] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param Sequence['PagesProjectDeploymentConfigsProductionServiceBindingArgs'] service_bindings: Services used for Pages Functions.
         :param str usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
@@ -11696,7 +11696,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter(name="d1Databases")
-    def d1_databases(self) -> Optional[Mapping[str, Any]]:
+    def d1_databases(self) -> Optional[Mapping[str, str]]:
         """
         D1 Databases used for Pages Functions. Defaults to `map[]`.
         """
@@ -11704,7 +11704,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter(name="durableObjectNamespaces")
-    def durable_object_namespaces(self) -> Optional[Mapping[str, Any]]:
+    def durable_object_namespaces(self) -> Optional[Mapping[str, str]]:
         """
         Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
         """
@@ -11712,7 +11712,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+    def environment_variables(self) -> Optional[Mapping[str, str]]:
         """
         Environment variables for Pages Functions. Defaults to `map[]`.
         """
@@ -11728,7 +11728,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter(name="kvNamespaces")
-    def kv_namespaces(self) -> Optional[Mapping[str, Any]]:
+    def kv_namespaces(self) -> Optional[Mapping[str, str]]:
         """
         KV namespaces used for Pages Functions. Defaults to `map[]`.
         """
@@ -11744,7 +11744,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter(name="r2Buckets")
-    def r2_buckets(self) -> Optional[Mapping[str, Any]]:
+    def r2_buckets(self) -> Optional[Mapping[str, str]]:
         """
         R2 Buckets used for Pages Functions. Defaults to `map[]`.
         """
@@ -11752,7 +11752,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
 
     @property
     @pulumi.getter
-    def secrets(self) -> Optional[Mapping[str, Any]]:
+    def secrets(self) -> Optional[Mapping[str, str]]:
         """
         Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         """

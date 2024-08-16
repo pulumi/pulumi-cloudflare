@@ -3748,15 +3748,15 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * D1 Databases used for Pages Functions. Defaults to `map[]`.
      */
-    d1Databases?: {[key: string]: any};
+    d1Databases?: {[key: string]: string};
     /**
      * Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    durableObjectNamespaces?: {[key: string]: any};
+    durableObjectNamespaces?: {[key: string]: string};
     /**
      * Environment variables for Pages Functions. Defaults to `map[]`.
      */
-    environmentVariables?: {[key: string]: any};
+    environmentVariables?: {[key: string]: string};
     /**
      * Fail open used for Pages Functions. Defaults to `false`.
      */
@@ -3764,7 +3764,7 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * KV namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    kvNamespaces?: {[key: string]: any};
+    kvNamespaces?: {[key: string]: string};
     /**
      * Configuration for placement in the Cloudflare Pages project.
      */
@@ -3772,11 +3772,11 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * R2 Buckets used for Pages Functions. Defaults to `map[]`.
      */
-    r2Buckets?: {[key: string]: any};
+    r2Buckets?: {[key: string]: string};
     /**
      * Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      */
-    secrets?: {[key: string]: any};
+    secrets?: {[key: string]: string};
     /**
      * Services used for Pages Functions.
      */
@@ -3825,15 +3825,15 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * D1 Databases used for Pages Functions. Defaults to `map[]`.
      */
-    d1Databases?: {[key: string]: any};
+    d1Databases?: {[key: string]: string};
     /**
      * Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    durableObjectNamespaces?: {[key: string]: any};
+    durableObjectNamespaces?: {[key: string]: string};
     /**
      * Environment variables for Pages Functions. Defaults to `map[]`.
      */
-    environmentVariables?: {[key: string]: any};
+    environmentVariables?: {[key: string]: string};
     /**
      * Fail open used for Pages Functions. Defaults to `false`.
      */
@@ -3841,7 +3841,7 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * KV namespaces used for Pages Functions. Defaults to `map[]`.
      */
-    kvNamespaces?: {[key: string]: any};
+    kvNamespaces?: {[key: string]: string};
     /**
      * Configuration for placement in the Cloudflare Pages project.
      */
@@ -3849,11 +3849,11 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * R2 Buckets used for Pages Functions. Defaults to `map[]`.
      */
-    r2Buckets?: {[key: string]: any};
+    r2Buckets?: {[key: string]: string};
     /**
      * Encrypted environment variables for Pages Functions. Defaults to `map[]`.
      */
-    secrets?: {[key: string]: any};
+    secrets?: {[key: string]: string};
     /**
      * Services used for Pages Functions.
      */
