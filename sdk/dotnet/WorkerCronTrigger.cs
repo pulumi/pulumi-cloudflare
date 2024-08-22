@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleScript = new Cloudflare.WorkerScript("example_script", new()
+    ///     var exampleScript = new Cloudflare.WorkersScript("example_script", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example-script",

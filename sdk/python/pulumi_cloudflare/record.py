@@ -34,13 +34,13 @@ class RecordArgs:
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
-        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
-        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[str] content: The content of the record. Must provide only one of `data`, `content`, `value`.
+        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[int] priority: The priority of the record.
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
         :param pulumi.Input[int] ttl: The TTL of the record.
-        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] value: The value of the record. Must provide only one of `data`, `content`, `value`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -128,7 +128,7 @@ class RecordArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the record. Conflicts with `data`.
+        The content of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "content")
 
@@ -140,7 +140,7 @@ class RecordArgs:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
         """
-        Map of attributes that constitute the record value. Conflicts with `value`.
+        Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "data")
 
@@ -201,7 +201,7 @@ class RecordArgs:
     @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the record. Conflicts with `data`.
+        The value of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "value")
 
@@ -233,9 +233,9 @@ class _RecordState:
         """
         Input properties used for looking up and filtering Record resources.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
-        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
+        :param pulumi.Input[str] content: The content of the record. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
-        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A key-value map of string metadata Cloudflare associates with the record.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
@@ -246,7 +246,7 @@ class _RecordState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
         :param pulumi.Input[int] ttl: The TTL of the record.
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] value: The value of the record. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if allow_overwrite is not None:
@@ -312,7 +312,7 @@ class _RecordState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the record. Conflicts with `data`.
+        The content of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "content")
 
@@ -336,7 +336,7 @@ class _RecordState:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
         """
-        Map of attributes that constitute the record value. Conflicts with `value`.
+        Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "data")
 
@@ -469,7 +469,7 @@ class _RecordState:
     @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the record. Conflicts with `data`.
+        The value of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "value")
 
@@ -549,15 +549,15 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
-        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[str] content: The content of the record. Must provide only one of `data`, `content`, `value`.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] priority: The priority of the record.
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
         :param pulumi.Input[int] ttl: The TTL of the record.
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] value: The value of the record. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
@@ -698,9 +698,9 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
-        :param pulumi.Input[str] content: The content of the record. Conflicts with `data`.
+        :param pulumi.Input[str] content: The content of the record. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] hostname: The FQDN of the record.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A key-value map of string metadata Cloudflare associates with the record.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
@@ -711,7 +711,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
         :param pulumi.Input[int] ttl: The TTL of the record.
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] value: The value of the record. Must provide only one of `data`, `content`, `value`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -754,7 +754,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
-        The content of the record. Conflicts with `data`.
+        The content of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "content")
 
@@ -770,7 +770,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output[Optional['outputs.RecordData']]:
         """
-        Map of attributes that constitute the record value. Conflicts with `value`.
+        Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "data")
 
@@ -859,7 +859,7 @@ class Record(pulumi.CustomResource):
     @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
     def value(self) -> pulumi.Output[str]:
         """
-        The value of the record. Conflicts with `data`.
+        The value of the record. Must provide only one of `data`, `content`, `value`.
         """
         return pulumi.get(self, "value")
 

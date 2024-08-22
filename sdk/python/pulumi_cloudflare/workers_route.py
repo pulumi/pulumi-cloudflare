@@ -139,12 +139,12 @@ class WorkersRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        my_script = cloudflare.WorkersScript("my_script")
         # Runs the specified worker script for all URLs that match `example.com/*`
         my_route = cloudflare.WorkersRoute("my_route",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             pattern="example.com/*",
-            script_name=my_script_cloudflare_worker_script["name"])
-        my_script = cloudflare.WorkersScript("my_script")
+            script_name=my_script.name)
         ```
 
         ## Import
@@ -174,12 +174,12 @@ class WorkersRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        my_script = cloudflare.WorkersScript("my_script")
         # Runs the specified worker script for all URLs that match `example.com/*`
         my_route = cloudflare.WorkersRoute("my_route",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             pattern="example.com/*",
-            script_name=my_script_cloudflare_worker_script["name"])
-        my_script = cloudflare.WorkersScript("my_script")
+            script_name=my_script.name)
         ```
 
         ## Import

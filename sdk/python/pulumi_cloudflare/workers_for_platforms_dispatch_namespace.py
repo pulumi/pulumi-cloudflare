@@ -115,7 +115,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
             content=std.file(input="script.js").result,
-            dispatch_namespace=example_cloudflare_workers_for_platforms_namespace["name"],
+            dispatch_namespace=example.name,
             tags=["free"])
         ```
 
@@ -154,7 +154,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
             content=std.file(input="script.js").result,
-            dispatch_namespace=example_cloudflare_workers_for_platforms_namespace["name"],
+            dispatch_namespace=example.name,
             tags=["free"])
         ```
 

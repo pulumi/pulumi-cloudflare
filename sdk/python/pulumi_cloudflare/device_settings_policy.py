@@ -31,7 +31,8 @@ class DeviceSettingsPolicyArgs:
                  service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
                  service_mode_v2_port: Optional[pulumi.Input[int]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
-                 switch_locked: Optional[pulumi.Input[bool]] = None):
+                 switch_locked: Optional[pulumi.Input[bool]] = None,
+                 tunnel_protocol: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DeviceSettingsPolicy resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -52,6 +53,7 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "description", description)
@@ -86,6 +88,8 @@ class DeviceSettingsPolicyArgs:
             pulumi.set(__self__, "support_url", support_url)
         if switch_locked is not None:
             pulumi.set(__self__, "switch_locked", switch_locked)
+        if tunnel_protocol is not None:
+            pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
 
     @property
     @pulumi.getter(name="accountId")
@@ -303,6 +307,18 @@ class DeviceSettingsPolicyArgs:
     def switch_locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "switch_locked", value)
 
+    @property
+    @pulumi.getter(name="tunnelProtocol")
+    def tunnel_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        """
+        return pulumi.get(self, "tunnel_protocol")
+
+    @tunnel_protocol.setter
+    def tunnel_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tunnel_protocol", value)
+
 
 @pulumi.input_type
 class _DeviceSettingsPolicyState:
@@ -324,7 +340,8 @@ class _DeviceSettingsPolicyState:
                  service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
                  service_mode_v2_port: Optional[pulumi.Input[int]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
-                 switch_locked: Optional[pulumi.Input[bool]] = None):
+                 switch_locked: Optional[pulumi.Input[bool]] = None,
+                 tunnel_protocol: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeviceSettingsPolicy resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -345,6 +362,7 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -382,6 +400,8 @@ class _DeviceSettingsPolicyState:
             pulumi.set(__self__, "support_url", support_url)
         if switch_locked is not None:
             pulumi.set(__self__, "switch_locked", switch_locked)
+        if tunnel_protocol is not None:
+            pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
 
     @property
     @pulumi.getter(name="accountId")
@@ -599,6 +619,18 @@ class _DeviceSettingsPolicyState:
     def switch_locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "switch_locked", value)
 
+    @property
+    @pulumi.getter(name="tunnelProtocol")
+    def tunnel_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        """
+        return pulumi.get(self, "tunnel_protocol")
+
+    @tunnel_protocol.setter
+    def tunnel_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tunnel_protocol", value)
+
 
 class DeviceSettingsPolicy(pulumi.CustomResource):
     @overload
@@ -623,6 +655,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  service_mode_v2_port: Optional[pulumi.Input[int]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
+                 tunnel_protocol: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
@@ -651,7 +684,8 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             switch_locked=True,
             service_mode_v2_mode="warp",
             service_mode_v2_port=3000,
-            exclude_office_ips=False)
+            exclude_office_ips=False,
+            tunnel_protocol="wireguard")
         ```
 
         ## Import
@@ -682,6 +716,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
         """
         ...
     @overload
@@ -716,7 +751,8 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             switch_locked=True,
             service_mode_v2_mode="warp",
             service_mode_v2_port=3000,
-            exclude_office_ips=False)
+            exclude_office_ips=False,
+            tunnel_protocol="wireguard")
         ```
 
         ## Import
@@ -760,6 +796,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  service_mode_v2_port: Optional[pulumi.Input[int]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  switch_locked: Optional[pulumi.Input[bool]] = None,
+                 tunnel_protocol: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -793,6 +830,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             __props__.__dict__["service_mode_v2_port"] = service_mode_v2_port
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
+            __props__.__dict__["tunnel_protocol"] = tunnel_protocol
         super(DeviceSettingsPolicy, __self__).__init__(
             'cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy',
             resource_name,
@@ -820,7 +858,8 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
             service_mode_v2_port: Optional[pulumi.Input[int]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
-            switch_locked: Optional[pulumi.Input[bool]] = None) -> 'DeviceSettingsPolicy':
+            switch_locked: Optional[pulumi.Input[bool]] = None,
+            tunnel_protocol: Optional[pulumi.Input[str]] = None) -> 'DeviceSettingsPolicy':
         """
         Get an existing DeviceSettingsPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -846,6 +885,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -869,6 +909,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         __props__.__dict__["service_mode_v2_port"] = service_mode_v2_port
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
+        __props__.__dict__["tunnel_protocol"] = tunnel_protocol
         return DeviceSettingsPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1014,4 +1055,12 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         Enablement of the ZT client switch lock.
         """
         return pulumi.get(self, "switch_locked")
+
+    @property
+    @pulumi.getter(name="tunnelProtocol")
+    def tunnel_protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        """
+        return pulumi.get(self, "tunnel_protocol")
 

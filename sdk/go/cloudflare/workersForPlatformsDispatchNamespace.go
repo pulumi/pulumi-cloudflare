@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, "example", &cloudflare.WorkersForPlatformsDispatchNamespaceArgs{
+//			example, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, "example", &cloudflare.WorkersForPlatformsDispatchNamespaceArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example-namespace"),
 //			})
@@ -47,7 +47,7 @@ import (
 //				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:              pulumi.String("customer-worker-1"),
 //				Content:           pulumi.String(invokeFile.Result),
-//				DispatchNamespace: pulumi.Any(exampleCloudflareWorkersForPlatformsNamespace.Name),
+//				DispatchNamespace: example.Name,
 //				Tags: pulumi.StringArray{
 //					pulumi.String("free"),
 //				},

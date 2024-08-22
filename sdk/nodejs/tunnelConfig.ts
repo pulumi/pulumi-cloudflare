@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTunnel = new cloudflare.Tunnel("example_tunnel", {
+ * const exampleTunnel = new cloudflare.ZeroTrustTunnelCloudflared("example_tunnel", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example_tunnel",
  *     secret: "<32 character secret>",

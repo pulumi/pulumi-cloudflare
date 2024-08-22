@@ -109,14 +109,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * The content of the record. Conflicts with `data`.
+     * The content of the record. Must provide only one of `data`, `content`, `value`.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return The content of the record. Conflicts with `data`.
+     * @return The content of the record. Must provide only one of `data`, `content`, `value`.
      * 
      */
     public Output<String> content() {
@@ -137,14 +137,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Map of attributes that constitute the record value. Conflicts with `value`.
+     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
     private Output</* @Nullable */ RecordData> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Conflicts with `value`.
+     * @return Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      * 
      */
     public Output<Optional<RecordData>> data() {
@@ -291,7 +291,7 @@ public class Record extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
      * `value` is deprecated in favour of `content` and will be removed in the next major release.
@@ -302,7 +302,7 @@ public class Record extends com.pulumi.resources.CustomResource {
     private Output<String> value;
 
     /**
-     * @return The value of the record. Conflicts with `data`.
+     * @return The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      */
     public Output<String> value() {

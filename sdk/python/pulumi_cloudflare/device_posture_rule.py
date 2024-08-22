@@ -27,7 +27,7 @@ class DevicePostureRuleArgs:
         """
         The set of arguments for constructing a DevicePostureRule resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
@@ -65,7 +65,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         return pulumi.get(self, "type")
 
@@ -162,7 +162,7 @@ class _DevicePostureRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -266,7 +266,7 @@ class _DevicePostureRuleState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         return pulumi.get(self, "type")
 
@@ -332,7 +332,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         ...
     @overload
@@ -450,7 +450,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -523,7 +523,7 @@ class DevicePostureRule(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
         return pulumi.get(self, "type")
 

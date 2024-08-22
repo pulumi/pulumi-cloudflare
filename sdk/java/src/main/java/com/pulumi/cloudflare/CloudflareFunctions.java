@@ -40,6 +40,14 @@ import com.pulumi.cloudflare.inputs.GetTunnelArgs;
 import com.pulumi.cloudflare.inputs.GetTunnelPlainArgs;
 import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
 import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessIdentityProviderArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessIdentityProviderPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelVirtualNetworkArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelVirtualNetworkPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReservePlainArgs;
@@ -69,6 +77,10 @@ import com.pulumi.cloudflare.outputs.GetRulesetsResult;
 import com.pulumi.cloudflare.outputs.GetTunnelResult;
 import com.pulumi.cloudflare.outputs.GetTunnelVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetUserResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProviderResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnssecResult;
 import com.pulumi.cloudflare.outputs.GetZoneResult;
@@ -4008,6 +4020,132 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetUserResult> getUserPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplication() {
+        return getZeroTrustAccessApplication(GetZeroTrustAccessApplicationArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplicationPlain() {
+        return getZeroTrustAccessApplicationPlain(GetZeroTrustAccessApplicationPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplication(GetZeroTrustAccessApplicationArgs args) {
+        return getZeroTrustAccessApplication(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplicationPlain(GetZeroTrustAccessApplicationPlainArgs args) {
+        return getZeroTrustAccessApplicationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplication(GetZeroTrustAccessApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", TypeShape.of(GetZeroTrustAccessApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplicationPlain(GetZeroTrustAccessApplicationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", TypeShape.of(GetZeroTrustAccessApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+     * 
+     */
+    public static Output<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdentityProvider(GetZeroTrustAccessIdentityProviderArgs args) {
+        return getZeroTrustAccessIdentityProvider(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdentityProviderPlain(GetZeroTrustAccessIdentityProviderPlainArgs args) {
+        return getZeroTrustAccessIdentityProviderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+     * 
+     */
+    public static Output<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdentityProvider(GetZeroTrustAccessIdentityProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", TypeShape.of(GetZeroTrustAccessIdentityProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdentityProviderPlain(GetZeroTrustAccessIdentityProviderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", TypeShape.of(GetZeroTrustAccessIdentityProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     */
+    public static Output<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflared(GetZeroTrustTunnelCloudflaredArgs args) {
+        return getZeroTrustTunnelCloudflared(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflaredPlain(GetZeroTrustTunnelCloudflaredPlainArgs args) {
+        return getZeroTrustTunnelCloudflaredPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     */
+    public static Output<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflared(GetZeroTrustTunnelCloudflaredArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", TypeShape.of(GetZeroTrustTunnelCloudflaredResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflaredPlain(GetZeroTrustTunnelCloudflaredPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", TypeShape.of(GetZeroTrustTunnelCloudflaredResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     */
+    public static Output<GetZeroTrustTunnelVirtualNetworkResult> getZeroTrustTunnelVirtualNetwork(GetZeroTrustTunnelVirtualNetworkArgs args) {
+        return getZeroTrustTunnelVirtualNetwork(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelVirtualNetworkResult> getZeroTrustTunnelVirtualNetworkPlain(GetZeroTrustTunnelVirtualNetworkPlainArgs args) {
+        return getZeroTrustTunnelVirtualNetworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     */
+    public static Output<GetZeroTrustTunnelVirtualNetworkResult> getZeroTrustTunnelVirtualNetwork(GetZeroTrustTunnelVirtualNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", TypeShape.of(GetZeroTrustTunnelVirtualNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelVirtualNetworkResult> getZeroTrustTunnelVirtualNetworkPlain(GetZeroTrustTunnelVirtualNetworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", TypeShape.of(GetZeroTrustTunnelVirtualNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)

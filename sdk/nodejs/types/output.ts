@@ -1245,6 +1245,10 @@ export interface DevicePostureRuleInput {
      */
     checkDisks?: string[];
     /**
+     * Confirm the certificate was not imported from another device.
+     */
+    checkPrivateKey?: boolean;
+    /**
      * The common name for a certificate.
      */
     cn?: string;
@@ -1277,6 +1281,10 @@ export interface DevicePostureRuleInput {
      */
     exists: boolean;
     /**
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     */
+    extendedKeyUsages?: string[];
+    /**
      * The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
      */
     id?: string;
@@ -1296,6 +1304,10 @@ export interface DevicePostureRuleInput {
      * The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      */
     lastSeen?: string;
+    /**
+     * List of locations to check for client certificate posture check.
+     */
+    locations?: outputs.DevicePostureRuleInputLocation[];
     /**
      * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      */
@@ -1368,6 +1380,17 @@ export interface DevicePostureRuleInput {
      * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     versionOperator?: string;
+}
+
+export interface DevicePostureRuleInputLocation {
+    /**
+     * List of paths to check for client certificate.
+     */
+    paths?: string[];
+    /**
+     * List of trust stores to check for client certificate. Available values: `system`, `user`.
+     */
+    trustStores?: string[];
 }
 
 export interface DevicePostureRuleMatch {
@@ -1534,7 +1557,7 @@ export interface GetDevicePostureRulesRule {
      */
     schedule?: string;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
      */
     type: string;
 }
@@ -5760,6 +5783,1975 @@ export interface WorkersScriptWebassemblyBinding {
      * The global variable for the binding in your Worker code.
      */
     name: string;
+}
+
+export interface ZeroTrustAccessApplicationCorsHeader {
+    /**
+     * Value to determine whether all HTTP headers are exposed.
+     */
+    allowAllHeaders?: boolean;
+    /**
+     * Value to determine whether all methods are exposed.
+     */
+    allowAllMethods?: boolean;
+    /**
+     * Value to determine whether all origins are permitted to make CORS requests.
+     */
+    allowAllOrigins?: boolean;
+    /**
+     * Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+     */
+    allowCredentials?: boolean;
+    /**
+     * List of HTTP headers to expose via CORS.
+     */
+    allowedHeaders?: string[];
+    /**
+     * List of methods to expose via CORS.
+     */
+    allowedMethods?: string[];
+    /**
+     * List of origins permitted to make CORS requests.
+     */
+    allowedOrigins?: string[];
+    /**
+     * The maximum time a preflight request will be cached.
+     */
+    maxAge?: number;
+}
+
+export interface ZeroTrustAccessApplicationFooterLink {
+    /**
+     * The name of the footer link.
+     */
+    name?: string;
+    /**
+     * The URL of the footer link.
+     */
+    url?: string;
+}
+
+export interface ZeroTrustAccessApplicationLandingPageDesign {
+    /**
+     * The button color of the landing page.
+     */
+    buttonColor?: string;
+    /**
+     * The button text color of the landing page.
+     */
+    buttonTextColor?: string;
+    /**
+     * The URL of the image to be displayed in the landing page.
+     */
+    imageUrl?: string;
+    /**
+     * The message of the landing page.
+     */
+    message?: string;
+    /**
+     * The title of the landing page.
+     */
+    title?: string;
+}
+
+export interface ZeroTrustAccessApplicationSaasApp {
+    /**
+     * The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     */
+    accessTokenLifetime?: string;
+    /**
+     * Allow PKCE flow without a client secret.
+     */
+    allowPkceWithoutClientSecret?: boolean;
+    /**
+     * The URL where this applications tile redirects users.
+     */
+    appLauncherUrl?: string;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
+    authType?: string;
+    /**
+     * The application client id.
+     */
+    clientId: string;
+    /**
+     * The application client secret, only returned on initial apply.
+     */
+    clientSecret: string;
+    /**
+     * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+     */
+    consumerServiceUrl?: string;
+    /**
+     * Custom attribute mapped from IDPs.
+     */
+    customAttributes?: outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute[];
+    /**
+     * Custom claim mapped from IDPs.
+     */
+    customClaims?: outputs.ZeroTrustAccessApplicationSaasAppCustomClaim[];
+    /**
+     * The relay state used if not provided by the identity provider.
+     */
+    defaultRelayState?: string;
+    /**
+     * The OIDC flows supported by this application.
+     */
+    grantTypes: string[];
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+     */
+    groupFilterRegex?: string;
+    /**
+     * Hybrid and Implicit Flow options.
+     */
+    hybridAndImplicitOptions?: outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions;
+    /**
+     * The unique identifier for the SaaS application.
+     */
+    idpEntityId: string;
+    /**
+     * The format of the name identifier sent to the SaaS application.
+     */
+    nameIdFormat?: string;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+     */
+    nameIdTransformJsonata?: string;
+    /**
+     * The public certificate that will be used to verify identities.
+     */
+    publicKey: string;
+    /**
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+     */
+    redirectUris?: string[];
+    /**
+     * Refresh token grant options.
+     */
+    refreshTokenOptions?: outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption[];
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     */
+    samlAttributeTransformJsonata?: string;
+    /**
+     * Define the user information shared with access.
+     */
+    scopes: string[];
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    spEntityId?: string;
+    /**
+     * The endpoint where the SaaS application will send login requests.
+     */
+    ssoEndpoint: string;
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomAttribute {
+    /**
+     * A friendly name for the attribute as provided to the SaaS app.
+     */
+    friendlyName?: string;
+    /**
+     * The name of the attribute as provided to the SaaS app.
+     */
+    name?: string;
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    nameFormat?: string;
+    /**
+     * True if the attribute must be always present.
+     */
+    required?: boolean;
+    source: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource;
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
+    /**
+     * The name of the attribute as provided by the IDP.
+     */
+    name: string;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: {[key: string]: string};
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomClaim {
+    /**
+     * The name of the attribute as provided to the SaaS app.
+     */
+    name?: string;
+    /**
+     * True if the attribute must be always present.
+     */
+    required?: boolean;
+    /**
+     * The scope of the claim.
+     */
+    scope?: string;
+    source: outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource;
+}
+
+export interface ZeroTrustAccessApplicationSaasAppCustomClaimSource {
+    /**
+     * The name of the attribute as provided by the IDP.
+     */
+    name: string;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: {[key: string]: string};
+}
+
+export interface ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions {
+    /**
+     * If true, the authorization endpoint will return an access token.
+     */
+    returnAccessTokenFromAuthorizationEndpoint?: boolean;
+    /**
+     * If true, the authorization endpoint will return an id token.
+     */
+    returnIdTokenFromAuthorizationEndpoint?: boolean;
+}
+
+export interface ZeroTrustAccessApplicationSaasAppRefreshTokenOption {
+    /**
+     * How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
+     */
+    lifetime?: string;
+}
+
+export interface ZeroTrustAccessApplicationScimConfig {
+    /**
+     * Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+     */
+    authentication?: outputs.ZeroTrustAccessApplicationScimConfigAuthentication;
+    /**
+     * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+     */
+    deactivateOnDelete?: boolean;
+    /**
+     * Whether SCIM provisioning is turned on for this application.
+     */
+    enabled?: boolean;
+    /**
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     */
+    idpUid: string;
+    /**
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    mappings?: outputs.ZeroTrustAccessApplicationScimConfigMapping[];
+    /**
+     * The base URI for the application's SCIM-compatible API.
+     */
+    remoteUri: string;
+}
+
+export interface ZeroTrustAccessApplicationScimConfigAuthentication {
+    /**
+     * URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     */
+    authorizationUrl?: string;
+    /**
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     */
+    clientId?: string;
+    /**
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     */
+    clientSecret?: string;
+    /**
+     * Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     */
+    password?: string;
+    /**
+     * The authentication scheme to use when making SCIM requests to this application.
+     */
+    scheme: string;
+    /**
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     */
+    scopes?: string[];
+    /**
+     * Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     */
+    token?: string;
+    /**
+     * URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     */
+    tokenUrl?: string;
+    /**
+     * User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     */
+    user?: string;
+}
+
+export interface ZeroTrustAccessApplicationScimConfigMapping {
+    /**
+     * Whether or not this mapping is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+     */
+    filter?: string;
+    /**
+     * Whether or not this mapping applies to creates, updates, or deletes.
+     */
+    operations?: outputs.ZeroTrustAccessApplicationScimConfigMappingOperations;
+    /**
+     * Which SCIM resource type this mapping applies to.
+     */
+    schema: string;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+     */
+    transformJsonata?: string;
+}
+
+export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
+    /**
+     * Whether or not this mapping applies to create (POST) operations.
+     */
+    create?: boolean;
+    /**
+     * Whether or not this mapping applies to DELETE operations.
+     */
+    delete?: boolean;
+    /**
+     * Whether or not this mapping applies to update (PATCH/PUT) operations.
+     */
+    update?: boolean;
+}
+
+export interface ZeroTrustAccessGroupExclude {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessGroupExcludeAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessGroupExcludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessGroupExcludeExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessGroupExcludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessGroupExcludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessGroupExcludeOkta[];
+    samls?: outputs.ZeroTrustAccessGroupExcludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessGroupExcludeAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessGroupExcludeAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessGroupExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessGroupExcludeGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessGroupExcludeGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessGroupExcludeOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessGroupExcludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessGroupInclude {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessGroupIncludeAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessGroupIncludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessGroupIncludeExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessGroupIncludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessGroupIncludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessGroupIncludeOkta[];
+    samls?: outputs.ZeroTrustAccessGroupIncludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessGroupIncludeAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessGroupIncludeAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessGroupIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessGroupIncludeGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessGroupIncludeGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessGroupIncludeOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessGroupIncludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessGroupRequire {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessGroupRequireAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessGroupRequireAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessGroupRequireExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessGroupRequireGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessGroupRequireGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessGroupRequireOkta[];
+    samls?: outputs.ZeroTrustAccessGroupRequireSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessGroupRequireAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessGroupRequireAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessGroupRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessGroupRequireGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessGroupRequireGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessGroupRequireOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessGroupRequireSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessIdentityProviderConfig {
+    apiToken?: string;
+    appsDomain?: string;
+    attributes: string[];
+    authUrl?: string;
+    authorizationServerId?: string;
+    centrifyAccount?: string;
+    centrifyAppId?: string;
+    certsUrl?: string;
+    claims: string[];
+    clientId?: string;
+    clientSecret?: string;
+    conditionalAccessEnabled?: boolean;
+    directoryId?: string;
+    emailAttributeName?: string;
+    emailClaimName?: string;
+    idpPublicCert?: string;
+    issuerUrl?: string;
+    oktaAccount?: string;
+    oneloginAccount?: string;
+    pingEnvId?: string;
+    pkceEnabled?: boolean;
+    redirectUrl: string;
+    scopes: string[];
+    signRequest?: boolean;
+    ssoTargetUrl?: string;
+    supportGroups?: boolean;
+    tokenUrl?: string;
+}
+
+export interface ZeroTrustAccessIdentityProviderScimConfig {
+    enabled?: boolean;
+    groupMemberDeprovision?: boolean;
+    seatDeprovision?: boolean;
+    secret: string;
+    userDeprovision?: boolean;
+}
+
+export interface ZeroTrustAccessMtlsHostnameSettingsSetting {
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork?: boolean;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding?: boolean;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname: string;
+}
+
+export interface ZeroTrustAccessOrganizationCustomPage {
+    /**
+     * The id of the forbidden page.
+     */
+    forbidden?: string;
+    /**
+     * The id of the identity denied page.
+     */
+    identityDenied?: string;
+}
+
+export interface ZeroTrustAccessOrganizationLoginDesign {
+    /**
+     * The background color on the login page.
+     */
+    backgroundColor?: string;
+    /**
+     * The text at the bottom of the login page.
+     */
+    footerText?: string;
+    /**
+     * The text at the top of the login page.
+     */
+    headerText?: string;
+    /**
+     * The URL of the logo on the login page.
+     */
+    logoPath?: string;
+    /**
+     * The text color on the login page.
+     */
+    textColor?: string;
+}
+
+export interface ZeroTrustAccessPolicyApprovalGroup {
+    /**
+     * Number of approvals needed.
+     */
+    approvalsNeeded: number;
+    /**
+     * List of emails to request approval from.
+     */
+    emailAddresses?: string[];
+    emailListUuid?: string;
+}
+
+export interface ZeroTrustAccessPolicyExclude {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessPolicyExcludeAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessPolicyExcludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessPolicyExcludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessPolicyExcludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessPolicyExcludeOkta[];
+    samls?: outputs.ZeroTrustAccessPolicyExcludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessPolicyExcludeAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessPolicyExcludeAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessPolicyExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessPolicyExcludeGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessPolicyExcludeGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessPolicyExcludeOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessPolicyExcludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessPolicyInclude {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessPolicyIncludeAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessPolicyIncludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessPolicyIncludeExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessPolicyIncludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessPolicyIncludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessPolicyIncludeOkta[];
+    samls?: outputs.ZeroTrustAccessPolicyIncludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessPolicyIncludeAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessPolicyIncludeAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessPolicyIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessPolicyIncludeGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessPolicyIncludeGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessPolicyIncludeOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessPolicyIncludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessPolicyRequire {
+    anyValidServiceToken?: boolean;
+    authContexts?: outputs.ZeroTrustAccessPolicyRequireAuthContext[];
+    authMethod?: string;
+    azures?: outputs.ZeroTrustAccessPolicyRequireAzure[];
+    certificate?: boolean;
+    commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
+    devicePostures?: string[];
+    emailDomains?: string[];
+    emailLists?: string[];
+    emails?: string[];
+    everyone?: boolean;
+    externalEvaluations?: outputs.ZeroTrustAccessPolicyRequireExternalEvaluation[];
+    geos?: string[];
+    githubs?: outputs.ZeroTrustAccessPolicyRequireGithub[];
+    groups?: string[];
+    gsuites?: outputs.ZeroTrustAccessPolicyRequireGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
+    ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
+    ips?: string[];
+    loginMethods?: string[];
+    oktas?: outputs.ZeroTrustAccessPolicyRequireOkta[];
+    samls?: outputs.ZeroTrustAccessPolicyRequireSaml[];
+    serviceTokens?: string[];
+}
+
+export interface ZeroTrustAccessPolicyRequireAuthContext {
+    /**
+     * The ACID of the Authentication Context.
+     */
+    acId: string;
+    /**
+     * The ID of the Authentication Context.
+     */
+    id: string;
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId: string;
+}
+
+export interface ZeroTrustAccessPolicyRequireAzure {
+    /**
+     * The ID of the Azure Identity provider.
+     */
+    identityProviderId?: string;
+    /**
+     * The ID of the Azure group or user.
+     */
+    ids?: string[];
+}
+
+export interface ZeroTrustAccessPolicyRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
+export interface ZeroTrustAccessPolicyRequireGithub {
+    identityProviderId?: string;
+    name?: string;
+    teams?: string[];
+}
+
+export interface ZeroTrustAccessPolicyRequireGsuite {
+    emails?: string[];
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustAccessPolicyRequireOkta {
+    identityProviderId?: string;
+    names?: string[];
+}
+
+export interface ZeroTrustAccessPolicyRequireSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
+}
+
+export interface ZeroTrustDeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256: string;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: string;
+}
+
+export interface ZeroTrustDevicePostureIntegrationConfig {
+    /**
+     * The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+     */
+    accessClientId?: string;
+    /**
+     * The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+     */
+    accessClientSecret?: string;
+    /**
+     * The third-party API's URL.
+     */
+    apiUrl?: string;
+    /**
+     * The third-party authorization API URL.
+     */
+    authUrl?: string;
+    /**
+     * The client identifier for authenticating API calls.
+     */
+    clientId?: string;
+    /**
+     * The client key for authenticating API calls.
+     */
+    clientKey?: string;
+    /**
+     * The client secret for authenticating API calls.
+     */
+    clientSecret?: string;
+    /**
+     * The customer identifier for authenticating API calls.
+     */
+    customerId?: string;
+}
+
+export interface ZeroTrustDevicePostureRuleInput {
+    /**
+     * The number of active threats from SentinelOne.
+     */
+    activeThreats?: number;
+    /**
+     * The UUID of a Cloudflare managed certificate.
+     */
+    certificateId?: string;
+    /**
+     * Specific volume(s) to check for encryption.
+     */
+    checkDisks?: string[];
+    /**
+     * Confirm the certificate was not imported from another device.
+     */
+    checkPrivateKey?: boolean;
+    /**
+     * The common name for a certificate.
+     */
+    cn?: string;
+    /**
+     * The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+     */
+    complianceStatus?: string;
+    /**
+     * The workspace one or intune connection id.
+     */
+    connectionId?: string;
+    /**
+     * The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    countOperator?: string;
+    /**
+     * The domain that the client must join.
+     */
+    domain?: string;
+    /**
+     * The datetime a device last seen in RFC 3339 format from Tanium.
+     */
+    eidLastSeen?: string;
+    /**
+     * True if the firewall must be enabled.
+     */
+    enabled: boolean;
+    /**
+     * Checks if the file should exist.
+     */
+    exists: boolean;
+    /**
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     */
+    extendedKeyUsages?: string[];
+    /**
+     * The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
+     */
+    id?: string;
+    /**
+     * True if SentinelOne device is infected.
+     */
+    infected: boolean;
+    /**
+     * True if SentinelOne device is active.
+     */
+    isActive: boolean;
+    /**
+     * The number of issues for kolide.
+     */
+    issueCount?: string;
+    /**
+     * The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     */
+    lastSeen?: string;
+    /**
+     * List of locations to check for client certificate.
+     */
+    locations?: outputs.ZeroTrustDevicePostureRuleInputLocation[];
+    /**
+     * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     */
+    networkStatus?: string;
+    /**
+     * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    operator?: string;
+    /**
+     * OS signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    os?: string;
+    /**
+     * The operating system excluding version information.
+     */
+    osDistroName?: string;
+    /**
+     * The operating system version excluding OS name information or release name.
+     */
+    osDistroRevision?: string;
+    /**
+     * Extra version value following the operating system semantic version.
+     */
+    osVersionExtra?: string;
+    /**
+     * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     */
+    overall?: string;
+    /**
+     * The path to the file.
+     */
+    path?: string;
+    /**
+     * True if all drives must be encrypted.
+     */
+    requireAll: boolean;
+    /**
+     * The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     */
+    riskLevel?: string;
+    /**
+     * Checks if the application should be running.
+     */
+    running: boolean;
+    /**
+     * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    sensorConfig?: string;
+    /**
+     * The sha256 hash of the file.
+     */
+    sha256?: string;
+    /**
+     * The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     */
+    state?: string;
+    /**
+     * The thumbprint of the file certificate.
+     */
+    thumbprint?: string;
+    /**
+     * The total score from Tanium.
+     */
+    totalScore?: number;
+    /**
+     * The operating system semantic version.
+     */
+    version?: string;
+    /**
+     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    versionOperator?: string;
+}
+
+export interface ZeroTrustDevicePostureRuleInputLocation {
+    /**
+     * List of paths to check for client certificate rule.
+     */
+    paths?: string[];
+    /**
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     */
+    trustStores?: string[];
+}
+
+export interface ZeroTrustDevicePostureRuleMatch {
+    /**
+     * The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+     */
+    platform?: string;
+}
+
+export interface ZeroTrustDexTestData {
+    /**
+     * The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+     */
+    host: string;
+    /**
+     * The type of Device Dex Test. Available values: `http`, `traceroute`.
+     */
+    kind: string;
+    /**
+     * The http request method. Available values: `GET`.
+     */
+    method?: string;
+}
+
+export interface ZeroTrustDlpProfileContextAwareness {
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: boolean;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: outputs.ZeroTrustDlpProfileContextAwarenessSkip;
+}
+
+export interface ZeroTrustDlpProfileContextAwarenessSkip {
+    /**
+     * Return all matches, regardless of context analysis result, if the data is a file.
+     */
+    files: boolean;
+}
+
+export interface ZeroTrustDlpProfileEntry {
+    /**
+     * Whether the entry is active. Defaults to `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Unique entry identifier.
+     */
+    id: string;
+    /**
+     * Name of the entry to deploy.
+     */
+    name: string;
+    pattern?: outputs.ZeroTrustDlpProfileEntryPattern;
+}
+
+export interface ZeroTrustDlpProfileEntryPattern {
+    /**
+     * The regex that defines the pattern.
+     */
+    regex: string;
+    /**
+     * The validation algorithm to apply with this pattern.
+     */
+    validation?: string;
+}
+
+export interface ZeroTrustDnsLocationNetwork {
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettings {
+    /**
+     * Add custom headers to allowed requests in the form of key-value pairs.
+     */
+    addHeaders?: {[key: string]: string};
+    /**
+     * Allow parent MSP accounts to enable bypass their children's rules.
+     */
+    allowChildBypass?: boolean;
+    /**
+     * Settings for auditing SSH usage.
+     */
+    auditSsh?: outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
+    /**
+     * Configure how browser isolation behaves.
+     */
+    bisoAdminControls?: outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
+    /**
+     * Indicator of block page enablement.
+     */
+    blockPageEnabled?: boolean;
+    /**
+     * The displayed reason for a user being blocked.
+     */
+    blockPageReason?: string;
+    /**
+     * Allow child MSP accounts to bypass their parent's rule.
+     */
+    bypassParentRule?: boolean;
+    /**
+     * Configure how session check behaves.
+     */
+    checkSession?: outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
+    /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     */
+    dnsResolvers?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
+    /**
+     * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     */
+    egress?: outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response.
+     */
+    ignoreCnameCategoryMatches?: boolean;
+    /**
+     * Disable DNSSEC validation (must be Allow rule).
+     */
+    insecureDisableDnssecValidation?: boolean;
+    /**
+     * Turns on IP category based filter on dns if the rule contains dns category checks.
+     */
+    ipCategories?: boolean;
+    /**
+     * Settings to forward layer 4 traffic.
+     */
+    l4override?: outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
+    /**
+     * Notification settings on a block rule.
+     */
+    notificationSettings?: outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
+    /**
+     * The host to override matching DNS queries with.
+     */
+    overrideHost?: string;
+    /**
+     * The IPs to override matching DNS queries with.
+     */
+    overrideIps?: string[];
+    /**
+     * Configure DLP Payload Logging settings for this rule.
+     */
+    payloadLog?: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
+    /**
+     * Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+     */
+    resolveDnsThroughCloudflare?: boolean;
+    /**
+     * Configure untrusted certificate settings for this rule.
+     */
+    untrustedCert?: outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
+    /**
+     * Log all SSH commands.
+     */
+    commandLogging: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
+    /**
+     * Disable clipboard redirection.
+     */
+    disableClipboardRedirection?: boolean;
+    /**
+     * Disable copy-paste.
+     */
+    disableCopyPaste?: boolean;
+    /**
+     * Disable download.
+     */
+    disableDownload?: boolean;
+    /**
+     * Disable keyboard usage.
+     */
+    disableKeyboard?: boolean;
+    /**
+     * Disable printing.
+     */
+    disablePrinting?: boolean;
+    /**
+     * Disable upload.
+     */
+    disableUpload?: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration: string;
+    /**
+     * Enable session enforcement for this rule.
+     */
+    enforce: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
+    /**
+     * IPv4 resolvers.
+     */
+    ipv4s?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4[];
+    /**
+     * IPv6 resolvers.
+     */
+    ipv6s?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6[];
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4 {
+    /**
+     * The IPv4 or IPv6 address of the upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for the upstream resolver. Defaults to `53`.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6 {
+    /**
+     * The IPv4 or IPv6 address of the upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for the upstream resolver. Defaults to `53`.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsEgress {
+    /**
+     * The IPv4 address to be used for egress.
+     */
+    ipv4: string;
+    /**
+     * The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+     */
+    ipv4Fallback?: string;
+    /**
+     * The IPv6 range to be used for egress.
+     */
+    ipv6: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
+    /**
+     * Override IP to forward traffic to.
+     */
+    ip: string;
+    /**
+     * Override Port to forward traffic to.
+     */
+    port: number;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: boolean;
+    /**
+     * Notification content.
+     */
+    message?: string;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: string;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
+    /**
+     * Enable or disable DLP Payload Logging for this rule.
+     */
+    enabled: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
+    /**
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+     */
+    action?: string;
+}
+
+export interface ZeroTrustGatewaySettingsAntivirus {
+    /**
+     * Scan on file download.
+     */
+    enabledDownloadPhase: boolean;
+    /**
+     * Scan on file upload.
+     */
+    enabledUploadPhase: boolean;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
+    failClosed: boolean;
+    /**
+     * Set notifications for antivirus.
+     */
+    notificationSettings?: outputs.ZeroTrustGatewaySettingsAntivirusNotificationSettings;
+}
+
+export interface ZeroTrustGatewaySettingsAntivirusNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: boolean;
+    /**
+     * Notification content.
+     */
+    message?: string;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: string;
+}
+
+export interface ZeroTrustGatewaySettingsBlockPage {
+    /**
+     * Hex code of block page background color.
+     */
+    backgroundColor?: string;
+    /**
+     * Indicator of enablement.
+     */
+    enabled?: boolean;
+    /**
+     * Block page footer text.
+     */
+    footerText?: string;
+    /**
+     * Block page header text.
+     */
+    headerText?: string;
+    /**
+     * URL of block page logo.
+     */
+    logoPath?: string;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: string;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: string;
+    /**
+     * Name of block page configuration.
+     */
+    name?: string;
+}
+
+export interface ZeroTrustGatewaySettingsBodyScanning {
+    /**
+     * Body scanning inspection mode. Available values: `deep`, `shallow`.
+     */
+    inspectionMode: string;
+}
+
+export interface ZeroTrustGatewaySettingsCustomCertificate {
+    /**
+     * Whether TLS encryption should use a custom certificate.
+     */
+    enabled: boolean;
+    /**
+     * ID of custom certificate.
+     */
+    id: string;
+    updatedAt: string;
+}
+
+export interface ZeroTrustGatewaySettingsExtendedEmailMatching {
+    /**
+     * Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+     */
+    enabled: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsFips {
+    /**
+     * Only allow FIPS-compliant TLS configuration.
+     */
+    tls?: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsLogging {
+    /**
+     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     */
+    redactPii: boolean;
+    /**
+     * Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
+     */
+    settingsByRuleType: outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleType;
+}
+
+export interface ZeroTrustGatewaySettingsLoggingSettingsByRuleType {
+    /**
+     * Logging configuration for DNS requests.
+     */
+    dns: outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns;
+    /**
+     * Logging configuration for HTTP requests.
+     */
+    http: outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp;
+    /**
+     * Logging configuration for layer 4 requests.
+     */
+    l4: outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4;
+}
+
+export interface ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns {
+    /**
+     * Whether to log all activity.
+     */
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp {
+    /**
+     * Whether to log all activity.
+     */
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4 {
+    /**
+     * Whether to log all activity.
+     */
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsPayloadLog {
+    /**
+     * Public key used to encrypt matched payloads.
+     */
+    publicKey: string;
+}
+
+export interface ZeroTrustGatewaySettingsProxy {
+    /**
+     * Whether root ca is enabled account wide for ZT clients.
+     */
+    rootCa: boolean;
+    /**
+     * Whether gateway proxy is enabled on gateway devices for TCP traffic.
+     */
+    tcp: boolean;
+    /**
+     * Whether gateway proxy is enabled on gateway devices for UDP traffic.
+     */
+    udp: boolean;
+    /**
+     * Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     */
+    virtualIp: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSshSessionLog {
+    /**
+     * Public key used to encrypt ssh session.
+     */
+    publicKey: string;
+}
+
+export interface ZeroTrustListItemsWithDescription {
+    description: string;
+    value: string;
+}
+
+export interface ZeroTrustLocalFallbackDomainDomain {
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     */
+    description?: string;
+    /**
+     * A list of IP addresses to handle domain resolution.
+     */
+    dnsServers?: string[];
+    /**
+     * The domain suffix to match when resolving locally.
+     */
+    suffix?: string;
+}
+
+export interface ZeroTrustRiskBehaviorBehavior {
+    /**
+     * Whether this risk behavior type is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Name of this risk behavior type
+     */
+    name: string;
+    /**
+     * Risk level. Available values: `low`, `medium`, `high`
+     */
+    riskLevel: string;
+}
+
+export interface ZeroTrustSplitTunnelTunnel {
+    /**
+     * The address for the tunnel.
+     */
+    address?: string;
+    /**
+     * A description for the tunnel.
+     */
+    description?: string;
+    /**
+     * The domain name for the tunnel.
+     */
+    host?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfig {
+    /**
+     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     */
+    ingressRules: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule[];
+    originRequest?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
+    /**
+     * If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     */
+    warpRouting?: outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigIngressRule {
+    /**
+     * Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+     */
+    hostname?: string;
+    originRequest?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest;
+    /**
+     * Path of the incoming request. If the path matches, the request will be sent to the local service.
+     */
+    path?: string;
+    /**
+     * Name of the service to which the request will be sent.
+     */
+    service: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest {
+    /**
+     * Access rules for the ingress service.
+     */
+    access?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess;
+    /**
+     * Runs as jump host.
+     */
+    bastionMode?: boolean;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+     */
+    caPool?: string;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     */
+    connectTimeout?: string;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     */
+    disableChunkedEncoding?: boolean;
+    /**
+     * Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     */
+    http2Origin?: boolean;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+     */
+    httpHostHeader?: string;
+    /**
+     * IP rules for the proxy service.
+     */
+    ipRules?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule[];
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     */
+    keepAliveConnections?: number;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     */
+    keepAliveTimeout?: string;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     */
+    noHappyEyeballs?: boolean;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     */
+    noTlsVerify?: boolean;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+     */
+    originServerName?: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+     */
+    proxyAddress?: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+     */
+    proxyPort?: number;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+     */
+    proxyType?: string;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     */
+    tcpKeepAlive?: string;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     */
+    tlsTimeout?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess {
+    /**
+     * Audience tags of the access rule.
+     */
+    audTags?: string[];
+    /**
+     * Whether the access rule is required.
+     */
+    required?: boolean;
+    /**
+     * Name of the team to which the access rule applies.
+     */
+    teamName?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule {
+    /**
+     * Whether to allow the IP prefix.
+     */
+    allow?: boolean;
+    /**
+     * Ports to use within the IP rule.
+     */
+    ports?: number[];
+    /**
+     * IP rule prefix.
+     */
+    prefix?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
+    /**
+     * Access rules for the ingress service.
+     */
+    access?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess;
+    /**
+     * Runs as jump host.
+     */
+    bastionMode?: boolean;
+    /**
+     * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+     */
+    caPool?: string;
+    /**
+     * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+     */
+    connectTimeout?: string;
+    /**
+     * Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+     */
+    disableChunkedEncoding?: boolean;
+    /**
+     * Enables HTTP/2 support for the origin connection. Defaults to `false`.
+     */
+    http2Origin?: boolean;
+    /**
+     * Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+     */
+    httpHostHeader?: string;
+    /**
+     * IP rules for the proxy service.
+     */
+    ipRules?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule[];
+    /**
+     * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+     */
+    keepAliveConnections?: number;
+    /**
+     * Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+     */
+    keepAliveTimeout?: string;
+    /**
+     * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+     */
+    noHappyEyeballs?: boolean;
+    /**
+     * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+     */
+    noTlsVerify?: boolean;
+    /**
+     * Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+     */
+    originServerName?: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+     */
+    proxyAddress?: string;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+     */
+    proxyPort?: number;
+    /**
+     * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+     */
+    proxyType?: string;
+    /**
+     * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+     */
+    tcpKeepAlive?: string;
+    /**
+     * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+     */
+    tlsTimeout?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
+    /**
+     * Audience tags of the access rule.
+     */
+    audTags?: string[];
+    /**
+     * Whether the access rule is required.
+     */
+    required?: boolean;
+    /**
+     * Name of the team to which the access rule applies.
+     */
+    teamName?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule {
+    /**
+     * Whether to allow the IP prefix.
+     */
+    allow?: boolean;
+    /**
+     * Ports to use within the IP rule.
+     */
+    ports?: number[];
+    /**
+     * IP rule prefix.
+     */
+    prefix?: string;
+}
+
+export interface ZeroTrustTunnelCloudflaredConfigConfigWarpRouting {
+    /**
+     * Whether WARP routing is enabled.
+     */
+    enabled?: boolean;
 }
 
 export interface ZoneLockdownConfiguration {

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleTrigger = new WorkersCronTrigger("exampleTrigger", WorkersCronTriggerArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .scriptName(exampleScriptCloudflareWorkerScript.name())
+ *             .scriptName(exampleScript.name())
  *             .schedules(            
  *                 "*}&#47;{@code 5 * * * *",
  *                 "10 7 * * mon-fri")

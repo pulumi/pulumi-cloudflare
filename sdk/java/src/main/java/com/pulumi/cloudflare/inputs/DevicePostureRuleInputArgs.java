@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.DevicePostureRuleInputLocationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -61,6 +62,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<List<String>>> checkDisks() {
         return Optional.ofNullable(this.checkDisks);
+    }
+
+    /**
+     * Confirm the certificate was not imported from another device.
+     * 
+     */
+    @Import(name="checkPrivateKey")
+    private @Nullable Output<Boolean> checkPrivateKey;
+
+    /**
+     * @return Confirm the certificate was not imported from another device.
+     * 
+     */
+    public Optional<Output<Boolean>> checkPrivateKey() {
+        return Optional.ofNullable(this.checkPrivateKey);
     }
 
     /**
@@ -184,6 +200,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * 
+     */
+    @Import(name="extendedKeyUsages")
+    private @Nullable Output<List<String>> extendedKeyUsages;
+
+    /**
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * 
+     */
+    public Optional<Output<List<String>>> extendedKeyUsages() {
+        return Optional.ofNullable(this.extendedKeyUsages);
+    }
+
+    /**
      * The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
@@ -256,6 +287,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
+    }
+
+    /**
+     * List of locations to check for client certificate posture check.
+     * 
+     */
+    @Import(name="locations")
+    private @Nullable Output<List<DevicePostureRuleInputLocationArgs>> locations;
+
+    /**
+     * @return List of locations to check for client certificate posture check.
+     * 
+     */
+    public Optional<Output<List<DevicePostureRuleInputLocationArgs>>> locations() {
+        return Optional.ofNullable(this.locations);
     }
 
     /**
@@ -534,6 +580,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.activeThreats = $.activeThreats;
         this.certificateId = $.certificateId;
         this.checkDisks = $.checkDisks;
+        this.checkPrivateKey = $.checkPrivateKey;
         this.cn = $.cn;
         this.complianceStatus = $.complianceStatus;
         this.connectionId = $.connectionId;
@@ -542,11 +589,13 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.eidLastSeen = $.eidLastSeen;
         this.enabled = $.enabled;
         this.exists = $.exists;
+        this.extendedKeyUsages = $.extendedKeyUsages;
         this.id = $.id;
         this.infected = $.infected;
         this.isActive = $.isActive;
         this.issueCount = $.issueCount;
         this.lastSeen = $.lastSeen;
+        this.locations = $.locations;
         this.networkStatus = $.networkStatus;
         this.operator = $.operator;
         this.os = $.os;
@@ -656,6 +705,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder checkDisks(String... checkDisks) {
             return checkDisks(List.of(checkDisks));
+        }
+
+        /**
+         * @param checkPrivateKey Confirm the certificate was not imported from another device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkPrivateKey(@Nullable Output<Boolean> checkPrivateKey) {
+            $.checkPrivateKey = checkPrivateKey;
+            return this;
+        }
+
+        /**
+         * @param checkPrivateKey Confirm the certificate was not imported from another device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkPrivateKey(Boolean checkPrivateKey) {
+            return checkPrivateKey(Output.of(checkPrivateKey));
         }
 
         /**
@@ -827,6 +897,37 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedKeyUsages(@Nullable Output<List<String>> extendedKeyUsages) {
+            $.extendedKeyUsages = extendedKeyUsages;
+            return this;
+        }
+
+        /**
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedKeyUsages(List<String> extendedKeyUsages) {
+            return extendedKeyUsages(Output.of(extendedKeyUsages));
+        }
+
+        /**
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedKeyUsages(String... extendedKeyUsages) {
+            return extendedKeyUsages(List.of(extendedKeyUsages));
+        }
+
+        /**
          * @param id The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
          * 
          * @return builder
@@ -929,6 +1030,37 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder lastSeen(String lastSeen) {
             return lastSeen(Output.of(lastSeen));
+        }
+
+        /**
+         * @param locations List of locations to check for client certificate posture check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(@Nullable Output<List<DevicePostureRuleInputLocationArgs>> locations) {
+            $.locations = locations;
+            return this;
+        }
+
+        /**
+         * @param locations List of locations to check for client certificate posture check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(List<DevicePostureRuleInputLocationArgs> locations) {
+            return locations(Output.of(locations));
+        }
+
+        /**
+         * @param locations List of locations to check for client certificate posture check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locations(DevicePostureRuleInputLocationArgs... locations) {
+            return locations(List.of(locations));
         }
 
         /**

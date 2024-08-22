@@ -46,14 +46,14 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
     }
 
     /**
-     * Timestamp of when the notification webhook last faiuled.
+     * Timestamp of when the notification webhook last failed.
      * 
      */
     @Import(name="lastFailure")
     private @Nullable Output<String> lastFailure;
 
     /**
-     * @return Timestamp of when the notification webhook last faiuled.
+     * @return Timestamp of when the notification webhook last failed.
      * 
      */
     public Optional<Output<String>> lastFailure() {
@@ -201,7 +201,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param lastFailure Timestamp of when the notification webhook last faiuled.
+         * @param lastFailure Timestamp of when the notification webhook last failed.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param lastFailure Timestamp of when the notification webhook last faiuled.
+         * @param lastFailure Timestamp of when the notification webhook last failed.
          * 
          * @return builder
          * 

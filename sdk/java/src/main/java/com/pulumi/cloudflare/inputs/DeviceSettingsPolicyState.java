@@ -287,6 +287,21 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.switchLocked);
     }
 
+    /**
+     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * 
+     */
+    @Import(name="tunnelProtocol")
+    private @Nullable Output<String> tunnelProtocol;
+
+    /**
+     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * 
+     */
+    public Optional<Output<String>> tunnelProtocol() {
+        return Optional.ofNullable(this.tunnelProtocol);
+    }
+
     private DeviceSettingsPolicyState() {}
 
     private DeviceSettingsPolicyState(DeviceSettingsPolicyState $) {
@@ -308,6 +323,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         this.serviceModeV2Port = $.serviceModeV2Port;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
+        this.tunnelProtocol = $.tunnelProtocol;
     }
 
     public static Builder builder() {
@@ -704,6 +720,27 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
          */
         public Builder switchLocked(Boolean switchLocked) {
             return switchLocked(Output.of(switchLocked));
+        }
+
+        /**
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelProtocol(@Nullable Output<String> tunnelProtocol) {
+            $.tunnelProtocol = tunnelProtocol;
+            return this;
+        }
+
+        /**
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelProtocol(String tunnelProtocol) {
+            return tunnelProtocol(Output.of(tunnelProtocol));
         }
 
         public DeviceSettingsPolicyState build() {

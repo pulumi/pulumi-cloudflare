@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     ///         ServiceModeV2Mode = "warp",
     ///         ServiceModeV2Port = 3000,
     ///         ExcludeOfficeIps = false,
+    ///         TunnelProtocol = "wireguard",
     ///     });
     /// 
     /// });
@@ -165,6 +166,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("switchLocked")]
         public Output<bool?> SwitchLocked { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        /// </summary>
+        [Output("tunnelProtocol")]
+        public Output<string?> TunnelProtocol { get; private set; } = null!;
 
 
         /// <summary>
@@ -320,6 +327,12 @@ namespace Pulumi.Cloudflare
         [Input("switchLocked")]
         public Input<bool>? SwitchLocked { get; set; }
 
+        /// <summary>
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        /// </summary>
+        [Input("tunnelProtocol")]
+        public Input<string>? TunnelProtocol { get; set; }
+
         public DeviceSettingsPolicyArgs()
         {
         }
@@ -435,6 +448,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("switchLocked")]
         public Input<bool>? SwitchLocked { get; set; }
+
+        /// <summary>
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+        /// </summary>
+        [Input("tunnelProtocol")]
+        public Input<string>? TunnelProtocol { get; set; }
 
         public DeviceSettingsPolicyState()
         {

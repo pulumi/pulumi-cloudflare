@@ -147,6 +147,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogpushOwnershipChallenge{}
 	case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
 		r = &MagicFirewallRuleset{}
+	case "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel":
+		r = &MagicWanGreTunnel{}
+	case "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel":
+		r = &MagicWanIpsecTunnel{}
+	case "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute":
+		r = &MagicWanStaticRoute{}
 	case "cloudflare:index/managedHeaders:ManagedHeaders":
 		r = &ManagedHeaders{}
 	case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -257,6 +263,70 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersScript{}
 	case "cloudflare:index/workersSecret:WorkersSecret":
 		r = &WorkersSecret{}
+	case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
+		r = &ZeroTrustAccessApplication{}
+	case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
+		r = &ZeroTrustAccessCustomPage{}
+	case "cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup":
+		r = &ZeroTrustAccessGroup{}
+	case "cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider":
+		r = &ZeroTrustAccessIdentityProvider{}
+	case "cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate":
+		r = &ZeroTrustAccessMtlsCertificate{}
+	case "cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings":
+		r = &ZeroTrustAccessMtlsHostnameSettings{}
+	case "cloudflare:index/zeroTrustAccessOrganization:ZeroTrustAccessOrganization":
+		r = &ZeroTrustAccessOrganization{}
+	case "cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy":
+		r = &ZeroTrustAccessPolicy{}
+	case "cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken":
+		r = &ZeroTrustAccessServiceToken{}
+	case "cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate":
+		r = &ZeroTrustAccessShortLivedCertificate{}
+	case "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag":
+		r = &ZeroTrustAccessTag{}
+	case "cloudflare:index/zeroTrustDeviceCertificates:ZeroTrustDeviceCertificates":
+		r = &ZeroTrustDeviceCertificates{}
+	case "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks":
+		r = &ZeroTrustDeviceManagedNetworks{}
+	case "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration":
+		r = &ZeroTrustDevicePostureIntegration{}
+	case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
+		r = &ZeroTrustDevicePostureRule{}
+	case "cloudflare:index/zeroTrustDeviceProfiles:ZeroTrustDeviceProfiles":
+		r = &ZeroTrustDeviceProfiles{}
+	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
+		r = &ZeroTrustDexTest{}
+	case "cloudflare:index/zeroTrustDlpProfile:ZeroTrustDlpProfile":
+		r = &ZeroTrustDlpProfile{}
+	case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
+		r = &ZeroTrustDnsLocation{}
+	case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
+		r = &ZeroTrustGatewayPolicy{}
+	case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
+		r = &ZeroTrustGatewayProxyEndpoint{}
+	case "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings":
+		r = &ZeroTrustGatewaySettings{}
+	case "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration":
+		r = &ZeroTrustKeyAccessKeyConfiguration{}
+	case "cloudflare:index/zeroTrustList:ZeroTrustList":
+		r = &ZeroTrustList{}
+	case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
+		r = &ZeroTrustLocalFallbackDomain{}
+	case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
+		r = &ZeroTrustRiskBehavior{}
+	case "cloudflare:index/zeroTrustRiskScoreIntegration:ZeroTrustRiskScoreIntegration":
+		r = &ZeroTrustRiskScoreIntegration{}
+	case "cloudflare:index/zeroTrustSplitTunnel:ZeroTrustSplitTunnel":
+		r = &ZeroTrustSplitTunnel{}
+	case "cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared":
+		r = &ZeroTrustTunnelCloudflared{}
+	case "cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig":
+		r = &ZeroTrustTunnelCloudflaredConfig{}
+	case "cloudflare:index/zeroTrustTunnelRoute:ZeroTrustTunnelRoute":
+		r = &ZeroTrustTunnelRoute{}
+	case "cloudflare:index/zeroTrustTunnelVirtualNetwork:ZeroTrustTunnelVirtualNetwork":
+		r = &ZeroTrustTunnelVirtualNetwork{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
 	case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
@@ -619,6 +689,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/magicWanGreTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/magicWanIpsecTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/magicWanStaticRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/managedHeaders",
 		&module{version},
 	)
@@ -890,6 +975,166 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessCustomPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessIdentityProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessMtlsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessMtlsHostnameSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessOrganization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessServiceToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessShortLivedCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustAccessTag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDeviceCertificates",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDeviceManagedNetworks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDevicePostureIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDevicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDeviceProfiles",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDexTest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDnsLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewayPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewayProxyEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewaySettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustKeyAccessKeyConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustLocalFallbackDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustRiskBehavior",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustRiskScoreIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustSplitTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustTunnelCloudflared",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustTunnelCloudflaredConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustTunnelRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustTunnelVirtualNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

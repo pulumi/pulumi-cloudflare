@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTunnel = new Cloudflare.Tunnel("example_tunnel", new()
+    ///     var exampleTunnel = new Cloudflare.ZeroTrustTunnelCloudflared("example_tunnel", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example_tunnel",

@@ -64,7 +64,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Timestamp of when the notification webhook last faiuled.
+     * Timestamp of when the notification webhook last failed.
      */
     public /*out*/ readonly lastFailure!: pulumi.Output<string>;
     /**
@@ -141,7 +141,7 @@ export interface NotificationPolicyWebhooksState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Timestamp of when the notification webhook last faiuled.
+     * Timestamp of when the notification webhook last failed.
      */
     lastFailure?: pulumi.Input<string>;
     /**

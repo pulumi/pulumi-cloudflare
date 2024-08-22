@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .content(StdFunctions.file(FileArgs.builder()
  *                 .input("script.js")
  *                 .build()).result())
- *             .dispatchNamespace(exampleCloudflareWorkersForPlatformsNamespace.name())
+ *             .dispatchNamespace(example.name())
  *             .tags("free")
  *             .build());
  * 

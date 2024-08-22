@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as std from "@pulumi/std";
  *
- * const exampleScript = new cloudflare.WorkerScript("example_script", {
+ * const exampleScript = new cloudflare.WorkersScript("example_script", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example-script",
  *     content: std.file({
