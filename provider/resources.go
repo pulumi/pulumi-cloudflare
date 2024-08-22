@@ -125,7 +125,9 @@ func Provider() tfbridge.ProviderInfo {
 			// `DeleteBeforeReplace: true`.
 			"cloudflare_record": {DeleteBeforeReplace: true},
 
-			"cloudflare_risk_behavior": {ComputeID: delegateID("accountId")},
+			"cloudflare_risk_behavior":                            {ComputeID: delegateID("accountId")},
+			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
+			"cloudflare_zero_trust_risk_behavior":                 {ComputeID: delegateID("accountId")},
 			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
 			"cloudflare_access_mutual_tls_hostname_settings": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
@@ -142,6 +144,10 @@ func Provider() tfbridge.ProviderInfo {
 						return "id", nil
 					}
 				},
+			},
+
+			"cloudflare_zero_trust_risk_score_integration": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
