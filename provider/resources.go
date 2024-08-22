@@ -17,6 +17,7 @@ package cloudflare
 import (
 	"context"
 	"fmt"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"path/filepath"
 
 	// embed allows embedding files
@@ -73,6 +74,7 @@ func Provider() tfbridge.ProviderInfo {
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"rps": {
 				Default: &tfbridge.DefaultInfo{
@@ -198,4 +200,21 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		skipGettingStartedSection,
+	)
+}
+
+// Removes a "Getting Started" section that links to a tF tutorial
+var skipGettingStartedSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Getting Started"
+		})
+	},
 }
