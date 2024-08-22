@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Tunnel;
- * import com.pulumi.cloudflare.TunnelArgs;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflared;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredArgs;
  * import com.pulumi.cloudflare.TunnelConfig;
  * import com.pulumi.cloudflare.TunnelConfigArgs;
  * import com.pulumi.cloudflare.inputs.TunnelConfigConfigArgs;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTunnel = new Tunnel("exampleTunnel", TunnelArgs.builder()
+ *         var exampleTunnel = new ZeroTrustTunnelCloudflared("exampleTunnel", ZeroTrustTunnelCloudflaredArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example_tunnel")
  *             .secret("<32 character secret>")

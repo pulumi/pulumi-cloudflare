@@ -43,14 +43,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of the record. Conflicts with `data`.
+     * The content of the record. Must provide only one of `data`, `content`, `value`.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The content of the record. Conflicts with `data`.
+     * @return The content of the record. Must provide only one of `data`, `content`, `value`.
      * 
      */
     public Optional<Output<String>> content() {
@@ -73,14 +73,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of attributes that constitute the record value. Conflicts with `value`.
+     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      * 
      */
     @Import(name="data")
     private @Nullable Output<RecordDataArgs> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Conflicts with `value`.
+     * @return Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      * 
      */
     public Optional<Output<RecordDataArgs>> data() {
@@ -238,7 +238,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
      * `value` is deprecated in favour of `content` and will be removed in the next major release.
@@ -249,7 +249,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the record. Conflicts with `data`.
+     * @return The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
      * `value` is deprecated in favour of `content` and will be removed in the next major release.
@@ -346,7 +346,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Conflicts with `data`.
+         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Conflicts with `data`.
+         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Conflicts with `value`.
+         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Conflicts with `value`.
+         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 
@@ -629,7 +629,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Conflicts with `data`.
+         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Conflicts with `data`.
+         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
          * 
          * @return builder
          * 

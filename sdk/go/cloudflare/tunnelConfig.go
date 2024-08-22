@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTunnel, err := cloudflare.NewTunnel(ctx, "example_tunnel", &cloudflare.TunnelArgs{
+//			exampleTunnel, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example_tunnel", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example_tunnel"),
 //				Secret:    pulumi.String("<32 character secret>"),

@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkerScript;
- * import com.pulumi.cloudflare.WorkerScriptArgs;
+ * import com.pulumi.cloudflare.WorkersScript;
+ * import com.pulumi.cloudflare.WorkersScriptArgs;
  * import com.pulumi.cloudflare.WorkerCronTrigger;
  * import com.pulumi.cloudflare.WorkerCronTriggerArgs;
  * import java.util.List;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleScript = new WorkerScript("exampleScript", WorkerScriptArgs.builder()
+ *         var exampleScript = new WorkersScript("exampleScript", WorkersScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example-script")
  *             .content(StdFunctions.file(FileArgs.builder()

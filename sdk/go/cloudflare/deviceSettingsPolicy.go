@@ -47,6 +47,7 @@ import (
 //				ServiceModeV2Mode:   pulumi.String("warp"),
 //				ServiceModeV2Port:   pulumi.Int(3000),
 //				ExcludeOfficeIps:    pulumi.Bool(false),
+//				TunnelProtocol:      pulumi.String("wireguard"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,6 +104,8 @@ type DeviceSettingsPolicy struct {
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrOutput `pulumi:"switchLocked"`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	TunnelProtocol pulumi.StringPtrOutput `pulumi:"tunnelProtocol"`
 }
 
 // NewDeviceSettingsPolicy registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +183,8 @@ type deviceSettingsPolicyState struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
 type DeviceSettingsPolicyState struct {
@@ -219,6 +224,8 @@ type DeviceSettingsPolicyState struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	TunnelProtocol pulumi.StringPtrInput
 }
 
 func (DeviceSettingsPolicyState) ElementType() reflect.Type {
@@ -262,6 +269,8 @@ type deviceSettingsPolicyArgs struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
 // The set of arguments for constructing a DeviceSettingsPolicy resource.
@@ -302,6 +311,8 @@ type DeviceSettingsPolicyArgs struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	TunnelProtocol pulumi.StringPtrInput
 }
 
 func (DeviceSettingsPolicyArgs) ElementType() reflect.Type {
@@ -479,6 +490,11 @@ func (o DeviceSettingsPolicyOutput) SupportUrl() pulumi.StringPtrOutput {
 // Enablement of the ZT client switch lock.
 func (o DeviceSettingsPolicyOutput) SwitchLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.SwitchLocked }).(pulumi.BoolPtrOutput)
+}
+
+// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+func (o DeviceSettingsPolicyOutput) TunnelProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.StringPtrOutput { return v.TunnelProtocol }).(pulumi.StringPtrOutput)
 }
 
 type DeviceSettingsPolicyArrayOutput struct{ *pulumi.OutputState }

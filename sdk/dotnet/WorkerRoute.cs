@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myScript = new Cloudflare.WorkerScript("my_script");
+    ///     var myScript = new Cloudflare.WorkersScript("my_script");
     /// 
     ///     // Runs the specified worker script for all URLs that match `example.com/*`
     ///     var myRoute = new Cloudflare.WorkerRoute("my_route", new()

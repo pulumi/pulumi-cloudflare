@@ -345,6 +345,26 @@ export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
+export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
+export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
+export const getZeroTrustAccessApplicationOutput: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessApplication","getZeroTrustAccessApplicationOutput"], () => require("./getZeroTrustAccessApplication"));
+
+export { GetZeroTrustAccessIdentityProviderArgs, GetZeroTrustAccessIdentityProviderResult, GetZeroTrustAccessIdentityProviderOutputArgs } from "./getZeroTrustAccessIdentityProvider";
+export const getZeroTrustAccessIdentityProvider: typeof import("./getZeroTrustAccessIdentityProvider").getZeroTrustAccessIdentityProvider = null as any;
+export const getZeroTrustAccessIdentityProviderOutput: typeof import("./getZeroTrustAccessIdentityProvider").getZeroTrustAccessIdentityProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustAccessIdentityProvider","getZeroTrustAccessIdentityProviderOutput"], () => require("./getZeroTrustAccessIdentityProvider"));
+
+export { GetZeroTrustTunnelCloudflaredArgs, GetZeroTrustTunnelCloudflaredResult, GetZeroTrustTunnelCloudflaredOutputArgs } from "./getZeroTrustTunnelCloudflared";
+export const getZeroTrustTunnelCloudflared: typeof import("./getZeroTrustTunnelCloudflared").getZeroTrustTunnelCloudflared = null as any;
+export const getZeroTrustTunnelCloudflaredOutput: typeof import("./getZeroTrustTunnelCloudflared").getZeroTrustTunnelCloudflaredOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustTunnelCloudflared","getZeroTrustTunnelCloudflaredOutput"], () => require("./getZeroTrustTunnelCloudflared"));
+
+export { GetZeroTrustTunnelVirtualNetworkArgs, GetZeroTrustTunnelVirtualNetworkResult, GetZeroTrustTunnelVirtualNetworkOutputArgs } from "./getZeroTrustTunnelVirtualNetwork";
+export const getZeroTrustTunnelVirtualNetwork: typeof import("./getZeroTrustTunnelVirtualNetwork").getZeroTrustTunnelVirtualNetwork = null as any;
+export const getZeroTrustTunnelVirtualNetworkOutput: typeof import("./getZeroTrustTunnelVirtualNetwork").getZeroTrustTunnelVirtualNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustTunnelVirtualNetwork","getZeroTrustTunnelVirtualNetworkOutput"], () => require("./getZeroTrustTunnelVirtualNetwork"));
+
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
@@ -444,6 +464,21 @@ export { MagicFirewallRulesetArgs, MagicFirewallRulesetState } from "./magicFire
 export type MagicFirewallRuleset = import("./magicFirewallRuleset").MagicFirewallRuleset;
 export const MagicFirewallRuleset: typeof import("./magicFirewallRuleset").MagicFirewallRuleset = null as any;
 utilities.lazyLoad(exports, ["MagicFirewallRuleset"], () => require("./magicFirewallRuleset"));
+
+export { MagicWanGreTunnelArgs, MagicWanGreTunnelState } from "./magicWanGreTunnel";
+export type MagicWanGreTunnel = import("./magicWanGreTunnel").MagicWanGreTunnel;
+export const MagicWanGreTunnel: typeof import("./magicWanGreTunnel").MagicWanGreTunnel = null as any;
+utilities.lazyLoad(exports, ["MagicWanGreTunnel"], () => require("./magicWanGreTunnel"));
+
+export { MagicWanIpsecTunnelArgs, MagicWanIpsecTunnelState } from "./magicWanIpsecTunnel";
+export type MagicWanIpsecTunnel = import("./magicWanIpsecTunnel").MagicWanIpsecTunnel;
+export const MagicWanIpsecTunnel: typeof import("./magicWanIpsecTunnel").MagicWanIpsecTunnel = null as any;
+utilities.lazyLoad(exports, ["MagicWanIpsecTunnel"], () => require("./magicWanIpsecTunnel"));
+
+export { MagicWanStaticRouteArgs, MagicWanStaticRouteState } from "./magicWanStaticRoute";
+export type MagicWanStaticRoute = import("./magicWanStaticRoute").MagicWanStaticRoute;
+export const MagicWanStaticRoute: typeof import("./magicWanStaticRoute").MagicWanStaticRoute = null as any;
+utilities.lazyLoad(exports, ["MagicWanStaticRoute"], () => require("./magicWanStaticRoute"));
 
 export { ManagedHeadersArgs, ManagedHeadersState } from "./managedHeaders";
 export type ManagedHeaders = import("./managedHeaders").ManagedHeaders;
@@ -725,6 +760,166 @@ export type WorkersSecret = import("./workersSecret").WorkersSecret;
 export const WorkersSecret: typeof import("./workersSecret").WorkersSecret = null as any;
 utilities.lazyLoad(exports, ["WorkersSecret"], () => require("./workersSecret"));
 
+export { ZeroTrustAccessApplicationArgs, ZeroTrustAccessApplicationState } from "./zeroTrustAccessApplication";
+export type ZeroTrustAccessApplication = import("./zeroTrustAccessApplication").ZeroTrustAccessApplication;
+export const ZeroTrustAccessApplication: typeof import("./zeroTrustAccessApplication").ZeroTrustAccessApplication = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessApplication"], () => require("./zeroTrustAccessApplication"));
+
+export { ZeroTrustAccessCustomPageArgs, ZeroTrustAccessCustomPageState } from "./zeroTrustAccessCustomPage";
+export type ZeroTrustAccessCustomPage = import("./zeroTrustAccessCustomPage").ZeroTrustAccessCustomPage;
+export const ZeroTrustAccessCustomPage: typeof import("./zeroTrustAccessCustomPage").ZeroTrustAccessCustomPage = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessCustomPage"], () => require("./zeroTrustAccessCustomPage"));
+
+export { ZeroTrustAccessGroupArgs, ZeroTrustAccessGroupState } from "./zeroTrustAccessGroup";
+export type ZeroTrustAccessGroup = import("./zeroTrustAccessGroup").ZeroTrustAccessGroup;
+export const ZeroTrustAccessGroup: typeof import("./zeroTrustAccessGroup").ZeroTrustAccessGroup = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessGroup"], () => require("./zeroTrustAccessGroup"));
+
+export { ZeroTrustAccessIdentityProviderArgs, ZeroTrustAccessIdentityProviderState } from "./zeroTrustAccessIdentityProvider";
+export type ZeroTrustAccessIdentityProvider = import("./zeroTrustAccessIdentityProvider").ZeroTrustAccessIdentityProvider;
+export const ZeroTrustAccessIdentityProvider: typeof import("./zeroTrustAccessIdentityProvider").ZeroTrustAccessIdentityProvider = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessIdentityProvider"], () => require("./zeroTrustAccessIdentityProvider"));
+
+export { ZeroTrustAccessMtlsCertificateArgs, ZeroTrustAccessMtlsCertificateState } from "./zeroTrustAccessMtlsCertificate";
+export type ZeroTrustAccessMtlsCertificate = import("./zeroTrustAccessMtlsCertificate").ZeroTrustAccessMtlsCertificate;
+export const ZeroTrustAccessMtlsCertificate: typeof import("./zeroTrustAccessMtlsCertificate").ZeroTrustAccessMtlsCertificate = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessMtlsCertificate"], () => require("./zeroTrustAccessMtlsCertificate"));
+
+export { ZeroTrustAccessMtlsHostnameSettingsArgs, ZeroTrustAccessMtlsHostnameSettingsState } from "./zeroTrustAccessMtlsHostnameSettings";
+export type ZeroTrustAccessMtlsHostnameSettings = import("./zeroTrustAccessMtlsHostnameSettings").ZeroTrustAccessMtlsHostnameSettings;
+export const ZeroTrustAccessMtlsHostnameSettings: typeof import("./zeroTrustAccessMtlsHostnameSettings").ZeroTrustAccessMtlsHostnameSettings = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessMtlsHostnameSettings"], () => require("./zeroTrustAccessMtlsHostnameSettings"));
+
+export { ZeroTrustAccessOrganizationArgs, ZeroTrustAccessOrganizationState } from "./zeroTrustAccessOrganization";
+export type ZeroTrustAccessOrganization = import("./zeroTrustAccessOrganization").ZeroTrustAccessOrganization;
+export const ZeroTrustAccessOrganization: typeof import("./zeroTrustAccessOrganization").ZeroTrustAccessOrganization = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessOrganization"], () => require("./zeroTrustAccessOrganization"));
+
+export { ZeroTrustAccessPolicyArgs, ZeroTrustAccessPolicyState } from "./zeroTrustAccessPolicy";
+export type ZeroTrustAccessPolicy = import("./zeroTrustAccessPolicy").ZeroTrustAccessPolicy;
+export const ZeroTrustAccessPolicy: typeof import("./zeroTrustAccessPolicy").ZeroTrustAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessPolicy"], () => require("./zeroTrustAccessPolicy"));
+
+export { ZeroTrustAccessServiceTokenArgs, ZeroTrustAccessServiceTokenState } from "./zeroTrustAccessServiceToken";
+export type ZeroTrustAccessServiceToken = import("./zeroTrustAccessServiceToken").ZeroTrustAccessServiceToken;
+export const ZeroTrustAccessServiceToken: typeof import("./zeroTrustAccessServiceToken").ZeroTrustAccessServiceToken = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessServiceToken"], () => require("./zeroTrustAccessServiceToken"));
+
+export { ZeroTrustAccessShortLivedCertificateArgs, ZeroTrustAccessShortLivedCertificateState } from "./zeroTrustAccessShortLivedCertificate";
+export type ZeroTrustAccessShortLivedCertificate = import("./zeroTrustAccessShortLivedCertificate").ZeroTrustAccessShortLivedCertificate;
+export const ZeroTrustAccessShortLivedCertificate: typeof import("./zeroTrustAccessShortLivedCertificate").ZeroTrustAccessShortLivedCertificate = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessShortLivedCertificate"], () => require("./zeroTrustAccessShortLivedCertificate"));
+
+export { ZeroTrustAccessTagArgs, ZeroTrustAccessTagState } from "./zeroTrustAccessTag";
+export type ZeroTrustAccessTag = import("./zeroTrustAccessTag").ZeroTrustAccessTag;
+export const ZeroTrustAccessTag: typeof import("./zeroTrustAccessTag").ZeroTrustAccessTag = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustAccessTag"], () => require("./zeroTrustAccessTag"));
+
+export { ZeroTrustDeviceCertificatesArgs, ZeroTrustDeviceCertificatesState } from "./zeroTrustDeviceCertificates";
+export type ZeroTrustDeviceCertificates = import("./zeroTrustDeviceCertificates").ZeroTrustDeviceCertificates;
+export const ZeroTrustDeviceCertificates: typeof import("./zeroTrustDeviceCertificates").ZeroTrustDeviceCertificates = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDeviceCertificates"], () => require("./zeroTrustDeviceCertificates"));
+
+export { ZeroTrustDeviceManagedNetworksArgs, ZeroTrustDeviceManagedNetworksState } from "./zeroTrustDeviceManagedNetworks";
+export type ZeroTrustDeviceManagedNetworks = import("./zeroTrustDeviceManagedNetworks").ZeroTrustDeviceManagedNetworks;
+export const ZeroTrustDeviceManagedNetworks: typeof import("./zeroTrustDeviceManagedNetworks").ZeroTrustDeviceManagedNetworks = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDeviceManagedNetworks"], () => require("./zeroTrustDeviceManagedNetworks"));
+
+export { ZeroTrustDevicePostureIntegrationArgs, ZeroTrustDevicePostureIntegrationState } from "./zeroTrustDevicePostureIntegration";
+export type ZeroTrustDevicePostureIntegration = import("./zeroTrustDevicePostureIntegration").ZeroTrustDevicePostureIntegration;
+export const ZeroTrustDevicePostureIntegration: typeof import("./zeroTrustDevicePostureIntegration").ZeroTrustDevicePostureIntegration = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDevicePostureIntegration"], () => require("./zeroTrustDevicePostureIntegration"));
+
+export { ZeroTrustDevicePostureRuleArgs, ZeroTrustDevicePostureRuleState } from "./zeroTrustDevicePostureRule";
+export type ZeroTrustDevicePostureRule = import("./zeroTrustDevicePostureRule").ZeroTrustDevicePostureRule;
+export const ZeroTrustDevicePostureRule: typeof import("./zeroTrustDevicePostureRule").ZeroTrustDevicePostureRule = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDevicePostureRule"], () => require("./zeroTrustDevicePostureRule"));
+
+export { ZeroTrustDeviceProfilesArgs, ZeroTrustDeviceProfilesState } from "./zeroTrustDeviceProfiles";
+export type ZeroTrustDeviceProfiles = import("./zeroTrustDeviceProfiles").ZeroTrustDeviceProfiles;
+export const ZeroTrustDeviceProfiles: typeof import("./zeroTrustDeviceProfiles").ZeroTrustDeviceProfiles = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDeviceProfiles"], () => require("./zeroTrustDeviceProfiles"));
+
+export { ZeroTrustDexTestArgs, ZeroTrustDexTestState } from "./zeroTrustDexTest";
+export type ZeroTrustDexTest = import("./zeroTrustDexTest").ZeroTrustDexTest;
+export const ZeroTrustDexTest: typeof import("./zeroTrustDexTest").ZeroTrustDexTest = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDexTest"], () => require("./zeroTrustDexTest"));
+
+export { ZeroTrustDlpProfileArgs, ZeroTrustDlpProfileState } from "./zeroTrustDlpProfile";
+export type ZeroTrustDlpProfile = import("./zeroTrustDlpProfile").ZeroTrustDlpProfile;
+export const ZeroTrustDlpProfile: typeof import("./zeroTrustDlpProfile").ZeroTrustDlpProfile = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDlpProfile"], () => require("./zeroTrustDlpProfile"));
+
+export { ZeroTrustDnsLocationArgs, ZeroTrustDnsLocationState } from "./zeroTrustDnsLocation";
+export type ZeroTrustDnsLocation = import("./zeroTrustDnsLocation").ZeroTrustDnsLocation;
+export const ZeroTrustDnsLocation: typeof import("./zeroTrustDnsLocation").ZeroTrustDnsLocation = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDnsLocation"], () => require("./zeroTrustDnsLocation"));
+
+export { ZeroTrustGatewayPolicyArgs, ZeroTrustGatewayPolicyState } from "./zeroTrustGatewayPolicy";
+export type ZeroTrustGatewayPolicy = import("./zeroTrustGatewayPolicy").ZeroTrustGatewayPolicy;
+export const ZeroTrustGatewayPolicy: typeof import("./zeroTrustGatewayPolicy").ZeroTrustGatewayPolicy = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustGatewayPolicy"], () => require("./zeroTrustGatewayPolicy"));
+
+export { ZeroTrustGatewayProxyEndpointArgs, ZeroTrustGatewayProxyEndpointState } from "./zeroTrustGatewayProxyEndpoint";
+export type ZeroTrustGatewayProxyEndpoint = import("./zeroTrustGatewayProxyEndpoint").ZeroTrustGatewayProxyEndpoint;
+export const ZeroTrustGatewayProxyEndpoint: typeof import("./zeroTrustGatewayProxyEndpoint").ZeroTrustGatewayProxyEndpoint = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustGatewayProxyEndpoint"], () => require("./zeroTrustGatewayProxyEndpoint"));
+
+export { ZeroTrustGatewaySettingsArgs, ZeroTrustGatewaySettingsState } from "./zeroTrustGatewaySettings";
+export type ZeroTrustGatewaySettings = import("./zeroTrustGatewaySettings").ZeroTrustGatewaySettings;
+export const ZeroTrustGatewaySettings: typeof import("./zeroTrustGatewaySettings").ZeroTrustGatewaySettings = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustGatewaySettings"], () => require("./zeroTrustGatewaySettings"));
+
+export { ZeroTrustKeyAccessKeyConfigurationArgs, ZeroTrustKeyAccessKeyConfigurationState } from "./zeroTrustKeyAccessKeyConfiguration";
+export type ZeroTrustKeyAccessKeyConfiguration = import("./zeroTrustKeyAccessKeyConfiguration").ZeroTrustKeyAccessKeyConfiguration;
+export const ZeroTrustKeyAccessKeyConfiguration: typeof import("./zeroTrustKeyAccessKeyConfiguration").ZeroTrustKeyAccessKeyConfiguration = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustKeyAccessKeyConfiguration"], () => require("./zeroTrustKeyAccessKeyConfiguration"));
+
+export { ZeroTrustListArgs, ZeroTrustListState } from "./zeroTrustList";
+export type ZeroTrustList = import("./zeroTrustList").ZeroTrustList;
+export const ZeroTrustList: typeof import("./zeroTrustList").ZeroTrustList = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustList"], () => require("./zeroTrustList"));
+
+export { ZeroTrustLocalFallbackDomainArgs, ZeroTrustLocalFallbackDomainState } from "./zeroTrustLocalFallbackDomain";
+export type ZeroTrustLocalFallbackDomain = import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain;
+export const ZeroTrustLocalFallbackDomain: typeof import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustLocalFallbackDomain"], () => require("./zeroTrustLocalFallbackDomain"));
+
+export { ZeroTrustRiskBehaviorArgs, ZeroTrustRiskBehaviorState } from "./zeroTrustRiskBehavior";
+export type ZeroTrustRiskBehavior = import("./zeroTrustRiskBehavior").ZeroTrustRiskBehavior;
+export const ZeroTrustRiskBehavior: typeof import("./zeroTrustRiskBehavior").ZeroTrustRiskBehavior = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustRiskBehavior"], () => require("./zeroTrustRiskBehavior"));
+
+export { ZeroTrustRiskScoreIntegrationArgs, ZeroTrustRiskScoreIntegrationState } from "./zeroTrustRiskScoreIntegration";
+export type ZeroTrustRiskScoreIntegration = import("./zeroTrustRiskScoreIntegration").ZeroTrustRiskScoreIntegration;
+export const ZeroTrustRiskScoreIntegration: typeof import("./zeroTrustRiskScoreIntegration").ZeroTrustRiskScoreIntegration = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustRiskScoreIntegration"], () => require("./zeroTrustRiskScoreIntegration"));
+
+export { ZeroTrustSplitTunnelArgs, ZeroTrustSplitTunnelState } from "./zeroTrustSplitTunnel";
+export type ZeroTrustSplitTunnel = import("./zeroTrustSplitTunnel").ZeroTrustSplitTunnel;
+export const ZeroTrustSplitTunnel: typeof import("./zeroTrustSplitTunnel").ZeroTrustSplitTunnel = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustSplitTunnel"], () => require("./zeroTrustSplitTunnel"));
+
+export { ZeroTrustTunnelCloudflaredArgs, ZeroTrustTunnelCloudflaredState } from "./zeroTrustTunnelCloudflared";
+export type ZeroTrustTunnelCloudflared = import("./zeroTrustTunnelCloudflared").ZeroTrustTunnelCloudflared;
+export const ZeroTrustTunnelCloudflared: typeof import("./zeroTrustTunnelCloudflared").ZeroTrustTunnelCloudflared = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustTunnelCloudflared"], () => require("./zeroTrustTunnelCloudflared"));
+
+export { ZeroTrustTunnelCloudflaredConfigArgs, ZeroTrustTunnelCloudflaredConfigState } from "./zeroTrustTunnelCloudflaredConfig";
+export type ZeroTrustTunnelCloudflaredConfig = import("./zeroTrustTunnelCloudflaredConfig").ZeroTrustTunnelCloudflaredConfig;
+export const ZeroTrustTunnelCloudflaredConfig: typeof import("./zeroTrustTunnelCloudflaredConfig").ZeroTrustTunnelCloudflaredConfig = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustTunnelCloudflaredConfig"], () => require("./zeroTrustTunnelCloudflaredConfig"));
+
+export { ZeroTrustTunnelRouteArgs, ZeroTrustTunnelRouteState } from "./zeroTrustTunnelRoute";
+export type ZeroTrustTunnelRoute = import("./zeroTrustTunnelRoute").ZeroTrustTunnelRoute;
+export const ZeroTrustTunnelRoute: typeof import("./zeroTrustTunnelRoute").ZeroTrustTunnelRoute = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustTunnelRoute"], () => require("./zeroTrustTunnelRoute"));
+
+export { ZeroTrustTunnelVirtualNetworkArgs, ZeroTrustTunnelVirtualNetworkState } from "./zeroTrustTunnelVirtualNetwork";
+export type ZeroTrustTunnelVirtualNetwork = import("./zeroTrustTunnelVirtualNetwork").ZeroTrustTunnelVirtualNetwork;
+export const ZeroTrustTunnelVirtualNetwork: typeof import("./zeroTrustTunnelVirtualNetwork").ZeroTrustTunnelVirtualNetwork = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustTunnelVirtualNetwork"], () => require("./zeroTrustTunnelVirtualNetwork"));
+
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
@@ -900,6 +1095,12 @@ const _module = {
                 return new LogpushOwnershipChallenge(name, <any>undefined, { urn })
             case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
                 return new MagicFirewallRuleset(name, <any>undefined, { urn })
+            case "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel":
+                return new MagicWanGreTunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel":
+                return new MagicWanIpsecTunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute":
+                return new MagicWanStaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/managedHeaders:ManagedHeaders":
                 return new ManagedHeaders(name, <any>undefined, { urn })
             case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -1010,6 +1211,70 @@ const _module = {
                 return new WorkersScript(name, <any>undefined, { urn })
             case "cloudflare:index/workersSecret:WorkersSecret":
                 return new WorkersSecret(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
+                return new ZeroTrustAccessApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
+                return new ZeroTrustAccessCustomPage(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup":
+                return new ZeroTrustAccessGroup(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider":
+                return new ZeroTrustAccessIdentityProvider(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate":
+                return new ZeroTrustAccessMtlsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings":
+                return new ZeroTrustAccessMtlsHostnameSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessOrganization:ZeroTrustAccessOrganization":
+                return new ZeroTrustAccessOrganization(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy":
+                return new ZeroTrustAccessPolicy(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken":
+                return new ZeroTrustAccessServiceToken(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate":
+                return new ZeroTrustAccessShortLivedCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag":
+                return new ZeroTrustAccessTag(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDeviceCertificates:ZeroTrustDeviceCertificates":
+                return new ZeroTrustDeviceCertificates(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks":
+                return new ZeroTrustDeviceManagedNetworks(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration":
+                return new ZeroTrustDevicePostureIntegration(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
+                return new ZeroTrustDevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDeviceProfiles:ZeroTrustDeviceProfiles":
+                return new ZeroTrustDeviceProfiles(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
+                return new ZeroTrustDexTest(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDlpProfile:ZeroTrustDlpProfile":
+                return new ZeroTrustDlpProfile(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
+                return new ZeroTrustDnsLocation(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
+                return new ZeroTrustGatewayPolicy(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
+                return new ZeroTrustGatewayProxyEndpoint(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings":
+                return new ZeroTrustGatewaySettings(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration":
+                return new ZeroTrustKeyAccessKeyConfiguration(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustList:ZeroTrustList":
+                return new ZeroTrustList(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
+                return new ZeroTrustLocalFallbackDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
+                return new ZeroTrustRiskBehavior(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustRiskScoreIntegration:ZeroTrustRiskScoreIntegration":
+                return new ZeroTrustRiskScoreIntegration(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustSplitTunnel:ZeroTrustSplitTunnel":
+                return new ZeroTrustSplitTunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared":
+                return new ZeroTrustTunnelCloudflared(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig":
+                return new ZeroTrustTunnelCloudflaredConfig(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustTunnelRoute:ZeroTrustTunnelRoute":
+                return new ZeroTrustTunnelRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustTunnelVirtualNetwork:ZeroTrustTunnelVirtualNetwork":
+                return new ZeroTrustTunnelVirtualNetwork(name, <any>undefined, { urn })
             case "cloudflare:index/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
@@ -1092,6 +1357,9 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/logpullRetention", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushJob", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushOwnershipChallenge", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicFirewallRuleset", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanGreTunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanIpsecTunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanStaticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
@@ -1147,6 +1415,38 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersSecret", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessCustomPage", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessGroup", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessIdentityProvider", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessMtlsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessMtlsHostnameSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessOrganization", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessServiceToken", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessShortLivedCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessTag", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceCertificates", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceManagedNetworks", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureIntegration", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceProfiles", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpProfile", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDnsLocation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxyEndpoint", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustKeyAccessKeyConfiguration", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustList", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustLocalFallbackDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskBehavior", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskScoreIntegration", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustSplitTunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustTunnelCloudflared", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustTunnelCloudflaredConfig", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustTunnelRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustTunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheReserve", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _module)

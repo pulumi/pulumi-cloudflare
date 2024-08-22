@@ -22,15 +22,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var myScript = new Cloudflare.WorkersScript("my_script");
+    /// 
     ///     // Runs the specified worker script for all URLs that match `example.com/*`
     ///     var myRoute = new Cloudflare.WorkersRoute("my_route", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Pattern = "example.com/*",
-    ///         ScriptName = myScriptCloudflareWorkerScript.Name,
+    ///         ScriptName = myScript.Name,
     ///     });
-    /// 
-    ///     var myScript = new Cloudflare.WorkersScript("my_script");
     /// 
     /// });
     /// ```

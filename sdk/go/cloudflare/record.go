@@ -74,11 +74,11 @@ type Record struct {
 	AllowOverwrite pulumi.BoolPtrOutput `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The content of the record. Conflicts with `data`.
+	// The content of the record. Must provide only one of `data`, `content`, `value`.
 	Content pulumi.StringOutput `pulumi:"content"`
 	// The RFC3339 timestamp of when the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Map of attributes that constitute the record value. Conflicts with `value`.
+	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 	Data RecordDataPtrOutput `pulumi:"data"`
 	// The FQDN of the record.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -100,7 +100,7 @@ type Record struct {
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record. Conflicts with `data`.
+	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
 	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -150,11 +150,11 @@ type recordState struct {
 	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
-	// The content of the record. Conflicts with `data`.
+	// The content of the record. Must provide only one of `data`, `content`, `value`.
 	Content *string `pulumi:"content"`
 	// The RFC3339 timestamp of when the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Map of attributes that constitute the record value. Conflicts with `value`.
+	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 	Data *RecordData `pulumi:"data"`
 	// The FQDN of the record.
 	Hostname *string `pulumi:"hostname"`
@@ -176,7 +176,7 @@ type recordState struct {
 	Ttl *int `pulumi:"ttl"`
 	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
-	// The value of the record. Conflicts with `data`.
+	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
 	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 	Value *string `pulumi:"value"`
@@ -188,11 +188,11 @@ type RecordState struct {
 	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
-	// The content of the record. Conflicts with `data`.
+	// The content of the record. Must provide only one of `data`, `content`, `value`.
 	Content pulumi.StringPtrInput
 	// The RFC3339 timestamp of when the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Map of attributes that constitute the record value. Conflicts with `value`.
+	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 	Data RecordDataPtrInput
 	// The FQDN of the record.
 	Hostname pulumi.StringPtrInput
@@ -214,7 +214,7 @@ type RecordState struct {
 	Ttl pulumi.IntPtrInput
 	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
-	// The value of the record. Conflicts with `data`.
+	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
 	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 	Value pulumi.StringPtrInput
@@ -230,9 +230,9 @@ type recordArgs struct {
 	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
-	// The content of the record. Conflicts with `data`.
+	// The content of the record. Must provide only one of `data`, `content`, `value`.
 	Content *string `pulumi:"content"`
-	// Map of attributes that constitute the record value. Conflicts with `value`.
+	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 	Data *RecordData `pulumi:"data"`
 	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
@@ -246,7 +246,7 @@ type recordArgs struct {
 	Ttl *int `pulumi:"ttl"`
 	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
-	// The value of the record. Conflicts with `data`.
+	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
 	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 	Value *string `pulumi:"value"`
@@ -259,9 +259,9 @@ type RecordArgs struct {
 	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
-	// The content of the record. Conflicts with `data`.
+	// The content of the record. Must provide only one of `data`, `content`, `value`.
 	Content pulumi.StringPtrInput
-	// Map of attributes that constitute the record value. Conflicts with `value`.
+	// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 	Data RecordDataPtrInput
 	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
@@ -275,7 +275,7 @@ type RecordArgs struct {
 	Ttl pulumi.IntPtrInput
 	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
-	// The value of the record. Conflicts with `data`.
+	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
 	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 	Value pulumi.StringPtrInput
@@ -379,7 +379,7 @@ func (o RecordOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The content of the record. Conflicts with `data`.
+// The content of the record. Must provide only one of `data`, `content`, `value`.
 func (o RecordOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
@@ -389,7 +389,7 @@ func (o RecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Map of attributes that constitute the record value. Conflicts with `value`.
+// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
 func (o RecordOutput) Data() RecordDataPtrOutput {
 	return o.ApplyT(func(v *Record) RecordDataPtrOutput { return v.Data }).(RecordDataPtrOutput)
 }
@@ -444,7 +444,7 @@ func (o RecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the record. Conflicts with `data`.
+// The value of the record. Must provide only one of `data`, `content`, `value`.
 //
 // Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
 func (o RecordOutput) Value() pulumi.StringOutput {

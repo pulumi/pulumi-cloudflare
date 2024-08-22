@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Input = "script.js",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         DispatchNamespace = exampleCloudflareWorkersForPlatformsNamespace.Name,
+    ///         DispatchNamespace = example.Name,
     ///         Tags = new[]
     ///         {
     ///             "free",

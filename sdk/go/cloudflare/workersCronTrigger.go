@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewWorkersScript(ctx, "example_script", &cloudflare.WorkersScriptArgs{
+//			exampleScript, err := cloudflare.NewWorkersScript(ctx, "example_script", &cloudflare.WorkersScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example-script"),
 //				Content:   pulumi.String(invokeFile.Result),
@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = cloudflare.NewWorkersCronTrigger(ctx, "example_trigger", &cloudflare.WorkersCronTriggerArgs{
 //				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ScriptName: pulumi.Any(exampleScriptCloudflareWorkerScript.Name),
+//				ScriptName: exampleScript.Name,
 //				Schedules: pulumi.StringArray{
 //					pulumi.String("*/5 * * * *"),
 //					pulumi.String("10 7 * * mon-fri"),

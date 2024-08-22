@@ -26,6 +26,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CheckDisks;
         /// <summary>
+        /// Confirm the certificate was not imported from another device.
+        /// </summary>
+        public readonly bool? CheckPrivateKey;
+        /// <summary>
         /// The common name for a certificate.
         /// </summary>
         public readonly string? Cn;
@@ -58,6 +62,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Exists;
         /// <summary>
+        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        /// </summary>
+        public readonly ImmutableArray<string> ExtendedKeyUsages;
+        /// <summary>
         /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         /// </summary>
         public readonly string? Id;
@@ -77,6 +85,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         /// </summary>
         public readonly string? LastSeen;
+        /// <summary>
+        /// List of locations to check for client certificate posture check.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DevicePostureRuleInputLocation> Locations;
         /// <summary>
         /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         /// </summary>
@@ -158,6 +170,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> checkDisks,
 
+            bool? checkPrivateKey,
+
             string? cn,
 
             string? complianceStatus,
@@ -174,6 +188,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? exists,
 
+            ImmutableArray<string> extendedKeyUsages,
+
             string? id,
 
             bool? infected,
@@ -183,6 +199,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? issueCount,
 
             string? lastSeen,
+
+            ImmutableArray<Outputs.DevicePostureRuleInputLocation> locations,
 
             string? networkStatus,
 
@@ -223,6 +241,7 @@ namespace Pulumi.Cloudflare.Outputs
             ActiveThreats = activeThreats;
             CertificateId = certificateId;
             CheckDisks = checkDisks;
+            CheckPrivateKey = checkPrivateKey;
             Cn = cn;
             ComplianceStatus = complianceStatus;
             ConnectionId = connectionId;
@@ -231,11 +250,13 @@ namespace Pulumi.Cloudflare.Outputs
             EidLastSeen = eidLastSeen;
             Enabled = enabled;
             Exists = exists;
+            ExtendedKeyUsages = extendedKeyUsages;
             Id = id;
             Infected = infected;
             IsActive = isActive;
             IssueCount = issueCount;
             LastSeen = lastSeen;
+            Locations = locations;
             NetworkStatus = networkStatus;
             Operator = @operator;
             Os = os;

@@ -73,6 +73,10 @@ from .get_rulesets import *
 from .get_tunnel import *
 from .get_tunnel_virtual_network import *
 from .get_user import *
+from .get_zero_trust_access_application import *
+from .get_zero_trust_access_identity_provider import *
+from .get_zero_trust_tunnel_cloudflared import *
+from .get_zero_trust_tunnel_virtual_network import *
 from .get_zone import *
 from .get_zone_cache_reserve import *
 from .get_zone_dnssec import *
@@ -93,6 +97,9 @@ from .logpull_retention import *
 from .logpush_job import *
 from .logpush_ownership_challenge import *
 from .magic_firewall_ruleset import *
+from .magic_wan_gre_tunnel import *
+from .magic_wan_ipsec_tunnel import *
+from .magic_wan_static_route import *
 from .managed_headers import *
 from .mtls_certificate import *
 from .notification_policy import *
@@ -149,6 +156,38 @@ from .workers_kv_namespace import *
 from .workers_route import *
 from .workers_script import *
 from .workers_secret import *
+from .zero_trust_access_application import *
+from .zero_trust_access_custom_page import *
+from .zero_trust_access_group import *
+from .zero_trust_access_identity_provider import *
+from .zero_trust_access_mtls_certificate import *
+from .zero_trust_access_mtls_hostname_settings import *
+from .zero_trust_access_organization import *
+from .zero_trust_access_policy import *
+from .zero_trust_access_service_token import *
+from .zero_trust_access_short_lived_certificate import *
+from .zero_trust_access_tag import *
+from .zero_trust_device_certificates import *
+from .zero_trust_device_managed_networks import *
+from .zero_trust_device_posture_integration import *
+from .zero_trust_device_posture_rule import *
+from .zero_trust_device_profiles import *
+from .zero_trust_dex_test import *
+from .zero_trust_dlp_profile import *
+from .zero_trust_dns_location import *
+from .zero_trust_gateway_policy import *
+from .zero_trust_gateway_proxy_endpoint import *
+from .zero_trust_gateway_settings import *
+from .zero_trust_key_access_key_configuration import *
+from .zero_trust_list import *
+from .zero_trust_local_fallback_domain import *
+from .zero_trust_risk_behavior import *
+from .zero_trust_risk_score_integration import *
+from .zero_trust_split_tunnel import *
+from .zero_trust_tunnel_cloudflared import *
+from .zero_trust_tunnel_cloudflared_config import *
+from .zero_trust_tunnel_route import *
+from .zero_trust_tunnel_virtual_network import *
 from .zone import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
@@ -675,6 +714,30 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/magicWanGreTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel": "MagicWanGreTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/magicWanIpsecTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel": "MagicWanIpsecTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/magicWanStaticRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute": "MagicWanStaticRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/managedHeaders",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1111,6 +1174,262 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersSecret:WorkersSecret": "WorkersSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessApplication",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication": "ZeroTrustAccessApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessCustomPage",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage": "ZeroTrustAccessCustomPage"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessGroup",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup": "ZeroTrustAccessGroup"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessIdentityProvider",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider": "ZeroTrustAccessIdentityProvider"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessMtlsCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate": "ZeroTrustAccessMtlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessMtlsHostnameSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings": "ZeroTrustAccessMtlsHostnameSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessOrganization",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessOrganization:ZeroTrustAccessOrganization": "ZeroTrustAccessOrganization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy": "ZeroTrustAccessPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessServiceToken",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken": "ZeroTrustAccessServiceToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessShortLivedCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate": "ZeroTrustAccessShortLivedCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustAccessTag",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag": "ZeroTrustAccessTag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDeviceCertificates",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDeviceCertificates:ZeroTrustDeviceCertificates": "ZeroTrustDeviceCertificates"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDeviceManagedNetworks",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks": "ZeroTrustDeviceManagedNetworks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDevicePostureIntegration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration": "ZeroTrustDevicePostureIntegration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDevicePostureRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule": "ZeroTrustDevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDeviceProfiles",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDeviceProfiles:ZeroTrustDeviceProfiles": "ZeroTrustDeviceProfiles"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDexTest",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest": "ZeroTrustDexTest"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpProfile:ZeroTrustDlpProfile": "ZeroTrustDlpProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDnsLocation",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation": "ZeroTrustDnsLocation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewayPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy": "ZeroTrustGatewayPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewayProxyEndpoint",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint": "ZeroTrustGatewayProxyEndpoint"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewaySettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings": "ZeroTrustGatewaySettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustKeyAccessKeyConfiguration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration": "ZeroTrustKeyAccessKeyConfiguration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustList",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustList:ZeroTrustList": "ZeroTrustList"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustLocalFallbackDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain": "ZeroTrustLocalFallbackDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustRiskBehavior",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior": "ZeroTrustRiskBehavior"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustRiskScoreIntegration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustRiskScoreIntegration:ZeroTrustRiskScoreIntegration": "ZeroTrustRiskScoreIntegration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustSplitTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustSplitTunnel:ZeroTrustSplitTunnel": "ZeroTrustSplitTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelCloudflared",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared": "ZeroTrustTunnelCloudflared"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelCloudflaredConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig": "ZeroTrustTunnelCloudflaredConfig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelRoute:ZeroTrustTunnelRoute": "ZeroTrustTunnelRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelVirtualNetwork",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelVirtualNetwork:ZeroTrustTunnelVirtualNetwork": "ZeroTrustTunnelVirtualNetwork"
   }
  },
  {

@@ -37,6 +37,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Confirm the certificate was not imported from another device.
+        /// </summary>
+        [Input("checkPrivateKey")]
+        public Input<bool>? CheckPrivateKey { get; set; }
+
+        /// <summary>
         /// The common name for a certificate.
         /// </summary>
         [Input("cn")]
@@ -84,6 +90,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("exists")]
         public Input<bool>? Exists { get; set; }
 
+        [Input("extendedKeyUsages")]
+        private InputList<string>? _extendedKeyUsages;
+
+        /// <summary>
+        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        /// </summary>
+        public InputList<string> ExtendedKeyUsages
+        {
+            get => _extendedKeyUsages ?? (_extendedKeyUsages = new InputList<string>());
+            set => _extendedKeyUsages = value;
+        }
+
         /// <summary>
         /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         /// </summary>
@@ -113,6 +131,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("lastSeen")]
         public Input<string>? LastSeen { get; set; }
+
+        [Input("locations")]
+        private InputList<Inputs.DevicePostureRuleInputLocationArgs>? _locations;
+
+        /// <summary>
+        /// List of locations to check for client certificate posture check.
+        /// </summary>
+        public InputList<Inputs.DevicePostureRuleInputLocationArgs> Locations
+        {
+            get => _locations ?? (_locations = new InputList<Inputs.DevicePostureRuleInputLocationArgs>());
+            set => _locations = value;
+        }
 
         /// <summary>
         /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.

@@ -148,7 +148,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
             content=std.file(input="path/to/my.js").result)
         example_trigger = cloudflare.WorkersCronTrigger("example_trigger",
             account_id="f037e56e89293a057740de681ac9abbe",
-            script_name=example_script_cloudflare_worker_script["name"],
+            script_name=example_script.name,
             schedules=[
                 "*/5 * * * *",
                 "10 7 * * mon-fri",
@@ -192,7 +192,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
             content=std.file(input="path/to/my.js").result)
         example_trigger = cloudflare.WorkersCronTrigger("example_trigger",
             account_id="f037e56e89293a057740de681ac9abbe",
-            script_name=example_script_cloudflare_worker_script["name"],
+            script_name=example_script.name,
             schedules=[
                 "*/5 * * * *",
                 "10 7 * * mon-fri",

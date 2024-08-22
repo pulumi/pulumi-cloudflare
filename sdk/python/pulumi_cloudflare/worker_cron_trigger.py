@@ -142,7 +142,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
         import pulumi_std as std
 
-        example_script = cloudflare.WorkerScript("example_script",
+        example_script = cloudflare.WorkersScript("example_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
             content=std.file(input="path/to/my.js").result)
@@ -186,7 +186,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
         import pulumi_std as std
 
-        example_script = cloudflare.WorkerScript("example_script",
+        example_script = cloudflare.WorkersScript("example_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
             content=std.file(input="path/to/my.js").result)

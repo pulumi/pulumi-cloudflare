@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     content: std.file({
  *         input: "script.js",
  *     }).then(invoke => invoke.result),
- *     dispatchNamespace: exampleCloudflareWorkersForPlatformsNamespace.name,
+ *     dispatchNamespace: example.name,
  *     tags: ["free"],
  * });
  * ```

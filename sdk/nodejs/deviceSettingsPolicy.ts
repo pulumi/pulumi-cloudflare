@@ -32,6 +32,7 @@ import * as utilities from "./utilities";
  *     serviceModeV2Mode: "warp",
  *     serviceModeV2Port: 3000,
  *     excludeOfficeIps: false,
+ *     tunnelProtocol: "wireguard",
  * });
  * ```
  *
@@ -143,6 +144,10 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      * Enablement of the ZT client switch lock.
      */
     public readonly switchLocked!: pulumi.Output<boolean | undefined>;
+    /**
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     */
+    public readonly tunnelProtocol!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DeviceSettingsPolicy resource with the given unique name, arguments, and options.
@@ -175,6 +180,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["serviceModeV2Port"] = state ? state.serviceModeV2Port : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
             resourceInputs["switchLocked"] = state ? state.switchLocked : undefined;
+            resourceInputs["tunnelProtocol"] = state ? state.tunnelProtocol : undefined;
         } else {
             const args = argsOrState as DeviceSettingsPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -204,6 +210,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["serviceModeV2Port"] = args ? args.serviceModeV2Port : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
             resourceInputs["switchLocked"] = args ? args.switchLocked : undefined;
+            resourceInputs["tunnelProtocol"] = args ? args.tunnelProtocol : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeviceSettingsPolicy.__pulumiType, name, resourceInputs, opts);
@@ -286,6 +293,10 @@ export interface DeviceSettingsPolicyState {
      * Enablement of the ZT client switch lock.
      */
     switchLocked?: pulumi.Input<boolean>;
+    /**
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     */
+    tunnelProtocol?: pulumi.Input<string>;
 }
 
 /**
@@ -364,4 +375,8 @@ export interface DeviceSettingsPolicyArgs {
      * Enablement of the ZT client switch lock.
      */
     switchLocked?: pulumi.Input<boolean>;
+    /**
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     */
+    tunnelProtocol?: pulumi.Input<string>;
 }

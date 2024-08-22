@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *             .serviceModeV2Mode("warp")
  *             .serviceModeV2Port(3000)
  *             .excludeOfficeIps(false)
+ *             .tunnelProtocol("wireguard")
  *             .build());
  * 
  *     }
@@ -333,6 +334,20 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> switchLocked() {
         return Codegen.optional(this.switchLocked);
+    }
+    /**
+     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * 
+     */
+    @Export(name="tunnelProtocol", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tunnelProtocol;
+
+    /**
+     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * 
+     */
+    public Output<Optional<String>> tunnelProtocol() {
+        return Codegen.optional(this.tunnelProtocol);
     }
 
     /**

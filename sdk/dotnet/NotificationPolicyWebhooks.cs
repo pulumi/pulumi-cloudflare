@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the notification webhook last faiuled.
+        /// Timestamp of when the notification webhook last failed.
         /// </summary>
         [Output("lastFailure")]
         public Output<string> LastFailure { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Timestamp of when the notification webhook last faiuled.
+        /// Timestamp of when the notification webhook last failed.
         /// </summary>
         [Input("lastFailure")]
         public Input<string>? LastFailure { get; set; }

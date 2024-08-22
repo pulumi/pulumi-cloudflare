@@ -96,7 +96,7 @@ class _NotificationPolicyWebhooksState:
         Input properties used for looking up and filtering NotificationPolicyWebhooks resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created_at: Timestamp of when the notification webhook was created.
-        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last faiuled.
+        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last failed.
         :param pulumi.Input[str] last_success: Timestamp of when the notification webhook was last successful.
         :param pulumi.Input[str] name: The name of the webhook destination.
         :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
@@ -147,7 +147,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter(name="lastFailure")
     def last_failure(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp of when the notification webhook last faiuled.
+        Timestamp of when the notification webhook last failed.
         """
         return pulumi.get(self, "last_failure")
 
@@ -347,7 +347,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created_at: Timestamp of when the notification webhook was created.
-        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last faiuled.
+        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last failed.
         :param pulumi.Input[str] last_success: Timestamp of when the notification webhook was last successful.
         :param pulumi.Input[str] name: The name of the webhook destination.
         :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
@@ -387,7 +387,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter(name="lastFailure")
     def last_failure(self) -> pulumi.Output[str]:
         """
-        Timestamp of when the notification webhook last faiuled.
+        Timestamp of when the notification webhook last failed.
         """
         return pulumi.get(self, "last_failure")
 

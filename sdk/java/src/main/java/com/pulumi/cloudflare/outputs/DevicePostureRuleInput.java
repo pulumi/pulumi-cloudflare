@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.DevicePostureRuleInputLocation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -29,6 +30,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable List<String> checkDisks;
+    /**
+     * @return Confirm the certificate was not imported from another device.
+     * 
+     */
+    private @Nullable Boolean checkPrivateKey;
     /**
      * @return The common name for a certificate.
      * 
@@ -70,6 +76,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Boolean exists;
     /**
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * 
+     */
+    private @Nullable List<String> extendedKeyUsages;
+    /**
      * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
@@ -94,6 +105,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String lastSeen;
+    /**
+     * @return List of locations to check for client certificate posture check.
+     * 
+     */
+    private @Nullable List<DevicePostureRuleInputLocation> locations;
     /**
      * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      * 
@@ -208,6 +224,13 @@ public final class DevicePostureRuleInput {
         return this.checkDisks == null ? List.of() : this.checkDisks;
     }
     /**
+     * @return Confirm the certificate was not imported from another device.
+     * 
+     */
+    public Optional<Boolean> checkPrivateKey() {
+        return Optional.ofNullable(this.checkPrivateKey);
+    }
+    /**
      * @return The common name for a certificate.
      * 
      */
@@ -264,6 +287,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.exists);
     }
     /**
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * 
+     */
+    public List<String> extendedKeyUsages() {
+        return this.extendedKeyUsages == null ? List.of() : this.extendedKeyUsages;
+    }
+    /**
      * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
@@ -297,6 +327,13 @@ public final class DevicePostureRuleInput {
      */
     public Optional<String> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
+    }
+    /**
+     * @return List of locations to check for client certificate posture check.
+     * 
+     */
+    public List<DevicePostureRuleInputLocation> locations() {
+        return this.locations == null ? List.of() : this.locations;
     }
     /**
      * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
@@ -437,6 +474,7 @@ public final class DevicePostureRuleInput {
         private @Nullable Integer activeThreats;
         private @Nullable String certificateId;
         private @Nullable List<String> checkDisks;
+        private @Nullable Boolean checkPrivateKey;
         private @Nullable String cn;
         private @Nullable String complianceStatus;
         private @Nullable String connectionId;
@@ -445,11 +483,13 @@ public final class DevicePostureRuleInput {
         private @Nullable String eidLastSeen;
         private @Nullable Boolean enabled;
         private @Nullable Boolean exists;
+        private @Nullable List<String> extendedKeyUsages;
         private @Nullable String id;
         private @Nullable Boolean infected;
         private @Nullable Boolean isActive;
         private @Nullable String issueCount;
         private @Nullable String lastSeen;
+        private @Nullable List<DevicePostureRuleInputLocation> locations;
         private @Nullable String networkStatus;
         private @Nullable String operator;
         private @Nullable String os;
@@ -474,6 +514,7 @@ public final class DevicePostureRuleInput {
     	      this.activeThreats = defaults.activeThreats;
     	      this.certificateId = defaults.certificateId;
     	      this.checkDisks = defaults.checkDisks;
+    	      this.checkPrivateKey = defaults.checkPrivateKey;
     	      this.cn = defaults.cn;
     	      this.complianceStatus = defaults.complianceStatus;
     	      this.connectionId = defaults.connectionId;
@@ -482,11 +523,13 @@ public final class DevicePostureRuleInput {
     	      this.eidLastSeen = defaults.eidLastSeen;
     	      this.enabled = defaults.enabled;
     	      this.exists = defaults.exists;
+    	      this.extendedKeyUsages = defaults.extendedKeyUsages;
     	      this.id = defaults.id;
     	      this.infected = defaults.infected;
     	      this.isActive = defaults.isActive;
     	      this.issueCount = defaults.issueCount;
     	      this.lastSeen = defaults.lastSeen;
+    	      this.locations = defaults.locations;
     	      this.networkStatus = defaults.networkStatus;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
@@ -527,6 +570,12 @@ public final class DevicePostureRuleInput {
         }
         public Builder checkDisks(String... checkDisks) {
             return checkDisks(List.of(checkDisks));
+        }
+        @CustomType.Setter
+        public Builder checkPrivateKey(@Nullable Boolean checkPrivateKey) {
+
+            this.checkPrivateKey = checkPrivateKey;
+            return this;
         }
         @CustomType.Setter
         public Builder cn(@Nullable String cn) {
@@ -577,6 +626,15 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder extendedKeyUsages(@Nullable List<String> extendedKeyUsages) {
+
+            this.extendedKeyUsages = extendedKeyUsages;
+            return this;
+        }
+        public Builder extendedKeyUsages(String... extendedKeyUsages) {
+            return extendedKeyUsages(List.of(extendedKeyUsages));
+        }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
 
             this.id = id;
@@ -605,6 +663,15 @@ public final class DevicePostureRuleInput {
 
             this.lastSeen = lastSeen;
             return this;
+        }
+        @CustomType.Setter
+        public Builder locations(@Nullable List<DevicePostureRuleInputLocation> locations) {
+
+            this.locations = locations;
+            return this;
+        }
+        public Builder locations(DevicePostureRuleInputLocation... locations) {
+            return locations(List.of(locations));
         }
         @CustomType.Setter
         public Builder networkStatus(@Nullable String networkStatus) {
@@ -719,6 +786,7 @@ public final class DevicePostureRuleInput {
             _resultValue.activeThreats = activeThreats;
             _resultValue.certificateId = certificateId;
             _resultValue.checkDisks = checkDisks;
+            _resultValue.checkPrivateKey = checkPrivateKey;
             _resultValue.cn = cn;
             _resultValue.complianceStatus = complianceStatus;
             _resultValue.connectionId = connectionId;
@@ -727,11 +795,13 @@ public final class DevicePostureRuleInput {
             _resultValue.eidLastSeen = eidLastSeen;
             _resultValue.enabled = enabled;
             _resultValue.exists = exists;
+            _resultValue.extendedKeyUsages = extendedKeyUsages;
             _resultValue.id = id;
             _resultValue.infected = infected;
             _resultValue.isActive = isActive;
             _resultValue.issueCount = issueCount;
             _resultValue.lastSeen = lastSeen;
+            _resultValue.locations = locations;
             _resultValue.networkStatus = networkStatus;
             _resultValue.operator = operator;
             _resultValue.os = os;

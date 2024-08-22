@@ -28,16 +28,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Runs the specified worker script for all URLs that match `example.com/*`
-//			_, err := cloudflare.NewWorkersRoute(ctx, "my_route", &cloudflare.WorkersRouteArgs{
-//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Pattern:    pulumi.String("example.com/*"),
-//				ScriptName: pulumi.Any(myScriptCloudflareWorkerScript.Name),
-//			})
+//			myScript, err := cloudflare.NewWorkersScript(ctx, "my_script", nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewWorkersScript(ctx, "my_script", nil)
+//			// Runs the specified worker script for all URLs that match `example.com/*`
+//			_, err = cloudflare.NewWorkersRoute(ctx, "my_route", &cloudflare.WorkersRouteArgs{
+//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Pattern:    pulumi.String("example.com/*"),
+//				ScriptName: myScript.Name,
+//			})
 //			if err != nil {
 //				return err
 //			}

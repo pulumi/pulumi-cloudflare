@@ -93,14 +93,14 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
         return this.createdAt;
     }
     /**
-     * Timestamp of when the notification webhook last faiuled.
+     * Timestamp of when the notification webhook last failed.
      * 
      */
     @Export(name="lastFailure", refs={String.class}, tree="[0]")
     private Output<String> lastFailure;
 
     /**
-     * @return Timestamp of when the notification webhook last faiuled.
+     * @return Timestamp of when the notification webhook last failed.
      * 
      */
     public Output<String> lastFailure() {

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myScript, err := cloudflare.NewWorkerScript(ctx, "my_script", nil)
+//			myScript, err := cloudflare.NewWorkersScript(ctx, "my_script", nil)
 //			if err != nil {
 //				return err
 //			}

@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the record. Conflicts with `data`.
+        /// The content of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Conflicts with `value`.
+        /// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData?> Data { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the record. Conflicts with `data`.
+        /// The value of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -217,13 +217,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The content of the record. Conflicts with `data`.
+        /// The content of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Conflicts with `value`.
+        /// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataArgs>? Data { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The value of the record. Conflicts with `data`.
+        /// The value of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The content of the record. Conflicts with `data`.
+        /// The content of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Conflicts with `value`.
+        /// Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The value of the record. Conflicts with `data`.
+        /// The value of the record. Must provide only one of `data`, `content`, `value`.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

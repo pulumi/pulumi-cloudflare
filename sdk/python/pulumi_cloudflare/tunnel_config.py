@@ -140,7 +140,7 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_tunnel = cloudflare.Tunnel("example_tunnel",
+        example_tunnel = cloudflare.ZeroTrustTunnelCloudflared("example_tunnel",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_tunnel",
             secret="<32 character secret>")
@@ -224,7 +224,7 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_tunnel = cloudflare.Tunnel("example_tunnel",
+        example_tunnel = cloudflare.ZeroTrustTunnelCloudflared("example_tunnel",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_tunnel",
             secret="<32 character secret>")

@@ -55,7 +55,7 @@ type NotificationPolicyWebhooks struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Timestamp of when the notification webhook was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Timestamp of when the notification webhook last faiuled.
+	// Timestamp of when the notification webhook last failed.
 	LastFailure pulumi.StringOutput `pulumi:"lastFailure"`
 	// Timestamp of when the notification webhook was last successful.
 	LastSuccess pulumi.StringOutput `pulumi:"lastSuccess"`
@@ -108,7 +108,7 @@ type notificationPolicyWebhooksState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Timestamp of when the notification webhook was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Timestamp of when the notification webhook last faiuled.
+	// Timestamp of when the notification webhook last failed.
 	LastFailure *string `pulumi:"lastFailure"`
 	// Timestamp of when the notification webhook was last successful.
 	LastSuccess *string `pulumi:"lastSuccess"`
@@ -126,7 +126,7 @@ type NotificationPolicyWebhooksState struct {
 	AccountId pulumi.StringPtrInput
 	// Timestamp of when the notification webhook was created.
 	CreatedAt pulumi.StringPtrInput
-	// Timestamp of when the notification webhook last faiuled.
+	// Timestamp of when the notification webhook last failed.
 	LastFailure pulumi.StringPtrInput
 	// Timestamp of when the notification webhook was last successful.
 	LastSuccess pulumi.StringPtrInput
@@ -263,7 +263,7 @@ func (o NotificationPolicyWebhooksOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the notification webhook last faiuled.
+// Timestamp of when the notification webhook last failed.
 func (o NotificationPolicyWebhooksOutput) LastFailure() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.LastFailure }).(pulumi.StringOutput)
 }

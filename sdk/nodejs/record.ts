@@ -80,7 +80,7 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The content of the record. Conflicts with `data`.
+     * The content of the record. Must provide only one of `data`, `content`, `value`.
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -88,7 +88,7 @@ export class Record extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Map of attributes that constitute the record value. Conflicts with `value`.
+     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      */
     public readonly data!: pulumi.Output<outputs.RecordData | undefined>;
     /**
@@ -132,7 +132,7 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
      * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */
@@ -216,7 +216,7 @@ export interface RecordState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * The content of the record. Conflicts with `data`.
+     * The content of the record. Must provide only one of `data`, `content`, `value`.
      */
     content?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface RecordState {
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * Map of attributes that constitute the record value. Conflicts with `value`.
+     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      */
     data?: pulumi.Input<inputs.RecordData>;
     /**
@@ -268,7 +268,7 @@ export interface RecordState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
      * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */
@@ -289,11 +289,11 @@ export interface RecordArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * The content of the record. Conflicts with `data`.
+     * The content of the record. Must provide only one of `data`, `content`, `value`.
      */
     content?: pulumi.Input<string>;
     /**
-     * Map of attributes that constitute the record value. Conflicts with `value`.
+     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
      */
     data?: pulumi.Input<inputs.RecordData>;
     /**
@@ -321,7 +321,7 @@ export interface RecordArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
      * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
      */

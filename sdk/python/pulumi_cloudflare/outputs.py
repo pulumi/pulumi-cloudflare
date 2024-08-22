@@ -98,6 +98,7 @@ __all__ = [
     'DeviceManagedNetworksConfig',
     'DevicePostureIntegrationConfig',
     'DevicePostureRuleInput',
+    'DevicePostureRuleInputLocation',
     'DevicePostureRuleMatch',
     'DlpProfileContextAwareness',
     'DlpProfileContextAwarenessSkip',
@@ -273,6 +274,125 @@ __all__ = [
     'WorkersScriptSecretTextBinding',
     'WorkersScriptServiceBinding',
     'WorkersScriptWebassemblyBinding',
+    'ZeroTrustAccessApplicationCorsHeader',
+    'ZeroTrustAccessApplicationFooterLink',
+    'ZeroTrustAccessApplicationLandingPageDesign',
+    'ZeroTrustAccessApplicationSaasApp',
+    'ZeroTrustAccessApplicationSaasAppCustomAttribute',
+    'ZeroTrustAccessApplicationSaasAppCustomAttributeSource',
+    'ZeroTrustAccessApplicationSaasAppCustomClaim',
+    'ZeroTrustAccessApplicationSaasAppCustomClaimSource',
+    'ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions',
+    'ZeroTrustAccessApplicationSaasAppRefreshTokenOption',
+    'ZeroTrustAccessApplicationScimConfig',
+    'ZeroTrustAccessApplicationScimConfigAuthentication',
+    'ZeroTrustAccessApplicationScimConfigMapping',
+    'ZeroTrustAccessApplicationScimConfigMappingOperations',
+    'ZeroTrustAccessGroupExclude',
+    'ZeroTrustAccessGroupExcludeAuthContext',
+    'ZeroTrustAccessGroupExcludeAzure',
+    'ZeroTrustAccessGroupExcludeExternalEvaluation',
+    'ZeroTrustAccessGroupExcludeGithub',
+    'ZeroTrustAccessGroupExcludeGsuite',
+    'ZeroTrustAccessGroupExcludeOkta',
+    'ZeroTrustAccessGroupExcludeSaml',
+    'ZeroTrustAccessGroupInclude',
+    'ZeroTrustAccessGroupIncludeAuthContext',
+    'ZeroTrustAccessGroupIncludeAzure',
+    'ZeroTrustAccessGroupIncludeExternalEvaluation',
+    'ZeroTrustAccessGroupIncludeGithub',
+    'ZeroTrustAccessGroupIncludeGsuite',
+    'ZeroTrustAccessGroupIncludeOkta',
+    'ZeroTrustAccessGroupIncludeSaml',
+    'ZeroTrustAccessGroupRequire',
+    'ZeroTrustAccessGroupRequireAuthContext',
+    'ZeroTrustAccessGroupRequireAzure',
+    'ZeroTrustAccessGroupRequireExternalEvaluation',
+    'ZeroTrustAccessGroupRequireGithub',
+    'ZeroTrustAccessGroupRequireGsuite',
+    'ZeroTrustAccessGroupRequireOkta',
+    'ZeroTrustAccessGroupRequireSaml',
+    'ZeroTrustAccessIdentityProviderConfig',
+    'ZeroTrustAccessIdentityProviderScimConfig',
+    'ZeroTrustAccessMtlsHostnameSettingsSetting',
+    'ZeroTrustAccessOrganizationCustomPage',
+    'ZeroTrustAccessOrganizationLoginDesign',
+    'ZeroTrustAccessPolicyApprovalGroup',
+    'ZeroTrustAccessPolicyExclude',
+    'ZeroTrustAccessPolicyExcludeAuthContext',
+    'ZeroTrustAccessPolicyExcludeAzure',
+    'ZeroTrustAccessPolicyExcludeExternalEvaluation',
+    'ZeroTrustAccessPolicyExcludeGithub',
+    'ZeroTrustAccessPolicyExcludeGsuite',
+    'ZeroTrustAccessPolicyExcludeOkta',
+    'ZeroTrustAccessPolicyExcludeSaml',
+    'ZeroTrustAccessPolicyInclude',
+    'ZeroTrustAccessPolicyIncludeAuthContext',
+    'ZeroTrustAccessPolicyIncludeAzure',
+    'ZeroTrustAccessPolicyIncludeExternalEvaluation',
+    'ZeroTrustAccessPolicyIncludeGithub',
+    'ZeroTrustAccessPolicyIncludeGsuite',
+    'ZeroTrustAccessPolicyIncludeOkta',
+    'ZeroTrustAccessPolicyIncludeSaml',
+    'ZeroTrustAccessPolicyRequire',
+    'ZeroTrustAccessPolicyRequireAuthContext',
+    'ZeroTrustAccessPolicyRequireAzure',
+    'ZeroTrustAccessPolicyRequireExternalEvaluation',
+    'ZeroTrustAccessPolicyRequireGithub',
+    'ZeroTrustAccessPolicyRequireGsuite',
+    'ZeroTrustAccessPolicyRequireOkta',
+    'ZeroTrustAccessPolicyRequireSaml',
+    'ZeroTrustDeviceManagedNetworksConfig',
+    'ZeroTrustDevicePostureIntegrationConfig',
+    'ZeroTrustDevicePostureRuleInput',
+    'ZeroTrustDevicePostureRuleInputLocation',
+    'ZeroTrustDevicePostureRuleMatch',
+    'ZeroTrustDexTestData',
+    'ZeroTrustDlpProfileContextAwareness',
+    'ZeroTrustDlpProfileContextAwarenessSkip',
+    'ZeroTrustDlpProfileEntry',
+    'ZeroTrustDlpProfileEntryPattern',
+    'ZeroTrustDnsLocationNetwork',
+    'ZeroTrustGatewayPolicyRuleSettings',
+    'ZeroTrustGatewayPolicyRuleSettingsAuditSsh',
+    'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls',
+    'ZeroTrustGatewayPolicyRuleSettingsCheckSession',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolvers',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6',
+    'ZeroTrustGatewayPolicyRuleSettingsEgress',
+    'ZeroTrustGatewayPolicyRuleSettingsL4override',
+    'ZeroTrustGatewayPolicyRuleSettingsNotificationSettings',
+    'ZeroTrustGatewayPolicyRuleSettingsPayloadLog',
+    'ZeroTrustGatewayPolicyRuleSettingsUntrustedCert',
+    'ZeroTrustGatewaySettingsAntivirus',
+    'ZeroTrustGatewaySettingsAntivirusNotificationSettings',
+    'ZeroTrustGatewaySettingsBlockPage',
+    'ZeroTrustGatewaySettingsBodyScanning',
+    'ZeroTrustGatewaySettingsCustomCertificate',
+    'ZeroTrustGatewaySettingsExtendedEmailMatching',
+    'ZeroTrustGatewaySettingsFips',
+    'ZeroTrustGatewaySettingsLogging',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleType',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4',
+    'ZeroTrustGatewaySettingsPayloadLog',
+    'ZeroTrustGatewaySettingsProxy',
+    'ZeroTrustGatewaySettingsSshSessionLog',
+    'ZeroTrustListItemsWithDescription',
+    'ZeroTrustLocalFallbackDomainDomain',
+    'ZeroTrustRiskBehaviorBehavior',
+    'ZeroTrustSplitTunnelTunnel',
+    'ZeroTrustTunnelCloudflaredConfigConfig',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRule',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequest',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule',
+    'ZeroTrustTunnelCloudflaredConfigConfigWarpRouting',
     'ZoneLockdownConfiguration',
     'ZoneSettingsOverrideInitialSetting',
     'ZoneSettingsOverrideInitialSettingMinify',
@@ -6625,6 +6745,8 @@ class DevicePostureRuleInput(dict):
             suggest = "certificate_id"
         elif key == "checkDisks":
             suggest = "check_disks"
+        elif key == "checkPrivateKey":
+            suggest = "check_private_key"
         elif key == "complianceStatus":
             suggest = "compliance_status"
         elif key == "connectionId":
@@ -6633,6 +6755,8 @@ class DevicePostureRuleInput(dict):
             suggest = "count_operator"
         elif key == "eidLastSeen":
             suggest = "eid_last_seen"
+        elif key == "extendedKeyUsages":
+            suggest = "extended_key_usages"
         elif key == "isActive":
             suggest = "is_active"
         elif key == "issueCount":
@@ -6673,6 +6797,7 @@ class DevicePostureRuleInput(dict):
                  active_threats: Optional[int] = None,
                  certificate_id: Optional[str] = None,
                  check_disks: Optional[Sequence[str]] = None,
+                 check_private_key: Optional[bool] = None,
                  cn: Optional[str] = None,
                  compliance_status: Optional[str] = None,
                  connection_id: Optional[str] = None,
@@ -6681,11 +6806,13 @@ class DevicePostureRuleInput(dict):
                  eid_last_seen: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exists: Optional[bool] = None,
+                 extended_key_usages: Optional[Sequence[str]] = None,
                  id: Optional[str] = None,
                  infected: Optional[bool] = None,
                  is_active: Optional[bool] = None,
                  issue_count: Optional[str] = None,
                  last_seen: Optional[str] = None,
+                 locations: Optional[Sequence['outputs.DevicePostureRuleInputLocation']] = None,
                  network_status: Optional[str] = None,
                  operator: Optional[str] = None,
                  os: Optional[str] = None,
@@ -6708,6 +6835,7 @@ class DevicePostureRuleInput(dict):
         :param int active_threats: The number of active threats from SentinelOne.
         :param str certificate_id: The UUID of a Cloudflare managed certificate.
         :param Sequence[str] check_disks: Specific volume(s) to check for encryption.
+        :param bool check_private_key: Confirm the certificate was not imported from another device.
         :param str cn: The common name for a certificate.
         :param str compliance_status: The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
         :param str connection_id: The workspace one or intune connection id.
@@ -6716,11 +6844,13 @@ class DevicePostureRuleInput(dict):
         :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
+        :param Sequence[str] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
         :param str id: The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         :param bool infected: True if SentinelOne device is infected.
         :param bool is_active: True if SentinelOne device is active.
         :param str issue_count: The number of issues for kolide.
         :param str last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        :param Sequence['DevicePostureRuleInputLocationArgs'] locations: List of locations to check for client certificate posture check.
         :param str network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -6746,6 +6876,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "certificate_id", certificate_id)
         if check_disks is not None:
             pulumi.set(__self__, "check_disks", check_disks)
+        if check_private_key is not None:
+            pulumi.set(__self__, "check_private_key", check_private_key)
         if cn is not None:
             pulumi.set(__self__, "cn", cn)
         if compliance_status is not None:
@@ -6762,6 +6894,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "enabled", enabled)
         if exists is not None:
             pulumi.set(__self__, "exists", exists)
+        if extended_key_usages is not None:
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if infected is not None:
@@ -6772,6 +6906,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "issue_count", issue_count)
         if last_seen is not None:
             pulumi.set(__self__, "last_seen", last_seen)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
         if operator is not None:
@@ -6832,6 +6968,14 @@ class DevicePostureRuleInput(dict):
         Specific volume(s) to check for encryption.
         """
         return pulumi.get(self, "check_disks")
+
+    @property
+    @pulumi.getter(name="checkPrivateKey")
+    def check_private_key(self) -> Optional[bool]:
+        """
+        Confirm the certificate was not imported from another device.
+        """
+        return pulumi.get(self, "check_private_key")
 
     @property
     @pulumi.getter
@@ -6898,6 +7042,14 @@ class DevicePostureRuleInput(dict):
         return pulumi.get(self, "exists")
 
     @property
+    @pulumi.getter(name="extendedKeyUsages")
+    def extended_key_usages(self) -> Optional[Sequence[str]]:
+        """
+        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        """
+        return pulumi.get(self, "extended_key_usages")
+
+    @property
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
@@ -6936,6 +7088,14 @@ class DevicePostureRuleInput(dict):
         The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         """
         return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[Sequence['outputs.DevicePostureRuleInputLocation']]:
+        """
+        List of locations to check for client certificate posture check.
+        """
+        return pulumi.get(self, "locations")
 
     @property
     @pulumi.getter(name="networkStatus")
@@ -7080,6 +7240,54 @@ class DevicePostureRuleInput(dict):
         The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
         return pulumi.get(self, "version_operator")
+
+
+@pulumi.output_type
+class DevicePostureRuleInputLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trustStores":
+            suggest = "trust_stores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DevicePostureRuleInputLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DevicePostureRuleInputLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DevicePostureRuleInputLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Optional[Sequence[str]] = None,
+                 trust_stores: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] paths: List of paths to check for client certificate.
+        :param Sequence[str] trust_stores: List of trust stores to check for client certificate. Available values: `system`, `user`.
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if trust_stores is not None:
+            pulumi.set(__self__, "trust_stores", trust_stores)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to check for client certificate.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter(name="trustStores")
+    def trust_stores(self) -> Optional[Sequence[str]]:
+        """
+        List of trust stores to check for client certificate. Available values: `system`, `user`.
+        """
+        return pulumi.get(self, "trust_stores")
 
 
 @pulumi.output_type
@@ -18600,6 +18808,8844 @@ class WorkersScriptWebassemblyBinding(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessApplicationCorsHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowAllHeaders":
+            suggest = "allow_all_headers"
+        elif key == "allowAllMethods":
+            suggest = "allow_all_methods"
+        elif key == "allowAllOrigins":
+            suggest = "allow_all_origins"
+        elif key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationCorsHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationCorsHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationCorsHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_all_headers: Optional[bool] = None,
+                 allow_all_methods: Optional[bool] = None,
+                 allow_all_origins: Optional[bool] = None,
+                 allow_credentials: Optional[bool] = None,
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 allowed_methods: Optional[Sequence[str]] = None,
+                 allowed_origins: Optional[Sequence[str]] = None,
+                 max_age: Optional[int] = None):
+        """
+        :param bool allow_all_headers: Value to determine whether all HTTP headers are exposed.
+        :param bool allow_all_methods: Value to determine whether all methods are exposed.
+        :param bool allow_all_origins: Value to determine whether all origins are permitted to make CORS requests.
+        :param bool allow_credentials: Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+        :param Sequence[str] allowed_headers: List of HTTP headers to expose via CORS.
+        :param Sequence[str] allowed_methods: List of methods to expose via CORS.
+        :param Sequence[str] allowed_origins: List of origins permitted to make CORS requests.
+        :param int max_age: The maximum time a preflight request will be cached.
+        """
+        if allow_all_headers is not None:
+            pulumi.set(__self__, "allow_all_headers", allow_all_headers)
+        if allow_all_methods is not None:
+            pulumi.set(__self__, "allow_all_methods", allow_all_methods)
+        if allow_all_origins is not None:
+            pulumi.set(__self__, "allow_all_origins", allow_all_origins)
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if allowed_methods is not None:
+            pulumi.set(__self__, "allowed_methods", allowed_methods)
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowAllHeaders")
+    def allow_all_headers(self) -> Optional[bool]:
+        """
+        Value to determine whether all HTTP headers are exposed.
+        """
+        return pulumi.get(self, "allow_all_headers")
+
+    @property
+    @pulumi.getter(name="allowAllMethods")
+    def allow_all_methods(self) -> Optional[bool]:
+        """
+        Value to determine whether all methods are exposed.
+        """
+        return pulumi.get(self, "allow_all_methods")
+
+    @property
+    @pulumi.getter(name="allowAllOrigins")
+    def allow_all_origins(self) -> Optional[bool]:
+        """
+        Value to determine whether all origins are permitted to make CORS requests.
+        """
+        return pulumi.get(self, "allow_all_origins")
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[Sequence[str]]:
+        """
+        List of HTTP headers to expose via CORS.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Optional[Sequence[str]]:
+        """
+        List of methods to expose via CORS.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[Sequence[str]]:
+        """
+        List of origins permitted to make CORS requests.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[int]:
+        """
+        The maximum time a preflight request will be cached.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationFooterLink(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str name: The name of the footer link.
+        :param str url: The URL of the footer link.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the footer link.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL of the footer link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationLandingPageDesign(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buttonColor":
+            suggest = "button_color"
+        elif key == "buttonTextColor":
+            suggest = "button_text_color"
+        elif key == "imageUrl":
+            suggest = "image_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationLandingPageDesign. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationLandingPageDesign.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationLandingPageDesign.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 button_color: Optional[str] = None,
+                 button_text_color: Optional[str] = None,
+                 image_url: Optional[str] = None,
+                 message: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str button_color: The button color of the landing page.
+        :param str button_text_color: The button text color of the landing page.
+        :param str image_url: The URL of the image to be displayed in the landing page.
+        :param str message: The message of the landing page.
+        :param str title: The title of the landing page.
+        """
+        if button_color is not None:
+            pulumi.set(__self__, "button_color", button_color)
+        if button_text_color is not None:
+            pulumi.set(__self__, "button_text_color", button_text_color)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="buttonColor")
+    def button_color(self) -> Optional[str]:
+        """
+        The button color of the landing page.
+        """
+        return pulumi.get(self, "button_color")
+
+    @property
+    @pulumi.getter(name="buttonTextColor")
+    def button_text_color(self) -> Optional[str]:
+        """
+        The button text color of the landing page.
+        """
+        return pulumi.get(self, "button_text_color")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[str]:
+        """
+        The URL of the image to be displayed in the landing page.
+        """
+        return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        The message of the landing page.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the landing page.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasApp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessTokenLifetime":
+            suggest = "access_token_lifetime"
+        elif key == "allowPkceWithoutClientSecret":
+            suggest = "allow_pkce_without_client_secret"
+        elif key == "appLauncherUrl":
+            suggest = "app_launcher_url"
+        elif key == "authType":
+            suggest = "auth_type"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "consumerServiceUrl":
+            suggest = "consumer_service_url"
+        elif key == "customAttributes":
+            suggest = "custom_attributes"
+        elif key == "customClaims":
+            suggest = "custom_claims"
+        elif key == "defaultRelayState":
+            suggest = "default_relay_state"
+        elif key == "grantTypes":
+            suggest = "grant_types"
+        elif key == "groupFilterRegex":
+            suggest = "group_filter_regex"
+        elif key == "hybridAndImplicitOptions":
+            suggest = "hybrid_and_implicit_options"
+        elif key == "idpEntityId":
+            suggest = "idp_entity_id"
+        elif key == "nameIdFormat":
+            suggest = "name_id_format"
+        elif key == "nameIdTransformJsonata":
+            suggest = "name_id_transform_jsonata"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "redirectUris":
+            suggest = "redirect_uris"
+        elif key == "refreshTokenOptions":
+            suggest = "refresh_token_options"
+        elif key == "samlAttributeTransformJsonata":
+            suggest = "saml_attribute_transform_jsonata"
+        elif key == "spEntityId":
+            suggest = "sp_entity_id"
+        elif key == "ssoEndpoint":
+            suggest = "sso_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasApp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasApp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasApp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token_lifetime: Optional[str] = None,
+                 allow_pkce_without_client_secret: Optional[bool] = None,
+                 app_launcher_url: Optional[str] = None,
+                 auth_type: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 consumer_service_url: Optional[str] = None,
+                 custom_attributes: Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute']] = None,
+                 custom_claims: Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomClaim']] = None,
+                 default_relay_state: Optional[str] = None,
+                 grant_types: Optional[Sequence[str]] = None,
+                 group_filter_regex: Optional[str] = None,
+                 hybrid_and_implicit_options: Optional['outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions'] = None,
+                 idp_entity_id: Optional[str] = None,
+                 name_id_format: Optional[str] = None,
+                 name_id_transform_jsonata: Optional[str] = None,
+                 public_key: Optional[str] = None,
+                 redirect_uris: Optional[Sequence[str]] = None,
+                 refresh_token_options: Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption']] = None,
+                 saml_attribute_transform_jsonata: Optional[str] = None,
+                 scopes: Optional[Sequence[str]] = None,
+                 sp_entity_id: Optional[str] = None,
+                 sso_endpoint: Optional[str] = None):
+        """
+        :param str access_token_lifetime: The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        :param bool allow_pkce_without_client_secret: Allow PKCE flow without a client secret.
+        :param str app_launcher_url: The URL where this applications tile redirects users.
+        :param str auth_type: **Modifying this attribute will force creation of a new resource.**
+        :param str client_id: The application client id.
+        :param str client_secret: The application client secret, only returned on initial apply.
+        :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        :param Sequence['ZeroTrustAccessApplicationSaasAppCustomAttributeArgs'] custom_attributes: Custom attribute mapped from IDPs.
+        :param Sequence['ZeroTrustAccessApplicationSaasAppCustomClaimArgs'] custom_claims: Custom claim mapped from IDPs.
+        :param str default_relay_state: The relay state used if not provided by the identity provider.
+        :param Sequence[str] grant_types: The OIDC flows supported by this application.
+        :param str group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        :param 'ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs' hybrid_and_implicit_options: Hybrid and Implicit Flow options.
+        :param str idp_entity_id: The unique identifier for the SaaS application.
+        :param str name_id_format: The format of the name identifier sent to the SaaS application.
+        :param str name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        :param str public_key: The public certificate that will be used to verify identities.
+        :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param Sequence['ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs'] refresh_token_options: Refresh token grant options.
+        :param str saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        :param Sequence[str] scopes: Define the user information shared with access.
+        :param str sp_entity_id: A globally unique name for an identity or service provider.
+        :param str sso_endpoint: The endpoint where the SaaS application will send login requests.
+        """
+        if access_token_lifetime is not None:
+            pulumi.set(__self__, "access_token_lifetime", access_token_lifetime)
+        if allow_pkce_without_client_secret is not None:
+            pulumi.set(__self__, "allow_pkce_without_client_secret", allow_pkce_without_client_secret)
+        if app_launcher_url is not None:
+            pulumi.set(__self__, "app_launcher_url", app_launcher_url)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if consumer_service_url is not None:
+            pulumi.set(__self__, "consumer_service_url", consumer_service_url)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if custom_claims is not None:
+            pulumi.set(__self__, "custom_claims", custom_claims)
+        if default_relay_state is not None:
+            pulumi.set(__self__, "default_relay_state", default_relay_state)
+        if grant_types is not None:
+            pulumi.set(__self__, "grant_types", grant_types)
+        if group_filter_regex is not None:
+            pulumi.set(__self__, "group_filter_regex", group_filter_regex)
+        if hybrid_and_implicit_options is not None:
+            pulumi.set(__self__, "hybrid_and_implicit_options", hybrid_and_implicit_options)
+        if idp_entity_id is not None:
+            pulumi.set(__self__, "idp_entity_id", idp_entity_id)
+        if name_id_format is not None:
+            pulumi.set(__self__, "name_id_format", name_id_format)
+        if name_id_transform_jsonata is not None:
+            pulumi.set(__self__, "name_id_transform_jsonata", name_id_transform_jsonata)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if refresh_token_options is not None:
+            pulumi.set(__self__, "refresh_token_options", refresh_token_options)
+        if saml_attribute_transform_jsonata is not None:
+            pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sp_entity_id is not None:
+            pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if sso_endpoint is not None:
+            pulumi.set(__self__, "sso_endpoint", sso_endpoint)
+
+    @property
+    @pulumi.getter(name="accessTokenLifetime")
+    def access_token_lifetime(self) -> Optional[str]:
+        """
+        The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        return pulumi.get(self, "access_token_lifetime")
+
+    @property
+    @pulumi.getter(name="allowPkceWithoutClientSecret")
+    def allow_pkce_without_client_secret(self) -> Optional[bool]:
+        """
+        Allow PKCE flow without a client secret.
+        """
+        return pulumi.get(self, "allow_pkce_without_client_secret")
+
+    @property
+    @pulumi.getter(name="appLauncherUrl")
+    def app_launcher_url(self) -> Optional[str]:
+        """
+        The URL where this applications tile redirects users.
+        """
+        return pulumi.get(self, "app_launcher_url")
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        The application client id.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        The application client secret, only returned on initial apply.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="consumerServiceUrl")
+    def consumer_service_url(self) -> Optional[str]:
+        """
+        The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        """
+        return pulumi.get(self, "consumer_service_url")
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute']]:
+        """
+        Custom attribute mapped from IDPs.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter(name="customClaims")
+    def custom_claims(self) -> Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppCustomClaim']]:
+        """
+        Custom claim mapped from IDPs.
+        """
+        return pulumi.get(self, "custom_claims")
+
+    @property
+    @pulumi.getter(name="defaultRelayState")
+    def default_relay_state(self) -> Optional[str]:
+        """
+        The relay state used if not provided by the identity provider.
+        """
+        return pulumi.get(self, "default_relay_state")
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Optional[Sequence[str]]:
+        """
+        The OIDC flows supported by this application.
+        """
+        return pulumi.get(self, "grant_types")
+
+    @property
+    @pulumi.getter(name="groupFilterRegex")
+    def group_filter_regex(self) -> Optional[str]:
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        """
+        return pulumi.get(self, "group_filter_regex")
+
+    @property
+    @pulumi.getter(name="hybridAndImplicitOptions")
+    def hybrid_and_implicit_options(self) -> Optional['outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions']:
+        """
+        Hybrid and Implicit Flow options.
+        """
+        return pulumi.get(self, "hybrid_and_implicit_options")
+
+    @property
+    @pulumi.getter(name="idpEntityId")
+    def idp_entity_id(self) -> Optional[str]:
+        """
+        The unique identifier for the SaaS application.
+        """
+        return pulumi.get(self, "idp_entity_id")
+
+    @property
+    @pulumi.getter(name="nameIdFormat")
+    def name_id_format(self) -> Optional[str]:
+        """
+        The format of the name identifier sent to the SaaS application.
+        """
+        return pulumi.get(self, "name_id_format")
+
+    @property
+    @pulumi.getter(name="nameIdTransformJsonata")
+    def name_id_transform_jsonata(self) -> Optional[str]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        return pulumi.get(self, "name_id_transform_jsonata")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[str]:
+        """
+        The public certificate that will be used to verify identities.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[Sequence[str]]:
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @property
+    @pulumi.getter(name="refreshTokenOptions")
+    def refresh_token_options(self) -> Optional[Sequence['outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption']]:
+        """
+        Refresh token grant options.
+        """
+        return pulumi.get(self, "refresh_token_options")
+
+    @property
+    @pulumi.getter(name="samlAttributeTransformJsonata")
+    def saml_attribute_transform_jsonata(self) -> Optional[str]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        return pulumi.get(self, "saml_attribute_transform_jsonata")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        """
+        Define the user information shared with access.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> Optional[str]:
+        """
+        A globally unique name for an identity or service provider.
+        """
+        return pulumi.get(self, "sp_entity_id")
+
+    @property
+    @pulumi.getter(name="ssoEndpoint")
+    def sso_endpoint(self) -> Optional[str]:
+        """
+        The endpoint where the SaaS application will send login requests.
+        """
+        return pulumi.get(self, "sso_endpoint")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppCustomAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "friendlyName":
+            suggest = "friendly_name"
+        elif key == "nameFormat":
+            suggest = "name_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppCustomAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source: 'outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource',
+                 friendly_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 name_format: Optional[str] = None,
+                 required: Optional[bool] = None):
+        """
+        :param str friendly_name: A friendly name for the attribute as provided to the SaaS app.
+        :param str name: The name of the attribute as provided to the SaaS app.
+        :param str name_format: A globally unique name for an identity or service provider.
+        :param bool required: True if the attribute must be always present.
+        """
+        pulumi.set(__self__, "source", source)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_format is not None:
+            pulumi.set(__self__, "name_format", name_format)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource':
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[str]:
+        """
+        A friendly name for the attribute as provided to the SaaS app.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameFormat")
+    def name_format(self) -> Optional[str]:
+        """
+        A globally unique name for an identity or service provider.
+        """
+        return pulumi.get(self, "name_format")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        True if the attribute must be always present.
+        """
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppCustomAttributeSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameByIdp":
+            suggest = "name_by_idp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppCustomAttributeSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttributeSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomAttributeSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 name_by_idp: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: The name of the attribute as provided by the IDP.
+        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to claim name.
+        """
+        pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppCustomClaim(dict):
+    def __init__(__self__, *,
+                 source: 'outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource',
+                 name: Optional[str] = None,
+                 required: Optional[bool] = None,
+                 scope: Optional[str] = None):
+        """
+        :param str name: The name of the attribute as provided to the SaaS app.
+        :param bool required: True if the attribute must be always present.
+        :param str scope: The scope of the claim.
+        """
+        pulumi.set(__self__, "source", source)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource':
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        True if the attribute must be always present.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        The scope of the claim.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppCustomClaimSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameByIdp":
+            suggest = "name_by_idp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppCustomClaimSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomClaimSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasAppCustomClaimSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 name_by_idp: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: The name of the attribute as provided by the IDP.
+        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to claim name.
+        """
+        pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnAccessTokenFromAuthorizationEndpoint":
+            suggest = "return_access_token_from_authorization_endpoint"
+        elif key == "returnIdTokenFromAuthorizationEndpoint":
+            suggest = "return_id_token_from_authorization_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 return_access_token_from_authorization_endpoint: Optional[bool] = None,
+                 return_id_token_from_authorization_endpoint: Optional[bool] = None):
+        """
+        :param bool return_access_token_from_authorization_endpoint: If true, the authorization endpoint will return an access token.
+        :param bool return_id_token_from_authorization_endpoint: If true, the authorization endpoint will return an id token.
+        """
+        if return_access_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_access_token_from_authorization_endpoint", return_access_token_from_authorization_endpoint)
+        if return_id_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_id_token_from_authorization_endpoint", return_id_token_from_authorization_endpoint)
+
+    @property
+    @pulumi.getter(name="returnAccessTokenFromAuthorizationEndpoint")
+    def return_access_token_from_authorization_endpoint(self) -> Optional[bool]:
+        """
+        If true, the authorization endpoint will return an access token.
+        """
+        return pulumi.get(self, "return_access_token_from_authorization_endpoint")
+
+    @property
+    @pulumi.getter(name="returnIdTokenFromAuthorizationEndpoint")
+    def return_id_token_from_authorization_endpoint(self) -> Optional[bool]:
+        """
+        If true, the authorization endpoint will return an id token.
+        """
+        return pulumi.get(self, "return_id_token_from_authorization_endpoint")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationSaasAppRefreshTokenOption(dict):
+    def __init__(__self__, *,
+                 lifetime: Optional[str] = None):
+        """
+        :param str lifetime: How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
+        """
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[str]:
+        """
+        How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
+        """
+        return pulumi.get(self, "lifetime")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationScimConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpUid":
+            suggest = "idp_uid"
+        elif key == "remoteUri":
+            suggest = "remote_uri"
+        elif key == "deactivateOnDelete":
+            suggest = "deactivate_on_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationScimConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationScimConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationScimConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_uid: str,
+                 remote_uri: str,
+                 authentication: Optional['outputs.ZeroTrustAccessApplicationScimConfigAuthentication'] = None,
+                 deactivate_on_delete: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 mappings: Optional[Sequence['outputs.ZeroTrustAccessApplicationScimConfigMapping']] = None):
+        """
+        :param str idp_uid: The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        :param str remote_uri: The base URI for the application's SCIM-compatible API.
+        :param 'ZeroTrustAccessApplicationScimConfigAuthenticationArgs' authentication: Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+        :param bool deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        :param bool enabled: Whether SCIM provisioning is turned on for this application.
+        :param Sequence['ZeroTrustAccessApplicationScimConfigMappingArgs'] mappings: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        pulumi.set(__self__, "idp_uid", idp_uid)
+        pulumi.set(__self__, "remote_uri", remote_uri)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if deactivate_on_delete is not None:
+            pulumi.set(__self__, "deactivate_on_delete", deactivate_on_delete)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter(name="idpUid")
+    def idp_uid(self) -> str:
+        """
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        """
+        return pulumi.get(self, "idp_uid")
+
+    @property
+    @pulumi.getter(name="remoteUri")
+    def remote_uri(self) -> str:
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        return pulumi.get(self, "remote_uri")
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional['outputs.ZeroTrustAccessApplicationScimConfigAuthentication']:
+        """
+        Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter(name="deactivateOnDelete")
+    def deactivate_on_delete(self) -> Optional[bool]:
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        return pulumi.get(self, "deactivate_on_delete")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[Sequence['outputs.ZeroTrustAccessApplicationScimConfigMapping']]:
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        return pulumi.get(self, "mappings")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationScimConfigAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationUrl":
+            suggest = "authorization_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationScimConfigAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationScimConfigAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationScimConfigAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scheme: str,
+                 authorization_url: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 password: Optional[str] = None,
+                 scopes: Optional[Sequence[str]] = None,
+                 token: Optional[str] = None,
+                 token_url: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str scheme: The authentication scheme to use when making SCIM requests to this application.
+        :param str authorization_url: URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str client_id: Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str client_secret: Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str password: Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        :param Sequence[str] scopes: The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str token: Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        :param str token_url: URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str user: User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        pulumi.set(__self__, "scheme", scheme)
+        if authorization_url is not None:
+            pulumi.set(__self__, "authorization_url", authorization_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_url is not None:
+            pulumi.set(__self__, "token_url", token_url)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> str:
+        """
+        The authentication scheme to use when making SCIM requests to this application.
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> Optional[str]:
+        """
+        URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> Optional[str]:
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        return pulumi.get(self, "token_url")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationScimConfigMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "transformJsonata":
+            suggest = "transform_jsonata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationScimConfigMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationScimConfigMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationScimConfigMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schema: str,
+                 enabled: Optional[bool] = None,
+                 filter: Optional[str] = None,
+                 operations: Optional['outputs.ZeroTrustAccessApplicationScimConfigMappingOperations'] = None,
+                 transform_jsonata: Optional[str] = None):
+        """
+        :param str schema: Which SCIM resource type this mapping applies to.
+        :param bool enabled: Whether or not this mapping is enabled.
+        :param str filter: A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        :param 'ZeroTrustAccessApplicationScimConfigMappingOperationsArgs' operations: Whether or not this mapping applies to creates, updates, or deletes.
+        :param str transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if transform_jsonata is not None:
+            pulumi.set(__self__, "transform_jsonata", transform_jsonata)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether or not this mapping is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional['outputs.ZeroTrustAccessApplicationScimConfigMappingOperations']:
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        return pulumi.get(self, "operations")
+
+    @property
+    @pulumi.getter(name="transformJsonata")
+    def transform_jsonata(self) -> Optional[str]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        return pulumi.get(self, "transform_jsonata")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationScimConfigMappingOperations(dict):
+    def __init__(__self__, *,
+                 create: Optional[bool] = None,
+                 delete: Optional[bool] = None,
+                 update: Optional[bool] = None):
+        """
+        :param bool create: Whether or not this mapping applies to create (POST) operations.
+        :param bool delete: Whether or not this mapping applies to DELETE operations.
+        :param bool update: Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[bool]:
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        return pulumi.get(self, "create")
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[bool]:
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        return pulumi.get(self, "delete")
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[bool]:
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExclude.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupExcludeSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupExcludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupExcludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupExcludeSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupInclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupInclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupInclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupInclude.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupIncludeSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupIncludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupIncludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupIncludeSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequire.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessGroupRequireSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessGroupRequireSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessGroupRequireSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessGroupRequireSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessGroupRequireSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessIdentityProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiToken":
+            suggest = "api_token"
+        elif key == "appsDomain":
+            suggest = "apps_domain"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "authorizationServerId":
+            suggest = "authorization_server_id"
+        elif key == "centrifyAccount":
+            suggest = "centrify_account"
+        elif key == "centrifyAppId":
+            suggest = "centrify_app_id"
+        elif key == "certsUrl":
+            suggest = "certs_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "conditionalAccessEnabled":
+            suggest = "conditional_access_enabled"
+        elif key == "directoryId":
+            suggest = "directory_id"
+        elif key == "emailAttributeName":
+            suggest = "email_attribute_name"
+        elif key == "emailClaimName":
+            suggest = "email_claim_name"
+        elif key == "idpPublicCert":
+            suggest = "idp_public_cert"
+        elif key == "issuerUrl":
+            suggest = "issuer_url"
+        elif key == "oktaAccount":
+            suggest = "okta_account"
+        elif key == "oneloginAccount":
+            suggest = "onelogin_account"
+        elif key == "pingEnvId":
+            suggest = "ping_env_id"
+        elif key == "pkceEnabled":
+            suggest = "pkce_enabled"
+        elif key == "redirectUrl":
+            suggest = "redirect_url"
+        elif key == "signRequest":
+            suggest = "sign_request"
+        elif key == "ssoTargetUrl":
+            suggest = "sso_target_url"
+        elif key == "supportGroups":
+            suggest = "support_groups"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessIdentityProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessIdentityProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessIdentityProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_token: Optional[str] = None,
+                 apps_domain: Optional[str] = None,
+                 attributes: Optional[Sequence[str]] = None,
+                 auth_url: Optional[str] = None,
+                 authorization_server_id: Optional[str] = None,
+                 centrify_account: Optional[str] = None,
+                 centrify_app_id: Optional[str] = None,
+                 certs_url: Optional[str] = None,
+                 claims: Optional[Sequence[str]] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 conditional_access_enabled: Optional[bool] = None,
+                 directory_id: Optional[str] = None,
+                 email_attribute_name: Optional[str] = None,
+                 email_claim_name: Optional[str] = None,
+                 idp_public_cert: Optional[str] = None,
+                 issuer_url: Optional[str] = None,
+                 okta_account: Optional[str] = None,
+                 onelogin_account: Optional[str] = None,
+                 ping_env_id: Optional[str] = None,
+                 pkce_enabled: Optional[bool] = None,
+                 redirect_url: Optional[str] = None,
+                 scopes: Optional[Sequence[str]] = None,
+                 sign_request: Optional[bool] = None,
+                 sso_target_url: Optional[str] = None,
+                 support_groups: Optional[bool] = None,
+                 token_url: Optional[str] = None):
+        if api_token is not None:
+            pulumi.set(__self__, "api_token", api_token)
+        if apps_domain is not None:
+            pulumi.set(__self__, "apps_domain", apps_domain)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if auth_url is not None:
+            pulumi.set(__self__, "auth_url", auth_url)
+        if authorization_server_id is not None:
+            pulumi.set(__self__, "authorization_server_id", authorization_server_id)
+        if centrify_account is not None:
+            pulumi.set(__self__, "centrify_account", centrify_account)
+        if centrify_app_id is not None:
+            pulumi.set(__self__, "centrify_app_id", centrify_app_id)
+        if certs_url is not None:
+            pulumi.set(__self__, "certs_url", certs_url)
+        if claims is not None:
+            pulumi.set(__self__, "claims", claims)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if conditional_access_enabled is not None:
+            pulumi.set(__self__, "conditional_access_enabled", conditional_access_enabled)
+        if directory_id is not None:
+            pulumi.set(__self__, "directory_id", directory_id)
+        if email_attribute_name is not None:
+            pulumi.set(__self__, "email_attribute_name", email_attribute_name)
+        if email_claim_name is not None:
+            pulumi.set(__self__, "email_claim_name", email_claim_name)
+        if idp_public_cert is not None:
+            pulumi.set(__self__, "idp_public_cert", idp_public_cert)
+        if issuer_url is not None:
+            pulumi.set(__self__, "issuer_url", issuer_url)
+        if okta_account is not None:
+            pulumi.set(__self__, "okta_account", okta_account)
+        if onelogin_account is not None:
+            pulumi.set(__self__, "onelogin_account", onelogin_account)
+        if ping_env_id is not None:
+            pulumi.set(__self__, "ping_env_id", ping_env_id)
+        if pkce_enabled is not None:
+            pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sign_request is not None:
+            pulumi.set(__self__, "sign_request", sign_request)
+        if sso_target_url is not None:
+            pulumi.set(__self__, "sso_target_url", sso_target_url)
+        if support_groups is not None:
+            pulumi.set(__self__, "support_groups", support_groups)
+        if token_url is not None:
+            pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> Optional[str]:
+        return pulumi.get(self, "api_token")
+
+    @property
+    @pulumi.getter(name="appsDomain")
+    def apps_domain(self) -> Optional[str]:
+        return pulumi.get(self, "apps_domain")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_url")
+
+    @property
+    @pulumi.getter(name="authorizationServerId")
+    def authorization_server_id(self) -> Optional[str]:
+        return pulumi.get(self, "authorization_server_id")
+
+    @property
+    @pulumi.getter(name="centrifyAccount")
+    def centrify_account(self) -> Optional[str]:
+        return pulumi.get(self, "centrify_account")
+
+    @property
+    @pulumi.getter(name="centrifyAppId")
+    def centrify_app_id(self) -> Optional[str]:
+        return pulumi.get(self, "centrify_app_id")
+
+    @property
+    @pulumi.getter(name="certsUrl")
+    def certs_url(self) -> Optional[str]:
+        return pulumi.get(self, "certs_url")
+
+    @property
+    @pulumi.getter
+    def claims(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "claims")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="conditionalAccessEnabled")
+    def conditional_access_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "conditional_access_enabled")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> Optional[str]:
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter(name="emailAttributeName")
+    def email_attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "email_attribute_name")
+
+    @property
+    @pulumi.getter(name="emailClaimName")
+    def email_claim_name(self) -> Optional[str]:
+        return pulumi.get(self, "email_claim_name")
+
+    @property
+    @pulumi.getter(name="idpPublicCert")
+    def idp_public_cert(self) -> Optional[str]:
+        return pulumi.get(self, "idp_public_cert")
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> Optional[str]:
+        return pulumi.get(self, "issuer_url")
+
+    @property
+    @pulumi.getter(name="oktaAccount")
+    def okta_account(self) -> Optional[str]:
+        return pulumi.get(self, "okta_account")
+
+    @property
+    @pulumi.getter(name="oneloginAccount")
+    def onelogin_account(self) -> Optional[str]:
+        return pulumi.get(self, "onelogin_account")
+
+    @property
+    @pulumi.getter(name="pingEnvId")
+    def ping_env_id(self) -> Optional[str]:
+        return pulumi.get(self, "ping_env_id")
+
+    @property
+    @pulumi.getter(name="pkceEnabled")
+    def pkce_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "pkce_enabled")
+
+    @property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[str]:
+        return pulumi.get(self, "redirect_url")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="signRequest")
+    def sign_request(self) -> Optional[bool]:
+        return pulumi.get(self, "sign_request")
+
+    @property
+    @pulumi.getter(name="ssoTargetUrl")
+    def sso_target_url(self) -> Optional[str]:
+        return pulumi.get(self, "sso_target_url")
+
+    @property
+    @pulumi.getter(name="supportGroups")
+    def support_groups(self) -> Optional[bool]:
+        return pulumi.get(self, "support_groups")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> Optional[str]:
+        return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessIdentityProviderScimConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupMemberDeprovision":
+            suggest = "group_member_deprovision"
+        elif key == "seatDeprovision":
+            suggest = "seat_deprovision"
+        elif key == "userDeprovision":
+            suggest = "user_deprovision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessIdentityProviderScimConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessIdentityProviderScimConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessIdentityProviderScimConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_member_deprovision: Optional[bool] = None,
+                 seat_deprovision: Optional[bool] = None,
+                 secret: Optional[str] = None,
+                 user_deprovision: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_member_deprovision is not None:
+            pulumi.set(__self__, "group_member_deprovision", group_member_deprovision)
+        if seat_deprovision is not None:
+            pulumi.set(__self__, "seat_deprovision", seat_deprovision)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if user_deprovision is not None:
+            pulumi.set(__self__, "user_deprovision", user_deprovision)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupMemberDeprovision")
+    def group_member_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "group_member_deprovision")
+
+    @property
+    @pulumi.getter(name="seatDeprovision")
+    def seat_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "seat_deprovision")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[str]:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="userDeprovision")
+    def user_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "user_deprovision")
+
+
+@pulumi.output_type
+class ZeroTrustAccessMtlsHostnameSettingsSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chinaNetwork":
+            suggest = "china_network"
+        elif key == "clientCertificateForwarding":
+            suggest = "client_certificate_forwarding"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessMtlsHostnameSettingsSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessMtlsHostnameSettingsSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessMtlsHostnameSettingsSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 china_network: Optional[bool] = None,
+                 client_certificate_forwarding: Optional[bool] = None):
+        """
+        :param str hostname: The hostname that these settings apply to.
+        :param bool china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        :param bool client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if china_network is not None:
+            pulumi.set(__self__, "china_network", china_network)
+        if client_certificate_forwarding is not None:
+            pulumi.set(__self__, "client_certificate_forwarding", client_certificate_forwarding)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> Optional[bool]:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> Optional[bool]:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+
+@pulumi.output_type
+class ZeroTrustAccessOrganizationCustomPage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityDenied":
+            suggest = "identity_denied"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessOrganizationCustomPage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessOrganizationCustomPage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessOrganizationCustomPage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 forbidden: Optional[str] = None,
+                 identity_denied: Optional[str] = None):
+        """
+        :param str forbidden: The id of the forbidden page.
+        :param str identity_denied: The id of the identity denied page.
+        """
+        if forbidden is not None:
+            pulumi.set(__self__, "forbidden", forbidden)
+        if identity_denied is not None:
+            pulumi.set(__self__, "identity_denied", identity_denied)
+
+    @property
+    @pulumi.getter
+    def forbidden(self) -> Optional[str]:
+        """
+        The id of the forbidden page.
+        """
+        return pulumi.get(self, "forbidden")
+
+    @property
+    @pulumi.getter(name="identityDenied")
+    def identity_denied(self) -> Optional[str]:
+        """
+        The id of the identity denied page.
+        """
+        return pulumi.get(self, "identity_denied")
+
+
+@pulumi.output_type
+class ZeroTrustAccessOrganizationLoginDesign(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "footerText":
+            suggest = "footer_text"
+        elif key == "headerText":
+            suggest = "header_text"
+        elif key == "logoPath":
+            suggest = "logo_path"
+        elif key == "textColor":
+            suggest = "text_color"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessOrganizationLoginDesign. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessOrganizationLoginDesign.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessOrganizationLoginDesign.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: Optional[str] = None,
+                 footer_text: Optional[str] = None,
+                 header_text: Optional[str] = None,
+                 logo_path: Optional[str] = None,
+                 text_color: Optional[str] = None):
+        """
+        :param str background_color: The background color on the login page.
+        :param str footer_text: The text at the bottom of the login page.
+        :param str header_text: The text at the top of the login page.
+        :param str logo_path: The URL of the logo on the login page.
+        :param str text_color: The text color on the login page.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if text_color is not None:
+            pulumi.set(__self__, "text_color", text_color)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[str]:
+        """
+        The background color on the login page.
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[str]:
+        """
+        The text at the bottom of the login page.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[str]:
+        """
+        The text at the top of the login page.
+        """
+        return pulumi.get(self, "header_text")
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[str]:
+        """
+        The URL of the logo on the login page.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> Optional[str]:
+        """
+        The text color on the login page.
+        """
+        return pulumi.get(self, "text_color")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyApprovalGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalsNeeded":
+            suggest = "approvals_needed"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "emailListUuid":
+            suggest = "email_list_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyApprovalGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyApprovalGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyApprovalGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approvals_needed: int,
+                 email_addresses: Optional[Sequence[str]] = None,
+                 email_list_uuid: Optional[str] = None):
+        """
+        :param int approvals_needed: Number of approvals needed.
+        :param Sequence[str] email_addresses: List of emails to request approval from.
+        """
+        pulumi.set(__self__, "approvals_needed", approvals_needed)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if email_list_uuid is not None:
+            pulumi.set(__self__, "email_list_uuid", email_list_uuid)
+
+    @property
+    @pulumi.getter(name="approvalsNeeded")
+    def approvals_needed(self) -> int:
+        """
+        Number of approvals needed.
+        """
+        return pulumi.get(self, "approvals_needed")
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[str]]:
+        """
+        List of emails to request approval from.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @property
+    @pulumi.getter(name="emailListUuid")
+    def email_list_uuid(self) -> Optional[str]:
+        return pulumi.get(self, "email_list_uuid")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExclude.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyExcludeSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyExcludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyExcludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyExcludeSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyInclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyInclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyInclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyInclude.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyIncludeSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyIncludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyIncludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyIncludeSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
+        elif key == "devicePostures":
+            suggest = "device_postures"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "emailLists":
+            suggest = "email_lists"
+        elif key == "externalEvaluations":
+            suggest = "external_evaluations"
+        elif key == "ipLists":
+            suggest = "ip_lists"
+        elif key == "loginMethods":
+            suggest = "login_methods"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequire.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireAuthContext']] = None,
+                 auth_method: Optional[str] = None,
+                 azures: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireAzure']] = None,
+                 certificate: Optional[bool] = None,
+                 common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
+                 device_postures: Optional[Sequence[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 email_lists: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
+                 everyone: Optional[bool] = None,
+                 external_evaluations: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireExternalEvaluation']] = None,
+                 geos: Optional[Sequence[str]] = None,
+                 githubs: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireGsuite']] = None,
+                 ip_lists: Optional[Sequence[str]] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireOkta']] = None,
+                 samls: Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
+        if any_valid_service_token is not None:
+            pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if azures is not None:
+            pulumi.set(__self__, "azures", azures)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
+        if email_domains is not None:
+            pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if everyone is not None:
+            pulumi.set(__self__, "everyone", everyone)
+        if external_evaluations is not None:
+            pulumi.set(__self__, "external_evaluations", external_evaluations)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
+        if githubs is not None:
+            pulumi.set(__self__, "githubs", githubs)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if gsuites is not None:
+            pulumi.set(__self__, "gsuites", gsuites)
+        if ip_lists is not None:
+            pulumi.set(__self__, "ip_lists", ip_lists)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
+        if oktas is not None:
+            pulumi.set(__self__, "oktas", oktas)
+        if samls is not None:
+            pulumi.set(__self__, "samls", samls)
+        if service_tokens is not None:
+            pulumi.set(__self__, "service_tokens", service_tokens)
+
+    @property
+    @pulumi.getter(name="anyValidServiceToken")
+    def any_valid_service_token(self) -> Optional[bool]:
+        return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
+
+    @property
+    @pulumi.getter
+    def azures(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireAzure']]:
+        return pulumi.get(self, "azures")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[bool]:
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[str]:
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
+
+    @property
+    @pulumi.getter(name="emailDomains")
+    def email_domains(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_domains")
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_lists")
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def everyone(self) -> Optional[bool]:
+        return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluations")
+    def external_evaluations(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireExternalEvaluation']]:
+        return pulumi.get(self, "external_evaluations")
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "geos")
+
+    @property
+    @pulumi.getter
+    def githubs(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireGithub']]:
+        return pulumi.get(self, "githubs")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter
+    def gsuites(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireGsuite']]:
+        return pulumi.get(self, "gsuites")
+
+    @property
+    @pulumi.getter(name="ipLists")
+    def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
+        return pulumi.get(self, "ip_lists")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
+
+    @property
+    @pulumi.getter
+    def oktas(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireOkta']]:
+        return pulumi.get(self, "oktas")
+
+    @property
+    @pulumi.getter
+    def samls(self) -> Optional[Sequence['outputs.ZeroTrustAccessPolicyRequireSaml']]:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter(name="serviceTokens")
+    def service_tokens(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str ac_id: The ACID of the Authentication Context.
+        :param str id: The ID of the Authentication Context.
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        """
+        The ACID of the Authentication Context.
+        """
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Authentication Context.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param str identity_provider_id: The ID of the Azure Identity provider.
+        :param Sequence[str] ids: The ID of the Azure group or user.
+        """
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Azure Identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Azure group or user.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireGithub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 teams: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireGsuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[str]] = None,
+                 identity_provider_id: Optional[str] = None):
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider_id: Optional[str] = None,
+                 names: Optional[Sequence[str]] = None):
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "names")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyRequireSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyRequireSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyRequireSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[str] = None,
+                 attribute_value: Optional[str] = None,
+                 identity_provider_id: Optional[str] = None):
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+        if identity_provider_id is not None:
+            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_name")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        return pulumi.get(self, "attribute_value")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        return pulumi.get(self, "identity_provider_id")
+
+
+@pulumi.output_type
+class ZeroTrustDeviceManagedNetworksConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tlsSockaddr":
+            suggest = "tls_sockaddr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDeviceManagedNetworksConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDeviceManagedNetworksConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDeviceManagedNetworksConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sha256: str,
+                 tls_sockaddr: str):
+        """
+        :param str sha256: The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        :param str tls_sockaddr: A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+        pulumi.set(__self__, "sha256", sha256)
+        pulumi.set(__self__, "tls_sockaddr", tls_sockaddr)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter(name="tlsSockaddr")
+    def tls_sockaddr(self) -> str:
+        """
+        A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+        return pulumi.get(self, "tls_sockaddr")
+
+
+@pulumi.output_type
+class ZeroTrustDevicePostureIntegrationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessClientId":
+            suggest = "access_client_id"
+        elif key == "accessClientSecret":
+            suggest = "access_client_secret"
+        elif key == "apiUrl":
+            suggest = "api_url"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "customerId":
+            suggest = "customer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDevicePostureIntegrationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDevicePostureIntegrationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDevicePostureIntegrationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_client_id: Optional[str] = None,
+                 access_client_secret: Optional[str] = None,
+                 api_url: Optional[str] = None,
+                 auth_url: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_key: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 customer_id: Optional[str] = None):
+        """
+        :param str access_client_id: The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        :param str access_client_secret: The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        :param str api_url: The third-party API's URL.
+        :param str auth_url: The third-party authorization API URL.
+        :param str client_id: The client identifier for authenticating API calls.
+        :param str client_key: The client key for authenticating API calls.
+        :param str client_secret: The client secret for authenticating API calls.
+        :param str customer_id: The customer identifier for authenticating API calls.
+        """
+        if access_client_id is not None:
+            pulumi.set(__self__, "access_client_id", access_client_id)
+        if access_client_secret is not None:
+            pulumi.set(__self__, "access_client_secret", access_client_secret)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
+        if auth_url is not None:
+            pulumi.set(__self__, "auth_url", auth_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if customer_id is not None:
+            pulumi.set(__self__, "customer_id", customer_id)
+
+    @property
+    @pulumi.getter(name="accessClientId")
+    def access_client_id(self) -> Optional[str]:
+        """
+        The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        """
+        return pulumi.get(self, "access_client_id")
+
+    @property
+    @pulumi.getter(name="accessClientSecret")
+    def access_client_secret(self) -> Optional[str]:
+        """
+        The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        """
+        return pulumi.get(self, "access_client_secret")
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[str]:
+        """
+        The third-party API's URL.
+        """
+        return pulumi.get(self, "api_url")
+
+    @property
+    @pulumi.getter(name="authUrl")
+    def auth_url(self) -> Optional[str]:
+        """
+        The third-party authorization API URL.
+        """
+        return pulumi.get(self, "auth_url")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        The client identifier for authenticating API calls.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[str]:
+        """
+        The client key for authenticating API calls.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        The client secret for authenticating API calls.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> Optional[str]:
+        """
+        The customer identifier for authenticating API calls.
+        """
+        return pulumi.get(self, "customer_id")
+
+
+@pulumi.output_type
+class ZeroTrustDevicePostureRuleInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeThreats":
+            suggest = "active_threats"
+        elif key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "checkDisks":
+            suggest = "check_disks"
+        elif key == "checkPrivateKey":
+            suggest = "check_private_key"
+        elif key == "complianceStatus":
+            suggest = "compliance_status"
+        elif key == "connectionId":
+            suggest = "connection_id"
+        elif key == "countOperator":
+            suggest = "count_operator"
+        elif key == "eidLastSeen":
+            suggest = "eid_last_seen"
+        elif key == "extendedKeyUsages":
+            suggest = "extended_key_usages"
+        elif key == "isActive":
+            suggest = "is_active"
+        elif key == "issueCount":
+            suggest = "issue_count"
+        elif key == "lastSeen":
+            suggest = "last_seen"
+        elif key == "networkStatus":
+            suggest = "network_status"
+        elif key == "osDistroName":
+            suggest = "os_distro_name"
+        elif key == "osDistroRevision":
+            suggest = "os_distro_revision"
+        elif key == "osVersionExtra":
+            suggest = "os_version_extra"
+        elif key == "requireAll":
+            suggest = "require_all"
+        elif key == "riskLevel":
+            suggest = "risk_level"
+        elif key == "sensorConfig":
+            suggest = "sensor_config"
+        elif key == "totalScore":
+            suggest = "total_score"
+        elif key == "versionOperator":
+            suggest = "version_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDevicePostureRuleInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDevicePostureRuleInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDevicePostureRuleInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_threats: Optional[int] = None,
+                 certificate_id: Optional[str] = None,
+                 check_disks: Optional[Sequence[str]] = None,
+                 check_private_key: Optional[bool] = None,
+                 cn: Optional[str] = None,
+                 compliance_status: Optional[str] = None,
+                 connection_id: Optional[str] = None,
+                 count_operator: Optional[str] = None,
+                 domain: Optional[str] = None,
+                 eid_last_seen: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exists: Optional[bool] = None,
+                 extended_key_usages: Optional[Sequence[str]] = None,
+                 id: Optional[str] = None,
+                 infected: Optional[bool] = None,
+                 is_active: Optional[bool] = None,
+                 issue_count: Optional[str] = None,
+                 last_seen: Optional[str] = None,
+                 locations: Optional[Sequence['outputs.ZeroTrustDevicePostureRuleInputLocation']] = None,
+                 network_status: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 os: Optional[str] = None,
+                 os_distro_name: Optional[str] = None,
+                 os_distro_revision: Optional[str] = None,
+                 os_version_extra: Optional[str] = None,
+                 overall: Optional[str] = None,
+                 path: Optional[str] = None,
+                 require_all: Optional[bool] = None,
+                 risk_level: Optional[str] = None,
+                 running: Optional[bool] = None,
+                 sensor_config: Optional[str] = None,
+                 sha256: Optional[str] = None,
+                 state: Optional[str] = None,
+                 thumbprint: Optional[str] = None,
+                 total_score: Optional[int] = None,
+                 version: Optional[str] = None,
+                 version_operator: Optional[str] = None):
+        """
+        :param int active_threats: The number of active threats from SentinelOne.
+        :param str certificate_id: The UUID of a Cloudflare managed certificate.
+        :param Sequence[str] check_disks: Specific volume(s) to check for encryption.
+        :param bool check_private_key: Confirm the certificate was not imported from another device.
+        :param str cn: The common name for a certificate.
+        :param str compliance_status: The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        :param str connection_id: The workspace one or intune connection id.
+        :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        :param str domain: The domain that the client must join.
+        :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
+        :param bool enabled: True if the firewall must be enabled.
+        :param bool exists: Checks if the file should exist.
+        :param Sequence[str] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+        :param str id: The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        :param bool infected: True if SentinelOne device is infected.
+        :param bool is_active: True if SentinelOne device is active.
+        :param str issue_count: The number of issues for kolide.
+        :param str last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        :param Sequence['ZeroTrustDevicePostureRuleInputLocationArgs'] locations: List of locations to check for client certificate.
+        :param str network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
+        :param str os_distro_name: The operating system excluding version information.
+        :param str os_distro_revision: The operating system version excluding OS name information or release name.
+        :param str os_version_extra: Extra version value following the operating system semantic version.
+        :param str overall: Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        :param str path: The path to the file.
+        :param bool require_all: True if all drives must be encrypted.
+        :param str risk_level: The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        :param bool running: Checks if the application should be running.
+        :param str sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        :param str sha256: The sha256 hash of the file.
+        :param str state: The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        :param str thumbprint: The thumbprint of the file certificate.
+        :param int total_score: The total score from Tanium.
+        :param str version: The operating system semantic version.
+        :param str version_operator: The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        if active_threats is not None:
+            pulumi.set(__self__, "active_threats", active_threats)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if check_disks is not None:
+            pulumi.set(__self__, "check_disks", check_disks)
+        if check_private_key is not None:
+            pulumi.set(__self__, "check_private_key", check_private_key)
+        if cn is not None:
+            pulumi.set(__self__, "cn", cn)
+        if compliance_status is not None:
+            pulumi.set(__self__, "compliance_status", compliance_status)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if count_operator is not None:
+            pulumi.set(__self__, "count_operator", count_operator)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if eid_last_seen is not None:
+            pulumi.set(__self__, "eid_last_seen", eid_last_seen)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if extended_key_usages is not None:
+            pulumi.set(__self__, "extended_key_usages", extended_key_usages)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if infected is not None:
+            pulumi.set(__self__, "infected", infected)
+        if is_active is not None:
+            pulumi.set(__self__, "is_active", is_active)
+        if issue_count is not None:
+            pulumi.set(__self__, "issue_count", issue_count)
+        if last_seen is not None:
+            pulumi.set(__self__, "last_seen", last_seen)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if network_status is not None:
+            pulumi.set(__self__, "network_status", network_status)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
+        if os_distro_name is not None:
+            pulumi.set(__self__, "os_distro_name", os_distro_name)
+        if os_distro_revision is not None:
+            pulumi.set(__self__, "os_distro_revision", os_distro_revision)
+        if os_version_extra is not None:
+            pulumi.set(__self__, "os_version_extra", os_version_extra)
+        if overall is not None:
+            pulumi.set(__self__, "overall", overall)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if require_all is not None:
+            pulumi.set(__self__, "require_all", require_all)
+        if risk_level is not None:
+            pulumi.set(__self__, "risk_level", risk_level)
+        if running is not None:
+            pulumi.set(__self__, "running", running)
+        if sensor_config is not None:
+            pulumi.set(__self__, "sensor_config", sensor_config)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+        if total_score is not None:
+            pulumi.set(__self__, "total_score", total_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_operator is not None:
+            pulumi.set(__self__, "version_operator", version_operator)
+
+    @property
+    @pulumi.getter(name="activeThreats")
+    def active_threats(self) -> Optional[int]:
+        """
+        The number of active threats from SentinelOne.
+        """
+        return pulumi.get(self, "active_threats")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[str]:
+        """
+        The UUID of a Cloudflare managed certificate.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter(name="checkDisks")
+    def check_disks(self) -> Optional[Sequence[str]]:
+        """
+        Specific volume(s) to check for encryption.
+        """
+        return pulumi.get(self, "check_disks")
+
+    @property
+    @pulumi.getter(name="checkPrivateKey")
+    def check_private_key(self) -> Optional[bool]:
+        """
+        Confirm the certificate was not imported from another device.
+        """
+        return pulumi.get(self, "check_private_key")
+
+    @property
+    @pulumi.getter
+    def cn(self) -> Optional[str]:
+        """
+        The common name for a certificate.
+        """
+        return pulumi.get(self, "cn")
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> Optional[str]:
+        """
+        The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        """
+        return pulumi.get(self, "compliance_status")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[str]:
+        """
+        The workspace one or intune connection id.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="countOperator")
+    def count_operator(self) -> Optional[str]:
+        """
+        The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        return pulumi.get(self, "count_operator")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        The domain that the client must join.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="eidLastSeen")
+    def eid_last_seen(self) -> Optional[str]:
+        """
+        The datetime a device last seen in RFC 3339 format from Tanium.
+        """
+        return pulumi.get(self, "eid_last_seen")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        True if the firewall must be enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def exists(self) -> Optional[bool]:
+        """
+        Checks if the file should exist.
+        """
+        return pulumi.get(self, "exists")
+
+    @property
+    @pulumi.getter(name="extendedKeyUsages")
+    def extended_key_usages(self) -> Optional[Sequence[str]]:
+        """
+        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+        """
+        return pulumi.get(self, "extended_key_usages")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def infected(self) -> Optional[bool]:
+        """
+        True if SentinelOne device is infected.
+        """
+        return pulumi.get(self, "infected")
+
+    @property
+    @pulumi.getter(name="isActive")
+    def is_active(self) -> Optional[bool]:
+        """
+        True if SentinelOne device is active.
+        """
+        return pulumi.get(self, "is_active")
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> Optional[str]:
+        """
+        The number of issues for kolide.
+        """
+        return pulumi.get(self, "issue_count")
+
+    @property
+    @pulumi.getter(name="lastSeen")
+    def last_seen(self) -> Optional[str]:
+        """
+        The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        return pulumi.get(self, "last_seen")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[Sequence['outputs.ZeroTrustDevicePostureRuleInputLocation']]:
+        """
+        List of locations to check for client certificate.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="networkStatus")
+    def network_status(self) -> Optional[str]:
+        """
+        The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        """
+        return pulumi.get(self, "network_status")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def os(self) -> Optional[str]:
+        """
+        OS signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter(name="osDistroName")
+    def os_distro_name(self) -> Optional[str]:
+        """
+        The operating system excluding version information.
+        """
+        return pulumi.get(self, "os_distro_name")
+
+    @property
+    @pulumi.getter(name="osDistroRevision")
+    def os_distro_revision(self) -> Optional[str]:
+        """
+        The operating system version excluding OS name information or release name.
+        """
+        return pulumi.get(self, "os_distro_revision")
+
+    @property
+    @pulumi.getter(name="osVersionExtra")
+    def os_version_extra(self) -> Optional[str]:
+        """
+        Extra version value following the operating system semantic version.
+        """
+        return pulumi.get(self, "os_version_extra")
+
+    @property
+    @pulumi.getter
+    def overall(self) -> Optional[str]:
+        """
+        Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        """
+        return pulumi.get(self, "overall")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The path to the file.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="requireAll")
+    def require_all(self) -> Optional[bool]:
+        """
+        True if all drives must be encrypted.
+        """
+        return pulumi.get(self, "require_all")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> Optional[str]:
+        """
+        The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @property
+    @pulumi.getter
+    def running(self) -> Optional[bool]:
+        """
+        Checks if the application should be running.
+        """
+        return pulumi.get(self, "running")
+
+    @property
+    @pulumi.getter(name="sensorConfig")
+    def sensor_config(self) -> Optional[str]:
+        """
+        Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        return pulumi.get(self, "sensor_config")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The sha256 hash of the file.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        The thumbprint of the file certificate.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter(name="totalScore")
+    def total_score(self) -> Optional[int]:
+        """
+        The total score from Tanium.
+        """
+        return pulumi.get(self, "total_score")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The operating system semantic version.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="versionOperator")
+    def version_operator(self) -> Optional[str]:
+        """
+        The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        return pulumi.get(self, "version_operator")
+
+
+@pulumi.output_type
+class ZeroTrustDevicePostureRuleInputLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trustStores":
+            suggest = "trust_stores"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDevicePostureRuleInputLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDevicePostureRuleInputLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDevicePostureRuleInputLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Optional[Sequence[str]] = None,
+                 trust_stores: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] paths: List of paths to check for client certificate rule.
+        :param Sequence[str] trust_stores: List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if trust_stores is not None:
+            pulumi.set(__self__, "trust_stores", trust_stores)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to check for client certificate rule.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter(name="trustStores")
+    def trust_stores(self) -> Optional[Sequence[str]]:
+        """
+        List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        """
+        return pulumi.get(self, "trust_stores")
+
+
+@pulumi.output_type
+class ZeroTrustDevicePostureRuleMatch(dict):
+    def __init__(__self__, *,
+                 platform: Optional[str] = None):
+        """
+        :param str platform: The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+        """
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[str]:
+        """
+        The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+        """
+        return pulumi.get(self, "platform")
+
+
+@pulumi.output_type
+class ZeroTrustDexTestData(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 kind: str,
+                 method: Optional[str] = None):
+        """
+        :param str host: The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        :param str kind: The type of Device Dex Test. Available values: `http`, `traceroute`.
+        :param str method: The http request method. Available values: `GET`.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "kind", kind)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The type of Device Dex Test. Available values: `http`, `traceroute`.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        The http request method. Available values: `GET`.
+        """
+        return pulumi.get(self, "method")
+
+
+@pulumi.output_type
+class ZeroTrustDlpProfileContextAwareness(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 skip: 'outputs.ZeroTrustDlpProfileContextAwarenessSkip'):
+        """
+        :param bool enabled: Scan the context of predefined entries to only return matches surrounded by keywords.
+        :param 'ZeroTrustDlpProfileContextAwarenessSkipArgs' skip: Content types to exclude from context analysis and return all matches.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "skip", skip)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def skip(self) -> 'outputs.ZeroTrustDlpProfileContextAwarenessSkip':
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+        return pulumi.get(self, "skip")
+
+
+@pulumi.output_type
+class ZeroTrustDlpProfileContextAwarenessSkip(dict):
+    def __init__(__self__, *,
+                 files: bool):
+        """
+        :param bool files: Return all matches, regardless of context analysis result, if the data is a file.
+        """
+        pulumi.set(__self__, "files", files)
+
+    @property
+    @pulumi.getter
+    def files(self) -> bool:
+        """
+        Return all matches, regardless of context analysis result, if the data is a file.
+        """
+        return pulumi.get(self, "files")
+
+
+@pulumi.output_type
+class ZeroTrustDlpProfileEntry(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 enabled: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 pattern: Optional['outputs.ZeroTrustDlpProfileEntryPattern'] = None):
+        """
+        :param str name: Name of the entry to deploy.
+        :param bool enabled: Whether the entry is active. Defaults to `false`.
+        :param str id: Unique entry identifier.
+        """
+        pulumi.set(__self__, "name", name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the entry to deploy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the entry is active. Defaults to `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique entry identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional['outputs.ZeroTrustDlpProfileEntryPattern']:
+        return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class ZeroTrustDlpProfileEntryPattern(dict):
+    def __init__(__self__, *,
+                 regex: str,
+                 validation: Optional[str] = None):
+        """
+        :param str regex: The regex that defines the pattern.
+        :param str validation: The validation algorithm to apply with this pattern.
+        """
+        pulumi.set(__self__, "regex", regex)
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> str:
+        """
+        The regex that defines the pattern.
+        """
+        return pulumi.get(self, "regex")
+
+    @property
+    @pulumi.getter
+    def validation(self) -> Optional[str]:
+        """
+        The validation algorithm to apply with this pattern.
+        """
+        return pulumi.get(self, "validation")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationNetwork(dict):
+    def __init__(__self__, *,
+                 network: str,
+                 id: Optional[str] = None):
+        """
+        :param str network: CIDR notation representation of the network IP.
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "network", network)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addHeaders":
+            suggest = "add_headers"
+        elif key == "allowChildBypass":
+            suggest = "allow_child_bypass"
+        elif key == "auditSsh":
+            suggest = "audit_ssh"
+        elif key == "bisoAdminControls":
+            suggest = "biso_admin_controls"
+        elif key == "blockPageEnabled":
+            suggest = "block_page_enabled"
+        elif key == "blockPageReason":
+            suggest = "block_page_reason"
+        elif key == "bypassParentRule":
+            suggest = "bypass_parent_rule"
+        elif key == "checkSession":
+            suggest = "check_session"
+        elif key == "dnsResolvers":
+            suggest = "dns_resolvers"
+        elif key == "ignoreCnameCategoryMatches":
+            suggest = "ignore_cname_category_matches"
+        elif key == "insecureDisableDnssecValidation":
+            suggest = "insecure_disable_dnssec_validation"
+        elif key == "ipCategories":
+            suggest = "ip_categories"
+        elif key == "notificationSettings":
+            suggest = "notification_settings"
+        elif key == "overrideHost":
+            suggest = "override_host"
+        elif key == "overrideIps":
+            suggest = "override_ips"
+        elif key == "payloadLog":
+            suggest = "payload_log"
+        elif key == "resolveDnsThroughCloudflare":
+            suggest = "resolve_dns_through_cloudflare"
+        elif key == "untrustedCert":
+            suggest = "untrusted_cert"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 add_headers: Optional[Mapping[str, str]] = None,
+                 allow_child_bypass: Optional[bool] = None,
+                 audit_ssh: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh'] = None,
+                 biso_admin_controls: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls'] = None,
+                 block_page_enabled: Optional[bool] = None,
+                 block_page_reason: Optional[str] = None,
+                 bypass_parent_rule: Optional[bool] = None,
+                 check_session: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession'] = None,
+                 dns_resolvers: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers'] = None,
+                 egress: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsEgress'] = None,
+                 ignore_cname_category_matches: Optional[bool] = None,
+                 insecure_disable_dnssec_validation: Optional[bool] = None,
+                 ip_categories: Optional[bool] = None,
+                 l4override: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsL4override'] = None,
+                 notification_settings: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings'] = None,
+                 override_host: Optional[str] = None,
+                 override_ips: Optional[Sequence[str]] = None,
+                 payload_log: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog'] = None,
+                 resolve_dns_through_cloudflare: Optional[bool] = None,
+                 untrusted_cert: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert'] = None):
+        """
+        :param Mapping[str, str] add_headers: Add custom headers to allowed requests in the form of key-value pairs.
+        :param bool allow_child_bypass: Allow parent MSP accounts to enable bypass their children's rules.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs' audit_ssh: Settings for auditing SSH usage.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs' biso_admin_controls: Configure how browser isolation behaves.
+        :param bool block_page_enabled: Indicator of block page enablement.
+        :param str block_page_reason: The displayed reason for a user being blocked.
+        :param bool bypass_parent_rule: Allow child MSP accounts to bypass their parent's rule.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs' check_session: Configure how session check behaves.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs' dns_resolvers: Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsEgressArgs' egress: Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        :param bool ignore_cname_category_matches: Set to true, to ignore the category matches at CNAME domains in a response.
+        :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
+        :param bool ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs' notification_settings: Notification settings on a block rule.
+        :param str override_host: The host to override matching DNS queries with.
+        :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
+        :param bool resolve_dns_through_cloudflare: Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs' untrusted_cert: Configure untrusted certificate settings for this rule.
+        """
+        if add_headers is not None:
+            pulumi.set(__self__, "add_headers", add_headers)
+        if allow_child_bypass is not None:
+            pulumi.set(__self__, "allow_child_bypass", allow_child_bypass)
+        if audit_ssh is not None:
+            pulumi.set(__self__, "audit_ssh", audit_ssh)
+        if biso_admin_controls is not None:
+            pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
+        if block_page_enabled is not None:
+            pulumi.set(__self__, "block_page_enabled", block_page_enabled)
+        if block_page_reason is not None:
+            pulumi.set(__self__, "block_page_reason", block_page_reason)
+        if bypass_parent_rule is not None:
+            pulumi.set(__self__, "bypass_parent_rule", bypass_parent_rule)
+        if check_session is not None:
+            pulumi.set(__self__, "check_session", check_session)
+        if dns_resolvers is not None:
+            pulumi.set(__self__, "dns_resolvers", dns_resolvers)
+        if egress is not None:
+            pulumi.set(__self__, "egress", egress)
+        if ignore_cname_category_matches is not None:
+            pulumi.set(__self__, "ignore_cname_category_matches", ignore_cname_category_matches)
+        if insecure_disable_dnssec_validation is not None:
+            pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
+        if ip_categories is not None:
+            pulumi.set(__self__, "ip_categories", ip_categories)
+        if l4override is not None:
+            pulumi.set(__self__, "l4override", l4override)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+        if override_host is not None:
+            pulumi.set(__self__, "override_host", override_host)
+        if override_ips is not None:
+            pulumi.set(__self__, "override_ips", override_ips)
+        if payload_log is not None:
+            pulumi.set(__self__, "payload_log", payload_log)
+        if resolve_dns_through_cloudflare is not None:
+            pulumi.set(__self__, "resolve_dns_through_cloudflare", resolve_dns_through_cloudflare)
+        if untrusted_cert is not None:
+            pulumi.set(__self__, "untrusted_cert", untrusted_cert)
+
+    @property
+    @pulumi.getter(name="addHeaders")
+    def add_headers(self) -> Optional[Mapping[str, str]]:
+        """
+        Add custom headers to allowed requests in the form of key-value pairs.
+        """
+        return pulumi.get(self, "add_headers")
+
+    @property
+    @pulumi.getter(name="allowChildBypass")
+    def allow_child_bypass(self) -> Optional[bool]:
+        """
+        Allow parent MSP accounts to enable bypass their children's rules.
+        """
+        return pulumi.get(self, "allow_child_bypass")
+
+    @property
+    @pulumi.getter(name="auditSsh")
+    def audit_ssh(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh']:
+        """
+        Settings for auditing SSH usage.
+        """
+        return pulumi.get(self, "audit_ssh")
+
+    @property
+    @pulumi.getter(name="bisoAdminControls")
+    def biso_admin_controls(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls']:
+        """
+        Configure how browser isolation behaves.
+        """
+        return pulumi.get(self, "biso_admin_controls")
+
+    @property
+    @pulumi.getter(name="blockPageEnabled")
+    def block_page_enabled(self) -> Optional[bool]:
+        """
+        Indicator of block page enablement.
+        """
+        return pulumi.get(self, "block_page_enabled")
+
+    @property
+    @pulumi.getter(name="blockPageReason")
+    def block_page_reason(self) -> Optional[str]:
+        """
+        The displayed reason for a user being blocked.
+        """
+        return pulumi.get(self, "block_page_reason")
+
+    @property
+    @pulumi.getter(name="bypassParentRule")
+    def bypass_parent_rule(self) -> Optional[bool]:
+        """
+        Allow child MSP accounts to bypass their parent's rule.
+        """
+        return pulumi.get(self, "bypass_parent_rule")
+
+    @property
+    @pulumi.getter(name="checkSession")
+    def check_session(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession']:
+        """
+        Configure how session check behaves.
+        """
+        return pulumi.get(self, "check_session")
+
+    @property
+    @pulumi.getter(name="dnsResolvers")
+    def dns_resolvers(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers']:
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        """
+        return pulumi.get(self, "dns_resolvers")
+
+    @property
+    @pulumi.getter
+    def egress(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsEgress']:
+        """
+        Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        """
+        return pulumi.get(self, "egress")
+
+    @property
+    @pulumi.getter(name="ignoreCnameCategoryMatches")
+    def ignore_cname_category_matches(self) -> Optional[bool]:
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response.
+        """
+        return pulumi.get(self, "ignore_cname_category_matches")
+
+    @property
+    @pulumi.getter(name="insecureDisableDnssecValidation")
+    def insecure_disable_dnssec_validation(self) -> Optional[bool]:
+        """
+        Disable DNSSEC validation (must be Allow rule).
+        """
+        return pulumi.get(self, "insecure_disable_dnssec_validation")
+
+    @property
+    @pulumi.getter(name="ipCategories")
+    def ip_categories(self) -> Optional[bool]:
+        """
+        Turns on IP category based filter on dns if the rule contains dns category checks.
+        """
+        return pulumi.get(self, "ip_categories")
+
+    @property
+    @pulumi.getter
+    def l4override(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsL4override']:
+        """
+        Settings to forward layer 4 traffic.
+        """
+        return pulumi.get(self, "l4override")
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings']:
+        """
+        Notification settings on a block rule.
+        """
+        return pulumi.get(self, "notification_settings")
+
+    @property
+    @pulumi.getter(name="overrideHost")
+    def override_host(self) -> Optional[str]:
+        """
+        The host to override matching DNS queries with.
+        """
+        return pulumi.get(self, "override_host")
+
+    @property
+    @pulumi.getter(name="overrideIps")
+    def override_ips(self) -> Optional[Sequence[str]]:
+        """
+        The IPs to override matching DNS queries with.
+        """
+        return pulumi.get(self, "override_ips")
+
+    @property
+    @pulumi.getter(name="payloadLog")
+    def payload_log(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog']:
+        """
+        Configure DLP Payload Logging settings for this rule.
+        """
+        return pulumi.get(self, "payload_log")
+
+    @property
+    @pulumi.getter(name="resolveDnsThroughCloudflare")
+    def resolve_dns_through_cloudflare(self) -> Optional[bool]:
+        """
+        Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        """
+        return pulumi.get(self, "resolve_dns_through_cloudflare")
+
+    @property
+    @pulumi.getter(name="untrustedCert")
+    def untrusted_cert(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert']:
+        """
+        Configure untrusted certificate settings for this rule.
+        """
+        return pulumi.get(self, "untrusted_cert")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsAuditSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commandLogging":
+            suggest = "command_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsAuditSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsAuditSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsAuditSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 command_logging: bool):
+        """
+        :param bool command_logging: Log all SSH commands.
+        """
+        pulumi.set(__self__, "command_logging", command_logging)
+
+    @property
+    @pulumi.getter(name="commandLogging")
+    def command_logging(self) -> bool:
+        """
+        Log all SSH commands.
+        """
+        return pulumi.get(self, "command_logging")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableClipboardRedirection":
+            suggest = "disable_clipboard_redirection"
+        elif key == "disableCopyPaste":
+            suggest = "disable_copy_paste"
+        elif key == "disableDownload":
+            suggest = "disable_download"
+        elif key == "disableKeyboard":
+            suggest = "disable_keyboard"
+        elif key == "disablePrinting":
+            suggest = "disable_printing"
+        elif key == "disableUpload":
+            suggest = "disable_upload"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_clipboard_redirection: Optional[bool] = None,
+                 disable_copy_paste: Optional[bool] = None,
+                 disable_download: Optional[bool] = None,
+                 disable_keyboard: Optional[bool] = None,
+                 disable_printing: Optional[bool] = None,
+                 disable_upload: Optional[bool] = None):
+        """
+        :param bool disable_clipboard_redirection: Disable clipboard redirection.
+        :param bool disable_copy_paste: Disable copy-paste.
+        :param bool disable_download: Disable download.
+        :param bool disable_keyboard: Disable keyboard usage.
+        :param bool disable_printing: Disable printing.
+        :param bool disable_upload: Disable upload.
+        """
+        if disable_clipboard_redirection is not None:
+            pulumi.set(__self__, "disable_clipboard_redirection", disable_clipboard_redirection)
+        if disable_copy_paste is not None:
+            pulumi.set(__self__, "disable_copy_paste", disable_copy_paste)
+        if disable_download is not None:
+            pulumi.set(__self__, "disable_download", disable_download)
+        if disable_keyboard is not None:
+            pulumi.set(__self__, "disable_keyboard", disable_keyboard)
+        if disable_printing is not None:
+            pulumi.set(__self__, "disable_printing", disable_printing)
+        if disable_upload is not None:
+            pulumi.set(__self__, "disable_upload", disable_upload)
+
+    @property
+    @pulumi.getter(name="disableClipboardRedirection")
+    def disable_clipboard_redirection(self) -> Optional[bool]:
+        """
+        Disable clipboard redirection.
+        """
+        return pulumi.get(self, "disable_clipboard_redirection")
+
+    @property
+    @pulumi.getter(name="disableCopyPaste")
+    def disable_copy_paste(self) -> Optional[bool]:
+        """
+        Disable copy-paste.
+        """
+        return pulumi.get(self, "disable_copy_paste")
+
+    @property
+    @pulumi.getter(name="disableDownload")
+    def disable_download(self) -> Optional[bool]:
+        """
+        Disable download.
+        """
+        return pulumi.get(self, "disable_download")
+
+    @property
+    @pulumi.getter(name="disableKeyboard")
+    def disable_keyboard(self) -> Optional[bool]:
+        """
+        Disable keyboard usage.
+        """
+        return pulumi.get(self, "disable_keyboard")
+
+    @property
+    @pulumi.getter(name="disablePrinting")
+    def disable_printing(self) -> Optional[bool]:
+        """
+        Disable printing.
+        """
+        return pulumi.get(self, "disable_printing")
+
+    @property
+    @pulumi.getter(name="disableUpload")
+    def disable_upload(self) -> Optional[bool]:
+        """
+        Disable upload.
+        """
+        return pulumi.get(self, "disable_upload")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsCheckSession(dict):
+    def __init__(__self__, *,
+                 duration: str,
+                 enforce: bool):
+        """
+        :param str duration: Configure how fresh the session needs to be to be considered valid.
+        :param bool enforce: Enable session enforcement for this rule.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "enforce", enforce)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Configure how fresh the session needs to be to be considered valid.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> bool:
+        """
+        Enable session enforcement for this rule.
+        """
+        return pulumi.get(self, "enforce")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsDnsResolvers(dict):
+    def __init__(__self__, *,
+                 ipv4s: Optional[Sequence['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4']] = None,
+                 ipv6s: Optional[Sequence['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6']] = None):
+        """
+        :param Sequence['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args'] ipv4s: IPv4 resolvers.
+        :param Sequence['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args'] ipv6s: IPv6 resolvers.
+        """
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[Sequence['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4']]:
+        """
+        IPv4 resolvers.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[Sequence['outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6']]:
+        """
+        IPv6 resolvers.
+        """
+        return pulumi.get(self, "ipv6s")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeThroughPrivateNetwork":
+            suggest = "route_through_private_network"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip: str,
+                 port: Optional[int] = None,
+                 route_through_private_network: Optional[bool] = None,
+                 vnet_id: Optional[str] = None):
+        """
+        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
+        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
+        :param bool route_through_private_network: Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        :param str vnet_id: specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[bool]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeThroughPrivateNetwork":
+            suggest = "route_through_private_network"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip: str,
+                 port: Optional[int] = None,
+                 route_through_private_network: Optional[bool] = None,
+                 vnet_id: Optional[str] = None):
+        """
+        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
+        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
+        :param bool route_through_private_network: Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        :param str vnet_id: specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[bool]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsEgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4Fallback":
+            suggest = "ipv4_fallback"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsEgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsEgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsEgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipv4: str,
+                 ipv6: str,
+                 ipv4_fallback: Optional[str] = None):
+        """
+        :param str ipv4: The IPv4 address to be used for egress.
+        :param str ipv6: The IPv6 range to be used for egress.
+        :param str ipv4_fallback: The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+        if ipv4_fallback is not None:
+            pulumi.set(__self__, "ipv4_fallback", ipv4_fallback)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> str:
+        """
+        The IPv4 address to be used for egress.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        """
+        The IPv6 range to be used for egress.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter(name="ipv4Fallback")
+    def ipv4_fallback(self) -> Optional[str]:
+        """
+        The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        """
+        return pulumi.get(self, "ipv4_fallback")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsL4override(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 port: int):
+        """
+        :param str ip: Override IP to forward traffic to.
+        :param int port: Override Port to forward traffic to.
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Override IP to forward traffic to.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Override Port to forward traffic to.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportUrl":
+            suggest = "support_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 message: Optional[str] = None,
+                 support_url: Optional[str] = None):
+        """
+        :param bool enabled: Enable notification settings.
+        :param str message: Notification content.
+        :param str support_url: Support URL to show in the notification.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable notification settings.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Notification content.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[str]:
+        """
+        Support URL to show in the notification.
+        """
+        return pulumi.get(self, "support_url")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsPayloadLog(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable or disable DLP Payload Logging for this rule.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable or disable DLP Payload Logging for this rule.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsUntrustedCert(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None):
+        """
+        :param str action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+        """
+        return pulumi.get(self, "action")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsAntivirus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledDownloadPhase":
+            suggest = "enabled_download_phase"
+        elif key == "enabledUploadPhase":
+            suggest = "enabled_upload_phase"
+        elif key == "failClosed":
+            suggest = "fail_closed"
+        elif key == "notificationSettings":
+            suggest = "notification_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsAntivirus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsAntivirus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsAntivirus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_download_phase: bool,
+                 enabled_upload_phase: bool,
+                 fail_closed: bool,
+                 notification_settings: Optional['outputs.ZeroTrustGatewaySettingsAntivirusNotificationSettings'] = None):
+        """
+        :param bool enabled_download_phase: Scan on file download.
+        :param bool enabled_upload_phase: Scan on file upload.
+        :param bool fail_closed: Block requests for files that cannot be scanned.
+        :param 'ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs' notification_settings: Set notifications for antivirus.
+        """
+        pulumi.set(__self__, "enabled_download_phase", enabled_download_phase)
+        pulumi.set(__self__, "enabled_upload_phase", enabled_upload_phase)
+        pulumi.set(__self__, "fail_closed", fail_closed)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+
+    @property
+    @pulumi.getter(name="enabledDownloadPhase")
+    def enabled_download_phase(self) -> bool:
+        """
+        Scan on file download.
+        """
+        return pulumi.get(self, "enabled_download_phase")
+
+    @property
+    @pulumi.getter(name="enabledUploadPhase")
+    def enabled_upload_phase(self) -> bool:
+        """
+        Scan on file upload.
+        """
+        return pulumi.get(self, "enabled_upload_phase")
+
+    @property
+    @pulumi.getter(name="failClosed")
+    def fail_closed(self) -> bool:
+        """
+        Block requests for files that cannot be scanned.
+        """
+        return pulumi.get(self, "fail_closed")
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.ZeroTrustGatewaySettingsAntivirusNotificationSettings']:
+        """
+        Set notifications for antivirus.
+        """
+        return pulumi.get(self, "notification_settings")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsAntivirusNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportUrl":
+            suggest = "support_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsAntivirusNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsAntivirusNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsAntivirusNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 message: Optional[str] = None,
+                 support_url: Optional[str] = None):
+        """
+        :param bool enabled: Enable notification settings.
+        :param str message: Notification content.
+        :param str support_url: Support URL to show in the notification.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable notification settings.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Notification content.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[str]:
+        """
+        Support URL to show in the notification.
+        """
+        return pulumi.get(self, "support_url")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsBlockPage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "footerText":
+            suggest = "footer_text"
+        elif key == "headerText":
+            suggest = "header_text"
+        elif key == "logoPath":
+            suggest = "logo_path"
+        elif key == "mailtoAddress":
+            suggest = "mailto_address"
+        elif key == "mailtoSubject":
+            suggest = "mailto_subject"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsBlockPage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsBlockPage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsBlockPage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 footer_text: Optional[str] = None,
+                 header_text: Optional[str] = None,
+                 logo_path: Optional[str] = None,
+                 mailto_address: Optional[str] = None,
+                 mailto_subject: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str background_color: Hex code of block page background color.
+        :param bool enabled: Indicator of enablement.
+        :param str footer_text: Block page footer text.
+        :param str header_text: Block page header text.
+        :param str logo_path: URL of block page logo.
+        :param str mailto_address: Admin email for users to contact.
+        :param str mailto_subject: Subject line for emails created from block page.
+        :param str name: Name of block page configuration.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if mailto_address is not None:
+            pulumi.set(__self__, "mailto_address", mailto_address)
+        if mailto_subject is not None:
+            pulumi.set(__self__, "mailto_subject", mailto_subject)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[str]:
+        """
+        Hex code of block page background color.
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Indicator of enablement.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[str]:
+        """
+        Block page footer text.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[str]:
+        """
+        Block page header text.
+        """
+        return pulumi.get(self, "header_text")
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[str]:
+        """
+        URL of block page logo.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @property
+    @pulumi.getter(name="mailtoAddress")
+    def mailto_address(self) -> Optional[str]:
+        """
+        Admin email for users to contact.
+        """
+        return pulumi.get(self, "mailto_address")
+
+    @property
+    @pulumi.getter(name="mailtoSubject")
+    def mailto_subject(self) -> Optional[str]:
+        """
+        Subject line for emails created from block page.
+        """
+        return pulumi.get(self, "mailto_subject")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of block page configuration.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsBodyScanning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inspectionMode":
+            suggest = "inspection_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsBodyScanning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsBodyScanning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsBodyScanning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inspection_mode: str):
+        """
+        :param str inspection_mode: Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+        pulumi.set(__self__, "inspection_mode", inspection_mode)
+
+    @property
+    @pulumi.getter(name="inspectionMode")
+    def inspection_mode(self) -> str:
+        """
+        Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+        return pulumi.get(self, "inspection_mode")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsCustomCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsCustomCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsCustomCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsCustomCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 id: Optional[str] = None,
+                 updated_at: Optional[str] = None):
+        """
+        :param bool enabled: Whether TLS encryption should use a custom certificate.
+        :param str id: ID of custom certificate.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether TLS encryption should use a custom certificate.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of custom certificate.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[str]:
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsExtendedEmailMatching(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsFips(dict):
+    def __init__(__self__, *,
+                 tls: Optional[bool] = None):
+        """
+        :param bool tls: Only allow FIPS-compliant TLS configuration.
+        """
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[bool]:
+        """
+        Only allow FIPS-compliant TLS configuration.
+        """
+        return pulumi.get(self, "tls")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsLogging(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redactPii":
+            suggest = "redact_pii"
+        elif key == "settingsByRuleType":
+            suggest = "settings_by_rule_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsLogging. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsLogging.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsLogging.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redact_pii: bool,
+                 settings_by_rule_type: 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleType'):
+        """
+        :param bool redact_pii: Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        :param 'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs' settings_by_rule_type: Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
+        """
+        pulumi.set(__self__, "redact_pii", redact_pii)
+        pulumi.set(__self__, "settings_by_rule_type", settings_by_rule_type)
+
+    @property
+    @pulumi.getter(name="redactPii")
+    def redact_pii(self) -> bool:
+        """
+        Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        """
+        return pulumi.get(self, "redact_pii")
+
+    @property
+    @pulumi.getter(name="settingsByRuleType")
+    def settings_by_rule_type(self) -> 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleType':
+        """
+        Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
+        """
+        return pulumi.get(self, "settings_by_rule_type")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsLoggingSettingsByRuleType(dict):
+    def __init__(__self__, *,
+                 dns: 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns',
+                 http: 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp',
+                 l4: 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4'):
+        """
+        :param 'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs' dns: Logging configuration for DNS requests.
+        :param 'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs' http: Logging configuration for HTTP requests.
+        :param 'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args' l4: Logging configuration for layer 4 requests.
+        """
+        pulumi.set(__self__, "dns", dns)
+        pulumi.set(__self__, "http", http)
+        pulumi.set(__self__, "l4", l4)
+
+    @property
+    @pulumi.getter
+    def dns(self) -> 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns':
+        """
+        Logging configuration for DNS requests.
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter
+    def http(self) -> 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp':
+        """
+        Logging configuration for HTTP requests.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def l4(self) -> 'outputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4':
+        """
+        Logging configuration for layer 4 requests.
+        """
+        return pulumi.get(self, "l4")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAll":
+            suggest = "log_all"
+        elif key == "logBlocks":
+            suggest = "log_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_all: bool,
+                 log_blocks: bool):
+        """
+        :param bool log_all: Whether to log all activity.
+        """
+        pulumi.set(__self__, "log_all", log_all)
+        pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> bool:
+        """
+        Whether to log all activity.
+        """
+        return pulumi.get(self, "log_all")
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> bool:
+        return pulumi.get(self, "log_blocks")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAll":
+            suggest = "log_all"
+        elif key == "logBlocks":
+            suggest = "log_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_all: bool,
+                 log_blocks: bool):
+        """
+        :param bool log_all: Whether to log all activity.
+        """
+        pulumi.set(__self__, "log_all", log_all)
+        pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> bool:
+        """
+        Whether to log all activity.
+        """
+        return pulumi.get(self, "log_all")
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> bool:
+        return pulumi.get(self, "log_blocks")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAll":
+            suggest = "log_all"
+        elif key == "logBlocks":
+            suggest = "log_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_all: bool,
+                 log_blocks: bool):
+        """
+        :param bool log_all: Whether to log all activity.
+        """
+        pulumi.set(__self__, "log_all", log_all)
+        pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> bool:
+        """
+        Whether to log all activity.
+        """
+        return pulumi.get(self, "log_all")
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> bool:
+        return pulumi.get(self, "log_blocks")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsPayloadLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsPayloadLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsPayloadLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsPayloadLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_key: str):
+        """
+        :param str public_key: Public key used to encrypt matched payloads.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Public key used to encrypt matched payloads.
+        """
+        return pulumi.get(self, "public_key")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootCa":
+            suggest = "root_ca"
+        elif key == "virtualIp":
+            suggest = "virtual_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 root_ca: bool,
+                 tcp: bool,
+                 udp: bool,
+                 virtual_ip: bool):
+        """
+        :param bool root_ca: Whether root ca is enabled account wide for ZT clients.
+        :param bool tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
+        :param bool udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
+        :param bool virtual_ip: Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        """
+        pulumi.set(__self__, "root_ca", root_ca)
+        pulumi.set(__self__, "tcp", tcp)
+        pulumi.set(__self__, "udp", udp)
+        pulumi.set(__self__, "virtual_ip", virtual_ip)
+
+    @property
+    @pulumi.getter(name="rootCa")
+    def root_ca(self) -> bool:
+        """
+        Whether root ca is enabled account wide for ZT clients.
+        """
+        return pulumi.get(self, "root_ca")
+
+    @property
+    @pulumi.getter
+    def tcp(self) -> bool:
+        """
+        Whether gateway proxy is enabled on gateway devices for TCP traffic.
+        """
+        return pulumi.get(self, "tcp")
+
+    @property
+    @pulumi.getter
+    def udp(self) -> bool:
+        """
+        Whether gateway proxy is enabled on gateway devices for UDP traffic.
+        """
+        return pulumi.get(self, "udp")
+
+    @property
+    @pulumi.getter(name="virtualIp")
+    def virtual_ip(self) -> bool:
+        """
+        Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        """
+        return pulumi.get(self, "virtual_ip")
+
+
+@pulumi.output_type
+class ZeroTrustGatewaySettingsSshSessionLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewaySettingsSshSessionLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewaySettingsSshSessionLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewaySettingsSshSessionLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_key: str):
+        """
+        :param str public_key: Public key used to encrypt ssh session.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Public key used to encrypt ssh session.
+        """
+        return pulumi.get(self, "public_key")
+
+
+@pulumi.output_type
+class ZeroTrustListItemsWithDescription(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 value: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ZeroTrustLocalFallbackDomainDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsServers":
+            suggest = "dns_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustLocalFallbackDomainDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustLocalFallbackDomainDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustLocalFallbackDomainDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 dns_servers: Optional[Sequence[str]] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str description: A description of the fallback domain, displayed in the client UI.
+        :param Sequence[str] dns_servers: A list of IP addresses to handle domain resolution.
+        :param str suffix: The domain suffix to match when resolving locally.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[Sequence[str]]:
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        The domain suffix to match when resolving locally.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class ZeroTrustRiskBehaviorBehavior(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "riskLevel":
+            suggest = "risk_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustRiskBehaviorBehavior. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustRiskBehaviorBehavior.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustRiskBehaviorBehavior.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 name: str,
+                 risk_level: str):
+        """
+        :param bool enabled: Whether this risk behavior type is enabled.
+        :param str name: Name of this risk behavior type
+        :param str risk_level: Risk level. Available values: `low`, `medium`, `high`
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "risk_level", risk_level)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether this risk behavior type is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of this risk behavior type
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> str:
+        """
+        Risk level. Available values: `low`, `medium`, `high`
+        """
+        return pulumi.get(self, "risk_level")
+
+
+@pulumi.output_type
+class ZeroTrustSplitTunnelTunnel(dict):
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 description: Optional[str] = None,
+                 host: Optional[str] = None):
+        """
+        :param str address: The address for the tunnel.
+        :param str description: A description for the tunnel.
+        :param str host: The domain name for the tunnel.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        The address for the tunnel.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for the tunnel.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The domain name for the tunnel.
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressRules":
+            suggest = "ingress_rules"
+        elif key == "originRequest":
+            suggest = "origin_request"
+        elif key == "warpRouting":
+            suggest = "warp_routing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingress_rules: Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule'],
+                 origin_request: Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest'] = None,
+                 warp_routing: Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting'] = None):
+        """
+        :param Sequence['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs'] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        :param 'ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs' warp_routing: If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+        pulumi.set(__self__, "ingress_rules", ingress_rules)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
+        if warp_routing is not None:
+            pulumi.set(__self__, "warp_routing", warp_routing)
+
+    @property
+    @pulumi.getter(name="ingressRules")
+    def ingress_rules(self) -> Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule']:
+        """
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        """
+        return pulumi.get(self, "ingress_rules")
+
+    @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest']:
+        return pulumi.get(self, "origin_request")
+
+    @property
+    @pulumi.getter(name="warpRouting")
+    def warp_routing(self) -> Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting']:
+        """
+        If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+        return pulumi.get(self, "warp_routing")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigIngressRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originRequest":
+            suggest = "origin_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfigIngressRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service: str,
+                 hostname: Optional[str] = None,
+                 origin_request: Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest'] = None,
+                 path: Optional[str] = None):
+        """
+        :param str service: Name of the service to which the request will be sent.
+        :param str hostname: Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        :param str path: Path of the incoming request. If the path matches, the request will be sent to the local service.
+        """
+        pulumi.set(__self__, "service", service)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Name of the service to which the request will be sent.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest']:
+        return pulumi.get(self, "origin_request")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path of the incoming request. If the path matches, the request will be sent to the local service.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bastionMode":
+            suggest = "bastion_mode"
+        elif key == "caPool":
+            suggest = "ca_pool"
+        elif key == "connectTimeout":
+            suggest = "connect_timeout"
+        elif key == "disableChunkedEncoding":
+            suggest = "disable_chunked_encoding"
+        elif key == "http2Origin":
+            suggest = "http2_origin"
+        elif key == "httpHostHeader":
+            suggest = "http_host_header"
+        elif key == "ipRules":
+            suggest = "ip_rules"
+        elif key == "keepAliveConnections":
+            suggest = "keep_alive_connections"
+        elif key == "keepAliveTimeout":
+            suggest = "keep_alive_timeout"
+        elif key == "noHappyEyeballs":
+            suggest = "no_happy_eyeballs"
+        elif key == "noTlsVerify":
+            suggest = "no_tls_verify"
+        elif key == "originServerName":
+            suggest = "origin_server_name"
+        elif key == "proxyAddress":
+            suggest = "proxy_address"
+        elif key == "proxyPort":
+            suggest = "proxy_port"
+        elif key == "proxyType":
+            suggest = "proxy_type"
+        elif key == "tcpKeepAlive":
+            suggest = "tcp_keep_alive"
+        elif key == "tlsTimeout":
+            suggest = "tls_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access: Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess'] = None,
+                 bastion_mode: Optional[bool] = None,
+                 ca_pool: Optional[str] = None,
+                 connect_timeout: Optional[str] = None,
+                 disable_chunked_encoding: Optional[bool] = None,
+                 http2_origin: Optional[bool] = None,
+                 http_host_header: Optional[str] = None,
+                 ip_rules: Optional[Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule']] = None,
+                 keep_alive_connections: Optional[int] = None,
+                 keep_alive_timeout: Optional[str] = None,
+                 no_happy_eyeballs: Optional[bool] = None,
+                 no_tls_verify: Optional[bool] = None,
+                 origin_server_name: Optional[str] = None,
+                 proxy_address: Optional[str] = None,
+                 proxy_port: Optional[int] = None,
+                 proxy_type: Optional[str] = None,
+                 tcp_keep_alive: Optional[str] = None,
+                 tls_timeout: Optional[str] = None):
+        """
+        :param 'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs' access: Access rules for the ingress service.
+        :param bool bastion_mode: Runs as jump host.
+        :param str ca_pool: Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        :param str connect_timeout: Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        :param bool disable_chunked_encoding: Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        :param bool http2_origin: Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        :param str http_host_header: Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        :param Sequence['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgs'] ip_rules: IP rules for the proxy service.
+        :param int keep_alive_connections: Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        :param str keep_alive_timeout: Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        :param bool no_happy_eyeballs: Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        :param bool no_tls_verify: Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        :param str origin_server_name: Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        :param str proxy_address: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        :param int proxy_port: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        :param str proxy_type: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        :param str tcp_keep_alive: The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        :param str tls_timeout: Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if bastion_mode is not None:
+            pulumi.set(__self__, "bastion_mode", bastion_mode)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if ip_rules is not None:
+            pulumi.set(__self__, "ip_rules", ip_rules)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_address is not None:
+            pulumi.set(__self__, "proxy_address", proxy_address)
+        if proxy_port is not None:
+            pulumi.set(__self__, "proxy_port", proxy_port)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess']:
+        """
+        Access rules for the ingress service.
+        """
+        return pulumi.get(self, "access")
+
+    @property
+    @pulumi.getter(name="bastionMode")
+    def bastion_mode(self) -> Optional[bool]:
+        """
+        Runs as jump host.
+        """
+        return pulumi.get(self, "bastion_mode")
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[str]:
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[str]:
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        return pulumi.get(self, "connect_timeout")
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[bool]:
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[bool]:
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[str]:
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        return pulumi.get(self, "http_host_header")
+
+    @property
+    @pulumi.getter(name="ipRules")
+    def ip_rules(self) -> Optional[Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule']]:
+        """
+        IP rules for the proxy service.
+        """
+        return pulumi.get(self, "ip_rules")
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[int]:
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        return pulumi.get(self, "keep_alive_connections")
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[str]:
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[bool]:
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[bool]:
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        return pulumi.get(self, "no_tls_verify")
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[str]:
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        return pulumi.get(self, "origin_server_name")
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> Optional[str]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        return pulumi.get(self, "proxy_address")
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[int]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        return pulumi.get(self, "proxy_port")
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[str]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[str]:
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[str]:
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+        return pulumi.get(self, "tls_timeout")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audTags":
+            suggest = "aud_tags"
+        elif key == "teamName":
+            suggest = "team_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aud_tags: Optional[Sequence[str]] = None,
+                 required: Optional[bool] = None,
+                 team_name: Optional[str] = None):
+        """
+        :param Sequence[str] aud_tags: Audience tags of the access rule.
+        :param bool required: Whether the access rule is required.
+        :param str team_name: Name of the team to which the access rule applies.
+        """
+        if aud_tags is not None:
+            pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> Optional[Sequence[str]]:
+        """
+        Audience tags of the access rule.
+        """
+        return pulumi.get(self, "aud_tags")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the access rule is required.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[str]:
+        """
+        Name of the team to which the access rule applies.
+        """
+        return pulumi.get(self, "team_name")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRule(dict):
+    def __init__(__self__, *,
+                 allow: Optional[bool] = None,
+                 ports: Optional[Sequence[int]] = None,
+                 prefix: Optional[str] = None):
+        """
+        :param bool allow: Whether to allow the IP prefix.
+        :param Sequence[int] ports: Ports to use within the IP rule.
+        :param str prefix: IP rule prefix.
+        """
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[bool]:
+        """
+        Whether to allow the IP prefix.
+        """
+        return pulumi.get(self, "allow")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[int]]:
+        """
+        Ports to use within the IP rule.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        IP rule prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigOriginRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bastionMode":
+            suggest = "bastion_mode"
+        elif key == "caPool":
+            suggest = "ca_pool"
+        elif key == "connectTimeout":
+            suggest = "connect_timeout"
+        elif key == "disableChunkedEncoding":
+            suggest = "disable_chunked_encoding"
+        elif key == "http2Origin":
+            suggest = "http2_origin"
+        elif key == "httpHostHeader":
+            suggest = "http_host_header"
+        elif key == "ipRules":
+            suggest = "ip_rules"
+        elif key == "keepAliveConnections":
+            suggest = "keep_alive_connections"
+        elif key == "keepAliveTimeout":
+            suggest = "keep_alive_timeout"
+        elif key == "noHappyEyeballs":
+            suggest = "no_happy_eyeballs"
+        elif key == "noTlsVerify":
+            suggest = "no_tls_verify"
+        elif key == "originServerName":
+            suggest = "origin_server_name"
+        elif key == "proxyAddress":
+            suggest = "proxy_address"
+        elif key == "proxyPort":
+            suggest = "proxy_port"
+        elif key == "proxyType":
+            suggest = "proxy_type"
+        elif key == "tcpKeepAlive":
+            suggest = "tcp_keep_alive"
+        elif key == "tlsTimeout":
+            suggest = "tls_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfigOriginRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigOriginRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigOriginRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access: Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess'] = None,
+                 bastion_mode: Optional[bool] = None,
+                 ca_pool: Optional[str] = None,
+                 connect_timeout: Optional[str] = None,
+                 disable_chunked_encoding: Optional[bool] = None,
+                 http2_origin: Optional[bool] = None,
+                 http_host_header: Optional[str] = None,
+                 ip_rules: Optional[Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule']] = None,
+                 keep_alive_connections: Optional[int] = None,
+                 keep_alive_timeout: Optional[str] = None,
+                 no_happy_eyeballs: Optional[bool] = None,
+                 no_tls_verify: Optional[bool] = None,
+                 origin_server_name: Optional[str] = None,
+                 proxy_address: Optional[str] = None,
+                 proxy_port: Optional[int] = None,
+                 proxy_type: Optional[str] = None,
+                 tcp_keep_alive: Optional[str] = None,
+                 tls_timeout: Optional[str] = None):
+        """
+        :param 'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs' access: Access rules for the ingress service.
+        :param bool bastion_mode: Runs as jump host.
+        :param str ca_pool: Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        :param str connect_timeout: Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        :param bool disable_chunked_encoding: Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        :param bool http2_origin: Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        :param str http_host_header: Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        :param Sequence['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs'] ip_rules: IP rules for the proxy service.
+        :param int keep_alive_connections: Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        :param str keep_alive_timeout: Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        :param bool no_happy_eyeballs: Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        :param bool no_tls_verify: Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        :param str origin_server_name: Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        :param str proxy_address: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        :param int proxy_port: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        :param str proxy_type: cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        :param str tcp_keep_alive: The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        :param str tls_timeout: Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if bastion_mode is not None:
+            pulumi.set(__self__, "bastion_mode", bastion_mode)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if ip_rules is not None:
+            pulumi.set(__self__, "ip_rules", ip_rules)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_address is not None:
+            pulumi.set(__self__, "proxy_address", proxy_address)
+        if proxy_port is not None:
+            pulumi.set(__self__, "proxy_port", proxy_port)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess']:
+        """
+        Access rules for the ingress service.
+        """
+        return pulumi.get(self, "access")
+
+    @property
+    @pulumi.getter(name="bastionMode")
+    def bastion_mode(self) -> Optional[bool]:
+        """
+        Runs as jump host.
+        """
+        return pulumi.get(self, "bastion_mode")
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[str]:
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[str]:
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        return pulumi.get(self, "connect_timeout")
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[bool]:
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[bool]:
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[str]:
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        return pulumi.get(self, "http_host_header")
+
+    @property
+    @pulumi.getter(name="ipRules")
+    def ip_rules(self) -> Optional[Sequence['outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule']]:
+        """
+        IP rules for the proxy service.
+        """
+        return pulumi.get(self, "ip_rules")
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[int]:
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        return pulumi.get(self, "keep_alive_connections")
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[str]:
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[bool]:
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[bool]:
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        return pulumi.get(self, "no_tls_verify")
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[str]:
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        return pulumi.get(self, "origin_server_name")
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> Optional[str]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        return pulumi.get(self, "proxy_address")
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[int]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        return pulumi.get(self, "proxy_port")
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[str]:
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[str]:
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[str]:
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+        return pulumi.get(self, "tls_timeout")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audTags":
+            suggest = "aud_tags"
+        elif key == "teamName":
+            suggest = "team_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aud_tags: Optional[Sequence[str]] = None,
+                 required: Optional[bool] = None,
+                 team_name: Optional[str] = None):
+        """
+        :param Sequence[str] aud_tags: Audience tags of the access rule.
+        :param bool required: Whether the access rule is required.
+        :param str team_name: Name of the team to which the access rule applies.
+        """
+        if aud_tags is not None:
+            pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> Optional[Sequence[str]]:
+        """
+        Audience tags of the access rule.
+        """
+        return pulumi.get(self, "aud_tags")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the access rule is required.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[str]:
+        """
+        Name of the team to which the access rule applies.
+        """
+        return pulumi.get(self, "team_name")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRule(dict):
+    def __init__(__self__, *,
+                 allow: Optional[bool] = None,
+                 ports: Optional[Sequence[int]] = None,
+                 prefix: Optional[str] = None):
+        """
+        :param bool allow: Whether to allow the IP prefix.
+        :param Sequence[int] ports: Ports to use within the IP rule.
+        :param str prefix: IP rule prefix.
+        """
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[bool]:
+        """
+        Whether to allow the IP prefix.
+        """
+        return pulumi.get(self, "allow")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[int]]:
+        """
+        Ports to use within the IP rule.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        IP rule prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class ZeroTrustTunnelCloudflaredConfigConfigWarpRouting(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether WARP routing is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether WARP routing is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ZoneLockdownConfiguration(dict):
     def __init__(__self__, *,
                  target: str,
@@ -20155,7 +29201,7 @@ class GetDevicePostureRulesRuleResult(dict):
                  schedule: Optional[str] = None):
         """
         :param str id: ID of the Device Posture Rule.
-        :param str type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+        :param str type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
         :param str expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param str name: Name of the device posture rule.
         :param str schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -20183,7 +29229,7 @@ class GetDevicePostureRulesRuleResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
         """
         return pulumi.get(self, "type")
 

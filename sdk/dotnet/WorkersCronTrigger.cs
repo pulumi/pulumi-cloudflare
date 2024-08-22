@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleTrigger = new Cloudflare.WorkersCronTrigger("example_trigger", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ScriptName = exampleScriptCloudflareWorkerScript.Name,
+    ///         ScriptName = exampleScript.Name,
     ///         Schedules = new[]
     ///         {
     ///             "*/5 * * * *",

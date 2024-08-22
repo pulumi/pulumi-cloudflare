@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleTrigger = new cloudflare.WorkersCronTrigger("example_trigger", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     scriptName: exampleScriptCloudflareWorkerScript.name,
+ *     scriptName: exampleScript.name,
  *     schedules: [
  *         "*&#47;5 * * * *",
  *         "10 7 * * mon-fri",

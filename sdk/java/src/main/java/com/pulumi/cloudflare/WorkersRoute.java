@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersScript;
  * import com.pulumi.cloudflare.WorkersRoute;
  * import com.pulumi.cloudflare.WorkersRouteArgs;
- * import com.pulumi.cloudflare.WorkersScript;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,14 +43,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var myScript = new WorkersScript("myScript");
+ * 
  *         // Runs the specified worker script for all URLs that match `example.com/*`
  *         var myRoute = new WorkersRoute("myRoute", WorkersRouteArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .pattern("example.com/*")
- *             .scriptName(myScriptCloudflareWorkerScript.name())
+ *             .scriptName(myScript.name())
  *             .build());
- * 
- *         var myScript = new WorkersScript("myScript");
  * 
  *     }
  * }
