@@ -130,6 +130,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_risk_behavior":                            {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_risk_behavior":                 {ComputeID: delegateID("accountId")},
+			"cloudflare_turnstile_widget":						   {ComputeID: delegateID("accountId")},
+			"cloudflare_hyperdrive_config":						   {ComputeID: delegateID("accountId")},
 			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
 			"cloudflare_access_mutual_tls_hostname_settings": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
