@@ -1,13 +1,15 @@
 module github.com/pulumi/pulumi-cloudflare/provider/v5
 
-go 1.21.12
+go 1.22
+
+toolchain go1.23.1
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
 	github.com/pulumi/providertest v0.0.14
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.42.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
-	github.com/pulumi/pulumi/sdk/v3 v3.129.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.43.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.0
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -183,7 +185,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.14.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9-0.20240403143912-aaea88a50769 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.129.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.130.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
