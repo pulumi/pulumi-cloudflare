@@ -24,6 +24,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _checkPresences = value;
         }
 
+        [Input("contains")]
+        private InputMap<ImmutableArray<string>>? _contains;
+
+        /// <summary>
+        /// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> Contains
+        {
+            get => _contains ?? (_contains = new InputMap<ImmutableArray<string>>());
+            set => _contains = value;
+        }
+
         /// <summary>
         /// Exclude the origin header from the custom key.
         /// </summary>

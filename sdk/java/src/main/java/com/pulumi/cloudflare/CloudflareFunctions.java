@@ -12,6 +12,8 @@ import com.pulumi.cloudflare.inputs.GetAccountRolesArgs;
 import com.pulumi.cloudflare.inputs.GetAccountRolesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAccountsArgs;
 import com.pulumi.cloudflare.inputs.GetAccountsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetDcvDelegationArgs;
+import com.pulumi.cloudflare.inputs.GetDcvDelegationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicePostureRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesArgs;
@@ -61,6 +63,7 @@ import com.pulumi.cloudflare.outputs.GetAccessIdentityProviderResult;
 import com.pulumi.cloudflare.outputs.GetAccountRolesResult;
 import com.pulumi.cloudflare.outputs.GetAccountsResult;
 import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
+import com.pulumi.cloudflare.outputs.GetDcvDelegationResult;
 import com.pulumi.cloudflare.outputs.GetDevicePostureRulesResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetDlpDatasetsResult;
@@ -912,6 +915,34 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroupsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", TypeShape.of(GetApiTokenPermissionGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+     * 
+     */
+    public static Output<GetDcvDelegationResult> getDcvDelegation(GetDcvDelegationArgs args) {
+        return getDcvDelegation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+     * 
+     */
+    public static CompletableFuture<GetDcvDelegationResult> getDcvDelegationPlain(GetDcvDelegationPlainArgs args) {
+        return getDcvDelegationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+     * 
+     */
+    public static Output<GetDcvDelegationResult> getDcvDelegation(GetDcvDelegationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getDcvDelegation:getDcvDelegation", TypeShape.of(GetDcvDelegationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+     * 
+     */
+    public static CompletableFuture<GetDcvDelegationResult> getDcvDelegationPlain(GetDcvDelegationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getDcvDelegation:getDcvDelegation", TypeShape.of(GetDcvDelegationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)

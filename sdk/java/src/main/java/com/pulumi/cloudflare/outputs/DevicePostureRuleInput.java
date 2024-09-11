@@ -61,7 +61,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String domain;
     /**
-     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     private @Nullable String eidLastSeen;
@@ -266,7 +266,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     public Optional<String> eidLastSeen() {

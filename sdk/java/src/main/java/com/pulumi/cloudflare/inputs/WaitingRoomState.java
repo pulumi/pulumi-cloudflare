@@ -110,6 +110,21 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * 
+     */
+    @Import(name="enabledOriginCommands")
+    private @Nullable Output<List<String>> enabledOriginCommands;
+
+    /**
+     * @return The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * 
+     */
+    public Optional<Output<List<String>>> enabledOriginCommands() {
+        return Optional.ofNullable(this.enabledOriginCommands);
+    }
+
+    /**
      * Host name for which the waiting room will be applied (no wildcards).
      * 
      */
@@ -298,6 +313,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         this.defaultTemplateLanguage = $.defaultTemplateLanguage;
         this.description = $.description;
         this.disableSessionRenewal = $.disableSessionRenewal;
+        this.enabledOriginCommands = $.enabledOriginCommands;
         this.host = $.host;
         this.jsonResponseEnabled = $.jsonResponseEnabled;
         this.name = $.name;
@@ -464,6 +480,37 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableSessionRenewal(Boolean disableSessionRenewal) {
             return disableSessionRenewal(Output.of(disableSessionRenewal));
+        }
+
+        /**
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabledOriginCommands(@Nullable Output<List<String>> enabledOriginCommands) {
+            $.enabledOriginCommands = enabledOriginCommands;
+            return this;
+        }
+
+        /**
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabledOriginCommands(List<String> enabledOriginCommands) {
+            return enabledOriginCommands(Output.of(enabledOriginCommands));
+        }
+
+        /**
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabledOriginCommands(String... enabledOriginCommands) {
+            return enabledOriginCommands(List.of(enabledOriginCommands));
         }
 
         /**

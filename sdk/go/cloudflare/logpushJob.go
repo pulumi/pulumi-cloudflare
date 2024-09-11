@@ -41,6 +41,8 @@ type LogpushJob struct {
 	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+	//
+	// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -109,6 +111,8 @@ type logpushJobState struct {
 	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter *string `pulumi:"filter"`
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+	//
+	// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 	Frequency *string `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
@@ -142,6 +146,8 @@ type LogpushJobState struct {
 	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrInput
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+	//
+	// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 	Frequency pulumi.StringPtrInput
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
@@ -179,6 +185,8 @@ type logpushJobArgs struct {
 	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter *string `pulumi:"filter"`
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+	//
+	// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 	Frequency *string `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
@@ -213,6 +221,8 @@ type LogpushJobArgs struct {
 	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrInput
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+	//
+	// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 	Frequency pulumi.StringPtrInput
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
@@ -347,6 +357,8 @@ func (o LogpushJobOutput) Filter() pulumi.StringPtrOutput {
 }
 
 // A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+//
+// Deprecated: `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
 func (o LogpushJobOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }

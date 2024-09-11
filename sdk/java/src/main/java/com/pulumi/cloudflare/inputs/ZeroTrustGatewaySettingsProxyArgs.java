@@ -7,12 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 
 
 public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustGatewaySettingsProxyArgs Empty = new ZeroTrustGatewaySettingsProxyArgs();
+
+    /**
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * 
+     */
+    @Import(name="disableForTime", required=true)
+    private Output<Integer> disableForTime;
+
+    /**
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * 
+     */
+    public Output<Integer> disableForTime() {
+        return this.disableForTime;
+    }
 
     /**
      * Whether root ca is enabled account wide for ZT clients.
@@ -77,6 +93,7 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
     private ZeroTrustGatewaySettingsProxyArgs() {}
 
     private ZeroTrustGatewaySettingsProxyArgs(ZeroTrustGatewaySettingsProxyArgs $) {
+        this.disableForTime = $.disableForTime;
         this.rootCa = $.rootCa;
         this.tcp = $.tcp;
         this.udp = $.udp;
@@ -99,6 +116,27 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
 
         public Builder(ZeroTrustGatewaySettingsProxyArgs defaults) {
             $ = new ZeroTrustGatewaySettingsProxyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableForTime(Output<Integer> disableForTime) {
+            $.disableForTime = disableForTime;
+            return this;
+        }
+
+        /**
+         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableForTime(Integer disableForTime) {
+            return disableForTime(Output.of(disableForTime));
         }
 
         /**
@@ -186,6 +224,9 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
         }
 
         public ZeroTrustGatewaySettingsProxyArgs build() {
+            if ($.disableForTime == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustGatewaySettingsProxyArgs", "disableForTime");
+            }
             if ($.rootCa == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustGatewaySettingsProxyArgs", "rootCa");
             }

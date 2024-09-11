@@ -155,14 +155,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The datetime a device last seen in RFC 3339 format from Tanium.
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
      * 
      */
     @Import(name="eidLastSeen")
     private @Nullable Output<String> eidLastSeen;
 
     /**
-     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
      * 
      */
     public Optional<Output<String>> eidLastSeen() {
@@ -834,7 +834,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The datetime a device last seen in RFC 3339 format from Tanium.
+         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The datetime a device last seen in RFC 3339 format from Tanium.
+         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
          * 
          * @return builder
          * 

@@ -88,6 +88,8 @@ __all__ = [
     'ApiTokenPolicy',
     'CertificatePackValidationError',
     'CertificatePackValidationRecord',
+    'CloudConnectorRulesRule',
+    'CloudConnectorRulesRuleParameters',
     'CustomHostnameSsl',
     'CustomHostnameSslSetting',
     'CustomHostnameSslValidationError',
@@ -6062,6 +6064,89 @@ class CertificatePackValidationRecord(dict):
 
 
 @pulumi.output_type
+class CloudConnectorRulesRule(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 provider: str,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 parameters: Optional['outputs.CloudConnectorRulesRuleParameters'] = None):
+        """
+        :param str expression: Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        :param str provider: Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
+        :param str description: Brief summary of the cloud connector rule and its intended use.
+        :param bool enabled: Whether the headers rule is active.
+        :param 'CloudConnectorRulesRuleParametersArgs' parameters: Cloud Connector Rule Parameters
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "provider", provider)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        """
+        Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
+        """
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Brief summary of the cloud connector rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the headers rule is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional['outputs.CloudConnectorRulesRuleParameters']:
+        """
+        Cloud Connector Rule Parameters
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class CloudConnectorRulesRuleParameters(dict):
+    def __init__(__self__, *,
+                 host: str):
+        """
+        :param str host: Host parameter for cloud connector rule
+        """
+        pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host parameter for cloud connector rule
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
 class CustomHostnameSsl(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6841,7 +6926,7 @@ class DevicePostureRuleInput(dict):
         :param str connection_id: The workspace one or intune connection id.
         :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str domain: The domain that the client must join.
-        :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
+        :param str eid_last_seen: The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
         :param Sequence[str] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
@@ -7021,7 +7106,7 @@ class DevicePostureRuleInput(dict):
     @pulumi.getter(name="eidLastSeen")
     def eid_last_seen(self) -> Optional[str]:
         """
-        The datetime a device last seen in RFC 3339 format from Tanium.
+        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         """
         return pulumi.get(self, "eid_last_seen")
 
@@ -14101,15 +14186,19 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeader(dict):
 
     def __init__(__self__, *,
                  check_presences: Optional[Sequence[str]] = None,
+                 contains: Optional[Mapping[str, Sequence[str]]] = None,
                  exclude_origin: Optional[bool] = None,
                  includes: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] check_presences: List of headers to check for presence in the custom key.
+        :param Mapping[str, Sequence[str]] contains: Dictionary of headers mapping to lists of values to check for presence in the custom key.
         :param bool exclude_origin: Exclude the origin header from the custom key.
         :param Sequence[str] includes: List of headers to include in the custom key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
         if exclude_origin is not None:
             pulumi.set(__self__, "exclude_origin", exclude_origin)
         if includes is not None:
@@ -14122,6 +14211,14 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeader(dict):
         List of headers to check for presence in the custom key.
         """
         return pulumi.get(self, "check_presences")
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[Mapping[str, Sequence[str]]]:
+        """
+        Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        """
+        return pulumi.get(self, "contains")
 
     @property
     @pulumi.getter(name="excludeOrigin")
@@ -16110,7 +16207,9 @@ class TeamsAccountProxy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rootCa":
+        if key == "disableForTime":
+            suggest = "disable_for_time"
+        elif key == "rootCa":
             suggest = "root_ca"
         elif key == "virtualIp":
             suggest = "virtual_ip"
@@ -16127,20 +16226,31 @@ class TeamsAccountProxy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 disable_for_time: int,
                  root_ca: bool,
                  tcp: bool,
                  udp: bool,
                  virtual_ip: bool):
         """
+        :param int disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP
         :param bool root_ca: Whether root ca is enabled account wide for ZT clients.
         :param bool tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param bool udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
         :param bool virtual_ip: Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
         """
+        pulumi.set(__self__, "disable_for_time", disable_for_time)
         pulumi.set(__self__, "root_ca", root_ca)
         pulumi.set(__self__, "tcp", tcp)
         pulumi.set(__self__, "udp", udp)
         pulumi.set(__self__, "virtual_ip", virtual_ip)
+
+    @property
+    @pulumi.getter(name="disableForTime")
+    def disable_for_time(self) -> int:
+        """
+        Sets the time limit in seconds that a user can use an override code to bypass WARP
+        """
+        return pulumi.get(self, "disable_for_time")
 
     @property
     @pulumi.getter(name="rootCa")
@@ -24320,7 +24430,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
         :param str connection_id: The workspace one or intune connection id.
         :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str domain: The domain that the client must join.
-        :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
+        :param str eid_last_seen: The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
         :param Sequence[str] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
@@ -24500,7 +24610,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
     @pulumi.getter(name="eidLastSeen")
     def eid_last_seen(self) -> Optional[str]:
         """
-        The datetime a device last seen in RFC 3339 format from Tanium.
+        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
         """
         return pulumi.get(self, "eid_last_seen")
 
@@ -26467,7 +26577,9 @@ class ZeroTrustGatewaySettingsProxy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rootCa":
+        if key == "disableForTime":
+            suggest = "disable_for_time"
+        elif key == "rootCa":
             suggest = "root_ca"
         elif key == "virtualIp":
             suggest = "virtual_ip"
@@ -26484,20 +26596,31 @@ class ZeroTrustGatewaySettingsProxy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 disable_for_time: int,
                  root_ca: bool,
                  tcp: bool,
                  udp: bool,
                  virtual_ip: bool):
         """
+        :param int disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP
         :param bool root_ca: Whether root ca is enabled account wide for ZT clients.
         :param bool tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param bool udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
         :param bool virtual_ip: Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
         """
+        pulumi.set(__self__, "disable_for_time", disable_for_time)
         pulumi.set(__self__, "root_ca", root_ca)
         pulumi.set(__self__, "tcp", tcp)
         pulumi.set(__self__, "udp", udp)
         pulumi.set(__self__, "virtual_ip", virtual_ip)
+
+    @property
+    @pulumi.getter(name="disableForTime")
+    def disable_for_time(self) -> int:
+        """
+        Sets the time limit in seconds that a user can use an override code to bypass WARP
+        """
+        return pulumi.get(self, "disable_for_time")
 
     @property
     @pulumi.getter(name="rootCa")
@@ -31300,15 +31423,19 @@ class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookieResult(dict):
 class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderResult(dict):
     def __init__(__self__, *,
                  check_presences: Optional[Sequence[str]] = None,
+                 contains: Optional[Mapping[str, Sequence[str]]] = None,
                  exclude_origin: Optional[bool] = None,
                  includes: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] check_presences: List of headers to check for presence in the custom key.
+        :param Mapping[str, Sequence[str]] contains: Dictionary of headers mapping to lists of values to check for presence in the custom key.
         :param bool exclude_origin: Exclude the origin header from the custom key.
         :param Sequence[str] includes: List of headers to include in the custom key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
         if exclude_origin is not None:
             pulumi.set(__self__, "exclude_origin", exclude_origin)
         if includes is not None:
@@ -31321,6 +31448,14 @@ class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderResult(dict):
         List of headers to check for presence in the custom key.
         """
         return pulumi.get(self, "check_presences")
+
+    @property
+    @pulumi.getter
+    def contains(self) -> Optional[Mapping[str, Sequence[str]]]:
+        """
+        Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        """
+        return pulumi.get(self, "contains")
 
     @property
     @pulumi.getter(name="excludeOrigin")

@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The datetime a device last seen in RFC 3339 format from Tanium.
+        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         /// </summary>
         [Input("eidLastSeen")]
         public Input<string>? EidLastSeen { get; set; }

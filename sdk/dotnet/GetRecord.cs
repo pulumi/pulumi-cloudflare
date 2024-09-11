@@ -183,10 +183,6 @@ namespace Pulumi.Cloudflare
         /// The zone identifier to target for the resource.
         /// </summary>
         public readonly string ZoneId;
-        /// <summary>
-        /// Zone name of the found DNS record.
-        /// </summary>
-        public readonly string ZoneName;
 
         [OutputConstructor]
         private GetRecordResult(
@@ -208,9 +204,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId,
-
-            string zoneName)
+            string zoneId)
         {
             Content = content;
             Hostname = hostname;
@@ -222,7 +216,6 @@ namespace Pulumi.Cloudflare
             Type = type;
             Value = value;
             ZoneId = zoneId;
-            ZoneName = zoneName;
         }
     }
 }

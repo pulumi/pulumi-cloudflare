@@ -21,7 +21,7 @@ class GetRecordResult:
     """
     A collection of values returned by getRecord.
     """
-    def __init__(__self__, content=None, hostname=None, id=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, zone_name=None):
+    def __init__(__self__, content=None, hostname=None, id=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -52,9 +52,6 @@ class GetRecordResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-        if zone_name and not isinstance(zone_name, str):
-            raise TypeError("Expected argument 'zone_name' to be a str")
-        pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter
@@ -136,14 +133,6 @@ class GetRecordResult:
         """
         return pulumi.get(self, "zone_id")
 
-    @property
-    @pulumi.getter(name="zoneName")
-    def zone_name(self) -> str:
-        """
-        Zone name of the found DNS record.
-        """
-        return pulumi.get(self, "zone_name")
-
 
 class AwaitableGetRecordResult(GetRecordResult):
     # pylint: disable=using-constant-test
@@ -160,8 +149,7 @@ class AwaitableGetRecordResult(GetRecordResult):
             ttl=self.ttl,
             type=self.type,
             value=self.value,
-            zone_id=self.zone_id,
-            zone_name=self.zone_name)
+            zone_id=self.zone_id)
 
 
 def get_record(content: Optional[str] = None,
@@ -209,8 +197,7 @@ def get_record(content: Optional[str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         value=pulumi.get(__ret__, 'value'),
-        zone_id=pulumi.get(__ret__, 'zone_id'),
-        zone_name=pulumi.get(__ret__, 'zone_name'))
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_record)

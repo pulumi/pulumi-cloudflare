@@ -329,6 +329,17 @@ import javax.annotation.Nullable;
  *                                     "habc_t",
  *                                     "hdef_t")
  *                                 .excludeOrigin(true)
+ *                                 .contains(Map.ofEntries(
+ *                                     Map.entry("accept",                                     
+ *                                         "image/web",
+ *                                         "image/png"),
+ *                                     Map.entry("accept-encoding",                                     
+ *                                         "br",
+ *                                         "zstd"),
+ *                                     Map.entry("some-header",                                     
+ *                                         "some-value",
+ *                                         "some-other-value")
+ *                                 ))
  *                                 .build())
  *                             .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()
  *                                 .includes(                                

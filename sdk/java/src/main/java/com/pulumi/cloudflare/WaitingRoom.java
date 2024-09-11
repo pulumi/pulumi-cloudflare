@@ -169,6 +169,20 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSessionRenewal);
     }
     /**
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * 
+     */
+    @Export(name="enabledOriginCommands", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> enabledOriginCommands;
+
+    /**
+     * @return The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * 
+     */
+    public Output<Optional<List<String>>> enabledOriginCommands() {
+        return Codegen.optional(this.enabledOriginCommands);
+    }
+    /**
      * Host name for which the waiting room will be applied (no wildcards).
      * 
      */

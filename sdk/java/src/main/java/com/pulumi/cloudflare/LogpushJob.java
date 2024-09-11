@@ -110,7 +110,11 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
      * 
+     * @deprecated
+     * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+     * 
      */
+    @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
     @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> frequency;
 

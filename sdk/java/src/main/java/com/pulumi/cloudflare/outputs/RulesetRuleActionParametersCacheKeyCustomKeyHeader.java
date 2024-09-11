@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,11 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      * 
      */
     private @Nullable List<String> checkPresences;
+    /**
+     * @return Dictionary of headers mapping to lists of values to check for presence in the custom key.
+     * 
+     */
+    private @Nullable Map<String,List<String>> contains;
     /**
      * @return Exclude the origin header from the custom key.
      * 
@@ -36,6 +42,13 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
+    }
+    /**
+     * @return Dictionary of headers mapping to lists of values to check for presence in the custom key.
+     * 
+     */
+    public Map<String,List<String>> contains() {
+        return this.contains == null ? Map.of() : this.contains;
     }
     /**
      * @return Exclude the origin header from the custom key.
@@ -62,12 +75,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> checkPresences;
+        private @Nullable Map<String,List<String>> contains;
         private @Nullable Boolean excludeOrigin;
         private @Nullable List<String> includes;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKeyHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkPresences = defaults.checkPresences;
+    	      this.contains = defaults.contains;
     	      this.excludeOrigin = defaults.excludeOrigin;
     	      this.includes = defaults.includes;
         }
@@ -80,6 +95,12 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
         }
         public Builder checkPresences(String... checkPresences) {
             return checkPresences(List.of(checkPresences));
+        }
+        @CustomType.Setter
+        public Builder contains(@Nullable Map<String,List<String>> contains) {
+
+            this.contains = contains;
+            return this;
         }
         @CustomType.Setter
         public Builder excludeOrigin(@Nullable Boolean excludeOrigin) {
@@ -99,6 +120,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
         public RulesetRuleActionParametersCacheKeyCustomKeyHeader build() {
             final var _resultValue = new RulesetRuleActionParametersCacheKeyCustomKeyHeader();
             _resultValue.checkPresences = checkPresences;
+            _resultValue.contains = contains;
             _resultValue.excludeOrigin = excludeOrigin;
             _resultValue.includes = includes;
             return _resultValue;

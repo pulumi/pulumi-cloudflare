@@ -73,6 +73,8 @@ export class LogpushJob extends pulumi.CustomResource {
     public readonly filter!: pulumi.Output<string | undefined>;
     /**
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+     *
+     * @deprecated `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
      */
     public readonly frequency!: pulumi.Output<string | undefined>;
     /**
@@ -195,6 +197,8 @@ export interface LogpushJobState {
     filter?: pulumi.Input<string>;
     /**
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+     *
+     * @deprecated `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
      */
     frequency?: pulumi.Input<string>;
     /**
@@ -261,6 +265,8 @@ export interface LogpushJobArgs {
     filter?: pulumi.Input<string>;
     /**
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
+     *
+     * @deprecated `frequency` has been deprecated in favour of using `maxUploadIntervalSeconds` instead.
      */
     frequency?: pulumi.Input<string>;
     /**

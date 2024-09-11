@@ -98,6 +98,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// </summary>
+        [Output("enabledOriginCommands")]
+        public Output<ImmutableArray<string>> EnabledOriginCommands { get; private set; } = null!;
+
+        /// <summary>
         /// Host name for which the waiting room will be applied (no wildcards).
         /// </summary>
         [Output("host")]
@@ -257,6 +263,18 @@ namespace Pulumi.Cloudflare
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
 
+        [Input("enabledOriginCommands")]
+        private InputList<string>? _enabledOriginCommands;
+
+        /// <summary>
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// </summary>
+        public InputList<string> EnabledOriginCommands
+        {
+            get => _enabledOriginCommands ?? (_enabledOriginCommands = new InputList<string>());
+            set => _enabledOriginCommands = value;
+        }
+
         /// <summary>
         /// Host name for which the waiting room will be applied (no wildcards).
         /// </summary>
@@ -378,6 +396,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
+
+        [Input("enabledOriginCommands")]
+        private InputList<string>? _enabledOriginCommands;
+
+        /// <summary>
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// </summary>
+        public InputList<string> EnabledOriginCommands
+        {
+            get => _enabledOriginCommands ?? (_enabledOriginCommands = new InputList<string>());
+            set => _enabledOriginCommands = value;
+        }
 
         /// <summary>
         /// Host name for which the waiting room will be applied (no wildcards).

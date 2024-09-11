@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
+        /// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        /// </summary>
+        public readonly ImmutableDictionary<string, ImmutableArray<string>>? Contains;
+        /// <summary>
         /// Exclude the origin header from the custom key.
         /// </summary>
         public readonly bool? ExcludeOrigin;
@@ -30,11 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRuleActionParametersCacheKeyCustomKeyHeader(
             ImmutableArray<string> checkPresences,
 
+            ImmutableDictionary<string, ImmutableArray<string>>? contains,
+
             bool? excludeOrigin,
 
             ImmutableArray<string> includes)
         {
             CheckPresences = checkPresences;
+            Contains = contains;
             ExcludeOrigin = excludeOrigin;
             Includes = includes;
         }
