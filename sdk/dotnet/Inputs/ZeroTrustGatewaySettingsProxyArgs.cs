@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Sets the time limit in seconds that a user can use an override code to bypass WARP
+        /// </summary>
+        [Input("disableForTime", required: true)]
+        public Input<int> DisableForTime { get; set; } = null!;
+
+        /// <summary>
         /// Whether root ca is enabled account wide for ZT clients.
         /// </summary>
         [Input("rootCa", required: true)]

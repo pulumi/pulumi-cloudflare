@@ -85,8 +85,6 @@ type LookupRecordResult struct {
 	Value string `pulumi:"value"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
-	// Zone name of the found DNS record.
-	ZoneName string `pulumi:"zoneName"`
 }
 
 func LookupRecordOutput(ctx *pulumi.Context, args LookupRecordOutputArgs, opts ...pulumi.InvokeOption) LookupRecordResultOutput {
@@ -183,11 +181,6 @@ func (o LookupRecordResultOutput) Value() pulumi.StringOutput {
 // The zone identifier to target for the resource.
 func (o LookupRecordResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordResult) string { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-// Zone name of the found DNS record.
-func (o LookupRecordResultOutput) ZoneName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRecordResult) string { return v.ZoneName }).(pulumi.StringOutput)
 }
 
 func init() {

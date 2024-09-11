@@ -145,6 +145,11 @@ export type CertificatePack = import("./certificatePack").CertificatePack;
 export const CertificatePack: typeof import("./certificatePack").CertificatePack = null as any;
 utilities.lazyLoad(exports, ["CertificatePack"], () => require("./certificatePack"));
 
+export { CloudConnectorRulesArgs, CloudConnectorRulesState } from "./cloudConnectorRules";
+export type CloudConnectorRules = import("./cloudConnectorRules").CloudConnectorRules;
+export const CloudConnectorRules: typeof import("./cloudConnectorRules").CloudConnectorRules = null as any;
+utilities.lazyLoad(exports, ["CloudConnectorRules"], () => require("./cloudConnectorRules"));
+
 export { CustomHostnameArgs, CustomHostnameState } from "./customHostname";
 export type CustomHostname = import("./customHostname").CustomHostname;
 export const CustomHostname: typeof import("./customHostname").CustomHostname = null as any;
@@ -264,6 +269,11 @@ export { GetApiTokenPermissionGroupsResult } from "./getApiTokenPermissionGroups
 export const getApiTokenPermissionGroups: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroups = null as any;
 export const getApiTokenPermissionGroupsOutput: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getApiTokenPermissionGroups","getApiTokenPermissionGroupsOutput"], () => require("./getApiTokenPermissionGroups"));
+
+export { GetDcvDelegationArgs, GetDcvDelegationResult, GetDcvDelegationOutputArgs } from "./getDcvDelegation";
+export const getDcvDelegation: typeof import("./getDcvDelegation").getDcvDelegation = null as any;
+export const getDcvDelegationOutput: typeof import("./getDcvDelegation").getDcvDelegationOutput = null as any;
+utilities.lazyLoad(exports, ["getDcvDelegation","getDcvDelegationOutput"], () => require("./getDcvDelegation"));
 
 export { GetDevicePostureRulesArgs, GetDevicePostureRulesResult, GetDevicePostureRulesOutputArgs } from "./getDevicePostureRules";
 export const getDevicePostureRules: typeof import("./getDevicePostureRules").getDevicePostureRules = null as any;
@@ -1025,6 +1035,8 @@ const _module = {
                 return new ByoIpPrefix(name, <any>undefined, { urn })
             case "cloudflare:index/certificatePack:CertificatePack":
                 return new CertificatePack(name, <any>undefined, { urn })
+            case "cloudflare:index/cloudConnectorRules:CloudConnectorRules":
+                return new CloudConnectorRules(name, <any>undefined, { urn })
             case "cloudflare:index/customHostname:CustomHostname":
                 return new CustomHostname(name, <any>undefined, { urn })
             case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
@@ -1322,6 +1334,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPu
 pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/certificatePack", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/cloudConnectorRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)

@@ -33,6 +33,7 @@ from .authenticated_origin_pulls_certificate import *
 from .bot_management import *
 from .byo_ip_prefix import *
 from .certificate_pack import *
+from .cloud_connector_rules import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
@@ -57,6 +58,7 @@ from .get_access_identity_provider import *
 from .get_account_roles import *
 from .get_accounts import *
 from .get_api_token_permission_groups import *
+from .get_dcv_delegation import *
 from .get_device_posture_rules import *
 from .get_devices import *
 from .get_dlp_datasets import *
@@ -430,6 +432,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/certificatePack:CertificatePack": "CertificatePack"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/cloudConnectorRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/cloudConnectorRules:CloudConnectorRules": "CloudConnectorRules"
   }
  },
  {

@@ -6,10 +6,16 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class ZeroTrustGatewaySettingsProxy {
+    /**
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * 
+     */
+    private Integer disableForTime;
     /**
      * @return Whether root ca is enabled account wide for ZT clients.
      * 
@@ -32,6 +38,13 @@ public final class ZeroTrustGatewaySettingsProxy {
     private Boolean virtualIp;
 
     private ZeroTrustGatewaySettingsProxy() {}
+    /**
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * 
+     */
+    public Integer disableForTime() {
+        return this.disableForTime;
+    }
     /**
      * @return Whether root ca is enabled account wide for ZT clients.
      * 
@@ -70,6 +83,7 @@ public final class ZeroTrustGatewaySettingsProxy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer disableForTime;
         private Boolean rootCa;
         private Boolean tcp;
         private Boolean udp;
@@ -77,12 +91,21 @@ public final class ZeroTrustGatewaySettingsProxy {
         public Builder() {}
         public Builder(ZeroTrustGatewaySettingsProxy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableForTime = defaults.disableForTime;
     	      this.rootCa = defaults.rootCa;
     	      this.tcp = defaults.tcp;
     	      this.udp = defaults.udp;
     	      this.virtualIp = defaults.virtualIp;
         }
 
+        @CustomType.Setter
+        public Builder disableForTime(Integer disableForTime) {
+            if (disableForTime == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustGatewaySettingsProxy", "disableForTime");
+            }
+            this.disableForTime = disableForTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder rootCa(Boolean rootCa) {
             if (rootCa == null) {
@@ -117,6 +140,7 @@ public final class ZeroTrustGatewaySettingsProxy {
         }
         public ZeroTrustGatewaySettingsProxy build() {
             final var _resultValue = new ZeroTrustGatewaySettingsProxy();
+            _resultValue.disableForTime = disableForTime;
             _resultValue.rootCa = rootCa;
             _resultValue.tcp = tcp;
             _resultValue.udp = udp;

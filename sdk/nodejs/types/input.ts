@@ -1067,6 +1067,36 @@ export interface CertificatePackValidationRecord {
     txtValue?: pulumi.Input<string>;
 }
 
+export interface CloudConnectorRulesRule {
+    /**
+     * Brief summary of the cloud connector rule and its intended use.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether the headers rule is active.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Cloud Connector Rule Parameters
+     */
+    parameters?: pulumi.Input<inputs.CloudConnectorRulesRuleParameters>;
+    /**
+     * Type of provider. Available values: `awsS3`, `cloudflareR2`, `azureStorage`, `gcpStorage`
+     */
+    provider: pulumi.Input<string>;
+}
+
+export interface CloudConnectorRulesRuleParameters {
+    /**
+     * Host parameter for cloud connector rule
+     */
+    host: pulumi.Input<string>;
+}
+
 export interface CustomHostnameSsl {
     /**
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
@@ -1269,7 +1299,7 @@ export interface DevicePostureRuleInput {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The datetime a device last seen in RFC 3339 format from Tanium.
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      */
     eidLastSeen?: pulumi.Input<string>;
     /**
@@ -3633,6 +3663,10 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Dictionary of headers mapping to lists of values to check for presence in the custom key.
+     */
+    contains?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    /**
      * Exclude the origin header from the custom key.
      */
     excludeOrigin?: pulumi.Input<boolean>;
@@ -4186,6 +4220,10 @@ export interface TeamsAccountPayloadLog {
 }
 
 export interface TeamsAccountProxy {
+    /**
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     */
+    disableForTime: pulumi.Input<number>;
     /**
      * Whether root ca is enabled account wide for ZT clients.
      */
@@ -6028,7 +6066,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The datetime a device last seen in RFC 3339 format from Tanium.
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
      */
     eidLastSeen?: pulumi.Input<string>;
     /**
@@ -6622,6 +6660,10 @@ export interface ZeroTrustGatewaySettingsPayloadLog {
 }
 
 export interface ZeroTrustGatewaySettingsProxy {
+    /**
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     */
+    disableForTime: pulumi.Input<number>;
     /**
      * Whether root ca is enabled account wide for ZT clients.
      */

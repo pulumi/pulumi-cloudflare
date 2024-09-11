@@ -98,6 +98,10 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     */
+    public readonly enabledOriginCommands!: pulumi.Output<string[] | undefined>;
+    /**
      * Host name for which the waiting room will be applied (no wildcards).
      */
     public readonly host!: pulumi.Output<string>;
@@ -165,6 +169,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["defaultTemplateLanguage"] = state ? state.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
+            resourceInputs["enabledOriginCommands"] = state ? state.enabledOriginCommands : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["jsonResponseEnabled"] = state ? state.jsonResponseEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -200,6 +205,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["defaultTemplateLanguage"] = args ? args.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
+            resourceInputs["enabledOriginCommands"] = args ? args.enabledOriginCommands : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["jsonResponseEnabled"] = args ? args.jsonResponseEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -246,6 +252,10 @@ export interface WaitingRoomState {
      * Disables automatic renewal of session cookies.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
+    /**
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     */
+    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Host name for which the waiting room will be applied (no wildcards).
      */
@@ -324,6 +334,10 @@ export interface WaitingRoomArgs {
      * Disables automatic renewal of session cookies.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
+    /**
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     */
+    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Host name for which the waiting room will be applied (no wildcards).
      */

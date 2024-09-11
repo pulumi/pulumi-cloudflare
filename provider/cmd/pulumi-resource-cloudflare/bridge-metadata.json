@@ -881,6 +881,15 @@
                     }
                 }
             },
+            "cloudflare_cloud_connector_rules": {
+                "current": "cloudflare:index/cloudConnectorRules:CloudConnectorRules",
+                "majorVersion": 5,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_custom_hostname": {
                 "current": "cloudflare:index/customHostname:CustomHostname",
                 "majorVersion": 5,
@@ -1888,6 +1897,11 @@
                                                                                 "check_presence": {
                                                                                     "maxItemsOne": false
                                                                                 },
+                                                                                "contains": {
+                                                                                    "elem": {
+                                                                                        "maxItemsOne": false
+                                                                                    }
+                                                                                },
                                                                                 "include": {
                                                                                     "maxItemsOne": false
                                                                                 }
@@ -2360,6 +2374,9 @@
                 "majorVersion": 5,
                 "fields": {
                     "additional_routes": {
+                        "maxItemsOne": false
+                    },
+                    "enabled_origin_commands": {
                         "maxItemsOne": false
                     }
                 }
@@ -3818,6 +3835,10 @@
                 "current": "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups",
                 "majorVersion": 5
             },
+            "cloudflare_dcv_delegation": {
+                "current": "cloudflare:index/getDcvDelegation:getDcvDelegation",
+                "majorVersion": 5
+            },
             "cloudflare_device_posture_rules": {
                 "current": "cloudflare:index/getDevicePostureRules:getDevicePostureRules",
                 "majorVersion": 5,
@@ -4015,6 +4036,11 @@
                                                                                         "fields": {
                                                                                             "check_presence": {
                                                                                                 "maxItemsOne": false
+                                                                                            },
+                                                                                            "contains": {
+                                                                                                "elem": {
+                                                                                                    "maxItemsOne": false
+                                                                                                }
                                                                                             },
                                                                                             "include": {
                                                                                                 "maxItemsOne": false
@@ -4283,6 +4309,7 @@
             "cloudflare:index/botManagement:BotManagement": 0,
             "cloudflare:index/byoIpPrefix:ByoIpPrefix": 0,
             "cloudflare:index/certificatePack:CertificatePack": 0,
+            "cloudflare:index/cloudConnectorRules:CloudConnectorRules": 1,
             "cloudflare:index/customHostname:CustomHostname": 0,
             "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": 0,
             "cloudflare:index/customPages:CustomPages": 0,
@@ -4422,6 +4449,7 @@
             "cloudflare:index/getAccountRoles:getAccountRoles": 0,
             "cloudflare:index/getAccounts:getAccounts": 0,
             "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups": 1,
+            "cloudflare:index/getDcvDelegation:getDcvDelegation": 1,
             "cloudflare:index/getDevicePostureRules:getDevicePostureRules": 0,
             "cloudflare:index/getDevices:getDevices": 0,
             "cloudflare:index/getDlpDatasets:getDlpDatasets": 1,

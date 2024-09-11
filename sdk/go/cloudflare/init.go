@@ -77,6 +77,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ByoIpPrefix{}
 	case "cloudflare:index/certificatePack:CertificatePack":
 		r = &CertificatePack{}
+	case "cloudflare:index/cloudConnectorRules:CloudConnectorRules":
+		r = &CloudConnectorRules{}
 	case "cloudflare:index/customHostname:CustomHostname":
 		r = &CustomHostname{}
 	case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
@@ -510,6 +512,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/certificatePack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/cloudConnectorRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

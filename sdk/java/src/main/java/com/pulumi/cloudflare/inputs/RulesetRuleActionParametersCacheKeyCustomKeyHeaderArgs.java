@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,21 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
      */
     public Optional<Output<List<String>>> checkPresences() {
         return Optional.ofNullable(this.checkPresences);
+    }
+
+    /**
+     * Dictionary of headers mapping to lists of values to check for presence in the custom key.
+     * 
+     */
+    @Import(name="contains")
+    private @Nullable Output<Map<String,List<String>>> contains;
+
+    /**
+     * @return Dictionary of headers mapping to lists of values to check for presence in the custom key.
+     * 
+     */
+    public Optional<Output<Map<String,List<String>>>> contains() {
+        return Optional.ofNullable(this.contains);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs $) {
         this.checkPresences = $.checkPresences;
+        this.contains = $.contains;
         this.excludeOrigin = $.excludeOrigin;
         this.includes = $.includes;
     }
@@ -117,6 +134,27 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
          */
         public Builder checkPresences(String... checkPresences) {
             return checkPresences(List.of(checkPresences));
+        }
+
+        /**
+         * @param contains Dictionary of headers mapping to lists of values to check for presence in the custom key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contains(@Nullable Output<Map<String,List<String>>> contains) {
+            $.contains = contains;
+            return this;
+        }
+
+        /**
+         * @param contains Dictionary of headers mapping to lists of values to check for presence in the custom key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contains(Map<String,List<String>> contains) {
+            return contains(Output.of(contains));
         }
 
         /**

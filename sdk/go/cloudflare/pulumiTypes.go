@@ -10552,6 +10552,276 @@ func (o CertificatePackValidationRecordArrayOutput) Index(i pulumi.IntInput) Cer
 	}).(CertificatePackValidationRecordOutput)
 }
 
+type CloudConnectorRulesRule struct {
+	// Brief summary of the cloud connector rule and its intended use.
+	Description *string `pulumi:"description"`
+	// Whether the headers rule is active.
+	Enabled *bool `pulumi:"enabled"`
+	// Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+	Expression string `pulumi:"expression"`
+	// Cloud Connector Rule Parameters
+	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
+	// Type of provider. Available values: `awsS3`, `cloudflareR2`, `azureStorage`, `gcpStorage`
+	Provider string `pulumi:"provider"`
+}
+
+// CloudConnectorRulesRuleInput is an input type that accepts CloudConnectorRulesRuleArgs and CloudConnectorRulesRuleOutput values.
+// You can construct a concrete instance of `CloudConnectorRulesRuleInput` via:
+//
+//	CloudConnectorRulesRuleArgs{...}
+type CloudConnectorRulesRuleInput interface {
+	pulumi.Input
+
+	ToCloudConnectorRulesRuleOutput() CloudConnectorRulesRuleOutput
+	ToCloudConnectorRulesRuleOutputWithContext(context.Context) CloudConnectorRulesRuleOutput
+}
+
+type CloudConnectorRulesRuleArgs struct {
+	// Brief summary of the cloud connector rule and its intended use.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the headers rule is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Cloud Connector Rule Parameters
+	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
+	// Type of provider. Available values: `awsS3`, `cloudflareR2`, `azureStorage`, `gcpStorage`
+	Provider pulumi.StringInput `pulumi:"provider"`
+}
+
+func (CloudConnectorRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudConnectorRulesRule)(nil)).Elem()
+}
+
+func (i CloudConnectorRulesRuleArgs) ToCloudConnectorRulesRuleOutput() CloudConnectorRulesRuleOutput {
+	return i.ToCloudConnectorRulesRuleOutputWithContext(context.Background())
+}
+
+func (i CloudConnectorRulesRuleArgs) ToCloudConnectorRulesRuleOutputWithContext(ctx context.Context) CloudConnectorRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesRuleOutput)
+}
+
+// CloudConnectorRulesRuleArrayInput is an input type that accepts CloudConnectorRulesRuleArray and CloudConnectorRulesRuleArrayOutput values.
+// You can construct a concrete instance of `CloudConnectorRulesRuleArrayInput` via:
+//
+//	CloudConnectorRulesRuleArray{ CloudConnectorRulesRuleArgs{...} }
+type CloudConnectorRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudConnectorRulesRuleArrayOutput() CloudConnectorRulesRuleArrayOutput
+	ToCloudConnectorRulesRuleArrayOutputWithContext(context.Context) CloudConnectorRulesRuleArrayOutput
+}
+
+type CloudConnectorRulesRuleArray []CloudConnectorRulesRuleInput
+
+func (CloudConnectorRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudConnectorRulesRule)(nil)).Elem()
+}
+
+func (i CloudConnectorRulesRuleArray) ToCloudConnectorRulesRuleArrayOutput() CloudConnectorRulesRuleArrayOutput {
+	return i.ToCloudConnectorRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudConnectorRulesRuleArray) ToCloudConnectorRulesRuleArrayOutputWithContext(ctx context.Context) CloudConnectorRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesRuleArrayOutput)
+}
+
+type CloudConnectorRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudConnectorRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudConnectorRulesRule)(nil)).Elem()
+}
+
+func (o CloudConnectorRulesRuleOutput) ToCloudConnectorRulesRuleOutput() CloudConnectorRulesRuleOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleOutput) ToCloudConnectorRulesRuleOutputWithContext(ctx context.Context) CloudConnectorRulesRuleOutput {
+	return o
+}
+
+// Brief summary of the cloud connector rule and its intended use.
+func (o CloudConnectorRulesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the headers rule is active.
+func (o CloudConnectorRulesRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+func (o CloudConnectorRulesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Cloud Connector Rule Parameters
+func (o CloudConnectorRulesRuleOutput) Parameters() CloudConnectorRulesRuleParametersPtrOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) *CloudConnectorRulesRuleParameters { return v.Parameters }).(CloudConnectorRulesRuleParametersPtrOutput)
+}
+
+// Type of provider. Available values: `awsS3`, `cloudflareR2`, `azureStorage`, `gcpStorage`
+func (o CloudConnectorRulesRuleOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+type CloudConnectorRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudConnectorRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudConnectorRulesRule)(nil)).Elem()
+}
+
+func (o CloudConnectorRulesRuleArrayOutput) ToCloudConnectorRulesRuleArrayOutput() CloudConnectorRulesRuleArrayOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleArrayOutput) ToCloudConnectorRulesRuleArrayOutputWithContext(ctx context.Context) CloudConnectorRulesRuleArrayOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleArrayOutput) Index(i pulumi.IntInput) CloudConnectorRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudConnectorRulesRule {
+		return vs[0].([]CloudConnectorRulesRule)[vs[1].(int)]
+	}).(CloudConnectorRulesRuleOutput)
+}
+
+type CloudConnectorRulesRuleParameters struct {
+	// Host parameter for cloud connector rule
+	Host string `pulumi:"host"`
+}
+
+// CloudConnectorRulesRuleParametersInput is an input type that accepts CloudConnectorRulesRuleParametersArgs and CloudConnectorRulesRuleParametersOutput values.
+// You can construct a concrete instance of `CloudConnectorRulesRuleParametersInput` via:
+//
+//	CloudConnectorRulesRuleParametersArgs{...}
+type CloudConnectorRulesRuleParametersInput interface {
+	pulumi.Input
+
+	ToCloudConnectorRulesRuleParametersOutput() CloudConnectorRulesRuleParametersOutput
+	ToCloudConnectorRulesRuleParametersOutputWithContext(context.Context) CloudConnectorRulesRuleParametersOutput
+}
+
+type CloudConnectorRulesRuleParametersArgs struct {
+	// Host parameter for cloud connector rule
+	Host pulumi.StringInput `pulumi:"host"`
+}
+
+func (CloudConnectorRulesRuleParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudConnectorRulesRuleParameters)(nil)).Elem()
+}
+
+func (i CloudConnectorRulesRuleParametersArgs) ToCloudConnectorRulesRuleParametersOutput() CloudConnectorRulesRuleParametersOutput {
+	return i.ToCloudConnectorRulesRuleParametersOutputWithContext(context.Background())
+}
+
+func (i CloudConnectorRulesRuleParametersArgs) ToCloudConnectorRulesRuleParametersOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesRuleParametersOutput)
+}
+
+func (i CloudConnectorRulesRuleParametersArgs) ToCloudConnectorRulesRuleParametersPtrOutput() CloudConnectorRulesRuleParametersPtrOutput {
+	return i.ToCloudConnectorRulesRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (i CloudConnectorRulesRuleParametersArgs) ToCloudConnectorRulesRuleParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesRuleParametersOutput).ToCloudConnectorRulesRuleParametersPtrOutputWithContext(ctx)
+}
+
+// CloudConnectorRulesRuleParametersPtrInput is an input type that accepts CloudConnectorRulesRuleParametersArgs, CloudConnectorRulesRuleParametersPtr and CloudConnectorRulesRuleParametersPtrOutput values.
+// You can construct a concrete instance of `CloudConnectorRulesRuleParametersPtrInput` via:
+//
+//	        CloudConnectorRulesRuleParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudConnectorRulesRuleParametersPtrInput interface {
+	pulumi.Input
+
+	ToCloudConnectorRulesRuleParametersPtrOutput() CloudConnectorRulesRuleParametersPtrOutput
+	ToCloudConnectorRulesRuleParametersPtrOutputWithContext(context.Context) CloudConnectorRulesRuleParametersPtrOutput
+}
+
+type cloudConnectorRulesRuleParametersPtrType CloudConnectorRulesRuleParametersArgs
+
+func CloudConnectorRulesRuleParametersPtr(v *CloudConnectorRulesRuleParametersArgs) CloudConnectorRulesRuleParametersPtrInput {
+	return (*cloudConnectorRulesRuleParametersPtrType)(v)
+}
+
+func (*cloudConnectorRulesRuleParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudConnectorRulesRuleParameters)(nil)).Elem()
+}
+
+func (i *cloudConnectorRulesRuleParametersPtrType) ToCloudConnectorRulesRuleParametersPtrOutput() CloudConnectorRulesRuleParametersPtrOutput {
+	return i.ToCloudConnectorRulesRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudConnectorRulesRuleParametersPtrType) ToCloudConnectorRulesRuleParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesRuleParametersPtrOutput)
+}
+
+type CloudConnectorRulesRuleParametersOutput struct{ *pulumi.OutputState }
+
+func (CloudConnectorRulesRuleParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudConnectorRulesRuleParameters)(nil)).Elem()
+}
+
+func (o CloudConnectorRulesRuleParametersOutput) ToCloudConnectorRulesRuleParametersOutput() CloudConnectorRulesRuleParametersOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleParametersOutput) ToCloudConnectorRulesRuleParametersOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleParametersOutput) ToCloudConnectorRulesRuleParametersPtrOutput() CloudConnectorRulesRuleParametersPtrOutput {
+	return o.ToCloudConnectorRulesRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (o CloudConnectorRulesRuleParametersOutput) ToCloudConnectorRulesRuleParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudConnectorRulesRuleParameters) *CloudConnectorRulesRuleParameters {
+		return &v
+	}).(CloudConnectorRulesRuleParametersPtrOutput)
+}
+
+// Host parameter for cloud connector rule
+func (o CloudConnectorRulesRuleParametersOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRuleParameters) string { return v.Host }).(pulumi.StringOutput)
+}
+
+type CloudConnectorRulesRuleParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudConnectorRulesRuleParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudConnectorRulesRuleParameters)(nil)).Elem()
+}
+
+func (o CloudConnectorRulesRuleParametersPtrOutput) ToCloudConnectorRulesRuleParametersPtrOutput() CloudConnectorRulesRuleParametersPtrOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleParametersPtrOutput) ToCloudConnectorRulesRuleParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesRuleParametersPtrOutput {
+	return o
+}
+
+func (o CloudConnectorRulesRuleParametersPtrOutput) Elem() CloudConnectorRulesRuleParametersOutput {
+	return o.ApplyT(func(v *CloudConnectorRulesRuleParameters) CloudConnectorRulesRuleParameters {
+		if v != nil {
+			return *v
+		}
+		var ret CloudConnectorRulesRuleParameters
+		return ret
+	}).(CloudConnectorRulesRuleParametersOutput)
+}
+
+// Host parameter for cloud connector rule
+func (o CloudConnectorRulesRuleParametersPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudConnectorRulesRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
 type CustomHostnameSsl struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
 	BundleMethod         *string `pulumi:"bundleMethod"`
@@ -11910,7 +12180,7 @@ type DevicePostureRuleInputType struct {
 	CountOperator *string `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain *string `pulumi:"domain"`
-	// The datetime a device last seen in RFC 3339 format from Tanium.
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	EidLastSeen *string `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -11998,7 +12268,7 @@ type DevicePostureRuleInputTypeArgs struct {
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The datetime a device last seen in RFC 3339 format from Tanium.
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	EidLastSeen pulumi.StringPtrInput `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -12152,7 +12422,7 @@ func (o DevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The datetime a device last seen in RFC 3339 format from Tanium.
+// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 func (o DevicePostureRuleInputTypeOutput) EidLastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.EidLastSeen }).(pulumi.StringPtrOutput)
 }
@@ -27878,6 +28148,8 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) Includes() 
 type RulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
 	// List of headers to check for presence in the custom key.
 	CheckPresences []string `pulumi:"checkPresences"`
+	// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+	Contains map[string][]string `pulumi:"contains"`
 	// Exclude the origin header from the custom key.
 	ExcludeOrigin *bool `pulumi:"excludeOrigin"`
 	// List of headers to include in the custom key.
@@ -27898,6 +28170,8 @@ type RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput interface {
 type RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs struct {
 	// List of headers to check for presence in the custom key.
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
+	// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+	Contains pulumi.StringArrayMapInput `pulumi:"contains"`
 	// Exclude the origin header from the custom key.
 	ExcludeOrigin pulumi.BoolPtrInput `pulumi:"excludeOrigin"`
 	// List of headers to include in the custom key.
@@ -27986,6 +28260,11 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) CheckPresences
 	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
 }
 
+// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Contains() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) map[string][]string { return v.Contains }).(pulumi.StringArrayMapOutput)
+}
+
 // Exclude the origin header from the custom key.
 func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ExcludeOrigin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) *bool { return v.ExcludeOrigin }).(pulumi.BoolPtrOutput)
@@ -28028,6 +28307,16 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) CheckPresen
 		}
 		return v.CheckPresences
 	}).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) Contains() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHeader) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringArrayMapOutput)
 }
 
 // Exclude the origin header from the custom key.
@@ -34611,6 +34900,8 @@ func (o TeamsAccountPayloadLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type TeamsAccountProxy struct {
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	DisableForTime int `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa bool `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -34633,6 +34924,8 @@ type TeamsAccountProxyInput interface {
 }
 
 type TeamsAccountProxyArgs struct {
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	DisableForTime pulumi.IntInput `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa pulumi.BoolInput `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -34720,6 +35013,11 @@ func (o TeamsAccountProxyOutput) ToTeamsAccountProxyPtrOutputWithContext(ctx con
 	}).(TeamsAccountProxyPtrOutput)
 }
 
+// Sets the time limit in seconds that a user can use an override code to bypass WARP
+func (o TeamsAccountProxyOutput) DisableForTime() pulumi.IntOutput {
+	return o.ApplyT(func(v TeamsAccountProxy) int { return v.DisableForTime }).(pulumi.IntOutput)
+}
+
 // Whether root ca is enabled account wide for ZT clients.
 func (o TeamsAccountProxyOutput) RootCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.RootCa }).(pulumi.BoolOutput)
@@ -34762,6 +35060,16 @@ func (o TeamsAccountProxyPtrOutput) Elem() TeamsAccountProxyOutput {
 		var ret TeamsAccountProxy
 		return ret
 	}).(TeamsAccountProxyOutput)
+}
+
+// Sets the time limit in seconds that a user can use an override code to bypass WARP
+func (o TeamsAccountProxyPtrOutput) DisableForTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableForTime
+	}).(pulumi.IntPtrOutput)
 }
 
 // Whether root ca is enabled account wide for ZT clients.
@@ -51315,7 +51623,7 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	CountOperator *string `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain *string `pulumi:"domain"`
-	// The datetime a device last seen in RFC 3339 format from Tanium.
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
 	EidLastSeen *string `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -51403,7 +51711,7 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The datetime a device last seen in RFC 3339 format from Tanium.
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
 	EidLastSeen pulumi.StringPtrInput `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -51557,7 +51865,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The datetime a device last seen in RFC 3339 format from Tanium.
+// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) EidLastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.EidLastSeen }).(pulumi.StringPtrOutput)
 }
@@ -57158,6 +57466,8 @@ func (o ZeroTrustGatewaySettingsPayloadLogPtrOutput) PublicKey() pulumi.StringPt
 }
 
 type ZeroTrustGatewaySettingsProxy struct {
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	DisableForTime int `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa bool `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -57180,6 +57490,8 @@ type ZeroTrustGatewaySettingsProxyInput interface {
 }
 
 type ZeroTrustGatewaySettingsProxyArgs struct {
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	DisableForTime pulumi.IntInput `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa pulumi.BoolInput `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -57267,6 +57579,11 @@ func (o ZeroTrustGatewaySettingsProxyOutput) ToZeroTrustGatewaySettingsProxyPtrO
 	}).(ZeroTrustGatewaySettingsProxyPtrOutput)
 }
 
+// Sets the time limit in seconds that a user can use an override code to bypass WARP
+func (o ZeroTrustGatewaySettingsProxyOutput) DisableForTime() pulumi.IntOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsProxy) int { return v.DisableForTime }).(pulumi.IntOutput)
+}
+
 // Whether root ca is enabled account wide for ZT clients.
 func (o ZeroTrustGatewaySettingsProxyOutput) RootCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsProxy) bool { return v.RootCa }).(pulumi.BoolOutput)
@@ -57309,6 +57626,16 @@ func (o ZeroTrustGatewaySettingsProxyPtrOutput) Elem() ZeroTrustGatewaySettingsP
 		var ret ZeroTrustGatewaySettingsProxy
 		return ret
 	}).(ZeroTrustGatewaySettingsProxyOutput)
+}
+
+// Sets the time limit in seconds that a user can use an override code to bypass WARP
+func (o ZeroTrustGatewaySettingsProxyPtrOutput) DisableForTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsProxy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableForTime
+	}).(pulumi.IntPtrOutput)
 }
 
 // Whether root ca is enabled account wide for ZT clients.
@@ -67271,6 +67598,8 @@ func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) 
 type GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
 	// List of headers to check for presence in the custom key.
 	CheckPresences []string `pulumi:"checkPresences"`
+	// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+	Contains map[string][]string `pulumi:"contains"`
 	// Exclude the origin header from the custom key.
 	ExcludeOrigin *bool `pulumi:"excludeOrigin"`
 	// List of headers to include in the custom key.
@@ -67291,6 +67620,8 @@ type GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput interfac
 type GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs struct {
 	// List of headers to check for presence in the custom key.
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
+	// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+	Contains pulumi.StringArrayMapInput `pulumi:"contains"`
 	// Exclude the origin header from the custom key.
 	ExcludeOrigin pulumi.BoolPtrInput `pulumi:"excludeOrigin"`
 	// List of headers to include in the custom key.
@@ -67381,6 +67712,13 @@ func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Che
 	}).(pulumi.StringArrayOutput)
 }
 
+// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Contains() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader) map[string][]string {
+		return v.Contains
+	}).(pulumi.StringArrayMapOutput)
+}
+
 // Exclude the origin header from the custom key.
 func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ExcludeOrigin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader) *bool { return v.ExcludeOrigin }).(pulumi.BoolPtrOutput)
@@ -67423,6 +67761,16 @@ func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) 
 		}
 		return v.CheckPresences
 	}).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) Contains() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringArrayMapOutput)
 }
 
 // Exclude the origin header from the custom key.
@@ -71563,6 +71911,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationErrorArrayInput)(nil)).Elem(), CertificatePackValidationErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationRecordInput)(nil)).Elem(), CertificatePackValidationRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationRecordArrayInput)(nil)).Elem(), CertificatePackValidationRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleInput)(nil)).Elem(), CloudConnectorRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleArrayInput)(nil)).Elem(), CloudConnectorRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleParametersInput)(nil)).Elem(), CloudConnectorRulesRuleParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleParametersPtrInput)(nil)).Elem(), CloudConnectorRulesRuleParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslInput)(nil)).Elem(), CustomHostnameSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslArrayInput)(nil)).Elem(), CustomHostnameSslArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslSettingInput)(nil)).Elem(), CustomHostnameSslSettingArgs{})
@@ -72443,6 +72795,10 @@ func init() {
 	pulumi.RegisterOutputType(CertificatePackValidationErrorArrayOutput{})
 	pulumi.RegisterOutputType(CertificatePackValidationRecordOutput{})
 	pulumi.RegisterOutputType(CertificatePackValidationRecordArrayOutput{})
+	pulumi.RegisterOutputType(CloudConnectorRulesRuleOutput{})
+	pulumi.RegisterOutputType(CloudConnectorRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudConnectorRulesRuleParametersOutput{})
+	pulumi.RegisterOutputType(CloudConnectorRulesRuleParametersPtrOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslSettingOutput{})

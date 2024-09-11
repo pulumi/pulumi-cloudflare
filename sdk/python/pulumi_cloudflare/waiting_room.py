@@ -27,6 +27,7 @@ class WaitingRoomArgs:
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
@@ -47,6 +48,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
@@ -72,6 +74,8 @@ class WaitingRoomArgs:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
             pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+        if enabled_origin_commands is not None:
+            pulumi.set(__self__, "enabled_origin_commands", enabled_origin_commands)
         if json_response_enabled is not None:
             pulumi.set(__self__, "json_response_enabled", json_response_enabled)
         if path is not None:
@@ -220,6 +224,18 @@ class WaitingRoomArgs:
         pulumi.set(self, "disable_session_renewal", value)
 
     @property
+    @pulumi.getter(name="enabledOriginCommands")
+    def enabled_origin_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of enabled origin commands for the waiting room. Available values: `revoke`
+        """
+        return pulumi.get(self, "enabled_origin_commands")
+
+    @enabled_origin_commands.setter
+    def enabled_origin_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_origin_commands", value)
+
+    @property
     @pulumi.getter(name="jsonResponseEnabled")
     def json_response_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -313,6 +329,7 @@ class _WaitingRoomState:
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -333,6 +350,7 @@ class _WaitingRoomState:
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
@@ -358,6 +376,8 @@ class _WaitingRoomState:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
             pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+        if enabled_origin_commands is not None:
+            pulumi.set(__self__, "enabled_origin_commands", enabled_origin_commands)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if json_response_enabled is not None:
@@ -454,6 +474,18 @@ class _WaitingRoomState:
     @disable_session_renewal.setter
     def disable_session_renewal(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_session_renewal", value)
+
+    @property
+    @pulumi.getter(name="enabledOriginCommands")
+    def enabled_origin_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of enabled origin commands for the waiting room. Available values: `revoke`
+        """
+        return pulumi.get(self, "enabled_origin_commands")
+
+    @enabled_origin_commands.setter
+    def enabled_origin_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_origin_commands", value)
 
     @property
     @pulumi.getter
@@ -611,6 +643,7 @@ class WaitingRoom(pulumi.CustomResource):
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -670,6 +703,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
@@ -748,6 +782,7 @@ class WaitingRoom(pulumi.CustomResource):
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -775,6 +810,7 @@ class WaitingRoom(pulumi.CustomResource):
             __props__.__dict__["default_template_language"] = default_template_language
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_session_renewal"] = disable_session_renewal
+            __props__.__dict__["enabled_origin_commands"] = enabled_origin_commands
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
@@ -813,6 +849,7 @@ class WaitingRoom(pulumi.CustomResource):
             default_template_language: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+            enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             host: Optional[pulumi.Input[str]] = None,
             json_response_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -838,6 +875,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
@@ -861,6 +899,7 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["default_template_language"] = default_template_language
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_session_renewal"] = disable_session_renewal
+        __props__.__dict__["enabled_origin_commands"] = enabled_origin_commands
         __props__.__dict__["host"] = host
         __props__.__dict__["json_response_enabled"] = json_response_enabled
         __props__.__dict__["name"] = name
@@ -922,6 +961,14 @@ class WaitingRoom(pulumi.CustomResource):
         Disables automatic renewal of session cookies.
         """
         return pulumi.get(self, "disable_session_renewal")
+
+    @property
+    @pulumi.getter(name="enabledOriginCommands")
+    def enabled_origin_commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The list of enabled origin commands for the waiting room. Available values: `revoke`
+        """
+        return pulumi.get(self, "enabled_origin_commands")
 
     @property
     @pulumi.getter

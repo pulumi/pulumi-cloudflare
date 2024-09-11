@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The datetime a device last seen in RFC 3339 format from Tanium.
+        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         /// </summary>
         public readonly string? EidLastSeen;
         /// <summary>

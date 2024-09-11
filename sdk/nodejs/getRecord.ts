@@ -101,10 +101,6 @@ export interface GetRecordResult {
      * The zone identifier to target for the resource.
      */
     readonly zoneId: string;
-    /**
-     * Zone name of the found DNS record.
-     */
-    readonly zoneName: string;
 }
 /**
  * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).

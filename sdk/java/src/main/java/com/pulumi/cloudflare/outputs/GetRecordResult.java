@@ -64,11 +64,6 @@ public final class GetRecordResult {
      * 
      */
     private String zoneId;
-    /**
-     * @return Zone name of the found DNS record.
-     * 
-     */
-    private String zoneName;
 
     private GetRecordResult() {}
     /**
@@ -141,13 +136,6 @@ public final class GetRecordResult {
     public String zoneId() {
         return this.zoneId;
     }
-    /**
-     * @return Zone name of the found DNS record.
-     * 
-     */
-    public String zoneName() {
-        return this.zoneName;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -168,7 +156,6 @@ public final class GetRecordResult {
         private @Nullable String type;
         private String value;
         private String zoneId;
-        private String zoneName;
         public Builder() {}
         public Builder(GetRecordResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -182,7 +169,6 @@ public final class GetRecordResult {
     	      this.type = defaults.type;
     	      this.value = defaults.value;
     	      this.zoneId = defaults.zoneId;
-    	      this.zoneName = defaults.zoneName;
         }
 
         @CustomType.Setter
@@ -259,14 +245,6 @@ public final class GetRecordResult {
             this.zoneId = zoneId;
             return this;
         }
-        @CustomType.Setter
-        public Builder zoneName(String zoneName) {
-            if (zoneName == null) {
-              throw new MissingRequiredPropertyException("GetRecordResult", "zoneName");
-            }
-            this.zoneName = zoneName;
-            return this;
-        }
         public GetRecordResult build() {
             final var _resultValue = new GetRecordResult();
             _resultValue.content = content;
@@ -279,7 +257,6 @@ public final class GetRecordResult {
             _resultValue.type = type;
             _resultValue.value = value;
             _resultValue.zoneId = zoneId;
-            _resultValue.zoneName = zoneName;
             return _resultValue;
         }
     }

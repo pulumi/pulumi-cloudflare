@@ -58,6 +58,9 @@ class LogpushJobArgs:
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if frequency is not None:
+            warnings.warn("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""", DeprecationWarning)
+            pulumi.log.warn("""frequency is deprecated: `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
+        if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -140,6 +143,7 @@ class LogpushJobArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
@@ -306,6 +310,9 @@ class _LogpushJobState:
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if frequency is not None:
+            warnings.warn("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""", DeprecationWarning)
+            pulumi.log.warn("""frequency is deprecated: `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
+        if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -388,6 +395,7 @@ class _LogpushJobState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
         A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
@@ -755,6 +763,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.""")
     def frequency(self) -> pulumi.Output[Optional[str]]:
         """
         A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.

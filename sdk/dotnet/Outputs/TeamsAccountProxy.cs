@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountProxy
     {
         /// <summary>
+        /// Sets the time limit in seconds that a user can use an override code to bypass WARP
+        /// </summary>
+        public readonly int DisableForTime;
+        /// <summary>
         /// Whether root ca is enabled account wide for ZT clients.
         /// </summary>
         public readonly bool RootCa;
@@ -32,6 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsAccountProxy(
+            int disableForTime,
+
             bool rootCa,
 
             bool tcp,
@@ -40,6 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool virtualIp)
         {
+            DisableForTime = disableForTime;
             RootCa = rootCa;
             Tcp = tcp;
             Udp = udp;

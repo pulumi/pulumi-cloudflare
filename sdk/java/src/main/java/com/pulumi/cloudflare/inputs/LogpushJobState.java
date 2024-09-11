@@ -96,14 +96,22 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     /**
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
      * 
+     * @deprecated
+     * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+     * 
      */
+    @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
     @Import(name="frequency")
     private @Nullable Output<String> frequency;
 
     /**
      * @return A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
      * 
+     * @deprecated
+     * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+     * 
      */
+    @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
     public Optional<Output<String>> frequency() {
         return Optional.ofNullable(this.frequency);
     }
@@ -391,7 +399,11 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+         * 
          */
+        @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
         public Builder frequency(@Nullable Output<String> frequency) {
             $.frequency = frequency;
             return this;
@@ -402,7 +414,11 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead.
+         * 
          */
+        @Deprecated /* `frequency` has been deprecated in favour of using `max_upload_interval_seconds` instead. */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
         }
