@@ -103,7 +103,7 @@ type ZeroTrustDeviceProfiles struct {
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrOutput `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrOutput `pulumi:"tunnelProtocol"`
 }
 
@@ -182,7 +182,7 @@ type zeroTrustDeviceProfilesState struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
@@ -223,7 +223,7 @@ type ZeroTrustDeviceProfilesState struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrInput
 }
 
@@ -268,7 +268,7 @@ type zeroTrustDeviceProfilesArgs struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
@@ -310,7 +310,7 @@ type ZeroTrustDeviceProfilesArgs struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrInput
 }
 
@@ -491,7 +491,7 @@ func (o ZeroTrustDeviceProfilesOutput) SwitchLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceProfiles) pulumi.BoolPtrOutput { return v.SwitchLocked }).(pulumi.BoolPtrOutput)
 }
 
-// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 func (o ZeroTrustDeviceProfilesOutput) TunnelProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceProfiles) pulumi.StringPtrOutput { return v.TunnelProtocol }).(pulumi.StringPtrOutput)
 }

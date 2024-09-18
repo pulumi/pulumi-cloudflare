@@ -15,6 +15,7 @@ __all__ = ['BotManagementArgs', 'BotManagement']
 class BotManagementArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[str],
+                 ai_bots_protection: Optional[pulumi.Input[str]] = None,
                  auto_update_model: Optional[pulumi.Input[bool]] = None,
                  enable_js: Optional[pulumi.Input[bool]] = None,
                  fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +28,7 @@ class BotManagementArgs:
         """
         The set of arguments for constructing a BotManagement resource.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
         :param pulumi.Input[bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         :param pulumi.Input[bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[bool] fight_mode: Whether to enable Bot Fight Mode.
@@ -38,6 +40,8 @@ class BotManagementArgs:
         :param pulumi.Input[bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         pulumi.set(__self__, "zone_id", zone_id)
+        if ai_bots_protection is not None:
+            pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if enable_js is not None:
@@ -68,6 +72,18 @@ class BotManagementArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="aiBotsProtection")
+    def ai_bots_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable rule to block AI Scrapers and Crawlers.
+        """
+        return pulumi.get(self, "ai_bots_protection")
+
+    @ai_bots_protection.setter
+    def ai_bots_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ai_bots_protection", value)
 
     @property
     @pulumi.getter(name="autoUpdateModel")
@@ -181,6 +197,7 @@ class BotManagementArgs:
 @pulumi.input_type
 class _BotManagementState:
     def __init__(__self__, *,
+                 ai_bots_protection: Optional[pulumi.Input[str]] = None,
                  auto_update_model: Optional[pulumi.Input[bool]] = None,
                  enable_js: Optional[pulumi.Input[bool]] = None,
                  fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -194,6 +211,7 @@ class _BotManagementState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BotManagement resources.
+        :param pulumi.Input[str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
         :param pulumi.Input[bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         :param pulumi.Input[bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[bool] fight_mode: Whether to enable Bot Fight Mode.
@@ -206,6 +224,8 @@ class _BotManagementState:
         :param pulumi.Input[bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        if ai_bots_protection is not None:
+            pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if enable_js is not None:
@@ -228,6 +248,18 @@ class _BotManagementState:
             pulumi.set(__self__, "using_latest_model", using_latest_model)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="aiBotsProtection")
+    def ai_bots_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable rule to block AI Scrapers and Crawlers.
+        """
+        return pulumi.get(self, "ai_bots_protection")
+
+    @ai_bots_protection.setter
+    def ai_bots_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ai_bots_protection", value)
 
     @property
     @pulumi.getter(name="autoUpdateModel")
@@ -367,6 +399,7 @@ class BotManagement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_bots_protection: Optional[pulumi.Input[str]] = None,
                  auto_update_model: Optional[pulumi.Input[bool]] = None,
                  enable_js: Optional[pulumi.Input[bool]] = None,
                  fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -411,6 +444,7 @@ class BotManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
         :param pulumi.Input[bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         :param pulumi.Input[bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[bool] fight_mode: Whether to enable Bot Fight Mode.
@@ -474,6 +508,7 @@ class BotManagement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_bots_protection: Optional[pulumi.Input[str]] = None,
                  auto_update_model: Optional[pulumi.Input[bool]] = None,
                  enable_js: Optional[pulumi.Input[bool]] = None,
                  fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -493,6 +528,7 @@ class BotManagement(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BotManagementArgs.__new__(BotManagementArgs)
 
+            __props__.__dict__["ai_bots_protection"] = ai_bots_protection
             __props__.__dict__["auto_update_model"] = auto_update_model
             __props__.__dict__["enable_js"] = enable_js
             __props__.__dict__["fight_mode"] = fight_mode
@@ -516,6 +552,7 @@ class BotManagement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_bots_protection: Optional[pulumi.Input[str]] = None,
             auto_update_model: Optional[pulumi.Input[bool]] = None,
             enable_js: Optional[pulumi.Input[bool]] = None,
             fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -534,6 +571,7 @@ class BotManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
         :param pulumi.Input[bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         :param pulumi.Input[bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[bool] fight_mode: Whether to enable Bot Fight Mode.
@@ -550,6 +588,7 @@ class BotManagement(pulumi.CustomResource):
 
         __props__ = _BotManagementState.__new__(_BotManagementState)
 
+        __props__.__dict__["ai_bots_protection"] = ai_bots_protection
         __props__.__dict__["auto_update_model"] = auto_update_model
         __props__.__dict__["enable_js"] = enable_js
         __props__.__dict__["fight_mode"] = fight_mode
@@ -562,6 +601,14 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["using_latest_model"] = using_latest_model
         __props__.__dict__["zone_id"] = zone_id
         return BotManagement(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aiBotsProtection")
+    def ai_bots_protection(self) -> pulumi.Output[str]:
+        """
+        Enable rule to block AI Scrapers and Crawlers.
+        """
+        return pulumi.get(self, "ai_bots_protection")
 
     @property
     @pulumi.getter(name="autoUpdateModel")

@@ -47,6 +47,7 @@ import * as utilities from "./utilities";
  *         udp: true,
  *         rootCa: true,
  *         virtualIp: false,
+ *         disableForTime: 3600,
  *     },
  *     urlBrowserIsolationEnabled: true,
  *     logging: {
@@ -127,7 +128,13 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
      */
     public readonly bodyScanning!: pulumi.Output<outputs.ZeroTrustGatewaySettingsBodyScanning | undefined>;
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     */
+    public readonly certificate!: pulumi.Output<outputs.ZeroTrustGatewaySettingsCertificate | undefined>;
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     *
+     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
      */
     public readonly customCertificate!: pulumi.Output<outputs.ZeroTrustGatewaySettingsCustomCertificate | undefined>;
     /**
@@ -186,6 +193,7 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
             resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
             resourceInputs["customCertificate"] = state ? state.customCertificate : undefined;
             resourceInputs["extendedEmailMatching"] = state ? state.extendedEmailMatching : undefined;
             resourceInputs["fips"] = state ? state.fips : undefined;
@@ -207,6 +215,7 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
             resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
             resourceInputs["customCertificate"] = args ? args.customCertificate : undefined;
             resourceInputs["extendedEmailMatching"] = args ? args.extendedEmailMatching : undefined;
             resourceInputs["fips"] = args ? args.fips : undefined;
@@ -249,7 +258,13 @@ export interface ZeroTrustGatewaySettingsState {
      */
     bodyScanning?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBodyScanning>;
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     */
+    certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCertificate>;
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     *
+     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
      */
     customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCustomCertificate>;
     /**
@@ -316,7 +331,13 @@ export interface ZeroTrustGatewaySettingsArgs {
      */
     bodyScanning?: pulumi.Input<inputs.ZeroTrustGatewaySettingsBodyScanning>;
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     */
+    certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCertificate>;
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     *
+     * @deprecated Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
      */
     customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsCustomCertificate>;
     /**

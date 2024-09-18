@@ -106,7 +106,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String lastSeen;
     /**
-     * @return List of locations to check for client certificate posture check.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     private @Nullable List<DevicePostureRuleInputLocation> locations;
@@ -196,7 +196,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String version;
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     private @Nullable String versionOperator;
@@ -329,7 +329,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.lastSeen);
     }
     /**
-     * @return List of locations to check for client certificate posture check.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     public List<DevicePostureRuleInputLocation> locations() {
@@ -455,7 +455,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.version);
     }
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<String> versionOperator() {

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountProxy
     {
         /// <summary>
-        /// Sets the time limit in seconds that a user can use an override code to bypass WARP
+        /// Sets the time limit in seconds that a user can use an override code to bypass WARP.
         /// </summary>
         public readonly int DisableForTime;
         /// <summary>

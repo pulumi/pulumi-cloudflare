@@ -17,7 +17,7 @@ public final class ZeroTrustDevicePostureRuleInputLocation {
      */
     private @Nullable List<String> paths;
     /**
-     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     private @Nullable List<String> trustStores;
@@ -31,7 +31,7 @@ public final class ZeroTrustDevicePostureRuleInputLocation {
         return this.paths == null ? List.of() : this.paths;
     }
     /**
-     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     public List<String> trustStores() {

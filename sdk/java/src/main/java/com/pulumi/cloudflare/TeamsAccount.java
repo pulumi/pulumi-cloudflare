@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountState;
 import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
 import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsAccountBodyScanning;
+import com.pulumi.cloudflare.outputs.TeamsAccountCertificate;
 import com.pulumi.cloudflare.outputs.TeamsAccountCustomCertificate;
 import com.pulumi.cloudflare.outputs.TeamsAccountExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.TeamsAccountFips;
@@ -97,6 +98,7 @@ import javax.annotation.Nullable;
  *                 .udp(true)
  *                 .rootCa(true)
  *                 .virtualIp(false)
+ *                 .disableForTime(3600)
  *                 .build())
  *             .urlBrowserIsolationEnabled(true)
  *             .logging(TeamsAccountLoggingArgs.builder()
@@ -207,14 +209,32 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bodyScanning);
     }
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
      * 
      */
+    @Export(name="certificate", refs={TeamsAccountCertificate.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsAccountCertificate> certificate;
+
+    /**
+     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     * 
+     */
+    public Output<Optional<TeamsAccountCertificate>> certificate() {
+        return Codegen.optional(this.certificate);
+    }
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     * 
+     * @deprecated
+     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+     * 
+     */
+    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
     @Export(name="customCertificate", refs={TeamsAccountCustomCertificate.class}, tree="[0]")
     private Output</* @Nullable */ TeamsAccountCustomCertificate> customCertificate;
 
     /**
-     * @return Configuration for custom certificates / BYO-PKI.
+     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
      * 
      */
     public Output<Optional<TeamsAccountCustomCertificate>> customCertificate() {

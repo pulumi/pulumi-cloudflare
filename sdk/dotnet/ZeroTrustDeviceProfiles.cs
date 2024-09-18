@@ -167,7 +167,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> SwitchLocked { get; private set; } = null!;
 
         /// <summary>
-        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         /// </summary>
         [Output("tunnelProtocol")]
         public Output<string?> TunnelProtocol { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SwitchLocked { get; set; }
 
         /// <summary>
-        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         /// </summary>
         [Input("tunnelProtocol")]
         public Input<string>? TunnelProtocol { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SwitchLocked { get; set; }
 
         /// <summary>
-        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        /// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         /// </summary>
         [Input("tunnelProtocol")]
         public Input<string>? TunnelProtocol { get; set; }

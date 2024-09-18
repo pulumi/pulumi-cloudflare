@@ -335,14 +335,14 @@ public class ZeroTrustDeviceProfiles extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.switchLocked);
     }
     /**
-     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     @Export(name="tunnelProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tunnelProtocol;
 
     /**
-     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     public Output<Optional<String>> tunnelProtocol() {

@@ -53,7 +53,7 @@ class ZeroTrustDeviceProfilesArgs:
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
-        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "description", description)
@@ -311,7 +311,7 @@ class ZeroTrustDeviceProfilesArgs:
     @pulumi.getter(name="tunnelProtocol")
     def tunnel_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         return pulumi.get(self, "tunnel_protocol")
 
@@ -362,7 +362,7 @@ class _ZeroTrustDeviceProfilesState:
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
-        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -623,7 +623,7 @@ class _ZeroTrustDeviceProfilesState:
     @pulumi.getter(name="tunnelProtocol")
     def tunnel_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         return pulumi.get(self, "tunnel_protocol")
 
@@ -715,7 +715,7 @@ class ZeroTrustDeviceProfiles(pulumi.CustomResource):
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
-        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         ...
     @overload
@@ -883,7 +883,7 @@ class ZeroTrustDeviceProfiles(pulumi.CustomResource):
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
-        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        :param pulumi.Input[str] tunnel_protocol: Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1058,7 +1058,7 @@ class ZeroTrustDeviceProfiles(pulumi.CustomResource):
     @pulumi.getter(name="tunnelProtocol")
     def tunnel_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`
+        Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
         """
         return pulumi.get(self, "tunnel_protocol")
 

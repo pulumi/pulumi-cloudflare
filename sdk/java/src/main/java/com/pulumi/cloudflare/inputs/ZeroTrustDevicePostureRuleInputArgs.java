@@ -155,14 +155,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     @Import(name="eidLastSeen")
     private @Nullable Output<String> eidLastSeen;
 
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     public Optional<Output<String>> eidLastSeen() {
@@ -200,14 +200,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      * 
      */
     @Import(name="extendedKeyUsages")
     private @Nullable Output<List<String>> extendedKeyUsages;
 
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      * 
      */
     public Optional<Output<List<String>>> extendedKeyUsages() {
@@ -290,14 +290,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * List of locations to check for client certificate.
+     * List of operating system locations to check for a client certificate..
      * 
      */
     @Import(name="locations")
     private @Nullable Output<List<ZeroTrustDevicePostureRuleInputLocationArgs>> locations;
 
     /**
-     * @return List of locations to check for client certificate.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     public Optional<Output<List<ZeroTrustDevicePostureRuleInputLocationArgs>>> locations() {
@@ -560,14 +560,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     @Import(name="versionOperator")
     private @Nullable Output<String> versionOperator;
 
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<Output<String>> versionOperator() {
@@ -834,7 +834,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
          * 
          * @return builder
          * 
@@ -897,7 +897,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
          * 
          * @return builder
          * 
@@ -918,7 +918,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
          * 
          * @return builder
          * 
@@ -1033,7 +1033,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param locations List of locations to check for client certificate.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param locations List of locations to check for client certificate.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1054,7 +1054,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param locations List of locations to check for client certificate.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1421,7 +1421,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 
@@ -1432,7 +1432,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 

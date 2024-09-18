@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyRequireSaml {
+    /**
+     * @return The name of the SAML attribute.
+     * 
+     */
     private @Nullable String attributeName;
+    /**
+     * @return The SAML attribute value to look for.
+     * 
+     */
     private @Nullable String attributeValue;
+    /**
+     * @return The ID of your SAML identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
 
     private AccessPolicyRequireSaml() {}
+    /**
+     * @return The name of the SAML attribute.
+     * 
+     */
     public Optional<String> attributeName() {
         return Optional.ofNullable(this.attributeName);
     }
+    /**
+     * @return The SAML attribute value to look for.
+     * 
+     */
     public Optional<String> attributeValue() {
         return Optional.ofNullable(this.attributeValue);
     }
+    /**
+     * @return The ID of your SAML identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

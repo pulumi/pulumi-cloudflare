@@ -61,7 +61,7 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String domain;
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     private @Nullable String eidLastSeen;
@@ -76,7 +76,7 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable Boolean exists;
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      * 
      */
     private @Nullable List<String> extendedKeyUsages;
@@ -106,7 +106,7 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String lastSeen;
     /**
-     * @return List of locations to check for client certificate.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     private @Nullable List<ZeroTrustDevicePostureRuleInputLocation> locations;
@@ -196,7 +196,7 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String version;
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     private @Nullable String versionOperator;
@@ -266,7 +266,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      * 
      */
     public Optional<String> eidLastSeen() {
@@ -287,7 +287,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.exists);
     }
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      * 
      */
     public List<String> extendedKeyUsages() {
@@ -329,7 +329,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.lastSeen);
     }
     /**
-     * @return List of locations to check for client certificate.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     public List<ZeroTrustDevicePostureRuleInputLocation> locations() {
@@ -455,7 +455,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.version);
     }
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<String> versionOperator() {

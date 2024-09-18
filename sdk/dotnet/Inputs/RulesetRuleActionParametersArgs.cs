@@ -79,6 +79,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.RulesetRuleActionParametersCacheKeyArgs>? CacheKey { get; set; }
 
         /// <summary>
+        /// List of cache reserve parameters to apply to the request.
+        /// </summary>
+        [Input("cacheReserve")]
+        public Input<Inputs.RulesetRuleActionParametersCacheReserveArgs>? CacheReserve { get; set; }
+
+        /// <summary>
         /// Content of the custom error response.
         /// </summary>
         [Input("content")]

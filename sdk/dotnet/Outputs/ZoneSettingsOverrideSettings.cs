@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? PrivacyPass;
         public readonly string? ProxyReadTimeout;
         public readonly string? PseudoIpv4;
+        public readonly string? ReplaceInsecureJs;
         public readonly string? ResponseBuffering;
         public readonly string? RocketLoader;
         public readonly Outputs.ZoneSettingsOverrideSettingsSecurityHeader? SecurityHeader;
@@ -153,6 +154,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? pseudoIpv4,
 
+            string? replaceInsecureJs,
+
             string? responseBuffering,
 
             string? rocketLoader,
@@ -227,6 +230,7 @@ namespace Pulumi.Cloudflare.Outputs
             PrivacyPass = privacyPass;
             ProxyReadTimeout = proxyReadTimeout;
             PseudoIpv4 = pseudoIpv4;
+            ReplaceInsecureJs = replaceInsecureJs;
             ResponseBuffering = responseBuffering;
             RocketLoader = rocketLoader;
             SecurityHeader = securityHeader;

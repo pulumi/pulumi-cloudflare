@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyExcludeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matches any valid Access service token.
+        /// </summary>
         [Input("anyValidServiceToken")]
         public Input<bool>? AnyValidServiceToken { get; set; }
 
@@ -23,20 +26,33 @@ namespace Pulumi.Cloudflare.Inputs
             set => _authContexts = value;
         }
 
+        /// <summary>
+        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
 
         [Input("azures")]
         private InputList<Inputs.AccessPolicyExcludeAzureGetArgs>? _azures;
+
+        /// <summary>
+        /// Matches an Azure group. Requires an Azure identity provider.
+        /// </summary>
         public InputList<Inputs.AccessPolicyExcludeAzureGetArgs> Azures
         {
             get => _azures ?? (_azures = new InputList<Inputs.AccessPolicyExcludeAzureGetArgs>());
             set => _azures = value;
         }
 
+        /// <summary>
+        /// Matches any valid client certificate.
+        /// </summary>
         [Input("certificate")]
         public Input<bool>? Certificate { get; set; }
 
+        /// <summary>
+        /// Matches a valid client certificate common name.
+        /// </summary>
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
@@ -54,6 +70,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("devicePostures")]
         private InputList<string>? _devicePostures;
+
+        /// <summary>
+        /// The ID of a device posture integration.
+        /// </summary>
         public InputList<string> DevicePostures
         {
             get => _devicePostures ?? (_devicePostures = new InputList<string>());
@@ -62,6 +82,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("emailDomains")]
         private InputList<string>? _emailDomains;
+
+        /// <summary>
+        /// The email domain to match.
+        /// </summary>
         public InputList<string> EmailDomains
         {
             get => _emailDomains ?? (_emailDomains = new InputList<string>());
@@ -70,6 +94,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("emailLists")]
         private InputList<string>? _emailLists;
+
+        /// <summary>
+        /// The ID of a previously created email list.
+        /// </summary>
         public InputList<string> EmailLists
         {
             get => _emailLists ?? (_emailLists = new InputList<string>());
@@ -78,20 +106,34 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("emails")]
         private InputList<string>? _emails;
+
+        /// <summary>
+        /// The email of the user.
+        /// </summary>
         public InputList<string> Emails
         {
             get => _emails ?? (_emails = new InputList<string>());
             set => _emails = value;
         }
 
+        /// <summary>
+        /// Matches everyone.
+        /// </summary>
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        /// <summary>
+        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        /// </summary>
         [Input("externalEvaluation")]
         public Input<Inputs.AccessPolicyExcludeExternalEvaluationGetArgs>? ExternalEvaluation { get; set; }
 
         [Input("geos")]
         private InputList<string>? _geos;
+
+        /// <summary>
+        /// Matches a specific country.
+        /// </summary>
         public InputList<string> Geos
         {
             get => _geos ?? (_geos = new InputList<string>());
@@ -100,6 +142,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("githubs")]
         private InputList<Inputs.AccessPolicyExcludeGithubGetArgs>? _githubs;
+
+        /// <summary>
+        /// Matches a Github organization. Requires a Github identity provider.
+        /// </summary>
         public InputList<Inputs.AccessPolicyExcludeGithubGetArgs> Githubs
         {
             get => _githubs ?? (_githubs = new InputList<Inputs.AccessPolicyExcludeGithubGetArgs>());
@@ -108,6 +154,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("groups")]
         private InputList<string>? _groups;
+
+        /// <summary>
+        /// The ID of a previously created Access group.
+        /// </summary>
         public InputList<string> Groups
         {
             get => _groups ?? (_groups = new InputList<string>());
@@ -116,6 +166,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("gsuites")]
         private InputList<Inputs.AccessPolicyExcludeGsuiteGetArgs>? _gsuites;
+
+        /// <summary>
+        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        /// </summary>
         public InputList<Inputs.AccessPolicyExcludeGsuiteGetArgs> Gsuites
         {
             get => _gsuites ?? (_gsuites = new InputList<Inputs.AccessPolicyExcludeGsuiteGetArgs>());
@@ -126,7 +180,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _ipLists;
 
         /// <summary>
-        /// The ID of an existing IP list to reference.
+        /// The ID of a previously created IP list.
         /// </summary>
         public InputList<string> IpLists
         {
@@ -148,6 +202,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("loginMethods")]
         private InputList<string>? _loginMethods;
+
+        /// <summary>
+        /// The ID of a configured identity provider.
+        /// </summary>
         public InputList<string> LoginMethods
         {
             get => _loginMethods ?? (_loginMethods = new InputList<string>());
@@ -156,6 +214,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("oktas")]
         private InputList<Inputs.AccessPolicyExcludeOktaGetArgs>? _oktas;
+
+        /// <summary>
+        /// Matches an Okta group. Requires an Okta identity provider.
+        /// </summary>
         public InputList<Inputs.AccessPolicyExcludeOktaGetArgs> Oktas
         {
             get => _oktas ?? (_oktas = new InputList<Inputs.AccessPolicyExcludeOktaGetArgs>());
@@ -164,6 +226,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("samls")]
         private InputList<Inputs.AccessPolicyExcludeSamlGetArgs>? _samls;
+
+        /// <summary>
+        /// Matches a SAML group. Requires a SAML identity provider.
+        /// </summary>
         public InputList<Inputs.AccessPolicyExcludeSamlGetArgs> Samls
         {
             get => _samls ?? (_samls = new InputList<Inputs.AccessPolicyExcludeSamlGetArgs>());
@@ -172,6 +238,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("serviceTokens")]
         private InputList<string>? _serviceTokens;
+
+        /// <summary>
+        /// The ID of an Access service token.
+        /// </summary>
         public InputList<string> ServiceTokens
         {
             get => _serviceTokens ?? (_serviceTokens = new InputList<string>());

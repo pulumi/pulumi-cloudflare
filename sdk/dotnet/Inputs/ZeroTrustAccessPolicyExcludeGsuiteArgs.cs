@@ -14,12 +14,19 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("emails")]
         private InputList<string>? _emails;
+
+        /// <summary>
+        /// The email of the Google Workspace group.
+        /// </summary>
         public InputList<string> Emails
         {
             get => _emails ?? (_emails = new InputList<string>());
             set => _emails = value;
         }
 
+        /// <summary>
+        /// The ID of your Google Workspace identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 

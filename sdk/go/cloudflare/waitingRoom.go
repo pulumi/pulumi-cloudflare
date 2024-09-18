@@ -47,6 +47,9 @@ import (
 //					},
 //				},
 //				QueueingStatusCode: pulumi.Int(200),
+//				EnabledOriginCommands: pulumi.StringArray{
+//					pulumi.String("revoke"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +82,7 @@ type WaitingRoom struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`
+	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 	EnabledOriginCommands pulumi.StringArrayOutput `pulumi:"enabledOriginCommands"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -164,7 +167,7 @@ type waitingRoomState struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`
+	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 	EnabledOriginCommands []string `pulumi:"enabledOriginCommands"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host *string `pulumi:"host"`
@@ -205,7 +208,7 @@ type WaitingRoomState struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`
+	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 	EnabledOriginCommands pulumi.StringArrayInput
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringPtrInput
@@ -250,7 +253,7 @@ type waitingRoomArgs struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`
+	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 	EnabledOriginCommands []string `pulumi:"enabledOriginCommands"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host string `pulumi:"host"`
@@ -292,7 +295,7 @@ type WaitingRoomArgs struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`
+	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 	EnabledOriginCommands pulumi.StringArrayInput
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringInput
@@ -437,7 +440,7 @@ func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
 }
 
-// The list of enabled origin commands for the waiting room. Available values: `revoke`
+// The list of enabled origin commands for the waiting room. Available values: `revoke`.
 func (o WaitingRoomOutput) EnabledOriginCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringArrayOutput { return v.EnabledOriginCommands }).(pulumi.StringArrayOutput)
 }

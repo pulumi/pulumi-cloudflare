@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersAutominify;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersBrowserTtl;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersCacheKey;
+import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersCacheReserve;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersEdgeTtl;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersFromList;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersFromValue;
@@ -65,6 +66,11 @@ public final class GetRulesetsRulesetRuleActionParameters {
      * 
      */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKey cacheKey;
+    /**
+     * @return List of cache reserve parameters to apply to the request.
+     * 
+     */
+    private @Nullable GetRulesetsRulesetRuleActionParametersCacheReserve cacheReserve;
     /**
      * @return Content of the custom error response
      * 
@@ -326,6 +332,13 @@ public final class GetRulesetsRulesetRuleActionParameters {
      */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKey> cacheKey() {
         return Optional.ofNullable(this.cacheKey);
+    }
+    /**
+     * @return List of cache reserve parameters to apply to the request.
+     * 
+     */
+    public Optional<GetRulesetsRulesetRuleActionParametersCacheReserve> cacheReserve() {
+        return Optional.ofNullable(this.cacheReserve);
     }
     /**
      * @return Content of the custom error response
@@ -641,6 +654,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         private @Nullable GetRulesetsRulesetRuleActionParametersBrowserTtl browserTtl;
         private @Nullable Boolean cache;
         private @Nullable GetRulesetsRulesetRuleActionParametersCacheKey cacheKey;
+        private @Nullable GetRulesetsRulesetRuleActionParametersCacheReserve cacheReserve;
         private @Nullable String content;
         private @Nullable String contentType;
         private @Nullable List<String> cookieFields;
@@ -694,6 +708,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
     	      this.browserTtl = defaults.browserTtl;
     	      this.cache = defaults.cache;
     	      this.cacheKey = defaults.cacheKey;
+    	      this.cacheReserve = defaults.cacheReserve;
     	      this.content = defaults.content;
     	      this.contentType = defaults.contentType;
     	      this.cookieFields = defaults.cookieFields;
@@ -785,6 +800,12 @@ public final class GetRulesetsRulesetRuleActionParameters {
         public Builder cacheKey(@Nullable GetRulesetsRulesetRuleActionParametersCacheKey cacheKey) {
 
             this.cacheKey = cacheKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cacheReserve(@Nullable GetRulesetsRulesetRuleActionParametersCacheReserve cacheReserve) {
+
+            this.cacheReserve = cacheReserve;
             return this;
         }
         @CustomType.Setter
@@ -1080,6 +1101,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
             _resultValue.browserTtl = browserTtl;
             _resultValue.cache = cache;
             _resultValue.cacheKey = cacheKey;
+            _resultValue.cacheReserve = cacheReserve;
             _resultValue.content = content;
             _resultValue.contentType = contentType;
             _resultValue.cookieFields = cookieFields;

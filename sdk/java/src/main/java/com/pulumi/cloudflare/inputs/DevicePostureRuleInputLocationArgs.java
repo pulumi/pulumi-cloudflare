@@ -17,14 +17,14 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
     public static final DevicePostureRuleInputLocationArgs Empty = new DevicePostureRuleInputLocationArgs();
 
     /**
-     * List of paths to check for client certificate.
+     * List of paths to check for client certificate rule.
      * 
      */
     @Import(name="paths")
     private @Nullable Output<List<String>> paths;
 
     /**
-     * @return List of paths to check for client certificate.
+     * @return List of paths to check for client certificate rule.
      * 
      */
     public Optional<Output<List<String>>> paths() {
@@ -32,14 +32,14 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
     }
 
     /**
-     * List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     @Import(name="trustStores")
     private @Nullable Output<List<String>> trustStores;
 
     /**
-     * @return List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     public Optional<Output<List<String>>> trustStores() {
@@ -72,7 +72,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param paths List of paths to check for client certificate.
+         * @param paths List of paths to check for client certificate rule.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param paths List of paths to check for client certificate.
+         * @param paths List of paths to check for client certificate rule.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param paths List of paths to check for client certificate.
+         * @param paths List of paths to check for client certificate rule.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate. Available values: `system`, `user`.
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate. Available values: `system`, `user`.
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class DevicePostureRuleInputLocationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate. Available values: `system`, `user`.
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 

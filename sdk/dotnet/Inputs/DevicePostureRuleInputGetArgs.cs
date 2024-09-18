@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.DevicePostureRuleInputLocationGetArgs>? _locations;
 
         /// <summary>
-        /// List of locations to check for client certificate posture check.
+        /// List of operating system locations to check for a client certificate..
         /// </summary>
         public InputList<Inputs.DevicePostureRuleInputLocationGetArgs> Locations
         {
@@ -247,7 +247,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         [Input("versionOperator")]
         public Input<string>? VersionOperator { get; set; }

@@ -60,6 +60,8 @@ import (
 type BotManagement struct {
 	pulumi.CustomResourceState
 
+	// Enable rule to block AI Scrapers and Crawlers.
+	AiBotsProtection pulumi.StringOutput `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
 	AutoUpdateModel pulumi.BoolPtrOutput `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -117,6 +119,8 @@ func GetBotManagement(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BotManagement resources.
 type botManagementState struct {
+	// Enable rule to block AI Scrapers and Crawlers.
+	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -142,6 +146,8 @@ type botManagementState struct {
 }
 
 type BotManagementState struct {
+	// Enable rule to block AI Scrapers and Crawlers.
+	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -171,6 +177,8 @@ func (BotManagementState) ElementType() reflect.Type {
 }
 
 type botManagementArgs struct {
+	// Enable rule to block AI Scrapers and Crawlers.
+	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -195,6 +203,8 @@ type botManagementArgs struct {
 
 // The set of arguments for constructing a BotManagement resource.
 type BotManagementArgs struct {
+	// Enable rule to block AI Scrapers and Crawlers.
+	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -302,6 +312,11 @@ func (o BotManagementOutput) ToBotManagementOutput() BotManagementOutput {
 
 func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Context) BotManagementOutput {
 	return o
+}
+
+// Enable rule to block AI Scrapers and Crawlers.
+func (o BotManagementOutput) AiBotsProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.AiBotsProtection }).(pulumi.StringOutput)
 }
 
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsAntivirusArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBodyScanningArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsCertificateArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsFipsArgs;
@@ -102,16 +103,39 @@ public final class ZeroTrustGatewaySettingsState extends com.pulumi.resources.Re
     }
 
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
      * 
      */
+    @Import(name="certificate")
+    private @Nullable Output<ZeroTrustGatewaySettingsCertificateArgs> certificate;
+
+    /**
+     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewaySettingsCertificateArgs>> certificate() {
+        return Optional.ofNullable(this.certificate);
+    }
+
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     * 
+     * @deprecated
+     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+     * 
+     */
+    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
     @Import(name="customCertificate")
     private @Nullable Output<ZeroTrustGatewaySettingsCustomCertificateArgs> customCertificate;
 
     /**
-     * @return Configuration for custom certificates / BYO-PKI.
+     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     * 
+     * @deprecated
+     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
      * 
      */
+    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
     public Optional<Output<ZeroTrustGatewaySettingsCustomCertificateArgs>> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }
@@ -266,6 +290,7 @@ public final class ZeroTrustGatewaySettingsState extends com.pulumi.resources.Re
         this.antivirus = $.antivirus;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
+        this.certificate = $.certificate;
         this.customCertificate = $.customCertificate;
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
@@ -403,22 +428,51 @@ public final class ZeroTrustGatewaySettingsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
          * 
          * @return builder
          * 
          */
+        public Builder certificate(@Nullable Output<ZeroTrustGatewaySettingsCertificateArgs> certificate) {
+            $.certificate = certificate;
+            return this;
+        }
+
+        /**
+         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(ZeroTrustGatewaySettingsCertificateArgs certificate) {
+            return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+         * 
+         */
+        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
         public Builder customCertificate(@Nullable Output<ZeroTrustGatewaySettingsCustomCertificateArgs> customCertificate) {
             $.customCertificate = customCertificate;
             return this;
         }
 
         /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+         * 
          */
+        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
         public Builder customCertificate(ZeroTrustGatewaySettingsCustomCertificateArgs customCertificate) {
             return customCertificate(Output.of(customCertificate));
         }

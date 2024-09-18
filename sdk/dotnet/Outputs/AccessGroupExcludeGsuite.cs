@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupExcludeGsuite
     {
+        /// <summary>
+        /// The email of the Google Workspace group.
+        /// </summary>
         public readonly ImmutableArray<string> Emails;
+        /// <summary>
+        /// The ID of your Google Workspace identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
 
         [OutputConstructor]

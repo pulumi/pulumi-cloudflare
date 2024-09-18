@@ -15,16 +15,32 @@ public final class ZeroTrustAccessGroupExcludeExternalEvaluationArgs extends com
 
     public static final ZeroTrustAccessGroupExcludeExternalEvaluationArgs Empty = new ZeroTrustAccessGroupExcludeExternalEvaluationArgs();
 
+    /**
+     * The API endpoint containing your business logic.
+     * 
+     */
     @Import(name="evaluateUrl")
     private @Nullable Output<String> evaluateUrl;
 
+    /**
+     * @return The API endpoint containing your business logic.
+     * 
+     */
     public Optional<Output<String>> evaluateUrl() {
         return Optional.ofNullable(this.evaluateUrl);
     }
 
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     * 
+     */
     @Import(name="keysUrl")
     private @Nullable Output<String> keysUrl;
 
+    /**
+     * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
+     * 
+     */
     public Optional<Output<String>> keysUrl() {
         return Optional.ofNullable(this.keysUrl);
     }
@@ -54,20 +70,44 @@ public final class ZeroTrustAccessGroupExcludeExternalEvaluationArgs extends com
             $ = new ZeroTrustAccessGroupExcludeExternalEvaluationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evaluateUrl The API endpoint containing your business logic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluateUrl(@Nullable Output<String> evaluateUrl) {
             $.evaluateUrl = evaluateUrl;
             return this;
         }
 
+        /**
+         * @param evaluateUrl The API endpoint containing your business logic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluateUrl(String evaluateUrl) {
             return evaluateUrl(Output.of(evaluateUrl));
         }
 
+        /**
+         * @param keysUrl The API endpoint containing the key that Access uses to verify that the response came from your API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keysUrl(@Nullable Output<String> keysUrl) {
             $.keysUrl = keysUrl;
             return this;
         }
 
+        /**
+         * @param keysUrl The API endpoint containing the key that Access uses to verify that the response came from your API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keysUrl(String keysUrl) {
             return keysUrl(Output.of(keysUrl));
         }

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessGroupIncludeExternalEvaluation {
+    /**
+     * @return The API endpoint containing your business logic.
+     * 
+     */
     private @Nullable String evaluateUrl;
+    /**
+     * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
+     * 
+     */
     private @Nullable String keysUrl;
 
     private ZeroTrustAccessGroupIncludeExternalEvaluation() {}
+    /**
+     * @return The API endpoint containing your business logic.
+     * 
+     */
     public Optional<String> evaluateUrl() {
         return Optional.ofNullable(this.evaluateUrl);
     }
+    /**
+     * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
+     * 
+     */
     public Optional<String> keysUrl() {
         return Optional.ofNullable(this.keysUrl);
     }

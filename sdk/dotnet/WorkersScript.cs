@@ -148,6 +148,9 @@ namespace Pulumi.Cloudflare
         [Output("dispatchNamespace")]
         public Output<string?> DispatchNamespace { get; private set; } = null!;
 
+        [Output("hyperdriveConfigBindings")]
+        public Output<ImmutableArray<Outputs.WorkersScriptHyperdriveConfigBinding>> HyperdriveConfigBindings { get; private set; } = null!;
+
         [Output("kvNamespaceBindings")]
         public Output<ImmutableArray<Outputs.WorkersScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
@@ -290,6 +293,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("dispatchNamespace")]
         public Input<string>? DispatchNamespace { get; set; }
+
+        [Input("hyperdriveConfigBindings")]
+        private InputList<Inputs.WorkersScriptHyperdriveConfigBindingArgs>? _hyperdriveConfigBindings;
+        public InputList<Inputs.WorkersScriptHyperdriveConfigBindingArgs> HyperdriveConfigBindings
+        {
+            get => _hyperdriveConfigBindings ?? (_hyperdriveConfigBindings = new InputList<Inputs.WorkersScriptHyperdriveConfigBindingArgs>());
+            set => _hyperdriveConfigBindings = value;
+        }
 
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkersScriptKvNamespaceBindingArgs>? _kvNamespaceBindings;
@@ -440,6 +451,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("dispatchNamespace")]
         public Input<string>? DispatchNamespace { get; set; }
+
+        [Input("hyperdriveConfigBindings")]
+        private InputList<Inputs.WorkersScriptHyperdriveConfigBindingGetArgs>? _hyperdriveConfigBindings;
+        public InputList<Inputs.WorkersScriptHyperdriveConfigBindingGetArgs> HyperdriveConfigBindings
+        {
+            get => _hyperdriveConfigBindings ?? (_hyperdriveConfigBindings = new InputList<Inputs.WorkersScriptHyperdriveConfigBindingGetArgs>());
+            set => _hyperdriveConfigBindings = value;
+        }
 
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkersScriptKvNamespaceBindingGetArgs>? _kvNamespaceBindings;

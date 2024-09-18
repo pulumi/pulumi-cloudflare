@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureRuleInputLocation {
     /**
-     * @return List of paths to check for client certificate.
+     * @return List of paths to check for client certificate rule.
      * 
      */
     private @Nullable List<String> paths;
     /**
-     * @return List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     private @Nullable List<String> trustStores;
 
     private DevicePostureRuleInputLocation() {}
     /**
-     * @return List of paths to check for client certificate.
+     * @return List of paths to check for client certificate rule.
      * 
      */
     public List<String> paths() {
         return this.paths == null ? List.of() : this.paths;
     }
     /**
-     * @return List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     public List<String> trustStores() {

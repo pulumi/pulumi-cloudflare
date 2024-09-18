@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupRequireGithub
     {
+        /// <summary>
+        /// The ID of your Github identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
+        /// <summary>
+        /// The name of the organization.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The teams that should be matched.
+        /// </summary>
         public readonly ImmutableArray<string> Teams;
 
         [OutputConstructor]

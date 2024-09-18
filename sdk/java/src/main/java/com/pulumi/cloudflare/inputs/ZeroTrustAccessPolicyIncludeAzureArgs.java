@@ -17,14 +17,14 @@ public final class ZeroTrustAccessPolicyIncludeAzureArgs extends com.pulumi.reso
     public static final ZeroTrustAccessPolicyIncludeAzureArgs Empty = new ZeroTrustAccessPolicyIncludeAzureArgs();
 
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      * 
      */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public Optional<Output<String>> identityProviderId() {
@@ -72,7 +72,7 @@ public final class ZeroTrustAccessPolicyIncludeAzureArgs extends com.pulumi.reso
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ZeroTrustAccessPolicyIncludeAzureArgs extends com.pulumi.reso
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 

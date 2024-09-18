@@ -24,14 +24,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessPolicyArgs Empty = new AccessPolicyArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -218,14 +218,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -271,7 +271,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
          * 
          * @return builder
          * 

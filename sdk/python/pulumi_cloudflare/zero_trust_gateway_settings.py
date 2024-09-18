@@ -21,6 +21,7 @@ class ZeroTrustGatewaySettingsArgs:
                  antivirus: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']] = None,
+                 certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']] = None,
                  custom_certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']] = None,
@@ -39,7 +40,8 @@ class ZeroTrustGatewaySettingsArgs:
         :param pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs'] body_scanning: Configuration for body scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs'] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         :param pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input['ZeroTrustGatewaySettingsFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -59,6 +61,11 @@ class ZeroTrustGatewaySettingsArgs:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
             pulumi.set(__self__, "body_scanning", body_scanning)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if custom_certificate is not None:
+            warnings.warn("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""", DeprecationWarning)
+            pulumi.log.warn("""custom_certificate is deprecated: Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
         if custom_certificate is not None:
             pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
@@ -143,10 +150,23 @@ class ZeroTrustGatewaySettingsArgs:
         pulumi.set(self, "body_scanning", value)
 
     @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]:
+        """
+        Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
     @pulumi.getter(name="customCertificate")
+    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
     def custom_certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]:
         """
-        Configuration for custom certificates / BYO-PKI.
+        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         """
         return pulumi.get(self, "custom_certificate")
 
@@ -280,6 +300,7 @@ class _ZeroTrustGatewaySettingsState:
                  antivirus: Optional[pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs']] = None,
+                 certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']] = None,
                  custom_certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsFipsArgs']] = None,
@@ -298,7 +319,8 @@ class _ZeroTrustGatewaySettingsState:
         :param pulumi.Input['ZeroTrustGatewaySettingsAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['ZeroTrustGatewaySettingsBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['ZeroTrustGatewaySettingsBodyScanningArgs'] body_scanning: Configuration for body scanning.
-        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs'] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        :param pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         :param pulumi.Input['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input['ZeroTrustGatewaySettingsFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -319,6 +341,11 @@ class _ZeroTrustGatewaySettingsState:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
             pulumi.set(__self__, "body_scanning", body_scanning)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if custom_certificate is not None:
+            warnings.warn("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""", DeprecationWarning)
+            pulumi.log.warn("""custom_certificate is deprecated: Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
         if custom_certificate is not None:
             pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
@@ -403,10 +430,23 @@ class _ZeroTrustGatewaySettingsState:
         pulumi.set(self, "body_scanning", value)
 
     @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]:
+        """
+        Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsCertificateArgs']]):
+        pulumi.set(self, "certificate", value)
+
+    @property
     @pulumi.getter(name="customCertificate")
+    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
     def custom_certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsCustomCertificateArgs']]:
         """
-        Configuration for custom certificates / BYO-PKI.
+        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         """
         return pulumi.get(self, "custom_certificate")
 
@@ -542,6 +582,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
                  block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
                  body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
+                 certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
                  custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
                  extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
                  fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
@@ -595,6 +636,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                 "udp": True,
                 "root_ca": True,
                 "virtual_ip": False,
+                "disable_for_time": 3600,
             },
             url_browser_isolation_enabled=True,
             logging={
@@ -632,7 +674,8 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']] block_page: Configuration for a custom block page.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -690,6 +733,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                 "udp": True,
                 "root_ca": True,
                 "virtual_ip": False,
+                "disable_for_time": 3600,
             },
             url_browser_isolation_enabled=True,
             logging={
@@ -740,6 +784,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
                  block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
                  body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
+                 certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
                  custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
                  extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
                  fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
@@ -767,6 +812,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
             __props__.__dict__["antivirus"] = antivirus
             __props__.__dict__["block_page"] = block_page
             __props__.__dict__["body_scanning"] = body_scanning
+            __props__.__dict__["certificate"] = certificate
             __props__.__dict__["custom_certificate"] = custom_certificate
             __props__.__dict__["extended_email_matching"] = extended_email_matching
             __props__.__dict__["fips"] = fips
@@ -793,6 +839,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
             antivirus: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']]] = None,
             block_page: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']]] = None,
             body_scanning: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']]] = None,
+            certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']]] = None,
             custom_certificate: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']]] = None,
             extended_email_matching: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']]] = None,
             fips: Optional[pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']]] = None,
@@ -816,7 +863,8 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsAntivirusArgs', 'ZeroTrustGatewaySettingsAntivirusArgsDict']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsBlockPageArgs', 'ZeroTrustGatewaySettingsBlockPageArgsDict']] block_page: Configuration for a custom block page.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsBodyScanningArgs', 'ZeroTrustGatewaySettingsBodyScanningArgsDict']] body_scanning: Configuration for body scanning.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCertificateArgs', 'ZeroTrustGatewaySettingsCertificateArgsDict']] certificate: Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsCustomCertificateArgs', 'ZeroTrustGatewaySettingsCustomCertificateArgsDict']] custom_certificate: Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsExtendedEmailMatchingArgs', 'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict']] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input[Union['ZeroTrustGatewaySettingsFipsArgs', 'ZeroTrustGatewaySettingsFipsArgsDict']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -836,6 +884,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         __props__.__dict__["antivirus"] = antivirus
         __props__.__dict__["block_page"] = block_page
         __props__.__dict__["body_scanning"] = body_scanning
+        __props__.__dict__["certificate"] = certificate
         __props__.__dict__["custom_certificate"] = custom_certificate
         __props__.__dict__["extended_email_matching"] = extended_email_matching
         __props__.__dict__["fips"] = fips
@@ -890,10 +939,19 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         return pulumi.get(self, "body_scanning")
 
     @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsCertificate']]:
+        """
+        Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
     @pulumi.getter(name="customCertificate")
+    @_utilities.deprecated("""Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.""")
     def custom_certificate(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsCustomCertificate']]:
         """
-        Configuration for custom certificates / BYO-PKI.
+        Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         """
         return pulumi.get(self, "custom_certificate")
 

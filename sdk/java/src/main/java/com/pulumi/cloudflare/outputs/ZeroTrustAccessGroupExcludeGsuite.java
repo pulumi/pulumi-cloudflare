@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessGroupExcludeGsuite {
+    /**
+     * @return The email of the Google Workspace group.
+     * 
+     */
     private @Nullable List<String> emails;
+    /**
+     * @return The ID of your Google Workspace identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
 
     private ZeroTrustAccessGroupExcludeGsuite() {}
+    /**
+     * @return The email of the Google Workspace group.
+     * 
+     */
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }
+    /**
+     * @return The ID of your Google Workspace identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

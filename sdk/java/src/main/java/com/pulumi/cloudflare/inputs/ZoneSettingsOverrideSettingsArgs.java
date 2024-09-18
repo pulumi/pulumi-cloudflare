@@ -313,6 +313,13 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.pseudoIpv4);
     }
 
+    @Import(name="replaceInsecureJs")
+    private @Nullable Output<String> replaceInsecureJs;
+
+    public Optional<Output<String>> replaceInsecureJs() {
+        return Optional.ofNullable(this.replaceInsecureJs);
+    }
+
     @Import(name="responseBuffering")
     private @Nullable Output<String> responseBuffering;
 
@@ -487,6 +494,7 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
         this.privacyPass = $.privacyPass;
         this.proxyReadTimeout = $.proxyReadTimeout;
         this.pseudoIpv4 = $.pseudoIpv4;
+        this.replaceInsecureJs = $.replaceInsecureJs;
         this.responseBuffering = $.responseBuffering;
         this.rocketLoader = $.rocketLoader;
         this.securityHeader = $.securityHeader;
@@ -902,6 +910,15 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
 
         public Builder pseudoIpv4(String pseudoIpv4) {
             return pseudoIpv4(Output.of(pseudoIpv4));
+        }
+
+        public Builder replaceInsecureJs(@Nullable Output<String> replaceInsecureJs) {
+            $.replaceInsecureJs = replaceInsecureJs;
+            return this;
+        }
+
+        public Builder replaceInsecureJs(String replaceInsecureJs) {
+            return replaceInsecureJs(Output.of(replaceInsecureJs));
         }
 
         public Builder responseBuffering(@Nullable Output<String> responseBuffering) {

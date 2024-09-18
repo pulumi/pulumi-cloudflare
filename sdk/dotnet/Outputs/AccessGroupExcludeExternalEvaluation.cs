@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupExcludeExternalEvaluation
     {
+        /// <summary>
+        /// The API endpoint containing your business logic.
+        /// </summary>
         public readonly string? EvaluateUrl;
+        /// <summary>
+        /// The API endpoint containing the key that Access uses to verify that the response came from your API.
+        /// </summary>
         public readonly string? KeysUrl;
 
         [OutputConstructor]

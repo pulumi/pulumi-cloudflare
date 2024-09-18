@@ -2517,32 +2517,51 @@ func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Update() pulumi.B
 }
 
 type AccessGroupExclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessGroupExcludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                         `pulumi:"authMethod"`
-	Azures               []AccessGroupExcludeAzure       `pulumi:"azures"`
-	Certificate          *bool                           `pulumi:"certificate"`
-	CommonName           *string                         `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessGroupExcludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                              `pulumi:"commonNames"`
-	DevicePostures     []string                              `pulumi:"devicePostures"`
-	EmailDomains       []string                              `pulumi:"emailDomains"`
-	EmailLists         []string                              `pulumi:"emailLists"`
-	Emails             []string                              `pulumi:"emails"`
-	Everyone           *bool                                 `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                              `pulumi:"geos"`
-	Githubs            []AccessGroupExcludeGithub            `pulumi:"githubs"`
-	Groups             []string                              `pulumi:"groups"`
-	Gsuites            []AccessGroupExcludeGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessGroupExcludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessGroupExcludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                 `pulumi:"ips"`
-	LoginMethods  []string                 `pulumi:"loginMethods"`
-	Oktas         []AccessGroupExcludeOkta `pulumi:"oktas"`
-	Samls         []AccessGroupExcludeSaml `pulumi:"samls"`
-	ServiceTokens []string                 `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessGroupExcludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessGroupExcludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessGroupExcludeInput is an input type that accepts AccessGroupExcludeArgs and AccessGroupExcludeOutput values.
@@ -2557,32 +2576,51 @@ type AccessGroupExcludeInput interface {
 }
 
 type AccessGroupExcludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessGroupExcludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
-	Azures               AccessGroupExcludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessGroupExcludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessGroupExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs            AccessGroupExcludeGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites            AccessGroupExcludeGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessGroupExcludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
-	Oktas         AccessGroupExcludeOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessGroupExcludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessGroupExcludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessGroupExcludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupExcludeArgs) ElementType() reflect.Type {
@@ -2636,6 +2674,7 @@ func (o AccessGroupExcludeOutput) ToAccessGroupExcludeOutputWithContext(ctx cont
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessGroupExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -2644,18 +2683,22 @@ func (o AccessGroupExcludeOutput) AuthContexts() AccessGroupExcludeAuthContextAr
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeAuthContext { return v.AuthContexts }).(AccessGroupExcludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessGroupExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessGroupExcludeOutput) Azures() AccessGroupExcludeAzureArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeAzure { return v.Azures }).(AccessGroupExcludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessGroupExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessGroupExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -2665,47 +2708,57 @@ func (o AccessGroupExcludeOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessGroupExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessGroupExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessGroupExcludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessGroupExcludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessGroupExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessGroupExcludeOutput) ExternalEvaluation() AccessGroupExcludeExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupExcludeExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessGroupExcludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessGroupExcludeOutput) Githubs() AccessGroupExcludeGithubArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeGithub { return v.Githubs }).(AccessGroupExcludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessGroupExcludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessGroupExcludeOutput) Gsuites() AccessGroupExcludeGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeGsuite { return v.Gsuites }).(AccessGroupExcludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessGroupExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -2715,18 +2768,22 @@ func (o AccessGroupExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessGroupExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessGroupExcludeOutput) Oktas() AccessGroupExcludeOktaArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeOkta { return v.Oktas }).(AccessGroupExcludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessGroupExcludeOutput) Samls() AccessGroupExcludeSamlArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeSaml { return v.Samls }).(AccessGroupExcludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessGroupExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -2756,7 +2813,7 @@ type AccessGroupExcludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -2776,7 +2833,7 @@ type AccessGroupExcludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -2841,7 +2898,7 @@ func (o AccessGroupExcludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -2867,7 +2924,7 @@ func (o AccessGroupExcludeAuthContextArrayOutput) Index(i pulumi.IntInput) Acces
 }
 
 type AccessGroupExcludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -2885,7 +2942,7 @@ type AccessGroupExcludeAzureInput interface {
 }
 
 type AccessGroupExcludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -2942,7 +2999,7 @@ func (o AccessGroupExcludeAzureOutput) ToAccessGroupExcludeAzureOutputWithContex
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -2973,8 +3030,10 @@ func (o AccessGroupExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 }
 
 type AccessGroupExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessGroupExcludeExternalEvaluationInput is an input type that accepts AccessGroupExcludeExternalEvaluationArgs and AccessGroupExcludeExternalEvaluationOutput values.
@@ -2989,8 +3048,10 @@ type AccessGroupExcludeExternalEvaluationInput interface {
 }
 
 type AccessGroupExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessGroupExcludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -3070,10 +3131,12 @@ func (o AccessGroupExcludeExternalEvaluationOutput) ToAccessGroupExcludeExternal
 	}).(AccessGroupExcludeExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -3102,6 +3165,7 @@ func (o AccessGroupExcludeExternalEvaluationPtrOutput) Elem() AccessGroupExclude
 	}).(AccessGroupExcludeExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupExcludeExternalEvaluation) *string {
 		if v == nil {
@@ -3111,6 +3175,7 @@ func (o AccessGroupExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupExcludeExternalEvaluation) *string {
 		if v == nil {
@@ -3121,9 +3186,12 @@ func (o AccessGroupExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPt
 }
 
 type AccessGroupExcludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupExcludeGithubInput is an input type that accepts AccessGroupExcludeGithubArgs and AccessGroupExcludeGithubOutput values.
@@ -3138,9 +3206,12 @@ type AccessGroupExcludeGithubInput interface {
 }
 
 type AccessGroupExcludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupExcludeGithubArgs) ElementType() reflect.Type {
@@ -3194,14 +3265,17 @@ func (o AccessGroupExcludeGithubOutput) ToAccessGroupExcludeGithubOutputWithCont
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessGroupExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessGroupExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessGroupExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -3227,8 +3301,10 @@ func (o AccessGroupExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupExcludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupExcludeGsuiteInput is an input type that accepts AccessGroupExcludeGsuiteArgs and AccessGroupExcludeGsuiteOutput values.
@@ -3243,8 +3319,10 @@ type AccessGroupExcludeGsuiteInput interface {
 }
 
 type AccessGroupExcludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -3298,10 +3376,12 @@ func (o AccessGroupExcludeGsuiteOutput) ToAccessGroupExcludeGsuiteOutputWithCont
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessGroupExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -3327,8 +3407,10 @@ func (o AccessGroupExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupExcludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupExcludeOktaInput is an input type that accepts AccessGroupExcludeOktaArgs and AccessGroupExcludeOktaOutput values.
@@ -3343,8 +3425,10 @@ type AccessGroupExcludeOktaInput interface {
 }
 
 type AccessGroupExcludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupExcludeOktaArgs) ElementType() reflect.Type {
@@ -3398,10 +3482,12 @@ func (o AccessGroupExcludeOktaOutput) ToAccessGroupExcludeOktaOutputWithContext(
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessGroupExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessGroupExcludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -3427,8 +3513,11 @@ func (o AccessGroupExcludeOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 }
 
 type AccessGroupExcludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -3444,8 +3533,11 @@ type AccessGroupExcludeSamlInput interface {
 }
 
 type AccessGroupExcludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -3500,14 +3592,17 @@ func (o AccessGroupExcludeSamlOutput) ToAccessGroupExcludeSamlOutputWithContext(
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessGroupExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessGroupExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessGroupExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -3533,32 +3628,51 @@ func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 }
 
 type AccessGroupInclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessGroupIncludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                         `pulumi:"authMethod"`
-	Azures               []AccessGroupIncludeAzure       `pulumi:"azures"`
-	Certificate          *bool                           `pulumi:"certificate"`
-	CommonName           *string                         `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessGroupIncludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                              `pulumi:"commonNames"`
-	DevicePostures     []string                              `pulumi:"devicePostures"`
-	EmailDomains       []string                              `pulumi:"emailDomains"`
-	EmailLists         []string                              `pulumi:"emailLists"`
-	Emails             []string                              `pulumi:"emails"`
-	Everyone           *bool                                 `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                              `pulumi:"geos"`
-	Githubs            []AccessGroupIncludeGithub            `pulumi:"githubs"`
-	Groups             []string                              `pulumi:"groups"`
-	Gsuites            []AccessGroupIncludeGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessGroupIncludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessGroupIncludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                 `pulumi:"ips"`
-	LoginMethods  []string                 `pulumi:"loginMethods"`
-	Oktas         []AccessGroupIncludeOkta `pulumi:"oktas"`
-	Samls         []AccessGroupIncludeSaml `pulumi:"samls"`
-	ServiceTokens []string                 `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessGroupIncludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessGroupIncludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessGroupIncludeInput is an input type that accepts AccessGroupIncludeArgs and AccessGroupIncludeOutput values.
@@ -3573,32 +3687,51 @@ type AccessGroupIncludeInput interface {
 }
 
 type AccessGroupIncludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessGroupIncludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
-	Azures               AccessGroupIncludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessGroupIncludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessGroupIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs            AccessGroupIncludeGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites            AccessGroupIncludeGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessGroupIncludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
-	Oktas         AccessGroupIncludeOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessGroupIncludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessGroupIncludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessGroupIncludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupIncludeArgs) ElementType() reflect.Type {
@@ -3652,6 +3785,7 @@ func (o AccessGroupIncludeOutput) ToAccessGroupIncludeOutputWithContext(ctx cont
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessGroupIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -3660,18 +3794,22 @@ func (o AccessGroupIncludeOutput) AuthContexts() AccessGroupIncludeAuthContextAr
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeAuthContext { return v.AuthContexts }).(AccessGroupIncludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessGroupIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessGroupIncludeOutput) Azures() AccessGroupIncludeAzureArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeAzure { return v.Azures }).(AccessGroupIncludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessGroupIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessGroupIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -3681,47 +3819,57 @@ func (o AccessGroupIncludeOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessGroupIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessGroupIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessGroupIncludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessGroupIncludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessGroupIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessGroupIncludeOutput) ExternalEvaluation() AccessGroupIncludeExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupIncludeExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessGroupIncludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessGroupIncludeOutput) Githubs() AccessGroupIncludeGithubArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeGithub { return v.Githubs }).(AccessGroupIncludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessGroupIncludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessGroupIncludeOutput) Gsuites() AccessGroupIncludeGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeGsuite { return v.Gsuites }).(AccessGroupIncludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessGroupIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -3731,18 +3879,22 @@ func (o AccessGroupIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessGroupIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessGroupIncludeOutput) Oktas() AccessGroupIncludeOktaArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeOkta { return v.Oktas }).(AccessGroupIncludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessGroupIncludeOutput) Samls() AccessGroupIncludeSamlArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeSaml { return v.Samls }).(AccessGroupIncludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessGroupIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -3772,7 +3924,7 @@ type AccessGroupIncludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -3792,7 +3944,7 @@ type AccessGroupIncludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -3857,7 +4009,7 @@ func (o AccessGroupIncludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -3883,7 +4035,7 @@ func (o AccessGroupIncludeAuthContextArrayOutput) Index(i pulumi.IntInput) Acces
 }
 
 type AccessGroupIncludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -3901,7 +4053,7 @@ type AccessGroupIncludeAzureInput interface {
 }
 
 type AccessGroupIncludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -3958,7 +4110,7 @@ func (o AccessGroupIncludeAzureOutput) ToAccessGroupIncludeAzureOutputWithContex
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -3989,8 +4141,10 @@ func (o AccessGroupIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 }
 
 type AccessGroupIncludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessGroupIncludeExternalEvaluationInput is an input type that accepts AccessGroupIncludeExternalEvaluationArgs and AccessGroupIncludeExternalEvaluationOutput values.
@@ -4005,8 +4159,10 @@ type AccessGroupIncludeExternalEvaluationInput interface {
 }
 
 type AccessGroupIncludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessGroupIncludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -4086,10 +4242,12 @@ func (o AccessGroupIncludeExternalEvaluationOutput) ToAccessGroupIncludeExternal
 	}).(AccessGroupIncludeExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -4118,6 +4276,7 @@ func (o AccessGroupIncludeExternalEvaluationPtrOutput) Elem() AccessGroupInclude
 	}).(AccessGroupIncludeExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupIncludeExternalEvaluation) *string {
 		if v == nil {
@@ -4127,6 +4286,7 @@ func (o AccessGroupIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupIncludeExternalEvaluation) *string {
 		if v == nil {
@@ -4137,9 +4297,12 @@ func (o AccessGroupIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPt
 }
 
 type AccessGroupIncludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupIncludeGithubInput is an input type that accepts AccessGroupIncludeGithubArgs and AccessGroupIncludeGithubOutput values.
@@ -4154,9 +4317,12 @@ type AccessGroupIncludeGithubInput interface {
 }
 
 type AccessGroupIncludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupIncludeGithubArgs) ElementType() reflect.Type {
@@ -4210,14 +4376,17 @@ func (o AccessGroupIncludeGithubOutput) ToAccessGroupIncludeGithubOutputWithCont
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessGroupIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessGroupIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessGroupIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -4243,8 +4412,10 @@ func (o AccessGroupIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupIncludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupIncludeGsuiteInput is an input type that accepts AccessGroupIncludeGsuiteArgs and AccessGroupIncludeGsuiteOutput values.
@@ -4259,8 +4430,10 @@ type AccessGroupIncludeGsuiteInput interface {
 }
 
 type AccessGroupIncludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -4314,10 +4487,12 @@ func (o AccessGroupIncludeGsuiteOutput) ToAccessGroupIncludeGsuiteOutputWithCont
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessGroupIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -4343,8 +4518,10 @@ func (o AccessGroupIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupIncludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupIncludeOktaInput is an input type that accepts AccessGroupIncludeOktaArgs and AccessGroupIncludeOktaOutput values.
@@ -4359,8 +4536,10 @@ type AccessGroupIncludeOktaInput interface {
 }
 
 type AccessGroupIncludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupIncludeOktaArgs) ElementType() reflect.Type {
@@ -4414,10 +4593,12 @@ func (o AccessGroupIncludeOktaOutput) ToAccessGroupIncludeOktaOutputWithContext(
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessGroupIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessGroupIncludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -4443,8 +4624,11 @@ func (o AccessGroupIncludeOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 }
 
 type AccessGroupIncludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -4460,8 +4644,11 @@ type AccessGroupIncludeSamlInput interface {
 }
 
 type AccessGroupIncludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -4516,14 +4703,17 @@ func (o AccessGroupIncludeSamlOutput) ToAccessGroupIncludeSamlOutputWithContext(
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessGroupIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessGroupIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessGroupIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -4549,32 +4739,51 @@ func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 }
 
 type AccessGroupRequire struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessGroupRequireAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                         `pulumi:"authMethod"`
-	Azures               []AccessGroupRequireAzure       `pulumi:"azures"`
-	Certificate          *bool                           `pulumi:"certificate"`
-	CommonName           *string                         `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessGroupRequireAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                              `pulumi:"commonNames"`
-	DevicePostures     []string                              `pulumi:"devicePostures"`
-	EmailDomains       []string                              `pulumi:"emailDomains"`
-	EmailLists         []string                              `pulumi:"emailLists"`
-	Emails             []string                              `pulumi:"emails"`
-	Everyone           *bool                                 `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessGroupRequireExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                              `pulumi:"geos"`
-	Githubs            []AccessGroupRequireGithub            `pulumi:"githubs"`
-	Groups             []string                              `pulumi:"groups"`
-	Gsuites            []AccessGroupRequireGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessGroupRequireGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessGroupRequireGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                 `pulumi:"ips"`
-	LoginMethods  []string                 `pulumi:"loginMethods"`
-	Oktas         []AccessGroupRequireOkta `pulumi:"oktas"`
-	Samls         []AccessGroupRequireSaml `pulumi:"samls"`
-	ServiceTokens []string                 `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessGroupRequireOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessGroupRequireSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessGroupRequireInput is an input type that accepts AccessGroupRequireArgs and AccessGroupRequireOutput values.
@@ -4589,32 +4798,51 @@ type AccessGroupRequireInput interface {
 }
 
 type AccessGroupRequireArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessGroupRequireAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
-	Azures               AccessGroupRequireAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessGroupRequireAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessGroupRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs            AccessGroupRequireGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites            AccessGroupRequireGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessGroupRequireGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
-	Oktas         AccessGroupRequireOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessGroupRequireSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessGroupRequireOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessGroupRequireSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupRequireArgs) ElementType() reflect.Type {
@@ -4668,6 +4896,7 @@ func (o AccessGroupRequireOutput) ToAccessGroupRequireOutputWithContext(ctx cont
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessGroupRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -4676,18 +4905,22 @@ func (o AccessGroupRequireOutput) AuthContexts() AccessGroupRequireAuthContextAr
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireAuthContext { return v.AuthContexts }).(AccessGroupRequireAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessGroupRequireOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessGroupRequireOutput) Azures() AccessGroupRequireAzureArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireAzure { return v.Azures }).(AccessGroupRequireAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessGroupRequireOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessGroupRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -4697,47 +4930,57 @@ func (o AccessGroupRequireOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessGroupRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessGroupRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessGroupRequireOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessGroupRequireOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessGroupRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessGroupRequireOutput) ExternalEvaluation() AccessGroupRequireExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupRequireExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessGroupRequireOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessGroupRequireOutput) Githubs() AccessGroupRequireGithubArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireGithub { return v.Githubs }).(AccessGroupRequireGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessGroupRequireOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessGroupRequireOutput) Gsuites() AccessGroupRequireGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireGsuite { return v.Gsuites }).(AccessGroupRequireGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessGroupRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -4747,18 +4990,22 @@ func (o AccessGroupRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessGroupRequireOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessGroupRequireOutput) Oktas() AccessGroupRequireOktaArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireOkta { return v.Oktas }).(AccessGroupRequireOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessGroupRequireOutput) Samls() AccessGroupRequireSamlArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireSaml { return v.Samls }).(AccessGroupRequireSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessGroupRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -4788,7 +5035,7 @@ type AccessGroupRequireAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -4808,7 +5055,7 @@ type AccessGroupRequireAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -4873,7 +5120,7 @@ func (o AccessGroupRequireAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -4899,7 +5146,7 @@ func (o AccessGroupRequireAuthContextArrayOutput) Index(i pulumi.IntInput) Acces
 }
 
 type AccessGroupRequireAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -4917,7 +5164,7 @@ type AccessGroupRequireAzureInput interface {
 }
 
 type AccessGroupRequireAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -4974,7 +5221,7 @@ func (o AccessGroupRequireAzureOutput) ToAccessGroupRequireAzureOutputWithContex
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessGroupRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -5005,8 +5252,10 @@ func (o AccessGroupRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 }
 
 type AccessGroupRequireExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessGroupRequireExternalEvaluationInput is an input type that accepts AccessGroupRequireExternalEvaluationArgs and AccessGroupRequireExternalEvaluationOutput values.
@@ -5021,8 +5270,10 @@ type AccessGroupRequireExternalEvaluationInput interface {
 }
 
 type AccessGroupRequireExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessGroupRequireExternalEvaluationArgs) ElementType() reflect.Type {
@@ -5102,10 +5353,12 @@ func (o AccessGroupRequireExternalEvaluationOutput) ToAccessGroupRequireExternal
 	}).(AccessGroupRequireExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -5134,6 +5387,7 @@ func (o AccessGroupRequireExternalEvaluationPtrOutput) Elem() AccessGroupRequire
 	}).(AccessGroupRequireExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessGroupRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupRequireExternalEvaluation) *string {
 		if v == nil {
@@ -5143,6 +5397,7 @@ func (o AccessGroupRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessGroupRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroupRequireExternalEvaluation) *string {
 		if v == nil {
@@ -5153,9 +5408,12 @@ func (o AccessGroupRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPt
 }
 
 type AccessGroupRequireGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupRequireGithubInput is an input type that accepts AccessGroupRequireGithubArgs and AccessGroupRequireGithubOutput values.
@@ -5170,9 +5428,12 @@ type AccessGroupRequireGithubInput interface {
 }
 
 type AccessGroupRequireGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupRequireGithubArgs) ElementType() reflect.Type {
@@ -5226,14 +5487,17 @@ func (o AccessGroupRequireGithubOutput) ToAccessGroupRequireGithubOutputWithCont
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessGroupRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessGroupRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessGroupRequireGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -5259,8 +5523,10 @@ func (o AccessGroupRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupRequireGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupRequireGsuiteInput is an input type that accepts AccessGroupRequireGsuiteArgs and AccessGroupRequireGsuiteOutput values.
@@ -5275,8 +5541,10 @@ type AccessGroupRequireGsuiteInput interface {
 }
 
 type AccessGroupRequireGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
@@ -5330,10 +5598,12 @@ func (o AccessGroupRequireGsuiteOutput) ToAccessGroupRequireGsuiteOutputWithCont
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessGroupRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -5359,8 +5629,10 @@ func (o AccessGroupRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupRequireOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupRequireOktaInput is an input type that accepts AccessGroupRequireOktaArgs and AccessGroupRequireOktaOutput values.
@@ -5375,8 +5647,10 @@ type AccessGroupRequireOktaInput interface {
 }
 
 type AccessGroupRequireOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupRequireOktaArgs) ElementType() reflect.Type {
@@ -5430,10 +5704,12 @@ func (o AccessGroupRequireOktaOutput) ToAccessGroupRequireOktaOutputWithContext(
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessGroupRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessGroupRequireOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -5459,8 +5735,11 @@ func (o AccessGroupRequireOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupR
 }
 
 type AccessGroupRequireSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -5476,8 +5755,11 @@ type AccessGroupRequireSamlInput interface {
 }
 
 type AccessGroupRequireSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -5532,14 +5814,17 @@ func (o AccessGroupRequireSamlOutput) ToAccessGroupRequireSamlOutputWithContext(
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessGroupRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessGroupRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessGroupRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -6399,32 +6684,51 @@ func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessPolicyExcludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                          `pulumi:"authMethod"`
-	Azures               []AccessPolicyExcludeAzure       `pulumi:"azures"`
-	Certificate          *bool                            `pulumi:"certificate"`
-	CommonName           *string                          `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessPolicyExcludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                               `pulumi:"commonNames"`
-	DevicePostures     []string                               `pulumi:"devicePostures"`
-	EmailDomains       []string                               `pulumi:"emailDomains"`
-	EmailLists         []string                               `pulumi:"emailLists"`
-	Emails             []string                               `pulumi:"emails"`
-	Everyone           *bool                                  `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                               `pulumi:"geos"`
-	Githubs            []AccessPolicyExcludeGithub            `pulumi:"githubs"`
-	Groups             []string                               `pulumi:"groups"`
-	Gsuites            []AccessPolicyExcludeGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessPolicyExcludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessPolicyExcludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                  `pulumi:"ips"`
-	LoginMethods  []string                  `pulumi:"loginMethods"`
-	Oktas         []AccessPolicyExcludeOkta `pulumi:"oktas"`
-	Samls         []AccessPolicyExcludeSaml `pulumi:"samls"`
-	ServiceTokens []string                  `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessPolicyExcludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessPolicyExcludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyExcludeInput is an input type that accepts AccessPolicyExcludeArgs and AccessPolicyExcludeOutput values.
@@ -6439,32 +6743,51 @@ type AccessPolicyExcludeInput interface {
 }
 
 type AccessPolicyExcludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessPolicyExcludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
-	Azures               AccessPolicyExcludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessPolicyExcludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessPolicyExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs            AccessPolicyExcludeGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites            AccessPolicyExcludeGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessPolicyExcludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
-	Oktas         AccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyExcludeArgs) ElementType() reflect.Type {
@@ -6518,6 +6841,7 @@ func (o AccessPolicyExcludeOutput) ToAccessPolicyExcludeOutputWithContext(ctx co
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessPolicyExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -6526,18 +6850,22 @@ func (o AccessPolicyExcludeOutput) AuthContexts() AccessPolicyExcludeAuthContext
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeAuthContext { return v.AuthContexts }).(AccessPolicyExcludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessPolicyExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessPolicyExcludeOutput) Azures() AccessPolicyExcludeAzureArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeAzure { return v.Azures }).(AccessPolicyExcludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessPolicyExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessPolicyExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -6547,47 +6875,57 @@ func (o AccessPolicyExcludeOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessPolicyExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessPolicyExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessPolicyExcludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessPolicyExcludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessPolicyExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessPolicyExcludeOutput) ExternalEvaluation() AccessPolicyExcludeExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyExcludeExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessPolicyExcludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessPolicyExcludeOutput) Githubs() AccessPolicyExcludeGithubArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeGithub { return v.Githubs }).(AccessPolicyExcludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessPolicyExcludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessPolicyExcludeOutput) Gsuites() AccessPolicyExcludeGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeGsuite { return v.Gsuites }).(AccessPolicyExcludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessPolicyExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -6597,18 +6935,22 @@ func (o AccessPolicyExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessPolicyExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessPolicyExcludeOutput) Oktas() AccessPolicyExcludeOktaArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeOkta { return v.Oktas }).(AccessPolicyExcludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessPolicyExcludeOutput) Samls() AccessPolicyExcludeSamlArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeSaml { return v.Samls }).(AccessPolicyExcludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessPolicyExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -6638,7 +6980,7 @@ type AccessPolicyExcludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -6658,7 +7000,7 @@ type AccessPolicyExcludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -6723,7 +7065,7 @@ func (o AccessPolicyExcludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -6749,7 +7091,7 @@ func (o AccessPolicyExcludeAuthContextArrayOutput) Index(i pulumi.IntInput) Acce
 }
 
 type AccessPolicyExcludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -6767,7 +7109,7 @@ type AccessPolicyExcludeAzureInput interface {
 }
 
 type AccessPolicyExcludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -6824,7 +7166,7 @@ func (o AccessPolicyExcludeAzureOutput) ToAccessPolicyExcludeAzureOutputWithCont
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -6855,8 +7197,10 @@ func (o AccessPolicyExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 }
 
 type AccessPolicyExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessPolicyExcludeExternalEvaluationInput is an input type that accepts AccessPolicyExcludeExternalEvaluationArgs and AccessPolicyExcludeExternalEvaluationOutput values.
@@ -6871,8 +7215,10 @@ type AccessPolicyExcludeExternalEvaluationInput interface {
 }
 
 type AccessPolicyExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessPolicyExcludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -6952,10 +7298,12 @@ func (o AccessPolicyExcludeExternalEvaluationOutput) ToAccessPolicyExcludeExtern
 	}).(AccessPolicyExcludeExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -6984,6 +7332,7 @@ func (o AccessPolicyExcludeExternalEvaluationPtrOutput) Elem() AccessPolicyExclu
 	}).(AccessPolicyExcludeExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyExcludeExternalEvaluation) *string {
 		if v == nil {
@@ -6993,6 +7342,7 @@ func (o AccessPolicyExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyExcludeExternalEvaluation) *string {
 		if v == nil {
@@ -7003,9 +7353,12 @@ func (o AccessPolicyExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyExcludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyExcludeGithubInput is an input type that accepts AccessPolicyExcludeGithubArgs and AccessPolicyExcludeGithubOutput values.
@@ -7020,9 +7373,12 @@ type AccessPolicyExcludeGithubInput interface {
 }
 
 type AccessPolicyExcludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyExcludeGithubArgs) ElementType() reflect.Type {
@@ -7076,14 +7432,17 @@ func (o AccessPolicyExcludeGithubOutput) ToAccessPolicyExcludeGithubOutputWithCo
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessPolicyExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessPolicyExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessPolicyExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -7109,8 +7468,10 @@ func (o AccessPolicyExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExcludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyExcludeGsuiteInput is an input type that accepts AccessPolicyExcludeGsuiteArgs and AccessPolicyExcludeGsuiteOutput values.
@@ -7125,8 +7486,10 @@ type AccessPolicyExcludeGsuiteInput interface {
 }
 
 type AccessPolicyExcludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -7180,10 +7543,12 @@ func (o AccessPolicyExcludeGsuiteOutput) ToAccessPolicyExcludeGsuiteOutputWithCo
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessPolicyExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -7209,8 +7574,10 @@ func (o AccessPolicyExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExcludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyExcludeOktaInput is an input type that accepts AccessPolicyExcludeOktaArgs and AccessPolicyExcludeOktaOutput values.
@@ -7225,8 +7592,10 @@ type AccessPolicyExcludeOktaInput interface {
 }
 
 type AccessPolicyExcludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
@@ -7280,10 +7649,12 @@ func (o AccessPolicyExcludeOktaOutput) ToAccessPolicyExcludeOktaOutputWithContex
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessPolicyExcludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -7309,8 +7680,11 @@ func (o AccessPolicyExcludeOktaArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyExcludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -7326,8 +7700,11 @@ type AccessPolicyExcludeSamlInput interface {
 }
 
 type AccessPolicyExcludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -7382,14 +7759,17 @@ func (o AccessPolicyExcludeSamlOutput) ToAccessPolicyExcludeSamlOutputWithContex
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessPolicyExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessPolicyExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessPolicyExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -7415,32 +7795,51 @@ func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyInclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessPolicyIncludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                          `pulumi:"authMethod"`
-	Azures               []AccessPolicyIncludeAzure       `pulumi:"azures"`
-	Certificate          *bool                            `pulumi:"certificate"`
-	CommonName           *string                          `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessPolicyIncludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                               `pulumi:"commonNames"`
-	DevicePostures     []string                               `pulumi:"devicePostures"`
-	EmailDomains       []string                               `pulumi:"emailDomains"`
-	EmailLists         []string                               `pulumi:"emailLists"`
-	Emails             []string                               `pulumi:"emails"`
-	Everyone           *bool                                  `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                               `pulumi:"geos"`
-	Githubs            []AccessPolicyIncludeGithub            `pulumi:"githubs"`
-	Groups             []string                               `pulumi:"groups"`
-	Gsuites            []AccessPolicyIncludeGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessPolicyIncludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessPolicyIncludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                  `pulumi:"ips"`
-	LoginMethods  []string                  `pulumi:"loginMethods"`
-	Oktas         []AccessPolicyIncludeOkta `pulumi:"oktas"`
-	Samls         []AccessPolicyIncludeSaml `pulumi:"samls"`
-	ServiceTokens []string                  `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessPolicyIncludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessPolicyIncludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyIncludeInput is an input type that accepts AccessPolicyIncludeArgs and AccessPolicyIncludeOutput values.
@@ -7455,32 +7854,51 @@ type AccessPolicyIncludeInput interface {
 }
 
 type AccessPolicyIncludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessPolicyIncludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
-	Azures               AccessPolicyIncludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessPolicyIncludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessPolicyIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs            AccessPolicyIncludeGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites            AccessPolicyIncludeGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessPolicyIncludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
-	Oktas         AccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyIncludeArgs) ElementType() reflect.Type {
@@ -7534,6 +7952,7 @@ func (o AccessPolicyIncludeOutput) ToAccessPolicyIncludeOutputWithContext(ctx co
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessPolicyIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -7542,18 +7961,22 @@ func (o AccessPolicyIncludeOutput) AuthContexts() AccessPolicyIncludeAuthContext
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeAuthContext { return v.AuthContexts }).(AccessPolicyIncludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessPolicyIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessPolicyIncludeOutput) Azures() AccessPolicyIncludeAzureArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeAzure { return v.Azures }).(AccessPolicyIncludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessPolicyIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessPolicyIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -7563,47 +7986,57 @@ func (o AccessPolicyIncludeOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessPolicyIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessPolicyIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessPolicyIncludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessPolicyIncludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessPolicyIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessPolicyIncludeOutput) ExternalEvaluation() AccessPolicyIncludeExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyIncludeExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessPolicyIncludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessPolicyIncludeOutput) Githubs() AccessPolicyIncludeGithubArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeGithub { return v.Githubs }).(AccessPolicyIncludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessPolicyIncludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessPolicyIncludeOutput) Gsuites() AccessPolicyIncludeGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeGsuite { return v.Gsuites }).(AccessPolicyIncludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessPolicyIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -7613,18 +8046,22 @@ func (o AccessPolicyIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessPolicyIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessPolicyIncludeOutput) Oktas() AccessPolicyIncludeOktaArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeOkta { return v.Oktas }).(AccessPolicyIncludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessPolicyIncludeOutput) Samls() AccessPolicyIncludeSamlArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeSaml { return v.Samls }).(AccessPolicyIncludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessPolicyIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -7654,7 +8091,7 @@ type AccessPolicyIncludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -7674,7 +8111,7 @@ type AccessPolicyIncludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -7739,7 +8176,7 @@ func (o AccessPolicyIncludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -7765,7 +8202,7 @@ func (o AccessPolicyIncludeAuthContextArrayOutput) Index(i pulumi.IntInput) Acce
 }
 
 type AccessPolicyIncludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -7783,7 +8220,7 @@ type AccessPolicyIncludeAzureInput interface {
 }
 
 type AccessPolicyIncludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -7840,7 +8277,7 @@ func (o AccessPolicyIncludeAzureOutput) ToAccessPolicyIncludeAzureOutputWithCont
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -7871,8 +8308,10 @@ func (o AccessPolicyIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 }
 
 type AccessPolicyIncludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessPolicyIncludeExternalEvaluationInput is an input type that accepts AccessPolicyIncludeExternalEvaluationArgs and AccessPolicyIncludeExternalEvaluationOutput values.
@@ -7887,8 +8326,10 @@ type AccessPolicyIncludeExternalEvaluationInput interface {
 }
 
 type AccessPolicyIncludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessPolicyIncludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -7968,10 +8409,12 @@ func (o AccessPolicyIncludeExternalEvaluationOutput) ToAccessPolicyIncludeExtern
 	}).(AccessPolicyIncludeExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -8000,6 +8443,7 @@ func (o AccessPolicyIncludeExternalEvaluationPtrOutput) Elem() AccessPolicyInclu
 	}).(AccessPolicyIncludeExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyIncludeExternalEvaluation) *string {
 		if v == nil {
@@ -8009,6 +8453,7 @@ func (o AccessPolicyIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyIncludeExternalEvaluation) *string {
 		if v == nil {
@@ -8019,9 +8464,12 @@ func (o AccessPolicyIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyIncludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyIncludeGithubInput is an input type that accepts AccessPolicyIncludeGithubArgs and AccessPolicyIncludeGithubOutput values.
@@ -8036,9 +8484,12 @@ type AccessPolicyIncludeGithubInput interface {
 }
 
 type AccessPolicyIncludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyIncludeGithubArgs) ElementType() reflect.Type {
@@ -8092,14 +8543,17 @@ func (o AccessPolicyIncludeGithubOutput) ToAccessPolicyIncludeGithubOutputWithCo
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessPolicyIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessPolicyIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessPolicyIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -8125,8 +8579,10 @@ func (o AccessPolicyIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyIncludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyIncludeGsuiteInput is an input type that accepts AccessPolicyIncludeGsuiteArgs and AccessPolicyIncludeGsuiteOutput values.
@@ -8141,8 +8597,10 @@ type AccessPolicyIncludeGsuiteInput interface {
 }
 
 type AccessPolicyIncludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -8196,10 +8654,12 @@ func (o AccessPolicyIncludeGsuiteOutput) ToAccessPolicyIncludeGsuiteOutputWithCo
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessPolicyIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -8225,8 +8685,10 @@ func (o AccessPolicyIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyIncludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyIncludeOktaInput is an input type that accepts AccessPolicyIncludeOktaArgs and AccessPolicyIncludeOktaOutput values.
@@ -8241,8 +8703,10 @@ type AccessPolicyIncludeOktaInput interface {
 }
 
 type AccessPolicyIncludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyIncludeOktaArgs) ElementType() reflect.Type {
@@ -8296,10 +8760,12 @@ func (o AccessPolicyIncludeOktaOutput) ToAccessPolicyIncludeOktaOutputWithContex
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessPolicyIncludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -8325,8 +8791,11 @@ func (o AccessPolicyIncludeOktaArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyIncludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -8342,8 +8811,11 @@ type AccessPolicyIncludeSamlInput interface {
 }
 
 type AccessPolicyIncludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -8398,14 +8870,17 @@ func (o AccessPolicyIncludeSamlOutput) ToAccessPolicyIncludeSamlOutputWithContex
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessPolicyIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessPolicyIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessPolicyIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -8431,32 +8906,51 @@ func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyRequire struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessPolicyRequireAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                          `pulumi:"authMethod"`
-	Azures               []AccessPolicyRequireAzure       `pulumi:"azures"`
-	Certificate          *bool                            `pulumi:"certificate"`
-	CommonName           *string                          `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []AccessPolicyRequireAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        []string                               `pulumi:"commonNames"`
-	DevicePostures     []string                               `pulumi:"devicePostures"`
-	EmailDomains       []string                               `pulumi:"emailDomains"`
-	EmailLists         []string                               `pulumi:"emailLists"`
-	Emails             []string                               `pulumi:"emails"`
-	Everyone           *bool                                  `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation *AccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos               []string                               `pulumi:"geos"`
-	Githubs            []AccessPolicyRequireGithub            `pulumi:"githubs"`
-	Groups             []string                               `pulumi:"groups"`
-	Gsuites            []AccessPolicyRequireGsuite            `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []AccessPolicyRequireGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []AccessPolicyRequireGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                  `pulumi:"ips"`
-	LoginMethods  []string                  `pulumi:"loginMethods"`
-	Oktas         []AccessPolicyRequireOkta `pulumi:"oktas"`
-	Samls         []AccessPolicyRequireSaml `pulumi:"samls"`
-	ServiceTokens []string                  `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []AccessPolicyRequireOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []AccessPolicyRequireSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyRequireInput is an input type that accepts AccessPolicyRequireArgs and AccessPolicyRequireOutput values.
@@ -8471,32 +8965,51 @@ type AccessPolicyRequireInput interface {
 }
 
 type AccessPolicyRequireArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
 	AuthContexts         AccessPolicyRequireAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
-	Azures               AccessPolicyRequireAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures AccessPolicyRequireAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
-	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
-	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluation AccessPolicyRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs            AccessPolicyRequireGithubArrayInput           `pulumi:"githubs"`
-	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites            AccessPolicyRequireGsuiteArrayInput           `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs AccessPolicyRequireGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites AccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
-	Oktas         AccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
-	Samls         AccessPolicyRequireSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas AccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls AccessPolicyRequireSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyRequireArgs) ElementType() reflect.Type {
@@ -8550,6 +9063,7 @@ func (o AccessPolicyRequireOutput) ToAccessPolicyRequireOutputWithContext(ctx co
 	return o
 }
 
+// Matches any valid Access service token.
 func (o AccessPolicyRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -8558,18 +9072,22 @@ func (o AccessPolicyRequireOutput) AuthContexts() AccessPolicyRequireAuthContext
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireAuthContext { return v.AuthContexts }).(AccessPolicyRequireAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o AccessPolicyRequireOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o AccessPolicyRequireOutput) Azures() AccessPolicyRequireAzureArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireAzure { return v.Azures }).(AccessPolicyRequireAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o AccessPolicyRequireOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o AccessPolicyRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -8579,47 +9097,57 @@ func (o AccessPolicyRequireOutput) CommonNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o AccessPolicyRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o AccessPolicyRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o AccessPolicyRequireOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o AccessPolicyRequireOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o AccessPolicyRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o AccessPolicyRequireOutput) ExternalEvaluation() AccessPolicyRequireExternalEvaluationPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyRequireExternalEvaluationPtrOutput)
 }
 
+// Matches a specific country.
 func (o AccessPolicyRequireOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o AccessPolicyRequireOutput) Githubs() AccessPolicyRequireGithubArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireGithub { return v.Githubs }).(AccessPolicyRequireGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o AccessPolicyRequireOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o AccessPolicyRequireOutput) Gsuites() AccessPolicyRequireGsuiteArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireGsuite { return v.Gsuites }).(AccessPolicyRequireGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o AccessPolicyRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -8629,18 +9157,22 @@ func (o AccessPolicyRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o AccessPolicyRequireOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o AccessPolicyRequireOutput) Oktas() AccessPolicyRequireOktaArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireOkta { return v.Oktas }).(AccessPolicyRequireOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o AccessPolicyRequireOutput) Samls() AccessPolicyRequireSamlArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireSaml { return v.Samls }).(AccessPolicyRequireSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o AccessPolicyRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -8670,7 +9202,7 @@ type AccessPolicyRequireAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -8690,7 +9222,7 @@ type AccessPolicyRequireAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -8755,7 +9287,7 @@ func (o AccessPolicyRequireAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -8781,7 +9313,7 @@ func (o AccessPolicyRequireAuthContextArrayOutput) Index(i pulumi.IntInput) Acce
 }
 
 type AccessPolicyRequireAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -8799,7 +9331,7 @@ type AccessPolicyRequireAzureInput interface {
 }
 
 type AccessPolicyRequireAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -8856,7 +9388,7 @@ func (o AccessPolicyRequireAzureOutput) ToAccessPolicyRequireAzureOutputWithCont
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o AccessPolicyRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -8887,8 +9419,10 @@ func (o AccessPolicyRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 }
 
 type AccessPolicyRequireExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // AccessPolicyRequireExternalEvaluationInput is an input type that accepts AccessPolicyRequireExternalEvaluationArgs and AccessPolicyRequireExternalEvaluationOutput values.
@@ -8903,8 +9437,10 @@ type AccessPolicyRequireExternalEvaluationInput interface {
 }
 
 type AccessPolicyRequireExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (AccessPolicyRequireExternalEvaluationArgs) ElementType() reflect.Type {
@@ -8984,10 +9520,12 @@ func (o AccessPolicyRequireExternalEvaluationOutput) ToAccessPolicyRequireExtern
 	}).(AccessPolicyRequireExternalEvaluationPtrOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -9016,6 +9554,7 @@ func (o AccessPolicyRequireExternalEvaluationPtrOutput) Elem() AccessPolicyRequi
 	}).(AccessPolicyRequireExternalEvaluationOutput)
 }
 
+// The API endpoint containing your business logic.
 func (o AccessPolicyRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyRequireExternalEvaluation) *string {
 		if v == nil {
@@ -9025,6 +9564,7 @@ func (o AccessPolicyRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o AccessPolicyRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicyRequireExternalEvaluation) *string {
 		if v == nil {
@@ -9035,9 +9575,12 @@ func (o AccessPolicyRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyRequireGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyRequireGithubInput is an input type that accepts AccessPolicyRequireGithubArgs and AccessPolicyRequireGithubOutput values.
@@ -9052,9 +9595,12 @@ type AccessPolicyRequireGithubInput interface {
 }
 
 type AccessPolicyRequireGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyRequireGithubArgs) ElementType() reflect.Type {
@@ -9108,14 +9654,17 @@ func (o AccessPolicyRequireGithubOutput) ToAccessPolicyRequireGithubOutputWithCo
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o AccessPolicyRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o AccessPolicyRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o AccessPolicyRequireGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -9141,8 +9690,10 @@ func (o AccessPolicyRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyRequireGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyRequireGsuiteInput is an input type that accepts AccessPolicyRequireGsuiteArgs and AccessPolicyRequireGsuiteOutput values.
@@ -9157,8 +9708,10 @@ type AccessPolicyRequireGsuiteInput interface {
 }
 
 type AccessPolicyRequireGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
@@ -9212,10 +9765,12 @@ func (o AccessPolicyRequireGsuiteOutput) ToAccessPolicyRequireGsuiteOutputWithCo
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o AccessPolicyRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o AccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -9241,8 +9796,10 @@ func (o AccessPolicyRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyRequireOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyRequireOktaInput is an input type that accepts AccessPolicyRequireOktaArgs and AccessPolicyRequireOktaOutput values.
@@ -9257,8 +9814,10 @@ type AccessPolicyRequireOktaInput interface {
 }
 
 type AccessPolicyRequireOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyRequireOktaArgs) ElementType() reflect.Type {
@@ -9312,10 +9871,12 @@ func (o AccessPolicyRequireOktaOutput) ToAccessPolicyRequireOktaOutputWithContex
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o AccessPolicyRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o AccessPolicyRequireOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -9341,8 +9902,11 @@ func (o AccessPolicyRequireOktaArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyRequireSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -9358,8 +9922,11 @@ type AccessPolicyRequireSamlInput interface {
 }
 
 type AccessPolicyRequireSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -9414,14 +9981,17 @@ func (o AccessPolicyRequireSamlOutput) ToAccessPolicyRequireSamlOutputWithContex
 	return o
 }
 
+// The name of the SAML attribute.
 func (o AccessPolicyRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o AccessPolicyRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o AccessPolicyRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -12198,7 +12768,7 @@ type DevicePostureRuleInputType struct {
 	IssueCount *string `pulumi:"issueCount"`
 	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	LastSeen *string `pulumi:"lastSeen"`
-	// List of locations to check for client certificate posture check.
+	// List of operating system locations to check for a client certificate..
 	Locations []DevicePostureRuleInputLocation `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus *string `pulumi:"networkStatus"`
@@ -12234,7 +12804,7 @@ type DevicePostureRuleInputType struct {
 	TotalScore *int `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version *string `pulumi:"version"`
-	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	VersionOperator *string `pulumi:"versionOperator"`
 }
 
@@ -12286,7 +12856,7 @@ type DevicePostureRuleInputTypeArgs struct {
 	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
 	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	LastSeen pulumi.StringPtrInput `pulumi:"lastSeen"`
-	// List of locations to check for client certificate posture check.
+	// List of operating system locations to check for a client certificate..
 	Locations DevicePostureRuleInputLocationArrayInput `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
@@ -12322,7 +12892,7 @@ type DevicePostureRuleInputTypeArgs struct {
 	TotalScore pulumi.IntPtrInput `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
-	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	VersionOperator pulumi.StringPtrInput `pulumi:"versionOperator"`
 }
 
@@ -12467,7 +13037,7 @@ func (o DevicePostureRuleInputTypeOutput) LastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.LastSeen }).(pulumi.StringPtrOutput)
 }
 
-// List of locations to check for client certificate posture check.
+// List of operating system locations to check for a client certificate..
 func (o DevicePostureRuleInputTypeOutput) Locations() DevicePostureRuleInputLocationArrayOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) []DevicePostureRuleInputLocation { return v.Locations }).(DevicePostureRuleInputLocationArrayOutput)
 }
@@ -12557,7 +13127,7 @@ func (o DevicePostureRuleInputTypeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 func (o DevicePostureRuleInputTypeOutput) VersionOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.VersionOperator }).(pulumi.StringPtrOutput)
 }
@@ -12583,9 +13153,9 @@ func (o DevicePostureRuleInputTypeArrayOutput) Index(i pulumi.IntInput) DevicePo
 }
 
 type DevicePostureRuleInputLocation struct {
-	// List of paths to check for client certificate.
+	// List of paths to check for client certificate rule.
 	Paths []string `pulumi:"paths"`
-	// List of trust stores to check for client certificate. Available values: `system`, `user`.
+	// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 	TrustStores []string `pulumi:"trustStores"`
 }
 
@@ -12601,9 +13171,9 @@ type DevicePostureRuleInputLocationInput interface {
 }
 
 type DevicePostureRuleInputLocationArgs struct {
-	// List of paths to check for client certificate.
+	// List of paths to check for client certificate rule.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// List of trust stores to check for client certificate. Available values: `system`, `user`.
+	// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 	TrustStores pulumi.StringArrayInput `pulumi:"trustStores"`
 }
 
@@ -12658,12 +13228,12 @@ func (o DevicePostureRuleInputLocationOutput) ToDevicePostureRuleInputLocationOu
 	return o
 }
 
-// List of paths to check for client certificate.
+// List of paths to check for client certificate rule.
 func (o DevicePostureRuleInputLocationOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputLocation) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// List of trust stores to check for client certificate. Available values: `system`, `user`.
+// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 func (o DevicePostureRuleInputLocationOutput) TrustStores() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputLocation) []string { return v.TrustStores }).(pulumi.StringArrayOutput)
 }
@@ -26098,6 +26668,8 @@ type RulesetRuleActionParameters struct {
 	Cache *bool `pulumi:"cache"`
 	// List of cache key parameters to apply to the request.
 	CacheKey *RulesetRuleActionParametersCacheKey `pulumi:"cacheKey"`
+	// List of cache reserve parameters to apply to the request.
+	CacheReserve *RulesetRuleActionParametersCacheReserve `pulumi:"cacheReserve"`
 	// Content of the custom error response.
 	Content *string `pulumi:"content"`
 	// Content-Type of the custom error response.
@@ -26217,6 +26789,8 @@ type RulesetRuleActionParametersArgs struct {
 	Cache pulumi.BoolPtrInput `pulumi:"cache"`
 	// List of cache key parameters to apply to the request.
 	CacheKey RulesetRuleActionParametersCacheKeyPtrInput `pulumi:"cacheKey"`
+	// List of cache reserve parameters to apply to the request.
+	CacheReserve RulesetRuleActionParametersCacheReservePtrInput `pulumi:"cacheReserve"`
 	// Content of the custom error response.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Content-Type of the custom error response.
@@ -26423,6 +26997,11 @@ func (o RulesetRuleActionParametersOutput) Cache() pulumi.BoolPtrOutput {
 // List of cache key parameters to apply to the request.
 func (o RulesetRuleActionParametersOutput) CacheKey() RulesetRuleActionParametersCacheKeyPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersCacheKey { return v.CacheKey }).(RulesetRuleActionParametersCacheKeyPtrOutput)
+}
+
+// List of cache reserve parameters to apply to the request.
+func (o RulesetRuleActionParametersOutput) CacheReserve() RulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersCacheReserve { return v.CacheReserve }).(RulesetRuleActionParametersCacheReservePtrOutput)
 }
 
 // Content of the custom error response.
@@ -26751,6 +27330,16 @@ func (o RulesetRuleActionParametersPtrOutput) CacheKey() RulesetRuleActionParame
 		}
 		return v.CacheKey
 	}).(RulesetRuleActionParametersCacheKeyPtrOutput)
+}
+
+// List of cache reserve parameters to apply to the request.
+func (o RulesetRuleActionParametersPtrOutput) CacheReserve() RulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersCacheReserve {
+		if v == nil {
+			return nil
+		}
+		return v.CacheReserve
+	}).(RulesetRuleActionParametersCacheReservePtrOutput)
 }
 
 // Content of the custom error response.
@@ -28805,6 +29394,162 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Lang() pulumi
 		}
 		return v.Lang
 	}).(pulumi.BoolPtrOutput)
+}
+
+type RulesetRuleActionParametersCacheReserve struct {
+	// Determines whether Cloudflare will write the eligible resource to cache reserve.
+	Eligible bool `pulumi:"eligible"`
+	// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+	MinimumFileSize *int `pulumi:"minimumFileSize"`
+}
+
+// RulesetRuleActionParametersCacheReserveInput is an input type that accepts RulesetRuleActionParametersCacheReserveArgs and RulesetRuleActionParametersCacheReserveOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersCacheReserveInput` via:
+//
+//	RulesetRuleActionParametersCacheReserveArgs{...}
+type RulesetRuleActionParametersCacheReserveInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersCacheReserveOutput() RulesetRuleActionParametersCacheReserveOutput
+	ToRulesetRuleActionParametersCacheReserveOutputWithContext(context.Context) RulesetRuleActionParametersCacheReserveOutput
+}
+
+type RulesetRuleActionParametersCacheReserveArgs struct {
+	// Determines whether Cloudflare will write the eligible resource to cache reserve.
+	Eligible pulumi.BoolInput `pulumi:"eligible"`
+	// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+	MinimumFileSize pulumi.IntPtrInput `pulumi:"minimumFileSize"`
+}
+
+func (RulesetRuleActionParametersCacheReserveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersCacheReserveArgs) ToRulesetRuleActionParametersCacheReserveOutput() RulesetRuleActionParametersCacheReserveOutput {
+	return i.ToRulesetRuleActionParametersCacheReserveOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersCacheReserveArgs) ToRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReserveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheReserveOutput)
+}
+
+func (i RulesetRuleActionParametersCacheReserveArgs) ToRulesetRuleActionParametersCacheReservePtrOutput() RulesetRuleActionParametersCacheReservePtrOutput {
+	return i.ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersCacheReserveArgs) ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReservePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheReserveOutput).ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersCacheReservePtrInput is an input type that accepts RulesetRuleActionParametersCacheReserveArgs, RulesetRuleActionParametersCacheReservePtr and RulesetRuleActionParametersCacheReservePtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersCacheReservePtrInput` via:
+//
+//	        RulesetRuleActionParametersCacheReserveArgs{...}
+//
+//	or:
+//
+//	        nil
+type RulesetRuleActionParametersCacheReservePtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersCacheReservePtrOutput() RulesetRuleActionParametersCacheReservePtrOutput
+	ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheReservePtrOutput
+}
+
+type rulesetRuleActionParametersCacheReservePtrType RulesetRuleActionParametersCacheReserveArgs
+
+func RulesetRuleActionParametersCacheReservePtr(v *RulesetRuleActionParametersCacheReserveArgs) RulesetRuleActionParametersCacheReservePtrInput {
+	return (*rulesetRuleActionParametersCacheReservePtrType)(v)
+}
+
+func (*rulesetRuleActionParametersCacheReservePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersCacheReservePtrType) ToRulesetRuleActionParametersCacheReservePtrOutput() RulesetRuleActionParametersCacheReservePtrOutput {
+	return i.ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersCacheReservePtrType) ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReservePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheReservePtrOutput)
+}
+
+type RulesetRuleActionParametersCacheReserveOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersCacheReserveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersCacheReserveOutput) ToRulesetRuleActionParametersCacheReserveOutput() RulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersCacheReserveOutput) ToRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersCacheReserveOutput) ToRulesetRuleActionParametersCacheReservePtrOutput() RulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersCacheReserveOutput) ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheReserve) *RulesetRuleActionParametersCacheReserve {
+		return &v
+	}).(RulesetRuleActionParametersCacheReservePtrOutput)
+}
+
+// Determines whether Cloudflare will write the eligible resource to cache reserve.
+func (o RulesetRuleActionParametersCacheReserveOutput) Eligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersCacheReserve) bool { return v.Eligible }).(pulumi.BoolOutput)
+}
+
+// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+func (o RulesetRuleActionParametersCacheReserveOutput) MinimumFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersCacheReserve) *int { return v.MinimumFileSize }).(pulumi.IntPtrOutput)
+}
+
+type RulesetRuleActionParametersCacheReservePtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersCacheReservePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersCacheReservePtrOutput) ToRulesetRuleActionParametersCacheReservePtrOutput() RulesetRuleActionParametersCacheReservePtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersCacheReservePtrOutput) ToRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheReservePtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersCacheReservePtrOutput) Elem() RulesetRuleActionParametersCacheReserveOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersCacheReserve) RulesetRuleActionParametersCacheReserve {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersCacheReserve
+		return ret
+	}).(RulesetRuleActionParametersCacheReserveOutput)
+}
+
+// Determines whether Cloudflare will write the eligible resource to cache reserve.
+func (o RulesetRuleActionParametersCacheReservePtrOutput) Eligible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersCacheReserve) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Eligible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+func (o RulesetRuleActionParametersCacheReservePtrOutput) MinimumFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersCacheReserve) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumFileSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type RulesetRuleActionParametersEdgeTtl struct {
@@ -33530,6 +34275,143 @@ func (o TeamsAccountBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type TeamsAccountCertificate struct {
+	// ID of certificate for TLS interception.
+	Id string `pulumi:"id"`
+}
+
+// TeamsAccountCertificateInput is an input type that accepts TeamsAccountCertificateArgs and TeamsAccountCertificateOutput values.
+// You can construct a concrete instance of `TeamsAccountCertificateInput` via:
+//
+//	TeamsAccountCertificateArgs{...}
+type TeamsAccountCertificateInput interface {
+	pulumi.Input
+
+	ToTeamsAccountCertificateOutput() TeamsAccountCertificateOutput
+	ToTeamsAccountCertificateOutputWithContext(context.Context) TeamsAccountCertificateOutput
+}
+
+type TeamsAccountCertificateArgs struct {
+	// ID of certificate for TLS interception.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (TeamsAccountCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountCertificate)(nil)).Elem()
+}
+
+func (i TeamsAccountCertificateArgs) ToTeamsAccountCertificateOutput() TeamsAccountCertificateOutput {
+	return i.ToTeamsAccountCertificateOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountCertificateArgs) ToTeamsAccountCertificateOutputWithContext(ctx context.Context) TeamsAccountCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCertificateOutput)
+}
+
+func (i TeamsAccountCertificateArgs) ToTeamsAccountCertificatePtrOutput() TeamsAccountCertificatePtrOutput {
+	return i.ToTeamsAccountCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountCertificateArgs) ToTeamsAccountCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCertificateOutput).ToTeamsAccountCertificatePtrOutputWithContext(ctx)
+}
+
+// TeamsAccountCertificatePtrInput is an input type that accepts TeamsAccountCertificateArgs, TeamsAccountCertificatePtr and TeamsAccountCertificatePtrOutput values.
+// You can construct a concrete instance of `TeamsAccountCertificatePtrInput` via:
+//
+//	        TeamsAccountCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountCertificatePtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountCertificatePtrOutput() TeamsAccountCertificatePtrOutput
+	ToTeamsAccountCertificatePtrOutputWithContext(context.Context) TeamsAccountCertificatePtrOutput
+}
+
+type teamsAccountCertificatePtrType TeamsAccountCertificateArgs
+
+func TeamsAccountCertificatePtr(v *TeamsAccountCertificateArgs) TeamsAccountCertificatePtrInput {
+	return (*teamsAccountCertificatePtrType)(v)
+}
+
+func (*teamsAccountCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountCertificate)(nil)).Elem()
+}
+
+func (i *teamsAccountCertificatePtrType) ToTeamsAccountCertificatePtrOutput() TeamsAccountCertificatePtrOutput {
+	return i.ToTeamsAccountCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountCertificatePtrType) ToTeamsAccountCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCertificatePtrOutput)
+}
+
+type TeamsAccountCertificateOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountCertificate)(nil)).Elem()
+}
+
+func (o TeamsAccountCertificateOutput) ToTeamsAccountCertificateOutput() TeamsAccountCertificateOutput {
+	return o
+}
+
+func (o TeamsAccountCertificateOutput) ToTeamsAccountCertificateOutputWithContext(ctx context.Context) TeamsAccountCertificateOutput {
+	return o
+}
+
+func (o TeamsAccountCertificateOutput) ToTeamsAccountCertificatePtrOutput() TeamsAccountCertificatePtrOutput {
+	return o.ToTeamsAccountCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountCertificateOutput) ToTeamsAccountCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountCertificate) *TeamsAccountCertificate {
+		return &v
+	}).(TeamsAccountCertificatePtrOutput)
+}
+
+// ID of certificate for TLS interception.
+func (o TeamsAccountCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsAccountCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type TeamsAccountCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountCertificate)(nil)).Elem()
+}
+
+func (o TeamsAccountCertificatePtrOutput) ToTeamsAccountCertificatePtrOutput() TeamsAccountCertificatePtrOutput {
+	return o
+}
+
+func (o TeamsAccountCertificatePtrOutput) ToTeamsAccountCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCertificatePtrOutput {
+	return o
+}
+
+func (o TeamsAccountCertificatePtrOutput) Elem() TeamsAccountCertificateOutput {
+	return o.ApplyT(func(v *TeamsAccountCertificate) TeamsAccountCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountCertificate
+		return ret
+	}).(TeamsAccountCertificateOutput)
+}
+
+// ID of certificate for TLS interception.
+func (o TeamsAccountCertificatePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 type TeamsAccountCustomCertificate struct {
 	// Whether TLS encryption should use a custom certificate.
 	Enabled bool `pulumi:"enabled"`
@@ -34900,7 +35782,7 @@ func (o TeamsAccountPayloadLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type TeamsAccountProxy struct {
-	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 	DisableForTime int `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa bool `pulumi:"rootCa"`
@@ -34924,7 +35806,7 @@ type TeamsAccountProxyInput interface {
 }
 
 type TeamsAccountProxyArgs struct {
-	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 	DisableForTime pulumi.IntInput `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa pulumi.BoolInput `pulumi:"rootCa"`
@@ -35013,7 +35895,7 @@ func (o TeamsAccountProxyOutput) ToTeamsAccountProxyPtrOutputWithContext(ctx con
 	}).(TeamsAccountProxyPtrOutput)
 }
 
-// Sets the time limit in seconds that a user can use an override code to bypass WARP
+// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 func (o TeamsAccountProxyOutput) DisableForTime() pulumi.IntOutput {
 	return o.ApplyT(func(v TeamsAccountProxy) int { return v.DisableForTime }).(pulumi.IntOutput)
 }
@@ -35062,7 +35944,7 @@ func (o TeamsAccountProxyPtrOutput) Elem() TeamsAccountProxyOutput {
 	}).(TeamsAccountProxyOutput)
 }
 
-// Sets the time limit in seconds that a user can use an override code to bypass WARP
+// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 func (o TeamsAccountProxyPtrOutput) DisableForTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TeamsAccountProxy) *int {
 		if v == nil {
@@ -40215,6 +41097,112 @@ func (o WorkerScriptD1DatabaseBindingArrayOutput) Index(i pulumi.IntInput) Worke
 	}).(WorkerScriptD1DatabaseBindingOutput)
 }
 
+type WorkerScriptHyperdriveConfigBinding struct {
+	// The global variable for the binding in your Worker code.
+	Binding string `pulumi:"binding"`
+	// The ID of the Hyperdrive config to use.
+	Id string `pulumi:"id"`
+}
+
+// WorkerScriptHyperdriveConfigBindingInput is an input type that accepts WorkerScriptHyperdriveConfigBindingArgs and WorkerScriptHyperdriveConfigBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptHyperdriveConfigBindingInput` via:
+//
+//	WorkerScriptHyperdriveConfigBindingArgs{...}
+type WorkerScriptHyperdriveConfigBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptHyperdriveConfigBindingOutput() WorkerScriptHyperdriveConfigBindingOutput
+	ToWorkerScriptHyperdriveConfigBindingOutputWithContext(context.Context) WorkerScriptHyperdriveConfigBindingOutput
+}
+
+type WorkerScriptHyperdriveConfigBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Binding pulumi.StringInput `pulumi:"binding"`
+	// The ID of the Hyperdrive config to use.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (WorkerScriptHyperdriveConfigBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptHyperdriveConfigBindingArgs) ToWorkerScriptHyperdriveConfigBindingOutput() WorkerScriptHyperdriveConfigBindingOutput {
+	return i.ToWorkerScriptHyperdriveConfigBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptHyperdriveConfigBindingArgs) ToWorkerScriptHyperdriveConfigBindingOutputWithContext(ctx context.Context) WorkerScriptHyperdriveConfigBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptHyperdriveConfigBindingOutput)
+}
+
+// WorkerScriptHyperdriveConfigBindingArrayInput is an input type that accepts WorkerScriptHyperdriveConfigBindingArray and WorkerScriptHyperdriveConfigBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptHyperdriveConfigBindingArrayInput` via:
+//
+//	WorkerScriptHyperdriveConfigBindingArray{ WorkerScriptHyperdriveConfigBindingArgs{...} }
+type WorkerScriptHyperdriveConfigBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptHyperdriveConfigBindingArrayOutput() WorkerScriptHyperdriveConfigBindingArrayOutput
+	ToWorkerScriptHyperdriveConfigBindingArrayOutputWithContext(context.Context) WorkerScriptHyperdriveConfigBindingArrayOutput
+}
+
+type WorkerScriptHyperdriveConfigBindingArray []WorkerScriptHyperdriveConfigBindingInput
+
+func (WorkerScriptHyperdriveConfigBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptHyperdriveConfigBindingArray) ToWorkerScriptHyperdriveConfigBindingArrayOutput() WorkerScriptHyperdriveConfigBindingArrayOutput {
+	return i.ToWorkerScriptHyperdriveConfigBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptHyperdriveConfigBindingArray) ToWorkerScriptHyperdriveConfigBindingArrayOutputWithContext(ctx context.Context) WorkerScriptHyperdriveConfigBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptHyperdriveConfigBindingArrayOutput)
+}
+
+type WorkerScriptHyperdriveConfigBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptHyperdriveConfigBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptHyperdriveConfigBindingOutput) ToWorkerScriptHyperdriveConfigBindingOutput() WorkerScriptHyperdriveConfigBindingOutput {
+	return o
+}
+
+func (o WorkerScriptHyperdriveConfigBindingOutput) ToWorkerScriptHyperdriveConfigBindingOutputWithContext(ctx context.Context) WorkerScriptHyperdriveConfigBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptHyperdriveConfigBindingOutput) Binding() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptHyperdriveConfigBinding) string { return v.Binding }).(pulumi.StringOutput)
+}
+
+// The ID of the Hyperdrive config to use.
+func (o WorkerScriptHyperdriveConfigBindingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptHyperdriveConfigBinding) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WorkerScriptHyperdriveConfigBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptHyperdriveConfigBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptHyperdriveConfigBindingArrayOutput) ToWorkerScriptHyperdriveConfigBindingArrayOutput() WorkerScriptHyperdriveConfigBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptHyperdriveConfigBindingArrayOutput) ToWorkerScriptHyperdriveConfigBindingArrayOutputWithContext(ctx context.Context) WorkerScriptHyperdriveConfigBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptHyperdriveConfigBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptHyperdriveConfigBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptHyperdriveConfigBinding {
+		return vs[0].([]WorkerScriptHyperdriveConfigBinding)[vs[1].(int)]
+	}).(WorkerScriptHyperdriveConfigBindingOutput)
+}
+
 type WorkerScriptKvNamespaceBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name string `pulumi:"name"`
@@ -41273,6 +42261,112 @@ func (o WorkersScriptD1DatabaseBindingArrayOutput) Index(i pulumi.IntInput) Work
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptD1DatabaseBinding {
 		return vs[0].([]WorkersScriptD1DatabaseBinding)[vs[1].(int)]
 	}).(WorkersScriptD1DatabaseBindingOutput)
+}
+
+type WorkersScriptHyperdriveConfigBinding struct {
+	// The global variable for the binding in your Worker code.
+	Binding string `pulumi:"binding"`
+	// The ID of the Hyperdrive config to use.
+	Id string `pulumi:"id"`
+}
+
+// WorkersScriptHyperdriveConfigBindingInput is an input type that accepts WorkersScriptHyperdriveConfigBindingArgs and WorkersScriptHyperdriveConfigBindingOutput values.
+// You can construct a concrete instance of `WorkersScriptHyperdriveConfigBindingInput` via:
+//
+//	WorkersScriptHyperdriveConfigBindingArgs{...}
+type WorkersScriptHyperdriveConfigBindingInput interface {
+	pulumi.Input
+
+	ToWorkersScriptHyperdriveConfigBindingOutput() WorkersScriptHyperdriveConfigBindingOutput
+	ToWorkersScriptHyperdriveConfigBindingOutputWithContext(context.Context) WorkersScriptHyperdriveConfigBindingOutput
+}
+
+type WorkersScriptHyperdriveConfigBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Binding pulumi.StringInput `pulumi:"binding"`
+	// The ID of the Hyperdrive config to use.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (WorkersScriptHyperdriveConfigBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptHyperdriveConfigBindingArgs) ToWorkersScriptHyperdriveConfigBindingOutput() WorkersScriptHyperdriveConfigBindingOutput {
+	return i.ToWorkersScriptHyperdriveConfigBindingOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptHyperdriveConfigBindingArgs) ToWorkersScriptHyperdriveConfigBindingOutputWithContext(ctx context.Context) WorkersScriptHyperdriveConfigBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptHyperdriveConfigBindingOutput)
+}
+
+// WorkersScriptHyperdriveConfigBindingArrayInput is an input type that accepts WorkersScriptHyperdriveConfigBindingArray and WorkersScriptHyperdriveConfigBindingArrayOutput values.
+// You can construct a concrete instance of `WorkersScriptHyperdriveConfigBindingArrayInput` via:
+//
+//	WorkersScriptHyperdriveConfigBindingArray{ WorkersScriptHyperdriveConfigBindingArgs{...} }
+type WorkersScriptHyperdriveConfigBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkersScriptHyperdriveConfigBindingArrayOutput() WorkersScriptHyperdriveConfigBindingArrayOutput
+	ToWorkersScriptHyperdriveConfigBindingArrayOutputWithContext(context.Context) WorkersScriptHyperdriveConfigBindingArrayOutput
+}
+
+type WorkersScriptHyperdriveConfigBindingArray []WorkersScriptHyperdriveConfigBindingInput
+
+func (WorkersScriptHyperdriveConfigBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (i WorkersScriptHyperdriveConfigBindingArray) ToWorkersScriptHyperdriveConfigBindingArrayOutput() WorkersScriptHyperdriveConfigBindingArrayOutput {
+	return i.ToWorkersScriptHyperdriveConfigBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptHyperdriveConfigBindingArray) ToWorkersScriptHyperdriveConfigBindingArrayOutputWithContext(ctx context.Context) WorkersScriptHyperdriveConfigBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptHyperdriveConfigBindingArrayOutput)
+}
+
+type WorkersScriptHyperdriveConfigBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptHyperdriveConfigBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptHyperdriveConfigBindingOutput) ToWorkersScriptHyperdriveConfigBindingOutput() WorkersScriptHyperdriveConfigBindingOutput {
+	return o
+}
+
+func (o WorkersScriptHyperdriveConfigBindingOutput) ToWorkersScriptHyperdriveConfigBindingOutputWithContext(ctx context.Context) WorkersScriptHyperdriveConfigBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkersScriptHyperdriveConfigBindingOutput) Binding() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptHyperdriveConfigBinding) string { return v.Binding }).(pulumi.StringOutput)
+}
+
+// The ID of the Hyperdrive config to use.
+func (o WorkersScriptHyperdriveConfigBindingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptHyperdriveConfigBinding) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WorkersScriptHyperdriveConfigBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptHyperdriveConfigBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersScriptHyperdriveConfigBinding)(nil)).Elem()
+}
+
+func (o WorkersScriptHyperdriveConfigBindingArrayOutput) ToWorkersScriptHyperdriveConfigBindingArrayOutput() WorkersScriptHyperdriveConfigBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptHyperdriveConfigBindingArrayOutput) ToWorkersScriptHyperdriveConfigBindingArrayOutputWithContext(ctx context.Context) WorkersScriptHyperdriveConfigBindingArrayOutput {
+	return o
+}
+
+func (o WorkersScriptHyperdriveConfigBindingArrayOutput) Index(i pulumi.IntInput) WorkersScriptHyperdriveConfigBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersScriptHyperdriveConfigBinding {
+		return vs[0].([]WorkersScriptHyperdriveConfigBinding)[vs[1].(int)]
+	}).(WorkersScriptHyperdriveConfigBindingOutput)
 }
 
 type WorkersScriptKvNamespaceBinding struct {
@@ -44635,32 +45729,51 @@ func (o ZeroTrustAccessApplicationScimConfigMappingOperationsPtrOutput) Update()
 }
 
 type ZeroTrustAccessGroupExclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                    `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessGroupExcludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                  `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessGroupExcludeAzure       `pulumi:"azures"`
-	Certificate          *bool                                    `pulumi:"certificate"`
-	CommonName           *string                                  `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessGroupExcludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                        `pulumi:"commonNames"`
-	DevicePostures      []string                                        `pulumi:"devicePostures"`
-	EmailDomains        []string                                        `pulumi:"emailDomains"`
-	EmailLists          []string                                        `pulumi:"emailLists"`
-	Emails              []string                                        `pulumi:"emails"`
-	Everyone            *bool                                           `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                        `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessGroupExcludeGithub             `pulumi:"githubs"`
-	Groups              []string                                        `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessGroupExcludeGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessGroupExcludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessGroupExcludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                          `pulumi:"ips"`
-	LoginMethods  []string                          `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessGroupExcludeOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessGroupExcludeSaml `pulumi:"samls"`
-	ServiceTokens []string                          `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessGroupExcludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessGroupExcludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessGroupExcludeInput is an input type that accepts ZeroTrustAccessGroupExcludeArgs and ZeroTrustAccessGroupExcludeOutput values.
@@ -44675,32 +45788,51 @@ type ZeroTrustAccessGroupExcludeInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                              `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessGroupExcludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                            `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessGroupExcludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                              `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                            `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessGroupExcludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                 `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                 `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                 `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                 `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                 `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                     `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessGroupExcludeExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                 `pulumi:"geos"`
-	Githubs             ZeroTrustAccessGroupExcludeGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                 `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessGroupExcludeGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessGroupExcludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                   `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                   `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessGroupExcludeOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessGroupExcludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                   `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessGroupExcludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessGroupExcludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessGroupExcludeArgs) ElementType() reflect.Type {
@@ -44754,6 +45886,7 @@ func (o ZeroTrustAccessGroupExcludeOutput) ToZeroTrustAccessGroupExcludeOutputWi
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessGroupExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -44762,18 +45895,22 @@ func (o ZeroTrustAccessGroupExcludeOutput) AuthContexts() ZeroTrustAccessGroupEx
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeAuthContext { return v.AuthContexts }).(ZeroTrustAccessGroupExcludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessGroupExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) Azures() ZeroTrustAccessGroupExcludeAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeAzure { return v.Azures }).(ZeroTrustAccessGroupExcludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessGroupExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessGroupExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -44783,49 +45920,59 @@ func (o ZeroTrustAccessGroupExcludeOutput) CommonNames() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessGroupExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessGroupExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessGroupExcludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessGroupExcludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessGroupExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessGroupExcludeOutput) ExternalEvaluations() ZeroTrustAccessGroupExcludeExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessGroupExcludeExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessGroupExcludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) Githubs() ZeroTrustAccessGroupExcludeGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeGithub { return v.Githubs }).(ZeroTrustAccessGroupExcludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessGroupExcludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) Gsuites() ZeroTrustAccessGroupExcludeGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeGsuite { return v.Gsuites }).(ZeroTrustAccessGroupExcludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessGroupExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -44835,18 +45982,22 @@ func (o ZeroTrustAccessGroupExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) Oktas() ZeroTrustAccessGroupExcludeOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeOkta { return v.Oktas }).(ZeroTrustAccessGroupExcludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessGroupExcludeOutput) Samls() ZeroTrustAccessGroupExcludeSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []ZeroTrustAccessGroupExcludeSaml { return v.Samls }).(ZeroTrustAccessGroupExcludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessGroupExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -44876,7 +46027,7 @@ type ZeroTrustAccessGroupExcludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -44896,7 +46047,7 @@ type ZeroTrustAccessGroupExcludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -44961,7 +46112,7 @@ func (o ZeroTrustAccessGroupExcludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -44987,7 +46138,7 @@ func (o ZeroTrustAccessGroupExcludeAuthContextArrayOutput) Index(i pulumi.IntInp
 }
 
 type ZeroTrustAccessGroupExcludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -45005,7 +46156,7 @@ type ZeroTrustAccessGroupExcludeAzureInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -45062,7 +46213,7 @@ func (o ZeroTrustAccessGroupExcludeAzureOutput) ToZeroTrustAccessGroupExcludeAzu
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -45093,8 +46244,10 @@ func (o ZeroTrustAccessGroupExcludeAzureArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessGroupExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessGroupExcludeExternalEvaluationInput is an input type that accepts ZeroTrustAccessGroupExcludeExternalEvaluationArgs and ZeroTrustAccessGroupExcludeExternalEvaluationOutput values.
@@ -45109,8 +46262,10 @@ type ZeroTrustAccessGroupExcludeExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessGroupExcludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -45164,10 +46319,12 @@ func (o ZeroTrustAccessGroupExcludeExternalEvaluationOutput) ToZeroTrustAccessGr
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessGroupExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessGroupExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -45193,9 +46350,12 @@ func (o ZeroTrustAccessGroupExcludeExternalEvaluationArrayOutput) Index(i pulumi
 }
 
 type ZeroTrustAccessGroupExcludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessGroupExcludeGithubInput is an input type that accepts ZeroTrustAccessGroupExcludeGithubArgs and ZeroTrustAccessGroupExcludeGithubOutput values.
@@ -45210,9 +46370,12 @@ type ZeroTrustAccessGroupExcludeGithubInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessGroupExcludeGithubArgs) ElementType() reflect.Type {
@@ -45266,14 +46429,17 @@ func (o ZeroTrustAccessGroupExcludeGithubOutput) ToZeroTrustAccessGroupExcludeGi
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessGroupExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessGroupExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessGroupExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -45299,8 +46465,10 @@ func (o ZeroTrustAccessGroupExcludeGithubArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupExcludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupExcludeGsuiteInput is an input type that accepts ZeroTrustAccessGroupExcludeGsuiteArgs and ZeroTrustAccessGroupExcludeGsuiteOutput values.
@@ -45315,8 +46483,10 @@ type ZeroTrustAccessGroupExcludeGsuiteInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -45370,10 +46540,12 @@ func (o ZeroTrustAccessGroupExcludeGsuiteOutput) ToZeroTrustAccessGroupExcludeGs
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessGroupExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -45399,8 +46571,10 @@ func (o ZeroTrustAccessGroupExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupExcludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessGroupExcludeOktaInput is an input type that accepts ZeroTrustAccessGroupExcludeOktaArgs and ZeroTrustAccessGroupExcludeOktaOutput values.
@@ -45415,8 +46589,10 @@ type ZeroTrustAccessGroupExcludeOktaInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessGroupExcludeOktaArgs) ElementType() reflect.Type {
@@ -45470,10 +46646,12 @@ func (o ZeroTrustAccessGroupExcludeOktaOutput) ToZeroTrustAccessGroupExcludeOkta
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessGroupExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessGroupExcludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -45499,8 +46677,11 @@ func (o ZeroTrustAccessGroupExcludeOktaArrayOutput) Index(i pulumi.IntInput) Zer
 }
 
 type ZeroTrustAccessGroupExcludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -45516,8 +46697,11 @@ type ZeroTrustAccessGroupExcludeSamlInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -45572,14 +46756,17 @@ func (o ZeroTrustAccessGroupExcludeSamlOutput) ToZeroTrustAccessGroupExcludeSaml
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessGroupExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessGroupExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessGroupExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -45605,32 +46792,51 @@ func (o ZeroTrustAccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) Zer
 }
 
 type ZeroTrustAccessGroupInclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                    `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessGroupIncludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                  `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessGroupIncludeAzure       `pulumi:"azures"`
-	Certificate          *bool                                    `pulumi:"certificate"`
-	CommonName           *string                                  `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessGroupIncludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                        `pulumi:"commonNames"`
-	DevicePostures      []string                                        `pulumi:"devicePostures"`
-	EmailDomains        []string                                        `pulumi:"emailDomains"`
-	EmailLists          []string                                        `pulumi:"emailLists"`
-	Emails              []string                                        `pulumi:"emails"`
-	Everyone            *bool                                           `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                        `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessGroupIncludeGithub             `pulumi:"githubs"`
-	Groups              []string                                        `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessGroupIncludeGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessGroupIncludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessGroupIncludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                          `pulumi:"ips"`
-	LoginMethods  []string                          `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessGroupIncludeOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessGroupIncludeSaml `pulumi:"samls"`
-	ServiceTokens []string                          `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessGroupIncludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessGroupIncludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessGroupIncludeInput is an input type that accepts ZeroTrustAccessGroupIncludeArgs and ZeroTrustAccessGroupIncludeOutput values.
@@ -45645,32 +46851,51 @@ type ZeroTrustAccessGroupIncludeInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                              `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessGroupIncludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                            `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessGroupIncludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                              `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                            `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessGroupIncludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                 `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                 `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                 `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                 `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                 `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                     `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessGroupIncludeExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                 `pulumi:"geos"`
-	Githubs             ZeroTrustAccessGroupIncludeGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                 `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessGroupIncludeGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessGroupIncludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                   `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                   `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessGroupIncludeOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessGroupIncludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                   `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessGroupIncludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessGroupIncludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessGroupIncludeArgs) ElementType() reflect.Type {
@@ -45724,6 +46949,7 @@ func (o ZeroTrustAccessGroupIncludeOutput) ToZeroTrustAccessGroupIncludeOutputWi
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessGroupIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -45732,18 +46958,22 @@ func (o ZeroTrustAccessGroupIncludeOutput) AuthContexts() ZeroTrustAccessGroupIn
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeAuthContext { return v.AuthContexts }).(ZeroTrustAccessGroupIncludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessGroupIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) Azures() ZeroTrustAccessGroupIncludeAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeAzure { return v.Azures }).(ZeroTrustAccessGroupIncludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessGroupIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessGroupIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -45753,49 +46983,59 @@ func (o ZeroTrustAccessGroupIncludeOutput) CommonNames() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessGroupIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessGroupIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessGroupIncludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessGroupIncludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessGroupIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessGroupIncludeOutput) ExternalEvaluations() ZeroTrustAccessGroupIncludeExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessGroupIncludeExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessGroupIncludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) Githubs() ZeroTrustAccessGroupIncludeGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeGithub { return v.Githubs }).(ZeroTrustAccessGroupIncludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessGroupIncludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) Gsuites() ZeroTrustAccessGroupIncludeGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeGsuite { return v.Gsuites }).(ZeroTrustAccessGroupIncludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessGroupIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -45805,18 +47045,22 @@ func (o ZeroTrustAccessGroupIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) Oktas() ZeroTrustAccessGroupIncludeOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeOkta { return v.Oktas }).(ZeroTrustAccessGroupIncludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessGroupIncludeOutput) Samls() ZeroTrustAccessGroupIncludeSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []ZeroTrustAccessGroupIncludeSaml { return v.Samls }).(ZeroTrustAccessGroupIncludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessGroupIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -45846,7 +47090,7 @@ type ZeroTrustAccessGroupIncludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -45866,7 +47110,7 @@ type ZeroTrustAccessGroupIncludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -45931,7 +47175,7 @@ func (o ZeroTrustAccessGroupIncludeAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -45957,7 +47201,7 @@ func (o ZeroTrustAccessGroupIncludeAuthContextArrayOutput) Index(i pulumi.IntInp
 }
 
 type ZeroTrustAccessGroupIncludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -45975,7 +47219,7 @@ type ZeroTrustAccessGroupIncludeAzureInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -46032,7 +47276,7 @@ func (o ZeroTrustAccessGroupIncludeAzureOutput) ToZeroTrustAccessGroupIncludeAzu
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -46063,8 +47307,10 @@ func (o ZeroTrustAccessGroupIncludeAzureArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessGroupIncludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessGroupIncludeExternalEvaluationInput is an input type that accepts ZeroTrustAccessGroupIncludeExternalEvaluationArgs and ZeroTrustAccessGroupIncludeExternalEvaluationOutput values.
@@ -46079,8 +47325,10 @@ type ZeroTrustAccessGroupIncludeExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessGroupIncludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -46134,10 +47382,12 @@ func (o ZeroTrustAccessGroupIncludeExternalEvaluationOutput) ToZeroTrustAccessGr
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessGroupIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessGroupIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -46163,9 +47413,12 @@ func (o ZeroTrustAccessGroupIncludeExternalEvaluationArrayOutput) Index(i pulumi
 }
 
 type ZeroTrustAccessGroupIncludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessGroupIncludeGithubInput is an input type that accepts ZeroTrustAccessGroupIncludeGithubArgs and ZeroTrustAccessGroupIncludeGithubOutput values.
@@ -46180,9 +47433,12 @@ type ZeroTrustAccessGroupIncludeGithubInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessGroupIncludeGithubArgs) ElementType() reflect.Type {
@@ -46236,14 +47492,17 @@ func (o ZeroTrustAccessGroupIncludeGithubOutput) ToZeroTrustAccessGroupIncludeGi
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessGroupIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessGroupIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessGroupIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -46269,8 +47528,10 @@ func (o ZeroTrustAccessGroupIncludeGithubArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupIncludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupIncludeGsuiteInput is an input type that accepts ZeroTrustAccessGroupIncludeGsuiteArgs and ZeroTrustAccessGroupIncludeGsuiteOutput values.
@@ -46285,8 +47546,10 @@ type ZeroTrustAccessGroupIncludeGsuiteInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -46340,10 +47603,12 @@ func (o ZeroTrustAccessGroupIncludeGsuiteOutput) ToZeroTrustAccessGroupIncludeGs
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessGroupIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -46369,8 +47634,10 @@ func (o ZeroTrustAccessGroupIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupIncludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessGroupIncludeOktaInput is an input type that accepts ZeroTrustAccessGroupIncludeOktaArgs and ZeroTrustAccessGroupIncludeOktaOutput values.
@@ -46385,8 +47652,10 @@ type ZeroTrustAccessGroupIncludeOktaInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessGroupIncludeOktaArgs) ElementType() reflect.Type {
@@ -46440,10 +47709,12 @@ func (o ZeroTrustAccessGroupIncludeOktaOutput) ToZeroTrustAccessGroupIncludeOkta
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessGroupIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessGroupIncludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -46469,8 +47740,11 @@ func (o ZeroTrustAccessGroupIncludeOktaArrayOutput) Index(i pulumi.IntInput) Zer
 }
 
 type ZeroTrustAccessGroupIncludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -46486,8 +47760,11 @@ type ZeroTrustAccessGroupIncludeSamlInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -46542,14 +47819,17 @@ func (o ZeroTrustAccessGroupIncludeSamlOutput) ToZeroTrustAccessGroupIncludeSaml
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessGroupIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessGroupIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessGroupIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -46575,32 +47855,51 @@ func (o ZeroTrustAccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) Zer
 }
 
 type ZeroTrustAccessGroupRequire struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                    `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessGroupRequireAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                  `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessGroupRequireAzure       `pulumi:"azures"`
-	Certificate          *bool                                    `pulumi:"certificate"`
-	CommonName           *string                                  `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessGroupRequireAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                        `pulumi:"commonNames"`
-	DevicePostures      []string                                        `pulumi:"devicePostures"`
-	EmailDomains        []string                                        `pulumi:"emailDomains"`
-	EmailLists          []string                                        `pulumi:"emailLists"`
-	Emails              []string                                        `pulumi:"emails"`
-	Everyone            *bool                                           `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessGroupRequireExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                        `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessGroupRequireGithub             `pulumi:"githubs"`
-	Groups              []string                                        `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessGroupRequireGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessGroupRequireGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessGroupRequireGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                          `pulumi:"ips"`
-	LoginMethods  []string                          `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessGroupRequireOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessGroupRequireSaml `pulumi:"samls"`
-	ServiceTokens []string                          `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessGroupRequireOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessGroupRequireSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessGroupRequireInput is an input type that accepts ZeroTrustAccessGroupRequireArgs and ZeroTrustAccessGroupRequireOutput values.
@@ -46615,32 +47914,51 @@ type ZeroTrustAccessGroupRequireInput interface {
 }
 
 type ZeroTrustAccessGroupRequireArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                              `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessGroupRequireAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                            `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessGroupRequireAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                              `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                            `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessGroupRequireAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                 `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                 `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                 `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                 `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                 `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                     `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessGroupRequireExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                 `pulumi:"geos"`
-	Githubs             ZeroTrustAccessGroupRequireGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                 `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessGroupRequireGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessGroupRequireGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                   `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                   `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessGroupRequireOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessGroupRequireSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                   `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessGroupRequireOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessGroupRequireSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessGroupRequireArgs) ElementType() reflect.Type {
@@ -46694,6 +48012,7 @@ func (o ZeroTrustAccessGroupRequireOutput) ToZeroTrustAccessGroupRequireOutputWi
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessGroupRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -46702,18 +48021,22 @@ func (o ZeroTrustAccessGroupRequireOutput) AuthContexts() ZeroTrustAccessGroupRe
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireAuthContext { return v.AuthContexts }).(ZeroTrustAccessGroupRequireAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessGroupRequireOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) Azures() ZeroTrustAccessGroupRequireAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireAzure { return v.Azures }).(ZeroTrustAccessGroupRequireAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessGroupRequireOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessGroupRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -46723,49 +48046,59 @@ func (o ZeroTrustAccessGroupRequireOutput) CommonNames() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessGroupRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessGroupRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessGroupRequireOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessGroupRequireOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessGroupRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessGroupRequireOutput) ExternalEvaluations() ZeroTrustAccessGroupRequireExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessGroupRequireExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessGroupRequireOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) Githubs() ZeroTrustAccessGroupRequireGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireGithub { return v.Githubs }).(ZeroTrustAccessGroupRequireGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessGroupRequireOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) Gsuites() ZeroTrustAccessGroupRequireGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireGsuite { return v.Gsuites }).(ZeroTrustAccessGroupRequireGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessGroupRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -46775,18 +48108,22 @@ func (o ZeroTrustAccessGroupRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) Oktas() ZeroTrustAccessGroupRequireOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireOkta { return v.Oktas }).(ZeroTrustAccessGroupRequireOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessGroupRequireOutput) Samls() ZeroTrustAccessGroupRequireSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []ZeroTrustAccessGroupRequireSaml { return v.Samls }).(ZeroTrustAccessGroupRequireSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessGroupRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -46816,7 +48153,7 @@ type ZeroTrustAccessGroupRequireAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -46836,7 +48173,7 @@ type ZeroTrustAccessGroupRequireAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -46901,7 +48238,7 @@ func (o ZeroTrustAccessGroupRequireAuthContextOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -46927,7 +48264,7 @@ func (o ZeroTrustAccessGroupRequireAuthContextArrayOutput) Index(i pulumi.IntInp
 }
 
 type ZeroTrustAccessGroupRequireAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -46945,7 +48282,7 @@ type ZeroTrustAccessGroupRequireAzureInput interface {
 }
 
 type ZeroTrustAccessGroupRequireAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -47002,7 +48339,7 @@ func (o ZeroTrustAccessGroupRequireAzureOutput) ToZeroTrustAccessGroupRequireAzu
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessGroupRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -47033,8 +48370,10 @@ func (o ZeroTrustAccessGroupRequireAzureArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessGroupRequireExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessGroupRequireExternalEvaluationInput is an input type that accepts ZeroTrustAccessGroupRequireExternalEvaluationArgs and ZeroTrustAccessGroupRequireExternalEvaluationOutput values.
@@ -47049,8 +48388,10 @@ type ZeroTrustAccessGroupRequireExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessGroupRequireExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessGroupRequireExternalEvaluationArgs) ElementType() reflect.Type {
@@ -47104,10 +48445,12 @@ func (o ZeroTrustAccessGroupRequireExternalEvaluationOutput) ToZeroTrustAccessGr
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessGroupRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessGroupRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -47133,9 +48476,12 @@ func (o ZeroTrustAccessGroupRequireExternalEvaluationArrayOutput) Index(i pulumi
 }
 
 type ZeroTrustAccessGroupRequireGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessGroupRequireGithubInput is an input type that accepts ZeroTrustAccessGroupRequireGithubArgs and ZeroTrustAccessGroupRequireGithubOutput values.
@@ -47150,9 +48496,12 @@ type ZeroTrustAccessGroupRequireGithubInput interface {
 }
 
 type ZeroTrustAccessGroupRequireGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessGroupRequireGithubArgs) ElementType() reflect.Type {
@@ -47206,14 +48555,17 @@ func (o ZeroTrustAccessGroupRequireGithubOutput) ToZeroTrustAccessGroupRequireGi
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessGroupRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessGroupRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessGroupRequireGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -47239,8 +48591,10 @@ func (o ZeroTrustAccessGroupRequireGithubArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupRequireGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupRequireGsuiteInput is an input type that accepts ZeroTrustAccessGroupRequireGsuiteArgs and ZeroTrustAccessGroupRequireGsuiteOutput values.
@@ -47255,8 +48609,10 @@ type ZeroTrustAccessGroupRequireGsuiteInput interface {
 }
 
 type ZeroTrustAccessGroupRequireGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
@@ -47310,10 +48666,12 @@ func (o ZeroTrustAccessGroupRequireGsuiteOutput) ToZeroTrustAccessGroupRequireGs
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessGroupRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -47339,8 +48697,10 @@ func (o ZeroTrustAccessGroupRequireGsuiteArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessGroupRequireOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessGroupRequireOktaInput is an input type that accepts ZeroTrustAccessGroupRequireOktaArgs and ZeroTrustAccessGroupRequireOktaOutput values.
@@ -47355,8 +48715,10 @@ type ZeroTrustAccessGroupRequireOktaInput interface {
 }
 
 type ZeroTrustAccessGroupRequireOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessGroupRequireOktaArgs) ElementType() reflect.Type {
@@ -47410,10 +48772,12 @@ func (o ZeroTrustAccessGroupRequireOktaOutput) ToZeroTrustAccessGroupRequireOkta
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessGroupRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessGroupRequireOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -47439,8 +48803,11 @@ func (o ZeroTrustAccessGroupRequireOktaArrayOutput) Index(i pulumi.IntInput) Zer
 }
 
 type ZeroTrustAccessGroupRequireSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -47456,8 +48823,11 @@ type ZeroTrustAccessGroupRequireSamlInput interface {
 }
 
 type ZeroTrustAccessGroupRequireSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -47512,14 +48882,17 @@ func (o ZeroTrustAccessGroupRequireSamlOutput) ToZeroTrustAccessGroupRequireSaml
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessGroupRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessGroupRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessGroupRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -48379,32 +49752,51 @@ func (o ZeroTrustAccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyExclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessPolicyExcludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                   `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessPolicyExcludeAzure       `pulumi:"azures"`
-	Certificate          *bool                                     `pulumi:"certificate"`
-	CommonName           *string                                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessPolicyExcludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                         `pulumi:"commonNames"`
-	DevicePostures      []string                                         `pulumi:"devicePostures"`
-	EmailDomains        []string                                         `pulumi:"emailDomains"`
-	EmailLists          []string                                         `pulumi:"emailLists"`
-	Emails              []string                                         `pulumi:"emails"`
-	Everyone            *bool                                            `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                         `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessPolicyExcludeGithub             `pulumi:"githubs"`
-	Groups              []string                                         `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessPolicyExcludeGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessPolicyExcludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessPolicyExcludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                           `pulumi:"ips"`
-	LoginMethods  []string                           `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessPolicyExcludeOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessPolicyExcludeSaml `pulumi:"samls"`
-	ServiceTokens []string                           `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessPolicyExcludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessPolicyExcludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessPolicyExcludeInput is an input type that accepts ZeroTrustAccessPolicyExcludeArgs and ZeroTrustAccessPolicyExcludeOutput values.
@@ -48419,32 +49811,51 @@ type ZeroTrustAccessPolicyExcludeInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                               `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessPolicyExcludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                             `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessPolicyExcludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                               `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                             `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessPolicyExcludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                  `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                  `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                  `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                  `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                  `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                      `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessPolicyExcludeExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                  `pulumi:"geos"`
-	Githubs             ZeroTrustAccessPolicyExcludeGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                  `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessPolicyExcludeGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessPolicyExcludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                    `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                    `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                    `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessPolicyExcludeArgs) ElementType() reflect.Type {
@@ -48498,6 +49909,7 @@ func (o ZeroTrustAccessPolicyExcludeOutput) ToZeroTrustAccessPolicyExcludeOutput
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessPolicyExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -48506,18 +49918,22 @@ func (o ZeroTrustAccessPolicyExcludeOutput) AuthContexts() ZeroTrustAccessPolicy
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeAuthContext { return v.AuthContexts }).(ZeroTrustAccessPolicyExcludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessPolicyExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) Azures() ZeroTrustAccessPolicyExcludeAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeAzure { return v.Azures }).(ZeroTrustAccessPolicyExcludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessPolicyExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessPolicyExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -48527,49 +49943,59 @@ func (o ZeroTrustAccessPolicyExcludeOutput) CommonNames() pulumi.StringArrayOutp
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessPolicyExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessPolicyExcludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessPolicyExcludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessPolicyExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessPolicyExcludeOutput) ExternalEvaluations() ZeroTrustAccessPolicyExcludeExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessPolicyExcludeExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessPolicyExcludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) Githubs() ZeroTrustAccessPolicyExcludeGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeGithub { return v.Githubs }).(ZeroTrustAccessPolicyExcludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessPolicyExcludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) Gsuites() ZeroTrustAccessPolicyExcludeGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeGsuite { return v.Gsuites }).(ZeroTrustAccessPolicyExcludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessPolicyExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -48579,18 +50005,22 @@ func (o ZeroTrustAccessPolicyExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) Oktas() ZeroTrustAccessPolicyExcludeOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeOkta { return v.Oktas }).(ZeroTrustAccessPolicyExcludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessPolicyExcludeOutput) Samls() ZeroTrustAccessPolicyExcludeSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []ZeroTrustAccessPolicyExcludeSaml { return v.Samls }).(ZeroTrustAccessPolicyExcludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessPolicyExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -48620,7 +50050,7 @@ type ZeroTrustAccessPolicyExcludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -48640,7 +50070,7 @@ type ZeroTrustAccessPolicyExcludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -48705,7 +50135,7 @@ func (o ZeroTrustAccessPolicyExcludeAuthContextOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -48731,7 +50161,7 @@ func (o ZeroTrustAccessPolicyExcludeAuthContextArrayOutput) Index(i pulumi.IntIn
 }
 
 type ZeroTrustAccessPolicyExcludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -48749,7 +50179,7 @@ type ZeroTrustAccessPolicyExcludeAzureInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -48806,7 +50236,7 @@ func (o ZeroTrustAccessPolicyExcludeAzureOutput) ToZeroTrustAccessPolicyExcludeA
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -48837,8 +50267,10 @@ func (o ZeroTrustAccessPolicyExcludeAzureArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessPolicyExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessPolicyExcludeExternalEvaluationInput is an input type that accepts ZeroTrustAccessPolicyExcludeExternalEvaluationArgs and ZeroTrustAccessPolicyExcludeExternalEvaluationOutput values.
@@ -48853,8 +50285,10 @@ type ZeroTrustAccessPolicyExcludeExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessPolicyExcludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -48908,10 +50342,12 @@ func (o ZeroTrustAccessPolicyExcludeExternalEvaluationOutput) ToZeroTrustAccessP
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessPolicyExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessPolicyExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -48937,9 +50373,12 @@ func (o ZeroTrustAccessPolicyExcludeExternalEvaluationArrayOutput) Index(i pulum
 }
 
 type ZeroTrustAccessPolicyExcludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessPolicyExcludeGithubInput is an input type that accepts ZeroTrustAccessPolicyExcludeGithubArgs and ZeroTrustAccessPolicyExcludeGithubOutput values.
@@ -48954,9 +50393,12 @@ type ZeroTrustAccessPolicyExcludeGithubInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessPolicyExcludeGithubArgs) ElementType() reflect.Type {
@@ -49010,14 +50452,17 @@ func (o ZeroTrustAccessPolicyExcludeGithubOutput) ToZeroTrustAccessPolicyExclude
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessPolicyExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessPolicyExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessPolicyExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -49043,8 +50488,10 @@ func (o ZeroTrustAccessPolicyExcludeGithubArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyExcludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyExcludeGsuiteInput is an input type that accepts ZeroTrustAccessPolicyExcludeGsuiteArgs and ZeroTrustAccessPolicyExcludeGsuiteOutput values.
@@ -49059,8 +50506,10 @@ type ZeroTrustAccessPolicyExcludeGsuiteInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -49114,10 +50563,12 @@ func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) ToZeroTrustAccessPolicyExclude
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -49143,8 +50594,10 @@ func (o ZeroTrustAccessPolicyExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyExcludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessPolicyExcludeOktaInput is an input type that accepts ZeroTrustAccessPolicyExcludeOktaArgs and ZeroTrustAccessPolicyExcludeOktaOutput values.
@@ -49159,8 +50612,10 @@ type ZeroTrustAccessPolicyExcludeOktaInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
@@ -49214,10 +50669,12 @@ func (o ZeroTrustAccessPolicyExcludeOktaOutput) ToZeroTrustAccessPolicyExcludeOk
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessPolicyExcludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -49243,8 +50700,11 @@ func (o ZeroTrustAccessPolicyExcludeOktaArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessPolicyExcludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -49260,8 +50720,11 @@ type ZeroTrustAccessPolicyExcludeSamlInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -49316,14 +50779,17 @@ func (o ZeroTrustAccessPolicyExcludeSamlOutput) ToZeroTrustAccessPolicyExcludeSa
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessPolicyExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessPolicyExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessPolicyExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -49349,32 +50815,51 @@ func (o ZeroTrustAccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessPolicyInclude struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessPolicyIncludeAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                   `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessPolicyIncludeAzure       `pulumi:"azures"`
-	Certificate          *bool                                     `pulumi:"certificate"`
-	CommonName           *string                                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessPolicyIncludeAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                         `pulumi:"commonNames"`
-	DevicePostures      []string                                         `pulumi:"devicePostures"`
-	EmailDomains        []string                                         `pulumi:"emailDomains"`
-	EmailLists          []string                                         `pulumi:"emailLists"`
-	Emails              []string                                         `pulumi:"emails"`
-	Everyone            *bool                                            `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                         `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessPolicyIncludeGithub             `pulumi:"githubs"`
-	Groups              []string                                         `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessPolicyIncludeGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessPolicyIncludeGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessPolicyIncludeGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                           `pulumi:"ips"`
-	LoginMethods  []string                           `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessPolicyIncludeOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessPolicyIncludeSaml `pulumi:"samls"`
-	ServiceTokens []string                           `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessPolicyIncludeOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessPolicyIncludeSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessPolicyIncludeInput is an input type that accepts ZeroTrustAccessPolicyIncludeArgs and ZeroTrustAccessPolicyIncludeOutput values.
@@ -49389,32 +50874,51 @@ type ZeroTrustAccessPolicyIncludeInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                               `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessPolicyIncludeAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                             `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessPolicyIncludeAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                               `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                             `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessPolicyIncludeAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                  `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                  `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                  `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                  `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                  `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                      `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessPolicyIncludeExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                  `pulumi:"geos"`
-	Githubs             ZeroTrustAccessPolicyIncludeGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                  `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessPolicyIncludeGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessPolicyIncludeGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                    `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                    `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                    `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessPolicyIncludeArgs) ElementType() reflect.Type {
@@ -49468,6 +50972,7 @@ func (o ZeroTrustAccessPolicyIncludeOutput) ToZeroTrustAccessPolicyIncludeOutput
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessPolicyIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -49476,18 +50981,22 @@ func (o ZeroTrustAccessPolicyIncludeOutput) AuthContexts() ZeroTrustAccessPolicy
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeAuthContext { return v.AuthContexts }).(ZeroTrustAccessPolicyIncludeAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessPolicyIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) Azures() ZeroTrustAccessPolicyIncludeAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeAzure { return v.Azures }).(ZeroTrustAccessPolicyIncludeAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessPolicyIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessPolicyIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -49497,49 +51006,59 @@ func (o ZeroTrustAccessPolicyIncludeOutput) CommonNames() pulumi.StringArrayOutp
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessPolicyIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessPolicyIncludeOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessPolicyIncludeOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessPolicyIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessPolicyIncludeOutput) ExternalEvaluations() ZeroTrustAccessPolicyIncludeExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessPolicyIncludeExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessPolicyIncludeOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) Githubs() ZeroTrustAccessPolicyIncludeGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeGithub { return v.Githubs }).(ZeroTrustAccessPolicyIncludeGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessPolicyIncludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) Gsuites() ZeroTrustAccessPolicyIncludeGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeGsuite { return v.Gsuites }).(ZeroTrustAccessPolicyIncludeGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessPolicyIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -49549,18 +51068,22 @@ func (o ZeroTrustAccessPolicyIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) Oktas() ZeroTrustAccessPolicyIncludeOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeOkta { return v.Oktas }).(ZeroTrustAccessPolicyIncludeOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessPolicyIncludeOutput) Samls() ZeroTrustAccessPolicyIncludeSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []ZeroTrustAccessPolicyIncludeSaml { return v.Samls }).(ZeroTrustAccessPolicyIncludeSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessPolicyIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -49590,7 +51113,7 @@ type ZeroTrustAccessPolicyIncludeAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -49610,7 +51133,7 @@ type ZeroTrustAccessPolicyIncludeAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -49675,7 +51198,7 @@ func (o ZeroTrustAccessPolicyIncludeAuthContextOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -49701,7 +51224,7 @@ func (o ZeroTrustAccessPolicyIncludeAuthContextArrayOutput) Index(i pulumi.IntIn
 }
 
 type ZeroTrustAccessPolicyIncludeAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -49719,7 +51242,7 @@ type ZeroTrustAccessPolicyIncludeAzureInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -49776,7 +51299,7 @@ func (o ZeroTrustAccessPolicyIncludeAzureOutput) ToZeroTrustAccessPolicyIncludeA
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -49807,8 +51330,10 @@ func (o ZeroTrustAccessPolicyIncludeAzureArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessPolicyIncludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessPolicyIncludeExternalEvaluationInput is an input type that accepts ZeroTrustAccessPolicyIncludeExternalEvaluationArgs and ZeroTrustAccessPolicyIncludeExternalEvaluationOutput values.
@@ -49823,8 +51348,10 @@ type ZeroTrustAccessPolicyIncludeExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessPolicyIncludeExternalEvaluationArgs) ElementType() reflect.Type {
@@ -49878,10 +51405,12 @@ func (o ZeroTrustAccessPolicyIncludeExternalEvaluationOutput) ToZeroTrustAccessP
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessPolicyIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessPolicyIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -49907,9 +51436,12 @@ func (o ZeroTrustAccessPolicyIncludeExternalEvaluationArrayOutput) Index(i pulum
 }
 
 type ZeroTrustAccessPolicyIncludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessPolicyIncludeGithubInput is an input type that accepts ZeroTrustAccessPolicyIncludeGithubArgs and ZeroTrustAccessPolicyIncludeGithubOutput values.
@@ -49924,9 +51456,12 @@ type ZeroTrustAccessPolicyIncludeGithubInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessPolicyIncludeGithubArgs) ElementType() reflect.Type {
@@ -49980,14 +51515,17 @@ func (o ZeroTrustAccessPolicyIncludeGithubOutput) ToZeroTrustAccessPolicyInclude
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessPolicyIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessPolicyIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessPolicyIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -50013,8 +51551,10 @@ func (o ZeroTrustAccessPolicyIncludeGithubArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyIncludeGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyIncludeGsuiteInput is an input type that accepts ZeroTrustAccessPolicyIncludeGsuiteArgs and ZeroTrustAccessPolicyIncludeGsuiteOutput values.
@@ -50029,8 +51569,10 @@ type ZeroTrustAccessPolicyIncludeGsuiteInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -50084,10 +51626,12 @@ func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) ToZeroTrustAccessPolicyInclude
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -50113,8 +51657,10 @@ func (o ZeroTrustAccessPolicyIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyIncludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessPolicyIncludeOktaInput is an input type that accepts ZeroTrustAccessPolicyIncludeOktaArgs and ZeroTrustAccessPolicyIncludeOktaOutput values.
@@ -50129,8 +51675,10 @@ type ZeroTrustAccessPolicyIncludeOktaInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessPolicyIncludeOktaArgs) ElementType() reflect.Type {
@@ -50184,10 +51732,12 @@ func (o ZeroTrustAccessPolicyIncludeOktaOutput) ToZeroTrustAccessPolicyIncludeOk
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessPolicyIncludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -50213,8 +51763,11 @@ func (o ZeroTrustAccessPolicyIncludeOktaArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessPolicyIncludeSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -50230,8 +51783,11 @@ type ZeroTrustAccessPolicyIncludeSamlInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -50286,14 +51842,17 @@ func (o ZeroTrustAccessPolicyIncludeSamlOutput) ToZeroTrustAccessPolicyIncludeSa
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessPolicyIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessPolicyIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessPolicyIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -50319,32 +51878,51 @@ func (o ZeroTrustAccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessPolicyRequire struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                     `pulumi:"anyValidServiceToken"`
 	AuthContexts         []ZeroTrustAccessPolicyRequireAuthContext `pulumi:"authContexts"`
-	AuthMethod           *string                                   `pulumi:"authMethod"`
-	Azures               []ZeroTrustAccessPolicyRequireAzure       `pulumi:"azures"`
-	Certificate          *bool                                     `pulumi:"certificate"`
-	CommonName           *string                                   `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod *string `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures []ZeroTrustAccessPolicyRequireAzure `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate *bool `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName *string `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         []string                                         `pulumi:"commonNames"`
-	DevicePostures      []string                                         `pulumi:"devicePostures"`
-	EmailDomains        []string                                         `pulumi:"emailDomains"`
-	EmailLists          []string                                         `pulumi:"emailLists"`
-	Emails              []string                                         `pulumi:"emails"`
-	Everyone            *bool                                            `pulumi:"everyone"`
+	CommonNames []string `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures []string `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains []string `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists []string `pulumi:"emailLists"`
+	// The email of the user.
+	Emails []string `pulumi:"emails"`
+	// Matches everyone.
+	Everyone *bool `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations []ZeroTrustAccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluations"`
-	Geos                []string                                         `pulumi:"geos"`
-	Githubs             []ZeroTrustAccessPolicyRequireGithub             `pulumi:"githubs"`
-	Groups              []string                                         `pulumi:"groups"`
-	Gsuites             []ZeroTrustAccessPolicyRequireGsuite             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos []string `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs []ZeroTrustAccessPolicyRequireGithub `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups []string `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites []ZeroTrustAccessPolicyRequireGsuite `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           []string                           `pulumi:"ips"`
-	LoginMethods  []string                           `pulumi:"loginMethods"`
-	Oktas         []ZeroTrustAccessPolicyRequireOkta `pulumi:"oktas"`
-	Samls         []ZeroTrustAccessPolicyRequireSaml `pulumi:"samls"`
-	ServiceTokens []string                           `pulumi:"serviceTokens"`
+	Ips []string `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods []string `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas []ZeroTrustAccessPolicyRequireOkta `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls []ZeroTrustAccessPolicyRequireSaml `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 // ZeroTrustAccessPolicyRequireInput is an input type that accepts ZeroTrustAccessPolicyRequireArgs and ZeroTrustAccessPolicyRequireOutput values.
@@ -50359,32 +51937,51 @@ type ZeroTrustAccessPolicyRequireInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireArgs struct {
+	// Matches any valid Access service token.
 	AnyValidServiceToken pulumi.BoolPtrInput                               `pulumi:"anyValidServiceToken"`
 	AuthContexts         ZeroTrustAccessPolicyRequireAuthContextArrayInput `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                             `pulumi:"authMethod"`
-	Azures               ZeroTrustAccessPolicyRequireAzureArrayInput       `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                               `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                             `pulumi:"commonName"`
+	// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// Matches an Azure group. Requires an Azure identity provider.
+	Azures ZeroTrustAccessPolicyRequireAzureArrayInput `pulumi:"azures"`
+	// Matches any valid client certificate.
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	// Matches a valid client certificate common name.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-	CommonNames         pulumi.StringArrayInput                                  `pulumi:"commonNames"`
-	DevicePostures      pulumi.StringArrayInput                                  `pulumi:"devicePostures"`
-	EmailDomains        pulumi.StringArrayInput                                  `pulumi:"emailDomains"`
-	EmailLists          pulumi.StringArrayInput                                  `pulumi:"emailLists"`
-	Emails              pulumi.StringArrayInput                                  `pulumi:"emails"`
-	Everyone            pulumi.BoolPtrInput                                      `pulumi:"everyone"`
+	CommonNames pulumi.StringArrayInput `pulumi:"commonNames"`
+	// The ID of a device posture integration.
+	DevicePostures pulumi.StringArrayInput `pulumi:"devicePostures"`
+	// The email domain to match.
+	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
+	// The ID of a previously created email list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// The email of the user.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Matches everyone.
+	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 	ExternalEvaluations ZeroTrustAccessPolicyRequireExternalEvaluationArrayInput `pulumi:"externalEvaluations"`
-	Geos                pulumi.StringArrayInput                                  `pulumi:"geos"`
-	Githubs             ZeroTrustAccessPolicyRequireGithubArrayInput             `pulumi:"githubs"`
-	Groups              pulumi.StringArrayInput                                  `pulumi:"groups"`
-	Gsuites             ZeroTrustAccessPolicyRequireGsuiteArrayInput             `pulumi:"gsuites"`
-	// The ID of an existing IP list to reference.
+	// Matches a specific country.
+	Geos pulumi.StringArrayInput `pulumi:"geos"`
+	// Matches a Github organization. Requires a Github identity provider.
+	Githubs ZeroTrustAccessPolicyRequireGithubArrayInput `pulumi:"githubs"`
+	// The ID of a previously created Access group.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+	Gsuites ZeroTrustAccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
+	// The ID of a previously created IP list.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
-	Ips           pulumi.StringArrayInput                    `pulumi:"ips"`
-	LoginMethods  pulumi.StringArrayInput                    `pulumi:"loginMethods"`
-	Oktas         ZeroTrustAccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
-	Samls         ZeroTrustAccessPolicyRequireSamlArrayInput `pulumi:"samls"`
-	ServiceTokens pulumi.StringArrayInput                    `pulumi:"serviceTokens"`
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The ID of a configured identity provider.
+	LoginMethods pulumi.StringArrayInput `pulumi:"loginMethods"`
+	// Matches an Okta group. Requires an Okta identity provider.
+	Oktas ZeroTrustAccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
+	// Matches a SAML group. Requires a SAML identity provider.
+	Samls ZeroTrustAccessPolicyRequireSamlArrayInput `pulumi:"samls"`
+	// The ID of an Access service token.
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (ZeroTrustAccessPolicyRequireArgs) ElementType() reflect.Type {
@@ -50438,6 +52035,7 @@ func (o ZeroTrustAccessPolicyRequireOutput) ToZeroTrustAccessPolicyRequireOutput
 	return o
 }
 
+// Matches any valid Access service token.
 func (o ZeroTrustAccessPolicyRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
 }
@@ -50446,18 +52044,22 @@ func (o ZeroTrustAccessPolicyRequireOutput) AuthContexts() ZeroTrustAccessPolicy
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireAuthContext { return v.AuthContexts }).(ZeroTrustAccessPolicyRequireAuthContextArrayOutput)
 }
 
+// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
 func (o ZeroTrustAccessPolicyRequireOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
+// Matches an Azure group. Requires an Azure identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) Azures() ZeroTrustAccessPolicyRequireAzureArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireAzure { return v.Azures }).(ZeroTrustAccessPolicyRequireAzureArrayOutput)
 }
 
+// Matches any valid client certificate.
 func (o ZeroTrustAccessPolicyRequireOutput) Certificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
 }
 
+// Matches a valid client certificate common name.
 func (o ZeroTrustAccessPolicyRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
@@ -50467,49 +52069,59 @@ func (o ZeroTrustAccessPolicyRequireOutput) CommonNames() pulumi.StringArrayOutp
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
+// The email domain to match.
 func (o ZeroTrustAccessPolicyRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a previously created email list.
 func (o ZeroTrustAccessPolicyRequireOutput) EmailLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
+// The email of the user.
 func (o ZeroTrustAccessPolicyRequireOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// Matches everyone.
 func (o ZeroTrustAccessPolicyRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
 func (o ZeroTrustAccessPolicyRequireOutput) ExternalEvaluations() ZeroTrustAccessPolicyRequireExternalEvaluationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireExternalEvaluation {
 		return v.ExternalEvaluations
 	}).(ZeroTrustAccessPolicyRequireExternalEvaluationArrayOutput)
 }
 
+// Matches a specific country.
 func (o ZeroTrustAccessPolicyRequireOutput) Geos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
+// Matches a Github organization. Requires a Github identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) Githubs() ZeroTrustAccessPolicyRequireGithubArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireGithub { return v.Githubs }).(ZeroTrustAccessPolicyRequireGithubArrayOutput)
 }
 
+// The ID of a previously created Access group.
 func (o ZeroTrustAccessPolicyRequireOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) Gsuites() ZeroTrustAccessPolicyRequireGsuiteArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireGsuite { return v.Gsuites }).(ZeroTrustAccessPolicyRequireGsuiteArrayOutput)
 }
 
-// The ID of an existing IP list to reference.
+// The ID of a previously created IP list.
 func (o ZeroTrustAccessPolicyRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
@@ -50519,18 +52131,22 @@ func (o ZeroTrustAccessPolicyRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// The ID of a configured identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) LoginMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
+// Matches an Okta group. Requires an Okta identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) Oktas() ZeroTrustAccessPolicyRequireOktaArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireOkta { return v.Oktas }).(ZeroTrustAccessPolicyRequireOktaArrayOutput)
 }
 
+// Matches a SAML group. Requires a SAML identity provider.
 func (o ZeroTrustAccessPolicyRequireOutput) Samls() ZeroTrustAccessPolicyRequireSamlArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []ZeroTrustAccessPolicyRequireSaml { return v.Samls }).(ZeroTrustAccessPolicyRequireSamlArrayOutput)
 }
 
+// The ID of an Access service token.
 func (o ZeroTrustAccessPolicyRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
@@ -50560,7 +52176,7 @@ type ZeroTrustAccessPolicyRequireAuthContext struct {
 	AcId string `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id string `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
@@ -50580,7 +52196,7 @@ type ZeroTrustAccessPolicyRequireAuthContextArgs struct {
 	AcId pulumi.StringInput `pulumi:"acId"`
 	// The ID of the Authentication Context.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
@@ -50645,7 +52261,7 @@ func (o ZeroTrustAccessPolicyRequireAuthContextOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
@@ -50671,7 +52287,7 @@ func (o ZeroTrustAccessPolicyRequireAuthContextArrayOutput) Index(i pulumi.IntIn
 }
 
 type ZeroTrustAccessPolicyRequireAzure struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids []string `pulumi:"ids"`
@@ -50689,7 +52305,7 @@ type ZeroTrustAccessPolicyRequireAzureInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireAzureArgs struct {
-	// The ID of the Azure Identity provider.
+	// The ID of the Azure identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The ID of the Azure group or user.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -50746,7 +52362,7 @@ func (o ZeroTrustAccessPolicyRequireAzureOutput) ToZeroTrustAccessPolicyRequireA
 	return o
 }
 
-// The ID of the Azure Identity provider.
+// The ID of the Azure identity provider.
 func (o ZeroTrustAccessPolicyRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -50777,8 +52393,10 @@ func (o ZeroTrustAccessPolicyRequireAzureArrayOutput) Index(i pulumi.IntInput) Z
 }
 
 type ZeroTrustAccessPolicyRequireExternalEvaluation struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl *string `pulumi:"evaluateUrl"`
-	KeysUrl     *string `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl *string `pulumi:"keysUrl"`
 }
 
 // ZeroTrustAccessPolicyRequireExternalEvaluationInput is an input type that accepts ZeroTrustAccessPolicyRequireExternalEvaluationArgs and ZeroTrustAccessPolicyRequireExternalEvaluationOutput values.
@@ -50793,8 +52411,10 @@ type ZeroTrustAccessPolicyRequireExternalEvaluationInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
 	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
-	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringPtrInput `pulumi:"keysUrl"`
 }
 
 func (ZeroTrustAccessPolicyRequireExternalEvaluationArgs) ElementType() reflect.Type {
@@ -50848,10 +52468,12 @@ func (o ZeroTrustAccessPolicyRequireExternalEvaluationOutput) ToZeroTrustAccessP
 	return o
 }
 
+// The API endpoint containing your business logic.
 func (o ZeroTrustAccessPolicyRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
 func (o ZeroTrustAccessPolicyRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
 }
@@ -50877,9 +52499,12 @@ func (o ZeroTrustAccessPolicyRequireExternalEvaluationArrayOutput) Index(i pulum
 }
 
 type ZeroTrustAccessPolicyRequireGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name *string `pulumi:"name"`
+	// The teams that should be matched.
+	Teams []string `pulumi:"teams"`
 }
 
 // ZeroTrustAccessPolicyRequireGithubInput is an input type that accepts ZeroTrustAccessPolicyRequireGithubArgs and ZeroTrustAccessPolicyRequireGithubOutput values.
@@ -50894,9 +52519,12 @@ type ZeroTrustAccessPolicyRequireGithubInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The teams that should be matched.
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (ZeroTrustAccessPolicyRequireGithubArgs) ElementType() reflect.Type {
@@ -50950,14 +52578,17 @@ func (o ZeroTrustAccessPolicyRequireGithubOutput) ToZeroTrustAccessPolicyRequire
 	return o
 }
 
+// The ID of your Github identity provider.
 func (o ZeroTrustAccessPolicyRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the organization.
 func (o ZeroTrustAccessPolicyRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The teams that should be matched.
 func (o ZeroTrustAccessPolicyRequireGithubOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
@@ -50983,8 +52614,10 @@ func (o ZeroTrustAccessPolicyRequireGithubArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyRequireGsuite struct {
-	Emails             []string `pulumi:"emails"`
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails []string `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyRequireGsuiteInput is an input type that accepts ZeroTrustAccessPolicyRequireGsuiteArgs and ZeroTrustAccessPolicyRequireGsuiteOutput values.
@@ -50999,8 +52632,10 @@ type ZeroTrustAccessPolicyRequireGsuiteInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireGsuiteArgs struct {
-	Emails             pulumi.StringArrayInput `pulumi:"emails"`
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	// The email of the Google Workspace group.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
@@ -51054,10 +52689,12 @@ func (o ZeroTrustAccessPolicyRequireGsuiteOutput) ToZeroTrustAccessPolicyRequire
 	return o
 }
 
+// The email of the Google Workspace group.
 func (o ZeroTrustAccessPolicyRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
+// The ID of your Google Workspace identity provider.
 func (o ZeroTrustAccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -51083,8 +52720,10 @@ func (o ZeroTrustAccessPolicyRequireGsuiteArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ZeroTrustAccessPolicyRequireOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names []string `pulumi:"names"`
 }
 
 // ZeroTrustAccessPolicyRequireOktaInput is an input type that accepts ZeroTrustAccessPolicyRequireOktaArgs and ZeroTrustAccessPolicyRequireOktaOutput values.
@@ -51099,8 +52738,10 @@ type ZeroTrustAccessPolicyRequireOktaInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The name of the Okta Group.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (ZeroTrustAccessPolicyRequireOktaArgs) ElementType() reflect.Type {
@@ -51154,10 +52795,12 @@ func (o ZeroTrustAccessPolicyRequireOktaOutput) ToZeroTrustAccessPolicyRequireOk
 	return o
 }
 
+// The ID of your Okta identity provider.
 func (o ZeroTrustAccessPolicyRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Okta Group.
 func (o ZeroTrustAccessPolicyRequireOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -51183,8 +52826,11 @@ func (o ZeroTrustAccessPolicyRequireOktaArrayOutput) Index(i pulumi.IntInput) Ze
 }
 
 type ZeroTrustAccessPolicyRequireSaml struct {
-	AttributeName      *string `pulumi:"attributeName"`
-	AttributeValue     *string `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName *string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue *string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 }
 
@@ -51200,8 +52846,11 @@ type ZeroTrustAccessPolicyRequireSamlInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireSamlArgs struct {
-	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
-	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 }
 
@@ -51256,14 +52905,17 @@ func (o ZeroTrustAccessPolicyRequireSamlOutput) ToZeroTrustAccessPolicyRequireSa
 	return o
 }
 
+// The name of the SAML attribute.
 func (o ZeroTrustAccessPolicyRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// The SAML attribute value to look for.
 func (o ZeroTrustAccessPolicyRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
 }
 
+// The ID of your SAML identity provider.
 func (o ZeroTrustAccessPolicyRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
@@ -51623,13 +53275,13 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	CountOperator *string `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain *string `pulumi:"domain"`
-	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	EidLastSeen *string `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists *bool `pulumi:"exists"`
-	// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+	// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
 	ExtendedKeyUsages []string `pulumi:"extendedKeyUsages"`
 	// The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
 	Id *string `pulumi:"id"`
@@ -51641,7 +53293,7 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	IssueCount *string `pulumi:"issueCount"`
 	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	LastSeen *string `pulumi:"lastSeen"`
-	// List of locations to check for client certificate.
+	// List of operating system locations to check for a client certificate..
 	Locations []ZeroTrustDevicePostureRuleInputLocation `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus *string `pulumi:"networkStatus"`
@@ -51677,7 +53329,7 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	TotalScore *int `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version *string `pulumi:"version"`
-	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	VersionOperator *string `pulumi:"versionOperator"`
 }
 
@@ -51711,13 +53363,13 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+	// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	EidLastSeen pulumi.StringPtrInput `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists pulumi.BoolPtrInput `pulumi:"exists"`
-	// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+	// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
 	ExtendedKeyUsages pulumi.StringArrayInput `pulumi:"extendedKeyUsages"`
 	// The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -51729,7 +53381,7 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
 	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 	LastSeen pulumi.StringPtrInput `pulumi:"lastSeen"`
-	// List of locations to check for client certificate.
+	// List of operating system locations to check for a client certificate..
 	Locations ZeroTrustDevicePostureRuleInputLocationArrayInput `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
@@ -51765,7 +53417,7 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	TotalScore pulumi.IntPtrInput `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
-	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	VersionOperator pulumi.StringPtrInput `pulumi:"versionOperator"`
 }
 
@@ -51865,7 +53517,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) EidLastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.EidLastSeen }).(pulumi.StringPtrOutput)
 }
@@ -51880,7 +53532,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *bool { return v.Exists }).(pulumi.BoolPtrOutput)
 }
 
-// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) ExtendedKeyUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) []string { return v.ExtendedKeyUsages }).(pulumi.StringArrayOutput)
 }
@@ -51910,7 +53562,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) LastSeen() pulumi.StringPtrOu
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.LastSeen }).(pulumi.StringPtrOutput)
 }
 
-// List of locations to check for client certificate.
+// List of operating system locations to check for a client certificate..
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) Locations() ZeroTrustDevicePostureRuleInputLocationArrayOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) []ZeroTrustDevicePostureRuleInputLocation {
 		return v.Locations
@@ -52002,7 +53654,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) Version() pulumi.StringPtrOut
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+// The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) VersionOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.VersionOperator }).(pulumi.StringPtrOutput)
 }
@@ -52030,7 +53682,7 @@ func (o ZeroTrustDevicePostureRuleInputTypeArrayOutput) Index(i pulumi.IntInput)
 type ZeroTrustDevicePostureRuleInputLocation struct {
 	// List of paths to check for client certificate rule.
 	Paths []string `pulumi:"paths"`
-	// List of trust stores to check for client certificate rule. Available values: `system`, `user`
+	// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 	TrustStores []string `pulumi:"trustStores"`
 }
 
@@ -52048,7 +53700,7 @@ type ZeroTrustDevicePostureRuleInputLocationInput interface {
 type ZeroTrustDevicePostureRuleInputLocationArgs struct {
 	// List of paths to check for client certificate rule.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// List of trust stores to check for client certificate rule. Available values: `system`, `user`
+	// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 	TrustStores pulumi.StringArrayInput `pulumi:"trustStores"`
 }
 
@@ -52108,7 +53760,7 @@ func (o ZeroTrustDevicePostureRuleInputLocationOutput) Paths() pulumi.StringArra
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputLocation) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// List of trust stores to check for client certificate rule. Available values: `system`, `user`
+// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
 func (o ZeroTrustDevicePostureRuleInputLocationOutput) TrustStores() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputLocation) []string { return v.TrustStores }).(pulumi.StringArrayOutput)
 }
@@ -56088,6 +57740,143 @@ func (o ZeroTrustGatewaySettingsBodyScanningPtrOutput) InspectionMode() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+type ZeroTrustGatewaySettingsCertificate struct {
+	// ID of certificate for TLS interception.
+	Id string `pulumi:"id"`
+}
+
+// ZeroTrustGatewaySettingsCertificateInput is an input type that accepts ZeroTrustGatewaySettingsCertificateArgs and ZeroTrustGatewaySettingsCertificateOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsCertificateInput` via:
+//
+//	ZeroTrustGatewaySettingsCertificateArgs{...}
+type ZeroTrustGatewaySettingsCertificateInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsCertificateOutput() ZeroTrustGatewaySettingsCertificateOutput
+	ToZeroTrustGatewaySettingsCertificateOutputWithContext(context.Context) ZeroTrustGatewaySettingsCertificateOutput
+}
+
+type ZeroTrustGatewaySettingsCertificateArgs struct {
+	// ID of certificate for TLS interception.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ZeroTrustGatewaySettingsCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsCertificate)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewaySettingsCertificateArgs) ToZeroTrustGatewaySettingsCertificateOutput() ZeroTrustGatewaySettingsCertificateOutput {
+	return i.ToZeroTrustGatewaySettingsCertificateOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsCertificateArgs) ToZeroTrustGatewaySettingsCertificateOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsCertificateOutput)
+}
+
+func (i ZeroTrustGatewaySettingsCertificateArgs) ToZeroTrustGatewaySettingsCertificatePtrOutput() ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return i.ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsCertificateArgs) ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsCertificateOutput).ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewaySettingsCertificatePtrInput is an input type that accepts ZeroTrustGatewaySettingsCertificateArgs, ZeroTrustGatewaySettingsCertificatePtr and ZeroTrustGatewaySettingsCertificatePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsCertificatePtrInput` via:
+//
+//	        ZeroTrustGatewaySettingsCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewaySettingsCertificatePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsCertificatePtrOutput() ZeroTrustGatewaySettingsCertificatePtrOutput
+	ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(context.Context) ZeroTrustGatewaySettingsCertificatePtrOutput
+}
+
+type zeroTrustGatewaySettingsCertificatePtrType ZeroTrustGatewaySettingsCertificateArgs
+
+func ZeroTrustGatewaySettingsCertificatePtr(v *ZeroTrustGatewaySettingsCertificateArgs) ZeroTrustGatewaySettingsCertificatePtrInput {
+	return (*zeroTrustGatewaySettingsCertificatePtrType)(v)
+}
+
+func (*zeroTrustGatewaySettingsCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsCertificate)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewaySettingsCertificatePtrType) ToZeroTrustGatewaySettingsCertificatePtrOutput() ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return i.ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewaySettingsCertificatePtrType) ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsCertificatePtrOutput)
+}
+
+type ZeroTrustGatewaySettingsCertificateOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsCertificateOutput) ToZeroTrustGatewaySettingsCertificateOutput() ZeroTrustGatewaySettingsCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsCertificateOutput) ToZeroTrustGatewaySettingsCertificateOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsCertificateOutput) ToZeroTrustGatewaySettingsCertificatePtrOutput() ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return o.ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewaySettingsCertificateOutput) ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewaySettingsCertificate) *ZeroTrustGatewaySettingsCertificate {
+		return &v
+	}).(ZeroTrustGatewaySettingsCertificatePtrOutput)
+}
+
+// ID of certificate for TLS interception.
+func (o ZeroTrustGatewaySettingsCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ZeroTrustGatewaySettingsCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsCertificatePtrOutput) ToZeroTrustGatewaySettingsCertificatePtrOutput() ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsCertificatePtrOutput) ToZeroTrustGatewaySettingsCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsCertificatePtrOutput) Elem() ZeroTrustGatewaySettingsCertificateOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsCertificate) ZeroTrustGatewaySettingsCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewaySettingsCertificate
+		return ret
+	}).(ZeroTrustGatewaySettingsCertificateOutput)
+}
+
+// ID of certificate for TLS interception.
+func (o ZeroTrustGatewaySettingsCertificatePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZeroTrustGatewaySettingsCustomCertificate struct {
 	// Whether TLS encryption should use a custom certificate.
 	Enabled bool `pulumi:"enabled"`
@@ -57466,7 +59255,7 @@ func (o ZeroTrustGatewaySettingsPayloadLogPtrOutput) PublicKey() pulumi.StringPt
 }
 
 type ZeroTrustGatewaySettingsProxy struct {
-	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 	DisableForTime int `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa bool `pulumi:"rootCa"`
@@ -57490,7 +59279,7 @@ type ZeroTrustGatewaySettingsProxyInput interface {
 }
 
 type ZeroTrustGatewaySettingsProxyArgs struct {
-	// Sets the time limit in seconds that a user can use an override code to bypass WARP
+	// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 	DisableForTime pulumi.IntInput `pulumi:"disableForTime"`
 	// Whether root ca is enabled account wide for ZT clients.
 	RootCa pulumi.BoolInput `pulumi:"rootCa"`
@@ -57579,7 +59368,7 @@ func (o ZeroTrustGatewaySettingsProxyOutput) ToZeroTrustGatewaySettingsProxyPtrO
 	}).(ZeroTrustGatewaySettingsProxyPtrOutput)
 }
 
-// Sets the time limit in seconds that a user can use an override code to bypass WARP
+// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 func (o ZeroTrustGatewaySettingsProxyOutput) DisableForTime() pulumi.IntOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsProxy) int { return v.DisableForTime }).(pulumi.IntOutput)
 }
@@ -57628,7 +59417,7 @@ func (o ZeroTrustGatewaySettingsProxyPtrOutput) Elem() ZeroTrustGatewaySettingsP
 	}).(ZeroTrustGatewaySettingsProxyOutput)
 }
 
-// Sets the time limit in seconds that a user can use an override code to bypass WARP
+// Sets the time limit in seconds that a user can use an override code to bypass WARP.
 func (o ZeroTrustGatewaySettingsProxyPtrOutput) DisableForTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsProxy) *int {
 		if v == nil {
@@ -60369,6 +62158,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	PrivacyPass             *string                                           `pulumi:"privacyPass"`
 	ProxyReadTimeout        *string                                           `pulumi:"proxyReadTimeout"`
 	PseudoIpv4              *string                                           `pulumi:"pseudoIpv4"`
+	ReplaceInsecureJs       *string                                           `pulumi:"replaceInsecureJs"`
 	ResponseBuffering       *string                                           `pulumi:"responseBuffering"`
 	RocketLoader            *string                                           `pulumi:"rocketLoader"`
 	SecurityHeader          *ZoneSettingsOverrideInitialSettingSecurityHeader `pulumi:"securityHeader"`
@@ -60442,6 +62232,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	PrivacyPass             pulumi.StringPtrInput                                    `pulumi:"privacyPass"`
 	ProxyReadTimeout        pulumi.StringPtrInput                                    `pulumi:"proxyReadTimeout"`
 	PseudoIpv4              pulumi.StringPtrInput                                    `pulumi:"pseudoIpv4"`
+	ReplaceInsecureJs       pulumi.StringPtrInput                                    `pulumi:"replaceInsecureJs"`
 	ResponseBuffering       pulumi.StringPtrInput                                    `pulumi:"responseBuffering"`
 	RocketLoader            pulumi.StringPtrInput                                    `pulumi:"rocketLoader"`
 	SecurityHeader          ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput `pulumi:"securityHeader"`
@@ -60674,6 +62465,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) ProxyReadTimeout() pulumi.Stri
 
 func (o ZoneSettingsOverrideInitialSettingOutput) PseudoIpv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) ReplaceInsecureJs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ReplaceInsecureJs }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) ResponseBuffering() pulumi.StringPtrOutput {
@@ -61461,6 +63256,7 @@ type ZoneSettingsOverrideSettings struct {
 	PrivacyPass             *string                                     `pulumi:"privacyPass"`
 	ProxyReadTimeout        *string                                     `pulumi:"proxyReadTimeout"`
 	PseudoIpv4              *string                                     `pulumi:"pseudoIpv4"`
+	ReplaceInsecureJs       *string                                     `pulumi:"replaceInsecureJs"`
 	ResponseBuffering       *string                                     `pulumi:"responseBuffering"`
 	RocketLoader            *string                                     `pulumi:"rocketLoader"`
 	SecurityHeader          *ZoneSettingsOverrideSettingsSecurityHeader `pulumi:"securityHeader"`
@@ -61534,6 +63330,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	PrivacyPass             pulumi.StringPtrInput                              `pulumi:"privacyPass"`
 	ProxyReadTimeout        pulumi.StringPtrInput                              `pulumi:"proxyReadTimeout"`
 	PseudoIpv4              pulumi.StringPtrInput                              `pulumi:"pseudoIpv4"`
+	ReplaceInsecureJs       pulumi.StringPtrInput                              `pulumi:"replaceInsecureJs"`
 	ResponseBuffering       pulumi.StringPtrInput                              `pulumi:"responseBuffering"`
 	RocketLoader            pulumi.StringPtrInput                              `pulumi:"rocketLoader"`
 	SecurityHeader          ZoneSettingsOverrideSettingsSecurityHeaderPtrInput `pulumi:"securityHeader"`
@@ -61792,6 +63589,10 @@ func (o ZoneSettingsOverrideSettingsOutput) ProxyReadTimeout() pulumi.StringPtrO
 
 func (o ZoneSettingsOverrideSettingsOutput) PseudoIpv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) ReplaceInsecureJs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ReplaceInsecureJs }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) ResponseBuffering() pulumi.StringPtrOutput {
@@ -62247,6 +64048,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) PseudoIpv4() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.PseudoIpv4
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) ReplaceInsecureJs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceInsecureJs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -65670,6 +67480,8 @@ type GetRulesetsRulesetRuleActionParameters struct {
 	Cache *bool `pulumi:"cache"`
 	// List of cache key parameters to apply to the request.
 	CacheKey *GetRulesetsRulesetRuleActionParametersCacheKey `pulumi:"cacheKey"`
+	// List of cache reserve parameters to apply to the request.
+	CacheReserve *GetRulesetsRulesetRuleActionParametersCacheReserve `pulumi:"cacheReserve"`
 	// Content of the custom error response
 	Content *string `pulumi:"content"`
 	// Content-Type of the custom error response
@@ -65783,6 +67595,8 @@ type GetRulesetsRulesetRuleActionParametersArgs struct {
 	Cache pulumi.BoolPtrInput `pulumi:"cache"`
 	// List of cache key parameters to apply to the request.
 	CacheKey GetRulesetsRulesetRuleActionParametersCacheKeyPtrInput `pulumi:"cacheKey"`
+	// List of cache reserve parameters to apply to the request.
+	CacheReserve GetRulesetsRulesetRuleActionParametersCacheReservePtrInput `pulumi:"cacheReserve"`
 	// Content of the custom error response
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Content-Type of the custom error response
@@ -65986,6 +67800,13 @@ func (o GetRulesetsRulesetRuleActionParametersOutput) CacheKey() GetRulesetsRule
 	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) *GetRulesetsRulesetRuleActionParametersCacheKey {
 		return v.CacheKey
 	}).(GetRulesetsRulesetRuleActionParametersCacheKeyPtrOutput)
+}
+
+// List of cache reserve parameters to apply to the request.
+func (o GetRulesetsRulesetRuleActionParametersOutput) CacheReserve() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) *GetRulesetsRulesetRuleActionParametersCacheReserve {
+		return v.CacheReserve
+	}).(GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput)
 }
 
 // Content of the custom error response
@@ -66316,6 +68137,16 @@ func (o GetRulesetsRulesetRuleActionParametersPtrOutput) CacheKey() GetRulesetsR
 		}
 		return v.CacheKey
 	}).(GetRulesetsRulesetRuleActionParametersCacheKeyPtrOutput)
+}
+
+// List of cache reserve parameters to apply to the request.
+func (o GetRulesetsRulesetRuleActionParametersPtrOutput) CacheReserve() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) *GetRulesetsRulesetRuleActionParametersCacheReserve {
+		if v == nil {
+			return nil
+		}
+		return v.CacheReserve
+	}).(GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput)
 }
 
 // Content of the custom error response
@@ -68259,6 +70090,162 @@ func (o GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) La
 		}
 		return v.Lang
 	}).(pulumi.BoolPtrOutput)
+}
+
+type GetRulesetsRulesetRuleActionParametersCacheReserve struct {
+	// Determines whether Cloudflare will write the eligible resource to cache reserve.
+	Eligible bool `pulumi:"eligible"`
+	// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+	MinimumFileSize *int `pulumi:"minimumFileSize"`
+}
+
+// GetRulesetsRulesetRuleActionParametersCacheReserveInput is an input type that accepts GetRulesetsRulesetRuleActionParametersCacheReserveArgs and GetRulesetsRulesetRuleActionParametersCacheReserveOutput values.
+// You can construct a concrete instance of `GetRulesetsRulesetRuleActionParametersCacheReserveInput` via:
+//
+//	GetRulesetsRulesetRuleActionParametersCacheReserveArgs{...}
+type GetRulesetsRulesetRuleActionParametersCacheReserveInput interface {
+	pulumi.Input
+
+	ToGetRulesetsRulesetRuleActionParametersCacheReserveOutput() GetRulesetsRulesetRuleActionParametersCacheReserveOutput
+	ToGetRulesetsRulesetRuleActionParametersCacheReserveOutputWithContext(context.Context) GetRulesetsRulesetRuleActionParametersCacheReserveOutput
+}
+
+type GetRulesetsRulesetRuleActionParametersCacheReserveArgs struct {
+	// Determines whether Cloudflare will write the eligible resource to cache reserve.
+	Eligible pulumi.BoolInput `pulumi:"eligible"`
+	// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+	MinimumFileSize pulumi.IntPtrInput `pulumi:"minimumFileSize"`
+}
+
+func (GetRulesetsRulesetRuleActionParametersCacheReserveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (i GetRulesetsRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetsRulesetRuleActionParametersCacheReserveOutput() GetRulesetsRulesetRuleActionParametersCacheReserveOutput {
+	return i.ToGetRulesetsRulesetRuleActionParametersCacheReserveOutputWithContext(context.Background())
+}
+
+func (i GetRulesetsRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetsRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReserveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetsRulesetRuleActionParametersCacheReserveOutput)
+}
+
+func (i GetRulesetsRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutput() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return i.ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (i GetRulesetsRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetsRulesetRuleActionParametersCacheReserveOutput).ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx)
+}
+
+// GetRulesetsRulesetRuleActionParametersCacheReservePtrInput is an input type that accepts GetRulesetsRulesetRuleActionParametersCacheReserveArgs, GetRulesetsRulesetRuleActionParametersCacheReservePtr and GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput values.
+// You can construct a concrete instance of `GetRulesetsRulesetRuleActionParametersCacheReservePtrInput` via:
+//
+//	        GetRulesetsRulesetRuleActionParametersCacheReserveArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRulesetsRulesetRuleActionParametersCacheReservePtrInput interface {
+	pulumi.Input
+
+	ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutput() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput
+	ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Context) GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput
+}
+
+type getRulesetsRulesetRuleActionParametersCacheReservePtrType GetRulesetsRulesetRuleActionParametersCacheReserveArgs
+
+func GetRulesetsRulesetRuleActionParametersCacheReservePtr(v *GetRulesetsRulesetRuleActionParametersCacheReserveArgs) GetRulesetsRulesetRuleActionParametersCacheReservePtrInput {
+	return (*getRulesetsRulesetRuleActionParametersCacheReservePtrType)(v)
+}
+
+func (*getRulesetsRulesetRuleActionParametersCacheReservePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRulesetsRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (i *getRulesetsRulesetRuleActionParametersCacheReservePtrType) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutput() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return i.ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (i *getRulesetsRulesetRuleActionParametersCacheReservePtrType) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput)
+}
+
+type GetRulesetsRulesetRuleActionParametersCacheReserveOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetsRulesetRuleActionParametersCacheReserveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetsRulesetRuleActionParametersCacheReserveOutput() GetRulesetsRulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetsRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutput() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(context.Background())
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRulesetsRulesetRuleActionParametersCacheReserve) *GetRulesetsRulesetRuleActionParametersCacheReserve {
+		return &v
+	}).(GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput)
+}
+
+// Determines whether Cloudflare will write the eligible resource to cache reserve.
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) Eligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParametersCacheReserve) bool { return v.Eligible }).(pulumi.BoolOutput)
+}
+
+// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+func (o GetRulesetsRulesetRuleActionParametersCacheReserveOutput) MinimumFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParametersCacheReserve) *int { return v.MinimumFileSize }).(pulumi.IntPtrOutput)
+}
+
+type GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRulesetsRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutput() GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) ToGetRulesetsRulesetRuleActionParametersCacheReservePtrOutputWithContext(ctx context.Context) GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput {
+	return o
+}
+
+func (o GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) Elem() GetRulesetsRulesetRuleActionParametersCacheReserveOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParametersCacheReserve) GetRulesetsRulesetRuleActionParametersCacheReserve {
+		if v != nil {
+			return *v
+		}
+		var ret GetRulesetsRulesetRuleActionParametersCacheReserve
+		return ret
+	}).(GetRulesetsRulesetRuleActionParametersCacheReserveOutput)
+}
+
+// Determines whether Cloudflare will write the eligible resource to cache reserve.
+func (o GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) Eligible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParametersCacheReserve) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Eligible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+func (o GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput) MinimumFileSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParametersCacheReserve) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumFileSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetRulesetsRulesetRuleActionParametersEdgeTtl struct {
@@ -72112,6 +74099,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheReserveInput)(nil)).Elem(), RulesetRuleActionParametersCacheReserveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheReservePtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheReserveArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlPtrInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{})
@@ -72172,6 +74161,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningPtrInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCertificateInput)(nil)).Elem(), TeamsAccountCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCertificatePtrInput)(nil)).Elem(), TeamsAccountCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCustomCertificateInput)(nil)).Elem(), TeamsAccountCustomCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCustomCertificatePtrInput)(nil)).Elem(), TeamsAccountCustomCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountExtendedEmailMatchingInput)(nil)).Elem(), TeamsAccountExtendedEmailMatchingArgs{})
@@ -72250,6 +74241,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptD1DatabaseBindingInput)(nil)).Elem(), WorkerScriptD1DatabaseBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptD1DatabaseBindingArrayInput)(nil)).Elem(), WorkerScriptD1DatabaseBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptHyperdriveConfigBindingInput)(nil)).Elem(), WorkerScriptHyperdriveConfigBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptHyperdriveConfigBindingArrayInput)(nil)).Elem(), WorkerScriptHyperdriveConfigBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlacementInput)(nil)).Elem(), WorkerScriptPlacementArgs{})
@@ -72270,6 +74263,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkersScriptAnalyticsEngineBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptD1DatabaseBindingInput)(nil)).Elem(), WorkersScriptD1DatabaseBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptD1DatabaseBindingArrayInput)(nil)).Elem(), WorkersScriptD1DatabaseBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptHyperdriveConfigBindingInput)(nil)).Elem(), WorkersScriptHyperdriveConfigBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptHyperdriveConfigBindingArrayInput)(nil)).Elem(), WorkersScriptHyperdriveConfigBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptKvNamespaceBindingInput)(nil)).Elem(), WorkersScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkersScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlacementInput)(nil)).Elem(), WorkersScriptPlacementArgs{})
@@ -72474,6 +74469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsBlockPagePtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsBodyScanningInput)(nil)).Elem(), ZeroTrustGatewaySettingsBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsBodyScanningPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsCertificateInput)(nil)).Elem(), ZeroTrustGatewaySettingsCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsCertificatePtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsCustomCertificateInput)(nil)).Elem(), ZeroTrustGatewaySettingsCustomCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsCustomCertificatePtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsCustomCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsExtendedEmailMatchingInput)(nil)).Elem(), ZeroTrustGatewaySettingsExtendedEmailMatchingArgs{})
@@ -72598,6 +74595,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheReserveInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersCacheReserveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersCacheReservePtrInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersCacheReserveArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersEdgeTtlInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersEdgeTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersEdgeTtlPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersEdgeTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput)(nil)).Elem(), GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{})
@@ -72996,6 +74995,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheReserveOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheReservePtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput{})
@@ -73056,6 +75057,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountCertificateOutput{})
+	pulumi.RegisterOutputType(TeamsAccountCertificatePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountCustomCertificateOutput{})
 	pulumi.RegisterOutputType(TeamsAccountCustomCertificatePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountExtendedEmailMatchingOutput{})
@@ -73134,6 +75137,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptD1DatabaseBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptD1DatabaseBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptHyperdriveConfigBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptHyperdriveConfigBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlacementOutput{})
@@ -73154,6 +75159,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkersScriptAnalyticsEngineBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkersScriptD1DatabaseBindingOutput{})
 	pulumi.RegisterOutputType(WorkersScriptD1DatabaseBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkersScriptHyperdriveConfigBindingOutput{})
+	pulumi.RegisterOutputType(WorkersScriptHyperdriveConfigBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkersScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkersScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkersScriptPlacementOutput{})
@@ -73358,6 +75365,8 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsBodyScanningOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsBodyScanningPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsCertificateOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsCustomCertificateOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsCustomCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsExtendedEmailMatchingOutput{})
@@ -73482,6 +75491,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput{})
+	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersCacheReserveOutput{})
+	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersCacheReservePtrOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersEdgeTtlOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersEdgeTtlPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput{})

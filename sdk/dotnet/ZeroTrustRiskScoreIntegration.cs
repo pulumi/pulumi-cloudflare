@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// The [Risk Score Integration](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta) resource allows you to transmit changes in User Risk Score to a specified vendor such as Okta.
+    /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustRiskScoreIntegration:ZeroTrustRiskScoreIntegration")]
     public partial class ZeroTrustRiskScoreIntegration : global::Pulumi.CustomResource
     {
@@ -25,16 +28,13 @@ namespace Pulumi.Cloudflare
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-        /// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
 
         /// <summary>
-        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-        /// omitted, a random UUIDv4 is used.
-        /// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         /// </summary>
         [Output("referenceId")]
         public Output<string> ReferenceId { get; private set; } = null!;
@@ -46,8 +46,7 @@ namespace Pulumi.Cloudflare
         public Output<string> TenantUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-        /// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+        /// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
         /// </summary>
         [Output("wellKnownUrl")]
         public Output<string> WellKnownUrl { get; private set; } = null!;
@@ -111,16 +110,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-        /// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
 
         /// <summary>
-        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-        /// omitted, a random UUIDv4 is used.
-        /// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         /// </summary>
         [Input("referenceId")]
         public Input<string>? ReferenceId { get; set; }
@@ -152,16 +148,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-        /// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+        /// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
 
         /// <summary>
-        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-        /// omitted, a random UUIDv4 is used.
-        /// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+        /// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         /// </summary>
         [Input("referenceId")]
         public Input<string>? ReferenceId { get; set; }
@@ -173,8 +166,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TenantUrl { get; set; }
 
         /// <summary>
-        /// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-        /// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+        /// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
         /// </summary>
         [Input("wellKnownUrl")]
         public Input<string>? WellKnownUrl { get; set; }

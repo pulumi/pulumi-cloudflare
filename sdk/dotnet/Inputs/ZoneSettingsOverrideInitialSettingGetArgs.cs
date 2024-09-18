@@ -137,6 +137,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("pseudoIpv4")]
         public Input<string>? PseudoIpv4 { get; set; }
 
+        [Input("replaceInsecureJs")]
+        public Input<string>? ReplaceInsecureJs { get; set; }
+
         [Input("responseBuffering")]
         public Input<string>? ResponseBuffering { get; set; }
 

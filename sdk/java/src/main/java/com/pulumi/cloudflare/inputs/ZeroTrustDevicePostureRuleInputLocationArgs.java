@@ -32,14 +32,14 @@ public final class ZeroTrustDevicePostureRuleInputLocationArgs extends com.pulum
     }
 
     /**
-     * List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     @Import(name="trustStores")
     private @Nullable Output<List<String>> trustStores;
 
     /**
-     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * @return List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      * 
      */
     public Optional<Output<List<String>>> trustStores() {
@@ -103,7 +103,7 @@ public final class ZeroTrustDevicePostureRuleInputLocationArgs extends com.pulum
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ZeroTrustDevicePostureRuleInputLocationArgs extends com.pulum
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ZeroTrustDevicePostureRuleInputLocationArgs extends com.pulum
         }
 
         /**
-         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`
+         * @param trustStores List of trust stores to check for client certificate rule. Available values: `system`, `user`.
          * 
          * @return builder
          * 

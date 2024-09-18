@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptD1DatabaseBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptHyperdriveConfigBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlacementArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
@@ -114,6 +115,13 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> dispatchNamespace() {
         return Optional.ofNullable(this.dispatchNamespace);
+    }
+
+    @Import(name="hyperdriveConfigBindings")
+    private @Nullable Output<List<WorkerScriptHyperdriveConfigBindingArgs>> hyperdriveConfigBindings;
+
+    public Optional<Output<List<WorkerScriptHyperdriveConfigBindingArgs>>> hyperdriveConfigBindings() {
+        return Optional.ofNullable(this.hyperdriveConfigBindings);
     }
 
     @Import(name="kvNamespaceBindings")
@@ -234,6 +242,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         this.content = $.content;
         this.d1DatabaseBindings = $.d1DatabaseBindings;
         this.dispatchNamespace = $.dispatchNamespace;
+        this.hyperdriveConfigBindings = $.hyperdriveConfigBindings;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
         this.logpush = $.logpush;
         this.module = $.module;
@@ -405,6 +414,19 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dispatchNamespace(String dispatchNamespace) {
             return dispatchNamespace(Output.of(dispatchNamespace));
+        }
+
+        public Builder hyperdriveConfigBindings(@Nullable Output<List<WorkerScriptHyperdriveConfigBindingArgs>> hyperdriveConfigBindings) {
+            $.hyperdriveConfigBindings = hyperdriveConfigBindings;
+            return this;
+        }
+
+        public Builder hyperdriveConfigBindings(List<WorkerScriptHyperdriveConfigBindingArgs> hyperdriveConfigBindings) {
+            return hyperdriveConfigBindings(Output.of(hyperdriveConfigBindings));
+        }
+
+        public Builder hyperdriveConfigBindings(WorkerScriptHyperdriveConfigBindingArgs... hyperdriveConfigBindings) {
+            return hyperdriveConfigBindings(List.of(hyperdriveConfigBindings));
         }
 
         public Builder kvNamespaceBindings(@Nullable Output<List<WorkerScriptKvNamespaceBindingArgs>> kvNamespaceBindings) {

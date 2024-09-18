@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class ZeroTrustGatewaySettingsProxy {
     /**
-     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP.
      * 
      */
     private Integer disableForTime;
@@ -39,7 +39,7 @@ public final class ZeroTrustGatewaySettingsProxy {
 
     private ZeroTrustGatewaySettingsProxy() {}
     /**
-     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP.
      * 
      */
     public Integer disableForTime() {

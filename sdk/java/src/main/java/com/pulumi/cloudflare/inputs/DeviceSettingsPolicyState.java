@@ -288,14 +288,14 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     @Import(name="tunnelProtocol")
     private @Nullable Output<String> tunnelProtocol;
 
     /**
-     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     public Optional<Output<String>> tunnelProtocol() {
@@ -723,7 +723,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
          * 
          * @return builder
          * 

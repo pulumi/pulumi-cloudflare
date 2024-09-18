@@ -350,37 +350,94 @@ export interface AccessApplicationScimConfigMappingOperations {
 }
 
 export interface AccessGroupExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessGroupExcludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessGroupExcludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessGroupExcludeExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessGroupExcludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessGroupExcludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessGroupExcludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessGroupExcludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -394,14 +451,14 @@ export interface AccessGroupExcludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessGroupExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -411,64 +468,157 @@ export interface AccessGroupExcludeAzure {
 }
 
 export interface AccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessGroupExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessGroupIncludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessGroupIncludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessGroupIncludeExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessGroupIncludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessGroupIncludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessGroupIncludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessGroupIncludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -482,14 +632,14 @@ export interface AccessGroupIncludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessGroupIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -499,64 +649,157 @@ export interface AccessGroupIncludeAzure {
 }
 
 export interface AccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessGroupIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessGroupRequireAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessGroupRequireAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessGroupRequireExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessGroupRequireGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessGroupRequireGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessGroupRequireOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessGroupRequireSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -570,14 +813,14 @@ export interface AccessGroupRequireAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessGroupRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -587,29 +830,65 @@ export interface AccessGroupRequireAzure {
 }
 
 export interface AccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessGroupRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
@@ -713,37 +992,94 @@ export interface AccessPolicyApprovalGroup {
 }
 
 export interface AccessPolicyExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessPolicyExcludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessPolicyExcludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessPolicyExcludeExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessPolicyExcludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessPolicyExcludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessPolicyExcludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessPolicyExcludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -757,14 +1093,14 @@ export interface AccessPolicyExcludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessPolicyExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -774,64 +1110,157 @@ export interface AccessPolicyExcludeAzure {
 }
 
 export interface AccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessPolicyExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessPolicyIncludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessPolicyIncludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessPolicyIncludeExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessPolicyIncludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessPolicyIncludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessPolicyIncludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessPolicyIncludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -845,14 +1274,14 @@ export interface AccessPolicyIncludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessPolicyIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -862,64 +1291,157 @@ export interface AccessPolicyIncludeAzure {
 }
 
 export interface AccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessPolicyIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessPolicyRequireAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.AccessPolicyRequireAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: outputs.AccessPolicyRequireExternalEvaluation;
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.AccessPolicyRequireGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.AccessPolicyRequireGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.AccessPolicyRequireOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.AccessPolicyRequireSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -933,14 +1455,14 @@ export interface AccessPolicyRequireAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface AccessPolicyRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -950,29 +1472,65 @@ export interface AccessPolicyRequireAzure {
 }
 
 export interface AccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface AccessPolicyRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface AccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface AccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
@@ -1335,7 +1893,7 @@ export interface DevicePostureRuleInput {
      */
     lastSeen?: string;
     /**
-     * List of locations to check for client certificate posture check.
+     * List of operating system locations to check for a client certificate..
      */
     locations?: outputs.DevicePostureRuleInputLocation[];
     /**
@@ -1407,18 +1965,18 @@ export interface DevicePostureRuleInput {
      */
     version?: string;
     /**
-     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     versionOperator?: string;
 }
 
 export interface DevicePostureRuleInputLocation {
     /**
-     * List of paths to check for client certificate.
+     * List of paths to check for client certificate rule.
      */
     paths?: string[];
     /**
-     * List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      */
     trustStores?: string[];
 }
@@ -2041,6 +2599,10 @@ export interface GetRulesetsRulesetRuleActionParameters {
      */
     cacheKey?: outputs.GetRulesetsRulesetRuleActionParametersCacheKey;
     /**
+     * List of cache reserve parameters to apply to the request.
+     */
+    cacheReserve?: outputs.GetRulesetsRulesetRuleActionParametersCacheReserve;
+    /**
      * Content of the custom error response
      */
     content?: string;
@@ -2340,6 +2902,17 @@ export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser {
      * Add language data to the custom key.
      */
     lang?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheReserve {
+    /**
+     * Determines whether Cloudflare will write the eligible resource to cache reserve.
+     */
+    eligible: boolean;
+    /**
+     * The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+     */
+    minimumFileSize?: number;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersEdgeTtl {
@@ -4209,6 +4782,10 @@ export interface RulesetRuleActionParameters {
      */
     cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
     /**
+     * List of cache reserve parameters to apply to the request.
+     */
+    cacheReserve?: outputs.RulesetRuleActionParametersCacheReserve;
+    /**
      * Content of the custom error response.
      */
     content?: string;
@@ -4523,6 +5100,17 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
      * Add language data to the custom key.
      */
     lang?: boolean;
+}
+
+export interface RulesetRuleActionParametersCacheReserve {
+    /**
+     * Determines whether Cloudflare will write the eligible resource to cache reserve.
+     */
+    eligible: boolean;
+    /**
+     * The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+     */
+    minimumFileSize?: number;
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
@@ -4952,6 +5540,13 @@ export interface TeamsAccountBodyScanning {
     inspectionMode: string;
 }
 
+export interface TeamsAccountCertificate {
+    /**
+     * ID of certificate for TLS interception.
+     */
+    id: string;
+}
+
 export interface TeamsAccountCustomCertificate {
     /**
      * Whether TLS encryption should use a custom certificate.
@@ -5037,7 +5632,7 @@ export interface TeamsAccountPayloadLog {
 
 export interface TeamsAccountProxy {
     /**
-     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP.
      */
     disableForTime: number;
     /**
@@ -5629,6 +6224,17 @@ export interface WorkerScriptD1DatabaseBinding {
     name: string;
 }
 
+export interface WorkerScriptHyperdriveConfigBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    binding: string;
+    /**
+     * The ID of the Hyperdrive config to use.
+     */
+    id: string;
+}
+
 export interface WorkerScriptKvNamespaceBinding {
     /**
      * The global variable for the binding in your Worker code.
@@ -5737,6 +6343,17 @@ export interface WorkersScriptD1DatabaseBinding {
      * The global variable for the binding in your Worker code.
      */
     name: string;
+}
+
+export interface WorkersScriptHyperdriveConfigBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    binding: string;
+    /**
+     * The ID of the Hyperdrive config to use.
+     */
+    id: string;
 }
 
 export interface WorkersScriptKvNamespaceBinding {
@@ -6172,37 +6789,94 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
 }
 
 export interface ZeroTrustAccessGroupExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessGroupExcludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessGroupExcludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessGroupExcludeExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessGroupExcludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessGroupExcludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessGroupExcludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessGroupExcludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6216,14 +6890,14 @@ export interface ZeroTrustAccessGroupExcludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6233,64 +6907,157 @@ export interface ZeroTrustAccessGroupExcludeAzure {
 }
 
 export interface ZeroTrustAccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessGroupExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessGroupInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessGroupIncludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessGroupIncludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessGroupIncludeExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessGroupIncludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessGroupIncludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessGroupIncludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessGroupIncludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6304,14 +7071,14 @@ export interface ZeroTrustAccessGroupIncludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6321,64 +7088,157 @@ export interface ZeroTrustAccessGroupIncludeAzure {
 }
 
 export interface ZeroTrustAccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessGroupIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessGroupRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessGroupRequireAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessGroupRequireAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessGroupRequireExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessGroupRequireGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessGroupRequireGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessGroupRequireOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessGroupRequireSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6392,14 +7252,14 @@ export interface ZeroTrustAccessGroupRequireAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6409,29 +7269,65 @@ export interface ZeroTrustAccessGroupRequireAzure {
 }
 
 export interface ZeroTrustAccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessGroupRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
@@ -6535,37 +7431,94 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
 }
 
 export interface ZeroTrustAccessPolicyExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessPolicyExcludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessPolicyExcludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessPolicyExcludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessPolicyExcludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessPolicyExcludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessPolicyExcludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6579,14 +7532,14 @@ export interface ZeroTrustAccessPolicyExcludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6596,64 +7549,157 @@ export interface ZeroTrustAccessPolicyExcludeAzure {
 }
 
 export interface ZeroTrustAccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessPolicyExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessPolicyInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessPolicyIncludeAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessPolicyIncludeAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessPolicyIncludeExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessPolicyIncludeGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessPolicyIncludeGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessPolicyIncludeOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessPolicyIncludeSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6667,14 +7713,14 @@ export interface ZeroTrustAccessPolicyIncludeAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6684,64 +7730,157 @@ export interface ZeroTrustAccessPolicyIncludeAzure {
 }
 
 export interface ZeroTrustAccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessPolicyIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessPolicyRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: boolean;
     authContexts?: outputs.ZeroTrustAccessPolicyRequireAuthContext[];
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: string;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: outputs.ZeroTrustAccessPolicyRequireAzure[];
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: boolean;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: string;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: string[];
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: string[];
+    /**
+     * The email domain to match.
+     */
     emailDomains?: string[];
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: string[];
+    /**
+     * The email of the user.
+     */
     emails?: string[];
+    /**
+     * Matches everyone.
+     */
     everyone?: boolean;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: outputs.ZeroTrustAccessPolicyRequireExternalEvaluation[];
+    /**
+     * Matches a specific country.
+     */
     geos?: string[];
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: outputs.ZeroTrustAccessPolicyRequireGithub[];
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: string[];
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: outputs.ZeroTrustAccessPolicyRequireGsuite[];
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: string[];
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: string[];
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: string[];
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: outputs.ZeroTrustAccessPolicyRequireOkta[];
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: outputs.ZeroTrustAccessPolicyRequireSaml[];
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: string[];
 }
 
@@ -6755,14 +7894,14 @@ export interface ZeroTrustAccessPolicyRequireAuthContext {
      */
     id: string;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: string;
     /**
@@ -6772,29 +7911,65 @@ export interface ZeroTrustAccessPolicyRequireAzure {
 }
 
 export interface ZeroTrustAccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: string;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: string;
 }
 
 export interface ZeroTrustAccessPolicyRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the organization.
+     */
     name?: string;
+    /**
+     * The teams that should be matched.
+     */
     teams?: string[];
 }
 
 export interface ZeroTrustAccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: string[];
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: string;
 }
 
 export interface ZeroTrustAccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: string;
+    /**
+     * The name of the Okta Group.
+     */
     names?: string[];
 }
 
 export interface ZeroTrustAccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: string;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: string;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: string;
 }
 
@@ -6882,7 +8057,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     domain?: string;
     /**
-     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      */
     eidLastSeen?: string;
     /**
@@ -6894,7 +8069,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     exists: boolean;
     /**
-     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      */
     extendedKeyUsages?: string[];
     /**
@@ -6918,7 +8093,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     lastSeen?: string;
     /**
-     * List of locations to check for client certificate.
+     * List of operating system locations to check for a client certificate..
      */
     locations?: outputs.ZeroTrustDevicePostureRuleInputLocation[];
     /**
@@ -6990,7 +8165,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     version?: string;
     /**
-     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     versionOperator?: string;
 }
@@ -7001,7 +8176,7 @@ export interface ZeroTrustDevicePostureRuleInputLocation {
      */
     paths?: string[];
     /**
-     * List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      */
     trustStores?: string[];
 }
@@ -7392,6 +8567,13 @@ export interface ZeroTrustGatewaySettingsBodyScanning {
     inspectionMode: string;
 }
 
+export interface ZeroTrustGatewaySettingsCertificate {
+    /**
+     * ID of certificate for TLS interception.
+     */
+    id: string;
+}
+
 export interface ZeroTrustGatewaySettingsCustomCertificate {
     /**
      * Whether TLS encryption should use a custom certificate.
@@ -7477,7 +8659,7 @@ export interface ZeroTrustGatewaySettingsPayloadLog {
 
 export interface ZeroTrustGatewaySettingsProxy {
     /**
-     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP.
      */
     disableForTime: number;
     /**
@@ -7855,6 +9037,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     privacyPass: string;
     proxyReadTimeout: string;
     pseudoIpv4: string;
+    replaceInsecureJs: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideInitialSettingSecurityHeader;
@@ -7945,6 +9128,7 @@ export interface ZoneSettingsOverrideSettings {
     privacyPass: string;
     proxyReadTimeout: string;
     pseudoIpv4: string;
+    replaceInsecureJs: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideSettingsSecurityHeader;

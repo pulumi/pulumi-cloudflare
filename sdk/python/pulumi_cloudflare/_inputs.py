@@ -188,6 +188,7 @@ __all__ = [
     'RulesetRuleActionParametersCacheKeyCustomKeyHostArgs',
     'RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs',
     'RulesetRuleActionParametersCacheKeyCustomKeyUserArgs',
+    'RulesetRuleActionParametersCacheReserveArgs',
     'RulesetRuleActionParametersEdgeTtlArgs',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs',
@@ -218,6 +219,7 @@ __all__ = [
     'TeamsAccountAntivirusNotificationSettingsArgs',
     'TeamsAccountBlockPageArgs',
     'TeamsAccountBodyScanningArgs',
+    'TeamsAccountCertificateArgs',
     'TeamsAccountCustomCertificateArgs',
     'TeamsAccountExtendedEmailMatchingArgs',
     'TeamsAccountFipsArgs',
@@ -257,6 +259,7 @@ __all__ = [
     'WaitingRoomRulesRuleArgs',
     'WorkerScriptAnalyticsEngineBindingArgs',
     'WorkerScriptD1DatabaseBindingArgs',
+    'WorkerScriptHyperdriveConfigBindingArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlacementArgs',
     'WorkerScriptPlainTextBindingArgs',
@@ -267,6 +270,7 @@ __all__ = [
     'WorkerScriptWebassemblyBindingArgs',
     'WorkersScriptAnalyticsEngineBindingArgs',
     'WorkersScriptD1DatabaseBindingArgs',
+    'WorkersScriptHyperdriveConfigBindingArgs',
     'WorkersScriptKvNamespaceBindingArgs',
     'WorkersScriptPlacementArgs',
     'WorkersScriptPlainTextBindingArgs',
@@ -370,6 +374,7 @@ __all__ = [
     'ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs',
     'ZeroTrustGatewaySettingsBlockPageArgs',
     'ZeroTrustGatewaySettingsBodyScanningArgs',
+    'ZeroTrustGatewaySettingsCertificateArgs',
     'ZeroTrustGatewaySettingsCustomCertificateArgs',
     'ZeroTrustGatewaySettingsExtendedEmailMatchingArgs',
     'ZeroTrustGatewaySettingsFipsArgs',
@@ -1755,9 +1760,28 @@ class AccessGroupExcludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessGroupExcludeExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -1809,6 +1833,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -1827,6 +1854,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -1836,6 +1866,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -1845,6 +1878,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -1854,6 +1890,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -1875,6 +1914,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -1884,6 +1926,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -1893,6 +1938,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -1902,6 +1950,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -1911,6 +1962,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -1920,6 +1974,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -1929,6 +1986,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -1938,6 +1998,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -1947,6 +2010,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -1956,6 +2022,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -1966,7 +2035,7 @@ class AccessGroupExcludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -1989,6 +2058,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -1998,6 +2070,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -2007,6 +2082,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -2016,6 +2094,9 @@ class AccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -2032,7 +2113,7 @@ class AccessGroupExcludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -2066,7 +2147,7 @@ class AccessGroupExcludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -2081,7 +2162,7 @@ class AccessGroupExcludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -2093,7 +2174,7 @@ class AccessGroupExcludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -2119,6 +2200,10 @@ class AccessGroupExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -2127,6 +2212,9 @@ class AccessGroupExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -2136,6 +2224,9 @@ class AccessGroupExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -2149,6 +2240,11 @@ class AccessGroupExcludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -2159,6 +2255,9 @@ class AccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2168,6 +2267,9 @@ class AccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2177,6 +2279,9 @@ class AccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -2189,6 +2294,10 @@ class AccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -2197,6 +2306,9 @@ class AccessGroupExcludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -2206,6 +2318,9 @@ class AccessGroupExcludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2218,6 +2333,10 @@ class AccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -2226,6 +2345,9 @@ class AccessGroupExcludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2235,6 +2357,9 @@ class AccessGroupExcludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -2248,6 +2373,11 @@ class AccessGroupExcludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -2258,6 +2388,9 @@ class AccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -2267,6 +2400,9 @@ class AccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -2276,6 +2412,9 @@ class AccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2310,9 +2449,28 @@ class AccessGroupIncludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessGroupIncludeExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -2364,6 +2522,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -2382,6 +2543,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -2391,6 +2555,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -2400,6 +2567,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -2409,6 +2579,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -2430,6 +2603,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -2439,6 +2615,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -2448,6 +2627,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -2457,6 +2639,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -2466,6 +2651,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -2475,6 +2663,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -2484,6 +2675,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -2493,6 +2687,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -2502,6 +2699,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -2511,6 +2711,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -2521,7 +2724,7 @@ class AccessGroupIncludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -2544,6 +2747,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -2553,6 +2759,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -2562,6 +2771,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -2571,6 +2783,9 @@ class AccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -2587,7 +2802,7 @@ class AccessGroupIncludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -2621,7 +2836,7 @@ class AccessGroupIncludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -2636,7 +2851,7 @@ class AccessGroupIncludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -2648,7 +2863,7 @@ class AccessGroupIncludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -2674,6 +2889,10 @@ class AccessGroupIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -2682,6 +2901,9 @@ class AccessGroupIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -2691,6 +2913,9 @@ class AccessGroupIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -2704,6 +2929,11 @@ class AccessGroupIncludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -2714,6 +2944,9 @@ class AccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2723,6 +2956,9 @@ class AccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2732,6 +2968,9 @@ class AccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -2744,6 +2983,10 @@ class AccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -2752,6 +2995,9 @@ class AccessGroupIncludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -2761,6 +3007,9 @@ class AccessGroupIncludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2773,6 +3022,10 @@ class AccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -2781,6 +3034,9 @@ class AccessGroupIncludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2790,6 +3046,9 @@ class AccessGroupIncludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -2803,6 +3062,11 @@ class AccessGroupIncludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -2813,6 +3077,9 @@ class AccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -2822,6 +3089,9 @@ class AccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -2831,6 +3101,9 @@ class AccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -2865,9 +3138,28 @@ class AccessGroupRequireArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessGroupRequireExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -2919,6 +3211,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -2937,6 +3232,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -2946,6 +3244,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -2955,6 +3256,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -2964,6 +3268,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -2985,6 +3292,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -2994,6 +3304,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -3003,6 +3316,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -3012,6 +3328,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -3021,6 +3340,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -3030,6 +3352,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -3039,6 +3364,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -3048,6 +3376,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -3057,6 +3388,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -3066,6 +3400,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -3076,7 +3413,7 @@ class AccessGroupRequireArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -3099,6 +3436,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -3108,6 +3448,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -3117,6 +3460,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -3126,6 +3472,9 @@ class AccessGroupRequireArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -3142,7 +3491,7 @@ class AccessGroupRequireAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -3176,7 +3525,7 @@ class AccessGroupRequireAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -3191,7 +3540,7 @@ class AccessGroupRequireAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -3203,7 +3552,7 @@ class AccessGroupRequireAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -3229,6 +3578,10 @@ class AccessGroupRequireExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -3237,6 +3590,9 @@ class AccessGroupRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -3246,6 +3602,9 @@ class AccessGroupRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -3259,6 +3618,11 @@ class AccessGroupRequireGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -3269,6 +3633,9 @@ class AccessGroupRequireGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -3278,6 +3645,9 @@ class AccessGroupRequireGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3287,6 +3657,9 @@ class AccessGroupRequireGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -3299,6 +3672,10 @@ class AccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -3307,6 +3684,9 @@ class AccessGroupRequireGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -3316,6 +3696,9 @@ class AccessGroupRequireGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -3328,6 +3711,10 @@ class AccessGroupRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -3336,6 +3723,9 @@ class AccessGroupRequireOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -3345,6 +3735,9 @@ class AccessGroupRequireOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -3358,6 +3751,11 @@ class AccessGroupRequireSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -3368,6 +3766,9 @@ class AccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -3377,6 +3778,9 @@ class AccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -3386,6 +3790,9 @@ class AccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -4044,9 +4451,28 @@ class AccessPolicyExcludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -4098,6 +4524,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -4116,6 +4545,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -4125,6 +4557,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -4134,6 +4569,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -4143,6 +4581,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -4164,6 +4605,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -4173,6 +4617,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -4182,6 +4629,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -4191,6 +4641,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -4200,6 +4653,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -4209,6 +4665,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -4218,6 +4677,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -4227,6 +4689,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -4236,6 +4701,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -4245,6 +4713,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -4255,7 +4726,7 @@ class AccessPolicyExcludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -4278,6 +4749,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -4287,6 +4761,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -4296,6 +4773,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -4305,6 +4785,9 @@ class AccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -4321,7 +4804,7 @@ class AccessPolicyExcludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -4355,7 +4838,7 @@ class AccessPolicyExcludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -4370,7 +4853,7 @@ class AccessPolicyExcludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -4382,7 +4865,7 @@ class AccessPolicyExcludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -4408,6 +4891,10 @@ class AccessPolicyExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -4416,6 +4903,9 @@ class AccessPolicyExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -4425,6 +4915,9 @@ class AccessPolicyExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -4438,6 +4931,11 @@ class AccessPolicyExcludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -4448,6 +4946,9 @@ class AccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -4457,6 +4958,9 @@ class AccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4466,6 +4970,9 @@ class AccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -4478,6 +4985,10 @@ class AccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -4486,6 +4997,9 @@ class AccessPolicyExcludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -4495,6 +5009,9 @@ class AccessPolicyExcludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -4507,6 +5024,10 @@ class AccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -4515,6 +5036,9 @@ class AccessPolicyExcludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -4524,6 +5048,9 @@ class AccessPolicyExcludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -4537,6 +5064,11 @@ class AccessPolicyExcludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -4547,6 +5079,9 @@ class AccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -4556,6 +5091,9 @@ class AccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -4565,6 +5103,9 @@ class AccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -4599,9 +5140,28 @@ class AccessPolicyIncludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -4653,6 +5213,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -4671,6 +5234,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -4680,6 +5246,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -4689,6 +5258,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -4698,6 +5270,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -4719,6 +5294,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -4728,6 +5306,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -4737,6 +5318,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -4746,6 +5330,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -4755,6 +5342,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -4764,6 +5354,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -4773,6 +5366,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -4782,6 +5378,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -4791,6 +5390,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -4800,6 +5402,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -4810,7 +5415,7 @@ class AccessPolicyIncludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -4833,6 +5438,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -4842,6 +5450,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -4851,6 +5462,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -4860,6 +5474,9 @@ class AccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -4876,7 +5493,7 @@ class AccessPolicyIncludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -4910,7 +5527,7 @@ class AccessPolicyIncludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -4925,7 +5542,7 @@ class AccessPolicyIncludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -4937,7 +5554,7 @@ class AccessPolicyIncludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -4963,6 +5580,10 @@ class AccessPolicyIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -4971,6 +5592,9 @@ class AccessPolicyIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -4980,6 +5604,9 @@ class AccessPolicyIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -4993,6 +5620,11 @@ class AccessPolicyIncludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -5003,6 +5635,9 @@ class AccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5012,6 +5647,9 @@ class AccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5021,6 +5659,9 @@ class AccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -5033,6 +5674,10 @@ class AccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -5041,6 +5686,9 @@ class AccessPolicyIncludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -5050,6 +5698,9 @@ class AccessPolicyIncludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5062,6 +5713,10 @@ class AccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -5070,6 +5725,9 @@ class AccessPolicyIncludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5079,6 +5737,9 @@ class AccessPolicyIncludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -5092,6 +5753,11 @@ class AccessPolicyIncludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -5102,6 +5768,9 @@ class AccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -5111,6 +5780,9 @@ class AccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -5120,6 +5792,9 @@ class AccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5154,9 +5829,28 @@ class AccessPolicyRequireArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input['AccessPolicyRequireExternalEvaluationArgs'] external_evaluation: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -5208,6 +5902,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -5226,6 +5923,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -5235,6 +5935,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -5244,6 +5947,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -5253,6 +5959,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -5274,6 +5983,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -5283,6 +5995,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -5292,6 +6007,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -5301,6 +6019,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -5310,6 +6031,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -5319,6 +6043,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="externalEvaluation")
     def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluation")
 
     @external_evaluation.setter
@@ -5328,6 +6055,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -5337,6 +6067,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -5346,6 +6079,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -5355,6 +6091,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -5365,7 +6104,7 @@ class AccessPolicyRequireArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -5388,6 +6127,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -5397,6 +6139,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -5406,6 +6151,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -5415,6 +6163,9 @@ class AccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -5431,7 +6182,7 @@ class AccessPolicyRequireAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -5465,7 +6216,7 @@ class AccessPolicyRequireAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -5480,7 +6231,7 @@ class AccessPolicyRequireAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -5492,7 +6243,7 @@ class AccessPolicyRequireAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -5518,6 +6269,10 @@ class AccessPolicyRequireExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -5526,6 +6281,9 @@ class AccessPolicyRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -5535,6 +6293,9 @@ class AccessPolicyRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -5548,6 +6309,11 @@ class AccessPolicyRequireGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -5558,6 +6324,9 @@ class AccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5567,6 +6336,9 @@ class AccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5576,6 +6348,9 @@ class AccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -5588,6 +6363,10 @@ class AccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -5596,6 +6375,9 @@ class AccessPolicyRequireGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -5605,6 +6387,9 @@ class AccessPolicyRequireGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5617,6 +6402,10 @@ class AccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -5625,6 +6414,9 @@ class AccessPolicyRequireOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -5634,6 +6426,9 @@ class AccessPolicyRequireOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -5647,6 +6442,11 @@ class AccessPolicyRequireSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -5657,6 +6457,9 @@ class AccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -5666,6 +6469,9 @@ class AccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -5675,6 +6481,9 @@ class AccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -6927,7 +7736,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[bool] is_active: True if SentinelOne device is active.
         :param pulumi.Input[str] issue_count: The number of issues for kolide.
         :param pulumi.Input[str] last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgs']]] locations: List of locations to check for client certificate posture check.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgs']]] locations: List of operating system locations to check for a client certificate..
         :param pulumi.Input[str] network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -6945,7 +7754,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[str] thumbprint: The thumbprint of the file certificate.
         :param pulumi.Input[int] total_score: The total score from Tanium.
         :param pulumi.Input[str] version: The operating system semantic version.
-        :param pulumi.Input[str] version_operator: The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        :param pulumi.Input[str] version_operator: The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
         if active_threats is not None:
             pulumi.set(__self__, "active_threats", active_threats)
@@ -7242,7 +8051,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgs']]]]:
         """
-        List of locations to check for client certificate posture check.
+        List of operating system locations to check for a client certificate..
         """
         return pulumi.get(self, "locations")
 
@@ -7458,7 +8267,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter(name="versionOperator")
     def version_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
         return pulumi.get(self, "version_operator")
 
@@ -7473,8 +8282,8 @@ class DevicePostureRuleInputLocationArgs:
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to check for client certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] trust_stores: List of trust stores to check for client certificate. Available values: `system`, `user`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to check for client certificate rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] trust_stores: List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         """
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
@@ -7485,7 +8294,7 @@ class DevicePostureRuleInputLocationArgs:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of paths to check for client certificate.
+        List of paths to check for client certificate rule.
         """
         return pulumi.get(self, "paths")
 
@@ -7497,7 +8306,7 @@ class DevicePostureRuleInputLocationArgs:
     @pulumi.getter(name="trustStores")
     def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of trust stores to check for client certificate. Available values: `system`, `user`.
+        List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         """
         return pulumi.get(self, "trust_stores")
 
@@ -13722,6 +14531,7 @@ class RulesetRuleActionParametersArgs:
                  browser_ttl: Optional[pulumi.Input['RulesetRuleActionParametersBrowserTtlArgs']] = None,
                  cache: Optional[pulumi.Input[bool]] = None,
                  cache_key: Optional[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']] = None,
+                 cache_reserve: Optional[pulumi.Input['RulesetRuleActionParametersCacheReserveArgs']] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cookie_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -13776,6 +14586,7 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input['RulesetRuleActionParametersBrowserTtlArgs'] browser_ttl: List of browser TTL parameters to apply to the request.
         :param pulumi.Input[bool] cache: Whether to cache if expression matches.
         :param pulumi.Input['RulesetRuleActionParametersCacheKeyArgs'] cache_key: List of cache key parameters to apply to the request.
+        :param pulumi.Input['RulesetRuleActionParametersCacheReserveArgs'] cache_reserve: List of cache reserve parameters to apply to the request.
         :param pulumi.Input[str] content: Content of the custom error response.
         :param pulumi.Input[str] content_type: Content-Type of the custom error response.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cookie_fields: List of cookie values to include as part of custom fields logging.
@@ -13837,6 +14648,8 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "cache", cache)
         if cache_key is not None:
             pulumi.set(__self__, "cache_key", cache_key)
+        if cache_reserve is not None:
+            pulumi.set(__self__, "cache_reserve", cache_reserve)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if content_type is not None:
@@ -14023,6 +14836,18 @@ class RulesetRuleActionParametersArgs:
     @cache_key.setter
     def cache_key(self, value: Optional[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']]):
         pulumi.set(self, "cache_key", value)
+
+    @property
+    @pulumi.getter(name="cacheReserve")
+    def cache_reserve(self) -> Optional[pulumi.Input['RulesetRuleActionParametersCacheReserveArgs']]:
+        """
+        List of cache reserve parameters to apply to the request.
+        """
+        return pulumi.get(self, "cache_reserve")
+
+    @cache_reserve.setter
+    def cache_reserve(self, value: Optional[pulumi.Input['RulesetRuleActionParametersCacheReserveArgs']]):
+        pulumi.set(self, "cache_reserve", value)
 
     @property
     @pulumi.getter
@@ -15060,6 +15885,44 @@ class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
     @lang.setter
     def lang(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "lang", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParametersCacheReserveArgs:
+    def __init__(__self__, *,
+                 eligible: pulumi.Input[bool],
+                 minimum_file_size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] eligible: Determines whether Cloudflare will write the eligible resource to cache reserve.
+        :param pulumi.Input[int] minimum_file_size: The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+        """
+        pulumi.set(__self__, "eligible", eligible)
+        if minimum_file_size is not None:
+            pulumi.set(__self__, "minimum_file_size", minimum_file_size)
+
+    @property
+    @pulumi.getter
+    def eligible(self) -> pulumi.Input[bool]:
+        """
+        Determines whether Cloudflare will write the eligible resource to cache reserve.
+        """
+        return pulumi.get(self, "eligible")
+
+    @eligible.setter
+    def eligible(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "eligible", value)
+
+    @property
+    @pulumi.getter(name="minimumFileSize")
+    def minimum_file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+        """
+        return pulumi.get(self, "minimum_file_size")
+
+    @minimum_file_size.setter
+    def minimum_file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_file_size", value)
 
 
 @pulumi.input_type
@@ -16618,6 +17481,28 @@ class TeamsAccountBodyScanningArgs:
 
 
 @pulumi.input_type
+class TeamsAccountCertificateArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of certificate for TLS interception.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of certificate for TLS interception.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
 class TeamsAccountCustomCertificateArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
@@ -16931,7 +17816,7 @@ class TeamsAccountProxyArgs:
                  udp: pulumi.Input[bool],
                  virtual_ip: pulumi.Input[bool]):
         """
-        :param pulumi.Input[int] disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP
+        :param pulumi.Input[int] disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP.
         :param pulumi.Input[bool] root_ca: Whether root ca is enabled account wide for ZT clients.
         :param pulumi.Input[bool] tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param pulumi.Input[bool] udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
@@ -16947,7 +17832,7 @@ class TeamsAccountProxyArgs:
     @pulumi.getter(name="disableForTime")
     def disable_for_time(self) -> pulumi.Input[int]:
         """
-        Sets the time limit in seconds that a user can use an override code to bypass WARP
+        Sets the time limit in seconds that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
 
@@ -19149,6 +20034,43 @@ class WorkerScriptD1DatabaseBindingArgs:
 
 
 @pulumi.input_type
+class WorkerScriptHyperdriveConfigBindingArgs:
+    def __init__(__self__, *,
+                 binding: pulumi.Input[str],
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] binding: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] id: The ID of the Hyperdrive config to use.
+        """
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "binding")
+
+    @binding.setter
+    def binding(self, value: pulumi.Input[str]):
+        pulumi.set(self, "binding", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Hyperdrive config to use.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
 class WorkerScriptKvNamespaceBindingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -19517,6 +20439,43 @@ class WorkersScriptD1DatabaseBindingArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkersScriptHyperdriveConfigBindingArgs:
+    def __init__(__self__, *,
+                 binding: pulumi.Input[str],
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] binding: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] id: The ID of the Hyperdrive config to use.
+        """
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "binding")
+
+    @binding.setter
+    def binding(self, value: pulumi.Input[str]):
+        pulumi.set(self, "binding", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Hyperdrive config to use.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -21157,9 +22116,28 @@ class ZeroTrustAccessGroupExcludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -21211,6 +22189,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -21229,6 +22210,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -21238,6 +22222,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -21247,6 +22234,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -21256,6 +22246,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -21277,6 +22270,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -21286,6 +22282,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -21295,6 +22294,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -21304,6 +22306,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -21313,6 +22318,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -21322,6 +22330,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -21331,6 +22342,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -21340,6 +22354,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -21349,6 +22366,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -21358,6 +22378,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -21368,7 +22391,7 @@ class ZeroTrustAccessGroupExcludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -21391,6 +22414,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -21400,6 +22426,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -21409,6 +22438,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -21418,6 +22450,9 @@ class ZeroTrustAccessGroupExcludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -21434,7 +22469,7 @@ class ZeroTrustAccessGroupExcludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -21468,7 +22503,7 @@ class ZeroTrustAccessGroupExcludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -21483,7 +22518,7 @@ class ZeroTrustAccessGroupExcludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -21495,7 +22530,7 @@ class ZeroTrustAccessGroupExcludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -21521,6 +22556,10 @@ class ZeroTrustAccessGroupExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -21529,6 +22568,9 @@ class ZeroTrustAccessGroupExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -21538,6 +22580,9 @@ class ZeroTrustAccessGroupExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -21551,6 +22596,11 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -21561,6 +22611,9 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -21570,6 +22623,9 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -21579,6 +22635,9 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -21591,6 +22650,10 @@ class ZeroTrustAccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -21599,6 +22662,9 @@ class ZeroTrustAccessGroupExcludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -21608,6 +22674,9 @@ class ZeroTrustAccessGroupExcludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -21620,6 +22689,10 @@ class ZeroTrustAccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -21628,6 +22701,9 @@ class ZeroTrustAccessGroupExcludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -21637,6 +22713,9 @@ class ZeroTrustAccessGroupExcludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -21650,6 +22729,11 @@ class ZeroTrustAccessGroupExcludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -21660,6 +22744,9 @@ class ZeroTrustAccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -21669,6 +22756,9 @@ class ZeroTrustAccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -21678,6 +22768,9 @@ class ZeroTrustAccessGroupExcludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -21712,9 +22805,28 @@ class ZeroTrustAccessGroupIncludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -21766,6 +22878,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -21784,6 +22899,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -21793,6 +22911,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -21802,6 +22923,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -21811,6 +22935,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -21832,6 +22959,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -21841,6 +22971,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -21850,6 +22983,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -21859,6 +22995,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -21868,6 +23007,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -21877,6 +23019,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -21886,6 +23031,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -21895,6 +23043,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -21904,6 +23055,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -21913,6 +23067,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -21923,7 +23080,7 @@ class ZeroTrustAccessGroupIncludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -21946,6 +23103,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -21955,6 +23115,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -21964,6 +23127,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -21973,6 +23139,9 @@ class ZeroTrustAccessGroupIncludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -21989,7 +23158,7 @@ class ZeroTrustAccessGroupIncludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -22023,7 +23192,7 @@ class ZeroTrustAccessGroupIncludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -22038,7 +23207,7 @@ class ZeroTrustAccessGroupIncludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -22050,7 +23219,7 @@ class ZeroTrustAccessGroupIncludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -22076,6 +23245,10 @@ class ZeroTrustAccessGroupIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -22084,6 +23257,9 @@ class ZeroTrustAccessGroupIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -22093,6 +23269,9 @@ class ZeroTrustAccessGroupIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -22106,6 +23285,11 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -22116,6 +23300,9 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22125,6 +23312,9 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -22134,6 +23324,9 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -22146,6 +23339,10 @@ class ZeroTrustAccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -22154,6 +23351,9 @@ class ZeroTrustAccessGroupIncludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -22163,6 +23363,9 @@ class ZeroTrustAccessGroupIncludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22175,6 +23378,10 @@ class ZeroTrustAccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -22183,6 +23390,9 @@ class ZeroTrustAccessGroupIncludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22192,6 +23402,9 @@ class ZeroTrustAccessGroupIncludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -22205,6 +23418,11 @@ class ZeroTrustAccessGroupIncludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -22215,6 +23433,9 @@ class ZeroTrustAccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -22224,6 +23445,9 @@ class ZeroTrustAccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -22233,6 +23457,9 @@ class ZeroTrustAccessGroupIncludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22267,9 +23494,28 @@ class ZeroTrustAccessGroupRequireArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -22321,6 +23567,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -22339,6 +23588,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -22348,6 +23600,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -22357,6 +23612,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -22366,6 +23624,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -22387,6 +23648,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -22396,6 +23660,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -22405,6 +23672,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -22414,6 +23684,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -22423,6 +23696,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -22432,6 +23708,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -22441,6 +23720,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -22450,6 +23732,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -22459,6 +23744,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -22468,6 +23756,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -22478,7 +23769,7 @@ class ZeroTrustAccessGroupRequireArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -22501,6 +23792,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -22510,6 +23804,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -22519,6 +23816,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -22528,6 +23828,9 @@ class ZeroTrustAccessGroupRequireArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -22544,7 +23847,7 @@ class ZeroTrustAccessGroupRequireAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -22578,7 +23881,7 @@ class ZeroTrustAccessGroupRequireAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -22593,7 +23896,7 @@ class ZeroTrustAccessGroupRequireAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -22605,7 +23908,7 @@ class ZeroTrustAccessGroupRequireAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -22631,6 +23934,10 @@ class ZeroTrustAccessGroupRequireExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -22639,6 +23946,9 @@ class ZeroTrustAccessGroupRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -22648,6 +23958,9 @@ class ZeroTrustAccessGroupRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -22661,6 +23974,11 @@ class ZeroTrustAccessGroupRequireGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -22671,6 +23989,9 @@ class ZeroTrustAccessGroupRequireGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22680,6 +24001,9 @@ class ZeroTrustAccessGroupRequireGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -22689,6 +24013,9 @@ class ZeroTrustAccessGroupRequireGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -22701,6 +24028,10 @@ class ZeroTrustAccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -22709,6 +24040,9 @@ class ZeroTrustAccessGroupRequireGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -22718,6 +24052,9 @@ class ZeroTrustAccessGroupRequireGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22730,6 +24067,10 @@ class ZeroTrustAccessGroupRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -22738,6 +24079,9 @@ class ZeroTrustAccessGroupRequireOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -22747,6 +24091,9 @@ class ZeroTrustAccessGroupRequireOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -22760,6 +24107,11 @@ class ZeroTrustAccessGroupRequireSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -22770,6 +24122,9 @@ class ZeroTrustAccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -22779,6 +24134,9 @@ class ZeroTrustAccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -22788,6 +24146,9 @@ class ZeroTrustAccessGroupRequireSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -23446,9 +24807,28 @@ class ZeroTrustAccessPolicyExcludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -23500,6 +24880,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -23518,6 +24901,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -23527,6 +24913,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -23536,6 +24925,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -23545,6 +24937,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -23566,6 +24961,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -23575,6 +24973,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -23584,6 +24985,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -23593,6 +24997,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -23602,6 +25009,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -23611,6 +25021,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -23620,6 +25033,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -23629,6 +25045,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -23638,6 +25057,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -23647,6 +25069,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -23657,7 +25082,7 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -23680,6 +25105,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -23689,6 +25117,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -23698,6 +25129,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -23707,6 +25141,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -23723,7 +25160,7 @@ class ZeroTrustAccessPolicyExcludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -23757,7 +25194,7 @@ class ZeroTrustAccessPolicyExcludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -23772,7 +25209,7 @@ class ZeroTrustAccessPolicyExcludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -23784,7 +25221,7 @@ class ZeroTrustAccessPolicyExcludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -23810,6 +25247,10 @@ class ZeroTrustAccessPolicyExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -23818,6 +25259,9 @@ class ZeroTrustAccessPolicyExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -23827,6 +25271,9 @@ class ZeroTrustAccessPolicyExcludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -23840,6 +25287,11 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -23850,6 +25302,9 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -23859,6 +25314,9 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -23868,6 +25326,9 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -23880,6 +25341,10 @@ class ZeroTrustAccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -23888,6 +25353,9 @@ class ZeroTrustAccessPolicyExcludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -23897,6 +25365,9 @@ class ZeroTrustAccessPolicyExcludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -23909,6 +25380,10 @@ class ZeroTrustAccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -23917,6 +25392,9 @@ class ZeroTrustAccessPolicyExcludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -23926,6 +25404,9 @@ class ZeroTrustAccessPolicyExcludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -23939,6 +25420,11 @@ class ZeroTrustAccessPolicyExcludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -23949,6 +25435,9 @@ class ZeroTrustAccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -23958,6 +25447,9 @@ class ZeroTrustAccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -23967,6 +25459,9 @@ class ZeroTrustAccessPolicyExcludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24001,9 +25496,28 @@ class ZeroTrustAccessPolicyIncludeArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -24055,6 +25569,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -24073,6 +25590,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -24082,6 +25602,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -24091,6 +25614,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -24100,6 +25626,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -24121,6 +25650,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -24130,6 +25662,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -24139,6 +25674,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -24148,6 +25686,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -24157,6 +25698,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -24166,6 +25710,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -24175,6 +25722,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -24184,6 +25734,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -24193,6 +25746,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -24202,6 +25758,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -24212,7 +25771,7 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -24235,6 +25794,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -24244,6 +25806,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -24253,6 +25818,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -24262,6 +25830,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -24278,7 +25849,7 @@ class ZeroTrustAccessPolicyIncludeAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -24312,7 +25883,7 @@ class ZeroTrustAccessPolicyIncludeAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -24327,7 +25898,7 @@ class ZeroTrustAccessPolicyIncludeAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -24339,7 +25910,7 @@ class ZeroTrustAccessPolicyIncludeAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -24365,6 +25936,10 @@ class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -24373,6 +25948,9 @@ class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -24382,6 +25960,9 @@ class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -24395,6 +25976,11 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -24405,6 +25991,9 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24414,6 +26003,9 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -24423,6 +26015,9 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -24435,6 +26030,10 @@ class ZeroTrustAccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -24443,6 +26042,9 @@ class ZeroTrustAccessPolicyIncludeGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -24452,6 +26054,9 @@ class ZeroTrustAccessPolicyIncludeGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24464,6 +26069,10 @@ class ZeroTrustAccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -24472,6 +26081,9 @@ class ZeroTrustAccessPolicyIncludeOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24481,6 +26093,9 @@ class ZeroTrustAccessPolicyIncludeOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -24494,6 +26109,11 @@ class ZeroTrustAccessPolicyIncludeSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -24504,6 +26124,9 @@ class ZeroTrustAccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -24513,6 +26136,9 @@ class ZeroTrustAccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -24522,6 +26148,9 @@ class ZeroTrustAccessPolicyIncludeSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24556,9 +26185,28 @@ class ZeroTrustAccessPolicyRequireArgs:
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] any_valid_service_token: Matches any valid Access service token.
+        :param pulumi.Input[str] auth_method: The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireAzureArgs']]] azures: Matches an Azure group. Requires an Azure identity provider.
+        :param pulumi.Input[bool] certificate: Matches any valid client certificate.
+        :param pulumi.Input[str] common_name: Matches a valid client certificate common name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of an existing IP list to reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] device_postures: The ID of a device posture integration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_domains: The email domain to match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: The ID of a previously created email list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the user.
+        :param pulumi.Input[bool] everyone: Matches everyone.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireExternalEvaluationArgs']]] external_evaluations: Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] geos: Matches a specific country.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGithubArgs']]] githubs: Matches a Github organization. Requires a Github identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The ID of a previously created Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGsuiteArgs']]] gsuites: Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_lists: The ID of a previously created IP list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: An IPv4 or IPv6 CIDR block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] login_methods: The ID of a configured identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireOktaArgs']]] oktas: Matches an Okta group. Requires an Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgs']]] samls: Matches a SAML group. Requires a SAML identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_tokens: The ID of an Access service token.
         """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
@@ -24610,6 +26258,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid Access service token.
+        """
         return pulumi.get(self, "any_valid_service_token")
 
     @any_valid_service_token.setter
@@ -24628,6 +26279,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -24637,6 +26291,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireAzureArgs']]]]:
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
         return pulumi.get(self, "azures")
 
     @azures.setter
@@ -24646,6 +26303,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches any valid client certificate.
+        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -24655,6 +26315,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a valid client certificate common name.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -24676,6 +26339,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="devicePostures")
     def device_postures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a device posture integration.
+        """
         return pulumi.get(self, "device_postures")
 
     @device_postures.setter
@@ -24685,6 +26351,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="emailDomains")
     def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email domain to match.
+        """
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
@@ -24694,6 +26363,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="emailLists")
     def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created email list.
+        """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
@@ -24703,6 +26375,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the user.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -24712,6 +26387,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def everyone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Matches everyone.
+        """
         return pulumi.get(self, "everyone")
 
     @everyone.setter
@@ -24721,6 +26399,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="externalEvaluations")
     def external_evaluations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireExternalEvaluationArgs']]]]:
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
         return pulumi.get(self, "external_evaluations")
 
     @external_evaluations.setter
@@ -24730,6 +26411,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Matches a specific country.
+        """
         return pulumi.get(self, "geos")
 
     @geos.setter
@@ -24739,6 +26423,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGithubArgs']]]]:
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
         return pulumi.get(self, "githubs")
 
     @githubs.setter
@@ -24748,6 +26435,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a previously created Access group.
+        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -24757,6 +26447,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGsuiteArgs']]]]:
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
@@ -24767,7 +26460,7 @@ class ZeroTrustAccessPolicyRequireArgs:
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of an existing IP list to reference.
+        The ID of a previously created IP list.
         """
         return pulumi.get(self, "ip_lists")
 
@@ -24790,6 +26483,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="loginMethods")
     def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of a configured identity provider.
+        """
         return pulumi.get(self, "login_methods")
 
     @login_methods.setter
@@ -24799,6 +26495,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireOktaArgs']]]]:
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
         return pulumi.get(self, "oktas")
 
     @oktas.setter
@@ -24808,6 +26507,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter
     def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgs']]]]:
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
         return pulumi.get(self, "samls")
 
     @samls.setter
@@ -24817,6 +26519,9 @@ class ZeroTrustAccessPolicyRequireArgs:
     @property
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of an Access service token.
+        """
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
@@ -24833,7 +26538,7 @@ class ZeroTrustAccessPolicyRequireAuthContextArgs:
         """
         :param pulumi.Input[str] ac_id: The ACID of the Authentication Context.
         :param pulumi.Input[str] id: The ID of the Authentication Context.
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         """
         pulumi.set(__self__, "ac_id", ac_id)
         pulumi.set(__self__, "id", id)
@@ -24867,7 +26572,7 @@ class ZeroTrustAccessPolicyRequireAuthContextArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -24882,7 +26587,7 @@ class ZeroTrustAccessPolicyRequireAzureArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identity_provider_id: The ID of the Azure Identity provider.
+        :param pulumi.Input[str] identity_provider_id: The ID of the Azure identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
@@ -24894,7 +26599,7 @@ class ZeroTrustAccessPolicyRequireAzureArgs:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Azure Identity provider.
+        The ID of the Azure identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -24920,6 +26625,10 @@ class ZeroTrustAccessPolicyRequireExternalEvaluationArgs:
     def __init__(__self__, *,
                  evaluate_url: Optional[pulumi.Input[str]] = None,
                  keys_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluate_url: The API endpoint containing your business logic.
+        :param pulumi.Input[str] keys_url: The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         if evaluate_url is not None:
             pulumi.set(__self__, "evaluate_url", evaluate_url)
         if keys_url is not None:
@@ -24928,6 +26637,9 @@ class ZeroTrustAccessPolicyRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="evaluateUrl")
     def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing your business logic.
+        """
         return pulumi.get(self, "evaluate_url")
 
     @evaluate_url.setter
@@ -24937,6 +26649,9 @@ class ZeroTrustAccessPolicyRequireExternalEvaluationArgs:
     @property
     @pulumi.getter(name="keysUrl")
     def keys_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
         return pulumi.get(self, "keys_url")
 
     @keys_url.setter
@@ -24950,6 +26665,11 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Github identity provider.
+        :param pulumi.Input[str] name: The name of the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams that should be matched.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -24960,6 +26680,9 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Github identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -24969,6 +26692,9 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the organization.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -24978,6 +26704,9 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
     @property
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams that should be matched.
+        """
         return pulumi.get(self, "teams")
 
     @teams.setter
@@ -24990,6 +26719,10 @@ class ZeroTrustAccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
+        :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
+        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -24998,6 +26731,9 @@ class ZeroTrustAccessPolicyRequireGsuiteArgs:
     @property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The email of the Google Workspace group.
+        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -25007,6 +26743,9 @@ class ZeroTrustAccessPolicyRequireGsuiteArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Google Workspace identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -25019,6 +26758,10 @@ class ZeroTrustAccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identity_provider_id: The ID of your Okta identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: The name of the Okta Group.
+        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -25027,6 +26770,9 @@ class ZeroTrustAccessPolicyRequireOktaArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your Okta identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -25036,6 +26782,9 @@ class ZeroTrustAccessPolicyRequireOktaArgs:
     @property
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the Okta Group.
+        """
         return pulumi.get(self, "names")
 
     @names.setter
@@ -25049,6 +26798,11 @@ class ZeroTrustAccessPolicyRequireSamlArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_value: Optional[pulumi.Input[str]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute_name: The name of the SAML attribute.
+        :param pulumi.Input[str] attribute_value: The SAML attribute value to look for.
+        :param pulumi.Input[str] identity_provider_id: The ID of your SAML identity provider.
+        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -25059,6 +26813,9 @@ class ZeroTrustAccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SAML attribute.
+        """
         return pulumi.get(self, "attribute_name")
 
     @attribute_name.setter
@@ -25068,6 +26825,9 @@ class ZeroTrustAccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="attributeValue")
     def attribute_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SAML attribute value to look for.
+        """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
@@ -25077,6 +26837,9 @@ class ZeroTrustAccessPolicyRequireSamlArgs:
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your SAML identity provider.
+        """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
@@ -25306,16 +27069,16 @@ class ZeroTrustDevicePostureRuleInputArgs:
         :param pulumi.Input[str] connection_id: The workspace one or intune connection id.
         :param pulumi.Input[str] count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] domain: The domain that the client must join.
-        :param pulumi.Input[str] eid_last_seen: The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+        :param pulumi.Input[str] eid_last_seen: The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param pulumi.Input[bool] enabled: True if the firewall must be enabled.
         :param pulumi.Input[bool] exists: Checks if the file should exist.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extended_key_usages: List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
         :param pulumi.Input[str] id: The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         :param pulumi.Input[bool] infected: True if SentinelOne device is infected.
         :param pulumi.Input[bool] is_active: True if SentinelOne device is active.
         :param pulumi.Input[str] issue_count: The number of issues for kolide.
         :param pulumi.Input[str] last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgs']]] locations: List of locations to check for client certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgs']]] locations: List of operating system locations to check for a client certificate..
         :param pulumi.Input[str] network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -25333,7 +27096,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
         :param pulumi.Input[str] thumbprint: The thumbprint of the file certificate.
         :param pulumi.Input[int] total_score: The total score from Tanium.
         :param pulumi.Input[str] version: The operating system semantic version.
-        :param pulumi.Input[str] version_operator: The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        :param pulumi.Input[str] version_operator: The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
         if active_threats is not None:
             pulumi.set(__self__, "active_threats", active_threats)
@@ -25522,7 +27285,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
     @pulumi.getter(name="eidLastSeen")
     def eid_last_seen(self) -> Optional[pulumi.Input[str]]:
         """
-        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         """
         return pulumi.get(self, "eid_last_seen")
 
@@ -25558,7 +27321,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
         """
         return pulumi.get(self, "extended_key_usages")
 
@@ -25630,7 +27393,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
     @pulumi.getter
     def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgs']]]]:
         """
-        List of locations to check for client certificate.
+        List of operating system locations to check for a client certificate..
         """
         return pulumi.get(self, "locations")
 
@@ -25846,7 +27609,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
     @pulumi.getter(name="versionOperator")
     def version_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
         return pulumi.get(self, "version_operator")
 
@@ -25862,7 +27625,7 @@ class ZeroTrustDevicePostureRuleInputLocationArgs:
                  trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to check for client certificate rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] trust_stores: List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] trust_stores: List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         """
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
@@ -25885,7 +27648,7 @@ class ZeroTrustDevicePostureRuleInputLocationArgs:
     @pulumi.getter(name="trustStores")
     def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         """
         return pulumi.get(self, "trust_stores")
 
@@ -27310,6 +29073,28 @@ class ZeroTrustGatewaySettingsBodyScanningArgs:
 
 
 @pulumi.input_type
+class ZeroTrustGatewaySettingsCertificateArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of certificate for TLS interception.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of certificate for TLS interception.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
 class ZeroTrustGatewaySettingsCustomCertificateArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
@@ -27623,7 +29408,7 @@ class ZeroTrustGatewaySettingsProxyArgs:
                  udp: pulumi.Input[bool],
                  virtual_ip: pulumi.Input[bool]):
         """
-        :param pulumi.Input[int] disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP
+        :param pulumi.Input[int] disable_for_time: Sets the time limit in seconds that a user can use an override code to bypass WARP.
         :param pulumi.Input[bool] root_ca: Whether root ca is enabled account wide for ZT clients.
         :param pulumi.Input[bool] tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param pulumi.Input[bool] udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
@@ -27639,7 +29424,7 @@ class ZeroTrustGatewaySettingsProxyArgs:
     @pulumi.getter(name="disableForTime")
     def disable_for_time(self) -> pulumi.Input[int]:
         """
-        Sets the time limit in seconds that a user can use an override code to bypass WARP
+        Sets the time limit in seconds that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
 
@@ -28936,6 +30721,7 @@ class ZoneSettingsOverrideInitialSettingArgs:
                  privacy_pass: Optional[pulumi.Input[str]] = None,
                  proxy_read_timeout: Optional[pulumi.Input[str]] = None,
                  pseudo_ipv4: Optional[pulumi.Input[str]] = None,
+                 replace_insecure_js: Optional[pulumi.Input[str]] = None,
                  response_buffering: Optional[pulumi.Input[str]] = None,
                  rocket_loader: Optional[pulumi.Input[str]] = None,
                  security_header: Optional[pulumi.Input['ZoneSettingsOverrideInitialSettingSecurityHeaderArgs']] = None,
@@ -29036,6 +30822,8 @@ class ZoneSettingsOverrideInitialSettingArgs:
             pulumi.set(__self__, "proxy_read_timeout", proxy_read_timeout)
         if pseudo_ipv4 is not None:
             pulumi.set(__self__, "pseudo_ipv4", pseudo_ipv4)
+        if replace_insecure_js is not None:
+            pulumi.set(__self__, "replace_insecure_js", replace_insecure_js)
         if response_buffering is not None:
             pulumi.set(__self__, "response_buffering", response_buffering)
         if rocket_loader is not None:
@@ -29436,6 +31224,15 @@ class ZoneSettingsOverrideInitialSettingArgs:
         pulumi.set(self, "pseudo_ipv4", value)
 
     @property
+    @pulumi.getter(name="replaceInsecureJs")
+    def replace_insecure_js(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "replace_insecure_js")
+
+    @replace_insecure_js.setter
+    def replace_insecure_js(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_insecure_js", value)
+
+    @property
     @pulumi.getter(name="responseBuffering")
     def response_buffering(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "response_buffering")
@@ -29790,6 +31587,7 @@ class ZoneSettingsOverrideSettingsArgs:
                  privacy_pass: Optional[pulumi.Input[str]] = None,
                  proxy_read_timeout: Optional[pulumi.Input[str]] = None,
                  pseudo_ipv4: Optional[pulumi.Input[str]] = None,
+                 replace_insecure_js: Optional[pulumi.Input[str]] = None,
                  response_buffering: Optional[pulumi.Input[str]] = None,
                  rocket_loader: Optional[pulumi.Input[str]] = None,
                  security_header: Optional[pulumi.Input['ZoneSettingsOverrideSettingsSecurityHeaderArgs']] = None,
@@ -29890,6 +31688,8 @@ class ZoneSettingsOverrideSettingsArgs:
             pulumi.set(__self__, "proxy_read_timeout", proxy_read_timeout)
         if pseudo_ipv4 is not None:
             pulumi.set(__self__, "pseudo_ipv4", pseudo_ipv4)
+        if replace_insecure_js is not None:
+            pulumi.set(__self__, "replace_insecure_js", replace_insecure_js)
         if response_buffering is not None:
             pulumi.set(__self__, "response_buffering", response_buffering)
         if rocket_loader is not None:
@@ -30288,6 +32088,15 @@ class ZoneSettingsOverrideSettingsArgs:
     @pseudo_ipv4.setter
     def pseudo_ipv4(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pseudo_ipv4", value)
+
+    @property
+    @pulumi.getter(name="replaceInsecureJs")
+    def replace_insecure_js(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "replace_insecure_js")
+
+    @replace_insecure_js.setter
+    def replace_insecure_js(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_insecure_js", value)
 
     @property
     @pulumi.getter(name="responseBuffering")

@@ -16,14 +16,14 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
     public static final ZeroTrustGatewaySettingsProxyArgs Empty = new ZeroTrustGatewaySettingsProxyArgs();
 
     /**
-     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP.
      * 
      */
     @Import(name="disableForTime", required=true)
     private Output<Integer> disableForTime;
 
     /**
-     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * @return Sets the time limit in seconds that a user can use an override code to bypass WARP.
      * 
      */
     public Output<Integer> disableForTime() {
@@ -119,7 +119,7 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP
+         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ZeroTrustGatewaySettingsProxyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP
+         * @param disableForTime Sets the time limit in seconds that a user can use an override code to bypass WARP.
          * 
          * @return builder
          * 

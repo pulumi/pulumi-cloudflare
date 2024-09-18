@@ -290,14 +290,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * List of locations to check for client certificate posture check.
+     * List of operating system locations to check for a client certificate..
      * 
      */
     @Import(name="locations")
     private @Nullable Output<List<DevicePostureRuleInputLocationArgs>> locations;
 
     /**
-     * @return List of locations to check for client certificate posture check.
+     * @return List of operating system locations to check for a client certificate..
      * 
      */
     public Optional<Output<List<DevicePostureRuleInputLocationArgs>>> locations() {
@@ -560,14 +560,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     @Import(name="versionOperator")
     private @Nullable Output<String> versionOperator;
 
     /**
-     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<Output<String>> versionOperator() {
@@ -1033,7 +1033,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param locations List of locations to check for client certificate posture check.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param locations List of locations to check for client certificate posture check.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1054,7 +1054,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param locations List of locations to check for client certificate posture check.
+         * @param locations List of operating system locations to check for a client certificate..
          * 
          * @return builder
          * 
@@ -1421,7 +1421,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 
@@ -1432,7 +1432,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 

@@ -177,6 +177,7 @@ from .zero_trust_device_profiles import *
 from .zero_trust_dex_test import *
 from .zero_trust_dlp_profile import *
 from .zero_trust_dns_location import *
+from .zero_trust_gateway_certificate import *
 from .zero_trust_gateway_policy import *
 from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
@@ -1336,6 +1337,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation": "ZeroTrustDnsLocation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustGatewayCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate": "ZeroTrustGatewayCertificate"
   }
  },
  {

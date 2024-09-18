@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? LastSeen;
         /// <summary>
-        /// List of locations to check for client certificate posture check.
+        /// List of operating system locations to check for a client certificate..
         /// </summary>
         public readonly ImmutableArray<Outputs.DevicePostureRuleInputLocation> Locations;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Version;
         /// <summary>
-        /// The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         public readonly string? VersionOperator;
 

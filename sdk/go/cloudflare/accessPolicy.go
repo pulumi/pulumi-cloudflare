@@ -33,7 +33,7 @@ import (
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrOutput               `pulumi:"applicationId"`
@@ -59,7 +59,7 @@ type AccessPolicy struct {
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    *string                     `pulumi:"applicationId"`
@@ -128,12 +128,12 @@ type accessPolicyState struct {
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrInput
@@ -159,7 +159,7 @@ type AccessPolicyState struct {
 	Requires AccessPolicyRequireArrayInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -168,7 +168,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    *string                     `pulumi:"applicationId"`
@@ -194,13 +194,13 @@ type accessPolicyArgs struct {
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrInput
@@ -226,7 +226,7 @@ type AccessPolicyArgs struct {
 	Requires AccessPolicyRequireArrayInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -317,7 +317,7 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+// The account identifier to target for the resource. Conflicts with `zoneId`.
 func (o AccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -385,7 +385,7 @@ func (o AccessPolicyOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+// The zone identifier to target for the resource. Conflicts with `accountId`.
 func (o AccessPolicyOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

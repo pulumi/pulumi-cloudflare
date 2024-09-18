@@ -16,23 +16,47 @@ public final class ZeroTrustAccessPolicyIncludeGithubArgs extends com.pulumi.res
 
     public static final ZeroTrustAccessPolicyIncludeGithubArgs Empty = new ZeroTrustAccessPolicyIncludeGithubArgs();
 
+    /**
+     * The ID of your Github identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of your Github identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
 
+    /**
+     * The name of the organization.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the organization.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The teams that should be matched.
+     * 
+     */
     @Import(name="teams")
     private @Nullable Output<List<String>> teams;
 
+    /**
+     * @return The teams that should be matched.
+     * 
+     */
     public Optional<Output<List<String>>> teams() {
         return Optional.ofNullable(this.teams);
     }
@@ -63,33 +87,75 @@ public final class ZeroTrustAccessPolicyIncludeGithubArgs extends com.pulumi.res
             $ = new ZeroTrustAccessPolicyIncludeGithubArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProviderId The ID of your Github identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
+        /**
+         * @param identityProviderId The ID of your Github identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }
 
+        /**
+         * @param name The name of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param teams The teams that should be matched.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teams(@Nullable Output<List<String>> teams) {
             $.teams = teams;
             return this;
         }
 
+        /**
+         * @param teams The teams that should be matched.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teams(List<String> teams) {
             return teams(Output.of(teams));
         }
 
+        /**
+         * @param teams The teams that should be matched.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teams(String... teams) {
             return teams(List.of(teams));
         }

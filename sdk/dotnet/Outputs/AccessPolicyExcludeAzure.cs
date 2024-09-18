@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyExcludeAzure
     {
         /// <summary>
-        /// The ID of the Azure Identity provider.
+        /// The ID of the Azure identity provider.
         /// </summary>
         public readonly string? IdentityProviderId;
         /// <summary>

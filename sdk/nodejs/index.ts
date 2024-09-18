@@ -865,6 +865,11 @@ export type ZeroTrustDnsLocation = import("./zeroTrustDnsLocation").ZeroTrustDns
 export const ZeroTrustDnsLocation: typeof import("./zeroTrustDnsLocation").ZeroTrustDnsLocation = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDnsLocation"], () => require("./zeroTrustDnsLocation"));
 
+export { ZeroTrustGatewayCertificateArgs, ZeroTrustGatewayCertificateState } from "./zeroTrustGatewayCertificate";
+export type ZeroTrustGatewayCertificate = import("./zeroTrustGatewayCertificate").ZeroTrustGatewayCertificate;
+export const ZeroTrustGatewayCertificate: typeof import("./zeroTrustGatewayCertificate").ZeroTrustGatewayCertificate = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustGatewayCertificate"], () => require("./zeroTrustGatewayCertificate"));
+
 export { ZeroTrustGatewayPolicyArgs, ZeroTrustGatewayPolicyState } from "./zeroTrustGatewayPolicy";
 export type ZeroTrustGatewayPolicy = import("./zeroTrustGatewayPolicy").ZeroTrustGatewayPolicy;
 export const ZeroTrustGatewayPolicy: typeof import("./zeroTrustGatewayPolicy").ZeroTrustGatewayPolicy = null as any;
@@ -1261,6 +1266,8 @@ const _module = {
                 return new ZeroTrustDlpProfile(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
                 return new ZeroTrustDnsLocation(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate":
+                return new ZeroTrustGatewayCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
                 return new ZeroTrustGatewayPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
@@ -1447,6 +1454,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceProfil
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDnsLocation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)

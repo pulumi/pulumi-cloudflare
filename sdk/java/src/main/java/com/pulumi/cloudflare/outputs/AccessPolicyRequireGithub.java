@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyRequireGithub {
+    /**
+     * @return The ID of your Github identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
+    /**
+     * @return The name of the organization.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The teams that should be matched.
+     * 
+     */
     private @Nullable List<String> teams;
 
     private AccessPolicyRequireGithub() {}
+    /**
+     * @return The ID of your Github identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
+    /**
+     * @return The name of the organization.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The teams that should be matched.
+     * 
+     */
     public List<String> teams() {
         return this.teams == null ? List.of() : this.teams;
     }

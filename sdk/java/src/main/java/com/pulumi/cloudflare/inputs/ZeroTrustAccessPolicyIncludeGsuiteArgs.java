@@ -16,16 +16,32 @@ public final class ZeroTrustAccessPolicyIncludeGsuiteArgs extends com.pulumi.res
 
     public static final ZeroTrustAccessPolicyIncludeGsuiteArgs Empty = new ZeroTrustAccessPolicyIncludeGsuiteArgs();
 
+    /**
+     * The email of the Google Workspace group.
+     * 
+     */
     @Import(name="emails")
     private @Nullable Output<List<String>> emails;
 
+    /**
+     * @return The email of the Google Workspace group.
+     * 
+     */
     public Optional<Output<List<String>>> emails() {
         return Optional.ofNullable(this.emails);
     }
 
+    /**
+     * The ID of your Google Workspace identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of your Google Workspace identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
@@ -55,24 +71,54 @@ public final class ZeroTrustAccessPolicyIncludeGsuiteArgs extends com.pulumi.res
             $ = new ZeroTrustAccessPolicyIncludeGsuiteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param emails The email of the Google Workspace group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(@Nullable Output<List<String>> emails) {
             $.emails = emails;
             return this;
         }
 
+        /**
+         * @param emails The email of the Google Workspace group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(List<String> emails) {
             return emails(Output.of(emails));
         }
 
+        /**
+         * @param emails The email of the Google Workspace group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emails(String... emails) {
             return emails(List.of(emails));
         }
 
+        /**
+         * @param identityProviderId The ID of your Google Workspace identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
+        /**
+         * @param identityProviderId The ID of your Google Workspace identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }

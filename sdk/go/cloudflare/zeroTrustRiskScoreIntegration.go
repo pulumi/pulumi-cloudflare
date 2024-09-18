@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The [Risk Score Integration](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta) resource allows you to transmit changes in User Risk Score to a specified vendor such as Okta.
 type ZeroTrustRiskScoreIntegration struct {
 	pulumi.CustomResourceState
 
@@ -19,17 +20,13 @@ type ZeroTrustRiskScoreIntegration struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-	// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
-	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-	// omitted, a random UUIDv4 is used.
-	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringOutput `pulumi:"referenceId"`
 	// The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain.
 	TenantUrl pulumi.StringOutput `pulumi:"tenantUrl"`
-	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-	// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
 	WellKnownUrl pulumi.StringOutput `pulumi:"wellKnownUrl"`
 }
 
@@ -76,17 +73,13 @@ type zeroTrustRiskScoreIntegrationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active *bool `pulumi:"active"`
-	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-	// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 	IntegrationType *string `pulumi:"integrationType"`
-	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-	// omitted, a random UUIDv4 is used.
-	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId *string `pulumi:"referenceId"`
 	// The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain.
 	TenantUrl *string `pulumi:"tenantUrl"`
-	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-	// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
 	WellKnownUrl *string `pulumi:"wellKnownUrl"`
 }
 
@@ -95,17 +88,13 @@ type ZeroTrustRiskScoreIntegrationState struct {
 	AccountId pulumi.StringPtrInput
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active pulumi.BoolPtrInput
-	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-	// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 	IntegrationType pulumi.StringPtrInput
-	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-	// omitted, a random UUIDv4 is used.
-	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringPtrInput
 	// The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain.
 	TenantUrl pulumi.StringPtrInput
-	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-	// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
 	WellKnownUrl pulumi.StringPtrInput
 }
 
@@ -118,12 +107,9 @@ type zeroTrustRiskScoreIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active *bool `pulumi:"active"`
-	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-	// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 	IntegrationType string `pulumi:"integrationType"`
-	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-	// omitted, a random UUIDv4 is used.
-	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId *string `pulumi:"referenceId"`
 	// The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain.
 	TenantUrl string `pulumi:"tenantUrl"`
@@ -135,12 +121,9 @@ type ZeroTrustRiskScoreIntegrationArgs struct {
 	AccountId pulumi.StringInput
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
 	Active pulumi.BoolPtrInput
-	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-	// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+	// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 	IntegrationType pulumi.StringInput
-	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-	// omitted, a random UUIDv4 is used.
-	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringPtrInput
 	// The base url of the tenant, e.g. 'https://tenant.okta.com'. Must be your Okta Tenant URL and not your custom domain.
 	TenantUrl pulumi.StringInput
@@ -243,15 +226,12 @@ func (o ZeroTrustRiskScoreIntegrationOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoreIntegration) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here:
-// https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+// The type of integration, e.g. 'Okta'. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
 func (o ZeroTrustRiskScoreIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoreIntegration) pulumi.StringOutput { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-// omitted, a random UUIDv4 is used.
-// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 func (o ZeroTrustRiskScoreIntegrationOutput) ReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoreIntegration) pulumi.StringOutput { return v.ReferenceId }).(pulumi.StringOutput)
 }
@@ -261,8 +241,7 @@ func (o ZeroTrustRiskScoreIntegrationOutput) TenantUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoreIntegration) pulumi.StringOutput { return v.TenantUrl }).(pulumi.StringOutput)
 }
 
-// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration_uuid}/'.
-// https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+// The URL for the Shared Signals Framework configuration, e.g. '/.well-known/sse-configuration/{integration*uuid}/'. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
 func (o ZeroTrustRiskScoreIntegrationOutput) WellKnownUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoreIntegration) pulumi.StringOutput { return v.WellKnownUrl }).(pulumi.StringOutput)
 }
