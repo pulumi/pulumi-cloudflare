@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersAlgorithmArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersAutominifyArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheReserveArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;
@@ -152,6 +153,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyArgs>> cacheKey() {
         return Optional.ofNullable(this.cacheKey);
+    }
+
+    /**
+     * List of cache reserve parameters to apply to the request.
+     * 
+     */
+    @Import(name="cacheReserve")
+    private @Nullable Output<RulesetRuleActionParametersCacheReserveArgs> cacheReserve;
+
+    /**
+     * @return List of cache reserve parameters to apply to the request.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersCacheReserveArgs>> cacheReserve() {
+        return Optional.ofNullable(this.cacheReserve);
     }
 
     /**
@@ -832,6 +848,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.browserTtl = $.browserTtl;
         this.cache = $.cache;
         this.cacheKey = $.cacheKey;
+        this.cacheReserve = $.cacheReserve;
         this.content = $.content;
         this.contentType = $.contentType;
         this.cookieFields = $.cookieFields;
@@ -1093,6 +1110,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder cacheKey(RulesetRuleActionParametersCacheKeyArgs cacheKey) {
             return cacheKey(Output.of(cacheKey));
+        }
+
+        /**
+         * @param cacheReserve List of cache reserve parameters to apply to the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserve(@Nullable Output<RulesetRuleActionParametersCacheReserveArgs> cacheReserve) {
+            $.cacheReserve = cacheReserve;
+            return this;
+        }
+
+        /**
+         * @param cacheReserve List of cache reserve parameters to apply to the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheReserve(RulesetRuleActionParametersCacheReserveArgs cacheReserve) {
+            return cacheReserve(Output.of(cacheReserve));
         }
 
         /**

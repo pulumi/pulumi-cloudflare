@@ -17,6 +17,21 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     public static final BotManagementState Empty = new BotManagementState();
 
     /**
+     * Enable rule to block AI Scrapers and Crawlers.
+     * 
+     */
+    @Import(name="aiBotsProtection")
+    private @Nullable Output<String> aiBotsProtection;
+
+    /**
+     * @return Enable rule to block AI Scrapers and Crawlers.
+     * 
+     */
+    public Optional<Output<String>> aiBotsProtection() {
+        return Optional.ofNullable(this.aiBotsProtection);
+    }
+
+    /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      * 
      */
@@ -184,6 +199,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     private BotManagementState() {}
 
     private BotManagementState(BotManagementState $) {
+        this.aiBotsProtection = $.aiBotsProtection;
         this.autoUpdateModel = $.autoUpdateModel;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
@@ -213,6 +229,27 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(BotManagementState defaults) {
             $ = new BotManagementState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiBotsProtection(@Nullable Output<String> aiBotsProtection) {
+            $.aiBotsProtection = aiBotsProtection;
+            return this;
+        }
+
+        /**
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiBotsProtection(String aiBotsProtection) {
+            return aiBotsProtection(Output.of(aiBotsProtection));
         }
 
         /**

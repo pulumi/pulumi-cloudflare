@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessGroupIncludeAzure {
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     private @Nullable String identityProviderId;
@@ -25,7 +25,7 @@ public final class AccessGroupIncludeAzure {
 
     private AccessGroupIncludeAzure() {}
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public Optional<String> identityProviderId() {

@@ -48,16 +48,14 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
     }
 
     /**
-     * The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-     * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+     * The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-     * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+     * @return The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
      * 
      */
     public Output<String> integrationType() {
@@ -65,18 +63,14 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
     }
 
     /**
-     * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-     * omitted, a random UUIDv4 is used.
-     * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+     * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      * 
      */
     @Import(name="referenceId")
     private @Nullable Output<String> referenceId;
 
     /**
-     * @return A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-     * omitted, a random UUIDv4 is used.
-     * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+     * @return A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      * 
      */
     public Optional<Output<String>> referenceId() {
@@ -169,8 +163,7 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param integrationType The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-         * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+         * @param integrationType The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
          * 
          * @return builder
          * 
@@ -181,8 +174,7 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param integrationType The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-         * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+         * @param integrationType The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
          * 
          * @return builder
          * 
@@ -192,9 +184,7 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param referenceId A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-         * omitted, a random UUIDv4 is used.
-         * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+         * @param referenceId A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
          * 
          * @return builder
          * 
@@ -205,9 +195,7 @@ public final class ZeroTrustRiskScoreIntegrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param referenceId A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-         * omitted, a random UUIDv4 is used.
-         * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+         * @param referenceId A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
          * 
          * @return builder
          * 

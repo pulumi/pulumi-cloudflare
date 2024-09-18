@@ -125,8 +125,9 @@ type WorkersScript struct {
 	Content            pulumi.StringOutput                       `pulumi:"content"`
 	D1DatabaseBindings WorkersScriptD1DatabaseBindingArrayOutput `pulumi:"d1DatabaseBindings"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace   pulumi.StringPtrOutput                     `pulumi:"dispatchNamespace"`
-	KvNamespaceBindings WorkersScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
+	DispatchNamespace        pulumi.StringPtrOutput                          `pulumi:"dispatchNamespace"`
+	HyperdriveConfigBindings WorkersScriptHyperdriveConfigBindingArrayOutput `pulumi:"hyperdriveConfigBindings"`
+	KvNamespaceBindings      WorkersScriptKvNamespaceBindingArrayOutput      `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
@@ -193,8 +194,9 @@ type workersScriptState struct {
 	Content            *string                          `pulumi:"content"`
 	D1DatabaseBindings []WorkersScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace   *string                           `pulumi:"dispatchNamespace"`
-	KvNamespaceBindings []WorkersScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
+	DispatchNamespace        *string                                `pulumi:"dispatchNamespace"`
+	HyperdriveConfigBindings []WorkersScriptHyperdriveConfigBinding `pulumi:"hyperdriveConfigBindings"`
+	KvNamespaceBindings      []WorkersScriptKvNamespaceBinding      `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
@@ -223,8 +225,9 @@ type WorkersScriptState struct {
 	Content            pulumi.StringPtrInput
 	D1DatabaseBindings WorkersScriptD1DatabaseBindingArrayInput
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace   pulumi.StringPtrInput
-	KvNamespaceBindings WorkersScriptKvNamespaceBindingArrayInput
+	DispatchNamespace        pulumi.StringPtrInput
+	HyperdriveConfigBindings WorkersScriptHyperdriveConfigBindingArrayInput
+	KvNamespaceBindings      WorkersScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
 	// Whether to upload Worker as a module.
@@ -257,8 +260,9 @@ type workersScriptArgs struct {
 	Content            string                           `pulumi:"content"`
 	D1DatabaseBindings []WorkersScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace   *string                           `pulumi:"dispatchNamespace"`
-	KvNamespaceBindings []WorkersScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
+	DispatchNamespace        *string                                `pulumi:"dispatchNamespace"`
+	HyperdriveConfigBindings []WorkersScriptHyperdriveConfigBinding `pulumi:"hyperdriveConfigBindings"`
+	KvNamespaceBindings      []WorkersScriptKvNamespaceBinding      `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
@@ -288,8 +292,9 @@ type WorkersScriptArgs struct {
 	Content            pulumi.StringInput
 	D1DatabaseBindings WorkersScriptD1DatabaseBindingArrayInput
 	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace   pulumi.StringPtrInput
-	KvNamespaceBindings WorkersScriptKvNamespaceBindingArrayInput
+	DispatchNamespace        pulumi.StringPtrInput
+	HyperdriveConfigBindings WorkersScriptHyperdriveConfigBindingArrayInput
+	KvNamespaceBindings      WorkersScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
 	// Whether to upload Worker as a module.
@@ -426,6 +431,12 @@ func (o WorkersScriptOutput) D1DatabaseBindings() WorkersScriptD1DatabaseBinding
 // Name of the Workers for Platforms dispatch namespace.
 func (o WorkersScriptOutput) DispatchNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.DispatchNamespace }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkersScriptOutput) HyperdriveConfigBindings() WorkersScriptHyperdriveConfigBindingArrayOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptHyperdriveConfigBindingArrayOutput {
+		return v.HyperdriveConfigBindings
+	}).(WorkersScriptHyperdriveConfigBindingArrayOutput)
 }
 
 func (o WorkersScriptOutput) KvNamespaceBindings() WorkersScriptKvNamespaceBindingArrayOutput {

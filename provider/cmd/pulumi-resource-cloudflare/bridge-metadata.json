@@ -1933,6 +1933,9 @@
                                                     }
                                                 }
                                             },
+                                            "cache_reserve": {
+                                                "maxItemsOne": true
+                                            },
                                             "cookie_fields": {
                                                 "maxItemsOne": false
                                             },
@@ -2116,6 +2119,9 @@
                         "maxItemsOne": true
                     },
                     "body_scanning": {
+                        "maxItemsOne": true
+                    },
+                    "certificate": {
                         "maxItemsOne": true
                     },
                     "custom_certificate": {
@@ -2445,6 +2451,9 @@
                     "d1_database_binding": {
                         "maxItemsOne": false
                     },
+                    "hyperdrive_config_binding": {
+                        "maxItemsOne": false
+                    },
                     "kv_namespace_binding": {
                         "maxItemsOne": false
                     },
@@ -2522,6 +2531,9 @@
                         "maxItemsOne": false
                     },
                     "d1_database_binding": {
+                        "maxItemsOne": false
+                    },
+                    "hyperdrive_config_binding": {
                         "maxItemsOne": false
                     },
                     "kv_namespace_binding": {
@@ -3404,6 +3416,10 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_gateway_certificate": {
+                "current": "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate",
+                "majorVersion": 5
+            },
             "cloudflare_zero_trust_gateway_policy": {
                 "current": "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy",
                 "majorVersion": 5,
@@ -3487,6 +3503,9 @@
                         "maxItemsOne": true
                     },
                     "body_scanning": {
+                        "maxItemsOne": true
+                    },
+                    "certificate": {
                         "maxItemsOne": true
                     },
                     "custom_certificate": {
@@ -4073,6 +4092,9 @@
                                                                 }
                                                             }
                                                         },
+                                                        "cache_reserve": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "cookie_fields": {
                                                             "maxItemsOne": false
                                                         },
@@ -4422,6 +4444,7 @@
             "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest": 0,
             "cloudflare:index/zeroTrustDlpProfile:ZeroTrustDlpProfile": 0,
             "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation": 0,
+            "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate": 0,
             "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy": 0,
             "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint": 0,
             "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings": 0,

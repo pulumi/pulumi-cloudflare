@@ -65,6 +65,10 @@ export class BotManagement extends pulumi.CustomResource {
     }
 
     /**
+     * Enable rule to block AI Scrapers and Crawlers.
+     */
+    public readonly aiBotsProtection!: pulumi.Output<string>;
+    /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      */
     public readonly autoUpdateModel!: pulumi.Output<boolean | undefined>;
@@ -122,6 +126,7 @@ export class BotManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BotManagementState | undefined;
+            resourceInputs["aiBotsProtection"] = state ? state.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = state ? state.autoUpdateModel : undefined;
             resourceInputs["enableJs"] = state ? state.enableJs : undefined;
             resourceInputs["fightMode"] = state ? state.fightMode : undefined;
@@ -138,6 +143,7 @@ export class BotManagement extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["aiBotsProtection"] = args ? args.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = args ? args.autoUpdateModel : undefined;
             resourceInputs["enableJs"] = args ? args.enableJs : undefined;
             resourceInputs["fightMode"] = args ? args.fightMode : undefined;
@@ -159,6 +165,10 @@ export class BotManagement extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BotManagement resources.
  */
 export interface BotManagementState {
+    /**
+     * Enable rule to block AI Scrapers and Crawlers.
+     */
+    aiBotsProtection?: pulumi.Input<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      */
@@ -209,6 +219,10 @@ export interface BotManagementState {
  * The set of arguments for constructing a BotManagement resource.
  */
 export interface BotManagementArgs {
+    /**
+     * Enable rule to block AI Scrapers and Crawlers.
+     */
+    aiBotsProtection?: pulumi.Input<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      */

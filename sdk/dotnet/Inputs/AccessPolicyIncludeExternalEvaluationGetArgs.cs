@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyIncludeExternalEvaluationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The API endpoint containing your business logic.
+        /// </summary>
         [Input("evaluateUrl")]
         public Input<string>? EvaluateUrl { get; set; }
 
+        /// <summary>
+        /// The API endpoint containing the key that Access uses to verify that the response came from your API.
+        /// </summary>
         [Input("keysUrl")]
         public Input<string>? KeysUrl { get; set; }
 

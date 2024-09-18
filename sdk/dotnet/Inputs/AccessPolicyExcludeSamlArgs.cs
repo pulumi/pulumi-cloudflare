@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyExcludeSamlArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the SAML attribute.
+        /// </summary>
         [Input("attributeName")]
         public Input<string>? AttributeName { get; set; }
 
+        /// <summary>
+        /// The SAML attribute value to look for.
+        /// </summary>
         [Input("attributeValue")]
         public Input<string>? AttributeValue { get; set; }
 
+        /// <summary>
+        /// The ID of your SAML identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 

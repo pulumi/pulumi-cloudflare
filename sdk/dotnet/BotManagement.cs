@@ -52,6 +52,12 @@ namespace Pulumi.Cloudflare
     public partial class BotManagement : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Enable rule to block AI Scrapers and Crawlers.
+        /// </summary>
+        [Output("aiBotsProtection")]
+        public Output<string> AiBotsProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         /// </summary>
         [Output("autoUpdateModel")]
@@ -164,6 +170,12 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable rule to block AI Scrapers and Crawlers.
+        /// </summary>
+        [Input("aiBotsProtection")]
+        public Input<string>? AiBotsProtection { get; set; }
+
+        /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         /// </summary>
         [Input("autoUpdateModel")]
@@ -231,6 +243,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable rule to block AI Scrapers and Crawlers.
+        /// </summary>
+        [Input("aiBotsProtection")]
+        public Input<string>? AiBotsProtection { get; set; }
+
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
         /// </summary>

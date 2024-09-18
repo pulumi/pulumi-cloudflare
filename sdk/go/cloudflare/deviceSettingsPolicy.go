@@ -104,7 +104,7 @@ type DeviceSettingsPolicy struct {
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrOutput `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrOutput `pulumi:"tunnelProtocol"`
 }
 
@@ -183,7 +183,7 @@ type deviceSettingsPolicyState struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
@@ -224,7 +224,7 @@ type DeviceSettingsPolicyState struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrInput
 }
 
@@ -269,7 +269,7 @@ type deviceSettingsPolicyArgs struct {
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Enablement of the ZT client switch lock.
 	SwitchLocked *bool `pulumi:"switchLocked"`
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 }
 
@@ -311,7 +311,7 @@ type DeviceSettingsPolicyArgs struct {
 	SupportUrl pulumi.StringPtrInput
 	// Enablement of the ZT client switch lock.
 	SwitchLocked pulumi.BoolPtrInput
-	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+	// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 	TunnelProtocol pulumi.StringPtrInput
 }
 
@@ -492,7 +492,7 @@ func (o DeviceSettingsPolicyOutput) SwitchLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.SwitchLocked }).(pulumi.BoolPtrOutput)
 }
 
-// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+// Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
 func (o DeviceSettingsPolicyOutput) TunnelProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.StringPtrOutput { return v.TunnelProtocol }).(pulumi.StringPtrOutput)
 }

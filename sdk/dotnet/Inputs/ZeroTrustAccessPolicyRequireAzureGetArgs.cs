@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessPolicyRequireAzureGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Azure Identity provider.
+        /// The ID of the Azure identity provider.
         /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }

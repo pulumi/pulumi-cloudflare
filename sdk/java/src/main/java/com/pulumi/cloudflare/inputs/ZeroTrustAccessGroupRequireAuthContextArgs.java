@@ -45,14 +45,14 @@ public final class ZeroTrustAccessGroupRequireAuthContextArgs extends com.pulumi
     }
 
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      * 
      */
     @Import(name="identityProviderId", required=true)
     private Output<String> identityProviderId;
 
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public Output<String> identityProviderId() {
@@ -128,7 +128,7 @@ public final class ZeroTrustAccessGroupRequireAuthContextArgs extends com.pulumi
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ZeroTrustAccessGroupRequireAuthContextArgs extends com.pulumi
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 

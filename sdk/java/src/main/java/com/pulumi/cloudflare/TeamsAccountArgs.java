@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
@@ -103,16 +104,39 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for custom certificates / BYO-PKI.
+     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
      * 
      */
+    @Import(name="certificate")
+    private @Nullable Output<TeamsAccountCertificateArgs> certificate;
+
+    /**
+     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
+     * 
+     */
+    public Optional<Output<TeamsAccountCertificateArgs>> certificate() {
+        return Optional.ofNullable(this.certificate);
+    }
+
+    /**
+     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     * 
+     * @deprecated
+     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+     * 
+     */
+    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
     @Import(name="customCertificate")
     private @Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate;
 
     /**
-     * @return Configuration for custom certificates / BYO-PKI.
+     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+     * 
+     * @deprecated
+     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
      * 
      */
+    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
     public Optional<Output<TeamsAccountCustomCertificateArgs>> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }
@@ -267,6 +291,7 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
         this.antivirus = $.antivirus;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
+        this.certificate = $.certificate;
         this.customCertificate = $.customCertificate;
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
@@ -404,22 +429,51 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
          * 
          * @return builder
          * 
          */
+        public Builder certificate(@Nullable Output<TeamsAccountCertificateArgs> certificate) {
+            $.certificate = certificate;
+            return this;
+        }
+
+        /**
+         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(TeamsAccountCertificateArgs certificate) {
+            return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+         * 
+         */
+        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
         public Builder customCertificate(@Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate) {
             $.customCertificate = customCertificate;
             return this;
         }
 
         /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
+         * 
          */
+        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
         public Builder customCertificate(TeamsAccountCustomCertificateArgs customCertificate) {
             return customCertificate(Output.of(customCertificate));
         }

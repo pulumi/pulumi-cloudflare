@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accessPolicy:AccessPolicy")
 public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -224,14 +224,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionDuration);
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     public Output<Optional<String>> zoneId() {

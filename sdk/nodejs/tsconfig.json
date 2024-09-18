@@ -192,6 +192,7 @@
         "zeroTrustDexTest.ts",
         "zeroTrustDlpProfile.ts",
         "zeroTrustDnsLocation.ts",
+        "zeroTrustGatewayCertificate.ts",
         "zeroTrustGatewayPolicy.ts",
         "zeroTrustGatewayProxyEndpoint.ts",
         "zeroTrustGatewaySettings.ts",

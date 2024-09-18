@@ -303,6 +303,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDlpProfile{}
 	case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
 		r = &ZeroTrustDnsLocation{}
+	case "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate":
+		r = &ZeroTrustGatewayCertificate{}
 	case "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy":
 		r = &ZeroTrustGatewayPolicy{}
 	case "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint":
@@ -1077,6 +1079,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDnsLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustGatewayCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

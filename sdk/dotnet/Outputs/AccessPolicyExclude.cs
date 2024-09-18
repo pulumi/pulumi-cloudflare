@@ -13,37 +13,94 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessPolicyExclude
     {
+        /// <summary>
+        /// Matches any valid Access service token.
+        /// </summary>
         public readonly bool? AnyValidServiceToken;
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeAuthContext> AuthContexts;
+        /// <summary>
+        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        /// </summary>
         public readonly string? AuthMethod;
+        /// <summary>
+        /// Matches an Azure group. Requires an Azure identity provider.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeAzure> Azures;
+        /// <summary>
+        /// Matches any valid client certificate.
+        /// </summary>
         public readonly bool? Certificate;
+        /// <summary>
+        /// Matches a valid client certificate common name.
+        /// </summary>
         public readonly string? CommonName;
         /// <summary>
         /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         /// </summary>
         public readonly ImmutableArray<string> CommonNames;
+        /// <summary>
+        /// The ID of a device posture integration.
+        /// </summary>
         public readonly ImmutableArray<string> DevicePostures;
+        /// <summary>
+        /// The email domain to match.
+        /// </summary>
         public readonly ImmutableArray<string> EmailDomains;
+        /// <summary>
+        /// The ID of a previously created email list.
+        /// </summary>
         public readonly ImmutableArray<string> EmailLists;
+        /// <summary>
+        /// The email of the user.
+        /// </summary>
         public readonly ImmutableArray<string> Emails;
+        /// <summary>
+        /// Matches everyone.
+        /// </summary>
         public readonly bool? Everyone;
+        /// <summary>
+        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        /// </summary>
         public readonly Outputs.AccessPolicyExcludeExternalEvaluation? ExternalEvaluation;
+        /// <summary>
+        /// Matches a specific country.
+        /// </summary>
         public readonly ImmutableArray<string> Geos;
+        /// <summary>
+        /// Matches a Github organization. Requires a Github identity provider.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeGithub> Githubs;
+        /// <summary>
+        /// The ID of a previously created Access group.
+        /// </summary>
         public readonly ImmutableArray<string> Groups;
+        /// <summary>
+        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeGsuite> Gsuites;
         /// <summary>
-        /// The ID of an existing IP list to reference.
+        /// The ID of a previously created IP list.
         /// </summary>
         public readonly ImmutableArray<string> IpLists;
         /// <summary>
         /// An IPv4 or IPv6 CIDR block.
         /// </summary>
         public readonly ImmutableArray<string> Ips;
+        /// <summary>
+        /// The ID of a configured identity provider.
+        /// </summary>
         public readonly ImmutableArray<string> LoginMethods;
+        /// <summary>
+        /// Matches an Okta group. Requires an Okta identity provider.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeOkta> Oktas;
+        /// <summary>
+        /// Matches a SAML group. Requires a SAML identity provider.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeSaml> Samls;
+        /// <summary>
+        /// The ID of an Access service token.
+        /// </summary>
         public readonly ImmutableArray<string> ServiceTokens;
 
         [OutputConstructor]

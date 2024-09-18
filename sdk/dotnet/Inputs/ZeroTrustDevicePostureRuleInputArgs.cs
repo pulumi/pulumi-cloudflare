@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         /// </summary>
         [Input("eidLastSeen")]
         public Input<string>? EidLastSeen { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
         /// </summary>
         public InputList<string> ExtendedKeyUsages
         {
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.ZeroTrustDevicePostureRuleInputLocationArgs>? _locations;
 
         /// <summary>
-        /// List of locations to check for client certificate.
+        /// List of operating system locations to check for a client certificate..
         /// </summary>
         public InputList<Inputs.ZeroTrustDevicePostureRuleInputLocationArgs> Locations
         {
@@ -247,7 +247,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         [Input("versionOperator")]
         public Input<string>? VersionOperator { get; set; }

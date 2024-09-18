@@ -45,6 +45,10 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         QueueingStatusCode = 200,
+    ///         EnabledOriginCommands = new[]
+    ///         {
+    ///             "revoke",
+    ///         },
     ///     });
     /// 
     /// });
@@ -98,7 +102,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`.
         /// </summary>
         [Output("enabledOriginCommands")]
         public Output<ImmutableArray<string>> EnabledOriginCommands { get; private set; } = null!;
@@ -267,7 +271,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _enabledOriginCommands;
 
         /// <summary>
-        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`.
         /// </summary>
         public InputList<string> EnabledOriginCommands
         {
@@ -401,7 +405,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _enabledOriginCommands;
 
         /// <summary>
-        /// The list of enabled origin commands for the waiting room. Available values: `revoke`
+        /// The list of enabled origin commands for the waiting room. Available values: `revoke`.
         /// </summary>
         public InputList<string> EnabledOriginCommands
         {

@@ -61,6 +61,7 @@ namespace Pulumi.Cloudflare
     ///             Udp = true,
     ///             RootCa = true,
     ///             VirtualIp = false,
+    ///             DisableForTime = 3600,
     ///         },
     ///         UrlBrowserIsolationEnabled = true,
     ///         Logging = new Cloudflare.Inputs.ZeroTrustGatewaySettingsLoggingArgs
@@ -134,7 +135,13 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustGatewaySettingsBodyScanning?> BodyScanning { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Output("certificate")]
+        public Output<Outputs.ZeroTrustGatewaySettingsCertificate?> Certificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Output("customCertificate")]
         public Output<Outputs.ZeroTrustGatewaySettingsCustomCertificate?> CustomCertificate { get; private set; } = null!;
@@ -273,7 +280,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustGatewaySettingsBodyScanningArgs>? BodyScanning { get; set; }
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.ZeroTrustGatewaySettingsCertificateArgs>? Certificate { get; set; }
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.ZeroTrustGatewaySettingsCustomCertificateArgs>? CustomCertificate { get; set; }
@@ -374,7 +387,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustGatewaySettingsBodyScanningGetArgs>? BodyScanning { get; set; }
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.ZeroTrustGatewaySettingsCertificateGetArgs>? Certificate { get; set; }
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.ZeroTrustGatewaySettingsCustomCertificateGetArgs>? CustomCertificate { get; set; }

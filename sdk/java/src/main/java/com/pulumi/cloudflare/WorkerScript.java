@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.WorkerScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptState;
 import com.pulumi.cloudflare.outputs.WorkerScriptAnalyticsEngineBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptD1DatabaseBinding;
+import com.pulumi.cloudflare.outputs.WorkerScriptHyperdriveConfigBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptKvNamespaceBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlainTextBinding;
@@ -204,6 +205,12 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> dispatchNamespace() {
         return Codegen.optional(this.dispatchNamespace);
+    }
+    @Export(name="hyperdriveConfigBindings", refs={List.class,WorkerScriptHyperdriveConfigBinding.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkerScriptHyperdriveConfigBinding>> hyperdriveConfigBindings;
+
+    public Output<Optional<List<WorkerScriptHyperdriveConfigBinding>>> hyperdriveConfigBindings() {
+        return Codegen.optional(this.hyperdriveConfigBindings);
     }
     @Export(name="kvNamespaceBindings", refs={List.class,WorkerScriptKvNamespaceBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptKvNamespaceBinding>> kvNamespaceBindings;

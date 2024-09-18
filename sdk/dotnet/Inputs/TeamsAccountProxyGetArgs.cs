@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountProxyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the time limit in seconds that a user can use an override code to bypass WARP
+        /// Sets the time limit in seconds that a user can use an override code to bypass WARP.
         /// </summary>
         [Input("disableForTime", required: true)]
         public Input<int> DisableForTime { get; set; } = null!;

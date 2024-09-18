@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustAccessPolicyIncludeSaml
     {
+        /// <summary>
+        /// The name of the SAML attribute.
+        /// </summary>
         public readonly string? AttributeName;
+        /// <summary>
+        /// The SAML attribute value to look for.
+        /// </summary>
         public readonly string? AttributeValue;
+        /// <summary>
+        /// The ID of your SAML identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
 
         [OutputConstructor]

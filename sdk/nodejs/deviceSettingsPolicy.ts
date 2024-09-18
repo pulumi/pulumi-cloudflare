@@ -145,7 +145,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      */
     public readonly switchLocked!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
      */
     public readonly tunnelProtocol!: pulumi.Output<string | undefined>;
 
@@ -294,7 +294,7 @@ export interface DeviceSettingsPolicyState {
      */
     switchLocked?: pulumi.Input<boolean>;
     /**
-     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
      */
     tunnelProtocol?: pulumi.Input<string>;
 }
@@ -376,7 +376,7 @@ export interface DeviceSettingsPolicyArgs {
      */
     switchLocked?: pulumi.Input<boolean>;
     /**
-     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`
+     * Determines which tunnel protocol to use. Available values: `""`, `wireguard`, `masque`. Defaults to `wireguard`.
      */
     tunnelProtocol?: pulumi.Input<string>;
 }

@@ -61,6 +61,7 @@ namespace Pulumi.Cloudflare
     ///             Udp = true,
     ///             RootCa = true,
     ///             VirtualIp = false,
+    ///             DisableForTime = 3600,
     ///         },
     ///         UrlBrowserIsolationEnabled = true,
     ///         Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs
@@ -134,7 +135,13 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountBodyScanning?> BodyScanning { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Output("certificate")]
+        public Output<Outputs.TeamsAccountCertificate?> Certificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Output("customCertificate")]
         public Output<Outputs.TeamsAccountCustomCertificate?> CustomCertificate { get; private set; } = null!;
@@ -273,7 +280,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBodyScanningArgs>? BodyScanning { get; set; }
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.TeamsAccountCertificateArgs>? Certificate { get; set; }
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.TeamsAccountCustomCertificateArgs>? CustomCertificate { get; set; }
@@ -374,7 +387,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBodyScanningGetArgs>? BodyScanning { get; set; }
 
         /// <summary>
-        /// Configuration for custom certificates / BYO-PKI.
+        /// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.TeamsAccountCertificateGetArgs>? Certificate { get; set; }
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.TeamsAccountCustomCertificateGetArgs>? CustomCertificate { get; set; }

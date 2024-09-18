@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersAlgorithm;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersAutominify;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersBrowserTtl;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKey;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheReserve;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersEdgeTtl;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromList;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValue;
@@ -70,6 +71,11 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
+    /**
+     * @return List of cache reserve parameters to apply to the request.
+     * 
+     */
+    private @Nullable RulesetRuleActionParametersCacheReserve cacheReserve;
     /**
      * @return Content of the custom error response.
      * 
@@ -348,6 +354,13 @@ public final class RulesetRuleActionParameters {
      */
     public Optional<RulesetRuleActionParametersCacheKey> cacheKey() {
         return Optional.ofNullable(this.cacheKey);
+    }
+    /**
+     * @return List of cache reserve parameters to apply to the request.
+     * 
+     */
+    public Optional<RulesetRuleActionParametersCacheReserve> cacheReserve() {
+        return Optional.ofNullable(this.cacheReserve);
     }
     /**
      * @return Content of the custom error response.
@@ -678,6 +691,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
         private @Nullable Boolean cache;
         private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
+        private @Nullable RulesetRuleActionParametersCacheReserve cacheReserve;
         private @Nullable String content;
         private @Nullable String contentType;
         private @Nullable List<String> cookieFields;
@@ -734,6 +748,7 @@ public final class RulesetRuleActionParameters {
     	      this.browserTtl = defaults.browserTtl;
     	      this.cache = defaults.cache;
     	      this.cacheKey = defaults.cacheKey;
+    	      this.cacheReserve = defaults.cacheReserve;
     	      this.content = defaults.content;
     	      this.contentType = defaults.contentType;
     	      this.cookieFields = defaults.cookieFields;
@@ -836,6 +851,12 @@ public final class RulesetRuleActionParameters {
         public Builder cacheKey(@Nullable RulesetRuleActionParametersCacheKey cacheKey) {
 
             this.cacheKey = cacheKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cacheReserve(@Nullable RulesetRuleActionParametersCacheReserve cacheReserve) {
+
+            this.cacheReserve = cacheReserve;
             return this;
         }
         @CustomType.Setter
@@ -1142,6 +1163,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.browserTtl = browserTtl;
             _resultValue.cache = cache;
             _resultValue.cacheKey = cacheKey;
+            _resultValue.cacheReserve = cacheReserve;
             _resultValue.content = content;
             _resultValue.contentType = contentType;
             _resultValue.cookieFields = cookieFields;

@@ -110,14 +110,14 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`.
      * 
      */
     @Import(name="enabledOriginCommands")
     private @Nullable Output<List<String>> enabledOriginCommands;
 
     /**
-     * @return The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * @return The list of enabled origin commands for the waiting room. Available values: `revoke`.
      * 
      */
     public Optional<Output<List<String>>> enabledOriginCommands() {
@@ -483,7 +483,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`
+         * @param enabledOriginCommands The list of enabled origin commands for the waiting room. Available values: `revoke`.
          * 
          * @return builder
          * 

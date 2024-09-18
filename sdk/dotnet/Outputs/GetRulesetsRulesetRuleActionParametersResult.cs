@@ -42,6 +42,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyResult? CacheKey;
         /// <summary>
+        /// List of cache reserve parameters to apply to the request.
+        /// </summary>
+        public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheReserveResult? CacheReserve;
+        /// <summary>
         /// Content of the custom error response
         /// </summary>
         public readonly string? Content;
@@ -227,6 +231,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyResult? cacheKey,
 
+            Outputs.GetRulesetsRulesetRuleActionParametersCacheReserveResult? cacheReserve,
+
             string? content,
 
             string? contentType,
@@ -320,6 +326,7 @@ namespace Pulumi.Cloudflare.Outputs
             BrowserTtl = browserTtl;
             Cache = cache;
             CacheKey = cacheKey;
+            CacheReserve = cacheReserve;
             Content = content;
             ContentType = contentType;
             CookieFields = cookieFields;

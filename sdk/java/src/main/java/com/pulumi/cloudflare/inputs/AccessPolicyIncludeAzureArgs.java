@@ -17,14 +17,14 @@ public final class AccessPolicyIncludeAzureArgs extends com.pulumi.resources.Res
     public static final AccessPolicyIncludeAzureArgs Empty = new AccessPolicyIncludeAzureArgs();
 
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      * 
      */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public Optional<Output<String>> identityProviderId() {
@@ -72,7 +72,7 @@ public final class AccessPolicyIncludeAzureArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AccessPolicyIncludeAzureArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
     public static final AccessGroupExcludeAzureArgs Empty = new AccessGroupExcludeAzureArgs();
 
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      * 
      */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public Optional<Output<String>> identityProviderId() {
@@ -72,7 +72,7 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identityProviderId The ID of the Azure Identity provider.
+         * @param identityProviderId The ID of the Azure identity provider.
          * 
          * @return builder
          * 

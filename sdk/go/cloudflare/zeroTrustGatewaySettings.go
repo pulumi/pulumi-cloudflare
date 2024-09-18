@@ -56,10 +56,11 @@ import (
 //					Tls: pulumi.Bool(true),
 //				},
 //				Proxy: &cloudflare.ZeroTrustGatewaySettingsProxyArgs{
-//					Tcp:       pulumi.Bool(true),
-//					Udp:       pulumi.Bool(true),
-//					RootCa:    pulumi.Bool(true),
-//					VirtualIp: pulumi.Bool(false),
+//					Tcp:            pulumi.Bool(true),
+//					Udp:            pulumi.Bool(true),
+//					RootCa:         pulumi.Bool(true),
+//					VirtualIp:      pulumi.Bool(false),
+//					DisableForTime: pulumi.Int(3600),
 //				},
 //				UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //				Logging: &cloudflare.ZeroTrustGatewaySettingsLoggingArgs{
@@ -110,7 +111,11 @@ type ZeroTrustGatewaySettings struct {
 	BlockPage ZeroTrustGatewaySettingsBlockPagePtrOutput `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrOutput `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate ZeroTrustGatewaySettingsCertificatePtrOutput `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrOutput `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingOutput `pulumi:"extendedEmailMatching"`
@@ -176,7 +181,11 @@ type zeroTrustGatewaySettingsState struct {
 	BlockPage *ZeroTrustGatewaySettingsBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *ZeroTrustGatewaySettingsBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate *ZeroTrustGatewaySettingsCertificate `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate *ZeroTrustGatewaySettingsCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *ZeroTrustGatewaySettingsExtendedEmailMatching `pulumi:"extendedEmailMatching"`
@@ -210,7 +219,11 @@ type ZeroTrustGatewaySettingsState struct {
 	BlockPage ZeroTrustGatewaySettingsBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrInput
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate ZeroTrustGatewaySettingsCertificatePtrInput
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingPtrInput
@@ -248,7 +261,11 @@ type zeroTrustGatewaySettingsArgs struct {
 	BlockPage *ZeroTrustGatewaySettingsBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *ZeroTrustGatewaySettingsBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate *ZeroTrustGatewaySettingsCertificate `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate *ZeroTrustGatewaySettingsCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *ZeroTrustGatewaySettingsExtendedEmailMatching `pulumi:"extendedEmailMatching"`
@@ -283,7 +300,11 @@ type ZeroTrustGatewaySettingsArgs struct {
 	BlockPage ZeroTrustGatewaySettingsBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning ZeroTrustGatewaySettingsBodyScanningPtrInput
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate ZeroTrustGatewaySettingsCertificatePtrInput
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate ZeroTrustGatewaySettingsCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching ZeroTrustGatewaySettingsExtendedEmailMatchingPtrInput
@@ -418,7 +439,14 @@ func (o ZeroTrustGatewaySettingsOutput) BodyScanning() ZeroTrustGatewaySettingsB
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsBodyScanningPtrOutput { return v.BodyScanning }).(ZeroTrustGatewaySettingsBodyScanningPtrOutput)
 }
 
-// Configuration for custom certificates / BYO-PKI.
+// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+func (o ZeroTrustGatewaySettingsOutput) Certificate() ZeroTrustGatewaySettingsCertificatePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsCertificatePtrOutput { return v.Certificate }).(ZeroTrustGatewaySettingsCertificatePtrOutput)
+}
+
+// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+//
+// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 func (o ZeroTrustGatewaySettingsOutput) CustomCertificate() ZeroTrustGatewaySettingsCustomCertificatePtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsCustomCertificatePtrOutput {
 		return v.CustomCertificate

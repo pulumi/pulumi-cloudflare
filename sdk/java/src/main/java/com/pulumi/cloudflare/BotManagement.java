@@ -75,6 +75,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
+     * Enable rule to block AI Scrapers and Crawlers.
+     * 
+     */
+    @Export(name="aiBotsProtection", refs={String.class}, tree="[0]")
+    private Output<String> aiBotsProtection;
+
+    /**
+     * @return Enable rule to block AI Scrapers and Crawlers.
+     * 
+     */
+    public Output<String> aiBotsProtection() {
+        return this.aiBotsProtection;
+    }
+    /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      * 
      */

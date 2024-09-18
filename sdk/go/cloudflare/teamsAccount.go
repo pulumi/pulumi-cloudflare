@@ -56,10 +56,11 @@ import (
 //					Tls: pulumi.Bool(true),
 //				},
 //				Proxy: &cloudflare.TeamsAccountProxyArgs{
-//					Tcp:       pulumi.Bool(true),
-//					Udp:       pulumi.Bool(true),
-//					RootCa:    pulumi.Bool(true),
-//					VirtualIp: pulumi.Bool(false),
+//					Tcp:            pulumi.Bool(true),
+//					Udp:            pulumi.Bool(true),
+//					RootCa:         pulumi.Bool(true),
+//					VirtualIp:      pulumi.Bool(false),
+//					DisableForTime: pulumi.Int(3600),
 //				},
 //				UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //				Logging: &cloudflare.TeamsAccountLoggingArgs{
@@ -110,7 +111,11 @@ type TeamsAccount struct {
 	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrOutput `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate TeamsAccountCertificatePtrOutput `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate TeamsAccountCustomCertificatePtrOutput `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingOutput `pulumi:"extendedEmailMatching"`
@@ -176,7 +181,11 @@ type teamsAccountState struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate *TeamsAccountCertificate `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
@@ -210,7 +219,11 @@ type TeamsAccountState struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate TeamsAccountCertificatePtrInput
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate TeamsAccountCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
@@ -248,7 +261,11 @@ type teamsAccountArgs struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate *TeamsAccountCertificate `pulumi:"certificate"`
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
@@ -283,7 +300,11 @@ type TeamsAccountArgs struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
-	// Configuration for custom certificates / BYO-PKI.
+	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+	Certificate TeamsAccountCertificatePtrInput
+	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+	//
+	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 	CustomCertificate TeamsAccountCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
@@ -418,7 +439,14 @@ func (o TeamsAccountOutput) BodyScanning() TeamsAccountBodyScanningPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBodyScanningPtrOutput { return v.BodyScanning }).(TeamsAccountBodyScanningPtrOutput)
 }
 
-// Configuration for custom certificates / BYO-PKI.
+// Configuration for TLS interception certificate. This will be required starting Feb 2025.
+func (o TeamsAccountOutput) Certificate() TeamsAccountCertificatePtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountCertificatePtrOutput { return v.Certificate }).(TeamsAccountCertificatePtrOutput)
+}
+
+// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
+//
+// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
 func (o TeamsAccountOutput) CustomCertificate() TeamsAccountCustomCertificatePtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountCustomCertificatePtrOutput { return v.CustomCertificate }).(TeamsAccountCustomCertificatePtrOutput)
 }

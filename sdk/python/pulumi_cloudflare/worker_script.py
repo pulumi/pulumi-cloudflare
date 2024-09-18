@@ -24,6 +24,7 @@ class WorkerScriptArgs:
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
+                 hyperdrive_config_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -59,6 +60,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
         if dispatch_namespace is not None:
             pulumi.set(__self__, "dispatch_namespace", dispatch_namespace)
+        if hyperdrive_config_bindings is not None:
+            pulumi.set(__self__, "hyperdrive_config_bindings", hyperdrive_config_bindings)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -171,6 +174,15 @@ class WorkerScriptArgs:
     @dispatch_namespace.setter
     def dispatch_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dispatch_namespace", value)
+
+    @property
+    @pulumi.getter(name="hyperdriveConfigBindings")
+    def hyperdrive_config_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]]:
+        return pulumi.get(self, "hyperdrive_config_bindings")
+
+    @hyperdrive_config_bindings.setter
+    def hyperdrive_config_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]]):
+        pulumi.set(self, "hyperdrive_config_bindings", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -288,6 +300,7 @@ class _WorkerScriptState:
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
+                 hyperdrive_config_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -325,6 +338,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
         if dispatch_namespace is not None:
             pulumi.set(__self__, "dispatch_namespace", dispatch_namespace)
+        if hyperdrive_config_bindings is not None:
+            pulumi.set(__self__, "hyperdrive_config_bindings", hyperdrive_config_bindings)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -427,6 +442,15 @@ class _WorkerScriptState:
     @dispatch_namespace.setter
     def dispatch_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dispatch_namespace", value)
+
+    @property
+    @pulumi.getter(name="hyperdriveConfigBindings")
+    def hyperdrive_config_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]]:
+        return pulumi.get(self, "hyperdrive_config_bindings")
+
+    @hyperdrive_config_bindings.setter
+    def hyperdrive_config_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptHyperdriveConfigBindingArgs']]]]):
+        pulumi.set(self, "hyperdrive_config_bindings", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -558,6 +582,7 @@ class WorkerScript(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptD1DatabaseBindingArgs', 'WorkerScriptD1DatabaseBindingArgsDict']]]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
+                 hyperdrive_config_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptHyperdriveConfigBindingArgs', 'WorkerScriptHyperdriveConfigBindingArgsDict']]]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptKvNamespaceBindingArgs', 'WorkerScriptKvNamespaceBindingArgsDict']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -720,6 +745,7 @@ class WorkerScript(pulumi.CustomResource):
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptD1DatabaseBindingArgs', 'WorkerScriptD1DatabaseBindingArgsDict']]]]] = None,
                  dispatch_namespace: Optional[pulumi.Input[str]] = None,
+                 hyperdrive_config_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptHyperdriveConfigBindingArgs', 'WorkerScriptHyperdriveConfigBindingArgsDict']]]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptKvNamespaceBindingArgs', 'WorkerScriptKvNamespaceBindingArgsDict']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -752,6 +778,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["content"] = content
             __props__.__dict__["d1_database_bindings"] = d1_database_bindings
             __props__.__dict__["dispatch_namespace"] = dispatch_namespace
+            __props__.__dict__["hyperdrive_config_bindings"] = hyperdrive_config_bindings
             __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
             __props__.__dict__["logpush"] = logpush
             __props__.__dict__["module"] = module
@@ -783,6 +810,7 @@ class WorkerScript(pulumi.CustomResource):
             content: Optional[pulumi.Input[str]] = None,
             d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptD1DatabaseBindingArgs', 'WorkerScriptD1DatabaseBindingArgsDict']]]]] = None,
             dispatch_namespace: Optional[pulumi.Input[str]] = None,
+            hyperdrive_config_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptHyperdriveConfigBindingArgs', 'WorkerScriptHyperdriveConfigBindingArgsDict']]]]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptKvNamespaceBindingArgs', 'WorkerScriptKvNamespaceBindingArgsDict']]]]] = None,
             logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
@@ -822,6 +850,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["content"] = content
         __props__.__dict__["d1_database_bindings"] = d1_database_bindings
         __props__.__dict__["dispatch_namespace"] = dispatch_namespace
+        __props__.__dict__["hyperdrive_config_bindings"] = hyperdrive_config_bindings
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["module"] = module
@@ -885,6 +914,11 @@ class WorkerScript(pulumi.CustomResource):
         Name of the Workers for Platforms dispatch namespace.
         """
         return pulumi.get(self, "dispatch_namespace")
+
+    @property
+    @pulumi.getter(name="hyperdriveConfigBindings")
+    def hyperdrive_config_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptHyperdriveConfigBinding']]]:
+        return pulumi.get(self, "hyperdrive_config_bindings")
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")

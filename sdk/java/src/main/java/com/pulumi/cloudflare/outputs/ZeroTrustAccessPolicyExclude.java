@@ -20,29 +20,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessPolicyExclude {
+    /**
+     * @return Matches any valid Access service token.
+     * 
+     */
     private @Nullable Boolean anyValidServiceToken;
     private @Nullable List<ZeroTrustAccessPolicyExcludeAuthContext> authContexts;
+    /**
+     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     * 
+     */
     private @Nullable String authMethod;
+    /**
+     * @return Matches an Azure group. Requires an Azure identity provider.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeAzure> azures;
+    /**
+     * @return Matches any valid client certificate.
+     * 
+     */
     private @Nullable Boolean certificate;
+    /**
+     * @return Matches a valid client certificate common name.
+     * 
+     */
     private @Nullable String commonName;
     /**
      * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      * 
      */
     private @Nullable List<String> commonNames;
+    /**
+     * @return The ID of a device posture integration.
+     * 
+     */
     private @Nullable List<String> devicePostures;
+    /**
+     * @return The email domain to match.
+     * 
+     */
     private @Nullable List<String> emailDomains;
+    /**
+     * @return The ID of a previously created email list.
+     * 
+     */
     private @Nullable List<String> emailLists;
+    /**
+     * @return The email of the user.
+     * 
+     */
     private @Nullable List<String> emails;
+    /**
+     * @return Matches everyone.
+     * 
+     */
     private @Nullable Boolean everyone;
+    /**
+     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeExternalEvaluation> externalEvaluations;
+    /**
+     * @return Matches a specific country.
+     * 
+     */
     private @Nullable List<String> geos;
+    /**
+     * @return Matches a Github organization. Requires a Github identity provider.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeGithub> githubs;
+    /**
+     * @return The ID of a previously created Access group.
+     * 
+     */
     private @Nullable List<String> groups;
+    /**
+     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeGsuite> gsuites;
     /**
-     * @return The ID of an existing IP list to reference.
+     * @return The ID of a previously created IP list.
      * 
      */
     private @Nullable List<String> ipLists;
@@ -51,27 +111,63 @@ public final class ZeroTrustAccessPolicyExclude {
      * 
      */
     private @Nullable List<String> ips;
+    /**
+     * @return The ID of a configured identity provider.
+     * 
+     */
     private @Nullable List<String> loginMethods;
+    /**
+     * @return Matches an Okta group. Requires an Okta identity provider.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeOkta> oktas;
+    /**
+     * @return Matches a SAML group. Requires a SAML identity provider.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessPolicyExcludeSaml> samls;
+    /**
+     * @return The ID of an Access service token.
+     * 
+     */
     private @Nullable List<String> serviceTokens;
 
     private ZeroTrustAccessPolicyExclude() {}
+    /**
+     * @return Matches any valid Access service token.
+     * 
+     */
     public Optional<Boolean> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
     }
     public List<ZeroTrustAccessPolicyExcludeAuthContext> authContexts() {
         return this.authContexts == null ? List.of() : this.authContexts;
     }
+    /**
+     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     * 
+     */
     public Optional<String> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
+    /**
+     * @return Matches an Azure group. Requires an Azure identity provider.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeAzure> azures() {
         return this.azures == null ? List.of() : this.azures;
     }
+    /**
+     * @return Matches any valid client certificate.
+     * 
+     */
     public Optional<Boolean> certificate() {
         return Optional.ofNullable(this.certificate);
     }
+    /**
+     * @return Matches a valid client certificate common name.
+     * 
+     */
     public Optional<String> commonName() {
         return Optional.ofNullable(this.commonName);
     }
@@ -82,38 +178,78 @@ public final class ZeroTrustAccessPolicyExclude {
     public List<String> commonNames() {
         return this.commonNames == null ? List.of() : this.commonNames;
     }
+    /**
+     * @return The ID of a device posture integration.
+     * 
+     */
     public List<String> devicePostures() {
         return this.devicePostures == null ? List.of() : this.devicePostures;
     }
+    /**
+     * @return The email domain to match.
+     * 
+     */
     public List<String> emailDomains() {
         return this.emailDomains == null ? List.of() : this.emailDomains;
     }
+    /**
+     * @return The ID of a previously created email list.
+     * 
+     */
     public List<String> emailLists() {
         return this.emailLists == null ? List.of() : this.emailLists;
     }
+    /**
+     * @return The email of the user.
+     * 
+     */
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }
+    /**
+     * @return Matches everyone.
+     * 
+     */
     public Optional<Boolean> everyone() {
         return Optional.ofNullable(this.everyone);
     }
+    /**
+     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeExternalEvaluation> externalEvaluations() {
         return this.externalEvaluations == null ? List.of() : this.externalEvaluations;
     }
+    /**
+     * @return Matches a specific country.
+     * 
+     */
     public List<String> geos() {
         return this.geos == null ? List.of() : this.geos;
     }
+    /**
+     * @return Matches a Github organization. Requires a Github identity provider.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeGithub> githubs() {
         return this.githubs == null ? List.of() : this.githubs;
     }
+    /**
+     * @return The ID of a previously created Access group.
+     * 
+     */
     public List<String> groups() {
         return this.groups == null ? List.of() : this.groups;
     }
+    /**
+     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeGsuite> gsuites() {
         return this.gsuites == null ? List.of() : this.gsuites;
     }
     /**
-     * @return The ID of an existing IP list to reference.
+     * @return The ID of a previously created IP list.
      * 
      */
     public List<String> ipLists() {
@@ -126,15 +262,31 @@ public final class ZeroTrustAccessPolicyExclude {
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
+    /**
+     * @return The ID of a configured identity provider.
+     * 
+     */
     public List<String> loginMethods() {
         return this.loginMethods == null ? List.of() : this.loginMethods;
     }
+    /**
+     * @return Matches an Okta group. Requires an Okta identity provider.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeOkta> oktas() {
         return this.oktas == null ? List.of() : this.oktas;
     }
+    /**
+     * @return Matches a SAML group. Requires a SAML identity provider.
+     * 
+     */
     public List<ZeroTrustAccessPolicyExcludeSaml> samls() {
         return this.samls == null ? List.of() : this.samls;
     }
+    /**
+     * @return The ID of an Access service token.
+     * 
+     */
     public List<String> serviceTokens() {
         return this.serviceTokens == null ? List.of() : this.serviceTokens;
     }

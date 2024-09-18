@@ -21,7 +21,7 @@ public final class ZeroTrustAccessGroupRequireAuthContext {
      */
     private String id;
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     private String identityProviderId;
@@ -42,7 +42,7 @@ public final class ZeroTrustAccessGroupRequireAuthContext {
         return this.id;
     }
     /**
-     * @return The ID of the Azure Identity provider.
+     * @return The ID of the Azure identity provider.
      * 
      */
     public String identityProviderId() {

@@ -33,7 +33,7 @@ import (
 type ZeroTrustAccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrOutput                        `pulumi:"applicationId"`
@@ -59,7 +59,7 @@ type ZeroTrustAccessPolicy struct {
 	Requires ZeroTrustAccessPolicyRequireArrayOutput `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ func GetZeroTrustAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
 type zeroTrustAccessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    *string                              `pulumi:"applicationId"`
@@ -128,12 +128,12 @@ type zeroTrustAccessPolicyState struct {
 	Requires []ZeroTrustAccessPolicyRequire `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZeroTrustAccessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrInput
@@ -159,7 +159,7 @@ type ZeroTrustAccessPolicyState struct {
 	Requires ZeroTrustAccessPolicyRequireArrayInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -168,7 +168,7 @@ func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    *string                              `pulumi:"applicationId"`
@@ -194,13 +194,13 @@ type zeroTrustAccessPolicyArgs struct {
 	Requires []ZeroTrustAccessPolicyRequire `pulumi:"requires"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessPolicy resource.
 type ZeroTrustAccessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	ApplicationId    pulumi.StringPtrInput
@@ -226,7 +226,7 @@ type ZeroTrustAccessPolicyArgs struct {
 	Requires ZeroTrustAccessPolicyRequireArrayInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -317,7 +317,7 @@ func (o ZeroTrustAccessPolicyOutput) ToZeroTrustAccessPolicyOutputWithContext(ct
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+// The account identifier to target for the resource. Conflicts with `zoneId`.
 func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -385,7 +385,7 @@ func (o ZeroTrustAccessPolicyOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+// The zone identifier to target for the resource. Conflicts with `accountId`.
 func (o ZeroTrustAccessPolicyOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

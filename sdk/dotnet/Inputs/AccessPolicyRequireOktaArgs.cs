@@ -12,11 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyRequireOktaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of your Okta identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
         [Input("names")]
         private InputList<string>? _names;
+
+        /// <summary>
+        /// The name of the Okta Group.
+        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());

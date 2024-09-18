@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupIncludeOkta
     {
+        /// <summary>
+        /// The ID of your Okta identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
+        /// <summary>
+        /// The name of the Okta Group.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

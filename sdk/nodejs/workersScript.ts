@@ -117,6 +117,7 @@ export class WorkersScript extends pulumi.CustomResource {
      * Name of the Workers for Platforms dispatch namespace.
      */
     public readonly dispatchNamespace!: pulumi.Output<string | undefined>;
+    public readonly hyperdriveConfigBindings!: pulumi.Output<outputs.WorkersScriptHyperdriveConfigBinding[] | undefined>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkersScriptKvNamespaceBinding[] | undefined>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -159,6 +160,7 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["d1DatabaseBindings"] = state ? state.d1DatabaseBindings : undefined;
             resourceInputs["dispatchNamespace"] = state ? state.dispatchNamespace : undefined;
+            resourceInputs["hyperdriveConfigBindings"] = state ? state.hyperdriveConfigBindings : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["module"] = state ? state.module : undefined;
@@ -189,6 +191,7 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["d1DatabaseBindings"] = args ? args.d1DatabaseBindings : undefined;
             resourceInputs["dispatchNamespace"] = args ? args.dispatchNamespace : undefined;
+            resourceInputs["hyperdriveConfigBindings"] = args ? args.hyperdriveConfigBindings : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["module"] = args ? args.module : undefined;
@@ -233,6 +236,7 @@ export interface WorkersScriptState {
      * Name of the Workers for Platforms dispatch namespace.
      */
     dispatchNamespace?: pulumi.Input<string>;
+    hyperdriveConfigBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptHyperdriveConfigBinding>[]>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -282,6 +286,7 @@ export interface WorkersScriptArgs {
      * Name of the Workers for Platforms dispatch namespace.
      */
     dispatchNamespace?: pulumi.Input<string>;
+    hyperdriveConfigBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptHyperdriveConfigBinding>[]>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.

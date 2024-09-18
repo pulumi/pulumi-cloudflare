@@ -63,6 +63,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable String privacyPass;
     private @Nullable String proxyReadTimeout;
     private @Nullable String pseudoIpv4;
+    private @Nullable String replaceInsecureJs;
     private @Nullable String responseBuffering;
     private @Nullable String rocketLoader;
     private @Nullable ZoneSettingsOverrideInitialSettingSecurityHeader securityHeader;
@@ -214,6 +215,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     public Optional<String> pseudoIpv4() {
         return Optional.ofNullable(this.pseudoIpv4);
     }
+    public Optional<String> replaceInsecureJs() {
+        return Optional.ofNullable(this.replaceInsecureJs);
+    }
     public Optional<String> responseBuffering() {
         return Optional.ofNullable(this.responseBuffering);
     }
@@ -321,6 +325,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         private @Nullable String privacyPass;
         private @Nullable String proxyReadTimeout;
         private @Nullable String pseudoIpv4;
+        private @Nullable String replaceInsecureJs;
         private @Nullable String responseBuffering;
         private @Nullable String rocketLoader;
         private @Nullable ZoneSettingsOverrideInitialSettingSecurityHeader securityHeader;
@@ -381,6 +386,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.privacyPass = defaults.privacyPass;
     	      this.proxyReadTimeout = defaults.proxyReadTimeout;
     	      this.pseudoIpv4 = defaults.pseudoIpv4;
+    	      this.replaceInsecureJs = defaults.replaceInsecureJs;
     	      this.responseBuffering = defaults.responseBuffering;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.securityHeader = defaults.securityHeader;
@@ -644,6 +650,12 @@ public final class ZoneSettingsOverrideInitialSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder replaceInsecureJs(@Nullable String replaceInsecureJs) {
+
+            this.replaceInsecureJs = replaceInsecureJs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder responseBuffering(@Nullable String responseBuffering) {
 
             this.responseBuffering = responseBuffering;
@@ -787,6 +799,7 @@ public final class ZoneSettingsOverrideInitialSetting {
             _resultValue.privacyPass = privacyPass;
             _resultValue.proxyReadTimeout = proxyReadTimeout;
             _resultValue.pseudoIpv4 = pseudoIpv4;
+            _resultValue.replaceInsecureJs = replaceInsecureJs;
             _resultValue.responseBuffering = responseBuffering;
             _resultValue.rocketLoader = rocketLoader;
             _resultValue.securityHeader = securityHeader;

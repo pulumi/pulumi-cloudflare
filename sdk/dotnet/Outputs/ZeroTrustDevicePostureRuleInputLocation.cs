@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Paths;
         /// <summary>
-        /// List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        /// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         /// </summary>
         public readonly ImmutableArray<string> TrustStores;
 

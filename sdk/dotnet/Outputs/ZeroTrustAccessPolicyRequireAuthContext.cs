@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the Azure Identity provider.
+        /// The ID of the Azure identity provider.
         /// </summary>
         public readonly string IdentityProviderId;
 

@@ -350,37 +350,94 @@ export interface AccessApplicationScimConfigMappingOperations {
 }
 
 export interface AccessGroupExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessGroupExcludeExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -394,14 +451,14 @@ export interface AccessGroupExcludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -411,64 +468,157 @@ export interface AccessGroupExcludeAzure {
 }
 
 export interface AccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessGroupIncludeExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -482,14 +632,14 @@ export interface AccessGroupIncludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -499,64 +649,157 @@ export interface AccessGroupIncludeAzure {
 }
 
 export interface AccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessGroupRequireExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -570,14 +813,14 @@ export interface AccessGroupRequireAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -587,29 +830,65 @@ export interface AccessGroupRequireAzure {
 }
 
 export interface AccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -713,37 +992,94 @@ export interface AccessPolicyApprovalGroup {
 }
 
 export interface AccessPolicyExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyExcludeExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -757,14 +1093,14 @@ export interface AccessPolicyExcludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -774,64 +1110,157 @@ export interface AccessPolicyExcludeAzure {
 }
 
 export interface AccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyIncludeExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -845,14 +1274,14 @@ export interface AccessPolicyIncludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -862,64 +1291,157 @@ export interface AccessPolicyIncludeAzure {
 }
 
 export interface AccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyRequireExternalEvaluation>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -933,14 +1455,14 @@ export interface AccessPolicyRequireAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -950,29 +1472,65 @@ export interface AccessPolicyRequireAzure {
 }
 
 export interface AccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -1335,7 +1893,7 @@ export interface DevicePostureRuleInput {
      */
     lastSeen?: pulumi.Input<string>;
     /**
-     * List of locations to check for client certificate posture check.
+     * List of operating system locations to check for a client certificate..
      */
     locations?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInputLocation>[]>;
     /**
@@ -1407,18 +1965,18 @@ export interface DevicePostureRuleInput {
      */
     version?: pulumi.Input<string>;
     /**
-     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     versionOperator?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleInputLocation {
     /**
-     * List of paths to check for client certificate.
+     * List of paths to check for client certificate rule.
      */
     paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trust stores to check for client certificate. Available values: `system`, `user`.
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      */
     trustStores?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3393,6 +3951,10 @@ export interface RulesetRuleActionParameters {
      */
     cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     /**
+     * List of cache reserve parameters to apply to the request.
+     */
+    cacheReserve?: pulumi.Input<inputs.RulesetRuleActionParametersCacheReserve>;
+    /**
      * Content of the custom error response.
      */
     content?: pulumi.Input<string>;
@@ -3707,6 +4269,17 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
      * Add language data to the custom key.
      */
     lang?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersCacheReserve {
+    /**
+     * Determines whether Cloudflare will write the eligible resource to cache reserve.
+     */
+    eligible: pulumi.Input<boolean>;
+    /**
+     * The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+     */
+    minimumFileSize?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
@@ -4136,6 +4709,13 @@ export interface TeamsAccountBodyScanning {
     inspectionMode: pulumi.Input<string>;
 }
 
+export interface TeamsAccountCertificate {
+    /**
+     * ID of certificate for TLS interception.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface TeamsAccountCustomCertificate {
     /**
      * Whether TLS encryption should use a custom certificate.
@@ -4221,7 +4801,7 @@ export interface TeamsAccountPayloadLog {
 
 export interface TeamsAccountProxy {
     /**
-     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP.
      */
     disableForTime: pulumi.Input<number>;
     /**
@@ -4813,6 +5393,17 @@ export interface WorkerScriptD1DatabaseBinding {
     name: pulumi.Input<string>;
 }
 
+export interface WorkerScriptHyperdriveConfigBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    binding: pulumi.Input<string>;
+    /**
+     * The ID of the Hyperdrive config to use.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface WorkerScriptKvNamespaceBinding {
     /**
      * The global variable for the binding in your Worker code.
@@ -4921,6 +5512,17 @@ export interface WorkersScriptD1DatabaseBinding {
      * The global variable for the binding in your Worker code.
      */
     name: pulumi.Input<string>;
+}
+
+export interface WorkersScriptHyperdriveConfigBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    binding: pulumi.Input<string>;
+    /**
+     * The ID of the Hyperdrive config to use.
+     */
+    id: pulumi.Input<string>;
 }
 
 export interface WorkersScriptKvNamespaceBinding {
@@ -5356,37 +5958,94 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
 }
 
 export interface ZeroTrustAccessGroupExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExcludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5400,14 +6059,14 @@ export interface ZeroTrustAccessGroupExcludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5417,64 +6076,157 @@ export interface ZeroTrustAccessGroupExcludeAzure {
 }
 
 export interface ZeroTrustAccessGroupExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupIncludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5488,14 +6240,14 @@ export interface ZeroTrustAccessGroupIncludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5505,64 +6257,157 @@ export interface ZeroTrustAccessGroupIncludeAzure {
 }
 
 export interface ZeroTrustAccessGroupIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequireSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5576,14 +6421,14 @@ export interface ZeroTrustAccessGroupRequireAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5593,29 +6438,65 @@ export interface ZeroTrustAccessGroupRequireAzure {
 }
 
 export interface ZeroTrustAccessGroupRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessGroupRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -5719,37 +6600,94 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
 }
 
 export interface ZeroTrustAccessPolicyExclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyExcludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5763,14 +6701,14 @@ export interface ZeroTrustAccessPolicyExcludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5780,64 +6718,157 @@ export interface ZeroTrustAccessPolicyExcludeAzure {
 }
 
 export interface ZeroTrustAccessPolicyExcludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyInclude {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyIncludeSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5851,14 +6882,14 @@ export interface ZeroTrustAccessPolicyIncludeAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5868,64 +6899,157 @@ export interface ZeroTrustAccessPolicyIncludeAzure {
 }
 
 export interface ZeroTrustAccessPolicyIncludeExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequire {
+    /**
+     * Matches any valid Access service token.
+     */
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireAuthContext>[]>;
+    /**
+     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     */
     authMethod?: pulumi.Input<string>;
+    /**
+     * Matches an Azure group. Requires an Azure identity provider.
+     */
     azures?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireAzure>[]>;
+    /**
+     * Matches any valid client certificate.
+     */
     certificate?: pulumi.Input<boolean>;
+    /**
+     * Matches a valid client certificate common name.
+     */
     commonName?: pulumi.Input<string>;
     /**
      * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
      */
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a device posture integration.
+     */
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to match.
+     */
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a previously created email list.
+     */
     emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email of the user.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches everyone.
+     */
     everyone?: pulumi.Input<boolean>;
+    /**
+     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+     */
     externalEvaluations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireExternalEvaluation>[]>;
+    /**
+     * Matches a specific country.
+     */
     geos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a Github organization. Requires a Github identity provider.
+     */
     githubs?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireGithub>[]>;
+    /**
+     * The ID of a previously created Access group.
+     */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+     */
     gsuites?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireGsuite>[]>;
     /**
-     * The ID of an existing IP list to reference.
+     * The ID of a previously created IP list.
      */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An IPv4 or IPv6 CIDR block.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a configured identity provider.
+     */
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Matches an Okta group. Requires an Okta identity provider.
+     */
     oktas?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireOkta>[]>;
+    /**
+     * Matches a SAML group. Requires a SAML identity provider.
+     */
     samls?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequireSaml>[]>;
+    /**
+     * The ID of an Access service token.
+     */
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5939,14 +7063,14 @@ export interface ZeroTrustAccessPolicyRequireAuthContext {
      */
     id: pulumi.Input<string>;
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequireAzure {
     /**
-     * The ID of the Azure Identity provider.
+     * The ID of the Azure identity provider.
      */
     identityProviderId?: pulumi.Input<string>;
     /**
@@ -5956,29 +7080,65 @@ export interface ZeroTrustAccessPolicyRequireAzure {
 }
 
 export interface ZeroTrustAccessPolicyRequireExternalEvaluation {
+    /**
+     * The API endpoint containing your business logic.
+     */
     evaluateUrl?: pulumi.Input<string>;
+    /**
+     * The API endpoint containing the key that Access uses to verify that the response came from your API.
+     */
     keysUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequireGithub {
+    /**
+     * The ID of your Github identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the organization.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The teams that should be matched.
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyRequireGsuite {
+    /**
+     * The email of the Google Workspace group.
+     */
     emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of your Google Workspace identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequireOkta {
+    /**
+     * The ID of your Okta identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The name of the Okta Group.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyRequireSaml {
+    /**
+     * The name of the SAML attribute.
+     */
     attributeName?: pulumi.Input<string>;
+    /**
+     * The SAML attribute value to look for.
+     */
     attributeValue?: pulumi.Input<string>;
+    /**
+     * The ID of your SAML identity provider.
+     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -6066,7 +7226,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`
+     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
      */
     eidLastSeen?: pulumi.Input<string>;
     /**
@@ -6078,7 +7238,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     exists?: pulumi.Input<boolean>;
     /**
-     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`
+     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
      */
     extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6102,7 +7262,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     lastSeen?: pulumi.Input<string>;
     /**
-     * List of locations to check for client certificate.
+     * List of operating system locations to check for a client certificate..
      */
     locations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDevicePostureRuleInputLocation>[]>;
     /**
@@ -6174,7 +7334,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     version?: pulumi.Input<string>;
     /**
-     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     * The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     versionOperator?: pulumi.Input<string>;
 }
@@ -6185,7 +7345,7 @@ export interface ZeroTrustDevicePostureRuleInputLocation {
      */
     paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trust stores to check for client certificate rule. Available values: `system`, `user`
+     * List of trust stores to check for client certificate rule. Available values: `system`, `user`.
      */
     trustStores?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -6576,6 +7736,13 @@ export interface ZeroTrustGatewaySettingsBodyScanning {
     inspectionMode: pulumi.Input<string>;
 }
 
+export interface ZeroTrustGatewaySettingsCertificate {
+    /**
+     * ID of certificate for TLS interception.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface ZeroTrustGatewaySettingsCustomCertificate {
     /**
      * Whether TLS encryption should use a custom certificate.
@@ -6661,7 +7828,7 @@ export interface ZeroTrustGatewaySettingsPayloadLog {
 
 export interface ZeroTrustGatewaySettingsProxy {
     /**
-     * Sets the time limit in seconds that a user can use an override code to bypass WARP
+     * Sets the time limit in seconds that a user can use an override code to bypass WARP.
      */
     disableForTime: pulumi.Input<number>;
     /**
@@ -7039,6 +8206,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     privacyPass?: pulumi.Input<string>;
     proxyReadTimeout?: pulumi.Input<string>;
     pseudoIpv4?: pulumi.Input<string>;
+    replaceInsecureJs?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingSecurityHeader>;
@@ -7129,6 +8297,7 @@ export interface ZoneSettingsOverrideSettings {
     privacyPass?: pulumi.Input<string>;
     proxyReadTimeout?: pulumi.Input<string>;
     pseudoIpv4?: pulumi.Input<string>;
+    replaceInsecureJs?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsSecurityHeader>;

@@ -289,14 +289,14 @@ public final class ZeroTrustDeviceProfilesArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+     * Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     @Import(name="tunnelProtocol")
     private @Nullable Output<String> tunnelProtocol;
 
     /**
-     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+     * @return Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
      * 
      */
     public Optional<Output<String>> tunnelProtocol() {
@@ -724,7 +724,7 @@ public final class ZeroTrustDeviceProfilesArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
          * 
          * @return builder
          * 
@@ -735,7 +735,7 @@ public final class ZeroTrustDeviceProfilesArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`
+         * @param tunnelProtocol Determines which tunnel protocol to use. Available values: `&#34;&#34;`, `wireguard`, `masque`. Defaults to `wireguard`.
          * 
          * @return builder
          * 

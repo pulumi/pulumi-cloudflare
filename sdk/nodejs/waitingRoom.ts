@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     queueingStatusCode: 200,
+ *     enabledOriginCommands: ["revoke"],
  * });
  * ```
  *
@@ -98,7 +99,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
-     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`.
      */
     public readonly enabledOriginCommands!: pulumi.Output<string[] | undefined>;
     /**
@@ -253,7 +254,7 @@ export interface WaitingRoomState {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`.
      */
     enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -335,7 +336,7 @@ export interface WaitingRoomArgs {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * The list of enabled origin commands for the waiting room. Available values: `revoke`
+     * The list of enabled origin commands for the waiting room. Available values: `revoke`.
      */
     enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**

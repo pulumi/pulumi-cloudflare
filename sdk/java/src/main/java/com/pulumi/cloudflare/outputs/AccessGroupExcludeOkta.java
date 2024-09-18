@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessGroupExcludeOkta {
+    /**
+     * @return The ID of your Okta identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
+    /**
+     * @return The name of the Okta Group.
+     * 
+     */
     private @Nullable List<String> names;
 
     private AccessGroupExcludeOkta() {}
+    /**
+     * @return The ID of your Okta identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
+    /**
+     * @return The name of the Okta Group.
+     * 
+     */
     public List<String> names() {
         return this.names == null ? List.of() : this.names;
     }

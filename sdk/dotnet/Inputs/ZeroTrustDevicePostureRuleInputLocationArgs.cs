@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _trustStores;
 
         /// <summary>
-        /// List of trust stores to check for client certificate rule. Available values: `system`, `user`
+        /// List of trust stores to check for client certificate rule. Available values: `system`, `user`.
         /// </summary>
         public InputList<string> TrustStores
         {

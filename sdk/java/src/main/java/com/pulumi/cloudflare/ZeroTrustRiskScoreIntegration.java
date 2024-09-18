@@ -14,6 +14,10 @@ import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * The [Risk Score Integration](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#send-risk-score-to-okta) resource allows you to transmit changes in User Risk Score to a specified vendor such as Okta.
+ * 
+ */
 @ResourceType(type="cloudflare:index/zeroTrustRiskScoreIntegration:ZeroTrustRiskScoreIntegration")
 public class ZeroTrustRiskScoreIntegration extends com.pulumi.resources.CustomResource {
     /**
@@ -45,34 +49,28 @@ public class ZeroTrustRiskScoreIntegration extends com.pulumi.resources.CustomRe
         return this.active;
     }
     /**
-     * The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-     * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+     * The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
      * 
      */
     @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
-     * @return The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here:
-     * https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
+     * @return The type of integration, e.g. &#39;Okta&#39;. Full list of allowed values can be found here: https://developers.cloudflare.com/api/operations/dlp-zt-risk-score-integration-create#request-body
      * 
      */
     public Output<String> integrationType() {
         return this.integrationType;
     }
     /**
-     * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-     * omitted, a random UUIDv4 is used.
-     * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+     * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      * 
      */
     @Export(name="referenceId", refs={String.class}, tree="[0]")
     private Output<String> referenceId;
 
     /**
-     * @return A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If
-     * omitted, a random UUIDv4 is used.
-     * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
+     * @return A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). If omitted, a random UUIDv4 is used. https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      * 
      */
     public Output<String> referenceId() {
@@ -93,16 +91,14 @@ public class ZeroTrustRiskScoreIntegration extends com.pulumi.resources.CustomRe
         return this.tenantUrl;
     }
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. &#39;/.well-known/sse-configuration/{integration_uuid}/&#39;.
-     * https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. &#39;/.well-known/sse-configuration/{integration*uuid}/&#39;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
      * 
      */
     @Export(name="wellKnownUrl", refs={String.class}, tree="[0]")
     private Output<String> wellKnownUrl;
 
     /**
-     * @return The URL for the Shared Signals Framework configuration, e.g. &#39;/.well-known/sse-configuration/{integration_uuid}/&#39;.
-     * https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1
+     * @return The URL for the Shared Signals Framework configuration, e.g. &#39;/.well-known/sse-configuration/{integration*uuid}/&#39;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
      * 
      */
     public Output<String> wellKnownUrl() {
