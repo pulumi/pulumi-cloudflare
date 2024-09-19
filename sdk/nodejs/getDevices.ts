@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDevices:getDevices", {
         "accountId": args.accountId,
@@ -67,7 +66,10 @@ export interface GetDevicesResult {
  * ```
  */
 export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
-    return pulumi.output(args).apply((a: any) => getDevices(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getDevices:getDevices", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccounts:getAccounts", {
         "name": args.name,
@@ -68,7 +67,11 @@ export interface GetAccountsResult {
  * ```
  */
 export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getAccounts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getAccounts:getAccounts", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

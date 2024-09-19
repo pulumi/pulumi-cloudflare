@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Use this data source to look up Zone results for use in other resources.
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
         "filter": args.filter,
@@ -48,7 +47,10 @@ export interface GetZonesResult {
  * Use this data source to look up Zone results for use in other resources.
  */
 export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply((a: any) => getZones(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZones:getZones", {
+        "filter": args.filter,
+    }, opts);
 }
 
 /**

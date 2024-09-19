@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getZoneCacheReserve(args: GetZoneCacheReserveArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheReserveResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", {
         "zoneId": args.zoneId,
@@ -70,7 +69,10 @@ export interface GetZoneCacheReserveResult {
  * ```
  */
 export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneCacheReserveResult> {
-    return pulumi.output(args).apply((a: any) => getZoneCacheReserve(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", {
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

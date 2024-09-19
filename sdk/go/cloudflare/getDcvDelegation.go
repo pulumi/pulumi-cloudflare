@@ -40,14 +40,20 @@ type GetDcvDelegationResult struct {
 
 func GetDcvDelegationOutput(ctx *pulumi.Context, args GetDcvDelegationOutputArgs, opts ...pulumi.InvokeOption) GetDcvDelegationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDcvDelegationResult, error) {
+		ApplyT(func(v interface{}) (GetDcvDelegationResultOutput, error) {
 			args := v.(GetDcvDelegationArgs)
-			r, err := GetDcvDelegation(ctx, &args, opts...)
-			var s GetDcvDelegationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDcvDelegationResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getDcvDelegation:getDcvDelegation", args, &rv, "", opts...)
+			if err != nil {
+				return GetDcvDelegationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDcvDelegationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDcvDelegationResultOutput), nil
+			}
+			return output, nil
 		}).(GetDcvDelegationResultOutput)
 }
 

@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZone:getZone", {
         "accountId": args.accountId,
@@ -129,7 +128,13 @@ export interface GetZoneResult {
  * ```
  */
 export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
-    return pulumi.output(args).apply((a: any) => getZone(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZone:getZone", {
+        "accountId": args.accountId,
+        "name": args.name,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

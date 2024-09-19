@@ -75,14 +75,20 @@ type LookupListResult struct {
 
 func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pulumi.InvokeOption) LookupListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupListResult, error) {
+		ApplyT(func(v interface{}) (LookupListResultOutput, error) {
 			args := v.(LookupListArgs)
-			r, err := LookupList(ctx, &args, opts...)
-			var s LookupListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupListResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getList:getList", args, &rv, "", opts...)
+			if err != nil {
+				return LookupListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupListResultOutput), nil
+			}
+			return output, nil
 		}).(LookupListResultOutput)
 }
 
