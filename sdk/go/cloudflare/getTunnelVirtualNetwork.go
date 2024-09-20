@@ -73,14 +73,20 @@ type LookupTunnelVirtualNetworkResult struct {
 
 func LookupTunnelVirtualNetworkOutput(ctx *pulumi.Context, args LookupTunnelVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelVirtualNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTunnelVirtualNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupTunnelVirtualNetworkResultOutput, error) {
 			args := v.(LookupTunnelVirtualNetworkArgs)
-			r, err := LookupTunnelVirtualNetwork(ctx, &args, opts...)
-			var s LookupTunnelVirtualNetworkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTunnelVirtualNetworkResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTunnelVirtualNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTunnelVirtualNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTunnelVirtualNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTunnelVirtualNetworkResultOutput)
 }
 

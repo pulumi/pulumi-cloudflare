@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRecord:getRecord", {
         "content": args.content,
@@ -118,7 +117,14 @@ export interface GetRecordResult {
  * ```
  */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
-    return pulumi.output(args).apply((a: any) => getRecord(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getRecord:getRecord", {
+        "content": args.content,
+        "hostname": args.hostname,
+        "priority": args.priority,
+        "type": args.type,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

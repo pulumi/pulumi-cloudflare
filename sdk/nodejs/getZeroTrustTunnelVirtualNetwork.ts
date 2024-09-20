@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this datasource to lookup a tunnel virtual network in an account.
  */
 export function getZeroTrustTunnelVirtualNetwork(args: GetZeroTrustTunnelVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelVirtualNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", {
         "accountId": args.accountId,
@@ -59,7 +58,11 @@ export interface GetZeroTrustTunnelVirtualNetworkResult {
  * Use this datasource to lookup a tunnel virtual network in an account.
  */
 export function getZeroTrustTunnelVirtualNetworkOutput(args: GetZeroTrustTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustTunnelVirtualNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getZeroTrustTunnelVirtualNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", {
+        "accountId": args.accountId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

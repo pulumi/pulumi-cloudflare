@@ -40,14 +40,20 @@ type GetAccountRolesResult struct {
 
 func GetAccountRolesOutput(ctx *pulumi.Context, args GetAccountRolesOutputArgs, opts ...pulumi.InvokeOption) GetAccountRolesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccountRolesResult, error) {
+		ApplyT(func(v interface{}) (GetAccountRolesResultOutput, error) {
 			args := v.(GetAccountRolesArgs)
-			r, err := GetAccountRoles(ctx, &args, opts...)
-			var s GetAccountRolesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccountRolesResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getAccountRoles:getAccountRoles", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccountRolesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccountRolesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccountRolesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccountRolesResultOutput)
 }
 

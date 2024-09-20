@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,
@@ -90,7 +89,12 @@ export interface GetLoadBalancerPoolsResult {
  * ```
  */
 export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancerPools(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
+        "accountId": args.accountId,
+        "filter": args.filter,
+        "pools": args.pools,
+    }, opts);
 }
 
 /**

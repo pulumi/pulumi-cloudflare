@@ -52,14 +52,20 @@ type LookupZeroTrustAccessApplicationResult struct {
 
 func LookupZeroTrustAccessApplicationOutput(ctx *pulumi.Context, args LookupZeroTrustAccessApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessApplicationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessApplicationResult, error) {
+		ApplyT(func(v interface{}) (LookupZeroTrustAccessApplicationResultOutput, error) {
 			args := v.(LookupZeroTrustAccessApplicationArgs)
-			r, err := LookupZeroTrustAccessApplication(ctx, &args, opts...)
-			var s LookupZeroTrustAccessApplicationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupZeroTrustAccessApplicationResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupZeroTrustAccessApplicationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupZeroTrustAccessApplicationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupZeroTrustAccessApplicationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupZeroTrustAccessApplicationResultOutput)
 }
 

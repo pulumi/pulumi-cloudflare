@@ -67,13 +67,19 @@ type GetApiTokenPermissionGroupsResult struct {
 }
 
 func GetApiTokenPermissionGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetApiTokenPermissionGroupsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetApiTokenPermissionGroupsResult, error) {
-		r, err := GetApiTokenPermissionGroups(ctx, opts...)
-		var s GetApiTokenPermissionGroupsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetApiTokenPermissionGroupsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetApiTokenPermissionGroupsResult
+		secret, err := ctx.InvokePackageRaw("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", nil, &rv, "", opts...)
+		if err != nil {
+			return GetApiTokenPermissionGroupsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetApiTokenPermissionGroupsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetApiTokenPermissionGroupsResultOutput), nil
+		}
+		return output, nil
 	}).(GetApiTokenPermissionGroupsResultOutput)
 }
 

@@ -89,14 +89,20 @@ type LookupAccessIdentityProviderResult struct {
 
 func LookupAccessIdentityProviderOutput(ctx *pulumi.Context, args LookupAccessIdentityProviderOutputArgs, opts ...pulumi.InvokeOption) LookupAccessIdentityProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccessIdentityProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupAccessIdentityProviderResultOutput, error) {
 			args := v.(LookupAccessIdentityProviderArgs)
-			r, err := LookupAccessIdentityProvider(ctx, &args, opts...)
-			var s LookupAccessIdentityProviderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccessIdentityProviderResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccessIdentityProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccessIdentityProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccessIdentityProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccessIdentityProviderResultOutput)
 }
 

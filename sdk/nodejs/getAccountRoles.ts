@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
@@ -82,7 +81,10 @@ export interface GetAccountRolesResult {
  * ```
  */
 export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountRolesResult> {
-    return pulumi.output(args).apply((a: any) => getAccountRoles(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

@@ -52,14 +52,20 @@ type LookupAccessApplicationResult struct {
 
 func LookupAccessApplicationOutput(ctx *pulumi.Context, args LookupAccessApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupAccessApplicationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccessApplicationResult, error) {
+		ApplyT(func(v interface{}) (LookupAccessApplicationResultOutput, error) {
 			args := v.(LookupAccessApplicationArgs)
-			r, err := LookupAccessApplication(ctx, &args, opts...)
-			var s LookupAccessApplicationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccessApplicationResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getAccessApplication:getAccessApplication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccessApplicationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccessApplicationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccessApplicationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccessApplicationResultOutput)
 }
 

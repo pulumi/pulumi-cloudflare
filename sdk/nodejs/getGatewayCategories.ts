@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGatewayCategories(args: GetGatewayCategoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayCategoriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getGatewayCategories:getGatewayCategories", {
         "accountId": args.accountId,
@@ -70,7 +69,10 @@ export interface GetGatewayCategoriesResult {
  * ```
  */
 export function getGatewayCategoriesOutput(args: GetGatewayCategoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCategoriesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayCategories(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getGatewayCategories:getGatewayCategories", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

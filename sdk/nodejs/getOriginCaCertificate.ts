@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOriginCaCertificate(args: GetOriginCaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
         "id": args.id,
@@ -80,7 +79,10 @@ export interface GetOriginCaCertificateResult {
  * ```
  */
 export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaCertificateResult> {
-    return pulumi.output(args).apply((a: any) => getOriginCaCertificate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

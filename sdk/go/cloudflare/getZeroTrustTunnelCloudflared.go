@@ -52,14 +52,20 @@ type LookupZeroTrustTunnelCloudflaredResult struct {
 
 func LookupZeroTrustTunnelCloudflaredOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustTunnelCloudflaredResult, error) {
+		ApplyT(func(v interface{}) (LookupZeroTrustTunnelCloudflaredResultOutput, error) {
 			args := v.(LookupZeroTrustTunnelCloudflaredArgs)
-			r, err := LookupZeroTrustTunnelCloudflared(ctx, &args, opts...)
-			var s LookupZeroTrustTunnelCloudflaredResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupZeroTrustTunnelCloudflaredResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args, &rv, "", opts...)
+			if err != nil {
+				return LookupZeroTrustTunnelCloudflaredResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupZeroTrustTunnelCloudflaredResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupZeroTrustTunnelCloudflaredResultOutput), nil
+			}
+			return output, nil
 		}).(LookupZeroTrustTunnelCloudflaredResultOutput)
 }
 

@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGatewayAppTypes(args: GetGatewayAppTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayAppTypesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", {
         "accountId": args.accountId,
@@ -70,7 +69,10 @@ export interface GetGatewayAppTypesResult {
  * ```
  */
 export function getGatewayAppTypesOutput(args: GetGatewayAppTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayAppTypesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayAppTypes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  */
 export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRulesets:getRulesets", {
         "accountId": args.accountId,
@@ -95,7 +94,14 @@ export interface GetRulesetsResult {
  * ```
  */
 export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetsResult> {
-    return pulumi.output(args).apply((a: any) => getRulesets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getRulesets:getRulesets", {
+        "accountId": args.accountId,
+        "filter": args.filter,
+        "includeRules": args.includeRules,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**
