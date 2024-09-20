@@ -89,14 +89,20 @@ type LookupRecordResult struct {
 
 func LookupRecordOutput(ctx *pulumi.Context, args LookupRecordOutputArgs, opts ...pulumi.InvokeOption) LookupRecordResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRecordResult, error) {
+		ApplyT(func(v interface{}) (LookupRecordResultOutput, error) {
 			args := v.(LookupRecordArgs)
-			r, err := LookupRecord(ctx, &args, opts...)
-			var s LookupRecordResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRecordResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getRecord:getRecord", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRecordResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRecordResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRecordResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRecordResultOutput)
 }
 

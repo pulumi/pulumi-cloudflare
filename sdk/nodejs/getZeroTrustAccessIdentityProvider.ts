@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
  */
 export function getZeroTrustAccessIdentityProvider(args: GetZeroTrustAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessIdentityProviderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
         "accountId": args.accountId,
@@ -64,7 +63,12 @@ export interface GetZeroTrustAccessIdentityProviderResult {
  * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
  */
 export function getZeroTrustAccessIdentityProviderOutput(args: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
-    return pulumi.output(args).apply((a: any) => getZeroTrustAccessIdentityProvider(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
+        "accountId": args.accountId,
+        "name": args.name,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

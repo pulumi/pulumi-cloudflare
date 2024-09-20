@@ -78,13 +78,19 @@ type GetIpRangesResult struct {
 }
 
 func GetIpRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpRangesResult, error) {
-		r, err := GetIpRanges(ctx, opts...)
-		var s GetIpRangesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpRangesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetIpRangesResult
+		secret, err := ctx.InvokePackageRaw("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, "", opts...)
+		if err != nil {
+			return GetIpRangesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetIpRangesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetIpRangesResultOutput), nil
+		}
+		return output, nil
 	}).(GetIpRangesResultOutput)
 }
 

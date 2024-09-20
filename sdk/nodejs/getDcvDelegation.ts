@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
  */
 export function getDcvDelegation(args: GetDcvDelegationArgs, opts?: pulumi.InvokeOptions): Promise<GetDcvDelegationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDcvDelegation:getDcvDelegation", {
         "zoneId": args.zoneId,
@@ -46,7 +45,10 @@ export interface GetDcvDelegationResult {
  * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
  */
 export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDcvDelegationResult> {
-    return pulumi.output(args).apply((a: any) => getDcvDelegation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getDcvDelegation:getDcvDelegation", {
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

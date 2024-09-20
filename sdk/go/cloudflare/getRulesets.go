@@ -78,14 +78,20 @@ type GetRulesetsResult struct {
 
 func GetRulesetsOutput(ctx *pulumi.Context, args GetRulesetsOutputArgs, opts ...pulumi.InvokeOption) GetRulesetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRulesetsResult, error) {
+		ApplyT(func(v interface{}) (GetRulesetsResultOutput, error) {
 			args := v.(GetRulesetsArgs)
-			r, err := GetRulesets(ctx, &args, opts...)
-			var s GetRulesetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRulesetsResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getRulesets:getRulesets", args, &rv, "", opts...)
+			if err != nil {
+				return GetRulesetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRulesetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRulesetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetRulesetsResultOutput)
 }
 

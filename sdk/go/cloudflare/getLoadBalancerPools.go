@@ -75,14 +75,20 @@ type GetLoadBalancerPoolsResult struct {
 
 func GetLoadBalancerPoolsOutput(ctx *pulumi.Context, args GetLoadBalancerPoolsOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerPoolsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerPoolsResult, error) {
+		ApplyT(func(v interface{}) (GetLoadBalancerPoolsResultOutput, error) {
 			args := v.(GetLoadBalancerPoolsArgs)
-			r, err := GetLoadBalancerPools(ctx, &args, opts...)
-			var s GetLoadBalancerPoolsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLoadBalancerPoolsResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args, &rv, "", opts...)
+			if err != nil {
+				return GetLoadBalancerPoolsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLoadBalancerPoolsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLoadBalancerPoolsResultOutput), nil
+			}
+			return output, nil
 		}).(GetLoadBalancerPoolsResultOutput)
 }
 

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDevicePostureRules(args: GetDevicePostureRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicePostureRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDevicePostureRules:getDevicePostureRules", {
         "accountId": args.accountId,
@@ -92,7 +91,12 @@ export interface GetDevicePostureRulesResult {
  * ```
  */
 export function getDevicePostureRulesOutput(args: GetDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePostureRulesResult> {
-    return pulumi.output(args).apply((a: any) => getDevicePostureRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getDevicePostureRules:getDevicePostureRules", {
+        "accountId": args.accountId,
+        "name": args.name,
+        "type": args.type,
+    }, opts);
 }
 
 /**

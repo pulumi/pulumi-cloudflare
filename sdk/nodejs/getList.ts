@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise<GetListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
@@ -87,7 +86,11 @@ export interface GetListResult {
  * ```
  */
 export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListResult> {
-    return pulumi.output(args).apply((a: any) => getList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getList:getList", {
+        "accountId": args.accountId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

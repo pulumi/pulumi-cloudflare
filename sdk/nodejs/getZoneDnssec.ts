@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", {
         "zoneId": args.zoneId,
@@ -104,7 +103,10 @@ export interface GetZoneDnssecResult {
  * ```
  */
 export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDnssecResult> {
-    return pulumi.output(args).apply((a: any) => getZoneDnssec(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", {
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

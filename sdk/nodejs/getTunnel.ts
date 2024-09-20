@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTunnel(args: GetTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTunnel:getTunnel", {
         "accountId": args.accountId,
@@ -96,7 +95,12 @@ export interface GetTunnelResult {
  * ```
  */
 export function getTunnelOutput(args: GetTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelResult> {
-    return pulumi.output(args).apply((a: any) => getTunnel(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getTunnel:getTunnel", {
+        "accountId": args.accountId,
+        "isDeleted": args.isDeleted,
+        "name": args.name,
+    }, opts);
 }
 
 /**

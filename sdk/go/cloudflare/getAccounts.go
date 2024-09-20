@@ -65,14 +65,20 @@ type GetAccountsResult struct {
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccountsResult, error) {
+		ApplyT(func(v interface{}) (GetAccountsResultOutput, error) {
 			args := v.(GetAccountsArgs)
-			r, err := GetAccounts(ctx, &args, opts...)
-			var s GetAccountsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccountsResult
+			secret, err := ctx.InvokePackageRaw("cloudflare:index/getAccounts:getAccounts", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccountsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccountsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccountsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccountsResultOutput)
 }
 

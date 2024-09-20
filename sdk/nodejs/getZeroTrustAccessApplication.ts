@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function getZeroTrustAccessApplication(args?: GetZeroTrustAccessApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessApplicationResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", {
         "accountId": args.accountId,
@@ -74,7 +73,14 @@ export interface GetZeroTrustAccessApplicationResult {
  * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
  */
 export function getZeroTrustAccessApplicationOutput(args?: GetZeroTrustAccessApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustAccessApplicationResult> {
-    return pulumi.output(args).apply((a: any) => getZeroTrustAccessApplication(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", {
+        "accountId": args.accountId,
+        "domain": args.domain,
+        "name": args.name,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

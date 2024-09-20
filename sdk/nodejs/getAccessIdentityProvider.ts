@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessIdentityProviderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", {
         "accountId": args.accountId,
@@ -106,7 +105,12 @@ export interface GetAccessIdentityProviderResult {
  * ```
  */
 export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessIdentityProviderResult> {
-    return pulumi.output(args).apply((a: any) => getAccessIdentityProvider(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", {
+        "accountId": args.accountId,
+        "name": args.name,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this datasource to lookup a tunnel in an account.
  */
 export function getZeroTrustTunnelCloudflared(args: GetZeroTrustTunnelCloudflaredArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,
@@ -72,7 +71,12 @@ export interface GetZeroTrustTunnelCloudflaredResult {
  * Use this datasource to lookup a tunnel in an account.
  */
 export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
-    return pulumi.output(args).apply((a: any) => getZeroTrustTunnelCloudflared(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
+        "accountId": args.accountId,
+        "isDeleted": args.isDeleted,
+        "name": args.name,
+    }, opts);
 }
 
 /**

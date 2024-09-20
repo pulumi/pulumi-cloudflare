@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDlpDatasets(args: GetDlpDatasetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDlpDatasetsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDlpDatasets:getDlpDatasets", {
         "accountId": args.accountId,
@@ -70,7 +69,10 @@ export interface GetDlpDatasetsResult {
  * ```
  */
 export function getDlpDatasetsOutput(args: GetDlpDatasetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDlpDatasetsResult> {
-    return pulumi.output(args).apply((a: any) => getDlpDatasets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getDlpDatasets:getDlpDatasets", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTunnelVirtualNetwork(args: GetTunnelVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelVirtualNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", {
         "accountId": args.accountId,
@@ -83,7 +82,11 @@ export interface GetTunnelVirtualNetworkResult {
  * ```
  */
 export function getTunnelVirtualNetworkOutput(args: GetTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelVirtualNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getTunnelVirtualNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", {
+        "accountId": args.accountId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

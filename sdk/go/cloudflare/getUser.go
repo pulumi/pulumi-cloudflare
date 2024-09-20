@@ -77,13 +77,19 @@ type GetUserResult struct {
 }
 
 func GetUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetUserResult, error) {
-		r, err := GetUser(ctx, opts...)
-		var s GetUserResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUserResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetUserResult
+		secret, err := ctx.InvokePackageRaw("cloudflare:index/getUser:getUser", nil, &rv, "", opts...)
+		if err != nil {
+			return GetUserResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetUserResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetUserResultOutput), nil
+		}
+		return output, nil
 	}).(GetUserResultOutput)
 }
 

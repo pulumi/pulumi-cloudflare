@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", {
     }, opts);
@@ -75,5 +74,7 @@ export interface GetApiTokenPermissionGroupsResult {
  * ```
  */
 export function getApiTokenPermissionGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApiTokenPermissionGroupsResult> {
-    return pulumi.output(getApiTokenPermissionGroups(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", {
+    }, opts);
 }

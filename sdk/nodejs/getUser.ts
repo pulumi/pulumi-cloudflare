@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getUser(opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUser:getUser", {
     }, opts);
@@ -73,5 +72,7 @@ export interface GetUserResult {
  * ```
  */
 export function getUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(getUser(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cloudflare:index/getUser:getUser", {
+    }, opts);
 }
