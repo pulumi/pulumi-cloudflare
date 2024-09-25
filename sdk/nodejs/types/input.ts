@@ -3590,7 +3590,7 @@ export interface PagesProjectDeploymentConfigsPreviewPlacement {
     /**
      * Placement Mode for the Pages Function.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<"smart">;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
