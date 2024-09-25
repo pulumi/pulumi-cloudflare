@@ -3693,7 +3693,7 @@ export interface PagesProjectSource {
     /**
      * Project host type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<"github" | "gitlab">;
 }
 
 export interface PagesProjectSourceConfig {
