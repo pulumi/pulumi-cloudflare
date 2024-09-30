@@ -589,6 +589,51 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The communication protocol your application secures.\n"
+                },
+                "targetAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteriaTargetAttribute:AccessApplicationTargetCriteriaTargetAttribute"
+                    },
+                    "description": "Contains a map of target attribute keys to target attribute values.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "port",
+                "protocol",
+                "targetAttributes"
+            ]
+        },
+        "cloudflare:index/AccessApplicationTargetCriteriaTargetAttribute:AccessApplicationTargetCriteriaTargetAttribute": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The key of the attribute.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values of the attribute.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
         "cloudflare:index/AccessGroupExclude:AccessGroupExclude": {
             "properties": {
                 "anyValidServiceToken": {
@@ -1601,6 +1646,33 @@
             "type": "object",
             "required": [
                 "approvalsNeeded"
+            ]
+        },
+        "cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules": {
+            "properties": {
+                "ssh": {
+                    "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRulesSsh:AccessPolicyConnectionRulesSsh",
+                    "description": "The SSH-specific rules that define how users may connect to the targets secured by your application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ssh"
+            ]
+        },
+        "cloudflare:index/AccessPolicyConnectionRulesSsh:AccessPolicyConnectionRulesSsh": {
+            "properties": {
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Contains the Unix usernames that may be used when connecting over SSH.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "usernames"
             ]
         },
         "cloudflare:index/AccessPolicyExclude:AccessPolicyExclude": {
@@ -3029,6 +3101,10 @@
                     "type": "boolean",
                     "description": "Checks if the application should be running.\n"
                 },
+                "score": {
+                    "type": "integer",
+                    "description": "A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.\n"
+                },
                 "sensorConfig": {
                     "type": "string",
                     "description": "Sensor signal score from Crowdstrike. Value must be between 1 and 100.\n"
@@ -3354,6 +3430,53 @@
                 "password",
                 "scheme",
                 "user"
+            ]
+        },
+        "cloudflare:index/InfrastructureAccessTargetIp:InfrastructureAccessTargetIp": {
+            "properties": {
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/InfrastructureAccessTargetIpIpv4:InfrastructureAccessTargetIpIpv4",
+                    "description": "The target's IPv4 address.\n"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/InfrastructureAccessTargetIpIpv6:InfrastructureAccessTargetIpIpv6",
+                    "description": "The target's IPv6 address.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/InfrastructureAccessTargetIpIpv4:InfrastructureAccessTargetIpIpv4": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ]
+        },
+        "cloudflare:index/InfrastructureAccessTargetIpIpv6:InfrastructureAccessTargetIpIpv6": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
             ]
         },
         "cloudflare:index/ListItem:ListItem": {
@@ -8234,6 +8357,51 @@
             },
             "type": "object"
         },
+        "cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria": {
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "description": "The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The communication protocol your application secures.\n"
+                },
+                "targetAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteriaTargetAttribute:ZeroTrustAccessApplicationTargetCriteriaTargetAttribute"
+                    },
+                    "description": "Contains a map of target attribute keys to target attribute values.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "port",
+                "protocol",
+                "targetAttributes"
+            ]
+        },
+        "cloudflare:index/ZeroTrustAccessApplicationTargetCriteriaTargetAttribute:ZeroTrustAccessApplicationTargetCriteriaTargetAttribute": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The key of the attribute.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values of the attribute.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
         "cloudflare:index/ZeroTrustAccessGroupExclude:ZeroTrustAccessGroupExclude": {
             "properties": {
                 "anyValidServiceToken": {
@@ -9257,6 +9425,33 @@
                 "approvalsNeeded"
             ]
         },
+        "cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules": {
+            "properties": {
+                "ssh": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRulesSsh:ZeroTrustAccessPolicyConnectionRulesSsh",
+                    "description": "The SSH-specific rules that define how users may connect to the targets secured by your application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ssh"
+            ]
+        },
+        "cloudflare:index/ZeroTrustAccessPolicyConnectionRulesSsh:ZeroTrustAccessPolicyConnectionRulesSsh": {
+            "properties": {
+                "usernames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Contains the Unix usernames that may be used when connecting over SSH.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "usernames"
+            ]
+        },
         "cloudflare:index/ZeroTrustAccessPolicyExclude:ZeroTrustAccessPolicyExclude": {
             "properties": {
                 "anyValidServiceToken": {
@@ -10255,6 +10450,10 @@
                 "running": {
                     "type": "boolean",
                     "description": "Checks if the application should be running.\n"
+                },
+                "score": {
+                    "type": "integer",
+                    "description": "A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.\n"
                 },
                 "sensorConfig": {
                     "type": "string",
@@ -11568,6 +11767,9 @@
                 "sortQueryStringForCache": {
                     "type": "string"
                 },
+                "speedBrain": {
+                    "type": "string"
+                },
                 "ssl": {
                     "type": "string"
                 },
@@ -11654,6 +11856,7 @@
                         "securityLevel",
                         "serverSideExclude",
                         "sortQueryStringForCache",
+                        "speedBrain",
                         "ssl",
                         "tls12Only",
                         "tls13",
@@ -11896,6 +12099,9 @@
                 "sortQueryStringForCache": {
                     "type": "string"
                 },
+                "speedBrain": {
+                    "type": "string"
+                },
                 "ssl": {
                     "type": "string"
                 },
@@ -11982,6 +12188,7 @@
                         "securityLevel",
                         "serverSideExclude",
                         "sortQueryStringForCache",
+                        "speedBrain",
                         "ssl",
                         "tls12Only",
                         "tls13",
@@ -12138,7 +12345,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`\n"
                 }
             },
             "type": "object",
@@ -12384,6 +12591,105 @@
                 "description",
                 "id",
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getInfrastructureAccessTargetsTarget:getInfrastructureAccessTargetsTarget": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was created.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The identifier of this resource. This is target's unique identifier.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/getInfrastructureAccessTargetsTargetIp:getInfrastructureAccessTargetsTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was last modified.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "createdAt",
+                "hostname",
+                "id",
+                "ip",
+                "modifiedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getInfrastructureAccessTargetsTargetIp:getInfrastructureAccessTargetsTargetIp": {
+            "properties": {
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/getInfrastructureAccessTargetsTargetIpIpv4:getInfrastructureAccessTargetsTargetIpIpv4",
+                    "description": "The target's IPv4 address.\n"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/getInfrastructureAccessTargetsTargetIpIpv6:getInfrastructureAccessTargetsTargetIpIpv6",
+                    "description": "The target's IPv6 address.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getInfrastructureAccessTargetsTargetIpIpv4:getInfrastructureAccessTargetsTargetIpIpv4": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getInfrastructureAccessTargetsTargetIpIpv6:getInfrastructureAccessTargetsTargetIpIpv6": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
             ],
             "language": {
                 "nodejs": {
@@ -13904,9 +14210,16 @@
                     },
                     "description": "The itags associated with the application.\n"
                 },
+                "targetCriterias": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
+                    },
+                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -14066,9 +14379,16 @@
                     },
                     "description": "The itags associated with the application.\n"
                 },
+                "targetCriterias": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
+                    },
+                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -14227,9 +14547,16 @@
                         },
                         "description": "The itags associated with the application.\n"
                     },
+                    "targetCriterias": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
+                        },
+                        "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    },
                     "type": {
                         "type": "string",
-                        "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                        "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -15049,6 +15376,10 @@
                 "approvalRequired": {
                     "type": "boolean"
                 },
+                "connectionRules": {
+                    "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
+                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.\n"
@@ -15126,6 +15457,10 @@
                 },
                 "approvalRequired": {
                     "type": "boolean"
+                },
+                "connectionRules": {
+                    "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
+                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -15206,6 +15541,10 @@
                     },
                     "approvalRequired": {
                         "type": "boolean"
+                    },
+                    "connectionRules": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
+                        "description": "The rules that define how users may connect to the targets secured by your application.\n"
                     },
                     "decision": {
                         "type": "string",
@@ -17765,7 +18104,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                 }
             },
             "required": [
@@ -17798,7 +18137,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -17833,7 +18172,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -17877,7 +18216,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                 }
             },
             "required": [
@@ -17921,7 +18260,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -17966,7 +18305,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -19792,6 +20131,83 @@
                     "origin": {
                         "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
                         "description": "The origin details for the Hyperdrive configuration.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": {
+            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.InfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"210.26.29.230\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"210.26.29.230\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.InfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"210.26.29.230\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"210.26.29.230\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.InfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"210.26.29.230\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"210.26.29.230\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"210.26.29.230\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.InfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"210.26.29.230\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.InfrastructureAccessTarget;\nimport com.pulumi.cloudflare.InfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfrastructureAccessTarget(\"example\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"210.26.29.230\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new InfrastructureAccessTarget(\"ipv4OnlyExample\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"210.26.29.230\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:InfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 210.26.29.230\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: 24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:InfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 210.26.29.230\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was created.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/InfrastructureAccessTargetIp:InfrastructureAccessTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was last modified.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "createdAt",
+                "hostname",
+                "ip",
+                "modifiedAt"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/InfrastructureAccessTargetIp:InfrastructureAccessTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "hostname",
+                "ip"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InfrastructureAccessTarget resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time at which the target was created.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "A non-unique field that refers to a target.\n"
+                    },
+                    "ip": {
+                        "$ref": "#/types/cloudflare:index/InfrastructureAccessTargetIp:InfrastructureAccessTargetIp",
+                        "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                    },
+                    "modifiedAt": {
+                        "type": "string",
+                        "description": "The date and time at which the target was last modified.\n"
                     }
                 },
                 "type": "object"
@@ -28398,9 +28814,16 @@
                     },
                     "description": "The itags associated with the application.\n"
                 },
+                "targetCriterias": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
+                    },
+                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -28560,9 +28983,16 @@
                     },
                     "description": "The itags associated with the application.\n"
                 },
+                "targetCriterias": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
+                    },
+                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -28721,9 +29151,16 @@
                         },
                         "description": "The itags associated with the application.\n"
                     },
+                    "targetCriterias": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
+                        },
+                        "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    },
                     "type": {
                         "type": "string",
-                        "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.\n"
+                        "description": "The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -29424,6 +29861,10 @@
                 "approvalRequired": {
                     "type": "boolean"
                 },
+                "connectionRules": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
+                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.\n"
@@ -29501,6 +29942,10 @@
                 },
                 "approvalRequired": {
                     "type": "boolean"
+                },
+                "connectionRules": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
+                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -29581,6 +30026,10 @@
                     },
                     "approvalRequired": {
                         "type": "boolean"
+                    },
+                    "connectionRules": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
+                        "description": "The rules that define how users may connect to the targets secured by your application.\n"
                     },
                     "decision": {
                         "type": "string",
@@ -30039,7 +30488,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                 }
             },
             "required": [
@@ -30072,7 +30521,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -30107,7 +30556,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
+                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -30151,7 +30600,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                 }
             },
             "required": [
@@ -30195,7 +30644,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -30240,7 +30689,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -33470,7 +33919,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n"
                     }
                 },
                 "type": "object",
@@ -33501,7 +33950,7 @@
                         "type": "array"
                     },
                     "type": {
-                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n",
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.\n",
                         "type": "string"
                     }
                 },
@@ -33675,6 +34124,103 @@
                 "required": [
                     "accountId",
                     "categories",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets": {
+            "description": "Use this data source to retrieve all Infrastructure Access Targets.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInfrastructureAccessTargets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "createdAfter": {
+                        "type": "string",
+                        "description": "A date and time after a target was created to filter on.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "The name of the app type.\n"
+                    },
+                    "hostnameContains": {
+                        "type": "string",
+                        "description": "The name of the app type.\n"
+                    },
+                    "ipv4": {
+                        "type": "string",
+                        "description": "The name of the app type.\n"
+                    },
+                    "ipv6": {
+                        "type": "string",
+                        "description": "The name of the app type.\n"
+                    },
+                    "modifiedAfter": {
+                        "type": "string",
+                        "description": "A date and time after a target was modified to filter on.\n"
+                    },
+                    "virtualNetworkId": {
+                        "type": "string",
+                        "description": "The name of the app type.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInfrastructureAccessTargets.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The account identifier to target for the resource.\n",
+                        "type": "string"
+                    },
+                    "createdAfter": {
+                        "description": "A date and time after a target was created to filter on.\n",
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "description": "The name of the app type.\n",
+                        "type": "string"
+                    },
+                    "hostnameContains": {
+                        "description": "The name of the app type.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "ipv4": {
+                        "description": "The name of the app type.\n",
+                        "type": "string"
+                    },
+                    "ipv6": {
+                        "description": "The name of the app type.\n",
+                        "type": "string"
+                    },
+                    "modifiedAfter": {
+                        "description": "A date and time after a target was modified to filter on.\n",
+                        "type": "string"
+                    },
+                    "targets": {
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getInfrastructureAccessTargetsTarget:getInfrastructureAccessTargetsTarget"
+                        },
+                        "type": "array"
+                    },
+                    "virtualNetworkId": {
+                        "description": "The name of the app type.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "targets",
                     "id"
                 ],
                 "type": "object"
