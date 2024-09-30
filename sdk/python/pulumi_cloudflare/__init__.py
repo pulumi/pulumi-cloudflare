@@ -64,6 +64,7 @@ from .get_devices import *
 from .get_dlp_datasets import *
 from .get_gateway_app_types import *
 from .get_gateway_categories import *
+from .get_infrastructure_access_targets import *
 from .get_ip_ranges import *
 from .get_list import *
 from .get_lists import *
@@ -88,6 +89,7 @@ from .healthcheck import *
 from .hostname_tls_setting import *
 from .hostname_tls_setting_ciphers import *
 from .hyperdrive_config import *
+from .infrastructure_access_target import *
 from .ipsec_tunnel import *
 from .keyless_certificate import *
 from .list import *
@@ -633,6 +635,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/hyperdriveConfig:HyperdriveConfig": "HyperdriveConfig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/infrastructureAccessTarget",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": "InfrastructureAccessTarget"
   }
  },
  {

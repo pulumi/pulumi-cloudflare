@@ -50,6 +50,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         /// <summary>
+        /// The rules that define how users may connect to the targets secured by your application.
+        /// </summary>
+        [Output("connectionRules")]
+        public Output<Outputs.ZeroTrustAccessPolicyConnectionRules?> ConnectionRules { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         /// </summary>
         [Output("decision")]
@@ -185,6 +191,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
+        /// The rules that define how users may connect to the targets secured by your application.
+        /// </summary>
+        [Input("connectionRules")]
+        public Input<Inputs.ZeroTrustAccessPolicyConnectionRulesArgs>? ConnectionRules { get; set; }
+
+        /// <summary>
         /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         /// </summary>
         [Input("decision", required: true)]
@@ -298,6 +310,12 @@ namespace Pulumi.Cloudflare
 
         [Input("approvalRequired")]
         public Input<bool>? ApprovalRequired { get; set; }
+
+        /// <summary>
+        /// The rules that define how users may connect to the targets secured by your application.
+        /// </summary>
+        [Input("connectionRules")]
+        public Input<Inputs.ZeroTrustAccessPolicyConnectionRulesGetArgs>? ConnectionRules { get; set; }
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.

@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.AccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.AccessApplicationLandingPageDesign;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasApp;
 import com.pulumi.cloudflare.outputs.AccessApplicationScimConfig;
+import com.pulumi.cloudflare.outputs.AccessApplicationTargetCriteria;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -490,14 +491,28 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    @Export(name="targetCriterias", refs={List.class,AccessApplicationTargetCriteria.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccessApplicationTargetCriteria>> targetCriterias;
+
+    /**
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    public Output<Optional<List<AccessApplicationTargetCriteria>>> targetCriterias() {
+        return Codegen.optional(this.targetCriterias);
+    }
+    /**
+     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     public Output<Optional<String>> type() {

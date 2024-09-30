@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
@@ -65,6 +66,21 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
+    }
+
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    @Import(name="connectionRules")
+    private @Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessPolicyConnectionRulesArgs>> connectionRules() {
+        return Optional.ofNullable(this.connectionRules);
     }
 
     /**
@@ -239,6 +255,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         this.applicationId = $.applicationId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
+        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
@@ -332,6 +349,27 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
 
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(@Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules) {
+            $.connectionRules = connectionRules;
+            return this;
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs connectionRules) {
+            return connectionRules(Output.of(connectionRules));
         }
 
         /**

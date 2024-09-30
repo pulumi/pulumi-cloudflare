@@ -70,6 +70,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable String securityLevel;
     private @Nullable String serverSideExclude;
     private @Nullable String sortQueryStringForCache;
+    private @Nullable String speedBrain;
     private @Nullable String ssl;
     /**
      * @deprecated
@@ -236,6 +237,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     public Optional<String> sortQueryStringForCache() {
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
+    public Optional<String> speedBrain() {
+        return Optional.ofNullable(this.speedBrain);
+    }
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
@@ -332,6 +336,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         private @Nullable String securityLevel;
         private @Nullable String serverSideExclude;
         private @Nullable String sortQueryStringForCache;
+        private @Nullable String speedBrain;
         private @Nullable String ssl;
         private @Nullable String tls12Only;
         private @Nullable String tls13;
@@ -393,6 +398,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.securityLevel = defaults.securityLevel;
     	      this.serverSideExclude = defaults.serverSideExclude;
     	      this.sortQueryStringForCache = defaults.sortQueryStringForCache;
+    	      this.speedBrain = defaults.speedBrain;
     	      this.ssl = defaults.ssl;
     	      this.tls12Only = defaults.tls12Only;
     	      this.tls13 = defaults.tls13;
@@ -692,6 +698,12 @@ public final class ZoneSettingsOverrideInitialSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder speedBrain(@Nullable String speedBrain) {
+
+            this.speedBrain = speedBrain;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ssl(@Nullable String ssl) {
 
             this.ssl = ssl;
@@ -806,6 +818,7 @@ public final class ZoneSettingsOverrideInitialSetting {
             _resultValue.securityLevel = securityLevel;
             _resultValue.serverSideExclude = serverSideExclude;
             _resultValue.sortQueryStringForCache = sortQueryStringForCache;
+            _resultValue.speedBrain = speedBrain;
             _resultValue.ssl = ssl;
             _resultValue.tls12Only = tls12Only;
             _resultValue.tls13 = tls13;

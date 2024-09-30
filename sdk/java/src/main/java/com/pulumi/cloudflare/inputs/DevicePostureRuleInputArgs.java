@@ -470,6 +470,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * 
+     */
+    @Import(name="score")
+    private @Nullable Output<Integer> score;
+
+    /**
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * 
+     */
+    public Optional<Output<Integer>> score() {
+        return Optional.ofNullable(this.score);
+    }
+
+    /**
      * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -607,6 +622,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.requireAll = $.requireAll;
         this.riskLevel = $.riskLevel;
         this.running = $.running;
+        this.score = $.score;
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.state = $.state;
@@ -1292,6 +1308,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder running(Boolean running) {
             return running(Output.of(running));
+        }
+
+        /**
+         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder score(@Nullable Output<Integer> score) {
+            $.score = score;
+            return this;
+        }
+
+        /**
+         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder score(Integer score) {
+            return score(Output.of(score));
         }
 
         /**

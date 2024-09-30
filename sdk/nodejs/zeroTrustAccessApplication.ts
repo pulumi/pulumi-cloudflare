@@ -180,7 +180,11 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
+    /**
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -233,6 +237,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["skipAppLauncherLoginPage"] = state ? state.skipAppLauncherLoginPage : undefined;
             resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetCriterias"] = state ? state.targetCriterias : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -268,6 +273,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["skipAppLauncherLoginPage"] = args ? args.skipAppLauncherLoginPage : undefined;
             resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetCriterias"] = args ? args.targetCriterias : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["aud"] = undefined /*out*/;
@@ -410,7 +416,11 @@ export interface ZeroTrustAccessApplicationState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
+    /**
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -548,7 +558,11 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     */
+    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
+    /**
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**

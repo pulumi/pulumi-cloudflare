@@ -349,6 +349,32 @@ export interface AccessApplicationScimConfigMappingOperations {
     update?: pulumi.Input<boolean>;
 }
 
+export interface AccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The communication protocol your application secures.
+     */
+    protocol: pulumi.Input<string>;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteriaTargetAttribute>[]>;
+}
+
+export interface AccessApplicationTargetCriteriaTargetAttribute {
+    /**
+     * The key of the attribute.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The values of the attribute.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface AccessGroupExclude {
     /**
      * Matches any valid Access service token.
@@ -989,6 +1015,20 @@ export interface AccessPolicyApprovalGroup {
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     emailListUuid?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh: pulumi.Input<inputs.AccessPolicyConnectionRulesSsh>;
+}
+
+export interface AccessPolicyConnectionRulesSsh {
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExclude {
@@ -1941,6 +1981,10 @@ export interface DevicePostureRuleInput {
      */
     running?: pulumi.Input<boolean>;
     /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     */
+    score?: pulumi.Input<number>;
+    /**
      * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      */
     sensorConfig?: pulumi.Input<string>;
@@ -2497,6 +2541,39 @@ export interface HyperdriveConfigOrigin {
      * The user of your origin database.
      */
     user: pulumi.Input<string>;
+}
+
+export interface InfrastructureAccessTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: pulumi.Input<inputs.InfrastructureAccessTargetIpIpv4>;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: pulumi.Input<inputs.InfrastructureAccessTargetIpIpv6>;
+}
+
+export interface InfrastructureAccessTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: pulumi.Input<string>;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: pulumi.Input<string>;
+}
+
+export interface InfrastructureAccessTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: pulumi.Input<string>;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: pulumi.Input<string>;
 }
 
 export interface ListItem {
@@ -5957,6 +6034,32 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
     update?: pulumi.Input<boolean>;
 }
 
+export interface ZeroTrustAccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The communication protocol your application secures.
+     */
+    protocol: pulumi.Input<string>;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute>[]>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaTargetAttribute {
+    /**
+     * The key of the attribute.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The values of the attribute.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ZeroTrustAccessGroupExclude {
     /**
      * Matches any valid Access service token.
@@ -6597,6 +6700,20 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     emailListUuid?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh: pulumi.Input<inputs.ZeroTrustAccessPolicyConnectionRulesSsh>;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRulesSsh {
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessPolicyExclude {
@@ -7309,6 +7426,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * Checks if the application should be running.
      */
     running?: pulumi.Input<boolean>;
+    /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     */
+    score?: pulumi.Input<number>;
     /**
      * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      */
@@ -8213,6 +8334,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
+    speedBrain?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
@@ -8304,6 +8426,7 @@ export interface ZoneSettingsOverrideSettings {
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
+    speedBrain?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.

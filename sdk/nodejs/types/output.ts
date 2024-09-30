@@ -349,6 +349,32 @@ export interface AccessApplicationScimConfigMappingOperations {
     update?: boolean;
 }
 
+export interface AccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: number;
+    /**
+     * The communication protocol your application secures.
+     */
+    protocol: string;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: outputs.AccessApplicationTargetCriteriaTargetAttribute[];
+}
+
+export interface AccessApplicationTargetCriteriaTargetAttribute {
+    /**
+     * The key of the attribute.
+     */
+    name: string;
+    /**
+     * The values of the attribute.
+     */
+    values: string[];
+}
+
 export interface AccessGroupExclude {
     /**
      * Matches any valid Access service token.
@@ -989,6 +1015,20 @@ export interface AccessPolicyApprovalGroup {
      */
     emailAddresses?: string[];
     emailListUuid?: string;
+}
+
+export interface AccessPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh: outputs.AccessPolicyConnectionRulesSsh;
+}
+
+export interface AccessPolicyConnectionRulesSsh {
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: string[];
 }
 
 export interface AccessPolicyExclude {
@@ -1941,6 +1981,10 @@ export interface DevicePostureRuleInput {
      */
     running: boolean;
     /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     */
+    score?: number;
+    /**
      * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      */
     sensorConfig?: string;
@@ -2145,7 +2189,7 @@ export interface GetDevicePostureRulesRule {
      */
     schedule?: string;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`
      */
     type: string;
 }
@@ -2316,6 +2360,66 @@ export interface GetGatewayCategoriesCategorySubcategory {
      * The name of the subcategory.
      */
     name: string;
+}
+
+export interface GetInfrastructureAccessTargetsTarget {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId: string;
+    /**
+     * The date and time at which the target was created.
+     */
+    createdAt: string;
+    /**
+     * A non-unique field that refers to a target.
+     */
+    hostname: string;
+    /**
+     * The identifier of this resource. This is target's unique identifier.
+     */
+    id: string;
+    /**
+     * The IPv4/IPv6 address that identifies where to reach a target.
+     */
+    ip: outputs.GetInfrastructureAccessTargetsTargetIp;
+    /**
+     * The date and time at which the target was last modified.
+     */
+    modifiedAt: string;
+}
+
+export interface GetInfrastructureAccessTargetsTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: outputs.GetInfrastructureAccessTargetsTargetIpIpv4;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: outputs.GetInfrastructureAccessTargetsTargetIpIpv6;
+}
+
+export interface GetInfrastructureAccessTargetsTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
+}
+
+export interface GetInfrastructureAccessTargetsTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
 }
 
 export interface GetListsList {
@@ -3328,6 +3432,39 @@ export interface HyperdriveConfigOrigin {
      * The user of your origin database.
      */
     user: string;
+}
+
+export interface InfrastructureAccessTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: outputs.InfrastructureAccessTargetIpIpv4;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: outputs.InfrastructureAccessTargetIpIpv6;
+}
+
+export interface InfrastructureAccessTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
+}
+
+export interface InfrastructureAccessTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
 }
 
 export interface ListItem {
@@ -6788,6 +6925,32 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
     update?: boolean;
 }
 
+export interface ZeroTrustAccessApplicationTargetCriteria {
+    /**
+     * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+     */
+    port: number;
+    /**
+     * The communication protocol your application secures.
+     */
+    protocol: string;
+    /**
+     * Contains a map of target attribute keys to target attribute values.
+     */
+    targetAttributes: outputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute[];
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaTargetAttribute {
+    /**
+     * The key of the attribute.
+     */
+    name: string;
+    /**
+     * The values of the attribute.
+     */
+    values: string[];
+}
+
 export interface ZeroTrustAccessGroupExclude {
     /**
      * Matches any valid Access service token.
@@ -7428,6 +7591,20 @@ export interface ZeroTrustAccessPolicyApprovalGroup {
      */
     emailAddresses?: string[];
     emailListUuid?: string;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRules {
+    /**
+     * The SSH-specific rules that define how users may connect to the targets secured by your application.
+     */
+    ssh: outputs.ZeroTrustAccessPolicyConnectionRulesSsh;
+}
+
+export interface ZeroTrustAccessPolicyConnectionRulesSsh {
+    /**
+     * Contains the Unix usernames that may be used when connecting over SSH.
+     */
+    usernames: string[];
 }
 
 export interface ZeroTrustAccessPolicyExclude {
@@ -8140,6 +8317,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * Checks if the application should be running.
      */
     running: boolean;
+    /**
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     */
+    score?: number;
     /**
      * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      */
@@ -9044,6 +9225,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
+    speedBrain: string;
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
@@ -9135,6 +9317,7 @@ export interface ZoneSettingsOverrideSettings {
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
+    speedBrain: string;
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.

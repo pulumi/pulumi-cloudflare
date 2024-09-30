@@ -222,7 +222,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// </summary>
+        [Output("targetCriterias")]
+        public Output<ImmutableArray<Outputs.ZeroTrustAccessApplicationTargetCriteria>> TargetCriterias { get; private set; } = null!;
+
+        /// <summary>
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -507,8 +513,20 @@ namespace Pulumi.Cloudflare
             set => _tags = value;
         }
 
+        [Input("targetCriterias")]
+        private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs>? _targetCriterias;
+
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs> TargetCriterias
+        {
+            get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs>());
+            set => _targetCriterias = value;
+        }
+
+        /// <summary>
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -761,8 +779,20 @@ namespace Pulumi.Cloudflare
             set => _tags = value;
         }
 
+        [Input("targetCriterias")]
+        private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs>? _targetCriterias;
+
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs> TargetCriterias
+        {
+            get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs>());
+            set => _targetCriterias = value;
+        }
+
+        /// <summary>
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

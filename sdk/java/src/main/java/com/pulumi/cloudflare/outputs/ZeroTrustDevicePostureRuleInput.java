@@ -166,6 +166,11 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable Boolean running;
     /**
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * 
+     */
+    private @Nullable Integer score;
+    /**
      * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -413,6 +418,13 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.running);
     }
     /**
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * 
+     */
+    public Optional<Integer> score() {
+        return Optional.ofNullable(this.score);
+    }
+    /**
      * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -501,6 +513,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         private @Nullable Boolean requireAll;
         private @Nullable String riskLevel;
         private @Nullable Boolean running;
+        private @Nullable Integer score;
         private @Nullable String sensorConfig;
         private @Nullable String sha256;
         private @Nullable String state;
@@ -541,6 +554,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     	      this.requireAll = defaults.requireAll;
     	      this.riskLevel = defaults.riskLevel;
     	      this.running = defaults.running;
+    	      this.score = defaults.score;
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.state = defaults.state;
@@ -740,6 +754,12 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder score(@Nullable Integer score) {
+
+            this.score = score;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sensorConfig(@Nullable String sensorConfig) {
 
             this.sensorConfig = sensorConfig;
@@ -813,6 +833,7 @@ public final class ZeroTrustDevicePostureRuleInput {
             _resultValue.requireAll = requireAll;
             _resultValue.riskLevel = riskLevel;
             _resultValue.running = running;
+            _resultValue.score = score;
             _resultValue.sensorConfig = sensorConfig;
             _resultValue.sha256 = sha256;
             _resultValue.state = state;

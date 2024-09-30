@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyApprovalGroup;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequire;
@@ -82,6 +83,20 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> approvalRequired() {
         return Codegen.optional(this.approvalRequired);
+    }
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    @Export(name="connectionRules", refs={ZeroTrustAccessPolicyConnectionRules.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustAccessPolicyConnectionRules> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    public Output<Optional<ZeroTrustAccessPolicyConnectionRules>> connectionRules() {
+        return Codegen.optional(this.connectionRules);
     }
     /**
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.

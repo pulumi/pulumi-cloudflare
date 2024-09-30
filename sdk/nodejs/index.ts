@@ -300,6 +300,11 @@ export const getGatewayCategories: typeof import("./getGatewayCategories").getGa
 export const getGatewayCategoriesOutput: typeof import("./getGatewayCategories").getGatewayCategoriesOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewayCategories","getGatewayCategoriesOutput"], () => require("./getGatewayCategories"));
 
+export { GetInfrastructureAccessTargetsArgs, GetInfrastructureAccessTargetsResult, GetInfrastructureAccessTargetsOutputArgs } from "./getInfrastructureAccessTargets";
+export const getInfrastructureAccessTargets: typeof import("./getInfrastructureAccessTargets").getInfrastructureAccessTargets = null as any;
+export const getInfrastructureAccessTargetsOutput: typeof import("./getInfrastructureAccessTargets").getInfrastructureAccessTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getInfrastructureAccessTargets","getInfrastructureAccessTargetsOutput"], () => require("./getInfrastructureAccessTargets"));
+
 export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
 export const getIpRangesOutput: typeof import("./getIpRanges").getIpRangesOutput = null as any;
@@ -419,6 +424,11 @@ export { HyperdriveConfigArgs, HyperdriveConfigState } from "./hyperdriveConfig"
 export type HyperdriveConfig = import("./hyperdriveConfig").HyperdriveConfig;
 export const HyperdriveConfig: typeof import("./hyperdriveConfig").HyperdriveConfig = null as any;
 utilities.lazyLoad(exports, ["HyperdriveConfig"], () => require("./hyperdriveConfig"));
+
+export { InfrastructureAccessTargetArgs, InfrastructureAccessTargetState } from "./infrastructureAccessTarget";
+export type InfrastructureAccessTarget = import("./infrastructureAccessTarget").InfrastructureAccessTarget;
+export const InfrastructureAccessTarget: typeof import("./infrastructureAccessTarget").InfrastructureAccessTarget = null as any;
+utilities.lazyLoad(exports, ["InfrastructureAccessTarget"], () => require("./infrastructureAccessTarget"));
 
 export { IpsecTunnelArgs, IpsecTunnelState } from "./ipsecTunnel";
 export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
@@ -1090,6 +1100,8 @@ const _module = {
                 return new HostnameTlsSettingCiphers(name, <any>undefined, { urn })
             case "cloudflare:index/hyperdriveConfig:HyperdriveConfig":
                 return new HyperdriveConfig(name, <any>undefined, { urn })
+            case "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget":
+                return new InfrastructureAccessTarget(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/keylessCertificate:KeylessCertificate":
@@ -1366,6 +1378,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSetting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSettingCiphers", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/hyperdriveConfig", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/infrastructureAccessTarget", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/keylessCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)

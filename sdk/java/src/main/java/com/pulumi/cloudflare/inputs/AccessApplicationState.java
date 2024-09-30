@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationScimConfigArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationTargetCriteriaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -503,14 +504,29 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    @Import(name="targetCriterias")
+    private @Nullable Output<List<AccessApplicationTargetCriteriaArgs>> targetCriterias;
+
+    /**
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationTargetCriteriaArgs>>> targetCriterias() {
+        return Optional.ofNullable(this.targetCriterias);
+    }
+
+    /**
+     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -567,6 +583,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.skipAppLauncherLoginPage = $.skipAppLauncherLoginPage;
         this.skipInterstitial = $.skipInterstitial;
         this.tags = $.tags;
+        this.targetCriterias = $.targetCriterias;
         this.type = $.type;
         this.zoneId = $.zoneId;
     }
@@ -1332,7 +1349,38 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetCriterias(@Nullable Output<List<AccessApplicationTargetCriteriaArgs>> targetCriterias) {
+            $.targetCriterias = targetCriterias;
+            return this;
+        }
+
+        /**
+         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetCriterias(List<AccessApplicationTargetCriteriaArgs> targetCriterias) {
+            return targetCriterias(Output.of(targetCriterias));
+        }
+
+        /**
+         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetCriterias(AccessApplicationTargetCriteriaArgs... targetCriterias) {
+            return targetCriterias(List.of(targetCriterias));
+        }
+
+        /**
+         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
          * 
          * @return builder
          * 
@@ -1343,7 +1391,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+         * @param type The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
          * 
          * @return builder
          * 

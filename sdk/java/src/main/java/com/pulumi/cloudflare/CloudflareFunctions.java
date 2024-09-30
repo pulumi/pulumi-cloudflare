@@ -24,6 +24,8 @@ import com.pulumi.cloudflare.inputs.GetGatewayAppTypesArgs;
 import com.pulumi.cloudflare.inputs.GetGatewayAppTypesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetGatewayCategoriesArgs;
 import com.pulumi.cloudflare.inputs.GetGatewayCategoriesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;
+import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListArgs;
 import com.pulumi.cloudflare.inputs.GetListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListsArgs;
@@ -69,6 +71,7 @@ import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetDlpDatasetsResult;
 import com.pulumi.cloudflare.outputs.GetGatewayAppTypesResult;
 import com.pulumi.cloudflare.outputs.GetGatewayCategoriesResult;
+import com.pulumi.cloudflare.outputs.GetInfrastructureAccessTargetsResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
 import com.pulumi.cloudflare.outputs.GetListsResult;
@@ -1791,6 +1794,34 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetGatewayCategoriesResult> getGatewayCategoriesPlain(GetGatewayCategoriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getGatewayCategories:getGatewayCategories", TypeShape.of(GetGatewayCategoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     */
+    public static Output<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs args) {
+        return getInfrastructureAccessTargets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargetsPlain(GetInfrastructureAccessTargetsPlainArgs args) {
+        return getInfrastructureAccessTargetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     */
+    public static Output<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", TypeShape.of(GetInfrastructureAccessTargetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargetsPlain(GetInfrastructureAccessTargetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", TypeShape.of(GetInfrastructureAccessTargetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.

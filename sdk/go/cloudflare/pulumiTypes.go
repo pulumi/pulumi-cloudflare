@@ -2516,6 +2516,229 @@ func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Update() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+type AccessApplicationTargetCriteria struct {
+	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+	Port int `pulumi:"port"`
+	// The communication protocol your application secures.
+	Protocol string `pulumi:"protocol"`
+	// Contains a map of target attribute keys to target attribute values.
+	TargetAttributes []AccessApplicationTargetCriteriaTargetAttribute `pulumi:"targetAttributes"`
+}
+
+// AccessApplicationTargetCriteriaInput is an input type that accepts AccessApplicationTargetCriteriaArgs and AccessApplicationTargetCriteriaOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaInput` via:
+//
+//	AccessApplicationTargetCriteriaArgs{...}
+type AccessApplicationTargetCriteriaInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaOutput() AccessApplicationTargetCriteriaOutput
+	ToAccessApplicationTargetCriteriaOutputWithContext(context.Context) AccessApplicationTargetCriteriaOutput
+}
+
+type AccessApplicationTargetCriteriaArgs struct {
+	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The communication protocol your application secures.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Contains a map of target attribute keys to target attribute values.
+	TargetAttributes AccessApplicationTargetCriteriaTargetAttributeArrayInput `pulumi:"targetAttributes"`
+}
+
+func (AccessApplicationTargetCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaArgs) ToAccessApplicationTargetCriteriaOutput() AccessApplicationTargetCriteriaOutput {
+	return i.ToAccessApplicationTargetCriteriaOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaArgs) ToAccessApplicationTargetCriteriaOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaOutput)
+}
+
+// AccessApplicationTargetCriteriaArrayInput is an input type that accepts AccessApplicationTargetCriteriaArray and AccessApplicationTargetCriteriaArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaArrayInput` via:
+//
+//	AccessApplicationTargetCriteriaArray{ AccessApplicationTargetCriteriaArgs{...} }
+type AccessApplicationTargetCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaArrayOutput() AccessApplicationTargetCriteriaArrayOutput
+	ToAccessApplicationTargetCriteriaArrayOutputWithContext(context.Context) AccessApplicationTargetCriteriaArrayOutput
+}
+
+type AccessApplicationTargetCriteriaArray []AccessApplicationTargetCriteriaInput
+
+func (AccessApplicationTargetCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaArray) ToAccessApplicationTargetCriteriaArrayOutput() AccessApplicationTargetCriteriaArrayOutput {
+	return i.ToAccessApplicationTargetCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaArray) ToAccessApplicationTargetCriteriaArrayOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaOutput) ToAccessApplicationTargetCriteriaOutput() AccessApplicationTargetCriteriaOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaOutput) ToAccessApplicationTargetCriteriaOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaOutput {
+	return o
+}
+
+// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+func (o AccessApplicationTargetCriteriaOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The communication protocol your application secures.
+func (o AccessApplicationTargetCriteriaOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Contains a map of target attribute keys to target attribute values.
+func (o AccessApplicationTargetCriteriaOutput) TargetAttributes() AccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) []AccessApplicationTargetCriteriaTargetAttribute {
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaTargetAttributeArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaArrayOutput) ToAccessApplicationTargetCriteriaArrayOutput() AccessApplicationTargetCriteriaArrayOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaArrayOutput) ToAccessApplicationTargetCriteriaArrayOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaArrayOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaArrayOutput) Index(i pulumi.IntInput) AccessApplicationTargetCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationTargetCriteria {
+		return vs[0].([]AccessApplicationTargetCriteria)[vs[1].(int)]
+	}).(AccessApplicationTargetCriteriaOutput)
+}
+
+type AccessApplicationTargetCriteriaTargetAttribute struct {
+	// The key of the attribute.
+	Name string `pulumi:"name"`
+	// The values of the attribute.
+	Values []string `pulumi:"values"`
+}
+
+// AccessApplicationTargetCriteriaTargetAttributeInput is an input type that accepts AccessApplicationTargetCriteriaTargetAttributeArgs and AccessApplicationTargetCriteriaTargetAttributeOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaTargetAttributeInput` via:
+//
+//	AccessApplicationTargetCriteriaTargetAttributeArgs{...}
+type AccessApplicationTargetCriteriaTargetAttributeInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaTargetAttributeOutput() AccessApplicationTargetCriteriaTargetAttributeOutput
+	ToAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(context.Context) AccessApplicationTargetCriteriaTargetAttributeOutput
+}
+
+type AccessApplicationTargetCriteriaTargetAttributeArgs struct {
+	// The key of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The values of the attribute.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AccessApplicationTargetCriteriaTargetAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaTargetAttributeArgs) ToAccessApplicationTargetCriteriaTargetAttributeOutput() AccessApplicationTargetCriteriaTargetAttributeOutput {
+	return i.ToAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaTargetAttributeArgs) ToAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaTargetAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaTargetAttributeOutput)
+}
+
+// AccessApplicationTargetCriteriaTargetAttributeArrayInput is an input type that accepts AccessApplicationTargetCriteriaTargetAttributeArray and AccessApplicationTargetCriteriaTargetAttributeArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaTargetAttributeArrayInput` via:
+//
+//	AccessApplicationTargetCriteriaTargetAttributeArray{ AccessApplicationTargetCriteriaTargetAttributeArgs{...} }
+type AccessApplicationTargetCriteriaTargetAttributeArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaTargetAttributeArrayOutput() AccessApplicationTargetCriteriaTargetAttributeArrayOutput
+	ToAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(context.Context) AccessApplicationTargetCriteriaTargetAttributeArrayOutput
+}
+
+type AccessApplicationTargetCriteriaTargetAttributeArray []AccessApplicationTargetCriteriaTargetAttributeInput
+
+func (AccessApplicationTargetCriteriaTargetAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaTargetAttributeArray) ToAccessApplicationTargetCriteriaTargetAttributeArrayOutput() AccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return i.ToAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaTargetAttributeArray) ToAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaTargetAttributeArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaTargetAttributeOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaTargetAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaTargetAttributeOutput) ToAccessApplicationTargetCriteriaTargetAttributeOutput() AccessApplicationTargetCriteriaTargetAttributeOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaTargetAttributeOutput) ToAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaTargetAttributeOutput {
+	return o
+}
+
+// The key of the attribute.
+func (o AccessApplicationTargetCriteriaTargetAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaTargetAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The values of the attribute.
+func (o AccessApplicationTargetCriteriaTargetAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaTargetAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaTargetAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaTargetAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaTargetAttributeArrayOutput) ToAccessApplicationTargetCriteriaTargetAttributeArrayOutput() AccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaTargetAttributeArrayOutput) ToAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaTargetAttributeArrayOutput) Index(i pulumi.IntInput) AccessApplicationTargetCriteriaTargetAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationTargetCriteriaTargetAttribute {
+		return vs[0].([]AccessApplicationTargetCriteriaTargetAttribute)[vs[1].(int)]
+	}).(AccessApplicationTargetCriteriaTargetAttributeOutput)
+}
+
 type AccessGroupExclude struct {
 	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
@@ -6681,6 +6904,280 @@ func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPol
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyApprovalGroup {
 		return vs[0].([]AccessPolicyApprovalGroup)[vs[1].(int)]
 	}).(AccessPolicyApprovalGroupOutput)
+}
+
+type AccessPolicyConnectionRules struct {
+	// The SSH-specific rules that define how users may connect to the targets secured by your application.
+	Ssh AccessPolicyConnectionRulesSsh `pulumi:"ssh"`
+}
+
+// AccessPolicyConnectionRulesInput is an input type that accepts AccessPolicyConnectionRulesArgs and AccessPolicyConnectionRulesOutput values.
+// You can construct a concrete instance of `AccessPolicyConnectionRulesInput` via:
+//
+//	AccessPolicyConnectionRulesArgs{...}
+type AccessPolicyConnectionRulesInput interface {
+	pulumi.Input
+
+	ToAccessPolicyConnectionRulesOutput() AccessPolicyConnectionRulesOutput
+	ToAccessPolicyConnectionRulesOutputWithContext(context.Context) AccessPolicyConnectionRulesOutput
+}
+
+type AccessPolicyConnectionRulesArgs struct {
+	// The SSH-specific rules that define how users may connect to the targets secured by your application.
+	Ssh AccessPolicyConnectionRulesSshInput `pulumi:"ssh"`
+}
+
+func (AccessPolicyConnectionRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (i AccessPolicyConnectionRulesArgs) ToAccessPolicyConnectionRulesOutput() AccessPolicyConnectionRulesOutput {
+	return i.ToAccessPolicyConnectionRulesOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyConnectionRulesArgs) ToAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesOutput)
+}
+
+func (i AccessPolicyConnectionRulesArgs) ToAccessPolicyConnectionRulesPtrOutput() AccessPolicyConnectionRulesPtrOutput {
+	return i.ToAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyConnectionRulesArgs) ToAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesOutput).ToAccessPolicyConnectionRulesPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyConnectionRulesPtrInput is an input type that accepts AccessPolicyConnectionRulesArgs, AccessPolicyConnectionRulesPtr and AccessPolicyConnectionRulesPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyConnectionRulesPtrInput` via:
+//
+//	        AccessPolicyConnectionRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyConnectionRulesPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyConnectionRulesPtrOutput() AccessPolicyConnectionRulesPtrOutput
+	ToAccessPolicyConnectionRulesPtrOutputWithContext(context.Context) AccessPolicyConnectionRulesPtrOutput
+}
+
+type accessPolicyConnectionRulesPtrType AccessPolicyConnectionRulesArgs
+
+func AccessPolicyConnectionRulesPtr(v *AccessPolicyConnectionRulesArgs) AccessPolicyConnectionRulesPtrInput {
+	return (*accessPolicyConnectionRulesPtrType)(v)
+}
+
+func (*accessPolicyConnectionRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (i *accessPolicyConnectionRulesPtrType) ToAccessPolicyConnectionRulesPtrOutput() AccessPolicyConnectionRulesPtrOutput {
+	return i.ToAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyConnectionRulesPtrType) ToAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesPtrOutput)
+}
+
+type AccessPolicyConnectionRulesOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyConnectionRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (o AccessPolicyConnectionRulesOutput) ToAccessPolicyConnectionRulesOutput() AccessPolicyConnectionRulesOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesOutput) ToAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesOutput) ToAccessPolicyConnectionRulesPtrOutput() AccessPolicyConnectionRulesPtrOutput {
+	return o.ToAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyConnectionRulesOutput) ToAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyConnectionRules) *AccessPolicyConnectionRules {
+		return &v
+	}).(AccessPolicyConnectionRulesPtrOutput)
+}
+
+// The SSH-specific rules that define how users may connect to the targets secured by your application.
+func (o AccessPolicyConnectionRulesOutput) Ssh() AccessPolicyConnectionRulesSshOutput {
+	return o.ApplyT(func(v AccessPolicyConnectionRules) AccessPolicyConnectionRulesSsh { return v.Ssh }).(AccessPolicyConnectionRulesSshOutput)
+}
+
+type AccessPolicyConnectionRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyConnectionRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (o AccessPolicyConnectionRulesPtrOutput) ToAccessPolicyConnectionRulesPtrOutput() AccessPolicyConnectionRulesPtrOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesPtrOutput) ToAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesPtrOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesPtrOutput) Elem() AccessPolicyConnectionRulesOutput {
+	return o.ApplyT(func(v *AccessPolicyConnectionRules) AccessPolicyConnectionRules {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyConnectionRules
+		return ret
+	}).(AccessPolicyConnectionRulesOutput)
+}
+
+// The SSH-specific rules that define how users may connect to the targets secured by your application.
+func (o AccessPolicyConnectionRulesPtrOutput) Ssh() AccessPolicyConnectionRulesSshPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyConnectionRules) *AccessPolicyConnectionRulesSsh {
+		if v == nil {
+			return nil
+		}
+		return &v.Ssh
+	}).(AccessPolicyConnectionRulesSshPtrOutput)
+}
+
+type AccessPolicyConnectionRulesSsh struct {
+	// Contains the Unix usernames that may be used when connecting over SSH.
+	Usernames []string `pulumi:"usernames"`
+}
+
+// AccessPolicyConnectionRulesSshInput is an input type that accepts AccessPolicyConnectionRulesSshArgs and AccessPolicyConnectionRulesSshOutput values.
+// You can construct a concrete instance of `AccessPolicyConnectionRulesSshInput` via:
+//
+//	AccessPolicyConnectionRulesSshArgs{...}
+type AccessPolicyConnectionRulesSshInput interface {
+	pulumi.Input
+
+	ToAccessPolicyConnectionRulesSshOutput() AccessPolicyConnectionRulesSshOutput
+	ToAccessPolicyConnectionRulesSshOutputWithContext(context.Context) AccessPolicyConnectionRulesSshOutput
+}
+
+type AccessPolicyConnectionRulesSshArgs struct {
+	// Contains the Unix usernames that may be used when connecting over SSH.
+	Usernames pulumi.StringArrayInput `pulumi:"usernames"`
+}
+
+func (AccessPolicyConnectionRulesSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (i AccessPolicyConnectionRulesSshArgs) ToAccessPolicyConnectionRulesSshOutput() AccessPolicyConnectionRulesSshOutput {
+	return i.ToAccessPolicyConnectionRulesSshOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyConnectionRulesSshArgs) ToAccessPolicyConnectionRulesSshOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesSshOutput)
+}
+
+func (i AccessPolicyConnectionRulesSshArgs) ToAccessPolicyConnectionRulesSshPtrOutput() AccessPolicyConnectionRulesSshPtrOutput {
+	return i.ToAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyConnectionRulesSshArgs) ToAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesSshOutput).ToAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyConnectionRulesSshPtrInput is an input type that accepts AccessPolicyConnectionRulesSshArgs, AccessPolicyConnectionRulesSshPtr and AccessPolicyConnectionRulesSshPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyConnectionRulesSshPtrInput` via:
+//
+//	        AccessPolicyConnectionRulesSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyConnectionRulesSshPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyConnectionRulesSshPtrOutput() AccessPolicyConnectionRulesSshPtrOutput
+	ToAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Context) AccessPolicyConnectionRulesSshPtrOutput
+}
+
+type accessPolicyConnectionRulesSshPtrType AccessPolicyConnectionRulesSshArgs
+
+func AccessPolicyConnectionRulesSshPtr(v *AccessPolicyConnectionRulesSshArgs) AccessPolicyConnectionRulesSshPtrInput {
+	return (*accessPolicyConnectionRulesSshPtrType)(v)
+}
+
+func (*accessPolicyConnectionRulesSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (i *accessPolicyConnectionRulesSshPtrType) ToAccessPolicyConnectionRulesSshPtrOutput() AccessPolicyConnectionRulesSshPtrOutput {
+	return i.ToAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyConnectionRulesSshPtrType) ToAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyConnectionRulesSshPtrOutput)
+}
+
+type AccessPolicyConnectionRulesSshOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyConnectionRulesSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (o AccessPolicyConnectionRulesSshOutput) ToAccessPolicyConnectionRulesSshOutput() AccessPolicyConnectionRulesSshOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesSshOutput) ToAccessPolicyConnectionRulesSshOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesSshOutput) ToAccessPolicyConnectionRulesSshPtrOutput() AccessPolicyConnectionRulesSshPtrOutput {
+	return o.ToAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyConnectionRulesSshOutput) ToAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyConnectionRulesSsh) *AccessPolicyConnectionRulesSsh {
+		return &v
+	}).(AccessPolicyConnectionRulesSshPtrOutput)
+}
+
+// Contains the Unix usernames that may be used when connecting over SSH.
+func (o AccessPolicyConnectionRulesSshOutput) Usernames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyConnectionRulesSsh) []string { return v.Usernames }).(pulumi.StringArrayOutput)
+}
+
+type AccessPolicyConnectionRulesSshPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyConnectionRulesSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (o AccessPolicyConnectionRulesSshPtrOutput) ToAccessPolicyConnectionRulesSshPtrOutput() AccessPolicyConnectionRulesSshPtrOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesSshPtrOutput) ToAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) AccessPolicyConnectionRulesSshPtrOutput {
+	return o
+}
+
+func (o AccessPolicyConnectionRulesSshPtrOutput) Elem() AccessPolicyConnectionRulesSshOutput {
+	return o.ApplyT(func(v *AccessPolicyConnectionRulesSsh) AccessPolicyConnectionRulesSsh {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyConnectionRulesSsh
+		return ret
+	}).(AccessPolicyConnectionRulesSshOutput)
+}
+
+// Contains the Unix usernames that may be used when connecting over SSH.
+func (o AccessPolicyConnectionRulesSshPtrOutput) Usernames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessPolicyConnectionRulesSsh) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Usernames
+	}).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyExclude struct {
@@ -12792,6 +13289,8 @@ type DevicePostureRuleInputType struct {
 	RiskLevel *string `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running *bool `pulumi:"running"`
+	// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+	Score *int `pulumi:"score"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
 	SensorConfig *string `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
@@ -12880,6 +13379,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	RiskLevel pulumi.StringPtrInput `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running pulumi.BoolPtrInput `pulumi:"running"`
+	// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+	Score pulumi.IntPtrInput `pulumi:"score"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
 	SensorConfig pulumi.StringPtrInput `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
@@ -13095,6 +13596,11 @@ func (o DevicePostureRuleInputTypeOutput) RiskLevel() pulumi.StringPtrOutput {
 // Checks if the application should be running.
 func (o DevicePostureRuleInputTypeOutput) Running() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Running }).(pulumi.BoolPtrOutput)
+}
+
+// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+func (o DevicePostureRuleInputTypeOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *int { return v.Score }).(pulumi.IntPtrOutput)
 }
 
 // Sensor signal score from Crowdstrike. Value must be between 1 and 100.
@@ -15012,6 +15518,474 @@ func (o HyperdriveConfigOriginPtrOutput) User() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureAccessTargetIp struct {
+	// The target's IPv4 address.
+	Ipv4 *InfrastructureAccessTargetIpIpv4 `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 *InfrastructureAccessTargetIpIpv6 `pulumi:"ipv6"`
+}
+
+// InfrastructureAccessTargetIpInput is an input type that accepts InfrastructureAccessTargetIpArgs and InfrastructureAccessTargetIpOutput values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpInput` via:
+//
+//	InfrastructureAccessTargetIpArgs{...}
+type InfrastructureAccessTargetIpInput interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpOutput() InfrastructureAccessTargetIpOutput
+	ToInfrastructureAccessTargetIpOutputWithContext(context.Context) InfrastructureAccessTargetIpOutput
+}
+
+type InfrastructureAccessTargetIpArgs struct {
+	// The target's IPv4 address.
+	Ipv4 InfrastructureAccessTargetIpIpv4PtrInput `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 InfrastructureAccessTargetIpIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (InfrastructureAccessTargetIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (i InfrastructureAccessTargetIpArgs) ToInfrastructureAccessTargetIpOutput() InfrastructureAccessTargetIpOutput {
+	return i.ToInfrastructureAccessTargetIpOutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpArgs) ToInfrastructureAccessTargetIpOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpOutput)
+}
+
+func (i InfrastructureAccessTargetIpArgs) ToInfrastructureAccessTargetIpPtrOutput() InfrastructureAccessTargetIpPtrOutput {
+	return i.ToInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpArgs) ToInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpOutput).ToInfrastructureAccessTargetIpPtrOutputWithContext(ctx)
+}
+
+// InfrastructureAccessTargetIpPtrInput is an input type that accepts InfrastructureAccessTargetIpArgs, InfrastructureAccessTargetIpPtr and InfrastructureAccessTargetIpPtrOutput values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpPtrInput` via:
+//
+//	        InfrastructureAccessTargetIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureAccessTargetIpPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpPtrOutput() InfrastructureAccessTargetIpPtrOutput
+	ToInfrastructureAccessTargetIpPtrOutputWithContext(context.Context) InfrastructureAccessTargetIpPtrOutput
+}
+
+type infrastructureAccessTargetIpPtrType InfrastructureAccessTargetIpArgs
+
+func InfrastructureAccessTargetIpPtr(v *InfrastructureAccessTargetIpArgs) InfrastructureAccessTargetIpPtrInput {
+	return (*infrastructureAccessTargetIpPtrType)(v)
+}
+
+func (*infrastructureAccessTargetIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (i *infrastructureAccessTargetIpPtrType) ToInfrastructureAccessTargetIpPtrOutput() InfrastructureAccessTargetIpPtrOutput {
+	return i.ToInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureAccessTargetIpPtrType) ToInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpPtrOutput)
+}
+
+type InfrastructureAccessTargetIpOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpOutput) ToInfrastructureAccessTargetIpOutput() InfrastructureAccessTargetIpOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpOutput) ToInfrastructureAccessTargetIpOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpOutput) ToInfrastructureAccessTargetIpPtrOutput() InfrastructureAccessTargetIpPtrOutput {
+	return o.ToInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureAccessTargetIpOutput) ToInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureAccessTargetIp) *InfrastructureAccessTargetIp {
+		return &v
+	}).(InfrastructureAccessTargetIpPtrOutput)
+}
+
+// The target's IPv4 address.
+func (o InfrastructureAccessTargetIpOutput) Ipv4() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIp) *InfrastructureAccessTargetIpIpv4 { return v.Ipv4 }).(InfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o InfrastructureAccessTargetIpOutput) Ipv6() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIp) *InfrastructureAccessTargetIpIpv6 { return v.Ipv6 }).(InfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type InfrastructureAccessTargetIpPtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpPtrOutput) ToInfrastructureAccessTargetIpPtrOutput() InfrastructureAccessTargetIpPtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpPtrOutput) ToInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpPtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpPtrOutput) Elem() InfrastructureAccessTargetIpOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIp) InfrastructureAccessTargetIp {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureAccessTargetIp
+		return ret
+	}).(InfrastructureAccessTargetIpOutput)
+}
+
+// The target's IPv4 address.
+func (o InfrastructureAccessTargetIpPtrOutput) Ipv4() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIp) *InfrastructureAccessTargetIpIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o InfrastructureAccessTargetIpPtrOutput) Ipv6() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIp) *InfrastructureAccessTargetIpIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(InfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type InfrastructureAccessTargetIpIpv4 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// InfrastructureAccessTargetIpIpv4Input is an input type that accepts InfrastructureAccessTargetIpIpv4Args and InfrastructureAccessTargetIpIpv4Output values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpIpv4Input` via:
+//
+//	InfrastructureAccessTargetIpIpv4Args{...}
+type InfrastructureAccessTargetIpIpv4Input interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpIpv4Output() InfrastructureAccessTargetIpIpv4Output
+	ToInfrastructureAccessTargetIpIpv4OutputWithContext(context.Context) InfrastructureAccessTargetIpIpv4Output
+}
+
+type InfrastructureAccessTargetIpIpv4Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (InfrastructureAccessTargetIpIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (i InfrastructureAccessTargetIpIpv4Args) ToInfrastructureAccessTargetIpIpv4Output() InfrastructureAccessTargetIpIpv4Output {
+	return i.ToInfrastructureAccessTargetIpIpv4OutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpIpv4Args) ToInfrastructureAccessTargetIpIpv4OutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv4Output)
+}
+
+func (i InfrastructureAccessTargetIpIpv4Args) ToInfrastructureAccessTargetIpIpv4PtrOutput() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return i.ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpIpv4Args) ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv4Output).ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx)
+}
+
+// InfrastructureAccessTargetIpIpv4PtrInput is an input type that accepts InfrastructureAccessTargetIpIpv4Args, InfrastructureAccessTargetIpIpv4Ptr and InfrastructureAccessTargetIpIpv4PtrOutput values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpIpv4PtrInput` via:
+//
+//	        InfrastructureAccessTargetIpIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureAccessTargetIpIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpIpv4PtrOutput() InfrastructureAccessTargetIpIpv4PtrOutput
+	ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Context) InfrastructureAccessTargetIpIpv4PtrOutput
+}
+
+type infrastructureAccessTargetIpIpv4PtrType InfrastructureAccessTargetIpIpv4Args
+
+func InfrastructureAccessTargetIpIpv4Ptr(v *InfrastructureAccessTargetIpIpv4Args) InfrastructureAccessTargetIpIpv4PtrInput {
+	return (*infrastructureAccessTargetIpIpv4PtrType)(v)
+}
+
+func (*infrastructureAccessTargetIpIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (i *infrastructureAccessTargetIpIpv4PtrType) ToInfrastructureAccessTargetIpIpv4PtrOutput() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return i.ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureAccessTargetIpIpv4PtrType) ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+type InfrastructureAccessTargetIpIpv4Output struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpIpv4Output) ToInfrastructureAccessTargetIpIpv4Output() InfrastructureAccessTargetIpIpv4Output {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv4Output) ToInfrastructureAccessTargetIpIpv4OutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4Output {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv4Output) ToInfrastructureAccessTargetIpIpv4PtrOutput() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureAccessTargetIpIpv4Output) ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureAccessTargetIpIpv4) *InfrastructureAccessTargetIpIpv4 {
+		return &v
+	}).(InfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The IP address of the target.
+func (o InfrastructureAccessTargetIpIpv4Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIpIpv4) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o InfrastructureAccessTargetIpIpv4Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIpIpv4) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type InfrastructureAccessTargetIpIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpIpv4PtrOutput) ToInfrastructureAccessTargetIpIpv4PtrOutput() InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv4PtrOutput) ToInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv4PtrOutput) Elem() InfrastructureAccessTargetIpIpv4Output {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv4) InfrastructureAccessTargetIpIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureAccessTargetIpIpv4
+		return ret
+	}).(InfrastructureAccessTargetIpIpv4Output)
+}
+
+// The IP address of the target.
+func (o InfrastructureAccessTargetIpIpv4PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o InfrastructureAccessTargetIpIpv4PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureAccessTargetIpIpv6 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// InfrastructureAccessTargetIpIpv6Input is an input type that accepts InfrastructureAccessTargetIpIpv6Args and InfrastructureAccessTargetIpIpv6Output values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpIpv6Input` via:
+//
+//	InfrastructureAccessTargetIpIpv6Args{...}
+type InfrastructureAccessTargetIpIpv6Input interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpIpv6Output() InfrastructureAccessTargetIpIpv6Output
+	ToInfrastructureAccessTargetIpIpv6OutputWithContext(context.Context) InfrastructureAccessTargetIpIpv6Output
+}
+
+type InfrastructureAccessTargetIpIpv6Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (InfrastructureAccessTargetIpIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (i InfrastructureAccessTargetIpIpv6Args) ToInfrastructureAccessTargetIpIpv6Output() InfrastructureAccessTargetIpIpv6Output {
+	return i.ToInfrastructureAccessTargetIpIpv6OutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpIpv6Args) ToInfrastructureAccessTargetIpIpv6OutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv6Output)
+}
+
+func (i InfrastructureAccessTargetIpIpv6Args) ToInfrastructureAccessTargetIpIpv6PtrOutput() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return i.ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureAccessTargetIpIpv6Args) ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv6Output).ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx)
+}
+
+// InfrastructureAccessTargetIpIpv6PtrInput is an input type that accepts InfrastructureAccessTargetIpIpv6Args, InfrastructureAccessTargetIpIpv6Ptr and InfrastructureAccessTargetIpIpv6PtrOutput values.
+// You can construct a concrete instance of `InfrastructureAccessTargetIpIpv6PtrInput` via:
+//
+//	        InfrastructureAccessTargetIpIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureAccessTargetIpIpv6PtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureAccessTargetIpIpv6PtrOutput() InfrastructureAccessTargetIpIpv6PtrOutput
+	ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Context) InfrastructureAccessTargetIpIpv6PtrOutput
+}
+
+type infrastructureAccessTargetIpIpv6PtrType InfrastructureAccessTargetIpIpv6Args
+
+func InfrastructureAccessTargetIpIpv6Ptr(v *InfrastructureAccessTargetIpIpv6Args) InfrastructureAccessTargetIpIpv6PtrInput {
+	return (*infrastructureAccessTargetIpIpv6PtrType)(v)
+}
+
+func (*infrastructureAccessTargetIpIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (i *infrastructureAccessTargetIpIpv6PtrType) ToInfrastructureAccessTargetIpIpv6PtrOutput() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return i.ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureAccessTargetIpIpv6PtrType) ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type InfrastructureAccessTargetIpIpv6Output struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpIpv6Output) ToInfrastructureAccessTargetIpIpv6Output() InfrastructureAccessTargetIpIpv6Output {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv6Output) ToInfrastructureAccessTargetIpIpv6OutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6Output {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv6Output) ToInfrastructureAccessTargetIpIpv6PtrOutput() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureAccessTargetIpIpv6Output) ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureAccessTargetIpIpv6) *InfrastructureAccessTargetIpIpv6 {
+		return &v
+	}).(InfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+// The IP address of the target.
+func (o InfrastructureAccessTargetIpIpv6Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIpIpv6) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o InfrastructureAccessTargetIpIpv6Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureAccessTargetIpIpv6) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type InfrastructureAccessTargetIpIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureAccessTargetIpIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (o InfrastructureAccessTargetIpIpv6PtrOutput) ToInfrastructureAccessTargetIpIpv6PtrOutput() InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv6PtrOutput) ToInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) InfrastructureAccessTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o InfrastructureAccessTargetIpIpv6PtrOutput) Elem() InfrastructureAccessTargetIpIpv6Output {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv6) InfrastructureAccessTargetIpIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureAccessTargetIpIpv6
+		return ret
+	}).(InfrastructureAccessTargetIpIpv6Output)
+}
+
+// The IP address of the target.
+func (o InfrastructureAccessTargetIpIpv6PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o InfrastructureAccessTargetIpIpv6PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureAccessTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -45728,6 +46702,229 @@ func (o ZeroTrustAccessApplicationScimConfigMappingOperationsPtrOutput) Update()
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ZeroTrustAccessApplicationTargetCriteria struct {
+	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+	Port int `pulumi:"port"`
+	// The communication protocol your application secures.
+	Protocol string `pulumi:"protocol"`
+	// Contains a map of target attribute keys to target attribute values.
+	TargetAttributes []ZeroTrustAccessApplicationTargetCriteriaTargetAttribute `pulumi:"targetAttributes"`
+}
+
+// ZeroTrustAccessApplicationTargetCriteriaInput is an input type that accepts ZeroTrustAccessApplicationTargetCriteriaArgs and ZeroTrustAccessApplicationTargetCriteriaOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationTargetCriteriaInput` via:
+//
+//	ZeroTrustAccessApplicationTargetCriteriaArgs{...}
+type ZeroTrustAccessApplicationTargetCriteriaInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationTargetCriteriaOutput() ZeroTrustAccessApplicationTargetCriteriaOutput
+	ToZeroTrustAccessApplicationTargetCriteriaOutputWithContext(context.Context) ZeroTrustAccessApplicationTargetCriteriaOutput
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaArgs struct {
+	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The communication protocol your application secures.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Contains a map of target attribute keys to target attribute values.
+	TargetAttributes ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayInput `pulumi:"targetAttributes"`
+}
+
+func (ZeroTrustAccessApplicationTargetCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaArgs) ToZeroTrustAccessApplicationTargetCriteriaOutput() ZeroTrustAccessApplicationTargetCriteriaOutput {
+	return i.ToZeroTrustAccessApplicationTargetCriteriaOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaArgs) ToZeroTrustAccessApplicationTargetCriteriaOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationTargetCriteriaOutput)
+}
+
+// ZeroTrustAccessApplicationTargetCriteriaArrayInput is an input type that accepts ZeroTrustAccessApplicationTargetCriteriaArray and ZeroTrustAccessApplicationTargetCriteriaArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationTargetCriteriaArrayInput` via:
+//
+//	ZeroTrustAccessApplicationTargetCriteriaArray{ ZeroTrustAccessApplicationTargetCriteriaArgs{...} }
+type ZeroTrustAccessApplicationTargetCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationTargetCriteriaArrayOutput() ZeroTrustAccessApplicationTargetCriteriaArrayOutput
+	ToZeroTrustAccessApplicationTargetCriteriaArrayOutputWithContext(context.Context) ZeroTrustAccessApplicationTargetCriteriaArrayOutput
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaArray []ZeroTrustAccessApplicationTargetCriteriaInput
+
+func (ZeroTrustAccessApplicationTargetCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaArray) ToZeroTrustAccessApplicationTargetCriteriaArrayOutput() ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
+	return i.ToZeroTrustAccessApplicationTargetCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaArray) ToZeroTrustAccessApplicationTargetCriteriaArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationTargetCriteriaArrayOutput)
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationTargetCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaOutput) ToZeroTrustAccessApplicationTargetCriteriaOutput() ZeroTrustAccessApplicationTargetCriteriaOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaOutput) ToZeroTrustAccessApplicationTargetCriteriaOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaOutput {
+	return o
+}
+
+// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+func (o ZeroTrustAccessApplicationTargetCriteriaOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationTargetCriteria) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The communication protocol your application secures.
+func (o ZeroTrustAccessApplicationTargetCriteriaOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationTargetCriteria) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Contains a map of target attribute keys to target attribute values.
+func (o ZeroTrustAccessApplicationTargetCriteriaOutput) TargetAttributes() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationTargetCriteria) []ZeroTrustAccessApplicationTargetCriteriaTargetAttribute {
+		return v.TargetAttributes
+	}).(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput)
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationTargetCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationTargetCriteria)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaArrayOutput) ToZeroTrustAccessApplicationTargetCriteriaArrayOutput() ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaArrayOutput) ToZeroTrustAccessApplicationTargetCriteriaArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaArrayOutput) Index(i pulumi.IntInput) ZeroTrustAccessApplicationTargetCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustAccessApplicationTargetCriteria {
+		return vs[0].([]ZeroTrustAccessApplicationTargetCriteria)[vs[1].(int)]
+	}).(ZeroTrustAccessApplicationTargetCriteriaOutput)
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttribute struct {
+	// The key of the attribute.
+	Name string `pulumi:"name"`
+	// The values of the attribute.
+	Values []string `pulumi:"values"`
+}
+
+// ZeroTrustAccessApplicationTargetCriteriaTargetAttributeInput is an input type that accepts ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs and ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationTargetCriteriaTargetAttributeInput` via:
+//
+//	ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs{...}
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput
+	ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs struct {
+	// The key of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The values of the attribute.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput {
+	return i.ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput)
+}
+
+// ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayInput is an input type that accepts ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray and ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayInput` via:
+//
+//	ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray{ ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs{...} }
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput
+	ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray []ZeroTrustAccessApplicationTargetCriteriaTargetAttributeInput
+
+func (ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return i.ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput)
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput {
+	return o
+}
+
+// The key of the attribute.
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationTargetCriteriaTargetAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The values of the attribute.
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationTargetCriteriaTargetAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationTargetCriteriaTargetAttribute)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput() ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput) ToZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput) Index(i pulumi.IntInput) ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustAccessApplicationTargetCriteriaTargetAttribute {
+		return vs[0].([]ZeroTrustAccessApplicationTargetCriteriaTargetAttribute)[vs[1].(int)]
+	}).(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput)
+}
+
 type ZeroTrustAccessGroupExclude struct {
 	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                    `pulumi:"anyValidServiceToken"`
@@ -49751,6 +50948,280 @@ func (o ZeroTrustAccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) 
 	}).(ZeroTrustAccessPolicyApprovalGroupOutput)
 }
 
+type ZeroTrustAccessPolicyConnectionRules struct {
+	// The SSH-specific rules that define how users may connect to the targets secured by your application.
+	Ssh ZeroTrustAccessPolicyConnectionRulesSsh `pulumi:"ssh"`
+}
+
+// ZeroTrustAccessPolicyConnectionRulesInput is an input type that accepts ZeroTrustAccessPolicyConnectionRulesArgs and ZeroTrustAccessPolicyConnectionRulesOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyConnectionRulesInput` via:
+//
+//	ZeroTrustAccessPolicyConnectionRulesArgs{...}
+type ZeroTrustAccessPolicyConnectionRulesInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyConnectionRulesOutput() ZeroTrustAccessPolicyConnectionRulesOutput
+	ToZeroTrustAccessPolicyConnectionRulesOutputWithContext(context.Context) ZeroTrustAccessPolicyConnectionRulesOutput
+}
+
+type ZeroTrustAccessPolicyConnectionRulesArgs struct {
+	// The SSH-specific rules that define how users may connect to the targets secured by your application.
+	Ssh ZeroTrustAccessPolicyConnectionRulesSshInput `pulumi:"ssh"`
+}
+
+func (ZeroTrustAccessPolicyConnectionRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesArgs) ToZeroTrustAccessPolicyConnectionRulesOutput() ZeroTrustAccessPolicyConnectionRulesOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesArgs) ToZeroTrustAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesOutput)
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesArgs) ToZeroTrustAccessPolicyConnectionRulesPtrOutput() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesArgs) ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesOutput).ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessPolicyConnectionRulesPtrInput is an input type that accepts ZeroTrustAccessPolicyConnectionRulesArgs, ZeroTrustAccessPolicyConnectionRulesPtr and ZeroTrustAccessPolicyConnectionRulesPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyConnectionRulesPtrInput` via:
+//
+//	        ZeroTrustAccessPolicyConnectionRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessPolicyConnectionRulesPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyConnectionRulesPtrOutput() ZeroTrustAccessPolicyConnectionRulesPtrOutput
+	ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(context.Context) ZeroTrustAccessPolicyConnectionRulesPtrOutput
+}
+
+type zeroTrustAccessPolicyConnectionRulesPtrType ZeroTrustAccessPolicyConnectionRulesArgs
+
+func ZeroTrustAccessPolicyConnectionRulesPtr(v *ZeroTrustAccessPolicyConnectionRulesArgs) ZeroTrustAccessPolicyConnectionRulesPtrInput {
+	return (*zeroTrustAccessPolicyConnectionRulesPtrType)(v)
+}
+
+func (*zeroTrustAccessPolicyConnectionRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessPolicyConnectionRulesPtrType) ToZeroTrustAccessPolicyConnectionRulesPtrOutput() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessPolicyConnectionRulesPtrType) ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
+}
+
+type ZeroTrustAccessPolicyConnectionRulesOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyConnectionRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesOutput) ToZeroTrustAccessPolicyConnectionRulesOutput() ZeroTrustAccessPolicyConnectionRulesOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesOutput) ToZeroTrustAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesOutput) ToZeroTrustAccessPolicyConnectionRulesPtrOutput() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return o.ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesOutput) ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessPolicyConnectionRules) *ZeroTrustAccessPolicyConnectionRules {
+		return &v
+	}).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
+}
+
+// The SSH-specific rules that define how users may connect to the targets secured by your application.
+func (o ZeroTrustAccessPolicyConnectionRulesOutput) Ssh() ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyConnectionRules) ZeroTrustAccessPolicyConnectionRulesSsh { return v.Ssh }).(ZeroTrustAccessPolicyConnectionRulesSshOutput)
+}
+
+type ZeroTrustAccessPolicyConnectionRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyConnectionRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesPtrOutput) ToZeroTrustAccessPolicyConnectionRulesPtrOutput() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesPtrOutput) ToZeroTrustAccessPolicyConnectionRulesPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesPtrOutput) Elem() ZeroTrustAccessPolicyConnectionRulesOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyConnectionRules) ZeroTrustAccessPolicyConnectionRules {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessPolicyConnectionRules
+		return ret
+	}).(ZeroTrustAccessPolicyConnectionRulesOutput)
+}
+
+// The SSH-specific rules that define how users may connect to the targets secured by your application.
+func (o ZeroTrustAccessPolicyConnectionRulesPtrOutput) Ssh() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyConnectionRules) *ZeroTrustAccessPolicyConnectionRulesSsh {
+		if v == nil {
+			return nil
+		}
+		return &v.Ssh
+	}).(ZeroTrustAccessPolicyConnectionRulesSshPtrOutput)
+}
+
+type ZeroTrustAccessPolicyConnectionRulesSsh struct {
+	// Contains the Unix usernames that may be used when connecting over SSH.
+	Usernames []string `pulumi:"usernames"`
+}
+
+// ZeroTrustAccessPolicyConnectionRulesSshInput is an input type that accepts ZeroTrustAccessPolicyConnectionRulesSshArgs and ZeroTrustAccessPolicyConnectionRulesSshOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyConnectionRulesSshInput` via:
+//
+//	ZeroTrustAccessPolicyConnectionRulesSshArgs{...}
+type ZeroTrustAccessPolicyConnectionRulesSshInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyConnectionRulesSshOutput() ZeroTrustAccessPolicyConnectionRulesSshOutput
+	ToZeroTrustAccessPolicyConnectionRulesSshOutputWithContext(context.Context) ZeroTrustAccessPolicyConnectionRulesSshOutput
+}
+
+type ZeroTrustAccessPolicyConnectionRulesSshArgs struct {
+	// Contains the Unix usernames that may be used when connecting over SSH.
+	Usernames pulumi.StringArrayInput `pulumi:"usernames"`
+}
+
+func (ZeroTrustAccessPolicyConnectionRulesSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesSshArgs) ToZeroTrustAccessPolicyConnectionRulesSshOutput() ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesSshOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesSshArgs) ToZeroTrustAccessPolicyConnectionRulesSshOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesSshOutput)
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesSshArgs) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutput() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyConnectionRulesSshArgs) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesSshOutput).ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessPolicyConnectionRulesSshPtrInput is an input type that accepts ZeroTrustAccessPolicyConnectionRulesSshArgs, ZeroTrustAccessPolicyConnectionRulesSshPtr and ZeroTrustAccessPolicyConnectionRulesSshPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyConnectionRulesSshPtrInput` via:
+//
+//	        ZeroTrustAccessPolicyConnectionRulesSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessPolicyConnectionRulesSshPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyConnectionRulesSshPtrOutput() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput
+	ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Context) ZeroTrustAccessPolicyConnectionRulesSshPtrOutput
+}
+
+type zeroTrustAccessPolicyConnectionRulesSshPtrType ZeroTrustAccessPolicyConnectionRulesSshArgs
+
+func ZeroTrustAccessPolicyConnectionRulesSshPtr(v *ZeroTrustAccessPolicyConnectionRulesSshArgs) ZeroTrustAccessPolicyConnectionRulesSshPtrInput {
+	return (*zeroTrustAccessPolicyConnectionRulesSshPtrType)(v)
+}
+
+func (*zeroTrustAccessPolicyConnectionRulesSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessPolicyConnectionRulesSshPtrType) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutput() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return i.ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessPolicyConnectionRulesSshPtrType) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyConnectionRulesSshPtrOutput)
+}
+
+type ZeroTrustAccessPolicyConnectionRulesSshOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyConnectionRulesSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) ToZeroTrustAccessPolicyConnectionRulesSshOutput() ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) ToZeroTrustAccessPolicyConnectionRulesSshOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutput() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return o.ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessPolicyConnectionRulesSsh) *ZeroTrustAccessPolicyConnectionRulesSsh {
+		return &v
+	}).(ZeroTrustAccessPolicyConnectionRulesSshPtrOutput)
+}
+
+// Contains the Unix usernames that may be used when connecting over SSH.
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) Usernames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyConnectionRulesSsh) []string { return v.Usernames }).(pulumi.StringArrayOutput)
+}
+
+type ZeroTrustAccessPolicyConnectionRulesSshPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyConnectionRulesSsh)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutput() ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) ToZeroTrustAccessPolicyConnectionRulesSshPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyConnectionRulesSshPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) Elem() ZeroTrustAccessPolicyConnectionRulesSshOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyConnectionRulesSsh) ZeroTrustAccessPolicyConnectionRulesSsh {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessPolicyConnectionRulesSsh
+		return ret
+	}).(ZeroTrustAccessPolicyConnectionRulesSshOutput)
+}
+
+// Contains the Unix usernames that may be used when connecting over SSH.
+func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) Usernames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyConnectionRulesSsh) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Usernames
+	}).(pulumi.StringArrayOutput)
+}
+
 type ZeroTrustAccessPolicyExclude struct {
 	// Matches any valid Access service token.
 	AnyValidServiceToken *bool                                     `pulumi:"anyValidServiceToken"`
@@ -53317,6 +54788,8 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	RiskLevel *string `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running *bool `pulumi:"running"`
+	// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+	Score *int `pulumi:"score"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
 	SensorConfig *string `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
@@ -53405,6 +54878,8 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	RiskLevel pulumi.StringPtrInput `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running pulumi.BoolPtrInput `pulumi:"running"`
+	// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+	Score pulumi.IntPtrInput `pulumi:"score"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
 	SensorConfig pulumi.StringPtrInput `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
@@ -53622,6 +55097,11 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) RiskLevel() pulumi.StringPtrO
 // Checks if the application should be running.
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) Running() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *bool { return v.Running }).(pulumi.BoolPtrOutput)
+}
+
+// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+func (o ZeroTrustDevicePostureRuleInputTypeOutput) Score() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *int { return v.Score }).(pulumi.IntPtrOutput)
 }
 
 // Sensor signal score from Crowdstrike. Value must be between 1 and 100.
@@ -62165,6 +63645,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	SecurityLevel           *string                                           `pulumi:"securityLevel"`
 	ServerSideExclude       *string                                           `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                           `pulumi:"sortQueryStringForCache"`
+	SpeedBrain              *string                                           `pulumi:"speedBrain"`
 	Ssl                     *string                                           `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
@@ -62239,6 +63720,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	SecurityLevel           pulumi.StringPtrInput                                    `pulumi:"securityLevel"`
 	ServerSideExclude       pulumi.StringPtrInput                                    `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                                    `pulumi:"sortQueryStringForCache"`
+	SpeedBrain              pulumi.StringPtrInput                                    `pulumi:"speedBrain"`
 	Ssl                     pulumi.StringPtrInput                                    `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
@@ -62495,6 +63977,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) ServerSideExclude() pulumi.Str
 
 func (o ZoneSettingsOverrideInitialSettingOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) SpeedBrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SpeedBrain }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) Ssl() pulumi.StringPtrOutput {
@@ -63263,6 +64749,7 @@ type ZoneSettingsOverrideSettings struct {
 	SecurityLevel           *string                                     `pulumi:"securityLevel"`
 	ServerSideExclude       *string                                     `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                     `pulumi:"sortQueryStringForCache"`
+	SpeedBrain              *string                                     `pulumi:"speedBrain"`
 	Ssl                     *string                                     `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
@@ -63337,6 +64824,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	SecurityLevel           pulumi.StringPtrInput                              `pulumi:"securityLevel"`
 	ServerSideExclude       pulumi.StringPtrInput                              `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                              `pulumi:"sortQueryStringForCache"`
+	SpeedBrain              pulumi.StringPtrInput                              `pulumi:"speedBrain"`
 	Ssl                     pulumi.StringPtrInput                              `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
@@ -63619,6 +65107,10 @@ func (o ZoneSettingsOverrideSettingsOutput) ServerSideExclude() pulumi.StringPtr
 
 func (o ZoneSettingsOverrideSettingsOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) SpeedBrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SpeedBrain }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) Ssl() pulumi.StringPtrOutput {
@@ -64111,6 +65603,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) SortQueryStringForCache() pulumi.
 			return nil
 		}
 		return v.SortQueryStringForCache
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) SpeedBrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpeedBrain
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -65115,7 +66616,7 @@ type GetDevicePostureRulesRule struct {
 	Name *string `pulumi:"name"`
 	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
 	Schedule *string `pulumi:"schedule"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`
 	Type string `pulumi:"type"`
 }
 
@@ -65140,7 +66641,7 @@ type GetDevicePostureRulesRuleArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -65219,7 +66720,7 @@ func (o GetDevicePostureRulesRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicePostureRulesRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
 
-// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`
 func (o GetDevicePostureRulesRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicePostureRulesRule) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -66045,6 +67546,525 @@ func (o GetGatewayCategoriesCategorySubcategoryArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayCategoriesCategorySubcategory {
 		return vs[0].([]GetGatewayCategoriesCategorySubcategory)[vs[1].(int)]
 	}).(GetGatewayCategoriesCategorySubcategoryOutput)
+}
+
+type GetInfrastructureAccessTargetsTarget struct {
+	// The account identifier to target for the resource.
+	AccountId string `pulumi:"accountId"`
+	// The date and time at which the target was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// A non-unique field that refers to a target.
+	Hostname string `pulumi:"hostname"`
+	// The identifier of this resource. This is target's unique identifier.
+	Id string `pulumi:"id"`
+	// The IPv4/IPv6 address that identifies where to reach a target.
+	Ip GetInfrastructureAccessTargetsTargetIp `pulumi:"ip"`
+	// The date and time at which the target was last modified.
+	ModifiedAt string `pulumi:"modifiedAt"`
+}
+
+// GetInfrastructureAccessTargetsTargetInput is an input type that accepts GetInfrastructureAccessTargetsTargetArgs and GetInfrastructureAccessTargetsTargetOutput values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetInput` via:
+//
+//	GetInfrastructureAccessTargetsTargetArgs{...}
+type GetInfrastructureAccessTargetsTargetInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetOutput() GetInfrastructureAccessTargetsTargetOutput
+	ToGetInfrastructureAccessTargetsTargetOutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetOutput
+}
+
+type GetInfrastructureAccessTargetsTargetArgs struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The date and time at which the target was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A non-unique field that refers to a target.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The identifier of this resource. This is target's unique identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IPv4/IPv6 address that identifies where to reach a target.
+	Ip GetInfrastructureAccessTargetsTargetIpInput `pulumi:"ip"`
+	// The date and time at which the target was last modified.
+	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
+}
+
+func (GetInfrastructureAccessTargetsTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (i GetInfrastructureAccessTargetsTargetArgs) ToGetInfrastructureAccessTargetsTargetOutput() GetInfrastructureAccessTargetsTargetOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetArgs) ToGetInfrastructureAccessTargetsTargetOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetOutput)
+}
+
+// GetInfrastructureAccessTargetsTargetArrayInput is an input type that accepts GetInfrastructureAccessTargetsTargetArray and GetInfrastructureAccessTargetsTargetArrayOutput values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetArrayInput` via:
+//
+//	GetInfrastructureAccessTargetsTargetArray{ GetInfrastructureAccessTargetsTargetArgs{...} }
+type GetInfrastructureAccessTargetsTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetArrayOutput() GetInfrastructureAccessTargetsTargetArrayOutput
+	ToGetInfrastructureAccessTargetsTargetArrayOutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetArrayOutput
+}
+
+type GetInfrastructureAccessTargetsTargetArray []GetInfrastructureAccessTargetsTargetInput
+
+func (GetInfrastructureAccessTargetsTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (i GetInfrastructureAccessTargetsTargetArray) ToGetInfrastructureAccessTargetsTargetArrayOutput() GetInfrastructureAccessTargetsTargetArrayOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetArray) ToGetInfrastructureAccessTargetsTargetArrayOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetArrayOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetOutput) ToGetInfrastructureAccessTargetsTargetOutput() GetInfrastructureAccessTargetsTargetOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetOutput) ToGetInfrastructureAccessTargetsTargetOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetOutput {
+	return o
+}
+
+// The account identifier to target for the resource.
+func (o GetInfrastructureAccessTargetsTargetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The date and time at which the target was created.
+func (o GetInfrastructureAccessTargetsTargetOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A non-unique field that refers to a target.
+func (o GetInfrastructureAccessTargetsTargetOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The identifier of this resource. This is target's unique identifier.
+func (o GetInfrastructureAccessTargetsTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IPv4/IPv6 address that identifies where to reach a target.
+func (o GetInfrastructureAccessTargetsTargetOutput) Ip() GetInfrastructureAccessTargetsTargetIpOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) GetInfrastructureAccessTargetsTargetIp { return v.Ip }).(GetInfrastructureAccessTargetsTargetIpOutput)
+}
+
+// The date and time at which the target was last modified.
+func (o GetInfrastructureAccessTargetsTargetOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTarget) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetArrayOutput) ToGetInfrastructureAccessTargetsTargetArrayOutput() GetInfrastructureAccessTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetArrayOutput) ToGetInfrastructureAccessTargetsTargetArrayOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetInfrastructureAccessTargetsTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfrastructureAccessTargetsTarget {
+		return vs[0].([]GetInfrastructureAccessTargetsTarget)[vs[1].(int)]
+	}).(GetInfrastructureAccessTargetsTargetOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIp struct {
+	// The target's IPv4 address.
+	Ipv4 *GetInfrastructureAccessTargetsTargetIpIpv4 `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 *GetInfrastructureAccessTargetsTargetIpIpv6 `pulumi:"ipv6"`
+}
+
+// GetInfrastructureAccessTargetsTargetIpInput is an input type that accepts GetInfrastructureAccessTargetsTargetIpArgs and GetInfrastructureAccessTargetsTargetIpOutput values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetIpInput` via:
+//
+//	GetInfrastructureAccessTargetsTargetIpArgs{...}
+type GetInfrastructureAccessTargetsTargetIpInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetIpOutput() GetInfrastructureAccessTargetsTargetIpOutput
+	ToGetInfrastructureAccessTargetsTargetIpOutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetIpOutput
+}
+
+type GetInfrastructureAccessTargetsTargetIpArgs struct {
+	// The target's IPv4 address.
+	Ipv4 GetInfrastructureAccessTargetsTargetIpIpv4PtrInput `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 GetInfrastructureAccessTargetsTargetIpIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (GetInfrastructureAccessTargetsTargetIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIp)(nil)).Elem()
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpArgs) ToGetInfrastructureAccessTargetsTargetIpOutput() GetInfrastructureAccessTargetsTargetIpOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetIpOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpArgs) ToGetInfrastructureAccessTargetsTargetIpOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIp)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpOutput) ToGetInfrastructureAccessTargetsTargetIpOutput() GetInfrastructureAccessTargetsTargetIpOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpOutput) ToGetInfrastructureAccessTargetsTargetIpOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpOutput {
+	return o
+}
+
+// The target's IPv4 address.
+func (o GetInfrastructureAccessTargetsTargetIpOutput) Ipv4() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIp) *GetInfrastructureAccessTargetsTargetIpIpv4 {
+		return v.Ipv4
+	}).(GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o GetInfrastructureAccessTargetsTargetIpOutput) Ipv6() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIp) *GetInfrastructureAccessTargetsTargetIpIpv6 {
+		return v.Ipv6
+	}).(GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv4 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// GetInfrastructureAccessTargetsTargetIpIpv4Input is an input type that accepts GetInfrastructureAccessTargetsTargetIpIpv4Args and GetInfrastructureAccessTargetsTargetIpIpv4Output values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetIpIpv4Input` via:
+//
+//	GetInfrastructureAccessTargetsTargetIpIpv4Args{...}
+type GetInfrastructureAccessTargetsTargetIpIpv4Input interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetIpIpv4Output() GetInfrastructureAccessTargetsTargetIpIpv4Output
+	ToGetInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetIpIpv4Output
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv4Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (GetInfrastructureAccessTargetsTargetIpIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv4Args) ToGetInfrastructureAccessTargetsTargetIpIpv4Output() GetInfrastructureAccessTargetsTargetIpIpv4Output {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv4Args) ToGetInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv4Output)
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv4Args) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv4Args) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv4Output).ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx)
+}
+
+// GetInfrastructureAccessTargetsTargetIpIpv4PtrInput is an input type that accepts GetInfrastructureAccessTargetsTargetIpIpv4Args, GetInfrastructureAccessTargetsTargetIpIpv4Ptr and GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetIpIpv4PtrInput` via:
+//
+//	        GetInfrastructureAccessTargetsTargetIpIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type GetInfrastructureAccessTargetsTargetIpIpv4PtrInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput
+	ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput
+}
+
+type getInfrastructureAccessTargetsTargetIpIpv4PtrType GetInfrastructureAccessTargetsTargetIpIpv4Args
+
+func GetInfrastructureAccessTargetsTargetIpIpv4Ptr(v *GetInfrastructureAccessTargetsTargetIpIpv4Args) GetInfrastructureAccessTargetsTargetIpIpv4PtrInput {
+	return (*getInfrastructureAccessTargetsTargetIpIpv4PtrType)(v)
+}
+
+func (*getInfrastructureAccessTargetsTargetIpIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (i *getInfrastructureAccessTargetsTargetIpIpv4PtrType) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *getInfrastructureAccessTargetsTargetIpIpv4PtrType) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv4Output struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetIpIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) ToGetInfrastructureAccessTargetsTargetIpIpv4Output() GetInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) ToGetInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfrastructureAccessTargetsTargetIpIpv4) *GetInfrastructureAccessTargetsTargetIpIpv4 {
+		return &v
+	}).(GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+// The IP address of the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIpIpv4) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv4Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIpIpv4) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ToGetInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) Elem() GetInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv4) GetInfrastructureAccessTargetsTargetIpIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfrastructureAccessTargetsTargetIpIpv4
+		return ret
+	}).(GetInfrastructureAccessTargetsTargetIpIpv4Output)
+}
+
+// The IP address of the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv6 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// GetInfrastructureAccessTargetsTargetIpIpv6Input is an input type that accepts GetInfrastructureAccessTargetsTargetIpIpv6Args and GetInfrastructureAccessTargetsTargetIpIpv6Output values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetIpIpv6Input` via:
+//
+//	GetInfrastructureAccessTargetsTargetIpIpv6Args{...}
+type GetInfrastructureAccessTargetsTargetIpIpv6Input interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetIpIpv6Output() GetInfrastructureAccessTargetsTargetIpIpv6Output
+	ToGetInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetIpIpv6Output
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv6Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (GetInfrastructureAccessTargetsTargetIpIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv6Args) ToGetInfrastructureAccessTargetsTargetIpIpv6Output() GetInfrastructureAccessTargetsTargetIpIpv6Output {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv6Args) ToGetInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv6Output)
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv6Args) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureAccessTargetsTargetIpIpv6Args) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv6Output).ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx)
+}
+
+// GetInfrastructureAccessTargetsTargetIpIpv6PtrInput is an input type that accepts GetInfrastructureAccessTargetsTargetIpIpv6Args, GetInfrastructureAccessTargetsTargetIpIpv6Ptr and GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput values.
+// You can construct a concrete instance of `GetInfrastructureAccessTargetsTargetIpIpv6PtrInput` via:
+//
+//	        GetInfrastructureAccessTargetsTargetIpIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type GetInfrastructureAccessTargetsTargetIpIpv6PtrInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput
+	ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Context) GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput
+}
+
+type getInfrastructureAccessTargetsTargetIpIpv6PtrType GetInfrastructureAccessTargetsTargetIpIpv6Args
+
+func GetInfrastructureAccessTargetsTargetIpIpv6Ptr(v *GetInfrastructureAccessTargetsTargetIpIpv6Args) GetInfrastructureAccessTargetsTargetIpIpv6PtrInput {
+	return (*getInfrastructureAccessTargetsTargetIpIpv6PtrType)(v)
+}
+
+func (*getInfrastructureAccessTargetsTargetIpIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (i *getInfrastructureAccessTargetsTargetIpIpv6PtrType) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return i.ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *getInfrastructureAccessTargetsTargetIpIpv6PtrType) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv6Output struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetIpIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) ToGetInfrastructureAccessTargetsTargetIpIpv6Output() GetInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) ToGetInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfrastructureAccessTargetsTargetIpIpv6) *GetInfrastructureAccessTargetsTargetIpIpv6 {
+		return &v
+	}).(GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+// The IP address of the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIpIpv6) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv6Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfrastructureAccessTargetsTargetIpIpv6) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ToGetInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) Elem() GetInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv6) GetInfrastructureAccessTargetsTargetIpIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfrastructureAccessTargetsTargetIpIpv6
+		return ret
+	}).(GetInfrastructureAccessTargetsTargetIpIpv6Output)
+}
+
+// The IP address of the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureAccessTargetsTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetListsList struct {
@@ -73772,6 +75792,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingArrayInput)(nil)).Elem(), AccessApplicationScimConfigMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsPtrInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaInput)(nil)).Elem(), AccessApplicationTargetCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaArrayInput)(nil)).Elem(), AccessApplicationTargetCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaTargetAttributeInput)(nil)).Elem(), AccessApplicationTargetCriteriaTargetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaTargetAttributeArrayInput)(nil)).Elem(), AccessApplicationTargetCriteriaTargetAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAuthContextInput)(nil)).Elem(), AccessGroupExcludeAuthContextArgs{})
@@ -73832,6 +75856,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignArrayInput)(nil)).Elem(), AccessOrganizationLoginDesignArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupArrayInput)(nil)).Elem(), AccessPolicyApprovalGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyConnectionRulesInput)(nil)).Elem(), AccessPolicyConnectionRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyConnectionRulesPtrInput)(nil)).Elem(), AccessPolicyConnectionRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyConnectionRulesSshInput)(nil)).Elem(), AccessPolicyConnectionRulesSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyConnectionRulesSshPtrInput)(nil)).Elem(), AccessPolicyConnectionRulesSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeInput)(nil)).Elem(), AccessPolicyExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeArrayInput)(nil)).Elem(), AccessPolicyExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAuthContextInput)(nil)).Elem(), AccessPolicyExcludeAuthContextArgs{})
@@ -73950,6 +75978,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigCachingPtrInput)(nil)).Elem(), HyperdriveConfigCachingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginPtrInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpInput)(nil)).Elem(), InfrastructureAccessTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpPtrInput)(nil)).Elem(), InfrastructureAccessTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpIpv4Input)(nil)).Elem(), InfrastructureAccessTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpIpv4PtrInput)(nil)).Elem(), InfrastructureAccessTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpIpv6Input)(nil)).Elem(), InfrastructureAccessTargetIpIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureAccessTargetIpIpv6PtrInput)(nil)).Elem(), InfrastructureAccessTargetIpIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeArrayInput)(nil)).Elem(), ListItemTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnameInput)(nil)).Elem(), ListItemHostnameArgs{})
@@ -74307,6 +76341,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationScimConfigMappingArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationScimConfigMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationScimConfigMappingOperationsInput)(nil)).Elem(), ZeroTrustAccessApplicationScimConfigMappingOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationScimConfigMappingOperationsPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationScimConfigMappingOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaInput)(nil)).Elem(), ZeroTrustAccessApplicationTargetCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationTargetCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaTargetAttributeInput)(nil)).Elem(), ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeArrayInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAuthContextInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAuthContextArgs{})
@@ -74367,6 +76405,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessOrganizationLoginDesignArrayInput)(nil)).Elem(), ZeroTrustAccessOrganizationLoginDesignArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyApprovalGroupInput)(nil)).Elem(), ZeroTrustAccessPolicyApprovalGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyApprovalGroupArrayInput)(nil)).Elem(), ZeroTrustAccessPolicyApprovalGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesInput)(nil)).Elem(), ZeroTrustAccessPolicyConnectionRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesPtrInput)(nil)).Elem(), ZeroTrustAccessPolicyConnectionRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesSshInput)(nil)).Elem(), ZeroTrustAccessPolicyConnectionRulesSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyConnectionRulesSshPtrInput)(nil)).Elem(), ZeroTrustAccessPolicyConnectionRulesSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyExcludeInput)(nil)).Elem(), ZeroTrustAccessPolicyExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyExcludeArrayInput)(nil)).Elem(), ZeroTrustAccessPolicyExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyExcludeAuthContextInput)(nil)).Elem(), ZeroTrustAccessPolicyExcludeAuthContextArgs{})
@@ -74557,6 +76599,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategoryArrayInput)(nil)).Elem(), GetGatewayCategoriesCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategorySubcategoryInput)(nil)).Elem(), GetGatewayCategoriesCategorySubcategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategorySubcategoryArrayInput)(nil)).Elem(), GetGatewayCategoriesCategorySubcategoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetInput)(nil)).Elem(), GetInfrastructureAccessTargetsTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetArrayInput)(nil)).Elem(), GetInfrastructureAccessTargetsTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpInput)(nil)).Elem(), GetInfrastructureAccessTargetsTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv4Input)(nil)).Elem(), GetInfrastructureAccessTargetsTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv4PtrInput)(nil)).Elem(), GetInfrastructureAccessTargetsTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv6Input)(nil)).Elem(), GetInfrastructureAccessTargetsTargetIpIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureAccessTargetsTargetIpIpv6PtrInput)(nil)).Elem(), GetInfrastructureAccessTargetsTargetIpIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListArrayInput)(nil)).Elem(), GetListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
@@ -74668,6 +76717,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaTargetAttributeOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaTargetAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAuthContextOutput{})
@@ -74728,6 +76781,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyConnectionRulesOutput{})
+	pulumi.RegisterOutputType(AccessPolicyConnectionRulesPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyConnectionRulesSshOutput{})
+	pulumi.RegisterOutputType(AccessPolicyConnectionRulesSshPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAuthContextOutput{})
@@ -74846,6 +76903,12 @@ func init() {
 	pulumi.RegisterOutputType(HyperdriveConfigCachingPtrOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigOriginOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigOriginPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpOutput{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpIpv4Output{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpIpv6Output{})
+	pulumi.RegisterOutputType(InfrastructureAccessTargetIpIpv6PtrOutput{})
 	pulumi.RegisterOutputType(ListItemTypeOutput{})
 	pulumi.RegisterOutputType(ListItemTypeArrayOutput{})
 	pulumi.RegisterOutputType(ListItemHostnameOutput{})
@@ -75203,6 +77266,10 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationScimConfigMappingArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationScimConfigMappingOperationsOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationScimConfigMappingOperationsPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationTargetCriteriaOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationTargetCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAuthContextOutput{})
@@ -75263,6 +77330,10 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustAccessOrganizationLoginDesignArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyApprovalGroupOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyApprovalGroupArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyConnectionRulesOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyConnectionRulesPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyConnectionRulesSshOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyConnectionRulesSshPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyExcludeArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyExcludeAuthContextOutput{})
@@ -75453,6 +77524,13 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategoryArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategorySubcategoryOutput{})
 	pulumi.RegisterOutputType(GetGatewayCategoriesCategorySubcategoryArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetIpOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetIpIpv4Output{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetIpIpv4PtrOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetIpIpv6Output{})
+	pulumi.RegisterOutputType(GetInfrastructureAccessTargetsTargetIpIpv6PtrOutput{})
 	pulumi.RegisterOutputType(GetListsListOutput{})
 	pulumi.RegisterOutputType(GetListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterOutput{})

@@ -134,6 +134,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Running;
         /// <summary>
+        /// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        /// </summary>
+        public readonly int? Score;
+        /// <summary>
         /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         /// </summary>
         public readonly string? SensorConfig;
@@ -224,6 +228,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? running,
 
+            int? score,
+
             string? sensorConfig,
 
             string? sha256,
@@ -268,6 +274,7 @@ namespace Pulumi.Cloudflare.Outputs
             RequireAll = requireAll;
             RiskLevel = riskLevel;
             Running = running;
+            Score = score;
             SensorConfig = sensorConfig;
             Sha256 = sha256;
             State = state;

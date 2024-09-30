@@ -25,6 +25,8 @@ __all__ = [
     'AccessApplicationScimConfigAuthentication',
     'AccessApplicationScimConfigMapping',
     'AccessApplicationScimConfigMappingOperations',
+    'AccessApplicationTargetCriteria',
+    'AccessApplicationTargetCriteriaTargetAttribute',
     'AccessGroupExclude',
     'AccessGroupExcludeAuthContext',
     'AccessGroupExcludeAzure',
@@ -55,6 +57,8 @@ __all__ = [
     'AccessOrganizationCustomPage',
     'AccessOrganizationLoginDesign',
     'AccessPolicyApprovalGroup',
+    'AccessPolicyConnectionRules',
+    'AccessPolicyConnectionRulesSsh',
     'AccessPolicyExclude',
     'AccessPolicyExcludeAuthContext',
     'AccessPolicyExcludeAzure',
@@ -114,6 +118,9 @@ __all__ = [
     'HealthcheckHeader',
     'HyperdriveConfigCaching',
     'HyperdriveConfigOrigin',
+    'InfrastructureAccessTargetIp',
+    'InfrastructureAccessTargetIpIpv4',
+    'InfrastructureAccessTargetIpIpv6',
     'ListItem',
     'ListItemHostname',
     'ListItemRedirect',
@@ -294,6 +301,8 @@ __all__ = [
     'ZeroTrustAccessApplicationScimConfigAuthentication',
     'ZeroTrustAccessApplicationScimConfigMapping',
     'ZeroTrustAccessApplicationScimConfigMappingOperations',
+    'ZeroTrustAccessApplicationTargetCriteria',
+    'ZeroTrustAccessApplicationTargetCriteriaTargetAttribute',
     'ZeroTrustAccessGroupExclude',
     'ZeroTrustAccessGroupExcludeAuthContext',
     'ZeroTrustAccessGroupExcludeAzure',
@@ -324,6 +333,8 @@ __all__ = [
     'ZeroTrustAccessOrganizationCustomPage',
     'ZeroTrustAccessOrganizationLoginDesign',
     'ZeroTrustAccessPolicyApprovalGroup',
+    'ZeroTrustAccessPolicyConnectionRules',
+    'ZeroTrustAccessPolicyConnectionRulesSsh',
     'ZeroTrustAccessPolicyExclude',
     'ZeroTrustAccessPolicyExcludeAuthContext',
     'ZeroTrustAccessPolicyExcludeAzure',
@@ -419,6 +430,10 @@ __all__ = [
     'GetGatewayAppTypesAppTypeResult',
     'GetGatewayCategoriesCategoryResult',
     'GetGatewayCategoriesCategorySubcategoryResult',
+    'GetInfrastructureAccessTargetsTargetResult',
+    'GetInfrastructureAccessTargetsTargetIpResult',
+    'GetInfrastructureAccessTargetsTargetIpIpv4Result',
+    'GetInfrastructureAccessTargetsTargetIpIpv6Result',
     'GetListsListResult',
     'GetLoadBalancerPoolsFilterResult',
     'GetLoadBalancerPoolsPoolResult',
@@ -1712,6 +1727,92 @@ class AccessApplicationScimConfigMappingOperations(dict):
         Whether or not this mapping applies to update (PATCH/PUT) operations.
         """
         return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class AccessApplicationTargetCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAttributes":
+            suggest = "target_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationTargetCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationTargetCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationTargetCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port: int,
+                 protocol: str,
+                 target_attributes: Sequence['outputs.AccessApplicationTargetCriteriaTargetAttribute']):
+        """
+        :param int port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        :param str protocol: The communication protocol your application secures.
+        :param Sequence['AccessApplicationTargetCriteriaTargetAttributeArgs'] target_attributes: Contains a map of target attribute keys to target attribute values.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The communication protocol your application secures.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> Sequence['outputs.AccessApplicationTargetCriteriaTargetAttribute']:
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+        return pulumi.get(self, "target_attributes")
+
+
+@pulumi.output_type
+class AccessApplicationTargetCriteriaTargetAttribute(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The key of the attribute.
+        :param Sequence[str] values: The values of the attribute.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values of the attribute.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -4407,6 +4508,42 @@ class AccessPolicyApprovalGroup(dict):
     @pulumi.getter(name="emailListUuid")
     def email_list_uuid(self) -> Optional[str]:
         return pulumi.get(self, "email_list_uuid")
+
+
+@pulumi.output_type
+class AccessPolicyConnectionRules(dict):
+    def __init__(__self__, *,
+                 ssh: 'outputs.AccessPolicyConnectionRulesSsh'):
+        """
+        :param 'AccessPolicyConnectionRulesSshArgs' ssh: The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> 'outputs.AccessPolicyConnectionRulesSsh':
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class AccessPolicyConnectionRulesSsh(dict):
+    def __init__(__self__, *,
+                 usernames: Sequence[str]):
+        """
+        :param Sequence[str] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Sequence[str]:
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        return pulumi.get(self, "usernames")
 
 
 @pulumi.output_type
@@ -7719,6 +7856,7 @@ class DevicePostureRuleInput(dict):
                  require_all: Optional[bool] = None,
                  risk_level: Optional[str] = None,
                  running: Optional[bool] = None,
+                 score: Optional[int] = None,
                  sensor_config: Optional[str] = None,
                  sha256: Optional[str] = None,
                  state: Optional[str] = None,
@@ -7757,6 +7895,7 @@ class DevicePostureRuleInput(dict):
         :param bool require_all: True if all drives must be encrypted.
         :param str risk_level: The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
         :param bool running: Checks if the application should be running.
+        :param int score: A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
         :param str sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         :param str sha256: The sha256 hash of the file.
         :param str state: The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
@@ -7825,6 +7964,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "risk_level", risk_level)
         if running is not None:
             pulumi.set(__self__, "running", running)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
         if sensor_config is not None:
             pulumi.set(__self__, "sensor_config", sensor_config)
         if sha256 is not None:
@@ -8079,6 +8220,14 @@ class DevicePostureRuleInput(dict):
         Checks if the application should be running.
         """
         return pulumi.get(self, "running")
+
+    @property
+    @pulumi.getter
+    def score(self) -> Optional[int]:
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        """
+        return pulumi.get(self, "score")
 
     @property
     @pulumi.getter(name="sensorConfig")
@@ -8716,6 +8865,133 @@ class HyperdriveConfigOrigin(dict):
         The port (default: 5432 for Postgres) of your origin database.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InfrastructureAccessTargetIp(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional['outputs.InfrastructureAccessTargetIpIpv4'] = None,
+                 ipv6: Optional['outputs.InfrastructureAccessTargetIpIpv6'] = None):
+        """
+        :param 'InfrastructureAccessTargetIpIpv4Args' ipv4: The target's IPv4 address.
+        :param 'InfrastructureAccessTargetIpIpv6Args' ipv6: The target's IPv6 address.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InfrastructureAccessTargetIpIpv4']:
+        """
+        The target's IPv4 address.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.InfrastructureAccessTargetIpIpv6']:
+        """
+        The target's IPv6 address.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class InfrastructureAccessTargetIpIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddr":
+            suggest = "ip_addr"
+        elif key == "virtualNetworkId":
+            suggest = "virtual_network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureAccessTargetIpIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureAccessTargetIpIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureAccessTargetIpIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+
+@pulumi.output_type
+class InfrastructureAccessTargetIpIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddr":
+            suggest = "ip_addr"
+        elif key == "virtualNetworkId":
+            suggest = "virtual_network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureAccessTargetIpIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureAccessTargetIpIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureAccessTargetIpIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
 
 @pulumi.output_type
@@ -21115,6 +21391,92 @@ class ZeroTrustAccessApplicationScimConfigMappingOperations(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessApplicationTargetCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAttributes":
+            suggest = "target_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationTargetCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationTargetCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationTargetCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port: int,
+                 protocol: str,
+                 target_attributes: Sequence['outputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute']):
+        """
+        :param int port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        :param str protocol: The communication protocol your application secures.
+        :param Sequence['ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs'] target_attributes: Contains a map of target attribute keys to target attribute values.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The communication protocol your application secures.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> Sequence['outputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute']:
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+        return pulumi.get(self, "target_attributes")
+
+
+@pulumi.output_type
+class ZeroTrustAccessApplicationTargetCriteriaTargetAttribute(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: The key of the attribute.
+        :param Sequence[str] values: The values of the attribute.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The key of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values of the attribute.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class ZeroTrustAccessGroupExclude(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23810,6 +24172,42 @@ class ZeroTrustAccessPolicyApprovalGroup(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessPolicyConnectionRules(dict):
+    def __init__(__self__, *,
+                 ssh: 'outputs.ZeroTrustAccessPolicyConnectionRulesSsh'):
+        """
+        :param 'ZeroTrustAccessPolicyConnectionRulesSshArgs' ssh: The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> 'outputs.ZeroTrustAccessPolicyConnectionRulesSsh':
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class ZeroTrustAccessPolicyConnectionRulesSsh(dict):
+    def __init__(__self__, *,
+                 usernames: Sequence[str]):
+        """
+        :param Sequence[str] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Sequence[str]:
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+        return pulumi.get(self, "usernames")
+
+
+@pulumi.output_type
 class ZeroTrustAccessPolicyExclude(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -26164,6 +26562,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
                  require_all: Optional[bool] = None,
                  risk_level: Optional[str] = None,
                  running: Optional[bool] = None,
+                 score: Optional[int] = None,
                  sensor_config: Optional[str] = None,
                  sha256: Optional[str] = None,
                  state: Optional[str] = None,
@@ -26202,6 +26601,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
         :param bool require_all: True if all drives must be encrypted.
         :param str risk_level: The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
         :param bool running: Checks if the application should be running.
+        :param int score: A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
         :param str sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         :param str sha256: The sha256 hash of the file.
         :param str state: The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
@@ -26270,6 +26670,8 @@ class ZeroTrustDevicePostureRuleInput(dict):
             pulumi.set(__self__, "risk_level", risk_level)
         if running is not None:
             pulumi.set(__self__, "running", running)
+        if score is not None:
+            pulumi.set(__self__, "score", score)
         if sensor_config is not None:
             pulumi.set(__self__, "sensor_config", sensor_config)
         if sha256 is not None:
@@ -26524,6 +26926,14 @@ class ZeroTrustDevicePostureRuleInput(dict):
         Checks if the application should be running.
         """
         return pulumi.get(self, "running")
+
+    @property
+    @pulumi.getter
+    def score(self) -> Optional[int]:
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        """
+        return pulumi.get(self, "score")
 
     @property
     @pulumi.getter(name="sensorConfig")
@@ -29645,6 +30055,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "server_side_exclude"
         elif key == "sortQueryStringForCache":
             suggest = "sort_query_string_for_cache"
+        elif key == "speedBrain":
+            suggest = "speed_brain"
         elif key == "tls12Only":
             suggest = "tls12_only"
         elif key == "tlsClientAuth":
@@ -29717,6 +30129,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  security_level: Optional[str] = None,
                  server_side_exclude: Optional[str] = None,
                  sort_query_string_for_cache: Optional[str] = None,
+                 speed_brain: Optional[str] = None,
                  ssl: Optional[str] = None,
                  tls12_only: Optional[str] = None,
                  tls13: Optional[str] = None,
@@ -29822,6 +30235,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "server_side_exclude", server_side_exclude)
         if sort_query_string_for_cache is not None:
             pulumi.set(__self__, "sort_query_string_for_cache", sort_query_string_for_cache)
+        if speed_brain is not None:
+            pulumi.set(__self__, "speed_brain", speed_brain)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if tls12_only is not None:
@@ -30080,6 +30495,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @pulumi.getter(name="sortQueryStringForCache")
     def sort_query_string_for_cache(self) -> Optional[str]:
         return pulumi.get(self, "sort_query_string_for_cache")
+
+    @property
+    @pulumi.getter(name="speedBrain")
+    def speed_brain(self) -> Optional[str]:
+        return pulumi.get(self, "speed_brain")
 
     @property
     @pulumi.getter
@@ -30364,6 +30784,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "server_side_exclude"
         elif key == "sortQueryStringForCache":
             suggest = "sort_query_string_for_cache"
+        elif key == "speedBrain":
+            suggest = "speed_brain"
         elif key == "tls12Only":
             suggest = "tls12_only"
         elif key == "tlsClientAuth":
@@ -30436,6 +30858,7 @@ class ZoneSettingsOverrideSettings(dict):
                  security_level: Optional[str] = None,
                  server_side_exclude: Optional[str] = None,
                  sort_query_string_for_cache: Optional[str] = None,
+                 speed_brain: Optional[str] = None,
                  ssl: Optional[str] = None,
                  tls12_only: Optional[str] = None,
                  tls13: Optional[str] = None,
@@ -30541,6 +30964,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "server_side_exclude", server_side_exclude)
         if sort_query_string_for_cache is not None:
             pulumi.set(__self__, "sort_query_string_for_cache", sort_query_string_for_cache)
+        if speed_brain is not None:
+            pulumi.set(__self__, "speed_brain", speed_brain)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if tls12_only is not None:
@@ -30799,6 +31224,11 @@ class ZoneSettingsOverrideSettings(dict):
     @pulumi.getter(name="sortQueryStringForCache")
     def sort_query_string_for_cache(self) -> Optional[str]:
         return pulumi.get(self, "sort_query_string_for_cache")
+
+    @property
+    @pulumi.getter(name="speedBrain")
+    def speed_brain(self) -> Optional[str]:
+        return pulumi.get(self, "speed_brain")
 
     @property
     @pulumi.getter
@@ -31113,7 +31543,7 @@ class GetDevicePostureRulesRuleResult(dict):
                  schedule: Optional[str] = None):
         """
         :param str id: ID of the Device Posture Rule.
-        :param str type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+        :param str type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`
         :param str expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param str name: Name of the device posture rule.
         :param str schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -31141,7 +31571,7 @@ class GetDevicePostureRulesRuleResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`
         """
         return pulumi.get(self, "type")
 
@@ -31670,6 +32100,168 @@ class GetGatewayCategoriesCategorySubcategoryResult(dict):
         The name of the subcategory.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetInfrastructureAccessTargetsTargetResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 created_at: str,
+                 hostname: str,
+                 id: str,
+                 ip: 'outputs.GetInfrastructureAccessTargetsTargetIpResult',
+                 modified_at: str):
+        """
+        :param str account_id: The account identifier to target for the resource.
+        :param str created_at: The date and time at which the target was created.
+        :param str hostname: A non-unique field that refers to a target.
+        :param str id: The identifier of this resource. This is target's unique identifier.
+        :param 'GetInfrastructureAccessTargetsTargetIpArgs' ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param str modified_at: The date and time at which the target was last modified.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "modified_at", modified_at)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time at which the target was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        A non-unique field that refers to a target.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier of this resource. This is target's unique identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> 'outputs.GetInfrastructureAccessTargetsTargetIpResult':
+        """
+        The IPv4/IPv6 address that identifies where to reach a target.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> str:
+        """
+        The date and time at which the target was last modified.
+        """
+        return pulumi.get(self, "modified_at")
+
+
+@pulumi.output_type
+class GetInfrastructureAccessTargetsTargetIpResult(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional['outputs.GetInfrastructureAccessTargetsTargetIpIpv4Result'] = None,
+                 ipv6: Optional['outputs.GetInfrastructureAccessTargetsTargetIpIpv6Result'] = None):
+        """
+        :param 'GetInfrastructureAccessTargetsTargetIpIpv4Args' ipv4: The target's IPv4 address.
+        :param 'GetInfrastructureAccessTargetsTargetIpIpv6Args' ipv6: The target's IPv6 address.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.GetInfrastructureAccessTargetsTargetIpIpv4Result']:
+        """
+        The target's IPv4 address.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.GetInfrastructureAccessTargetsTargetIpIpv6Result']:
+        """
+        The target's IPv6 address.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetInfrastructureAccessTargetsTargetIpIpv4Result(dict):
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+
+@pulumi.output_type
+class GetInfrastructureAccessTargetsTargetIpIpv6Result(dict):
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
 
 @pulumi.output_type

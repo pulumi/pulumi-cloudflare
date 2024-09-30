@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.AccessPolicyArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessPolicyState;
 import com.pulumi.cloudflare.outputs.AccessPolicyApprovalGroup;
+import com.pulumi.cloudflare.outputs.AccessPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.AccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.AccessPolicyInclude;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequire;
@@ -82,6 +83,20 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> approvalRequired() {
         return Codegen.optional(this.approvalRequired);
+    }
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    @Export(name="connectionRules", refs={AccessPolicyConnectionRules.class}, tree="[0]")
+    private Output</* @Nullable */ AccessPolicyConnectionRules> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    public Output<Optional<AccessPolicyConnectionRules>> connectionRules() {
+        return Codegen.optional(this.connectionRules);
     }
     /**
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.

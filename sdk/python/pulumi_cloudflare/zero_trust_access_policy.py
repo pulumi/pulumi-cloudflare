@@ -23,6 +23,7 @@ class ZeroTrustAccessPolicyArgs:
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
+                 connection_rules: Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[bool]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
@@ -38,6 +39,7 @@ class ZeroTrustAccessPolicyArgs:
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
@@ -58,6 +60,8 @@ class ZeroTrustAccessPolicyArgs:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
+        if connection_rules is not None:
+            pulumi.set(__self__, "connection_rules", connection_rules)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if isolation_required is not None:
@@ -152,6 +156,18 @@ class ZeroTrustAccessPolicyArgs:
     @approval_required.setter
     def approval_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "approval_required", value)
+
+    @property
+    @pulumi.getter(name="connectionRules")
+    def connection_rules(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]:
+        """
+        The rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "connection_rules")
+
+    @connection_rules.setter
+    def connection_rules(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]):
+        pulumi.set(self, "connection_rules", value)
 
     @property
     @pulumi.getter
@@ -257,6 +273,7 @@ class _ZeroTrustAccessPolicyState:
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
+                 connection_rules: Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]] = None,
@@ -272,6 +289,7 @@ class _ZeroTrustAccessPolicyState:
         Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
@@ -292,6 +310,8 @@ class _ZeroTrustAccessPolicyState:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
+        if connection_rules is not None:
+            pulumi.set(__self__, "connection_rules", connection_rules)
         if decision is not None:
             pulumi.set(__self__, "decision", decision)
         if excludes is not None:
@@ -356,6 +376,18 @@ class _ZeroTrustAccessPolicyState:
     @approval_required.setter
     def approval_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "approval_required", value)
+
+    @property
+    @pulumi.getter(name="connectionRules")
+    def connection_rules(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]:
+        """
+        The rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "connection_rules")
+
+    @connection_rules.setter
+    def connection_rules(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]):
+        pulumi.set(self, "connection_rules", value)
 
     @property
     @pulumi.getter
@@ -499,6 +531,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
+                 connection_rules: Optional[pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]]] = None,
@@ -534,6 +567,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
@@ -590,6 +624,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
+                 connection_rules: Optional[pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]]] = None,
@@ -614,6 +649,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["approval_groups"] = approval_groups
             __props__.__dict__["approval_required"] = approval_required
+            __props__.__dict__["connection_rules"] = connection_rules
             if decision is None and not opts.urn:
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
@@ -645,6 +681,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
             application_id: Optional[pulumi.Input[str]] = None,
             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyApprovalGroupArgs', 'ZeroTrustAccessPolicyApprovalGroupArgsDict']]]]] = None,
             approval_required: Optional[pulumi.Input[bool]] = None,
+            connection_rules: Optional[pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']]] = None,
             decision: Optional[pulumi.Input[str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]]] = None,
@@ -665,6 +702,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
@@ -685,6 +723,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["approval_groups"] = approval_groups
         __props__.__dict__["approval_required"] = approval_required
+        __props__.__dict__["connection_rules"] = connection_rules
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
@@ -723,6 +762,14 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
     @pulumi.getter(name="approvalRequired")
     def approval_required(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "approval_required")
+
+    @property
+    @pulumi.getter(name="connectionRules")
+    def connection_rules(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessPolicyConnectionRules']]:
+        """
+        The rules that define how users may connect to the targets secured by your application.
+        """
+        return pulumi.get(self, "connection_rules")
 
     @property
     @pulumi.getter

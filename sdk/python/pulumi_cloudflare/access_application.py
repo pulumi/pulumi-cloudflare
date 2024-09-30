@@ -47,6 +47,7 @@ class AccessApplicationArgs:
                  skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -82,7 +83,8 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -147,6 +149,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_criterias is not None:
+            pulumi.set(__self__, "target_criterias", target_criterias)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -525,10 +529,22 @@ class AccessApplicationArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetCriterias")
+    def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        return pulumi.get(self, "target_criterias")
+
+    @target_criterias.setter
+    def target_criterias(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]):
+        pulumi.set(self, "target_criterias", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 
@@ -584,6 +600,7 @@ class _AccessApplicationState:
                  skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -620,7 +637,8 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -687,6 +705,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_criterias is not None:
+            pulumi.set(__self__, "target_criterias", target_criterias)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -1077,10 +1097,22 @@ class _AccessApplicationState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetCriterias")
+    def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        return pulumi.get(self, "target_criterias")
+
+    @target_criterias.setter
+    def target_criterias(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]):
+        pulumi.set(self, "target_criterias", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 
@@ -1137,6 +1169,7 @@ class AccessApplication(pulumi.CustomResource):
                  skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1190,7 +1223,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -1262,6 +1296,7 @@ class AccessApplication(pulumi.CustomResource):
                  skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1304,6 +1339,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["skip_app_launcher_login_page"] = skip_app_launcher_login_page
             __props__.__dict__["skip_interstitial"] = skip_interstitial
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["target_criterias"] = target_criterias
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
@@ -1349,6 +1385,7 @@ class AccessApplication(pulumi.CustomResource):
             skip_app_launcher_login_page: Optional[pulumi.Input[bool]] = None,
             skip_interstitial: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
         """
@@ -1390,7 +1427,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1429,6 +1467,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["skip_app_launcher_login_page"] = skip_app_launcher_login_page
         __props__.__dict__["skip_interstitial"] = skip_interstitial
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["target_criterias"] = target_criterias
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
@@ -1690,10 +1729,18 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="targetCriterias")
+    def target_criterias(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationTargetCriteria']]]:
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+        return pulumi.get(self, "target_criterias")
+
+    @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 

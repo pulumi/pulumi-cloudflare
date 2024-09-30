@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AccessPolicyApprovalGroupArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireArgs;
@@ -65,6 +66,21 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
+    }
+
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    @Import(name="connectionRules")
+    private @Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules;
+
+    /**
+     * @return The rules that define how users may connect to the targets secured by your application.
+     * 
+     */
+    public Optional<Output<AccessPolicyConnectionRulesArgs>> connectionRules() {
+        return Optional.ofNullable(this.connectionRules);
     }
 
     /**
@@ -239,6 +255,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.applicationId = $.applicationId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
+        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
@@ -332,6 +349,27 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(@Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules) {
+            $.connectionRules = connectionRules;
+            return this;
+        }
+
+        /**
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionRules(AccessPolicyConnectionRulesArgs connectionRules) {
+            return connectionRules(Output.of(connectionRules));
         }
 
         /**

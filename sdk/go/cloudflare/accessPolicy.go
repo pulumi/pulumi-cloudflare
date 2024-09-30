@@ -39,6 +39,8 @@ type AccessPolicy struct {
 	ApplicationId    pulumi.StringPtrOutput               `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringOutput `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -108,6 +110,8 @@ type accessPolicyState struct {
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision *string `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -139,6 +143,8 @@ type AccessPolicyState struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringPtrInput
 	// A series of access conditions, see Access Groups.
@@ -174,6 +180,8 @@ type accessPolicyArgs struct {
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision string `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -206,6 +214,8 @@ type AccessPolicyArgs struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringInput
 	// A series of access conditions, see Access Groups.
@@ -333,6 +343,11 @@ func (o AccessPolicyOutput) ApprovalGroups() AccessPolicyApprovalGroupArrayOutpu
 
 func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The rules that define how users may connect to the targets secured by your application.
+func (o AccessPolicyOutput) ConnectionRules() AccessPolicyConnectionRulesPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) AccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(AccessPolicyConnectionRulesPtrOutput)
 }
 
 // Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
