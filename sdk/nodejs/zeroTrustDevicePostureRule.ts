@@ -96,7 +96,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -173,7 +173,7 @@ export interface ZeroTrustDevicePostureRuleState {
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
      */
     type?: pulumi.Input<string>;
 }
@@ -208,7 +208,7 @@ export interface ZeroTrustDevicePostureRuleArgs {
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
      */
     type: pulumi.Input<string>;
 }

@@ -127,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostnameTlsSettingCiphers{}
 	case "cloudflare:index/hyperdriveConfig:HyperdriveConfig":
 		r = &HyperdriveConfig{}
+	case "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget":
+		r = &InfrastructureAccessTarget{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
 	case "cloudflare:index/keylessCertificate:KeylessCertificate":
@@ -639,6 +641,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/hyperdriveConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/infrastructureAccessTarget",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

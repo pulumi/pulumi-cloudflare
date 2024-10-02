@@ -211,6 +211,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Running { get; set; }
 
         /// <summary>
+        /// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        /// </summary>
+        [Input("score")]
+        public Input<int>? Score { get; set; }
+
+        /// <summary>
         /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         /// </summary>
         [Input("sensorConfig")]

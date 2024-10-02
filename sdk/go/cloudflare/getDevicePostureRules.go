@@ -56,7 +56,7 @@ type GetDevicePostureRulesArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the Device Posture Rule.
 	Name *string `pulumi:"name"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
 	Type *string `pulumi:"type"`
 }
 
@@ -70,7 +70,7 @@ type GetDevicePostureRulesResult struct {
 	Name *string `pulumi:"name"`
 	// A list of matching Device Posture Rules.
 	Rules []GetDevicePostureRulesRule `pulumi:"rules"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
 	Type *string `pulumi:"type"`
 }
 
@@ -99,7 +99,7 @@ type GetDevicePostureRulesOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the Device Posture Rule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -142,7 +142,7 @@ func (o GetDevicePostureRulesResultOutput) Rules() GetDevicePostureRulesRuleArra
 	return o.ApplyT(func(v GetDevicePostureRulesResult) []GetDevicePostureRulesRule { return v.Rules }).(GetDevicePostureRulesRuleArrayOutput)
 }
 
-// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
 func (o GetDevicePostureRulesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicePostureRulesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

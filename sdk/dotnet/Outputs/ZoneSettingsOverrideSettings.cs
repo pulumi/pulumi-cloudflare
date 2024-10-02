@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? SecurityLevel;
         public readonly string? ServerSideExclude;
         public readonly string? SortQueryStringForCache;
+        public readonly string? SpeedBrain;
         public readonly string? Ssl;
         public readonly string? Tls12Only;
         public readonly string? Tls13;
@@ -168,6 +169,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? sortQueryStringForCache,
 
+            string? speedBrain,
+
             string? ssl,
 
             string? tls12Only,
@@ -237,6 +240,7 @@ namespace Pulumi.Cloudflare.Outputs
             SecurityLevel = securityLevel;
             ServerSideExclude = serverSideExclude;
             SortQueryStringForCache = sortQueryStringForCache;
+            SpeedBrain = speedBrain;
             Ssl = ssl;
             Tls12Only = tls12Only;
             Tls13 = tls13;

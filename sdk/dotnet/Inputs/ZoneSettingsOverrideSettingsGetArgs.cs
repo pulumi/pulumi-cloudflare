@@ -158,6 +158,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("sortQueryStringForCache")]
         public Input<string>? SortQueryStringForCache { get; set; }
 
+        [Input("speedBrain")]
+        public Input<string>? SpeedBrain { get; set; }
+
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
 

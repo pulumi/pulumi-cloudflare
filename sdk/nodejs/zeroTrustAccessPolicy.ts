@@ -64,6 +64,10 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     public readonly approvalGroups!: pulumi.Output<outputs.ZeroTrustAccessPolicyApprovalGroup[] | undefined>;
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     /**
+     * The rules that define how users may connect to the targets secured by your application.
+     */
+    public readonly connectionRules!: pulumi.Output<outputs.ZeroTrustAccessPolicyConnectionRules | undefined>;
+    /**
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */
     public readonly decision!: pulumi.Output<string>;
@@ -125,6 +129,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
+            resourceInputs["connectionRules"] = state ? state.connectionRules : undefined;
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
@@ -151,6 +156,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["approvalGroups"] = args ? args.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = args ? args.approvalRequired : undefined;
+            resourceInputs["connectionRules"] = args ? args.connectionRules : undefined;
             resourceInputs["decision"] = args ? args.decision : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
@@ -182,6 +188,10 @@ export interface ZeroTrustAccessPolicyState {
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     */
+    connectionRules?: pulumi.Input<inputs.ZeroTrustAccessPolicyConnectionRules>;
     /**
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */
@@ -242,6 +252,10 @@ export interface ZeroTrustAccessPolicyArgs {
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
+    /**
+     * The rules that define how users may connect to the targets secured by your application.
+     */
+    connectionRules?: pulumi.Input<inputs.ZeroTrustAccessPolicyConnectionRules>;
     /**
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */

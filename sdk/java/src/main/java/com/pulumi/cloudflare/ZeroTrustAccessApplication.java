@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationLandingPageDesign;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasApp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationScimConfig;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationTargetCriteria;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -490,14 +491,28 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.tags);
     }
     /**
-     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    @Export(name="targetCriterias", refs={List.class,ZeroTrustAccessApplicationTargetCriteria.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
+
+    /**
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * 
+     */
+    public Output<Optional<List<ZeroTrustAccessApplicationTargetCriteria>>> targetCriterias() {
+        return Codegen.optional(this.targetCriterias);
+    }
+    /**
+     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
+     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
      * 
      */
     public Output<Optional<String>> type() {

@@ -362,6 +362,13 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
 
+    @Import(name="speedBrain")
+    private @Nullable Output<String> speedBrain;
+
+    public Optional<Output<String>> speedBrain() {
+        return Optional.ofNullable(this.speedBrain);
+    }
+
     @Import(name="ssl")
     private @Nullable Output<String> ssl;
 
@@ -501,6 +508,7 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         this.securityLevel = $.securityLevel;
         this.serverSideExclude = $.serverSideExclude;
         this.sortQueryStringForCache = $.sortQueryStringForCache;
+        this.speedBrain = $.speedBrain;
         this.ssl = $.ssl;
         this.tls12Only = $.tls12Only;
         this.tls13 = $.tls13;
@@ -973,6 +981,15 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
         public Builder sortQueryStringForCache(String sortQueryStringForCache) {
             return sortQueryStringForCache(Output.of(sortQueryStringForCache));
+        }
+
+        public Builder speedBrain(@Nullable Output<String> speedBrain) {
+            $.speedBrain = speedBrain;
+            return this;
+        }
+
+        public Builder speedBrain(String speedBrain) {
+            return speedBrain(Output.of(speedBrain));
         }
 
         public Builder ssl(@Nullable Output<String> ssl) {

@@ -39,6 +39,8 @@ type ZeroTrustAccessPolicy struct {
 	ApplicationId    pulumi.StringPtrOutput                        `pulumi:"applicationId"`
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                          `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringOutput `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -108,6 +110,8 @@ type zeroTrustAccessPolicyState struct {
 	ApplicationId    *string                              `pulumi:"applicationId"`
 	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision *string `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -139,6 +143,8 @@ type ZeroTrustAccessPolicyState struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringPtrInput
 	// A series of access conditions, see Access Groups.
@@ -174,6 +180,8 @@ type zeroTrustAccessPolicyArgs struct {
 	ApplicationId    *string                              `pulumi:"applicationId"`
 	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision string `pulumi:"decision"`
 	// A series of access conditions, see Access Groups.
@@ -206,6 +214,8 @@ type ZeroTrustAccessPolicyArgs struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
+	// The rules that define how users may connect to the targets secured by your application.
+	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringInput
 	// A series of access conditions, see Access Groups.
@@ -333,6 +343,11 @@ func (o ZeroTrustAccessPolicyOutput) ApprovalGroups() ZeroTrustAccessPolicyAppro
 
 func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The rules that define how users may connect to the targets secured by your application.
+func (o ZeroTrustAccessPolicyOutput) ConnectionRules() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
 }
 
 // Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.

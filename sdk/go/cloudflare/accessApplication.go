@@ -94,7 +94,9 @@ type AccessApplication struct {
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	TargetCriterias AccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -194,7 +196,9 @@ type accessApplicationState struct {
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags []string `pulumi:"tags"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	TargetCriterias []AccessApplicationTargetCriteria `pulumi:"targetCriterias"`
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -265,7 +269,9 @@ type AccessApplicationState struct {
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
 	Tags pulumi.StringArrayInput
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	TargetCriterias AccessApplicationTargetCriteriaArrayInput
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -338,7 +344,9 @@ type accessApplicationArgs struct {
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags []string `pulumi:"tags"`
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	TargetCriterias []AccessApplicationTargetCriteria `pulumi:"targetCriterias"`
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -408,7 +416,9 @@ type AccessApplicationArgs struct {
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
 	Tags pulumi.StringArrayInput
-	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	TargetCriterias AccessApplicationTargetCriteriaArrayInput
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -661,7 +671,12 @@ func (o AccessApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
+// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+func (o AccessApplicationOutput) TargetCriterias() AccessApplicationTargetCriteriaArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationTargetCriteriaArrayOutput { return v.TargetCriterias }).(AccessApplicationTargetCriteriaArrayOutput)
+}
+
+// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 func (o AccessApplicationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
