@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -96,9 +101,6 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
         algorithm=pulumi.get(__ret__, 'algorithm'),
         cert_pem=pulumi.get(__ret__, 'cert_pem'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_origin_ca_root_certificate)
 def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginCaRootCertificateResult]:
     """
@@ -118,4 +120,11 @@ def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]]
 
     :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
     """
-    ...
+    __args__ = dict()
+    __args__['algorithm'] = algorithm
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate', __args__, opts=opts, typ=GetOriginCaRootCertificateResult)
+    return __ret__.apply(lambda __response__: GetOriginCaRootCertificateResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        cert_pem=pulumi.get(__response__, 'cert_pem'),
+        id=pulumi.get(__response__, 'id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_origin_ca_certificate(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         request_type=pulumi.get(__ret__, 'request_type'),
         revoked_at=pulumi.get(__ret__, 'revoked_at'))
-
-
-@_utilities.lift_output_func(get_origin_ca_certificate)
 def get_origin_ca_certificate_output(id: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
     """
@@ -153,4 +155,14 @@ def get_origin_ca_certificate_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The Origin CA Certificate unique identifier.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaCertificate:getOriginCaCertificate', __args__, opts=opts, typ=GetOriginCaCertificateResult)
+    return __ret__.apply(lambda __response__: GetOriginCaCertificateResult(
+        certificate=pulumi.get(__response__, 'certificate'),
+        expires_on=pulumi.get(__response__, 'expires_on'),
+        hostnames=pulumi.get(__response__, 'hostnames'),
+        id=pulumi.get(__response__, 'id'),
+        request_type=pulumi.get(__response__, 'request_type'),
+        revoked_at=pulumi.get(__response__, 'revoked_at')))
