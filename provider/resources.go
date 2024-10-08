@@ -130,9 +130,16 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_risk_behavior":                            {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_risk_behavior":                 {ComputeID: delegateID("accountId")},
-			"cloudflare_turnstile_widget":                         {ComputeID: delegateID("accountId")},
-			"cloudflare_hyperdrive_config":                        {ComputeID: delegateID("accountId")},
-			"cloudflare_cloud_connector_rules":                    {ComputeID: delegateID("zoneId")},
+			// We cannot use TF's ID field as Pulumi's ID field automatically,
+			// since it can (theoretically) be set by the user.
+			//
+			// In practice, it shouldn't be set by the user, and we should mirror TF here:
+			//
+			// Set our ID as site Key, which is what it represents upstream:
+			// <https://developers.cloudflare.com/turnstile/get-started/terraform/#create-a-turnstile-widget>.
+			"cloudflare_turnstile_widget":      {ComputeID: delegateID("id")},
+			"cloudflare_hyperdrive_config":     {ComputeID: delegateID("accountId")},
+			"cloudflare_cloud_connector_rules": {ComputeID: delegateID("zoneId")},
 			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
 			"cloudflare_access_mutual_tls_hostname_settings": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
