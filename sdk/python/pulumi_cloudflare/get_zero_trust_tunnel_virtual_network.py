@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -114,9 +119,6 @@ def get_zero_trust_tunnel_virtual_network(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_default=pulumi.get(__ret__, 'is_default'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_zero_trust_tunnel_virtual_network)
 def get_zero_trust_tunnel_virtual_network_output(account_id: Optional[pulumi.Input[str]] = None,
                                                  name: Optional[pulumi.Input[str]] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustTunnelVirtualNetworkResult]:
@@ -127,4 +129,14 @@ def get_zero_trust_tunnel_virtual_network_output(account_id: Optional[pulumi.Inp
     :param str account_id: The account identifier to target for the resource.
     :param str name: The Virtual Network Name.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork', __args__, opts=opts, typ=GetZeroTrustTunnelVirtualNetworkResult)
+    return __ret__.apply(lambda __response__: GetZeroTrustTunnelVirtualNetworkResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        comment=pulumi.get(__response__, 'comment'),
+        id=pulumi.get(__response__, 'id'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        name=pulumi.get(__response__, 'name')))

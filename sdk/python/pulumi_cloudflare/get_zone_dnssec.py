@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -211,9 +216,6 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
         public_key=pulumi.get(__ret__, 'public_key'),
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_zone_dnssec)
 def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDnssecResult]:
     """
@@ -231,4 +233,20 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
 
     :param str zone_id: The zone identifier to target for the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZoneDnssec:getZoneDnssec', __args__, opts=opts, typ=GetZoneDnssecResult)
+    return __ret__.apply(lambda __response__: GetZoneDnssecResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        digest=pulumi.get(__response__, 'digest'),
+        digest_algorithm=pulumi.get(__response__, 'digest_algorithm'),
+        digest_type=pulumi.get(__response__, 'digest_type'),
+        ds=pulumi.get(__response__, 'ds'),
+        flags=pulumi.get(__response__, 'flags'),
+        id=pulumi.get(__response__, 'id'),
+        key_tag=pulumi.get(__response__, 'key_tag'),
+        key_type=pulumi.get(__response__, 'key_type'),
+        public_key=pulumi.get(__response__, 'public_key'),
+        status=pulumi.get(__response__, 'status'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

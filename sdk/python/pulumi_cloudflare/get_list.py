@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -137,9 +142,6 @@ def get_list(account_id: Optional[str] = None,
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
         numitems=pulumi.get(__ret__, 'numitems'))
-
-
-@_utilities.lift_output_func(get_list)
 def get_list_output(account_id: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListResult]:
@@ -160,4 +162,15 @@ def get_list_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str account_id: The account identifier to target for the resource.
     :param str name: The list name to target for the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getList:getList', __args__, opts=opts, typ=GetListResult)
+    return __ret__.apply(lambda __response__: GetListResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        name=pulumi.get(__response__, 'name'),
+        numitems=pulumi.get(__response__, 'numitems')))

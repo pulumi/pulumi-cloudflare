@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -198,9 +203,6 @@ def get_record(content: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_record)
 def get_record_output(content: Optional[pulumi.Input[Optional[str]]] = None,
                       hostname: Optional[pulumi.Input[str]] = None,
                       priority: Optional[pulumi.Input[Optional[int]]] = None,
@@ -227,4 +229,22 @@ def get_record_output(content: Optional[pulumi.Input[Optional[str]]] = None,
     :param str type: DNS record type to filter record results on. Defaults to `A`.
     :param str zone_id: The zone identifier to target for the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['content'] = content
+    __args__['hostname'] = hostname
+    __args__['priority'] = priority
+    __args__['type'] = type
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult)
+    return __ret__.apply(lambda __response__: GetRecordResult(
+        content=pulumi.get(__response__, 'content'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        priority=pulumi.get(__response__, 'priority'),
+        proxiable=pulumi.get(__response__, 'proxiable'),
+        proxied=pulumi.get(__response__, 'proxied'),
+        ttl=pulumi.get(__response__, 'ttl'),
+        type=pulumi.get(__response__, 'type'),
+        value=pulumi.get(__response__, 'value'),
+        zone_id=pulumi.get(__response__, 'zone_id')))
