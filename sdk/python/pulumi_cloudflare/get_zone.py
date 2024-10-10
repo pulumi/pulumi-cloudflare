@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -190,9 +195,6 @@ def get_zone(account_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_zone)
 def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -226,4 +228,19 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name of the zone. Must provide only one of `zone_id`, `name`.
     :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['name'] = name
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult)
+    return __ret__.apply(lambda __response__: GetZoneResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        name_servers=pulumi.get(__response__, 'name_servers'),
+        paused=pulumi.get(__response__, 'paused'),
+        plan=pulumi.get(__response__, 'plan'),
+        status=pulumi.get(__response__, 'status'),
+        vanity_name_servers=pulumi.get(__response__, 'vanity_name_servers'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

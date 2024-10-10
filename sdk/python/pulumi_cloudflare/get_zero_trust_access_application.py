@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_zero_trust_access_application(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_zero_trust_access_application)
 def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                              domain: Optional[pulumi.Input[Optional[str]]] = None,
                                              name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -150,4 +152,17 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
     :param str name: Friendly name of the Access Application. Must provide only one of `name`, `domain`.
     :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['domain'] = domain
+    __args__['name'] = name
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication', __args__, opts=opts, typ=GetZeroTrustAccessApplicationResult)
+    return __ret__.apply(lambda __response__: GetZeroTrustAccessApplicationResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        aud=pulumi.get(__response__, 'aud'),
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

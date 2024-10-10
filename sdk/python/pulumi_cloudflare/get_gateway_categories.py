@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -95,9 +100,6 @@ def get_gateway_categories(account_id: Optional[str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         categories=pulumi.get(__ret__, 'categories'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_gateway_categories)
 def get_gateway_categories_output(account_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayCategoriesResult]:
     """
@@ -115,4 +117,11 @@ def get_gateway_categories_output(account_id: Optional[pulumi.Input[str]] = None
 
     :param str account_id: The account ID to fetch Gateway Categories from.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getGatewayCategories:getGatewayCategories', __args__, opts=opts, typ=GetGatewayCategoriesResult)
+    return __ret__.apply(lambda __response__: GetGatewayCategoriesResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        categories=pulumi.get(__response__, 'categories'),
+        id=pulumi.get(__response__, 'id')))
