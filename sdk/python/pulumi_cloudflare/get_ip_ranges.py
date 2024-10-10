@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -137,9 +142,6 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
         id=pulumi.get(__ret__, 'id'),
         ipv4_cidr_blocks=pulumi.get(__ret__, 'ipv4_cidr_blocks'),
         ipv6_cidr_blocks=pulumi.get(__ret__, 'ipv6_cidr_blocks'))
-
-
-@_utilities.lift_output_func(get_ip_ranges)
 def get_ip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRangesResult]:
     """
     Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
@@ -162,4 +164,13 @@ def get_ip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.
         }])
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult)
+    return __ret__.apply(lambda __response__: GetIpRangesResult(
+        china_ipv4_cidr_blocks=pulumi.get(__response__, 'china_ipv4_cidr_blocks'),
+        china_ipv6_cidr_blocks=pulumi.get(__response__, 'china_ipv6_cidr_blocks'),
+        cidr_blocks=pulumi.get(__response__, 'cidr_blocks'),
+        id=pulumi.get(__response__, 'id'),
+        ipv4_cidr_blocks=pulumi.get(__response__, 'ipv4_cidr_blocks'),
+        ipv6_cidr_blocks=pulumi.get(__response__, 'ipv6_cidr_blocks')))

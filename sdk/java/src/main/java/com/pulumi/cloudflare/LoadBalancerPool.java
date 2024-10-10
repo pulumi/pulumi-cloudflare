@@ -28,6 +28,73 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LoadBalancerPool;
+ * import com.pulumi.cloudflare.LoadBalancerPoolArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolLoadSheddingArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginSteeringArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new LoadBalancerPool("example", LoadBalancerPoolArgs.builder()
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example-pool")
+ *             .origins(            
+ *                 LoadBalancerPoolOriginArgs.builder()
+ *                     .name("example-1")
+ *                     .address("192.0.2.1")
+ *                     .enabled(false)
+ *                     .headers(LoadBalancerPoolOriginHeaderArgs.builder()
+ *                         .header("Host")
+ *                         .values("example-1")
+ *                         .build())
+ *                     .build(),
+ *                 LoadBalancerPoolOriginArgs.builder()
+ *                     .name("example-2")
+ *                     .address("192.0.2.2")
+ *                     .headers(LoadBalancerPoolOriginHeaderArgs.builder()
+ *                         .header("Host")
+ *                         .values("example-2")
+ *                         .build())
+ *                     .build())
+ *             .latitude(55)
+ *             .longitude(-12)
+ *             .description("example load balancer pool")
+ *             .enabled(false)
+ *             .minimumOrigins(1)
+ *             .notificationEmail("someone}{@literal @}{@code example.com")
+ *             .loadSheddings(LoadBalancerPoolLoadSheddingArgs.builder()
+ *                 .defaultPercent(55)
+ *                 .defaultPolicy("random")
+ *                 .sessionPercent(12)
+ *                 .sessionPolicy("hash")
+ *                 .build())
+ *             .originSteerings(LoadBalancerPoolOriginSteeringArgs.builder()
+ *                 .policy("random")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -95,9 +100,6 @@ def get_zone_cache_reserve(zone_id: Optional[str] = None,
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_zone_cache_reserve)
 def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneCacheReserveResult]:
     """
@@ -116,4 +118,11 @@ def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
 
     :param str zone_id: The zone identifier to target for the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZoneCacheReserve:getZoneCacheReserve', __args__, opts=opts, typ=GetZoneCacheReserveResult)
+    return __ret__.apply(lambda __response__: GetZoneCacheReserveResult(
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        zone_id=pulumi.get(__response__, 'zone_id')))
