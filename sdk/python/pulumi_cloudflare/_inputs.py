@@ -4,431 +4,893 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AccessApplicationCorsHeaderArgs',
+    'AccessApplicationCorsHeaderArgsDict',
     'AccessApplicationFooterLinkArgs',
+    'AccessApplicationFooterLinkArgsDict',
     'AccessApplicationLandingPageDesignArgs',
+    'AccessApplicationLandingPageDesignArgsDict',
     'AccessApplicationSaasAppArgs',
+    'AccessApplicationSaasAppArgsDict',
     'AccessApplicationSaasAppCustomAttributeArgs',
+    'AccessApplicationSaasAppCustomAttributeArgsDict',
     'AccessApplicationSaasAppCustomAttributeSourceArgs',
+    'AccessApplicationSaasAppCustomAttributeSourceArgsDict',
     'AccessApplicationSaasAppCustomClaimArgs',
+    'AccessApplicationSaasAppCustomClaimArgsDict',
     'AccessApplicationSaasAppCustomClaimSourceArgs',
+    'AccessApplicationSaasAppCustomClaimSourceArgsDict',
     'AccessApplicationSaasAppHybridAndImplicitOptionsArgs',
+    'AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict',
     'AccessApplicationSaasAppRefreshTokenOptionArgs',
+    'AccessApplicationSaasAppRefreshTokenOptionArgsDict',
     'AccessApplicationScimConfigArgs',
+    'AccessApplicationScimConfigArgsDict',
     'AccessApplicationScimConfigAuthenticationArgs',
+    'AccessApplicationScimConfigAuthenticationArgsDict',
     'AccessApplicationScimConfigMappingArgs',
+    'AccessApplicationScimConfigMappingArgsDict',
     'AccessApplicationScimConfigMappingOperationsArgs',
+    'AccessApplicationScimConfigMappingOperationsArgsDict',
     'AccessApplicationTargetCriteriaArgs',
+    'AccessApplicationTargetCriteriaArgsDict',
     'AccessApplicationTargetCriteriaTargetAttributeArgs',
+    'AccessApplicationTargetCriteriaTargetAttributeArgsDict',
     'AccessGroupExcludeArgs',
+    'AccessGroupExcludeArgsDict',
     'AccessGroupExcludeAuthContextArgs',
+    'AccessGroupExcludeAuthContextArgsDict',
     'AccessGroupExcludeAzureArgs',
+    'AccessGroupExcludeAzureArgsDict',
     'AccessGroupExcludeExternalEvaluationArgs',
+    'AccessGroupExcludeExternalEvaluationArgsDict',
     'AccessGroupExcludeGithubArgs',
+    'AccessGroupExcludeGithubArgsDict',
     'AccessGroupExcludeGsuiteArgs',
+    'AccessGroupExcludeGsuiteArgsDict',
     'AccessGroupExcludeOktaArgs',
+    'AccessGroupExcludeOktaArgsDict',
     'AccessGroupExcludeSamlArgs',
+    'AccessGroupExcludeSamlArgsDict',
     'AccessGroupIncludeArgs',
+    'AccessGroupIncludeArgsDict',
     'AccessGroupIncludeAuthContextArgs',
+    'AccessGroupIncludeAuthContextArgsDict',
     'AccessGroupIncludeAzureArgs',
+    'AccessGroupIncludeAzureArgsDict',
     'AccessGroupIncludeExternalEvaluationArgs',
+    'AccessGroupIncludeExternalEvaluationArgsDict',
     'AccessGroupIncludeGithubArgs',
+    'AccessGroupIncludeGithubArgsDict',
     'AccessGroupIncludeGsuiteArgs',
+    'AccessGroupIncludeGsuiteArgsDict',
     'AccessGroupIncludeOktaArgs',
+    'AccessGroupIncludeOktaArgsDict',
     'AccessGroupIncludeSamlArgs',
+    'AccessGroupIncludeSamlArgsDict',
     'AccessGroupRequireArgs',
+    'AccessGroupRequireArgsDict',
     'AccessGroupRequireAuthContextArgs',
+    'AccessGroupRequireAuthContextArgsDict',
     'AccessGroupRequireAzureArgs',
+    'AccessGroupRequireAzureArgsDict',
     'AccessGroupRequireExternalEvaluationArgs',
+    'AccessGroupRequireExternalEvaluationArgsDict',
     'AccessGroupRequireGithubArgs',
+    'AccessGroupRequireGithubArgsDict',
     'AccessGroupRequireGsuiteArgs',
+    'AccessGroupRequireGsuiteArgsDict',
     'AccessGroupRequireOktaArgs',
+    'AccessGroupRequireOktaArgsDict',
     'AccessGroupRequireSamlArgs',
+    'AccessGroupRequireSamlArgsDict',
     'AccessIdentityProviderConfigArgs',
+    'AccessIdentityProviderConfigArgsDict',
     'AccessIdentityProviderScimConfigArgs',
+    'AccessIdentityProviderScimConfigArgsDict',
     'AccessMutualTlsHostnameSettingsSettingArgs',
+    'AccessMutualTlsHostnameSettingsSettingArgsDict',
     'AccessOrganizationCustomPageArgs',
+    'AccessOrganizationCustomPageArgsDict',
     'AccessOrganizationLoginDesignArgs',
+    'AccessOrganizationLoginDesignArgsDict',
     'AccessPolicyApprovalGroupArgs',
+    'AccessPolicyApprovalGroupArgsDict',
     'AccessPolicyConnectionRulesArgs',
+    'AccessPolicyConnectionRulesArgsDict',
     'AccessPolicyConnectionRulesSshArgs',
+    'AccessPolicyConnectionRulesSshArgsDict',
     'AccessPolicyExcludeArgs',
+    'AccessPolicyExcludeArgsDict',
     'AccessPolicyExcludeAuthContextArgs',
+    'AccessPolicyExcludeAuthContextArgsDict',
     'AccessPolicyExcludeAzureArgs',
+    'AccessPolicyExcludeAzureArgsDict',
     'AccessPolicyExcludeExternalEvaluationArgs',
+    'AccessPolicyExcludeExternalEvaluationArgsDict',
     'AccessPolicyExcludeGithubArgs',
+    'AccessPolicyExcludeGithubArgsDict',
     'AccessPolicyExcludeGsuiteArgs',
+    'AccessPolicyExcludeGsuiteArgsDict',
     'AccessPolicyExcludeOktaArgs',
+    'AccessPolicyExcludeOktaArgsDict',
     'AccessPolicyExcludeSamlArgs',
+    'AccessPolicyExcludeSamlArgsDict',
     'AccessPolicyIncludeArgs',
+    'AccessPolicyIncludeArgsDict',
     'AccessPolicyIncludeAuthContextArgs',
+    'AccessPolicyIncludeAuthContextArgsDict',
     'AccessPolicyIncludeAzureArgs',
+    'AccessPolicyIncludeAzureArgsDict',
     'AccessPolicyIncludeExternalEvaluationArgs',
+    'AccessPolicyIncludeExternalEvaluationArgsDict',
     'AccessPolicyIncludeGithubArgs',
+    'AccessPolicyIncludeGithubArgsDict',
     'AccessPolicyIncludeGsuiteArgs',
+    'AccessPolicyIncludeGsuiteArgsDict',
     'AccessPolicyIncludeOktaArgs',
+    'AccessPolicyIncludeOktaArgsDict',
     'AccessPolicyIncludeSamlArgs',
+    'AccessPolicyIncludeSamlArgsDict',
     'AccessPolicyRequireArgs',
+    'AccessPolicyRequireArgsDict',
     'AccessPolicyRequireAuthContextArgs',
+    'AccessPolicyRequireAuthContextArgsDict',
     'AccessPolicyRequireAzureArgs',
+    'AccessPolicyRequireAzureArgsDict',
     'AccessPolicyRequireExternalEvaluationArgs',
+    'AccessPolicyRequireExternalEvaluationArgsDict',
     'AccessPolicyRequireGithubArgs',
+    'AccessPolicyRequireGithubArgsDict',
     'AccessPolicyRequireGsuiteArgs',
+    'AccessPolicyRequireGsuiteArgsDict',
     'AccessPolicyRequireOktaArgs',
+    'AccessPolicyRequireOktaArgsDict',
     'AccessPolicyRequireSamlArgs',
+    'AccessPolicyRequireSamlArgsDict',
     'AccessRuleConfigurationArgs',
+    'AccessRuleConfigurationArgsDict',
     'AddressMapIpArgs',
+    'AddressMapIpArgsDict',
     'AddressMapMembershipArgs',
+    'AddressMapMembershipArgsDict',
     'ApiShieldAuthIdCharacteristicArgs',
+    'ApiShieldAuthIdCharacteristicArgsDict',
     'ApiTokenConditionArgs',
+    'ApiTokenConditionArgsDict',
     'ApiTokenConditionRequestIpArgs',
+    'ApiTokenConditionRequestIpArgsDict',
     'ApiTokenPolicyArgs',
+    'ApiTokenPolicyArgsDict',
     'CertificatePackValidationErrorArgs',
+    'CertificatePackValidationErrorArgsDict',
     'CertificatePackValidationRecordArgs',
+    'CertificatePackValidationRecordArgsDict',
     'CloudConnectorRulesRuleArgs',
+    'CloudConnectorRulesRuleArgsDict',
     'CloudConnectorRulesRuleParametersArgs',
+    'CloudConnectorRulesRuleParametersArgsDict',
     'CustomHostnameSslArgs',
+    'CustomHostnameSslArgsDict',
     'CustomHostnameSslSettingArgs',
+    'CustomHostnameSslSettingArgsDict',
     'CustomHostnameSslValidationErrorArgs',
+    'CustomHostnameSslValidationErrorArgsDict',
     'CustomHostnameSslValidationRecordArgs',
+    'CustomHostnameSslValidationRecordArgsDict',
     'CustomSslCustomSslOptionsArgs',
+    'CustomSslCustomSslOptionsArgsDict',
     'CustomSslCustomSslPriorityArgs',
+    'CustomSslCustomSslPriorityArgsDict',
     'DeviceDexTestDataArgs',
+    'DeviceDexTestDataArgsDict',
     'DeviceManagedNetworksConfigArgs',
+    'DeviceManagedNetworksConfigArgsDict',
     'DevicePostureIntegrationConfigArgs',
+    'DevicePostureIntegrationConfigArgsDict',
     'DevicePostureRuleInputArgs',
+    'DevicePostureRuleInputArgsDict',
     'DevicePostureRuleInputLocationArgs',
+    'DevicePostureRuleInputLocationArgsDict',
     'DevicePostureRuleMatchArgs',
+    'DevicePostureRuleMatchArgsDict',
     'DlpProfileContextAwarenessArgs',
+    'DlpProfileContextAwarenessArgsDict',
     'DlpProfileContextAwarenessSkipArgs',
+    'DlpProfileContextAwarenessSkipArgsDict',
     'DlpProfileEntryArgs',
+    'DlpProfileEntryArgsDict',
     'DlpProfileEntryPatternArgs',
+    'DlpProfileEntryPatternArgsDict',
     'EmailRoutingCatchAllActionArgs',
+    'EmailRoutingCatchAllActionArgsDict',
     'EmailRoutingCatchAllMatcherArgs',
+    'EmailRoutingCatchAllMatcherArgsDict',
     'EmailRoutingRuleActionArgs',
+    'EmailRoutingRuleActionArgsDict',
     'EmailRoutingRuleMatcherArgs',
+    'EmailRoutingRuleMatcherArgsDict',
     'FallbackDomainDomainArgs',
+    'FallbackDomainDomainArgsDict',
     'HealthcheckHeaderArgs',
+    'HealthcheckHeaderArgsDict',
     'HyperdriveConfigCachingArgs',
+    'HyperdriveConfigCachingArgsDict',
     'HyperdriveConfigOriginArgs',
+    'HyperdriveConfigOriginArgsDict',
     'InfrastructureAccessTargetIpArgs',
+    'InfrastructureAccessTargetIpArgsDict',
     'InfrastructureAccessTargetIpIpv4Args',
+    'InfrastructureAccessTargetIpIpv4ArgsDict',
     'InfrastructureAccessTargetIpIpv6Args',
+    'InfrastructureAccessTargetIpIpv6ArgsDict',
     'ListItemArgs',
+    'ListItemArgsDict',
     'ListItemHostnameArgs',
+    'ListItemHostnameArgsDict',
     'ListItemRedirectArgs',
+    'ListItemRedirectArgsDict',
     'ListItemValueArgs',
+    'ListItemValueArgsDict',
     'ListItemValueHostnameArgs',
+    'ListItemValueHostnameArgsDict',
     'ListItemValueRedirectArgs',
+    'ListItemValueRedirectArgsDict',
     'LoadBalancerAdaptiveRoutingArgs',
+    'LoadBalancerAdaptiveRoutingArgsDict',
     'LoadBalancerCountryPoolArgs',
+    'LoadBalancerCountryPoolArgsDict',
     'LoadBalancerLocationStrategyArgs',
+    'LoadBalancerLocationStrategyArgsDict',
     'LoadBalancerMonitorHeaderArgs',
+    'LoadBalancerMonitorHeaderArgsDict',
     'LoadBalancerPoolLoadSheddingArgs',
+    'LoadBalancerPoolLoadSheddingArgsDict',
     'LoadBalancerPoolOriginArgs',
+    'LoadBalancerPoolOriginArgsDict',
     'LoadBalancerPoolOriginHeaderArgs',
+    'LoadBalancerPoolOriginHeaderArgsDict',
     'LoadBalancerPoolOriginSteeringArgs',
+    'LoadBalancerPoolOriginSteeringArgsDict',
     'LoadBalancerPopPoolArgs',
+    'LoadBalancerPopPoolArgsDict',
     'LoadBalancerRandomSteeringArgs',
+    'LoadBalancerRandomSteeringArgsDict',
     'LoadBalancerRegionPoolArgs',
+    'LoadBalancerRegionPoolArgsDict',
     'LoadBalancerRuleArgs',
+    'LoadBalancerRuleArgsDict',
     'LoadBalancerRuleFixedResponseArgs',
+    'LoadBalancerRuleFixedResponseArgsDict',
     'LoadBalancerRuleOverrideArgs',
+    'LoadBalancerRuleOverrideArgsDict',
     'LoadBalancerRuleOverrideAdaptiveRoutingArgs',
+    'LoadBalancerRuleOverrideAdaptiveRoutingArgsDict',
     'LoadBalancerRuleOverrideCountryPoolArgs',
+    'LoadBalancerRuleOverrideCountryPoolArgsDict',
     'LoadBalancerRuleOverrideLocationStrategyArgs',
+    'LoadBalancerRuleOverrideLocationStrategyArgsDict',
     'LoadBalancerRuleOverridePopPoolArgs',
+    'LoadBalancerRuleOverridePopPoolArgsDict',
     'LoadBalancerRuleOverrideRandomSteeringArgs',
+    'LoadBalancerRuleOverrideRandomSteeringArgsDict',
     'LoadBalancerRuleOverrideRegionPoolArgs',
+    'LoadBalancerRuleOverrideRegionPoolArgsDict',
     'LoadBalancerRuleOverrideSessionAffinityAttributeArgs',
+    'LoadBalancerRuleOverrideSessionAffinityAttributeArgsDict',
     'LoadBalancerSessionAffinityAttributeArgs',
+    'LoadBalancerSessionAffinityAttributeArgsDict',
     'LogpushJobOutputOptionsArgs',
+    'LogpushJobOutputOptionsArgsDict',
     'ManagedHeadersManagedRequestHeaderArgs',
+    'ManagedHeadersManagedRequestHeaderArgsDict',
     'ManagedHeadersManagedResponseHeaderArgs',
+    'ManagedHeadersManagedResponseHeaderArgsDict',
     'NotificationPolicyEmailIntegrationArgs',
+    'NotificationPolicyEmailIntegrationArgsDict',
     'NotificationPolicyFiltersArgs',
+    'NotificationPolicyFiltersArgsDict',
     'NotificationPolicyPagerdutyIntegrationArgs',
+    'NotificationPolicyPagerdutyIntegrationArgsDict',
     'NotificationPolicyWebhooksIntegrationArgs',
+    'NotificationPolicyWebhooksIntegrationArgsDict',
     'PageRuleActionsArgs',
+    'PageRuleActionsArgsDict',
     'PageRuleActionsCacheKeyFieldsArgs',
+    'PageRuleActionsCacheKeyFieldsArgsDict',
     'PageRuleActionsCacheKeyFieldsCookieArgs',
+    'PageRuleActionsCacheKeyFieldsCookieArgsDict',
     'PageRuleActionsCacheKeyFieldsHeaderArgs',
+    'PageRuleActionsCacheKeyFieldsHeaderArgsDict',
     'PageRuleActionsCacheKeyFieldsHostArgs',
+    'PageRuleActionsCacheKeyFieldsHostArgsDict',
     'PageRuleActionsCacheKeyFieldsQueryStringArgs',
+    'PageRuleActionsCacheKeyFieldsQueryStringArgsDict',
     'PageRuleActionsCacheKeyFieldsUserArgs',
+    'PageRuleActionsCacheKeyFieldsUserArgsDict',
     'PageRuleActionsCacheTtlByStatusArgs',
+    'PageRuleActionsCacheTtlByStatusArgsDict',
     'PageRuleActionsForwardingUrlArgs',
+    'PageRuleActionsForwardingUrlArgsDict',
     'PageRuleActionsMinifyArgs',
+    'PageRuleActionsMinifyArgsDict',
     'PagesProjectBuildConfigArgs',
+    'PagesProjectBuildConfigArgsDict',
     'PagesProjectDeploymentConfigsArgs',
+    'PagesProjectDeploymentConfigsArgsDict',
     'PagesProjectDeploymentConfigsPreviewArgs',
+    'PagesProjectDeploymentConfigsPreviewArgsDict',
     'PagesProjectDeploymentConfigsPreviewPlacementArgs',
+    'PagesProjectDeploymentConfigsPreviewPlacementArgsDict',
     'PagesProjectDeploymentConfigsPreviewServiceBindingArgs',
+    'PagesProjectDeploymentConfigsPreviewServiceBindingArgsDict',
     'PagesProjectDeploymentConfigsProductionArgs',
+    'PagesProjectDeploymentConfigsProductionArgsDict',
     'PagesProjectDeploymentConfigsProductionPlacementArgs',
+    'PagesProjectDeploymentConfigsProductionPlacementArgsDict',
     'PagesProjectDeploymentConfigsProductionServiceBindingArgs',
+    'PagesProjectDeploymentConfigsProductionServiceBindingArgsDict',
     'PagesProjectSourceArgs',
+    'PagesProjectSourceArgsDict',
     'PagesProjectSourceConfigArgs',
+    'PagesProjectSourceConfigArgsDict',
     'RateLimitActionArgs',
+    'RateLimitActionArgsDict',
     'RateLimitActionResponseArgs',
+    'RateLimitActionResponseArgsDict',
     'RateLimitCorrelateArgs',
+    'RateLimitCorrelateArgsDict',
     'RateLimitMatchArgs',
+    'RateLimitMatchArgsDict',
     'RateLimitMatchRequestArgs',
+    'RateLimitMatchRequestArgsDict',
     'RateLimitMatchResponseArgs',
+    'RateLimitMatchResponseArgsDict',
     'RecordDataArgs',
+    'RecordDataArgsDict',
     'RiskBehaviorBehaviorArgs',
+    'RiskBehaviorBehaviorArgsDict',
     'RulesetRuleArgs',
+    'RulesetRuleArgsDict',
     'RulesetRuleActionParametersArgs',
+    'RulesetRuleActionParametersArgsDict',
     'RulesetRuleActionParametersAlgorithmArgs',
+    'RulesetRuleActionParametersAlgorithmArgsDict',
     'RulesetRuleActionParametersAutominifyArgs',
+    'RulesetRuleActionParametersAutominifyArgsDict',
     'RulesetRuleActionParametersBrowserTtlArgs',
+    'RulesetRuleActionParametersBrowserTtlArgsDict',
     'RulesetRuleActionParametersCacheKeyArgs',
+    'RulesetRuleActionParametersCacheKeyArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyCookieArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyHostArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyHostArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict',
     'RulesetRuleActionParametersCacheKeyCustomKeyUserArgs',
+    'RulesetRuleActionParametersCacheKeyCustomKeyUserArgsDict',
     'RulesetRuleActionParametersCacheReserveArgs',
+    'RulesetRuleActionParametersCacheReserveArgsDict',
     'RulesetRuleActionParametersEdgeTtlArgs',
+    'RulesetRuleActionParametersEdgeTtlArgsDict',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs',
+    'RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs',
+    'RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgsDict',
     'RulesetRuleActionParametersFromListArgs',
+    'RulesetRuleActionParametersFromListArgsDict',
     'RulesetRuleActionParametersFromValueArgs',
+    'RulesetRuleActionParametersFromValueArgsDict',
     'RulesetRuleActionParametersFromValueTargetUrlArgs',
+    'RulesetRuleActionParametersFromValueTargetUrlArgsDict',
     'RulesetRuleActionParametersHeaderArgs',
+    'RulesetRuleActionParametersHeaderArgsDict',
     'RulesetRuleActionParametersMatchedDataArgs',
+    'RulesetRuleActionParametersMatchedDataArgsDict',
     'RulesetRuleActionParametersOriginArgs',
+    'RulesetRuleActionParametersOriginArgsDict',
     'RulesetRuleActionParametersOverridesArgs',
+    'RulesetRuleActionParametersOverridesArgsDict',
     'RulesetRuleActionParametersOverridesCategoryArgs',
+    'RulesetRuleActionParametersOverridesCategoryArgsDict',
     'RulesetRuleActionParametersOverridesRuleArgs',
+    'RulesetRuleActionParametersOverridesRuleArgsDict',
     'RulesetRuleActionParametersResponseArgs',
+    'RulesetRuleActionParametersResponseArgsDict',
     'RulesetRuleActionParametersServeStaleArgs',
+    'RulesetRuleActionParametersServeStaleArgsDict',
     'RulesetRuleActionParametersSniArgs',
+    'RulesetRuleActionParametersSniArgsDict',
     'RulesetRuleActionParametersUriArgs',
+    'RulesetRuleActionParametersUriArgsDict',
     'RulesetRuleActionParametersUriPathArgs',
+    'RulesetRuleActionParametersUriPathArgsDict',
     'RulesetRuleActionParametersUriQueryArgs',
+    'RulesetRuleActionParametersUriQueryArgsDict',
     'RulesetRuleExposedCredentialCheckArgs',
+    'RulesetRuleExposedCredentialCheckArgsDict',
     'RulesetRuleLoggingArgs',
+    'RulesetRuleLoggingArgsDict',
     'RulesetRuleRatelimitArgs',
+    'RulesetRuleRatelimitArgsDict',
     'SpectrumApplicationDnsArgs',
+    'SpectrumApplicationDnsArgsDict',
     'SpectrumApplicationEdgeIpsArgs',
+    'SpectrumApplicationEdgeIpsArgsDict',
     'SpectrumApplicationOriginDnsArgs',
+    'SpectrumApplicationOriginDnsArgsDict',
     'SpectrumApplicationOriginPortRangeArgs',
+    'SpectrumApplicationOriginPortRangeArgsDict',
     'SplitTunnelTunnelArgs',
+    'SplitTunnelTunnelArgsDict',
     'TeamsAccountAntivirusArgs',
+    'TeamsAccountAntivirusArgsDict',
     'TeamsAccountAntivirusNotificationSettingsArgs',
+    'TeamsAccountAntivirusNotificationSettingsArgsDict',
     'TeamsAccountBlockPageArgs',
+    'TeamsAccountBlockPageArgsDict',
     'TeamsAccountBodyScanningArgs',
+    'TeamsAccountBodyScanningArgsDict',
     'TeamsAccountCertificateArgs',
+    'TeamsAccountCertificateArgsDict',
     'TeamsAccountCustomCertificateArgs',
+    'TeamsAccountCustomCertificateArgsDict',
     'TeamsAccountExtendedEmailMatchingArgs',
+    'TeamsAccountExtendedEmailMatchingArgsDict',
     'TeamsAccountFipsArgs',
+    'TeamsAccountFipsArgsDict',
     'TeamsAccountLoggingArgs',
+    'TeamsAccountLoggingArgsDict',
     'TeamsAccountLoggingSettingsByRuleTypeArgs',
+    'TeamsAccountLoggingSettingsByRuleTypeArgsDict',
     'TeamsAccountLoggingSettingsByRuleTypeDnsArgs',
+    'TeamsAccountLoggingSettingsByRuleTypeDnsArgsDict',
     'TeamsAccountLoggingSettingsByRuleTypeHttpArgs',
+    'TeamsAccountLoggingSettingsByRuleTypeHttpArgsDict',
     'TeamsAccountLoggingSettingsByRuleTypeL4Args',
+    'TeamsAccountLoggingSettingsByRuleTypeL4ArgsDict',
     'TeamsAccountPayloadLogArgs',
+    'TeamsAccountPayloadLogArgsDict',
     'TeamsAccountProxyArgs',
+    'TeamsAccountProxyArgsDict',
     'TeamsAccountSshSessionLogArgs',
+    'TeamsAccountSshSessionLogArgsDict',
     'TeamsListItemsWithDescriptionArgs',
+    'TeamsListItemsWithDescriptionArgsDict',
     'TeamsLocationNetworkArgs',
+    'TeamsLocationNetworkArgsDict',
     'TeamsRuleRuleSettingsArgs',
+    'TeamsRuleRuleSettingsArgsDict',
     'TeamsRuleRuleSettingsAuditSshArgs',
+    'TeamsRuleRuleSettingsAuditSshArgsDict',
     'TeamsRuleRuleSettingsBisoAdminControlsArgs',
+    'TeamsRuleRuleSettingsBisoAdminControlsArgsDict',
     'TeamsRuleRuleSettingsCheckSessionArgs',
+    'TeamsRuleRuleSettingsCheckSessionArgsDict',
     'TeamsRuleRuleSettingsDnsResolversArgs',
+    'TeamsRuleRuleSettingsDnsResolversArgsDict',
     'TeamsRuleRuleSettingsDnsResolversIpv4Args',
+    'TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict',
     'TeamsRuleRuleSettingsDnsResolversIpv6Args',
+    'TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict',
     'TeamsRuleRuleSettingsEgressArgs',
+    'TeamsRuleRuleSettingsEgressArgsDict',
     'TeamsRuleRuleSettingsL4overrideArgs',
+    'TeamsRuleRuleSettingsL4overrideArgsDict',
     'TeamsRuleRuleSettingsNotificationSettingsArgs',
+    'TeamsRuleRuleSettingsNotificationSettingsArgsDict',
     'TeamsRuleRuleSettingsPayloadLogArgs',
+    'TeamsRuleRuleSettingsPayloadLogArgsDict',
     'TeamsRuleRuleSettingsUntrustedCertArgs',
+    'TeamsRuleRuleSettingsUntrustedCertArgsDict',
     'TunnelConfigConfigArgs',
+    'TunnelConfigConfigArgsDict',
     'TunnelConfigConfigIngressRuleArgs',
+    'TunnelConfigConfigIngressRuleArgsDict',
     'TunnelConfigConfigIngressRuleOriginRequestArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestArgsDict',
     'TunnelConfigConfigIngressRuleOriginRequestAccessArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestAccessArgsDict',
     'TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestIpRuleArgsDict',
     'TunnelConfigConfigOriginRequestArgs',
+    'TunnelConfigConfigOriginRequestArgsDict',
     'TunnelConfigConfigOriginRequestAccessArgs',
+    'TunnelConfigConfigOriginRequestAccessArgsDict',
     'TunnelConfigConfigOriginRequestIpRuleArgs',
+    'TunnelConfigConfigOriginRequestIpRuleArgsDict',
     'TunnelConfigConfigWarpRoutingArgs',
+    'TunnelConfigConfigWarpRoutingArgsDict',
     'UserAgentBlockingRuleConfigurationArgs',
+    'UserAgentBlockingRuleConfigurationArgsDict',
     'WaitingRoomAdditionalRouteArgs',
+    'WaitingRoomAdditionalRouteArgsDict',
     'WaitingRoomRulesRuleArgs',
+    'WaitingRoomRulesRuleArgsDict',
     'WorkerScriptAnalyticsEngineBindingArgs',
+    'WorkerScriptAnalyticsEngineBindingArgsDict',
     'WorkerScriptD1DatabaseBindingArgs',
+    'WorkerScriptD1DatabaseBindingArgsDict',
     'WorkerScriptHyperdriveConfigBindingArgs',
+    'WorkerScriptHyperdriveConfigBindingArgsDict',
     'WorkerScriptKvNamespaceBindingArgs',
+    'WorkerScriptKvNamespaceBindingArgsDict',
     'WorkerScriptPlacementArgs',
+    'WorkerScriptPlacementArgsDict',
     'WorkerScriptPlainTextBindingArgs',
+    'WorkerScriptPlainTextBindingArgsDict',
     'WorkerScriptQueueBindingArgs',
+    'WorkerScriptQueueBindingArgsDict',
     'WorkerScriptR2BucketBindingArgs',
+    'WorkerScriptR2BucketBindingArgsDict',
     'WorkerScriptSecretTextBindingArgs',
+    'WorkerScriptSecretTextBindingArgsDict',
     'WorkerScriptServiceBindingArgs',
+    'WorkerScriptServiceBindingArgsDict',
     'WorkerScriptWebassemblyBindingArgs',
+    'WorkerScriptWebassemblyBindingArgsDict',
     'WorkersScriptAnalyticsEngineBindingArgs',
+    'WorkersScriptAnalyticsEngineBindingArgsDict',
     'WorkersScriptD1DatabaseBindingArgs',
+    'WorkersScriptD1DatabaseBindingArgsDict',
     'WorkersScriptHyperdriveConfigBindingArgs',
+    'WorkersScriptHyperdriveConfigBindingArgsDict',
     'WorkersScriptKvNamespaceBindingArgs',
+    'WorkersScriptKvNamespaceBindingArgsDict',
     'WorkersScriptPlacementArgs',
+    'WorkersScriptPlacementArgsDict',
     'WorkersScriptPlainTextBindingArgs',
+    'WorkersScriptPlainTextBindingArgsDict',
     'WorkersScriptQueueBindingArgs',
+    'WorkersScriptQueueBindingArgsDict',
     'WorkersScriptR2BucketBindingArgs',
+    'WorkersScriptR2BucketBindingArgsDict',
     'WorkersScriptSecretTextBindingArgs',
+    'WorkersScriptSecretTextBindingArgsDict',
     'WorkersScriptServiceBindingArgs',
+    'WorkersScriptServiceBindingArgsDict',
     'WorkersScriptWebassemblyBindingArgs',
+    'WorkersScriptWebassemblyBindingArgsDict',
     'ZeroTrustAccessApplicationCorsHeaderArgs',
+    'ZeroTrustAccessApplicationCorsHeaderArgsDict',
     'ZeroTrustAccessApplicationFooterLinkArgs',
+    'ZeroTrustAccessApplicationFooterLinkArgsDict',
     'ZeroTrustAccessApplicationLandingPageDesignArgs',
+    'ZeroTrustAccessApplicationLandingPageDesignArgsDict',
     'ZeroTrustAccessApplicationSaasAppArgs',
+    'ZeroTrustAccessApplicationSaasAppArgsDict',
     'ZeroTrustAccessApplicationSaasAppCustomAttributeArgs',
+    'ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict',
     'ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs',
+    'ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict',
     'ZeroTrustAccessApplicationSaasAppCustomClaimArgs',
+    'ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict',
     'ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs',
+    'ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgsDict',
     'ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs',
+    'ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgsDict',
     'ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs',
+    'ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgsDict',
     'ZeroTrustAccessApplicationScimConfigArgs',
+    'ZeroTrustAccessApplicationScimConfigArgsDict',
     'ZeroTrustAccessApplicationScimConfigAuthenticationArgs',
+    'ZeroTrustAccessApplicationScimConfigAuthenticationArgsDict',
     'ZeroTrustAccessApplicationScimConfigMappingArgs',
+    'ZeroTrustAccessApplicationScimConfigMappingArgsDict',
     'ZeroTrustAccessApplicationScimConfigMappingOperationsArgs',
+    'ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict',
     'ZeroTrustAccessApplicationTargetCriteriaArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaArgsDict',
     'ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgsDict',
     'ZeroTrustAccessGroupExcludeArgs',
+    'ZeroTrustAccessGroupExcludeArgsDict',
     'ZeroTrustAccessGroupExcludeAuthContextArgs',
+    'ZeroTrustAccessGroupExcludeAuthContextArgsDict',
     'ZeroTrustAccessGroupExcludeAzureArgs',
+    'ZeroTrustAccessGroupExcludeAzureArgsDict',
     'ZeroTrustAccessGroupExcludeExternalEvaluationArgs',
+    'ZeroTrustAccessGroupExcludeExternalEvaluationArgsDict',
     'ZeroTrustAccessGroupExcludeGithubArgs',
+    'ZeroTrustAccessGroupExcludeGithubArgsDict',
     'ZeroTrustAccessGroupExcludeGsuiteArgs',
+    'ZeroTrustAccessGroupExcludeGsuiteArgsDict',
     'ZeroTrustAccessGroupExcludeOktaArgs',
+    'ZeroTrustAccessGroupExcludeOktaArgsDict',
     'ZeroTrustAccessGroupExcludeSamlArgs',
+    'ZeroTrustAccessGroupExcludeSamlArgsDict',
     'ZeroTrustAccessGroupIncludeArgs',
+    'ZeroTrustAccessGroupIncludeArgsDict',
     'ZeroTrustAccessGroupIncludeAuthContextArgs',
+    'ZeroTrustAccessGroupIncludeAuthContextArgsDict',
     'ZeroTrustAccessGroupIncludeAzureArgs',
+    'ZeroTrustAccessGroupIncludeAzureArgsDict',
     'ZeroTrustAccessGroupIncludeExternalEvaluationArgs',
+    'ZeroTrustAccessGroupIncludeExternalEvaluationArgsDict',
     'ZeroTrustAccessGroupIncludeGithubArgs',
+    'ZeroTrustAccessGroupIncludeGithubArgsDict',
     'ZeroTrustAccessGroupIncludeGsuiteArgs',
+    'ZeroTrustAccessGroupIncludeGsuiteArgsDict',
     'ZeroTrustAccessGroupIncludeOktaArgs',
+    'ZeroTrustAccessGroupIncludeOktaArgsDict',
     'ZeroTrustAccessGroupIncludeSamlArgs',
+    'ZeroTrustAccessGroupIncludeSamlArgsDict',
     'ZeroTrustAccessGroupRequireArgs',
+    'ZeroTrustAccessGroupRequireArgsDict',
     'ZeroTrustAccessGroupRequireAuthContextArgs',
+    'ZeroTrustAccessGroupRequireAuthContextArgsDict',
     'ZeroTrustAccessGroupRequireAzureArgs',
+    'ZeroTrustAccessGroupRequireAzureArgsDict',
     'ZeroTrustAccessGroupRequireExternalEvaluationArgs',
+    'ZeroTrustAccessGroupRequireExternalEvaluationArgsDict',
     'ZeroTrustAccessGroupRequireGithubArgs',
+    'ZeroTrustAccessGroupRequireGithubArgsDict',
     'ZeroTrustAccessGroupRequireGsuiteArgs',
+    'ZeroTrustAccessGroupRequireGsuiteArgsDict',
     'ZeroTrustAccessGroupRequireOktaArgs',
+    'ZeroTrustAccessGroupRequireOktaArgsDict',
     'ZeroTrustAccessGroupRequireSamlArgs',
+    'ZeroTrustAccessGroupRequireSamlArgsDict',
     'ZeroTrustAccessIdentityProviderConfigArgs',
+    'ZeroTrustAccessIdentityProviderConfigArgsDict',
     'ZeroTrustAccessIdentityProviderScimConfigArgs',
+    'ZeroTrustAccessIdentityProviderScimConfigArgsDict',
     'ZeroTrustAccessMtlsHostnameSettingsSettingArgs',
+    'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict',
     'ZeroTrustAccessOrganizationCustomPageArgs',
+    'ZeroTrustAccessOrganizationCustomPageArgsDict',
     'ZeroTrustAccessOrganizationLoginDesignArgs',
+    'ZeroTrustAccessOrganizationLoginDesignArgsDict',
     'ZeroTrustAccessPolicyApprovalGroupArgs',
+    'ZeroTrustAccessPolicyApprovalGroupArgsDict',
     'ZeroTrustAccessPolicyConnectionRulesArgs',
+    'ZeroTrustAccessPolicyConnectionRulesArgsDict',
     'ZeroTrustAccessPolicyConnectionRulesSshArgs',
+    'ZeroTrustAccessPolicyConnectionRulesSshArgsDict',
     'ZeroTrustAccessPolicyExcludeArgs',
+    'ZeroTrustAccessPolicyExcludeArgsDict',
     'ZeroTrustAccessPolicyExcludeAuthContextArgs',
+    'ZeroTrustAccessPolicyExcludeAuthContextArgsDict',
     'ZeroTrustAccessPolicyExcludeAzureArgs',
+    'ZeroTrustAccessPolicyExcludeAzureArgsDict',
     'ZeroTrustAccessPolicyExcludeExternalEvaluationArgs',
+    'ZeroTrustAccessPolicyExcludeExternalEvaluationArgsDict',
     'ZeroTrustAccessPolicyExcludeGithubArgs',
+    'ZeroTrustAccessPolicyExcludeGithubArgsDict',
     'ZeroTrustAccessPolicyExcludeGsuiteArgs',
+    'ZeroTrustAccessPolicyExcludeGsuiteArgsDict',
     'ZeroTrustAccessPolicyExcludeOktaArgs',
+    'ZeroTrustAccessPolicyExcludeOktaArgsDict',
     'ZeroTrustAccessPolicyExcludeSamlArgs',
+    'ZeroTrustAccessPolicyExcludeSamlArgsDict',
     'ZeroTrustAccessPolicyIncludeArgs',
+    'ZeroTrustAccessPolicyIncludeArgsDict',
     'ZeroTrustAccessPolicyIncludeAuthContextArgs',
+    'ZeroTrustAccessPolicyIncludeAuthContextArgsDict',
     'ZeroTrustAccessPolicyIncludeAzureArgs',
+    'ZeroTrustAccessPolicyIncludeAzureArgsDict',
     'ZeroTrustAccessPolicyIncludeExternalEvaluationArgs',
+    'ZeroTrustAccessPolicyIncludeExternalEvaluationArgsDict',
     'ZeroTrustAccessPolicyIncludeGithubArgs',
+    'ZeroTrustAccessPolicyIncludeGithubArgsDict',
     'ZeroTrustAccessPolicyIncludeGsuiteArgs',
+    'ZeroTrustAccessPolicyIncludeGsuiteArgsDict',
     'ZeroTrustAccessPolicyIncludeOktaArgs',
+    'ZeroTrustAccessPolicyIncludeOktaArgsDict',
     'ZeroTrustAccessPolicyIncludeSamlArgs',
+    'ZeroTrustAccessPolicyIncludeSamlArgsDict',
     'ZeroTrustAccessPolicyRequireArgs',
+    'ZeroTrustAccessPolicyRequireArgsDict',
     'ZeroTrustAccessPolicyRequireAuthContextArgs',
+    'ZeroTrustAccessPolicyRequireAuthContextArgsDict',
     'ZeroTrustAccessPolicyRequireAzureArgs',
+    'ZeroTrustAccessPolicyRequireAzureArgsDict',
     'ZeroTrustAccessPolicyRequireExternalEvaluationArgs',
+    'ZeroTrustAccessPolicyRequireExternalEvaluationArgsDict',
     'ZeroTrustAccessPolicyRequireGithubArgs',
+    'ZeroTrustAccessPolicyRequireGithubArgsDict',
     'ZeroTrustAccessPolicyRequireGsuiteArgs',
+    'ZeroTrustAccessPolicyRequireGsuiteArgsDict',
     'ZeroTrustAccessPolicyRequireOktaArgs',
+    'ZeroTrustAccessPolicyRequireOktaArgsDict',
     'ZeroTrustAccessPolicyRequireSamlArgs',
+    'ZeroTrustAccessPolicyRequireSamlArgsDict',
     'ZeroTrustDeviceManagedNetworksConfigArgs',
+    'ZeroTrustDeviceManagedNetworksConfigArgsDict',
     'ZeroTrustDevicePostureIntegrationConfigArgs',
+    'ZeroTrustDevicePostureIntegrationConfigArgsDict',
     'ZeroTrustDevicePostureRuleInputArgs',
+    'ZeroTrustDevicePostureRuleInputArgsDict',
     'ZeroTrustDevicePostureRuleInputLocationArgs',
+    'ZeroTrustDevicePostureRuleInputLocationArgsDict',
     'ZeroTrustDevicePostureRuleMatchArgs',
+    'ZeroTrustDevicePostureRuleMatchArgsDict',
     'ZeroTrustDexTestDataArgs',
+    'ZeroTrustDexTestDataArgsDict',
     'ZeroTrustDlpProfileContextAwarenessArgs',
+    'ZeroTrustDlpProfileContextAwarenessArgsDict',
     'ZeroTrustDlpProfileContextAwarenessSkipArgs',
+    'ZeroTrustDlpProfileContextAwarenessSkipArgsDict',
     'ZeroTrustDlpProfileEntryArgs',
+    'ZeroTrustDlpProfileEntryArgsDict',
     'ZeroTrustDlpProfileEntryPatternArgs',
+    'ZeroTrustDlpProfileEntryPatternArgsDict',
     'ZeroTrustDnsLocationNetworkArgs',
+    'ZeroTrustDnsLocationNetworkArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4ArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args',
+    'ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsEgressArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsEgressArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsL4overrideArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgsDict',
     'ZeroTrustGatewaySettingsAntivirusArgs',
+    'ZeroTrustGatewaySettingsAntivirusArgsDict',
     'ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs',
+    'ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgsDict',
     'ZeroTrustGatewaySettingsBlockPageArgs',
+    'ZeroTrustGatewaySettingsBlockPageArgsDict',
     'ZeroTrustGatewaySettingsBodyScanningArgs',
+    'ZeroTrustGatewaySettingsBodyScanningArgsDict',
     'ZeroTrustGatewaySettingsCertificateArgs',
+    'ZeroTrustGatewaySettingsCertificateArgsDict',
     'ZeroTrustGatewaySettingsCustomCertificateArgs',
+    'ZeroTrustGatewaySettingsCustomCertificateArgsDict',
     'ZeroTrustGatewaySettingsExtendedEmailMatchingArgs',
+    'ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict',
     'ZeroTrustGatewaySettingsFipsArgs',
+    'ZeroTrustGatewaySettingsFipsArgsDict',
     'ZeroTrustGatewaySettingsLoggingArgs',
+    'ZeroTrustGatewaySettingsLoggingArgsDict',
     'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgsDict',
     'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgsDict',
     'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgsDict',
     'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args',
+    'ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4ArgsDict',
     'ZeroTrustGatewaySettingsPayloadLogArgs',
+    'ZeroTrustGatewaySettingsPayloadLogArgsDict',
     'ZeroTrustGatewaySettingsProxyArgs',
+    'ZeroTrustGatewaySettingsProxyArgsDict',
     'ZeroTrustGatewaySettingsSshSessionLogArgs',
+    'ZeroTrustGatewaySettingsSshSessionLogArgsDict',
     'ZeroTrustListItemsWithDescriptionArgs',
+    'ZeroTrustListItemsWithDescriptionArgsDict',
     'ZeroTrustLocalFallbackDomainDomainArgs',
+    'ZeroTrustLocalFallbackDomainDomainArgsDict',
     'ZeroTrustRiskBehaviorBehaviorArgs',
+    'ZeroTrustRiskBehaviorBehaviorArgsDict',
     'ZeroTrustSplitTunnelTunnelArgs',
+    'ZeroTrustSplitTunnelTunnelArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgsDict',
     'ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs',
+    'ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgsDict',
     'ZoneLockdownConfigurationArgs',
+    'ZoneLockdownConfigurationArgsDict',
     'ZoneSettingsOverrideInitialSettingArgs',
+    'ZoneSettingsOverrideInitialSettingArgsDict',
     'ZoneSettingsOverrideInitialSettingMinifyArgs',
+    'ZoneSettingsOverrideInitialSettingMinifyArgsDict',
     'ZoneSettingsOverrideInitialSettingMobileRedirectArgs',
+    'ZoneSettingsOverrideInitialSettingMobileRedirectArgsDict',
     'ZoneSettingsOverrideInitialSettingNelArgs',
+    'ZoneSettingsOverrideInitialSettingNelArgsDict',
     'ZoneSettingsOverrideInitialSettingSecurityHeaderArgs',
+    'ZoneSettingsOverrideInitialSettingSecurityHeaderArgsDict',
     'ZoneSettingsOverrideSettingsArgs',
+    'ZoneSettingsOverrideSettingsArgsDict',
     'ZoneSettingsOverrideSettingsMinifyArgs',
+    'ZoneSettingsOverrideSettingsMinifyArgsDict',
     'ZoneSettingsOverrideSettingsMobileRedirectArgs',
+    'ZoneSettingsOverrideSettingsMobileRedirectArgsDict',
     'ZoneSettingsOverrideSettingsNelArgs',
+    'ZoneSettingsOverrideSettingsNelArgsDict',
     'ZoneSettingsOverrideSettingsSecurityHeaderArgs',
+    'ZoneSettingsOverrideSettingsSecurityHeaderArgsDict',
     'GetLoadBalancerPoolsFilterArgs',
+    'GetLoadBalancerPoolsFilterArgsDict',
     'GetLoadBalancerPoolsPoolArgs',
+    'GetLoadBalancerPoolsPoolArgsDict',
     'GetLoadBalancerPoolsPoolLoadSheddingArgs',
+    'GetLoadBalancerPoolsPoolLoadSheddingArgsDict',
     'GetLoadBalancerPoolsPoolOriginArgs',
+    'GetLoadBalancerPoolsPoolOriginArgsDict',
     'GetLoadBalancerPoolsPoolOriginHeaderArgs',
+    'GetLoadBalancerPoolsPoolOriginHeaderArgsDict',
     'GetRulesetsFilterArgs',
+    'GetRulesetsFilterArgsDict',
     'GetZonesFilterArgs',
+    'GetZonesFilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessApplicationCorsHeaderArgsDict(TypedDict):
+        allow_all_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all HTTP headers are exposed.
+        """
+        allow_all_methods: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all methods are exposed.
+        """
+        allow_all_origins: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all origins are permitted to make CORS requests.
+        """
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of HTTP headers to expose via CORS.
+        """
+        allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of methods to expose via CORS.
+        """
+        allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of origins permitted to make CORS requests.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time a preflight request will be cached.
+        """
+elif False:
+    AccessApplicationCorsHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationCorsHeaderArgs:
@@ -565,6 +1027,19 @@ class AccessApplicationCorsHeaderArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class AccessApplicationFooterLinkArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the footer link.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the footer link.
+        """
+elif False:
+    AccessApplicationFooterLinkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationFooterLinkArgs:
     def __init__(__self__, *,
@@ -603,6 +1078,31 @@ class AccessApplicationFooterLinkArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class AccessApplicationLandingPageDesignArgsDict(TypedDict):
+        button_color: NotRequired[pulumi.Input[str]]
+        """
+        The button color of the landing page.
+        """
+        button_text_color: NotRequired[pulumi.Input[str]]
+        """
+        The button text color of the landing page.
+        """
+        image_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the image to be displayed in the landing page.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The message of the landing page.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the landing page.
+        """
+elif False:
+    AccessApplicationLandingPageDesignArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationLandingPageDesignArgs:
@@ -690,6 +1190,103 @@ class AccessApplicationLandingPageDesignArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class AccessApplicationSaasAppArgsDict(TypedDict):
+        access_token_lifetime: NotRequired[pulumi.Input[str]]
+        """
+        The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        allow_pkce_without_client_secret: NotRequired[pulumi.Input[bool]]
+        """
+        Allow PKCE flow without a client secret.
+        """
+        app_launcher_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL where this applications tile redirects users.
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The application client id.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The application client secret, only returned on initial apply.
+        """
+        consumer_service_url: NotRequired[pulumi.Input[str]]
+        """
+        The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        """
+        custom_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgsDict']]]]
+        """
+        Custom attribute mapped from IDPs.
+        """
+        custom_claims: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgsDict']]]]
+        """
+        Custom claim mapped from IDPs.
+        """
+        default_relay_state: NotRequired[pulumi.Input[str]]
+        """
+        The relay state used if not provided by the identity provider.
+        """
+        grant_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The OIDC flows supported by this application.
+        """
+        group_filter_regex: NotRequired[pulumi.Input[str]]
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        """
+        hybrid_and_implicit_options: NotRequired[pulumi.Input['AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict']]
+        """
+        Hybrid and Implicit Flow options.
+        """
+        idp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier for the SaaS application.
+        """
+        name_id_format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the name identifier sent to the SaaS application.
+        """
+        name_id_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        The public certificate that will be used to verify identities.
+        """
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        """
+        refresh_token_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionArgsDict']]]]
+        """
+        Refresh token grant options.
+        """
+        saml_attribute_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Define the user information shared with access.
+        """
+        sp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        """
+        sso_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The endpoint where the SaaS application will send login requests.
+        """
+elif False:
+    AccessApplicationSaasAppArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationSaasAppArgs:
@@ -1066,6 +1663,28 @@ class AccessApplicationSaasAppArgs:
         pulumi.set(self, "sso_endpoint", value)
 
 
+if not MYPY:
+    class AccessApplicationSaasAppCustomAttributeArgsDict(TypedDict):
+        source: pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgsDict']
+        friendly_name: NotRequired[pulumi.Input[str]]
+        """
+        A friendly name for the attribute as provided to the SaaS app.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        name_format: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        True if the attribute must be always present.
+        """
+elif False:
+    AccessApplicationSaasAppCustomAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationSaasAppCustomAttributeArgs:
     def __init__(__self__, *,
@@ -1148,6 +1767,19 @@ class AccessApplicationSaasAppCustomAttributeArgs:
         pulumi.set(self, "required", value)
 
 
+if not MYPY:
+    class AccessApplicationSaasAppCustomAttributeSourceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        name_by_idp: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping from IdP ID to claim name.
+        """
+elif False:
+    AccessApplicationSaasAppCustomAttributeSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationSaasAppCustomAttributeSourceArgs:
     def __init__(__self__, *,
@@ -1185,6 +1817,24 @@ class AccessApplicationSaasAppCustomAttributeSourceArgs:
     def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "name_by_idp", value)
 
+
+if not MYPY:
+    class AccessApplicationSaasAppCustomClaimArgsDict(TypedDict):
+        source: pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgsDict']
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        True if the attribute must be always present.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The scope of the claim.
+        """
+elif False:
+    AccessApplicationSaasAppCustomClaimArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationSaasAppCustomClaimArgs:
@@ -1252,6 +1902,19 @@ class AccessApplicationSaasAppCustomClaimArgs:
         pulumi.set(self, "scope", value)
 
 
+if not MYPY:
+    class AccessApplicationSaasAppCustomClaimSourceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        name_by_idp: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping from IdP ID to claim name.
+        """
+elif False:
+    AccessApplicationSaasAppCustomClaimSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationSaasAppCustomClaimSourceArgs:
     def __init__(__self__, *,
@@ -1289,6 +1952,19 @@ class AccessApplicationSaasAppCustomClaimSourceArgs:
     def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "name_by_idp", value)
 
+
+if not MYPY:
+    class AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict(TypedDict):
+        return_access_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the authorization endpoint will return an access token.
+        """
+        return_id_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the authorization endpoint will return an id token.
+        """
+elif False:
+    AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationSaasAppHybridAndImplicitOptionsArgs:
@@ -1329,6 +2005,15 @@ class AccessApplicationSaasAppHybridAndImplicitOptionsArgs:
         pulumi.set(self, "return_id_token_from_authorization_endpoint", value)
 
 
+if not MYPY:
+    class AccessApplicationSaasAppRefreshTokenOptionArgsDict(TypedDict):
+        lifetime: NotRequired[pulumi.Input[str]]
+        """
+        How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
+        """
+elif False:
+    AccessApplicationSaasAppRefreshTokenOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationSaasAppRefreshTokenOptionArgs:
     def __init__(__self__, *,
@@ -1351,6 +2036,35 @@ class AccessApplicationSaasAppRefreshTokenOptionArgs:
     def lifetime(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lifetime", value)
 
+
+if not MYPY:
+    class AccessApplicationScimConfigArgsDict(TypedDict):
+        idp_uid: pulumi.Input[str]
+        """
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        """
+        remote_uri: pulumi.Input[str]
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        authentication: NotRequired[pulumi.Input['AccessApplicationScimConfigAuthenticationArgsDict']]
+        """
+        Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+        """
+        deactivate_on_delete: NotRequired[pulumi.Input[bool]]
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgsDict']]]]
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+elif False:
+    AccessApplicationScimConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationScimConfigArgs:
@@ -1452,6 +2166,47 @@ class AccessApplicationScimConfigArgs:
     def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
+
+if not MYPY:
+    class AccessApplicationScimConfigAuthenticationArgsDict(TypedDict):
+        scheme: pulumi.Input[str]
+        """
+        The authentication scheme to use when making SCIM requests to this application.
+        """
+        authorization_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        token_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+elif False:
+    AccessApplicationScimConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApplicationScimConfigAuthenticationArgs:
@@ -1603,6 +2358,31 @@ class AccessApplicationScimConfigAuthenticationArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class AccessApplicationScimConfigMappingArgsDict(TypedDict):
+        schema: pulumi.Input[str]
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping is enabled.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        operations: NotRequired[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgsDict']]
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+elif False:
+    AccessApplicationScimConfigMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationScimConfigMappingArgs:
     def __init__(__self__, *,
@@ -1689,6 +2469,23 @@ class AccessApplicationScimConfigMappingArgs:
         pulumi.set(self, "transform_jsonata", value)
 
 
+if not MYPY:
+    class AccessApplicationScimConfigMappingOperationsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        update: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+elif False:
+    AccessApplicationScimConfigMappingOperationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationScimConfigMappingOperationsArgs:
     def __init__(__self__, *,
@@ -1744,6 +2541,23 @@ class AccessApplicationScimConfigMappingOperationsArgs:
         pulumi.set(self, "update", value)
 
 
+if not MYPY:
+    class AccessApplicationTargetCriteriaArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The communication protocol your application secures.
+        """
+        target_attributes: pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaTargetAttributeArgsDict']]]
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+elif False:
+    AccessApplicationTargetCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationTargetCriteriaArgs:
     def __init__(__self__, *,
@@ -1796,6 +2610,19 @@ class AccessApplicationTargetCriteriaArgs:
         pulumi.set(self, "target_attributes", value)
 
 
+if not MYPY:
+    class AccessApplicationTargetCriteriaTargetAttributeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The key of the attribute.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The values of the attribute.
+        """
+elif False:
+    AccessApplicationTargetCriteriaTargetAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessApplicationTargetCriteriaTargetAttributeArgs:
     def __init__(__self__, *,
@@ -1832,6 +2659,100 @@ class AccessApplicationTargetCriteriaTargetAttributeArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class AccessGroupExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupExcludeExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessGroupExcludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupExcludeArgs:
@@ -2204,6 +3125,23 @@ class AccessGroupExcludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessGroupExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessGroupExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupExcludeAuthContextArgs:
     def __init__(__self__, *,
@@ -2256,6 +3194,19 @@ class AccessGroupExcludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupExcludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessGroupExcludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupExcludeAzureArgs:
     def __init__(__self__, *,
@@ -2295,6 +3246,19 @@ class AccessGroupExcludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessGroupExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -2333,6 +3297,23 @@ class AccessGroupExcludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessGroupExcludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessGroupExcludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupExcludeGithubArgs:
@@ -2389,6 +3370,19 @@ class AccessGroupExcludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessGroupExcludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
@@ -2428,6 +3422,19 @@ class AccessGroupExcludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessGroupExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
@@ -2466,6 +3473,23 @@ class AccessGroupExcludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessGroupExcludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupExcludeSamlArgs:
@@ -2521,6 +3545,100 @@ class AccessGroupExcludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class AccessGroupIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupIncludeExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessGroupIncludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupIncludeArgs:
@@ -2893,6 +4011,23 @@ class AccessGroupIncludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessGroupIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessGroupIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupIncludeAuthContextArgs:
     def __init__(__self__, *,
@@ -2945,6 +4080,19 @@ class AccessGroupIncludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupIncludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessGroupIncludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupIncludeAzureArgs:
     def __init__(__self__, *,
@@ -2984,6 +4132,19 @@ class AccessGroupIncludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessGroupIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -3022,6 +4183,23 @@ class AccessGroupIncludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessGroupIncludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessGroupIncludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupIncludeGithubArgs:
@@ -3078,6 +4256,19 @@ class AccessGroupIncludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessGroupIncludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
@@ -3117,6 +4308,19 @@ class AccessGroupIncludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessGroupIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
@@ -3155,6 +4359,23 @@ class AccessGroupIncludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessGroupIncludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupIncludeSamlArgs:
@@ -3210,6 +4431,100 @@ class AccessGroupIncludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class AccessGroupRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessGroupRequireExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessGroupRequireArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupRequireArgs:
@@ -3582,6 +4897,23 @@ class AccessGroupRequireArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessGroupRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessGroupRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupRequireAuthContextArgs:
     def __init__(__self__, *,
@@ -3634,6 +4966,19 @@ class AccessGroupRequireAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupRequireAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessGroupRequireAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupRequireAzureArgs:
     def __init__(__self__, *,
@@ -3673,6 +5018,19 @@ class AccessGroupRequireAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessGroupRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessGroupRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupRequireExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -3711,6 +5069,23 @@ class AccessGroupRequireExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessGroupRequireGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessGroupRequireGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupRequireGithubArgs:
@@ -3767,6 +5142,19 @@ class AccessGroupRequireGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessGroupRequireGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessGroupRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
@@ -3806,6 +5194,19 @@ class AccessGroupRequireGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessGroupRequireOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessGroupRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessGroupRequireOktaArgs:
     def __init__(__self__, *,
@@ -3844,6 +5245,23 @@ class AccessGroupRequireOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessGroupRequireSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessGroupRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessGroupRequireSamlArgs:
@@ -3899,6 +5317,38 @@ class AccessGroupRequireSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class AccessIdentityProviderConfigArgsDict(TypedDict):
+        api_token: NotRequired[pulumi.Input[str]]
+        apps_domain: NotRequired[pulumi.Input[str]]
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        auth_url: NotRequired[pulumi.Input[str]]
+        authorization_server_id: NotRequired[pulumi.Input[str]]
+        centrify_account: NotRequired[pulumi.Input[str]]
+        centrify_app_id: NotRequired[pulumi.Input[str]]
+        certs_url: NotRequired[pulumi.Input[str]]
+        claims: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
+        conditional_access_enabled: NotRequired[pulumi.Input[bool]]
+        directory_id: NotRequired[pulumi.Input[str]]
+        email_attribute_name: NotRequired[pulumi.Input[str]]
+        email_claim_name: NotRequired[pulumi.Input[str]]
+        idp_public_cert: NotRequired[pulumi.Input[str]]
+        issuer_url: NotRequired[pulumi.Input[str]]
+        okta_account: NotRequired[pulumi.Input[str]]
+        onelogin_account: NotRequired[pulumi.Input[str]]
+        ping_env_id: NotRequired[pulumi.Input[str]]
+        pkce_enabled: NotRequired[pulumi.Input[bool]]
+        redirect_url: NotRequired[pulumi.Input[str]]
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        sign_request: NotRequired[pulumi.Input[bool]]
+        sso_target_url: NotRequired[pulumi.Input[str]]
+        support_groups: NotRequired[pulumi.Input[bool]]
+        token_url: NotRequired[pulumi.Input[str]]
+elif False:
+    AccessIdentityProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessIdentityProviderConfigArgs:
@@ -4229,6 +5679,16 @@ class AccessIdentityProviderConfigArgs:
         pulumi.set(self, "token_url", value)
 
 
+if not MYPY:
+    class AccessIdentityProviderScimConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        seat_deprovision: NotRequired[pulumi.Input[bool]]
+        secret: NotRequired[pulumi.Input[str]]
+        user_deprovision: NotRequired[pulumi.Input[bool]]
+elif False:
+    AccessIdentityProviderScimConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessIdentityProviderScimConfigArgs:
     def __init__(__self__, *,
@@ -4294,6 +5754,23 @@ class AccessIdentityProviderScimConfigArgs:
         pulumi.set(self, "user_deprovision", value)
 
 
+if not MYPY:
+    class AccessMutualTlsHostnameSettingsSettingArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        The hostname that these settings apply to.
+        """
+        china_network: NotRequired[pulumi.Input[bool]]
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        client_certificate_forwarding: NotRequired[pulumi.Input[bool]]
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+elif False:
+    AccessMutualTlsHostnameSettingsSettingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessMutualTlsHostnameSettingsSettingArgs:
     def __init__(__self__, *,
@@ -4348,6 +5825,19 @@ class AccessMutualTlsHostnameSettingsSettingArgs:
         pulumi.set(self, "client_certificate_forwarding", value)
 
 
+if not MYPY:
+    class AccessOrganizationCustomPageArgsDict(TypedDict):
+        forbidden: NotRequired[pulumi.Input[str]]
+        """
+        The id of the forbidden page.
+        """
+        identity_denied: NotRequired[pulumi.Input[str]]
+        """
+        The id of the identity denied page.
+        """
+elif False:
+    AccessOrganizationCustomPageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessOrganizationCustomPageArgs:
     def __init__(__self__, *,
@@ -4386,6 +5876,31 @@ class AccessOrganizationCustomPageArgs:
     def identity_denied(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_denied", value)
 
+
+if not MYPY:
+    class AccessOrganizationLoginDesignArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        The background color on the login page.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the bottom of the login page.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the top of the login page.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the logo on the login page.
+        """
+        text_color: NotRequired[pulumi.Input[str]]
+        """
+        The text color on the login page.
+        """
+elif False:
+    AccessOrganizationLoginDesignArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessOrganizationLoginDesignArgs:
@@ -4474,6 +5989,20 @@ class AccessOrganizationLoginDesignArgs:
         pulumi.set(self, "text_color", value)
 
 
+if not MYPY:
+    class AccessPolicyApprovalGroupArgsDict(TypedDict):
+        approvals_needed: pulumi.Input[int]
+        """
+        Number of approvals needed.
+        """
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of emails to request approval from.
+        """
+        email_list_uuid: NotRequired[pulumi.Input[str]]
+elif False:
+    AccessPolicyApprovalGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyApprovalGroupArgs:
     def __init__(__self__, *,
@@ -4524,6 +6053,15 @@ class AccessPolicyApprovalGroupArgs:
         pulumi.set(self, "email_list_uuid", value)
 
 
+if not MYPY:
+    class AccessPolicyConnectionRulesArgsDict(TypedDict):
+        ssh: pulumi.Input['AccessPolicyConnectionRulesSshArgsDict']
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+elif False:
+    AccessPolicyConnectionRulesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyConnectionRulesArgs:
     def __init__(__self__, *,
@@ -4546,6 +6084,15 @@ class AccessPolicyConnectionRulesArgs:
         pulumi.set(self, "ssh", value)
 
 
+if not MYPY:
+    class AccessPolicyConnectionRulesSshArgsDict(TypedDict):
+        usernames: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+elif False:
+    AccessPolicyConnectionRulesSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyConnectionRulesSshArgs:
     def __init__(__self__, *,
@@ -4567,6 +6114,100 @@ class AccessPolicyConnectionRulesSshArgs:
     def usernames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "usernames", value)
 
+
+if not MYPY:
+    class AccessPolicyExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessPolicyExcludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyExcludeArgs:
@@ -4939,6 +6580,23 @@ class AccessPolicyExcludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessPolicyExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessPolicyExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyExcludeAuthContextArgs:
     def __init__(__self__, *,
@@ -4991,6 +6649,19 @@ class AccessPolicyExcludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyExcludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessPolicyExcludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyExcludeAzureArgs:
     def __init__(__self__, *,
@@ -5030,6 +6701,19 @@ class AccessPolicyExcludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessPolicyExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -5068,6 +6752,23 @@ class AccessPolicyExcludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessPolicyExcludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessPolicyExcludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyExcludeGithubArgs:
@@ -5124,6 +6825,19 @@ class AccessPolicyExcludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessPolicyExcludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
@@ -5163,6 +6877,19 @@ class AccessPolicyExcludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessPolicyExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
@@ -5201,6 +6928,23 @@ class AccessPolicyExcludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessPolicyExcludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyExcludeSamlArgs:
@@ -5256,6 +7000,100 @@ class AccessPolicyExcludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class AccessPolicyIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessPolicyIncludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyIncludeArgs:
@@ -5628,6 +7466,23 @@ class AccessPolicyIncludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessPolicyIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessPolicyIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyIncludeAuthContextArgs:
     def __init__(__self__, *,
@@ -5680,6 +7535,19 @@ class AccessPolicyIncludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyIncludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessPolicyIncludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyIncludeAzureArgs:
     def __init__(__self__, *,
@@ -5719,6 +7587,19 @@ class AccessPolicyIncludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessPolicyIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -5757,6 +7638,23 @@ class AccessPolicyIncludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessPolicyIncludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessPolicyIncludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyIncludeGithubArgs:
@@ -5813,6 +7711,19 @@ class AccessPolicyIncludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessPolicyIncludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
@@ -5852,6 +7763,19 @@ class AccessPolicyIncludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessPolicyIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
@@ -5890,6 +7814,23 @@ class AccessPolicyIncludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessPolicyIncludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyIncludeSamlArgs:
@@ -5945,6 +7886,100 @@ class AccessPolicyIncludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class AccessPolicyRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluation: NotRequired[pulumi.Input['AccessPolicyRequireExternalEvaluationArgsDict']]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    AccessPolicyRequireArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyRequireArgs:
@@ -6317,6 +8352,23 @@ class AccessPolicyRequireArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class AccessPolicyRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    AccessPolicyRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyRequireAuthContextArgs:
     def __init__(__self__, *,
@@ -6369,6 +8421,19 @@ class AccessPolicyRequireAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyRequireAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    AccessPolicyRequireAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyRequireAzureArgs:
     def __init__(__self__, *,
@@ -6408,6 +8473,19 @@ class AccessPolicyRequireAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class AccessPolicyRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    AccessPolicyRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyRequireExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -6446,6 +8524,23 @@ class AccessPolicyRequireExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class AccessPolicyRequireGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    AccessPolicyRequireGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyRequireGithubArgs:
@@ -6502,6 +8597,19 @@ class AccessPolicyRequireGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class AccessPolicyRequireGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    AccessPolicyRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
@@ -6541,6 +8649,19 @@ class AccessPolicyRequireGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessPolicyRequireOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    AccessPolicyRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
@@ -6579,6 +8700,23 @@ class AccessPolicyRequireOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class AccessPolicyRequireSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    AccessPolicyRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyRequireSamlArgs:
@@ -6635,6 +8773,19 @@ class AccessPolicyRequireSamlArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class AccessRuleConfigurationArgsDict(TypedDict):
+        target: pulumi.Input[str]
+        """
+        The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+        """
+        value: pulumi.Input[str]
+        """
+        The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
+        """
+elif False:
+    AccessRuleConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessRuleConfigurationArgs:
     def __init__(__self__, *,
@@ -6672,6 +8823,15 @@ class AccessRuleConfigurationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AddressMapIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        An IPv4 or IPv6 address.
+        """
+elif False:
+    AddressMapIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddressMapIpArgs:
     def __init__(__self__, *,
@@ -6693,6 +8853,23 @@ class AddressMapIpArgs:
     def ip(self, value: pulumi.Input[str]):
         pulumi.set(self, "ip", value)
 
+
+if not MYPY:
+    class AddressMapMembershipArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        Identifier of the account or zone.
+        """
+        kind: pulumi.Input[str]
+        """
+        The type of the membership.
+        """
+        can_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Controls whether the membership can be deleted via the API or not.
+        """
+elif False:
+    AddressMapMembershipArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AddressMapMembershipArgs:
@@ -6747,6 +8924,19 @@ class AddressMapMembershipArgs:
         pulumi.set(self, "can_delete", value)
 
 
+if not MYPY:
+    class ApiShieldAuthIdCharacteristicArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the characteristic.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of characteristic. Available values: `header`, `cookie`.
+        """
+elif False:
+    ApiShieldAuthIdCharacteristicArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApiShieldAuthIdCharacteristicArgs:
     def __init__(__self__, *,
@@ -6786,6 +8976,15 @@ class ApiShieldAuthIdCharacteristicArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ApiTokenConditionArgsDict(TypedDict):
+        request_ip: NotRequired[pulumi.Input['ApiTokenConditionRequestIpArgsDict']]
+        """
+        Request IP related conditions.
+        """
+elif False:
+    ApiTokenConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApiTokenConditionArgs:
     def __init__(__self__, *,
@@ -6808,6 +9007,19 @@ class ApiTokenConditionArgs:
     def request_ip(self, value: Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']]):
         pulumi.set(self, "request_ip", value)
 
+
+if not MYPY:
+    class ApiTokenConditionRequestIpArgsDict(TypedDict):
+        ins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+        """
+        not_ins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of IP addresses or CIDR notation where the token should not be used from.
+        """
+elif False:
+    ApiTokenConditionRequestIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiTokenConditionRequestIpArgs:
@@ -6847,6 +9059,23 @@ class ApiTokenConditionRequestIpArgs:
     def not_ins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "not_ins", value)
 
+
+if not MYPY:
+    class ApiTokenPolicyArgsDict(TypedDict):
+        permission_groups: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+        """
+        resources: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Describes what operations against which resources are allowed or denied.
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+        """
+elif False:
+    ApiTokenPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiTokenPolicyArgs:
@@ -6901,6 +9130,12 @@ class ApiTokenPolicyArgs:
         pulumi.set(self, "effect", value)
 
 
+if not MYPY:
+    class CertificatePackValidationErrorArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+elif False:
+    CertificatePackValidationErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CertificatePackValidationErrorArgs:
     def __init__(__self__, *,
@@ -6917,6 +9152,18 @@ class CertificatePackValidationErrorArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class CertificatePackValidationRecordArgsDict(TypedDict):
+        cname_name: NotRequired[pulumi.Input[str]]
+        cname_target: NotRequired[pulumi.Input[str]]
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        http_body: NotRequired[pulumi.Input[str]]
+        http_url: NotRequired[pulumi.Input[str]]
+        txt_name: NotRequired[pulumi.Input[str]]
+        txt_value: NotRequired[pulumi.Input[str]]
+elif False:
+    CertificatePackValidationRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificatePackValidationRecordArgs:
@@ -7007,6 +9254,31 @@ class CertificatePackValidationRecordArgs:
         pulumi.set(self, "txt_value", value)
 
 
+if not MYPY:
+    class CloudConnectorRulesRuleArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        """
+        provider: pulumi.Input[str]
+        """
+        Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Brief summary of the cloud connector rule and its intended use.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the headers rule is active.
+        """
+        parameters: NotRequired[pulumi.Input['CloudConnectorRulesRuleParametersArgsDict']]
+        """
+        Cloud Connector Rule Parameters
+        """
+elif False:
+    CloudConnectorRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudConnectorRulesRuleArgs:
     def __init__(__self__, *,
@@ -7092,6 +9364,15 @@ class CloudConnectorRulesRuleArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class CloudConnectorRulesRuleParametersArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Host parameter for cloud connector rule
+        """
+elif False:
+    CloudConnectorRulesRuleParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudConnectorRulesRuleParametersArgs:
     def __init__(__self__, *,
@@ -7113,6 +9394,43 @@ class CloudConnectorRulesRuleParametersArgs:
     def host(self, value: pulumi.Input[str]):
         pulumi.set(self, "host", value)
 
+
+if not MYPY:
+    class CustomHostnameSslArgsDict(TypedDict):
+        bundle_method: NotRequired[pulumi.Input[str]]
+        """
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        """
+        certificate_authority: NotRequired[pulumi.Input[str]]
+        custom_certificate: NotRequired[pulumi.Input[str]]
+        """
+        If a custom uploaded certificate is used.
+        """
+        custom_key: NotRequired[pulumi.Input[str]]
+        """
+        The key for a custom uploaded certificate.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+        """
+        settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslSettingArgsDict']]]]
+        """
+        SSL/TLS settings for the certificate.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+        """
+        validation_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslValidationErrorArgsDict']]]]
+        validation_records: NotRequired[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslValidationRecordArgsDict']]]]
+        wildcard: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the certificate covers a wildcard.
+        """
+elif False:
+    CustomHostnameSslArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CustomHostnameSslArgs:
@@ -7281,6 +9599,31 @@ class CustomHostnameSslArgs:
         pulumi.set(self, "wildcard", value)
 
 
+if not MYPY:
+    class CustomHostnameSslSettingArgsDict(TypedDict):
+        ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of SSL/TLS ciphers to associate with this certificate.
+        """
+        early_hints: NotRequired[pulumi.Input[str]]
+        """
+        Whether early hints should be supported. Available values: `on`, `off`.
+        """
+        http2: NotRequired[pulumi.Input[str]]
+        """
+        Whether HTTP2 should be supported. Available values: `on`, `off`.
+        """
+        min_tls_version: NotRequired[pulumi.Input[str]]
+        """
+        Lowest version of TLS this certificate should support. Available values: `1.0`, `1.1`, `1.2`, `1.3`.
+        """
+        tls13: NotRequired[pulumi.Input[str]]
+        """
+        Whether TLSv1.3 should be supported. Available values: `on`, `off`.
+        """
+elif False:
+    CustomHostnameSslSettingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomHostnameSslSettingArgs:
     def __init__(__self__, *,
@@ -7368,6 +9711,12 @@ class CustomHostnameSslSettingArgs:
         pulumi.set(self, "tls13", value)
 
 
+if not MYPY:
+    class CustomHostnameSslValidationErrorArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+elif False:
+    CustomHostnameSslValidationErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomHostnameSslValidationErrorArgs:
     def __init__(__self__, *,
@@ -7384,6 +9733,18 @@ class CustomHostnameSslValidationErrorArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class CustomHostnameSslValidationRecordArgsDict(TypedDict):
+        cname_name: NotRequired[pulumi.Input[str]]
+        cname_target: NotRequired[pulumi.Input[str]]
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        http_body: NotRequired[pulumi.Input[str]]
+        http_url: NotRequired[pulumi.Input[str]]
+        txt_name: NotRequired[pulumi.Input[str]]
+        txt_value: NotRequired[pulumi.Input[str]]
+elif False:
+    CustomHostnameSslValidationRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CustomHostnameSslValidationRecordArgs:
@@ -7474,6 +9835,31 @@ class CustomHostnameSslValidationRecordArgs:
         pulumi.set(self, "txt_value", value)
 
 
+if not MYPY:
+    class CustomSslCustomSslOptionsArgsDict(TypedDict):
+        bundle_method: NotRequired[pulumi.Input[str]]
+        """
+        Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        """
+        certificate: NotRequired[pulumi.Input[str]]
+        """
+        Certificate certificate and the intermediate(s).
+        """
+        geo_restrictions: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        Certificate's private key.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
+        """
+elif False:
+    CustomSslCustomSslOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomSslCustomSslOptionsArgs:
     def __init__(__self__, *,
@@ -7561,6 +9947,16 @@ class CustomSslCustomSslOptionsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class CustomSslCustomSslPriorityArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+elif False:
+    CustomSslCustomSslPriorityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomSslCustomSslPriorityArgs:
     def __init__(__self__, *,
@@ -7595,6 +9991,23 @@ class CustomSslCustomSslPriorityArgs:
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
+
+if not MYPY:
+    class DeviceDexTestDataArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        """
+        kind: pulumi.Input[str]
+        """
+        The type of Device Dex Test. Available values: `http`, `traceroute`.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The http request method. Available values: `GET`.
+        """
+elif False:
+    DeviceDexTestDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeviceDexTestDataArgs:
@@ -7649,6 +10062,19 @@ class DeviceDexTestDataArgs:
         pulumi.set(self, "method", value)
 
 
+if not MYPY:
+    class DeviceManagedNetworksConfigArgsDict(TypedDict):
+        sha256: pulumi.Input[str]
+        """
+        The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+        tls_sockaddr: pulumi.Input[str]
+        """
+        A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+elif False:
+    DeviceManagedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeviceManagedNetworksConfigArgs:
     def __init__(__self__, *,
@@ -7685,6 +10111,43 @@ class DeviceManagedNetworksConfigArgs:
     def tls_sockaddr(self, value: pulumi.Input[str]):
         pulumi.set(self, "tls_sockaddr", value)
 
+
+if not MYPY:
+    class DevicePostureIntegrationConfigArgsDict(TypedDict):
+        access_client_id: NotRequired[pulumi.Input[str]]
+        """
+        The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        """
+        access_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        """
+        api_url: NotRequired[pulumi.Input[str]]
+        """
+        The third-party API's URL.
+        """
+        auth_url: NotRequired[pulumi.Input[str]]
+        """
+        The third-party authorization API URL.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The client identifier for authenticating API calls.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        The client key for authenticating API calls.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The client secret for authenticating API calls.
+        """
+        customer_id: NotRequired[pulumi.Input[str]]
+        """
+        The customer identifier for authenticating API calls.
+        """
+elif False:
+    DevicePostureIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DevicePostureIntegrationConfigArgs:
@@ -7820,6 +10283,163 @@ class DevicePostureIntegrationConfigArgs:
     def customer_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "customer_id", value)
 
+
+if not MYPY:
+    class DevicePostureRuleInputArgsDict(TypedDict):
+        active_threats: NotRequired[pulumi.Input[int]]
+        """
+        The number of active threats from SentinelOne.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        The UUID of a Cloudflare managed certificate.
+        """
+        check_disks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specific volume(s) to check for encryption.
+        """
+        check_private_key: NotRequired[pulumi.Input[bool]]
+        """
+        Confirm the certificate was not imported from another device.
+        """
+        cn: NotRequired[pulumi.Input[str]]
+        """
+        The common name for a certificate.
+        """
+        compliance_status: NotRequired[pulumi.Input[str]]
+        """
+        The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        """
+        connection_id: NotRequired[pulumi.Input[str]]
+        """
+        The workspace one or intune connection id.
+        """
+        count_operator: NotRequired[pulumi.Input[str]]
+        """
+        The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        The domain that the client must join.
+        """
+        eid_last_seen: NotRequired[pulumi.Input[str]]
+        """
+        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the firewall must be enabled.
+        """
+        exists: NotRequired[pulumi.Input[bool]]
+        """
+        Checks if the file should exist.
+        """
+        extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        """
+        infected: NotRequired[pulumi.Input[bool]]
+        """
+        True if SentinelOne device is infected.
+        """
+        is_active: NotRequired[pulumi.Input[bool]]
+        """
+        True if SentinelOne device is active.
+        """
+        issue_count: NotRequired[pulumi.Input[str]]
+        """
+        The number of issues for kolide.
+        """
+        last_seen: NotRequired[pulumi.Input[str]]
+        """
+        The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgsDict']]]]
+        """
+        List of operating system locations to check for a client certificate..
+        """
+        network_status: NotRequired[pulumi.Input[str]]
+        """
+        The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        os: NotRequired[pulumi.Input[str]]
+        """
+        OS signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        os_distro_name: NotRequired[pulumi.Input[str]]
+        """
+        The operating system excluding version information.
+        """
+        os_distro_revision: NotRequired[pulumi.Input[str]]
+        """
+        The operating system version excluding OS name information or release name.
+        """
+        os_version_extra: NotRequired[pulumi.Input[str]]
+        """
+        Extra version value following the operating system semantic version.
+        """
+        overall: NotRequired[pulumi.Input[str]]
+        """
+        Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the file.
+        """
+        require_all: NotRequired[pulumi.Input[bool]]
+        """
+        True if all drives must be encrypted.
+        """
+        risk_level: NotRequired[pulumi.Input[str]]
+        """
+        The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        """
+        running: NotRequired[pulumi.Input[bool]]
+        """
+        Checks if the application should be running.
+        """
+        score: NotRequired[pulumi.Input[int]]
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        """
+        sensor_config: NotRequired[pulumi.Input[str]]
+        """
+        Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        The sha256 hash of the file.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        """
+        thumbprint: NotRequired[pulumi.Input[str]]
+        """
+        The thumbprint of the file certificate.
+        """
+        total_score: NotRequired[pulumi.Input[int]]
+        """
+        The total score from Tanium.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The operating system semantic version.
+        """
+        version_operator: NotRequired[pulumi.Input[str]]
+        """
+        The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+elif False:
+    DevicePostureRuleInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DevicePostureRuleInputArgs:
@@ -8436,6 +11056,19 @@ class DevicePostureRuleInputArgs:
         pulumi.set(self, "version_operator", value)
 
 
+if not MYPY:
+    class DevicePostureRuleInputLocationArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of paths to check for client certificate rule.
+        """
+        trust_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of trust stores to check for client certificate rule. Available values: `system`, `user`.
+        """
+elif False:
+    DevicePostureRuleInputLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DevicePostureRuleInputLocationArgs:
     def __init__(__self__, *,
@@ -8475,6 +11108,15 @@ class DevicePostureRuleInputLocationArgs:
         pulumi.set(self, "trust_stores", value)
 
 
+if not MYPY:
+    class DevicePostureRuleMatchArgsDict(TypedDict):
+        platform: NotRequired[pulumi.Input[str]]
+        """
+        The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+        """
+elif False:
+    DevicePostureRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DevicePostureRuleMatchArgs:
     def __init__(__self__, *,
@@ -8497,6 +11139,19 @@ class DevicePostureRuleMatchArgs:
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
 
+
+if not MYPY:
+    class DlpProfileContextAwarenessArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        skip: pulumi.Input['DlpProfileContextAwarenessSkipArgsDict']
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+elif False:
+    DlpProfileContextAwarenessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DlpProfileContextAwarenessArgs:
@@ -8535,6 +11190,15 @@ class DlpProfileContextAwarenessArgs:
         pulumi.set(self, "skip", value)
 
 
+if not MYPY:
+    class DlpProfileContextAwarenessSkipArgsDict(TypedDict):
+        files: pulumi.Input[bool]
+        """
+        Return all matches, regardless of context analysis result, if the data is a file.
+        """
+elif False:
+    DlpProfileContextAwarenessSkipArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DlpProfileContextAwarenessSkipArgs:
     def __init__(__self__, *,
@@ -8556,6 +11220,24 @@ class DlpProfileContextAwarenessSkipArgs:
     def files(self, value: pulumi.Input[bool]):
         pulumi.set(self, "files", value)
 
+
+if not MYPY:
+    class DlpProfileEntryArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the entry to deploy.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the entry is active. Defaults to `false`.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique entry identifier.
+        """
+        pattern: NotRequired[pulumi.Input['DlpProfileEntryPatternArgsDict']]
+elif False:
+    DlpProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DlpProfileEntryArgs:
@@ -8623,6 +11305,19 @@ class DlpProfileEntryArgs:
         pulumi.set(self, "pattern", value)
 
 
+if not MYPY:
+    class DlpProfileEntryPatternArgsDict(TypedDict):
+        regex: pulumi.Input[str]
+        """
+        The regex that defines the pattern.
+        """
+        validation: NotRequired[pulumi.Input[str]]
+        """
+        The validation algorithm to apply with this pattern.
+        """
+elif False:
+    DlpProfileEntryPatternArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DlpProfileEntryPatternArgs:
     def __init__(__self__, *,
@@ -8661,6 +11356,19 @@ class DlpProfileEntryPatternArgs:
         pulumi.set(self, "validation", value)
 
 
+if not MYPY:
+    class EmailRoutingCatchAllActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of supported action. Available values: `drop`, `forward`, `worker`.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list with items in the following form.
+        """
+elif False:
+    EmailRoutingCatchAllActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EmailRoutingCatchAllActionArgs:
     def __init__(__self__, *,
@@ -8698,6 +11406,15 @@ class EmailRoutingCatchAllActionArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class EmailRoutingCatchAllMatcherArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of matcher. Available values: `all`.
+        """
+elif False:
+    EmailRoutingCatchAllMatcherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EmailRoutingCatchAllMatcherArgs:
     def __init__(__self__, *,
@@ -8719,6 +11436,19 @@ class EmailRoutingCatchAllMatcherArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class EmailRoutingRuleActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of action. Available values: `forward`, `worker`, `drop`
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Value to match on. Required for `type` of `literal`.
+        """
+elif False:
+    EmailRoutingRuleActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EmailRoutingRuleActionArgs:
@@ -8757,6 +11487,23 @@ class EmailRoutingRuleActionArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class EmailRoutingRuleMatcherArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of matcher. Available values: `literal`, `all`
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Field to match on. Required for `type` of `literal`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value to match on. Required for `type` of `literal`.
+        """
+elif False:
+    EmailRoutingRuleMatcherArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EmailRoutingRuleMatcherArgs:
@@ -8811,6 +11558,23 @@ class EmailRoutingRuleMatcherArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class FallbackDomainDomainArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        The domain suffix to match when resolving locally.
+        """
+elif False:
+    FallbackDomainDomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FallbackDomainDomainArgs:
@@ -8867,6 +11631,19 @@ class FallbackDomainDomainArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class HealthcheckHeaderArgsDict(TypedDict):
+        header: pulumi.Input[str]
+        """
+        The header name.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of string values for the header.
+        """
+elif False:
+    HealthcheckHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HealthcheckHeaderArgs:
     def __init__(__self__, *,
@@ -8903,6 +11680,23 @@ class HealthcheckHeaderArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class HyperdriveConfigCachingArgsDict(TypedDict):
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Disable caching for this Hyperdrive configuration.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Configure the `max_age` value of this Hyperdrive configuration.
+        """
+        stale_while_revalidate: NotRequired[pulumi.Input[int]]
+        """
+        Disable caching for this Hyperdrive configuration.
+        """
+elif False:
+    HyperdriveConfigCachingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HyperdriveConfigCachingArgs:
@@ -8958,6 +11752,43 @@ class HyperdriveConfigCachingArgs:
     def stale_while_revalidate(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "stale_while_revalidate", value)
 
+
+if not MYPY:
+    class HyperdriveConfigOriginArgsDict(TypedDict):
+        database: pulumi.Input[str]
+        """
+        The name of your origin database.
+        """
+        host: pulumi.Input[str]
+        """
+        The host (hostname or IP) of your origin database.
+        """
+        password: pulumi.Input[str]
+        """
+        The password of the Hyperdrive configuration.
+        """
+        scheme: pulumi.Input[str]
+        """
+        Specifies the URL scheme used to connect to your origin database.
+        """
+        user: pulumi.Input[str]
+        """
+        The user of your origin database.
+        """
+        access_client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        access_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port (default: 5432 for Postgres) of your origin database.
+        """
+elif False:
+    HyperdriveConfigOriginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HyperdriveConfigOriginArgs:
@@ -9089,6 +11920,19 @@ class HyperdriveConfigOriginArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class InfrastructureAccessTargetIpArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input['InfrastructureAccessTargetIpIpv4ArgsDict']]
+        """
+        The target's IPv4 address.
+        """
+        ipv6: NotRequired[pulumi.Input['InfrastructureAccessTargetIpIpv6ArgsDict']]
+        """
+        The target's IPv6 address.
+        """
+elif False:
+    InfrastructureAccessTargetIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InfrastructureAccessTargetIpArgs:
     def __init__(__self__, *,
@@ -9128,6 +11972,19 @@ class InfrastructureAccessTargetIpArgs:
         pulumi.set(self, "ipv6", value)
 
 
+if not MYPY:
+    class InfrastructureAccessTargetIpIpv4ArgsDict(TypedDict):
+        ip_addr: pulumi.Input[str]
+        """
+        The IP address of the target.
+        """
+        virtual_network_id: pulumi.Input[str]
+        """
+        The private virtual network identifier for the target.
+        """
+elif False:
+    InfrastructureAccessTargetIpIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InfrastructureAccessTargetIpIpv4Args:
     def __init__(__self__, *,
@@ -9164,6 +12021,19 @@ class InfrastructureAccessTargetIpIpv4Args:
     def virtual_network_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "virtual_network_id", value)
 
+
+if not MYPY:
+    class InfrastructureAccessTargetIpIpv6ArgsDict(TypedDict):
+        ip_addr: pulumi.Input[str]
+        """
+        The IP address of the target.
+        """
+        virtual_network_id: pulumi.Input[str]
+        """
+        The private virtual network identifier for the target.
+        """
+elif False:
+    InfrastructureAccessTargetIpIpv6ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InfrastructureAccessTargetIpIpv6Args:
@@ -9202,6 +12072,16 @@ class InfrastructureAccessTargetIpIpv6Args:
         pulumi.set(self, "virtual_network_id", value)
 
 
+if not MYPY:
+    class ListItemArgsDict(TypedDict):
+        value: pulumi.Input['ListItemValueArgsDict']
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        An optional comment for the item.
+        """
+elif False:
+    ListItemArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListItemArgs:
     def __init__(__self__, *,
@@ -9236,6 +12116,15 @@ class ListItemArgs:
         pulumi.set(self, "comment", value)
 
 
+if not MYPY:
+    class ListItemHostnameArgsDict(TypedDict):
+        url_hostname: pulumi.Input[str]
+        """
+        The FQDN to match on.
+        """
+elif False:
+    ListItemHostnameArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListItemHostnameArgs:
     def __init__(__self__, *,
@@ -9257,6 +12146,39 @@ class ListItemHostnameArgs:
     def url_hostname(self, value: pulumi.Input[str]):
         pulumi.set(self, "url_hostname", value)
 
+
+if not MYPY:
+    class ListItemRedirectArgsDict(TypedDict):
+        source_url: pulumi.Input[str]
+        """
+        The source url of the redirect.
+        """
+        target_url: pulumi.Input[str]
+        """
+        The target url of the redirect.
+        """
+        include_subdomains: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the redirect also matches subdomains of the source url.
+        """
+        preserve_path_suffix: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the redirect target url should keep the query string of the request's url.
+        """
+        preserve_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the redirect target url should keep the query string of the request's url.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        The status code to be used when redirecting a request.
+        """
+        subpath_matching: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the redirect also matches subpaths of the source url.
+        """
+elif False:
+    ListItemRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListItemRedirectArgs:
@@ -9375,6 +12297,15 @@ class ListItemRedirectArgs:
         pulumi.set(self, "subpath_matching", value)
 
 
+if not MYPY:
+    class ListItemValueArgsDict(TypedDict):
+        asn: NotRequired[pulumi.Input[int]]
+        hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListItemValueHostnameArgsDict']]]]
+        ip: NotRequired[pulumi.Input[str]]
+        redirects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListItemValueRedirectArgsDict']]]]
+elif False:
+    ListItemValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListItemValueArgs:
     def __init__(__self__, *,
@@ -9428,6 +12359,15 @@ class ListItemValueArgs:
         pulumi.set(self, "redirects", value)
 
 
+if not MYPY:
+    class ListItemValueHostnameArgsDict(TypedDict):
+        url_hostname: pulumi.Input[str]
+        """
+        The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+        """
+elif False:
+    ListItemValueHostnameArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListItemValueHostnameArgs:
     def __init__(__self__, *,
@@ -9449,6 +12389,39 @@ class ListItemValueHostnameArgs:
     def url_hostname(self, value: pulumi.Input[str]):
         pulumi.set(self, "url_hostname", value)
 
+
+if not MYPY:
+    class ListItemValueRedirectArgsDict(TypedDict):
+        source_url: pulumi.Input[str]
+        """
+        The source url of the redirect.
+        """
+        target_url: pulumi.Input[str]
+        """
+        The target url of the redirect.
+        """
+        include_subdomains: NotRequired[pulumi.Input[str]]
+        """
+        Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        """
+        preserve_path_suffix: NotRequired[pulumi.Input[str]]
+        """
+        Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        """
+        preserve_query_string: NotRequired[pulumi.Input[str]]
+        """
+        Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        The status code to be used when redirecting a request.
+        """
+        subpath_matching: NotRequired[pulumi.Input[str]]
+        """
+        Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        """
+elif False:
+    ListItemValueRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListItemValueRedirectArgs:
@@ -9567,6 +12540,15 @@ class ListItemValueRedirectArgs:
         pulumi.set(self, "subpath_matching", value)
 
 
+if not MYPY:
+    class LoadBalancerAdaptiveRoutingArgsDict(TypedDict):
+        failover_across_pools: NotRequired[pulumi.Input[bool]]
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
+elif False:
+    LoadBalancerAdaptiveRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerAdaptiveRoutingArgs:
     def __init__(__self__, *,
@@ -9589,6 +12571,19 @@ class LoadBalancerAdaptiveRoutingArgs:
     def failover_across_pools(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "failover_across_pools", value)
 
+
+if not MYPY:
+    class LoadBalancerCountryPoolArgsDict(TypedDict):
+        country: pulumi.Input[str]
+        """
+        A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        """
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use in the given country.
+        """
+elif False:
+    LoadBalancerCountryPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerCountryPoolArgs:
@@ -9626,6 +12621,19 @@ class LoadBalancerCountryPoolArgs:
     def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
 
+
+if not MYPY:
+    class LoadBalancerLocationStrategyArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        """
+        prefer_ecs: NotRequired[pulumi.Input[str]]
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
+elif False:
+    LoadBalancerLocationStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerLocationStrategyArgs:
@@ -9666,6 +12674,19 @@ class LoadBalancerLocationStrategyArgs:
         pulumi.set(self, "prefer_ecs", value)
 
 
+if not MYPY:
+    class LoadBalancerMonitorHeaderArgsDict(TypedDict):
+        header: pulumi.Input[str]
+        """
+        The header name.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of values for the header.
+        """
+elif False:
+    LoadBalancerMonitorHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerMonitorHeaderArgs:
     def __init__(__self__, *,
@@ -9702,6 +12723,27 @@ class LoadBalancerMonitorHeaderArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class LoadBalancerPoolLoadSheddingArgsDict(TypedDict):
+        default_percent: NotRequired[pulumi.Input[float]]
+        """
+        Percent of traffic to shed 0 - 100. Defaults to `0`.
+        """
+        default_policy: NotRequired[pulumi.Input[str]]
+        """
+        Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
+        """
+        session_percent: NotRequired[pulumi.Input[float]]
+        """
+        Percent of session traffic to shed 0 - 100. Defaults to `0`.
+        """
+        session_policy: NotRequired[pulumi.Input[str]]
+        """
+        Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
+        """
+elif False:
+    LoadBalancerPoolLoadSheddingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerPoolLoadSheddingArgs:
@@ -9773,6 +12815,35 @@ class LoadBalancerPoolLoadSheddingArgs:
     def session_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_policy", value)
 
+
+if not MYPY:
+    class LoadBalancerPoolOriginArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        """
+        name: pulumi.Input[str]
+        """
+        A human-identifiable name for the origin.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        """
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginHeaderArgsDict']]]]
+        """
+        HTTP request headers.
+        """
+        virtual_network_id: NotRequired[pulumi.Input[str]]
+        """
+        The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+        """
+        weight: NotRequired[pulumi.Input[float]]
+        """
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
+        """
+elif False:
+    LoadBalancerPoolOriginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerPoolOriginArgs:
@@ -9875,6 +12946,19 @@ class LoadBalancerPoolOriginArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class LoadBalancerPoolOriginHeaderArgsDict(TypedDict):
+        header: pulumi.Input[str]
+        """
+        HTTP Header name.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Values for the HTTP headers.
+        """
+elif False:
+    LoadBalancerPoolOriginHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerPoolOriginHeaderArgs:
     def __init__(__self__, *,
@@ -9912,6 +12996,15 @@ class LoadBalancerPoolOriginHeaderArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class LoadBalancerPoolOriginSteeringArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `least_outstanding_requests`, `least_connections`. Defaults to `random`.
+        """
+elif False:
+    LoadBalancerPoolOriginSteeringArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerPoolOriginSteeringArgs:
     def __init__(__self__, *,
@@ -9934,6 +13027,19 @@ class LoadBalancerPoolOriginSteeringArgs:
     def policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy", value)
 
+
+if not MYPY:
+    class LoadBalancerPopPoolArgsDict(TypedDict):
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        pop: pulumi.Input[str]
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+elif False:
+    LoadBalancerPopPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerPopPoolArgs:
@@ -9971,6 +13077,19 @@ class LoadBalancerPopPoolArgs:
     def pop(self, value: pulumi.Input[str]):
         pulumi.set(self, "pop", value)
 
+
+if not MYPY:
+    class LoadBalancerRandomSteeringArgsDict(TypedDict):
+        default_weight: NotRequired[pulumi.Input[float]]
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
+        pool_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[float]]]]
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+elif False:
+    LoadBalancerRandomSteeringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRandomSteeringArgs:
@@ -10011,6 +13130,19 @@ class LoadBalancerRandomSteeringArgs:
         pulumi.set(self, "pool_weights", value)
 
 
+if not MYPY:
+    class LoadBalancerRegionPoolArgsDict(TypedDict):
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use in the given region.
+        """
+        region: pulumi.Input[str]
+        """
+        A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
+elif False:
+    LoadBalancerRegionPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerRegionPoolArgs:
     def __init__(__self__, *,
@@ -10047,6 +13179,39 @@ class LoadBalancerRegionPoolArgs:
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Human readable name for this rule.
+        """
+        condition: NotRequired[pulumi.Input[str]]
+        """
+        The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        A disabled rule will not be executed.
+        """
+        fixed_response: NotRequired[pulumi.Input['LoadBalancerRuleFixedResponseArgsDict']]
+        """
+        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        """
+        overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgsDict']]]]
+        """
+        The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        """
+        terminates: NotRequired[pulumi.Input[bool]]
+        """
+        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+        """
+elif False:
+    LoadBalancerRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleArgs:
@@ -10166,6 +13331,27 @@ class LoadBalancerRuleArgs:
         pulumi.set(self, "terminates", value)
 
 
+if not MYPY:
+    class LoadBalancerRuleFixedResponseArgsDict(TypedDict):
+        content_type: NotRequired[pulumi.Input[str]]
+        """
+        The value of the HTTP context-type header for this fixed response.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The value of the HTTP location header for this fixed response.
+        """
+        message_body: NotRequired[pulumi.Input[str]]
+        """
+        The text used as the html body for this fixed response.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used for this fixed response.
+        """
+elif False:
+    LoadBalancerRuleFixedResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerRuleFixedResponseArgs:
     def __init__(__self__, *,
@@ -10236,6 +13422,63 @@ class LoadBalancerRuleFixedResponseArgs:
     def status_code(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "status_code", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleOverrideArgsDict(TypedDict):
+        adaptive_routings: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideAdaptiveRoutingArgsDict']]]]
+        """
+        Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        """
+        country_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgsDict']]]]
+        """
+        A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        """
+        default_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+        """
+        fallback_pool: NotRequired[pulumi.Input[str]]
+        """
+        The pool ID to use when all other pools are detected as unhealthy.
+        """
+        location_strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgsDict']]]]
+        """
+        Controls location-based steering for non-proxied requests.
+        """
+        pop_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgsDict']]]]
+        """
+        A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        """
+        random_steerings: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgsDict']]]]
+        """
+        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
+        """
+        region_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgsDict']]]]
+        """
+        A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        """
+        session_affinity: NotRequired[pulumi.Input[str]]
+        """
+        Configure attributes for session affinity.
+        """
+        session_affinity_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgsDict']]]]
+        """
+        Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
+        """
+        session_affinity_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        """
+        steering_policy: NotRequired[pulumi.Input[str]]
+        """
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
+        """
+        ttl: NotRequired[pulumi.Input[int]]
+        """
+        Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+        """
+elif False:
+    LoadBalancerRuleOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleOverrideArgs:
@@ -10452,6 +13695,15 @@ class LoadBalancerRuleOverrideArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class LoadBalancerRuleOverrideAdaptiveRoutingArgsDict(TypedDict):
+        failover_across_pools: NotRequired[pulumi.Input[bool]]
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
+        """
+elif False:
+    LoadBalancerRuleOverrideAdaptiveRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerRuleOverrideAdaptiveRoutingArgs:
     def __init__(__self__, *,
@@ -10474,6 +13726,19 @@ class LoadBalancerRuleOverrideAdaptiveRoutingArgs:
     def failover_across_pools(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "failover_across_pools", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleOverrideCountryPoolArgsDict(TypedDict):
+        country: pulumi.Input[str]
+        """
+        A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        """
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use in the given country.
+        """
+elif False:
+    LoadBalancerRuleOverrideCountryPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleOverrideCountryPoolArgs:
@@ -10511,6 +13776,19 @@ class LoadBalancerRuleOverrideCountryPoolArgs:
     def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleOverrideLocationStrategyArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
+        """
+        prefer_ecs: NotRequired[pulumi.Input[str]]
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`.
+        """
+elif False:
+    LoadBalancerRuleOverrideLocationStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleOverrideLocationStrategyArgs:
@@ -10551,6 +13829,19 @@ class LoadBalancerRuleOverrideLocationStrategyArgs:
         pulumi.set(self, "prefer_ecs", value)
 
 
+if not MYPY:
+    class LoadBalancerRuleOverridePopPoolArgsDict(TypedDict):
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        pop: pulumi.Input[str]
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+elif False:
+    LoadBalancerRuleOverridePopPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerRuleOverridePopPoolArgs:
     def __init__(__self__, *,
@@ -10587,6 +13878,19 @@ class LoadBalancerRuleOverridePopPoolArgs:
     def pop(self, value: pulumi.Input[str]):
         pulumi.set(self, "pop", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleOverrideRandomSteeringArgsDict(TypedDict):
+        default_weight: NotRequired[pulumi.Input[float]]
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
+        pool_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[float]]]]
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+elif False:
+    LoadBalancerRuleOverrideRandomSteeringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleOverrideRandomSteeringArgs:
@@ -10627,6 +13931,19 @@ class LoadBalancerRuleOverrideRandomSteeringArgs:
         pulumi.set(self, "pool_weights", value)
 
 
+if not MYPY:
+    class LoadBalancerRuleOverrideRegionPoolArgsDict(TypedDict):
+        pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of pool IDs in failover priority to use in the given region.
+        """
+        region: pulumi.Input[str]
+        """
+        A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
+elif False:
+    LoadBalancerRuleOverrideRegionPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LoadBalancerRuleOverrideRegionPoolArgs:
     def __init__(__self__, *,
@@ -10663,6 +13980,31 @@ class LoadBalancerRuleOverrideRegionPoolArgs:
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class LoadBalancerRuleOverrideSessionAffinityAttributeArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Configures the HTTP header names to use when header session affinity is enabled.
+        """
+        require_all_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        """
+        samesite: NotRequired[pulumi.Input[str]]
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`.
+        """
+        secure: NotRequired[pulumi.Input[str]]
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.
+        """
+        zero_downtime_failover: NotRequired[pulumi.Input[str]]
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.
+        """
+elif False:
+    LoadBalancerRuleOverrideSessionAffinityAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerRuleOverrideSessionAffinityAttributeArgs:
@@ -10750,6 +14092,35 @@ class LoadBalancerRuleOverrideSessionAffinityAttributeArgs:
     def zero_downtime_failover(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zero_downtime_failover", value)
 
+
+if not MYPY:
+    class LoadBalancerSessionAffinityAttributeArgsDict(TypedDict):
+        drain_duration: NotRequired[pulumi.Input[int]]
+        """
+        Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        """
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Configures the HTTP header names to use when header session affinity is enabled.
+        """
+        require_all_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        """
+        samesite: NotRequired[pulumi.Input[str]]
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
+        secure: NotRequired[pulumi.Input[str]]
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
+        zero_downtime_failover: NotRequired[pulumi.Input[str]]
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+elif False:
+    LoadBalancerSessionAffinityAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LoadBalancerSessionAffinityAttributeArgs:
@@ -10853,6 +14224,60 @@ class LoadBalancerSessionAffinityAttributeArgs:
     def zero_downtime_failover(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zero_downtime_failover", value)
 
+
+if not MYPY:
+    class LogpushJobOutputOptionsArgsDict(TypedDict):
+        batch_prefix: NotRequired[pulumi.Input[str]]
+        """
+        String to be prepended before each batch.
+        """
+        batch_suffix: NotRequired[pulumi.Input[str]]
+        """
+        String to be appended after each batch.
+        """
+        cve20214428: NotRequired[pulumi.Input[bool]]
+        """
+        Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+        """
+        field_delimiter: NotRequired[pulumi.Input[str]]
+        """
+        String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+        """
+        field_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of field names to be included in the Logpush output.
+        """
+        output_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+        """
+        record_delimiter: NotRequired[pulumi.Input[str]]
+        """
+        String to be inserted in-between the records as separator.
+        """
+        record_prefix: NotRequired[pulumi.Input[str]]
+        """
+        String to be prepended before each record. Defaults to `{`.
+        """
+        record_suffix: NotRequired[pulumi.Input[str]]
+        """
+        String to be appended after each record. Defaults to `}
+        `.
+        """
+        record_template: NotRequired[pulumi.Input[str]]
+        """
+        String to use as template for each record instead of the default comma-separated list.
+        """
+        sample_rate: NotRequired[pulumi.Input[float]]
+        """
+        Specifies the sampling rate. Defaults to `1`.
+        """
+        timestamp_format: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+        """
+elif False:
+    LogpushJobOutputOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogpushJobOutputOptionsArgs:
@@ -11055,6 +14480,19 @@ class LogpushJobOutputOptionsArgs:
         pulumi.set(self, "timestamp_format", value)
 
 
+if not MYPY:
+    class ManagedHeadersManagedRequestHeaderArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether the headers rule is active.
+        """
+        id: pulumi.Input[str]
+        """
+        Unique headers rule identifier.
+        """
+elif False:
+    ManagedHeadersManagedRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedHeadersManagedRequestHeaderArgs:
     def __init__(__self__, *,
@@ -11091,6 +14529,19 @@ class ManagedHeadersManagedRequestHeaderArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class ManagedHeadersManagedResponseHeaderArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether the headers rule is active.
+        """
+        id: pulumi.Input[str]
+        """
+        Unique headers rule identifier.
+        """
+elif False:
+    ManagedHeadersManagedResponseHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedHeadersManagedResponseHeaderArgs:
@@ -11129,6 +14580,16 @@ class ManagedHeadersManagedResponseHeaderArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class NotificationPolicyEmailIntegrationArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of this resource.
+        """
+        name: NotRequired[pulumi.Input[str]]
+elif False:
+    NotificationPolicyEmailIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationPolicyEmailIntegrationArgs:
     def __init__(__self__, *,
@@ -11162,6 +14623,144 @@ class NotificationPolicyEmailIntegrationArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class NotificationPolicyFiltersArgsDict(TypedDict):
+        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targeted actions for alert.
+        """
+        affected_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        """
+        airport_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Filter on Points of Presence.
+        """
+        alert_trigger_preferences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Alert trigger preferences. Example: `slo`.
+        """
+        enableds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        State of the pool to alert on.
+        """
+        environments: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        """
+        event_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source configuration to alert on for pool or origin.
+        """
+        event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Stream event type to alert on.
+        """
+        events: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        """
+        group_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Alert grouping.
+        """
+        health_check_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Identifier health check. Required when using `filters.0.status`.
+        """
+        incident_impacts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        """
+        input_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Stream input id to alert on.
+        """
+        limits: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A numerical limit. Example: `100`.
+        """
+        megabits_per_seconds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Megabits per second threshold for dos alert.
+        """
+        new_healths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Health status to alert on for pool or origin.
+        """
+        new_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tunnel health status to alert on.
+        """
+        packets_per_seconds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Packets per second threshold for dos alert.
+        """
+        pool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Load balancer pool identifier.
+        """
+        products: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+        """
+        project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Identifier of pages project.
+        """
+        protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Protocol to alert on for dos.
+        """
+        requests_per_seconds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Requests per second threshold for dos alert.
+        """
+        selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Selectors for alert. Valid options depend on the alert type.
+        """
+        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        slos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A numerical limit. Example: `99.9`.
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Status to alert on.
+        """
+        target_hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Target host to alert on for dos.
+        """
+        target_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Target ip to alert on for dos in CIDR notation.
+        """
+        target_zone_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Target domain to alert on.
+        """
+        tunnel_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tunnel IDs to alert on.
+        """
+        tunnel_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tunnel Names to alert on.
+        """
+        wheres: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Filter for alert.
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of zone identifiers.
+        """
+elif False:
+    NotificationPolicyFiltersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationPolicyFiltersArgs:
@@ -11710,6 +15309,16 @@ class NotificationPolicyFiltersArgs:
         pulumi.set(self, "zones", value)
 
 
+if not MYPY:
+    class NotificationPolicyPagerdutyIntegrationArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of this resource.
+        """
+        name: NotRequired[pulumi.Input[str]]
+elif False:
+    NotificationPolicyPagerdutyIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationPolicyPagerdutyIntegrationArgs:
     def __init__(__self__, *,
@@ -11744,6 +15353,16 @@ class NotificationPolicyPagerdutyIntegrationArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class NotificationPolicyWebhooksIntegrationArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of this resource.
+        """
+        name: NotRequired[pulumi.Input[str]]
+elif False:
+    NotificationPolicyWebhooksIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationPolicyWebhooksIntegrationArgs:
     def __init__(__self__, *,
@@ -11777,6 +15396,159 @@ class NotificationPolicyWebhooksIntegrationArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class PageRuleActionsArgsDict(TypedDict):
+        always_use_https: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        automatic_https_rewrites: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        browser_cache_ttl: NotRequired[pulumi.Input[str]]
+        """
+        The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
+        """
+        browser_check: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        bypass_cache_on_cookie: NotRequired[pulumi.Input[str]]
+        """
+        String value of cookie name to conditionally bypass cache the page.
+        """
+        cache_by_device_type: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        cache_deception_armor: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        cache_key_fields: NotRequired[pulumi.Input['PageRuleActionsCacheKeyFieldsArgsDict']]
+        """
+        Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+        """
+        cache_level: NotRequired[pulumi.Input[str]]
+        """
+        Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
+        """
+        cache_on_cookie: NotRequired[pulumi.Input[str]]
+        """
+        String value of cookie name to conditionally cache the page.
+        """
+        cache_ttl_by_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsCacheTtlByStatusArgsDict']]]]
+        """
+        Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        """
+        disable_apps: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        disable_performance: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        disable_railgun: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        disable_security: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        disable_zaraz: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        edge_cache_ttl: NotRequired[pulumi.Input[int]]
+        """
+        The Time To Live for the edge cache.
+        """
+        email_obfuscation: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        explicit_cache_control: NotRequired[pulumi.Input[str]]
+        """
+        Whether origin Cache-Control action is `"on"` or `"off"`.
+        """
+        forwarding_url: NotRequired[pulumi.Input['PageRuleActionsForwardingUrlArgsDict']]
+        """
+        The URL to forward to, and with what status. See below.
+        """
+        host_header_override: NotRequired[pulumi.Input[str]]
+        """
+        Value of the Host header to send.
+        """
+        ip_geolocation: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        minifies: NotRequired[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsMinifyArgsDict']]]]
+        """
+        The configuration for HTML, CSS and JS minification. See below for full list of options.
+        """
+        mirage: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        opportunistic_encryption: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        origin_error_page_pass_thru: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        polish: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"off"`, `"lossless"` or `"lossy"`.
+        """
+        resolve_override: NotRequired[pulumi.Input[str]]
+        """
+        Overridden origin server name.
+        """
+        respect_strong_etag: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        response_buffering: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        rocket_loader: NotRequired[pulumi.Input[str]]
+        """
+        Whether to set the rocket loader to `"on"`, `"off"`.
+        """
+        security_level: NotRequired[pulumi.Input[str]]
+        """
+        Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
+        """
+        server_side_exclude: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        sort_query_string_for_cache: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        ssl: NotRequired[pulumi.Input[str]]
+        """
+        Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
+        """
+        true_client_ip_header: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+        waf: NotRequired[pulumi.Input[str]]
+        """
+        Whether this action is `"on"` or `"off"`.
+        """
+elif False:
+    PageRuleActionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PageRuleActionsArgs:
@@ -12377,6 +16149,31 @@ class PageRuleActionsArgs:
         pulumi.set(self, "waf", value)
 
 
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsArgsDict(TypedDict):
+        host: pulumi.Input['PageRuleActionsCacheKeyFieldsHostArgsDict']
+        """
+        Controls which Host header goes into Cache Key:
+        """
+        query_string: pulumi.Input['PageRuleActionsCacheKeyFieldsQueryStringArgsDict']
+        """
+        Controls which URL query string parameters go into the Cache Key.
+        """
+        user: pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgsDict']
+        """
+        Controls which end user-related features go into the Cache Key.
+        """
+        cookie: NotRequired[pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgsDict']]
+        """
+        Controls what cookies go into Cache Key:
+        """
+        header: NotRequired[pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgsDict']]
+        """
+        Controls what HTTP headers go into Cache Key:
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsArgs:
     def __init__(__self__, *,
@@ -12461,6 +16258,19 @@ class PageRuleActionsCacheKeyFieldsArgs:
         pulumi.set(self, "header", value)
 
 
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsCookieArgsDict(TypedDict):
+        check_presences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Check for presence of specified cookies, without including their actual values.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Use values of specified cookies in Cache Key.
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsCookieArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsCookieArgs:
     def __init__(__self__, *,
@@ -12499,6 +16309,23 @@ class PageRuleActionsCacheKeyFieldsCookieArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsHeaderArgsDict(TypedDict):
+        check_presences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Check for presence of specified HTTP headers, without including their actual values.
+        """
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsHeaderArgs:
@@ -12555,6 +16382,15 @@ class PageRuleActionsCacheKeyFieldsHeaderArgs:
         pulumi.set(self, "includes", value)
 
 
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsHostArgsDict(TypedDict):
+        resolved: NotRequired[pulumi.Input[bool]]
+        """
+        `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsHostArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsHostArgs:
     def __init__(__self__, *,
@@ -12577,6 +16413,23 @@ class PageRuleActionsCacheKeyFieldsHostArgs:
     def resolved(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "resolved", value)
 
+
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsQueryStringArgsDict(TypedDict):
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Exclude these query string parameters from Cache Key.
+        """
+        ignore: NotRequired[pulumi.Input[bool]]
+        """
+        `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Only use values of specified query string parameters in Cache Key.
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsQueryStringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsQueryStringArgs:
@@ -12632,6 +16485,62 @@ class PageRuleActionsCacheKeyFieldsQueryStringArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class PageRuleActionsCacheKeyFieldsUserArgsDict(TypedDict):
+        device_type: NotRequired[pulumi.Input[bool]]
+        """
+        `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+        """
+        geo: NotRequired[pulumi.Input[bool]]
+        """
+        `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+        """
+        lang: NotRequired[pulumi.Input[bool]]
+        """
+        `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Unrealistic example with all features used
+        foobar = cloudflare.PageRule("foobar",
+            zone_id=cloudflare_zone_id,
+            target=f"{cloudflare_zone}/app/*",
+            priority=1,
+            actions={
+                "cache_key_fields": {
+                    "cookie": {
+                        "check_presences": ["wordpress_test_cookie"],
+                    },
+                    "header": {
+                        "check_presences": ["header_present"],
+                        "excludes": ["origin"],
+                        "includes": [
+                            "api-key",
+                            "dnt",
+                        ],
+                    },
+                    "host": {
+                        "resolved": True,
+                    },
+                    "query_string": {
+                        "ignore": True,
+                    },
+                    "user": {
+                        "device_type": False,
+                        "geo": True,
+                        "lang": True,
+                    },
+                },
+            })
+        ```
+        """
+elif False:
+    PageRuleActionsCacheKeyFieldsUserArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsUserArgs:
@@ -12766,6 +16675,20 @@ class PageRuleActionsCacheKeyFieldsUserArgs:
         pulumi.set(self, "lang", value)
 
 
+if not MYPY:
+    class PageRuleActionsCacheTtlByStatusArgsDict(TypedDict):
+        codes: pulumi.Input[str]
+        """
+        A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+        """
+        ttl: pulumi.Input[int]
+        """
+        Duration a resource lives in the Cloudflare cache.
+        - positive number - cache for specified duration in seconds
+        """
+elif False:
+    PageRuleActionsCacheTtlByStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PageRuleActionsCacheTtlByStatusArgs:
     def __init__(__self__, *,
@@ -12805,6 +16728,19 @@ class PageRuleActionsCacheTtlByStatusArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class PageRuleActionsForwardingUrlArgsDict(TypedDict):
+        status_code: pulumi.Input[int]
+        """
+        The status code to use for the redirection.
+        """
+        url: pulumi.Input[str]
+        """
+        The URL to which the page rule should forward.
+        """
+elif False:
+    PageRuleActionsForwardingUrlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PageRuleActionsForwardingUrlArgs:
     def __init__(__self__, *,
@@ -12841,6 +16777,23 @@ class PageRuleActionsForwardingUrlArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class PageRuleActionsMinifyArgsDict(TypedDict):
+        css: pulumi.Input[str]
+        """
+        Whether CSS should be minified. Valid values are `"on"` or `"off"`.
+        """
+        html: pulumi.Input[str]
+        """
+        Whether HTML should be minified. Valid values are `"on"` or `"off"`.
+        """
+        js: pulumi.Input[str]
+        """
+        Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
+        """
+elif False:
+    PageRuleActionsMinifyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PageRuleActionsMinifyArgs:
@@ -12893,6 +16846,35 @@ class PageRuleActionsMinifyArgs:
     def js(self, value: pulumi.Input[str]):
         pulumi.set(self, "js", value)
 
+
+if not MYPY:
+    class PagesProjectBuildConfigArgsDict(TypedDict):
+        build_caching: NotRequired[pulumi.Input[bool]]
+        """
+        Enable build caching for the project.
+        """
+        build_command: NotRequired[pulumi.Input[str]]
+        """
+        Command used to build project.
+        """
+        destination_dir: NotRequired[pulumi.Input[str]]
+        """
+        Output directory of the build.
+        """
+        root_dir: NotRequired[pulumi.Input[str]]
+        """
+        Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
+        """
+        web_analytics_tag: NotRequired[pulumi.Input[str]]
+        """
+        The classifying tag for analytics.
+        """
+        web_analytics_token: NotRequired[pulumi.Input[str]]
+        """
+        The auth token for analytics.
+        """
+elif False:
+    PagesProjectBuildConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectBuildConfigArgs:
@@ -12997,6 +16979,19 @@ class PagesProjectBuildConfigArgs:
         pulumi.set(self, "web_analytics_token", value)
 
 
+if not MYPY:
+    class PagesProjectDeploymentConfigsArgsDict(TypedDict):
+        preview: NotRequired[pulumi.Input['PagesProjectDeploymentConfigsPreviewArgsDict']]
+        """
+        Configuration for preview deploys.
+        """
+        production: NotRequired[pulumi.Input['PagesProjectDeploymentConfigsProductionArgsDict']]
+        """
+        Configuration for production deploys.
+        """
+elif False:
+    PagesProjectDeploymentConfigsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesProjectDeploymentConfigsArgs:
     def __init__(__self__, *,
@@ -13035,6 +17030,63 @@ class PagesProjectDeploymentConfigsArgs:
     def production(self, value: Optional[pulumi.Input['PagesProjectDeploymentConfigsProductionArgs']]):
         pulumi.set(self, "production", value)
 
+
+if not MYPY:
+    class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
+        always_use_latest_compatibility_date: NotRequired[pulumi.Input[bool]]
+        """
+        Use latest compatibility date for Pages Functions. Defaults to `false`.
+        """
+        compatibility_date: NotRequired[pulumi.Input[str]]
+        """
+        Compatibility date used for Pages Functions.
+        """
+        compatibility_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Compatibility flags used for Pages Functions.
+        """
+        d1_databases: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        D1 Databases used for Pages Functions. Defaults to `map[]`.
+        """
+        durable_object_namespaces: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        """
+        environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Environment variables for Pages Functions. Defaults to `map[]`.
+        """
+        fail_open: NotRequired[pulumi.Input[bool]]
+        """
+        Fail open used for Pages Functions. Defaults to `false`.
+        """
+        kv_namespaces: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        KV namespaces used for Pages Functions. Defaults to `map[]`.
+        """
+        placement: NotRequired[pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgsDict']]
+        """
+        Configuration for placement in the Cloudflare Pages project.
+        """
+        r2_buckets: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        """
+        secrets: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        """
+        service_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsPreviewServiceBindingArgsDict']]]]
+        """
+        Services used for Pages Functions.
+        """
+        usage_model: NotRequired[pulumi.Input[str]]
+        """
+        Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+        """
+elif False:
+    PagesProjectDeploymentConfigsPreviewArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectDeploymentConfigsPreviewArgs:
@@ -13251,6 +17303,15 @@ class PagesProjectDeploymentConfigsPreviewArgs:
         pulumi.set(self, "usage_model", value)
 
 
+if not MYPY:
+    class PagesProjectDeploymentConfigsPreviewPlacementArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Placement Mode for the Pages Function.
+        """
+elif False:
+    PagesProjectDeploymentConfigsPreviewPlacementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesProjectDeploymentConfigsPreviewPlacementArgs:
     def __init__(__self__, *,
@@ -13273,6 +17334,23 @@ class PagesProjectDeploymentConfigsPreviewPlacementArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class PagesProjectDeploymentConfigsPreviewServiceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of the Worker to bind to.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Worker environment to bind to.
+        """
+elif False:
+    PagesProjectDeploymentConfigsPreviewServiceBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectDeploymentConfigsPreviewServiceBindingArgs:
@@ -13326,6 +17404,63 @@ class PagesProjectDeploymentConfigsPreviewServiceBindingArgs:
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
 
+
+if not MYPY:
+    class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
+        always_use_latest_compatibility_date: NotRequired[pulumi.Input[bool]]
+        """
+        Use latest compatibility date for Pages Functions. Defaults to `false`.
+        """
+        compatibility_date: NotRequired[pulumi.Input[str]]
+        """
+        Compatibility date used for Pages Functions.
+        """
+        compatibility_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Compatibility flags used for Pages Functions.
+        """
+        d1_databases: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        D1 Databases used for Pages Functions. Defaults to `map[]`.
+        """
+        durable_object_namespaces: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        """
+        environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Environment variables for Pages Functions. Defaults to `map[]`.
+        """
+        fail_open: NotRequired[pulumi.Input[bool]]
+        """
+        Fail open used for Pages Functions. Defaults to `false`.
+        """
+        kv_namespaces: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        KV namespaces used for Pages Functions. Defaults to `map[]`.
+        """
+        placement: NotRequired[pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgsDict']]
+        """
+        Configuration for placement in the Cloudflare Pages project.
+        """
+        r2_buckets: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        """
+        secrets: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        """
+        service_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsProductionServiceBindingArgsDict']]]]
+        """
+        Services used for Pages Functions.
+        """
+        usage_model: NotRequired[pulumi.Input[str]]
+        """
+        Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+        """
+elif False:
+    PagesProjectDeploymentConfigsProductionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectDeploymentConfigsProductionArgs:
@@ -13542,6 +17677,15 @@ class PagesProjectDeploymentConfigsProductionArgs:
         pulumi.set(self, "usage_model", value)
 
 
+if not MYPY:
+    class PagesProjectDeploymentConfigsProductionPlacementArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Placement Mode for the Pages Function.
+        """
+elif False:
+    PagesProjectDeploymentConfigsProductionPlacementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesProjectDeploymentConfigsProductionPlacementArgs:
     def __init__(__self__, *,
@@ -13564,6 +17708,23 @@ class PagesProjectDeploymentConfigsProductionPlacementArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class PagesProjectDeploymentConfigsProductionServiceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of the Worker to bind to.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Worker environment to bind to.
+        """
+elif False:
+    PagesProjectDeploymentConfigsProductionServiceBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectDeploymentConfigsProductionServiceBindingArgs:
@@ -13618,6 +17779,19 @@ class PagesProjectDeploymentConfigsProductionServiceBindingArgs:
         pulumi.set(self, "environment", value)
 
 
+if not MYPY:
+    class PagesProjectSourceArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input['PagesProjectSourceConfigArgsDict']]
+        """
+        Configuration for the source of the Cloudflare Pages project.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Project host type.
+        """
+elif False:
+    PagesProjectSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PagesProjectSourceArgs:
     def __init__(__self__, *,
@@ -13656,6 +17830,47 @@ class PagesProjectSourceArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class PagesProjectSourceConfigArgsDict(TypedDict):
+        production_branch: pulumi.Input[str]
+        """
+        Project production branch name.
+        """
+        deployments_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Toggle deployments on this repo. Defaults to `true`.
+        """
+        owner: NotRequired[pulumi.Input[str]]
+        """
+        Project owner username. **Modifying this attribute will force creation of a new resource.**
+        """
+        pr_comments_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Pages to comment on Pull Requests. Defaults to `true`.
+        """
+        preview_branch_excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Branches will be excluded from automatic deployment.
+        """
+        preview_branch_includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Branches will be included for automatic deployment.
+        """
+        preview_deployment_setting: NotRequired[pulumi.Input[str]]
+        """
+        Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
+        """
+        production_deployment_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable production deployments. Defaults to `true`.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Project repository name. **Modifying this attribute will force creation of a new resource.**
+        """
+elif False:
+    PagesProjectSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagesProjectSourceConfigArgs:
@@ -13807,6 +18022,23 @@ class PagesProjectSourceConfigArgs:
         pulumi.set(self, "repo_name", value)
 
 
+if not MYPY:
+    class RateLimitActionArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
+        """
+        response: NotRequired[pulumi.Input['RateLimitActionResponseArgsDict']]
+        """
+        Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
+        """
+elif False:
+    RateLimitActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RateLimitActionArgs:
     def __init__(__self__, *,
@@ -13861,6 +18093,19 @@ class RateLimitActionArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class RateLimitActionResponseArgsDict(TypedDict):
+        body: pulumi.Input[str]
+        """
+        The body to return, the content here should conform to the `content_type`.
+        """
+        content_type: pulumi.Input[str]
+        """
+        The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+        """
+elif False:
+    RateLimitActionResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RateLimitActionResponseArgs:
     def __init__(__self__, *,
@@ -13898,6 +18143,15 @@ class RateLimitActionResponseArgs:
         pulumi.set(self, "content_type", value)
 
 
+if not MYPY:
+    class RateLimitCorrelateArgsDict(TypedDict):
+        by: NotRequired[pulumi.Input[str]]
+        """
+        If set to 'nat', NAT support will be enabled for rate limiting. Available values: `nat`.
+        """
+elif False:
+    RateLimitCorrelateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RateLimitCorrelateArgs:
     def __init__(__self__, *,
@@ -13920,6 +18174,19 @@ class RateLimitCorrelateArgs:
     def by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "by", value)
 
+
+if not MYPY:
+    class RateLimitMatchArgsDict(TypedDict):
+        request: NotRequired[pulumi.Input['RateLimitMatchRequestArgsDict']]
+        """
+        Matches HTTP requests (from the client to Cloudflare).
+        """
+        response: NotRequired[pulumi.Input['RateLimitMatchResponseArgsDict']]
+        """
+        Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
+        """
+elif False:
+    RateLimitMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RateLimitMatchArgs:
@@ -13959,6 +18226,23 @@ class RateLimitMatchArgs:
     def response(self, value: Optional[pulumi.Input['RateLimitMatchResponseArgs']]):
         pulumi.set(self, "response", value)
 
+
+if not MYPY:
+    class RateLimitMatchRequestArgsDict(TypedDict):
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+        """
+        schemes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+        """
+        url_pattern: NotRequired[pulumi.Input[str]]
+        """
+        The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+        """
+elif False:
+    RateLimitMatchRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RateLimitMatchRequestArgs:
@@ -14015,6 +18299,23 @@ class RateLimitMatchRequestArgs:
         pulumi.set(self, "url_pattern", value)
 
 
+if not MYPY:
+    class RateLimitMatchResponseArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        List of HTTP headers maps to match the origin response on.
+        """
+        origin_traffic: NotRequired[pulumi.Input[bool]]
+        """
+        Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        HTTP Status codes, can be one, many or indicate all by not providing this value.
+        """
+elif False:
+    RateLimitMatchResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RateLimitMatchResponseArgs:
     def __init__(__self__, *,
@@ -14069,6 +18370,50 @@ class RateLimitMatchResponseArgs:
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "statuses", value)
 
+
+if not MYPY:
+    class RecordDataArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[int]]
+        altitude: NotRequired[pulumi.Input[float]]
+        certificate: NotRequired[pulumi.Input[str]]
+        content: NotRequired[pulumi.Input[str]]
+        digest: NotRequired[pulumi.Input[str]]
+        digest_type: NotRequired[pulumi.Input[int]]
+        fingerprint: NotRequired[pulumi.Input[str]]
+        flags: NotRequired[pulumi.Input[str]]
+        key_tag: NotRequired[pulumi.Input[int]]
+        lat_degrees: NotRequired[pulumi.Input[int]]
+        lat_direction: NotRequired[pulumi.Input[str]]
+        lat_minutes: NotRequired[pulumi.Input[int]]
+        lat_seconds: NotRequired[pulumi.Input[float]]
+        long_degrees: NotRequired[pulumi.Input[int]]
+        long_direction: NotRequired[pulumi.Input[str]]
+        long_minutes: NotRequired[pulumi.Input[int]]
+        long_seconds: NotRequired[pulumi.Input[float]]
+        matching_type: NotRequired[pulumi.Input[int]]
+        name: NotRequired[pulumi.Input[str]]
+        order: NotRequired[pulumi.Input[int]]
+        port: NotRequired[pulumi.Input[int]]
+        precision_horz: NotRequired[pulumi.Input[float]]
+        precision_vert: NotRequired[pulumi.Input[float]]
+        preference: NotRequired[pulumi.Input[int]]
+        priority: NotRequired[pulumi.Input[int]]
+        proto: NotRequired[pulumi.Input[str]]
+        protocol: NotRequired[pulumi.Input[int]]
+        public_key: NotRequired[pulumi.Input[str]]
+        regex: NotRequired[pulumi.Input[str]]
+        replacement: NotRequired[pulumi.Input[str]]
+        selector: NotRequired[pulumi.Input[int]]
+        service: NotRequired[pulumi.Input[str]]
+        size: NotRequired[pulumi.Input[float]]
+        tag: NotRequired[pulumi.Input[str]]
+        target: NotRequired[pulumi.Input[str]]
+        type: NotRequired[pulumi.Input[int]]
+        usage: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[str]]
+        weight: NotRequired[pulumi.Input[int]]
+elif False:
+    RecordDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RecordDataArgs:
@@ -14543,6 +18888,23 @@ class RecordDataArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class RiskBehaviorBehaviorArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether this risk behavior type is enabled.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of this risk behavior type
+        """
+        risk_level: pulumi.Input[str]
+        """
+        Risk level. Available values: `low`, `medium`, `high`
+        """
+elif False:
+    RiskBehaviorBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RiskBehaviorBehaviorArgs:
     def __init__(__self__, *,
@@ -14594,6 +18956,59 @@ class RiskBehaviorBehaviorArgs:
     def risk_level(self, value: pulumi.Input[str]):
         pulumi.set(self, "risk_level", value)
 
+
+if not MYPY:
+    class RulesetRuleArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        """
+        action_parameters: NotRequired[pulumi.Input['RulesetRuleActionParametersArgsDict']]
+        """
+        List of parameters that configure the behavior of the ruleset rule action.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Brief summary of the ruleset rule and its intended use.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the rule is active.
+        """
+        exposed_credential_check: NotRequired[pulumi.Input['RulesetRuleExposedCredentialCheckArgsDict']]
+        """
+        List of parameters that configure exposed credential checks.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique rule identifier.
+        """
+        last_updated: NotRequired[pulumi.Input[str]]
+        """
+        The most recent update to this rule.
+        """
+        logging: NotRequired[pulumi.Input['RulesetRuleLoggingArgsDict']]
+        """
+        List parameters to configure how the rule generates logs. Only valid for skip action.
+        """
+        ratelimit: NotRequired[pulumi.Input['RulesetRuleRatelimitArgsDict']]
+        """
+        List of parameters that configure HTTP rate limiting behaviour.
+        """
+        ref: NotRequired[pulumi.Input[str]]
+        """
+        Rule reference.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the ruleset to deploy.
+        """
+elif False:
+    RulesetRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleArgs:
@@ -14792,6 +19207,224 @@ class RulesetRuleArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersArgsDict(TypedDict):
+        additional_cacheable_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Specifies uncommon ports to allow cacheable assets to be served from.
+        """
+        algorithms: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersAlgorithmArgsDict']]]]
+        """
+        Compression algorithms to use in order of preference.
+        """
+        automatic_https_rewrites: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off Cloudflare Automatic HTTPS rewrites.
+        """
+        autominifies: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersAutominifyArgsDict']]]]
+        """
+        Indicate which file extensions to minify automatically.
+        """
+        bic: NotRequired[pulumi.Input[bool]]
+        """
+        Inspect the visitor's browser for headers commonly associated with spammers and certain bots.
+        """
+        browser_ttl: NotRequired[pulumi.Input['RulesetRuleActionParametersBrowserTtlArgsDict']]
+        """
+        List of browser TTL parameters to apply to the request.
+        """
+        cache: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to cache if expression matches.
+        """
+        cache_key: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyArgsDict']]
+        """
+        List of cache key parameters to apply to the request.
+        """
+        cache_reserve: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheReserveArgsDict']]
+        """
+        List of cache reserve parameters to apply to the request.
+        """
+        content: NotRequired[pulumi.Input[str]]
+        """
+        Content of the custom error response.
+        """
+        content_type: NotRequired[pulumi.Input[str]]
+        """
+        Content-Type of the custom error response.
+        """
+        cookie_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of cookie values to include as part of custom fields logging.
+        """
+        disable_apps: NotRequired[pulumi.Input[bool]]
+        """
+        Turn off all active Cloudflare Apps.
+        """
+        disable_railgun: NotRequired[pulumi.Input[bool]]
+        """
+        Turn off railgun feature of the Cloudflare Speed app.
+        """
+        disable_rum: NotRequired[pulumi.Input[bool]]
+        """
+        Turn off RUM feature.
+        """
+        disable_zaraz: NotRequired[pulumi.Input[bool]]
+        """
+        Turn off zaraz feature.
+        """
+        edge_ttl: NotRequired[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgsDict']]
+        """
+        List of edge TTL parameters to apply to the request.
+        """
+        email_obfuscation: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+        """
+        fonts: NotRequired[pulumi.Input[bool]]
+        """
+        Toggle fonts.
+        """
+        from_list: NotRequired[pulumi.Input['RulesetRuleActionParametersFromListArgsDict']]
+        """
+        Use a list to lookup information for the action.
+        """
+        from_value: NotRequired[pulumi.Input['RulesetRuleActionParametersFromValueArgsDict']]
+        """
+        Use a value to lookup information for the action.
+        """
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgsDict']]]]
+        """
+        List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+        """
+        host_header: NotRequired[pulumi.Input[str]]
+        """
+        Host Header that request origin receives.
+        """
+        hotlink_protection: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off the hotlink protection feature.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the action parameter to modify.
+        """
+        increment: NotRequired[pulumi.Input[int]]
+        matched_data: NotRequired[pulumi.Input['RulesetRuleActionParametersMatchedDataArgsDict']]
+        """
+        List of properties to configure WAF payload logging.
+        """
+        mirage: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+        """
+        opportunistic_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        """
+        origin: NotRequired[pulumi.Input['RulesetRuleActionParametersOriginArgsDict']]
+        """
+        List of properties to change request origin.
+        """
+        origin_cache_control: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+        """
+        origin_error_page_passthru: NotRequired[pulumi.Input[bool]]
+        """
+        Pass-through error page for origin.
+        """
+        overrides: NotRequired[pulumi.Input['RulesetRuleActionParametersOverridesArgsDict']]
+        """
+        List of override configurations to apply to the ruleset.
+        """
+        phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        """
+        polish: NotRequired[pulumi.Input[str]]
+        """
+        Apply options from the Polish feature of the Cloudflare Speed app.
+        """
+        products: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+        """
+        read_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a maximum timeout for reading content from an origin server.
+        """
+        request_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of request headers to include as part of custom fields logging, in lowercase.
+        """
+        respect_strong_etags: NotRequired[pulumi.Input[bool]]
+        """
+        Respect strong ETags.
+        """
+        response_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of response headers to include as part of custom fields logging, in lowercase.
+        """
+        responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseArgsDict']]]]
+        """
+        List of parameters that configure the response given to end users.
+        """
+        rocket_loader: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+        """
+        rules: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
+        """
+        ruleset: NotRequired[pulumi.Input[str]]
+        """
+        Which ruleset ID to target.
+        """
+        rulesets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of managed WAF rule IDs to target. Only valid when the `"action"` is set to skip.
+        """
+        security_level: NotRequired[pulumi.Input[str]]
+        """
+        Control options for the Security Level feature from the Security app.
+        """
+        serve_stale: NotRequired[pulumi.Input['RulesetRuleActionParametersServeStaleArgsDict']]
+        """
+        List of serve stale parameters to apply to the request.
+        """
+        server_side_excludes: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+        """
+        sni: NotRequired[pulumi.Input['RulesetRuleActionParametersSniArgsDict']]
+        """
+        List of properties to manange Server Name Indication.
+        """
+        ssl: NotRequired[pulumi.Input[str]]
+        """
+        Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        HTTP status code of the custom error response.
+        """
+        sxg: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on or off the SXG feature.
+        """
+        uri: NotRequired[pulumi.Input['RulesetRuleActionParametersUriArgsDict']]
+        """
+        List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the ruleset to deploy.
+        """
+elif False:
+    RulesetRuleActionParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersArgs:
@@ -15660,6 +20293,15 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersAlgorithmArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        """
+elif False:
+    RulesetRuleActionParametersAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersAlgorithmArgs:
     def __init__(__self__, *,
@@ -15681,6 +20323,23 @@ class RulesetRuleActionParametersAlgorithmArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersAutominifyArgsDict(TypedDict):
+        css: NotRequired[pulumi.Input[bool]]
+        """
+        CSS minification.
+        """
+        html: NotRequired[pulumi.Input[bool]]
+        """
+        HTML minification.
+        """
+        js: NotRequired[pulumi.Input[bool]]
+        """
+        JS minification.
+        """
+elif False:
+    RulesetRuleActionParametersAutominifyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersAutominifyArgs:
@@ -15737,6 +20396,19 @@ class RulesetRuleActionParametersAutominifyArgs:
         pulumi.set(self, "js", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersBrowserTtlArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        """
+        default: NotRequired[pulumi.Input[int]]
+        """
+        Default browser TTL. This value is required when override_origin is set
+        """
+elif False:
+    RulesetRuleActionParametersBrowserTtlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersBrowserTtlArgs:
     def __init__(__self__, *,
@@ -15774,6 +20446,27 @@ class RulesetRuleActionParametersBrowserTtlArgs:
     def default(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyArgsDict(TypedDict):
+        cache_by_device_type: NotRequired[pulumi.Input[bool]]
+        """
+        Cache by device type.
+        """
+        cache_deception_armor: NotRequired[pulumi.Input[bool]]
+        """
+        Cache deception armor.
+        """
+        custom_key: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyArgsDict']]
+        """
+        Custom key parameters for the request.
+        """
+        ignore_query_strings_order: NotRequired[pulumi.Input[bool]]
+        """
+        Ignore query strings order.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyArgs:
@@ -15845,6 +20538,31 @@ class RulesetRuleActionParametersCacheKeyArgs:
     def ignore_query_strings_order(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_query_strings_order", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyArgsDict(TypedDict):
+        cookie: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyCookieArgsDict']]
+        """
+        Cookie parameters for the custom key.
+        """
+        header: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgsDict']]
+        """
+        Header parameters for the custom key.
+        """
+        host: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyHostArgsDict']]
+        """
+        Host parameters for the custom key.
+        """
+        query_string: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict']]
+        """
+        Query string parameters for the custom key.
+        """
+        user: NotRequired[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyUserArgsDict']]
+        """
+        User parameters for the custom key.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyArgs:
@@ -15933,6 +20651,19 @@ class RulesetRuleActionParametersCacheKeyCustomKeyArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgsDict(TypedDict):
+        check_presences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of cookies to check for presence in the custom key.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of cookies to include in the custom key.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyCookieArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs:
     def __init__(__self__, *,
@@ -15971,6 +20702,27 @@ class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgsDict(TypedDict):
+        check_presences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of headers to check for presence in the custom key.
+        """
+        contains: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]]
+        """
+        Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        """
+        exclude_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Exclude the origin header from the custom key.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of headers to include in the custom key.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs:
@@ -16043,6 +20795,15 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs:
         pulumi.set(self, "includes", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyHostArgsDict(TypedDict):
+        resolved: NotRequired[pulumi.Input[bool]]
+        """
+        Resolve hostname to IP address.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyHostArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs:
     def __init__(__self__, *,
@@ -16065,6 +20826,19 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs:
     def resolved(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "resolved", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict(TypedDict):
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of query string parameters to exclude from the custom key.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of query string parameters to include in the custom key.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs:
@@ -16104,6 +20878,23 @@ class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersCacheKeyCustomKeyUserArgsDict(TypedDict):
+        device_type: NotRequired[pulumi.Input[bool]]
+        """
+        Add device type to the custom key.
+        """
+        geo: NotRequired[pulumi.Input[bool]]
+        """
+        Add geo data to the custom key.
+        """
+        lang: NotRequired[pulumi.Input[bool]]
+        """
+        Add language data to the custom key.
+        """
+elif False:
+    RulesetRuleActionParametersCacheKeyCustomKeyUserArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
@@ -16160,6 +20951,19 @@ class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
         pulumi.set(self, "lang", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersCacheReserveArgsDict(TypedDict):
+        eligible: pulumi.Input[bool]
+        """
+        Determines whether Cloudflare will write the eligible resource to cache reserve.
+        """
+        minimum_file_size: NotRequired[pulumi.Input[int]]
+        """
+        The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and "eligible" is true, Cloudflare will use 0 bytes by default.
+        """
+elif False:
+    RulesetRuleActionParametersCacheReserveArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersCacheReserveArgs:
     def __init__(__self__, *,
@@ -16197,6 +21001,23 @@ class RulesetRuleActionParametersCacheReserveArgs:
     def minimum_file_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_file_size", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersEdgeTtlArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+        """
+        default: NotRequired[pulumi.Input[int]]
+        """
+        Default edge TTL.
+        """
+        status_code_ttls: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict']]]]
+        """
+        Edge TTL for the status codes.
+        """
+elif False:
+    RulesetRuleActionParametersEdgeTtlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersEdgeTtlArgs:
@@ -16251,6 +21072,23 @@ class RulesetRuleActionParametersEdgeTtlArgs:
     def status_code_ttls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs']]]]):
         pulumi.set(self, "status_code_ttls", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict(TypedDict):
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        Status code for which the edge TTL is applied.
+        """
+        status_code_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgsDict']]]]
+        """
+        Status code range for which the edge TTL is applied.
+        """
+        value: NotRequired[pulumi.Input[int]]
+        """
+        Status code edge TTL value.
+        """
+elif False:
+    RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs:
@@ -16307,6 +21145,19 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[int]]
+        """
+        From status code.
+        """
+        to: NotRequired[pulumi.Input[int]]
+        """
+        To status code.
+        """
+elif False:
+    RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs:
     def __init__(__self__, *,
@@ -16346,6 +21197,19 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs:
         pulumi.set(self, "to", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersFromListArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Expression to use for the list lookup.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the list.
+        """
+elif False:
+    RulesetRuleActionParametersFromListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersFromListArgs:
     def __init__(__self__, *,
@@ -16384,6 +21248,23 @@ class RulesetRuleActionParametersFromListArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersFromValueArgsDict(TypedDict):
+        preserve_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        Preserve query string for redirect URL.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        Status code for redirect.
+        """
+        target_url: NotRequired[pulumi.Input['RulesetRuleActionParametersFromValueTargetUrlArgsDict']]
+        """
+        Target URL for redirect.
+        """
+elif False:
+    RulesetRuleActionParametersFromValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersFromValueArgs:
@@ -16440,6 +21321,19 @@ class RulesetRuleActionParametersFromValueArgs:
         pulumi.set(self, "target_url", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersFromValueTargetUrlArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Static value to provide as the HTTP request header value.
+        """
+elif False:
+    RulesetRuleActionParametersFromValueTargetUrlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersFromValueTargetUrlArgs:
     def __init__(__self__, *,
@@ -16478,6 +21372,27 @@ class RulesetRuleActionParametersFromValueTargetUrlArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersHeaderArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the HTTP request header to target.
+        """
+        operation: NotRequired[pulumi.Input[str]]
+        """
+        Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Static value to provide as the HTTP request header value.
+        """
+elif False:
+    RulesetRuleActionParametersHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersHeaderArgs:
@@ -16550,6 +21465,15 @@ class RulesetRuleActionParametersHeaderArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersMatchedDataArgsDict(TypedDict):
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+        """
+elif False:
+    RulesetRuleActionParametersMatchedDataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersMatchedDataArgs:
     def __init__(__self__, *,
@@ -16572,6 +21496,19 @@ class RulesetRuleActionParametersMatchedDataArgs:
     def public_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_key", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersOriginArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Origin Hostname where request is sent.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Origin Port where request is sent.
+        """
+elif False:
+    RulesetRuleActionParametersOriginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersOriginArgs:
@@ -16611,6 +21548,31 @@ class RulesetRuleActionParametersOriginArgs:
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersOverridesArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        """
+        categories: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesCategoryArgsDict']]]]
+        """
+        List of tag-based overrides.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Defines if the current ruleset-level override enables or disables the ruleset.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgsDict']]]]
+        """
+        List of rule-based overrides.
+        """
+        sensitivity_level: NotRequired[pulumi.Input[str]]
+        """
+        Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+        """
+elif False:
+    RulesetRuleActionParametersOverridesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersOverridesArgs:
@@ -16699,6 +21661,23 @@ class RulesetRuleActionParametersOverridesArgs:
         pulumi.set(self, "sensitivity_level", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersOverridesCategoryArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        """
+        category: NotRequired[pulumi.Input[str]]
+        """
+        Tag name to apply the ruleset rule override to.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        """
+elif False:
+    RulesetRuleActionParametersOverridesCategoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersOverridesCategoryArgs:
     def __init__(__self__, *,
@@ -16753,6 +21732,31 @@ class RulesetRuleActionParametersOverridesCategoryArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersOverridesRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Defines if the current rule-level override enables or disables the rule.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Rule ID to apply the override to.
+        """
+        score_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        """
+        sensitivity_level: NotRequired[pulumi.Input[str]]
+        """
+        Sensitivity level for a ruleset rule override.
+        """
+elif False:
+    RulesetRuleActionParametersOverridesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersOverridesRuleArgs:
@@ -16841,6 +21845,23 @@ class RulesetRuleActionParametersOverridesRuleArgs:
         pulumi.set(self, "sensitivity_level", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersResponseArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        Body content to include in the response.
+        """
+        content_type: NotRequired[pulumi.Input[str]]
+        """
+        HTTP content type to send in the response.
+        """
+        status_code: NotRequired[pulumi.Input[int]]
+        """
+        HTTP status code to send in the response.
+        """
+elif False:
+    RulesetRuleActionParametersResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersResponseArgs:
     def __init__(__self__, *,
@@ -16896,6 +21917,15 @@ class RulesetRuleActionParametersResponseArgs:
         pulumi.set(self, "status_code", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersServeStaleArgsDict(TypedDict):
+        disable_stale_while_updating: NotRequired[pulumi.Input[bool]]
+        """
+        Disable stale while updating.
+        """
+elif False:
+    RulesetRuleActionParametersServeStaleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersServeStaleArgs:
     def __init__(__self__, *,
@@ -16919,6 +21949,15 @@ class RulesetRuleActionParametersServeStaleArgs:
         pulumi.set(self, "disable_stale_while_updating", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersSniArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value to define for SNI.
+        """
+elif False:
+    RulesetRuleActionParametersSniArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersSniArgs:
     def __init__(__self__, *,
@@ -16941,6 +21980,20 @@ class RulesetRuleActionParametersSniArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersUriArgsDict(TypedDict):
+        origin: NotRequired[pulumi.Input[bool]]
+        path: NotRequired[pulumi.Input['RulesetRuleActionParametersUriPathArgsDict']]
+        """
+        URI path configuration when performing a URL rewrite.
+        """
+        query: NotRequired[pulumi.Input['RulesetRuleActionParametersUriQueryArgsDict']]
+        """
+        Query string configuration when performing a URL rewrite.
+        """
+elif False:
+    RulesetRuleActionParametersUriArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersUriArgs:
@@ -16993,6 +22046,19 @@ class RulesetRuleActionParametersUriArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class RulesetRuleActionParametersUriPathArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Static string value of the updated URI path or query string component.
+        """
+elif False:
+    RulesetRuleActionParametersUriPathArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleActionParametersUriPathArgs:
     def __init__(__self__, *,
@@ -17031,6 +22097,19 @@ class RulesetRuleActionParametersUriPathArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RulesetRuleActionParametersUriQueryArgsDict(TypedDict):
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Static string value of the updated URI path or query string component.
+        """
+elif False:
+    RulesetRuleActionParametersUriQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleActionParametersUriQueryArgs:
@@ -17071,6 +22150,19 @@ class RulesetRuleActionParametersUriQueryArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class RulesetRuleExposedCredentialCheckArgsDict(TypedDict):
+        password_expression: NotRequired[pulumi.Input[str]]
+        """
+        Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        """
+        username_expression: NotRequired[pulumi.Input[str]]
+        """
+        Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        """
+elif False:
+    RulesetRuleExposedCredentialCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleExposedCredentialCheckArgs:
     def __init__(__self__, *,
@@ -17110,6 +22202,15 @@ class RulesetRuleExposedCredentialCheckArgs:
         pulumi.set(self, "username_expression", value)
 
 
+if not MYPY:
+    class RulesetRuleLoggingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Override the default logging behavior when a rule is matched.
+        """
+elif False:
+    RulesetRuleLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RulesetRuleLoggingArgs:
     def __init__(__self__, *,
@@ -17132,6 +22233,43 @@ class RulesetRuleLoggingArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class RulesetRuleRatelimitArgsDict(TypedDict):
+        characteristics: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of parameters that define how Cloudflare tracks the request rate for this rule.
+        """
+        counting_expression: NotRequired[pulumi.Input[str]]
+        """
+        Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
+        mitigation_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The period of time to consider (in seconds) when evaluating the request rate.
+        """
+        requests_per_period: NotRequired[pulumi.Input[int]]
+        """
+        The number of requests over the period of time that will trigger the Rate Limiting rule.
+        """
+        requests_to_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to include requests to origin within the Rate Limiting count.
+        """
+        score_per_period: NotRequired[pulumi.Input[int]]
+        """
+        The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+        """
+        score_response_header_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of HTTP header in the response, set by the origin server, with the score for the current request.
+        """
+elif False:
+    RulesetRuleRatelimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetRuleRatelimitArgs:
@@ -17268,6 +22406,19 @@ class RulesetRuleRatelimitArgs:
         pulumi.set(self, "score_response_header_name", value)
 
 
+if not MYPY:
+    class SpectrumApplicationDnsArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the DNS record associated with the application.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of DNS record associated with the application.
+        """
+elif False:
+    SpectrumApplicationDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpectrumApplicationDnsArgs:
     def __init__(__self__, *,
@@ -17304,6 +22455,23 @@ class SpectrumApplicationDnsArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class SpectrumApplicationEdgeIpsArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        """
+        connectivity: NotRequired[pulumi.Input[str]]
+        """
+        The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        """
+elif False:
+    SpectrumApplicationEdgeIpsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpectrumApplicationEdgeIpsArgs:
@@ -17359,6 +22527,15 @@ class SpectrumApplicationEdgeIpsArgs:
         pulumi.set(self, "ips", value)
 
 
+if not MYPY:
+    class SpectrumApplicationOriginDnsArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Fully qualified domain name of the origin.
+        """
+elif False:
+    SpectrumApplicationOriginDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpectrumApplicationOriginDnsArgs:
     def __init__(__self__, *,
@@ -17380,6 +22557,19 @@ class SpectrumApplicationOriginDnsArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class SpectrumApplicationOriginPortRangeArgsDict(TypedDict):
+        end: pulumi.Input[int]
+        """
+        Upper bound of the origin port range.
+        """
+        start: pulumi.Input[int]
+        """
+        Lower bound of the origin port range.
+        """
+elif False:
+    SpectrumApplicationOriginPortRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpectrumApplicationOriginPortRangeArgs:
@@ -17417,6 +22607,23 @@ class SpectrumApplicationOriginPortRangeArgs:
     def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
 
+
+if not MYPY:
+    class SplitTunnelTunnelArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The address for the tunnel.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description for the tunnel.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The domain name for the tunnel.
+        """
+elif False:
+    SplitTunnelTunnelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SplitTunnelTunnelArgs:
@@ -17472,6 +22679,27 @@ class SplitTunnelTunnelArgs:
     def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
 
+
+if not MYPY:
+    class TeamsAccountAntivirusArgsDict(TypedDict):
+        enabled_download_phase: pulumi.Input[bool]
+        """
+        Scan on file download.
+        """
+        enabled_upload_phase: pulumi.Input[bool]
+        """
+        Scan on file upload.
+        """
+        fail_closed: pulumi.Input[bool]
+        """
+        Block requests for files that cannot be scanned.
+        """
+        notification_settings: NotRequired[pulumi.Input['TeamsAccountAntivirusNotificationSettingsArgsDict']]
+        """
+        Set notifications for antivirus.
+        """
+elif False:
+    TeamsAccountAntivirusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountAntivirusArgs:
@@ -17541,6 +22769,23 @@ class TeamsAccountAntivirusArgs:
         pulumi.set(self, "notification_settings", value)
 
 
+if not MYPY:
+    class TeamsAccountAntivirusNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable notification settings.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Notification content.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Support URL to show in the notification.
+        """
+elif False:
+    TeamsAccountAntivirusNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountAntivirusNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -17595,6 +22840,43 @@ class TeamsAccountAntivirusNotificationSettingsArgs:
     def support_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "support_url", value)
 
+
+if not MYPY:
+    class TeamsAccountBlockPageArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        Hex code of block page background color.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Indicator of enablement.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page footer text.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page header text.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        URL of block page logo.
+        """
+        mailto_address: NotRequired[pulumi.Input[str]]
+        """
+        Admin email for users to contact.
+        """
+        mailto_subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject line for emails created from block page.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of block page configuration.
+        """
+elif False:
+    TeamsAccountBlockPageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountBlockPageArgs:
@@ -17731,6 +23013,15 @@ class TeamsAccountBlockPageArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class TeamsAccountBodyScanningArgsDict(TypedDict):
+        inspection_mode: pulumi.Input[str]
+        """
+        Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+elif False:
+    TeamsAccountBodyScanningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountBodyScanningArgs:
     def __init__(__self__, *,
@@ -17753,6 +23044,15 @@ class TeamsAccountBodyScanningArgs:
         pulumi.set(self, "inspection_mode", value)
 
 
+if not MYPY:
+    class TeamsAccountCertificateArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of certificate for TLS interception.
+        """
+elif False:
+    TeamsAccountCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountCertificateArgs:
     def __init__(__self__, *,
@@ -17774,6 +23074,20 @@ class TeamsAccountCertificateArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class TeamsAccountCustomCertificateArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether TLS encryption should use a custom certificate.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        ID of custom certificate.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+elif False:
+    TeamsAccountCustomCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountCustomCertificateArgs:
@@ -17825,6 +23139,15 @@ class TeamsAccountCustomCertificateArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class TeamsAccountExtendedEmailMatchingArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+elif False:
+    TeamsAccountExtendedEmailMatchingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountExtendedEmailMatchingArgs:
     def __init__(__self__, *,
@@ -17846,6 +23169,15 @@ class TeamsAccountExtendedEmailMatchingArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class TeamsAccountFipsArgsDict(TypedDict):
+        tls: NotRequired[pulumi.Input[bool]]
+        """
+        Only allow FIPS-compliant TLS configuration.
+        """
+elif False:
+    TeamsAccountFipsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountFipsArgs:
@@ -17869,6 +23201,19 @@ class TeamsAccountFipsArgs:
     def tls(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls", value)
 
+
+if not MYPY:
+    class TeamsAccountLoggingArgsDict(TypedDict):
+        redact_pii: pulumi.Input[bool]
+        """
+        Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        """
+        settings_by_rule_type: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeArgsDict']
+        """
+        Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
+        """
+elif False:
+    TeamsAccountLoggingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountLoggingArgs:
@@ -17906,6 +23251,23 @@ class TeamsAccountLoggingArgs:
     def settings_by_rule_type(self, value: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeArgs']):
         pulumi.set(self, "settings_by_rule_type", value)
 
+
+if not MYPY:
+    class TeamsAccountLoggingSettingsByRuleTypeArgsDict(TypedDict):
+        dns: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeDnsArgsDict']
+        """
+        Logging configuration for DNS requests.
+        """
+        http: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeHttpArgsDict']
+        """
+        Logging configuration for HTTP requests.
+        """
+        l4: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeL4ArgsDict']
+        """
+        Logging configuration for layer 4 requests.
+        """
+elif False:
+    TeamsAccountLoggingSettingsByRuleTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountLoggingSettingsByRuleTypeArgs:
@@ -17959,6 +23321,16 @@ class TeamsAccountLoggingSettingsByRuleTypeArgs:
         pulumi.set(self, "l4", value)
 
 
+if not MYPY:
+    class TeamsAccountLoggingSettingsByRuleTypeDnsArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    TeamsAccountLoggingSettingsByRuleTypeDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountLoggingSettingsByRuleTypeDnsArgs:
     def __init__(__self__, *,
@@ -17991,6 +23363,16 @@ class TeamsAccountLoggingSettingsByRuleTypeDnsArgs:
     def log_blocks(self, value: pulumi.Input[bool]):
         pulumi.set(self, "log_blocks", value)
 
+
+if not MYPY:
+    class TeamsAccountLoggingSettingsByRuleTypeHttpArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    TeamsAccountLoggingSettingsByRuleTypeHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountLoggingSettingsByRuleTypeHttpArgs:
@@ -18025,6 +23407,16 @@ class TeamsAccountLoggingSettingsByRuleTypeHttpArgs:
         pulumi.set(self, "log_blocks", value)
 
 
+if not MYPY:
+    class TeamsAccountLoggingSettingsByRuleTypeL4ArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    TeamsAccountLoggingSettingsByRuleTypeL4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountLoggingSettingsByRuleTypeL4Args:
     def __init__(__self__, *,
@@ -18058,6 +23450,15 @@ class TeamsAccountLoggingSettingsByRuleTypeL4Args:
         pulumi.set(self, "log_blocks", value)
 
 
+if not MYPY:
+    class TeamsAccountPayloadLogArgsDict(TypedDict):
+        public_key: pulumi.Input[str]
+        """
+        Public key used to encrypt matched payloads.
+        """
+elif False:
+    TeamsAccountPayloadLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountPayloadLogArgs:
     def __init__(__self__, *,
@@ -18079,6 +23480,31 @@ class TeamsAccountPayloadLogArgs:
     def public_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_key", value)
 
+
+if not MYPY:
+    class TeamsAccountProxyArgsDict(TypedDict):
+        disable_for_time: pulumi.Input[int]
+        """
+        Sets the time limit in seconds that a user can use an override code to bypass WARP.
+        """
+        root_ca: pulumi.Input[bool]
+        """
+        Whether root ca is enabled account wide for ZT clients.
+        """
+        tcp: pulumi.Input[bool]
+        """
+        Whether gateway proxy is enabled on gateway devices for TCP traffic.
+        """
+        udp: pulumi.Input[bool]
+        """
+        Whether gateway proxy is enabled on gateway devices for UDP traffic.
+        """
+        virtual_ip: pulumi.Input[bool]
+        """
+        Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        """
+elif False:
+    TeamsAccountProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountProxyArgs:
@@ -18162,6 +23588,15 @@ class TeamsAccountProxyArgs:
         pulumi.set(self, "virtual_ip", value)
 
 
+if not MYPY:
+    class TeamsAccountSshSessionLogArgsDict(TypedDict):
+        public_key: pulumi.Input[str]
+        """
+        Public key used to encrypt ssh session.
+        """
+elif False:
+    TeamsAccountSshSessionLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsAccountSshSessionLogArgs:
     def __init__(__self__, *,
@@ -18183,6 +23618,13 @@ class TeamsAccountSshSessionLogArgs:
     def public_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_key", value)
 
+
+if not MYPY:
+    class TeamsListItemsWithDescriptionArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    TeamsListItemsWithDescriptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsListItemsWithDescriptionArgs:
@@ -18210,6 +23652,19 @@ class TeamsListItemsWithDescriptionArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class TeamsLocationNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        CIDR notation representation of the network IP.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
+        """
+elif False:
+    TeamsLocationNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsLocationNetworkArgs:
@@ -18248,6 +23703,91 @@ class TeamsLocationNetworkArgs:
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsArgsDict(TypedDict):
+        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Add custom headers to allowed requests in the form of key-value pairs.
+        """
+        allow_child_bypass: NotRequired[pulumi.Input[bool]]
+        """
+        Allow parent MSP accounts to enable bypass their children's rules.
+        """
+        audit_ssh: NotRequired[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgsDict']]
+        """
+        Settings for auditing SSH usage.
+        """
+        biso_admin_controls: NotRequired[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgsDict']]
+        """
+        Configure how browser isolation behaves.
+        """
+        block_page_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Indicator of block page enablement.
+        """
+        block_page_reason: NotRequired[pulumi.Input[str]]
+        """
+        The displayed reason for a user being blocked.
+        """
+        bypass_parent_rule: NotRequired[pulumi.Input[bool]]
+        """
+        Allow child MSP accounts to bypass their parent's rule.
+        """
+        check_session: NotRequired[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgsDict']]
+        """
+        Configure how session check behaves.
+        """
+        dns_resolvers: NotRequired[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgsDict']]
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        """
+        egress: NotRequired[pulumi.Input['TeamsRuleRuleSettingsEgressArgsDict']]
+        """
+        Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        """
+        ignore_cname_category_matches: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response.
+        """
+        insecure_disable_dnssec_validation: NotRequired[pulumi.Input[bool]]
+        """
+        Disable DNSSEC validation (must be Allow rule).
+        """
+        ip_categories: NotRequired[pulumi.Input[bool]]
+        """
+        Turns on IP category based filter on dns if the rule contains dns category checks.
+        """
+        l4override: NotRequired[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgsDict']]
+        """
+        Settings to forward layer 4 traffic.
+        """
+        notification_settings: NotRequired[pulumi.Input['TeamsRuleRuleSettingsNotificationSettingsArgsDict']]
+        """
+        Notification settings on a block rule.
+        """
+        override_host: NotRequired[pulumi.Input[str]]
+        """
+        The host to override matching DNS queries with.
+        """
+        override_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The IPs to override matching DNS queries with.
+        """
+        payload_log: NotRequired[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgsDict']]
+        """
+        Configure DLP Payload Logging settings for this rule.
+        """
+        resolve_dns_through_cloudflare: NotRequired[pulumi.Input[bool]]
+        """
+        Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        """
+        untrusted_cert: NotRequired[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgsDict']]
+        """
+        Configure untrusted certificate settings for this rule.
+        """
+elif False:
+    TeamsRuleRuleSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsArgs:
@@ -18576,6 +24116,15 @@ class TeamsRuleRuleSettingsArgs:
         pulumi.set(self, "untrusted_cert", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsAuditSshArgsDict(TypedDict):
+        command_logging: pulumi.Input[bool]
+        """
+        Log all SSH commands.
+        """
+elif False:
+    TeamsRuleRuleSettingsAuditSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsAuditSshArgs:
     def __init__(__self__, *,
@@ -18597,6 +24146,35 @@ class TeamsRuleRuleSettingsAuditSshArgs:
     def command_logging(self, value: pulumi.Input[bool]):
         pulumi.set(self, "command_logging", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsBisoAdminControlsArgsDict(TypedDict):
+        disable_clipboard_redirection: NotRequired[pulumi.Input[bool]]
+        """
+        Disable clipboard redirection.
+        """
+        disable_copy_paste: NotRequired[pulumi.Input[bool]]
+        """
+        Disable copy-paste.
+        """
+        disable_download: NotRequired[pulumi.Input[bool]]
+        """
+        Disable download.
+        """
+        disable_keyboard: NotRequired[pulumi.Input[bool]]
+        """
+        Disable keyboard usage.
+        """
+        disable_printing: NotRequired[pulumi.Input[bool]]
+        """
+        Disable printing.
+        """
+        disable_upload: NotRequired[pulumi.Input[bool]]
+        """
+        Disable upload.
+        """
+elif False:
+    TeamsRuleRuleSettingsBisoAdminControlsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsBisoAdminControlsArgs:
@@ -18701,6 +24279,19 @@ class TeamsRuleRuleSettingsBisoAdminControlsArgs:
         pulumi.set(self, "disable_upload", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsCheckSessionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Configure how fresh the session needs to be to be considered valid.
+        """
+        enforce: pulumi.Input[bool]
+        """
+        Enable session enforcement for this rule.
+        """
+elif False:
+    TeamsRuleRuleSettingsCheckSessionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsCheckSessionArgs:
     def __init__(__self__, *,
@@ -18737,6 +24328,19 @@ class TeamsRuleRuleSettingsCheckSessionArgs:
     def enforce(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enforce", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversArgsDict(TypedDict):
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict']]]]
+        """
+        IPv4 resolvers.
+        """
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict']]]]
+        """
+        IPv6 resolvers.
+        """
+elif False:
+    TeamsRuleRuleSettingsDnsResolversArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsDnsResolversArgs:
@@ -18776,6 +24380,27 @@ class TeamsRuleRuleSettingsDnsResolversArgs:
     def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6Args']]]]):
         pulumi.set(self, "ipv6s", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsDnsResolversIpv4Args:
@@ -18847,6 +24472,27 @@ class TeamsRuleRuleSettingsDnsResolversIpv4Args:
         pulumi.set(self, "vnet_id", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsDnsResolversIpv6Args:
     def __init__(__self__, *,
@@ -18917,6 +24563,23 @@ class TeamsRuleRuleSettingsDnsResolversIpv6Args:
         pulumi.set(self, "vnet_id", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsEgressArgsDict(TypedDict):
+        ipv4: pulumi.Input[str]
+        """
+        The IPv4 address to be used for egress.
+        """
+        ipv6: pulumi.Input[str]
+        """
+        The IPv6 range to be used for egress.
+        """
+        ipv4_fallback: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        """
+elif False:
+    TeamsRuleRuleSettingsEgressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsEgressArgs:
     def __init__(__self__, *,
@@ -18970,6 +24633,19 @@ class TeamsRuleRuleSettingsEgressArgs:
         pulumi.set(self, "ipv4_fallback", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsL4overrideArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        Override IP to forward traffic to.
+        """
+        port: pulumi.Input[int]
+        """
+        Override Port to forward traffic to.
+        """
+elif False:
+    TeamsRuleRuleSettingsL4overrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsL4overrideArgs:
     def __init__(__self__, *,
@@ -19006,6 +24682,23 @@ class TeamsRuleRuleSettingsL4overrideArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable notification settings.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Notification content.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Support URL to show in the notification.
+        """
+elif False:
+    TeamsRuleRuleSettingsNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsNotificationSettingsArgs:
@@ -19062,6 +24755,15 @@ class TeamsRuleRuleSettingsNotificationSettingsArgs:
         pulumi.set(self, "support_url", value)
 
 
+if not MYPY:
+    class TeamsRuleRuleSettingsPayloadLogArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable or disable DLP Payload Logging for this rule.
+        """
+elif False:
+    TeamsRuleRuleSettingsPayloadLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TeamsRuleRuleSettingsPayloadLogArgs:
     def __init__(__self__, *,
@@ -19083,6 +24785,15 @@ class TeamsRuleRuleSettingsPayloadLogArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class TeamsRuleRuleSettingsUntrustedCertArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+        """
+elif False:
+    TeamsRuleRuleSettingsUntrustedCertArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsUntrustedCertArgs:
@@ -19106,6 +24817,20 @@ class TeamsRuleRuleSettingsUntrustedCertArgs:
     def action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action", value)
 
+
+if not MYPY:
+    class TunnelConfigConfigArgsDict(TypedDict):
+        ingress_rules: pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgsDict']]]
+        """
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        """
+        origin_request: NotRequired[pulumi.Input['TunnelConfigConfigOriginRequestArgsDict']]
+        warp_routing: NotRequired[pulumi.Input['TunnelConfigConfigWarpRoutingArgsDict']]
+        """
+        If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+elif False:
+    TunnelConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelConfigConfigArgs:
@@ -19156,6 +24881,24 @@ class TunnelConfigConfigArgs:
     def warp_routing(self, value: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']]):
         pulumi.set(self, "warp_routing", value)
 
+
+if not MYPY:
+    class TunnelConfigConfigIngressRuleArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Name of the service to which the request will be sent.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        """
+        origin_request: NotRequired[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestArgsDict']]
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the incoming request. If the path matches, the request will be sent to the local service.
+        """
+elif False:
+    TunnelConfigConfigIngressRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelConfigConfigIngressRuleArgs:
@@ -19222,6 +24965,83 @@ class TunnelConfigConfigIngressRuleArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class TunnelConfigConfigIngressRuleOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestAccessArgsDict']]
+        """
+        Access rules for the ingress service.
+        """
+        bastion_mode: NotRequired[pulumi.Input[bool]]
+        """
+        Runs as jump host.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        connect_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        ip_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestIpRuleArgsDict']]]]
+        """
+        IP rules for the proxy service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        proxy_address: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        proxy_port: NotRequired[pulumi.Input[int]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[str]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        tls_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+elif False:
+    TunnelConfigConfigIngressRuleOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelConfigConfigIngressRuleOriginRequestArgs:
@@ -19518,6 +25338,23 @@ class TunnelConfigConfigIngressRuleOriginRequestArgs:
         pulumi.set(self, "tls_timeout", value)
 
 
+if not MYPY:
+    class TunnelConfigConfigIngressRuleOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience tags of the access rule.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the access rule is required.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the team to which the access rule applies.
+        """
+elif False:
+    TunnelConfigConfigIngressRuleOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelConfigConfigIngressRuleOriginRequestAccessArgs:
     def __init__(__self__, *,
@@ -19573,6 +25410,23 @@ class TunnelConfigConfigIngressRuleOriginRequestAccessArgs:
         pulumi.set(self, "team_name", value)
 
 
+if not MYPY:
+    class TunnelConfigConfigIngressRuleOriginRequestIpRuleArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow the IP prefix.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Ports to use within the IP rule.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP rule prefix.
+        """
+elif False:
+    TunnelConfigConfigIngressRuleOriginRequestIpRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs:
     def __init__(__self__, *,
@@ -19627,6 +25481,83 @@ class TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs:
     def prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prefix", value)
 
+
+if not MYPY:
+    class TunnelConfigConfigOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgsDict']]
+        """
+        Access rules for the ingress service.
+        """
+        bastion_mode: NotRequired[pulumi.Input[bool]]
+        """
+        Runs as jump host.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        connect_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        ip_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgsDict']]]]
+        """
+        IP rules for the proxy service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        proxy_address: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        proxy_port: NotRequired[pulumi.Input[int]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[str]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        tls_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+elif False:
+    TunnelConfigConfigOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelConfigConfigOriginRequestArgs:
@@ -19923,6 +25854,23 @@ class TunnelConfigConfigOriginRequestArgs:
         pulumi.set(self, "tls_timeout", value)
 
 
+if not MYPY:
+    class TunnelConfigConfigOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience tags of the access rule.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the access rule is required.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the team to which the access rule applies.
+        """
+elif False:
+    TunnelConfigConfigOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelConfigConfigOriginRequestAccessArgs:
     def __init__(__self__, *,
@@ -19977,6 +25925,23 @@ class TunnelConfigConfigOriginRequestAccessArgs:
     def team_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team_name", value)
 
+
+if not MYPY:
+    class TunnelConfigConfigOriginRequestIpRuleArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow the IP prefix.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Ports to use within the IP rule.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP rule prefix.
+        """
+elif False:
+    TunnelConfigConfigOriginRequestIpRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelConfigConfigOriginRequestIpRuleArgs:
@@ -20033,6 +25998,15 @@ class TunnelConfigConfigOriginRequestIpRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
+if not MYPY:
+    class TunnelConfigConfigWarpRoutingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether WARP routing is enabled.
+        """
+elif False:
+    TunnelConfigConfigWarpRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelConfigConfigWarpRoutingArgs:
     def __init__(__self__, *,
@@ -20055,6 +26029,19 @@ class TunnelConfigConfigWarpRoutingArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class UserAgentBlockingRuleConfigurationArgsDict(TypedDict):
+        target: pulumi.Input[str]
+        """
+        The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        """
+        value: pulumi.Input[str]
+        """
+        The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        """
+elif False:
+    UserAgentBlockingRuleConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserAgentBlockingRuleConfigurationArgs:
@@ -20093,6 +26080,19 @@ class UserAgentBlockingRuleConfigurationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class WaitingRoomAdditionalRouteArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        The additional host name for which the waiting room to be applied on (no wildcards).
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        """
+elif False:
+    WaitingRoomAdditionalRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WaitingRoomAdditionalRouteArgs:
     def __init__(__self__, *,
@@ -20130,6 +26130,35 @@ class WaitingRoomAdditionalRouteArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class WaitingRoomRulesRuleArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+        """
+        expression: pulumi.Input[str]
+        """
+        Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Brief summary of the waiting room rule and its intended use.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique rule identifier.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the waiting room rule.
+        """
+elif False:
+    WaitingRoomRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WaitingRoomRulesRuleArgs:
@@ -20232,6 +26261,19 @@ class WaitingRoomRulesRuleArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class WorkerScriptAnalyticsEngineBindingArgsDict(TypedDict):
+        dataset: pulumi.Input[str]
+        """
+        The name of the Analytics Engine dataset to write to.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkerScriptAnalyticsEngineBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptAnalyticsEngineBindingArgs:
     def __init__(__self__, *,
@@ -20268,6 +26310,19 @@ class WorkerScriptAnalyticsEngineBindingArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class WorkerScriptD1DatabaseBindingArgsDict(TypedDict):
+        database_id: pulumi.Input[str]
+        """
+        Database ID of D1 database to use.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkerScriptD1DatabaseBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerScriptD1DatabaseBindingArgs:
@@ -20306,6 +26361,19 @@ class WorkerScriptD1DatabaseBindingArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class WorkerScriptHyperdriveConfigBindingArgsDict(TypedDict):
+        binding: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Hyperdrive config to use.
+        """
+elif False:
+    WorkerScriptHyperdriveConfigBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptHyperdriveConfigBindingArgs:
     def __init__(__self__, *,
@@ -20342,6 +26410,19 @@ class WorkerScriptHyperdriveConfigBindingArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class WorkerScriptKvNamespaceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        namespace_id: pulumi.Input[str]
+        """
+        ID of the KV namespace you want to use.
+        """
+elif False:
+    WorkerScriptKvNamespaceBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerScriptKvNamespaceBindingArgs:
@@ -20380,6 +26461,15 @@ class WorkerScriptKvNamespaceBindingArgs:
         pulumi.set(self, "namespace_id", value)
 
 
+if not MYPY:
+    class WorkerScriptPlacementArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        The placement mode for the Worker. Available values: `smart`.
+        """
+elif False:
+    WorkerScriptPlacementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptPlacementArgs:
     def __init__(__self__, *,
@@ -20401,6 +26491,19 @@ class WorkerScriptPlacementArgs:
     def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class WorkerScriptPlainTextBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        text: pulumi.Input[str]
+        """
+        The plain text you want to store.
+        """
+elif False:
+    WorkerScriptPlainTextBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerScriptPlainTextBindingArgs:
@@ -20439,6 +26542,19 @@ class WorkerScriptPlainTextBindingArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class WorkerScriptQueueBindingArgsDict(TypedDict):
+        binding: pulumi.Input[str]
+        """
+        The name of the global variable for the binding in your Worker code.
+        """
+        queue: pulumi.Input[str]
+        """
+        Name of the queue you want to use.
+        """
+elif False:
+    WorkerScriptQueueBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptQueueBindingArgs:
     def __init__(__self__, *,
@@ -20475,6 +26591,19 @@ class WorkerScriptQueueBindingArgs:
     def queue(self, value: pulumi.Input[str]):
         pulumi.set(self, "queue", value)
 
+
+if not MYPY:
+    class WorkerScriptR2BucketBindingArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        The name of the Bucket to bind to.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkerScriptR2BucketBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerScriptR2BucketBindingArgs:
@@ -20513,6 +26642,19 @@ class WorkerScriptR2BucketBindingArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class WorkerScriptSecretTextBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        text: pulumi.Input[str]
+        """
+        The secret text you want to store.
+        """
+elif False:
+    WorkerScriptSecretTextBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptSecretTextBindingArgs:
     def __init__(__self__, *,
@@ -20549,6 +26691,23 @@ class WorkerScriptSecretTextBindingArgs:
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
 
+
+if not MYPY:
+    class WorkerScriptServiceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of the Worker to bind to.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Worker environment to bind to.
+        """
+elif False:
+    WorkerScriptServiceBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerScriptServiceBindingArgs:
@@ -20603,6 +26762,19 @@ class WorkerScriptServiceBindingArgs:
         pulumi.set(self, "environment", value)
 
 
+if not MYPY:
+    class WorkerScriptWebassemblyBindingArgsDict(TypedDict):
+        module: pulumi.Input[str]
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkerScriptWebassemblyBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerScriptWebassemblyBindingArgs:
     def __init__(__self__, *,
@@ -20639,6 +26811,19 @@ class WorkerScriptWebassemblyBindingArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class WorkersScriptAnalyticsEngineBindingArgsDict(TypedDict):
+        dataset: pulumi.Input[str]
+        """
+        The name of the Analytics Engine dataset to write to.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkersScriptAnalyticsEngineBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersScriptAnalyticsEngineBindingArgs:
@@ -20677,6 +26862,19 @@ class WorkersScriptAnalyticsEngineBindingArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class WorkersScriptD1DatabaseBindingArgsDict(TypedDict):
+        database_id: pulumi.Input[str]
+        """
+        Database ID of D1 database to use.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkersScriptD1DatabaseBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptD1DatabaseBindingArgs:
     def __init__(__self__, *,
@@ -20713,6 +26911,19 @@ class WorkersScriptD1DatabaseBindingArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class WorkersScriptHyperdriveConfigBindingArgsDict(TypedDict):
+        binding: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Hyperdrive config to use.
+        """
+elif False:
+    WorkersScriptHyperdriveConfigBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersScriptHyperdriveConfigBindingArgs:
@@ -20751,6 +26962,19 @@ class WorkersScriptHyperdriveConfigBindingArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class WorkersScriptKvNamespaceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        namespace_id: pulumi.Input[str]
+        """
+        ID of the KV namespace you want to use.
+        """
+elif False:
+    WorkersScriptKvNamespaceBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptKvNamespaceBindingArgs:
     def __init__(__self__, *,
@@ -20788,6 +27012,15 @@ class WorkersScriptKvNamespaceBindingArgs:
         pulumi.set(self, "namespace_id", value)
 
 
+if not MYPY:
+    class WorkersScriptPlacementArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        The placement mode for the Worker. Available values: `smart`.
+        """
+elif False:
+    WorkersScriptPlacementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptPlacementArgs:
     def __init__(__self__, *,
@@ -20809,6 +27042,19 @@ class WorkersScriptPlacementArgs:
     def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class WorkersScriptPlainTextBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        text: pulumi.Input[str]
+        """
+        The plain text you want to store.
+        """
+elif False:
+    WorkersScriptPlainTextBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersScriptPlainTextBindingArgs:
@@ -20847,6 +27093,19 @@ class WorkersScriptPlainTextBindingArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class WorkersScriptQueueBindingArgsDict(TypedDict):
+        binding: pulumi.Input[str]
+        """
+        The name of the global variable for the binding in your Worker code.
+        """
+        queue: pulumi.Input[str]
+        """
+        Name of the queue you want to use.
+        """
+elif False:
+    WorkersScriptQueueBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptQueueBindingArgs:
     def __init__(__self__, *,
@@ -20883,6 +27142,19 @@ class WorkersScriptQueueBindingArgs:
     def queue(self, value: pulumi.Input[str]):
         pulumi.set(self, "queue", value)
 
+
+if not MYPY:
+    class WorkersScriptR2BucketBindingArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        The name of the Bucket to bind to.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkersScriptR2BucketBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersScriptR2BucketBindingArgs:
@@ -20921,6 +27193,19 @@ class WorkersScriptR2BucketBindingArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class WorkersScriptSecretTextBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        text: pulumi.Input[str]
+        """
+        The secret text you want to store.
+        """
+elif False:
+    WorkersScriptSecretTextBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptSecretTextBindingArgs:
     def __init__(__self__, *,
@@ -20957,6 +27242,23 @@ class WorkersScriptSecretTextBindingArgs:
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
 
+
+if not MYPY:
+    class WorkersScriptServiceBindingArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of the Worker to bind to.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Worker environment to bind to.
+        """
+elif False:
+    WorkersScriptServiceBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersScriptServiceBindingArgs:
@@ -21011,6 +27313,19 @@ class WorkersScriptServiceBindingArgs:
         pulumi.set(self, "environment", value)
 
 
+if not MYPY:
+    class WorkersScriptWebassemblyBindingArgsDict(TypedDict):
+        module: pulumi.Input[str]
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        name: pulumi.Input[str]
+        """
+        The global variable for the binding in your Worker code.
+        """
+elif False:
+    WorkersScriptWebassemblyBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkersScriptWebassemblyBindingArgs:
     def __init__(__self__, *,
@@ -21047,6 +27362,43 @@ class WorkersScriptWebassemblyBindingArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationCorsHeaderArgsDict(TypedDict):
+        allow_all_headers: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all HTTP headers are exposed.
+        """
+        allow_all_methods: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all methods are exposed.
+        """
+        allow_all_origins: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine whether all origins are permitted to make CORS requests.
+        """
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of HTTP headers to expose via CORS.
+        """
+        allowed_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of methods to expose via CORS.
+        """
+        allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of origins permitted to make CORS requests.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time a preflight request will be cached.
+        """
+elif False:
+    ZeroTrustAccessApplicationCorsHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationCorsHeaderArgs:
@@ -21183,6 +27535,19 @@ class ZeroTrustAccessApplicationCorsHeaderArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationFooterLinkArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the footer link.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the footer link.
+        """
+elif False:
+    ZeroTrustAccessApplicationFooterLinkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationFooterLinkArgs:
     def __init__(__self__, *,
@@ -21221,6 +27586,31 @@ class ZeroTrustAccessApplicationFooterLinkArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationLandingPageDesignArgsDict(TypedDict):
+        button_color: NotRequired[pulumi.Input[str]]
+        """
+        The button color of the landing page.
+        """
+        button_text_color: NotRequired[pulumi.Input[str]]
+        """
+        The button text color of the landing page.
+        """
+        image_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the image to be displayed in the landing page.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        The message of the landing page.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the landing page.
+        """
+elif False:
+    ZeroTrustAccessApplicationLandingPageDesignArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationLandingPageDesignArgs:
@@ -21308,6 +27698,103 @@ class ZeroTrustAccessApplicationLandingPageDesignArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppArgsDict(TypedDict):
+        access_token_lifetime: NotRequired[pulumi.Input[str]]
+        """
+        The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        allow_pkce_without_client_secret: NotRequired[pulumi.Input[bool]]
+        """
+        Allow PKCE flow without a client secret.
+        """
+        app_launcher_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL where this applications tile redirects users.
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The application client id.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The application client secret, only returned on initial apply.
+        """
+        consumer_service_url: NotRequired[pulumi.Input[str]]
+        """
+        The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+        """
+        custom_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict']]]]
+        """
+        Custom attribute mapped from IDPs.
+        """
+        custom_claims: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict']]]]
+        """
+        Custom claim mapped from IDPs.
+        """
+        default_relay_state: NotRequired[pulumi.Input[str]]
+        """
+        The relay state used if not provided by the identity provider.
+        """
+        grant_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The OIDC flows supported by this application.
+        """
+        group_filter_regex: NotRequired[pulumi.Input[str]]
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        """
+        hybrid_and_implicit_options: NotRequired[pulumi.Input['ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgsDict']]
+        """
+        Hybrid and Implicit Flow options.
+        """
+        idp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier for the SaaS application.
+        """
+        name_id_format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the name identifier sent to the SaaS application.
+        """
+        name_id_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        The public certificate that will be used to verify identities.
+        """
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        """
+        refresh_token_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgsDict']]]]
+        """
+        Refresh token grant options.
+        """
+        saml_attribute_transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Define the user information shared with access.
+        """
+        sp_entity_id: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        """
+        sso_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The endpoint where the SaaS application will send login requests.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppArgs:
@@ -21684,6 +28171,28 @@ class ZeroTrustAccessApplicationSaasAppArgs:
         pulumi.set(self, "sso_endpoint", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict(TypedDict):
+        source: pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict']
+        friendly_name: NotRequired[pulumi.Input[str]]
+        """
+        A friendly name for the attribute as provided to the SaaS app.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        name_format: NotRequired[pulumi.Input[str]]
+        """
+        A globally unique name for an identity or service provider.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        True if the attribute must be always present.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs:
     def __init__(__self__, *,
@@ -21766,6 +28275,19 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs:
         pulumi.set(self, "required", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        name_by_idp: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping from IdP ID to claim name.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs:
     def __init__(__self__, *,
@@ -21803,6 +28325,24 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs:
     def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "name_by_idp", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict(TypedDict):
+        source: pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgsDict']
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the attribute as provided to the SaaS app.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        True if the attribute must be always present.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        The scope of the claim.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomClaimArgs:
@@ -21870,6 +28410,19 @@ class ZeroTrustAccessApplicationSaasAppCustomClaimArgs:
         pulumi.set(self, "scope", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the attribute as provided by the IDP.
+        """
+        name_by_idp: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A mapping from IdP ID to claim name.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs:
     def __init__(__self__, *,
@@ -21907,6 +28460,19 @@ class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs:
     def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "name_by_idp", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgsDict(TypedDict):
+        return_access_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the authorization endpoint will return an access token.
+        """
+        return_id_token_from_authorization_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the authorization endpoint will return an id token.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs:
@@ -21947,6 +28513,15 @@ class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs:
         pulumi.set(self, "return_id_token_from_authorization_endpoint", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgsDict(TypedDict):
+        lifetime: NotRequired[pulumi.Input[str]]
+        """
+        How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
+        """
+elif False:
+    ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs:
     def __init__(__self__, *,
@@ -21969,6 +28544,35 @@ class ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs:
     def lifetime(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lifetime", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationScimConfigArgsDict(TypedDict):
+        idp_uid: pulumi.Input[str]
+        """
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        """
+        remote_uri: pulumi.Input[str]
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        authentication: NotRequired[pulumi.Input['ZeroTrustAccessApplicationScimConfigAuthenticationArgsDict']]
+        """
+        Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+        """
+        deactivate_on_delete: NotRequired[pulumi.Input[bool]]
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingArgsDict']]]]
+        """
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        """
+elif False:
+    ZeroTrustAccessApplicationScimConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationScimConfigArgs:
@@ -22070,6 +28674,47 @@ class ZeroTrustAccessApplicationScimConfigArgs:
     def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessApplicationScimConfigAuthenticationArgsDict(TypedDict):
+        scheme: pulumi.Input[str]
+        """
+        The authentication scheme to use when making SCIM requests to this application.
+        """
+        authorization_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+        token_url: NotRequired[pulumi.Input[str]]
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        """
+elif False:
+    ZeroTrustAccessApplicationScimConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationScimConfigAuthenticationArgs:
@@ -22221,6 +28866,31 @@ class ZeroTrustAccessApplicationScimConfigAuthenticationArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationScimConfigMappingArgsDict(TypedDict):
+        schema: pulumi.Input[str]
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping is enabled.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        operations: NotRequired[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict']]
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        transform_jsonata: NotRequired[pulumi.Input[str]]
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+elif False:
+    ZeroTrustAccessApplicationScimConfigMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationScimConfigMappingArgs:
     def __init__(__self__, *,
@@ -22307,6 +28977,23 @@ class ZeroTrustAccessApplicationScimConfigMappingArgs:
         pulumi.set(self, "transform_jsonata", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        update: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+elif False:
+    ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationScimConfigMappingOperationsArgs:
     def __init__(__self__, *,
@@ -22362,6 +29049,23 @@ class ZeroTrustAccessApplicationScimConfigMappingOperationsArgs:
         pulumi.set(self, "update", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationTargetCriteriaArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The communication protocol your application secures.
+        """
+        target_attributes: pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgsDict']]]
+        """
+        Contains a map of target attribute keys to target attribute values.
+        """
+elif False:
+    ZeroTrustAccessApplicationTargetCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationTargetCriteriaArgs:
     def __init__(__self__, *,
@@ -22414,6 +29118,19 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
         pulumi.set(self, "target_attributes", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The key of the attribute.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The values of the attribute.
+        """
+elif False:
+    ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs:
     def __init__(__self__, *,
@@ -22450,6 +29167,100 @@ class ZeroTrustAccessApplicationTargetCriteriaTargetAttributeArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeArgs:
@@ -22822,6 +29633,23 @@ class ZeroTrustAccessGroupExcludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeAuthContextArgs:
     def __init__(__self__, *,
@@ -22874,6 +29702,19 @@ class ZeroTrustAccessGroupExcludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeAzureArgs:
     def __init__(__self__, *,
@@ -22913,6 +29754,19 @@ class ZeroTrustAccessGroupExcludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -22951,6 +29805,23 @@ class ZeroTrustAccessGroupExcludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeGithubArgs:
@@ -23007,6 +29878,19 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
@@ -23046,6 +29930,19 @@ class ZeroTrustAccessGroupExcludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
@@ -23084,6 +29981,23 @@ class ZeroTrustAccessGroupExcludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeSamlArgs:
@@ -23139,6 +30053,100 @@ class ZeroTrustAccessGroupExcludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeArgs:
@@ -23511,6 +30519,23 @@ class ZeroTrustAccessGroupIncludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeAuthContextArgs:
     def __init__(__self__, *,
@@ -23563,6 +30588,19 @@ class ZeroTrustAccessGroupIncludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeAzureArgs:
     def __init__(__self__, *,
@@ -23602,6 +30640,19 @@ class ZeroTrustAccessGroupIncludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -23640,6 +30691,23 @@ class ZeroTrustAccessGroupIncludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeGithubArgs:
@@ -23696,6 +30764,19 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
@@ -23735,6 +30816,19 @@ class ZeroTrustAccessGroupIncludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
@@ -23773,6 +30867,23 @@ class ZeroTrustAccessGroupIncludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeSamlArgs:
@@ -23828,6 +30939,100 @@ class ZeroTrustAccessGroupIncludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireArgs:
@@ -24200,6 +31405,23 @@ class ZeroTrustAccessGroupRequireArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireAuthContextArgs:
     def __init__(__self__, *,
@@ -24252,6 +31474,19 @@ class ZeroTrustAccessGroupRequireAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupRequireAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireAzureArgs:
     def __init__(__self__, *,
@@ -24291,6 +31526,19 @@ class ZeroTrustAccessGroupRequireAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -24329,6 +31577,23 @@ class ZeroTrustAccessGroupRequireExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupRequireGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireGithubArgs:
@@ -24385,6 +31650,19 @@ class ZeroTrustAccessGroupRequireGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupRequireGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
@@ -24424,6 +31702,19 @@ class ZeroTrustAccessGroupRequireGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessGroupRequireOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireOktaArgs:
     def __init__(__self__, *,
@@ -24462,6 +31753,23 @@ class ZeroTrustAccessGroupRequireOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessGroupRequireSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireSamlArgs:
@@ -24517,6 +31825,38 @@ class ZeroTrustAccessGroupRequireSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessIdentityProviderConfigArgsDict(TypedDict):
+        api_token: NotRequired[pulumi.Input[str]]
+        apps_domain: NotRequired[pulumi.Input[str]]
+        attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        auth_url: NotRequired[pulumi.Input[str]]
+        authorization_server_id: NotRequired[pulumi.Input[str]]
+        centrify_account: NotRequired[pulumi.Input[str]]
+        centrify_app_id: NotRequired[pulumi.Input[str]]
+        certs_url: NotRequired[pulumi.Input[str]]
+        claims: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
+        conditional_access_enabled: NotRequired[pulumi.Input[bool]]
+        directory_id: NotRequired[pulumi.Input[str]]
+        email_attribute_name: NotRequired[pulumi.Input[str]]
+        email_claim_name: NotRequired[pulumi.Input[str]]
+        idp_public_cert: NotRequired[pulumi.Input[str]]
+        issuer_url: NotRequired[pulumi.Input[str]]
+        okta_account: NotRequired[pulumi.Input[str]]
+        onelogin_account: NotRequired[pulumi.Input[str]]
+        ping_env_id: NotRequired[pulumi.Input[str]]
+        pkce_enabled: NotRequired[pulumi.Input[bool]]
+        redirect_url: NotRequired[pulumi.Input[str]]
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        sign_request: NotRequired[pulumi.Input[bool]]
+        sso_target_url: NotRequired[pulumi.Input[str]]
+        support_groups: NotRequired[pulumi.Input[bool]]
+        token_url: NotRequired[pulumi.Input[str]]
+elif False:
+    ZeroTrustAccessIdentityProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessIdentityProviderConfigArgs:
@@ -24847,6 +32187,16 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
         pulumi.set(self, "token_url", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessIdentityProviderScimConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        seat_deprovision: NotRequired[pulumi.Input[bool]]
+        secret: NotRequired[pulumi.Input[str]]
+        user_deprovision: NotRequired[pulumi.Input[bool]]
+elif False:
+    ZeroTrustAccessIdentityProviderScimConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessIdentityProviderScimConfigArgs:
     def __init__(__self__, *,
@@ -24912,6 +32262,23 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
         pulumi.set(self, "user_deprovision", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        The hostname that these settings apply to.
+        """
+        china_network: NotRequired[pulumi.Input[bool]]
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        client_certificate_forwarding: NotRequired[pulumi.Input[bool]]
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+elif False:
+    ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessMtlsHostnameSettingsSettingArgs:
     def __init__(__self__, *,
@@ -24966,6 +32333,19 @@ class ZeroTrustAccessMtlsHostnameSettingsSettingArgs:
         pulumi.set(self, "client_certificate_forwarding", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessOrganizationCustomPageArgsDict(TypedDict):
+        forbidden: NotRequired[pulumi.Input[str]]
+        """
+        The id of the forbidden page.
+        """
+        identity_denied: NotRequired[pulumi.Input[str]]
+        """
+        The id of the identity denied page.
+        """
+elif False:
+    ZeroTrustAccessOrganizationCustomPageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessOrganizationCustomPageArgs:
     def __init__(__self__, *,
@@ -25004,6 +32384,31 @@ class ZeroTrustAccessOrganizationCustomPageArgs:
     def identity_denied(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_denied", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessOrganizationLoginDesignArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        The background color on the login page.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the bottom of the login page.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        The text at the top of the login page.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the logo on the login page.
+        """
+        text_color: NotRequired[pulumi.Input[str]]
+        """
+        The text color on the login page.
+        """
+elif False:
+    ZeroTrustAccessOrganizationLoginDesignArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessOrganizationLoginDesignArgs:
@@ -25092,6 +32497,20 @@ class ZeroTrustAccessOrganizationLoginDesignArgs:
         pulumi.set(self, "text_color", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyApprovalGroupArgsDict(TypedDict):
+        approvals_needed: pulumi.Input[int]
+        """
+        Number of approvals needed.
+        """
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of emails to request approval from.
+        """
+        email_list_uuid: NotRequired[pulumi.Input[str]]
+elif False:
+    ZeroTrustAccessPolicyApprovalGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyApprovalGroupArgs:
     def __init__(__self__, *,
@@ -25142,6 +32561,15 @@ class ZeroTrustAccessPolicyApprovalGroupArgs:
         pulumi.set(self, "email_list_uuid", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyConnectionRulesArgsDict(TypedDict):
+        ssh: pulumi.Input['ZeroTrustAccessPolicyConnectionRulesSshArgsDict']
+        """
+        The SSH-specific rules that define how users may connect to the targets secured by your application.
+        """
+elif False:
+    ZeroTrustAccessPolicyConnectionRulesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyConnectionRulesArgs:
     def __init__(__self__, *,
@@ -25164,6 +32592,15 @@ class ZeroTrustAccessPolicyConnectionRulesArgs:
         pulumi.set(self, "ssh", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyConnectionRulesSshArgsDict(TypedDict):
+        usernames: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Contains the Unix usernames that may be used when connecting over SSH.
+        """
+elif False:
+    ZeroTrustAccessPolicyConnectionRulesSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyConnectionRulesSshArgs:
     def __init__(__self__, *,
@@ -25185,6 +32622,100 @@ class ZeroTrustAccessPolicyConnectionRulesSshArgs:
     def usernames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "usernames", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeArgs:
@@ -25557,6 +33088,23 @@ class ZeroTrustAccessPolicyExcludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeAuthContextArgs:
     def __init__(__self__, *,
@@ -25609,6 +33157,19 @@ class ZeroTrustAccessPolicyExcludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeAzureArgs:
     def __init__(__self__, *,
@@ -25648,6 +33209,19 @@ class ZeroTrustAccessPolicyExcludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -25686,6 +33260,23 @@ class ZeroTrustAccessPolicyExcludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeGithubArgs:
@@ -25742,6 +33333,19 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
@@ -25781,6 +33385,19 @@ class ZeroTrustAccessPolicyExcludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
@@ -25819,6 +33436,23 @@ class ZeroTrustAccessPolicyExcludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeSamlArgs:
@@ -25874,6 +33508,100 @@ class ZeroTrustAccessPolicyExcludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeArgs:
@@ -26246,6 +33974,23 @@ class ZeroTrustAccessPolicyIncludeArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeAuthContextArgs:
     def __init__(__self__, *,
@@ -26298,6 +34043,19 @@ class ZeroTrustAccessPolicyIncludeAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeAzureArgs:
     def __init__(__self__, *,
@@ -26337,6 +34095,19 @@ class ZeroTrustAccessPolicyIncludeAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -26375,6 +34146,23 @@ class ZeroTrustAccessPolicyIncludeExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeGithubArgs:
@@ -26431,6 +34219,19 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
@@ -26470,6 +34271,19 @@ class ZeroTrustAccessPolicyIncludeGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
@@ -26508,6 +34322,23 @@ class ZeroTrustAccessPolicyIncludeOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeSamlArgs:
@@ -26563,6 +34394,100 @@ class ZeroTrustAccessPolicyIncludeSamlArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireArgsDict(TypedDict):
+        any_valid_service_token: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid Access service token.
+        """
+        auth_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireAuthContextArgsDict']]]]
+        auth_method: NotRequired[pulumi.Input[str]]
+        """
+        The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        """
+        azures: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireAzureArgsDict']]]]
+        """
+        Matches an Azure group. Requires an Azure identity provider.
+        """
+        certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Matches any valid client certificate.
+        """
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Matches a valid client certificate common name.
+        """
+        common_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        device_postures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a device posture integration.
+        """
+        email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email domain to match.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created email list.
+        """
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the user.
+        """
+        everyone: NotRequired[pulumi.Input[bool]]
+        """
+        Matches everyone.
+        """
+        external_evaluations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireExternalEvaluationArgsDict']]]]
+        """
+        Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
+        """
+        geos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matches a specific country.
+        """
+        githubs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGithubArgsDict']]]]
+        """
+        Matches a Github organization. Requires a Github identity provider.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created Access group.
+        """
+        gsuites: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireGsuiteArgsDict']]]]
+        """
+        Matches a group in Google Workspace. Requires a Google Workspace identity provider.
+        """
+        ip_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a previously created IP list.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
+        login_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of a configured identity provider.
+        """
+        oktas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireOktaArgsDict']]]]
+        """
+        Matches an Okta group. Requires an Okta identity provider.
+        """
+        samls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgsDict']]]]
+        """
+        Matches a SAML group. Requires a SAML identity provider.
+        """
+        service_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of an Access service token.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireArgs:
@@ -26935,6 +34860,23 @@ class ZeroTrustAccessPolicyRequireArgs:
         pulumi.set(self, "service_tokens", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireAuthContextArgsDict(TypedDict):
+        ac_id: pulumi.Input[str]
+        """
+        The ACID of the Authentication Context.
+        """
+        id: pulumi.Input[str]
+        """
+        The ID of the Authentication Context.
+        """
+        identity_provider_id: pulumi.Input[str]
+        """
+        The ID of the Azure identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireAuthContextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireAuthContextArgs:
     def __init__(__self__, *,
@@ -26987,6 +34929,19 @@ class ZeroTrustAccessPolicyRequireAuthContextArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireAzureArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Azure identity provider.
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of the Azure group or user.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireAzureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireAzureArgs:
     def __init__(__self__, *,
@@ -27026,6 +34981,19 @@ class ZeroTrustAccessPolicyRequireAzureArgs:
         pulumi.set(self, "ids", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireExternalEvaluationArgsDict(TypedDict):
+        evaluate_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing your business logic.
+        """
+        keys_url: NotRequired[pulumi.Input[str]]
+        """
+        The API endpoint containing the key that Access uses to verify that the response came from your API.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireExternalEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireExternalEvaluationArgs:
     def __init__(__self__, *,
@@ -27064,6 +35032,23 @@ class ZeroTrustAccessPolicyRequireExternalEvaluationArgs:
     def keys_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "keys_url", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireGithubArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Github identity provider.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the organization.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams that should be matched.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireGithubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireGithubArgs:
@@ -27120,6 +35105,19 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
         pulumi.set(self, "teams", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireGsuiteArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The email of the Google Workspace group.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Google Workspace identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireGsuiteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
@@ -27159,6 +35157,19 @@ class ZeroTrustAccessPolicyRequireGsuiteArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireOktaArgsDict(TypedDict):
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your Okta identity provider.
+        """
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The name of the Okta Group.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireOktaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
@@ -27197,6 +35208,23 @@ class ZeroTrustAccessPolicyRequireOktaArgs:
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
+
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireSamlArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SAML attribute.
+        """
+        attribute_value: NotRequired[pulumi.Input[str]]
+        """
+        The SAML attribute value to look for.
+        """
+        identity_provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of your SAML identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireSamlArgs:
@@ -27253,6 +35281,19 @@ class ZeroTrustAccessPolicyRequireSamlArgs:
         pulumi.set(self, "identity_provider_id", value)
 
 
+if not MYPY:
+    class ZeroTrustDeviceManagedNetworksConfigArgsDict(TypedDict):
+        sha256: pulumi.Input[str]
+        """
+        The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+        """
+        tls_sockaddr: pulumi.Input[str]
+        """
+        A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+        """
+elif False:
+    ZeroTrustDeviceManagedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDeviceManagedNetworksConfigArgs:
     def __init__(__self__, *,
@@ -27289,6 +35330,43 @@ class ZeroTrustDeviceManagedNetworksConfigArgs:
     def tls_sockaddr(self, value: pulumi.Input[str]):
         pulumi.set(self, "tls_sockaddr", value)
 
+
+if not MYPY:
+    class ZeroTrustDevicePostureIntegrationConfigArgsDict(TypedDict):
+        access_client_id: NotRequired[pulumi.Input[str]]
+        """
+        The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        """
+        access_client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        """
+        api_url: NotRequired[pulumi.Input[str]]
+        """
+        The third-party API's URL.
+        """
+        auth_url: NotRequired[pulumi.Input[str]]
+        """
+        The third-party authorization API URL.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The client identifier for authenticating API calls.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        The client key for authenticating API calls.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The client secret for authenticating API calls.
+        """
+        customer_id: NotRequired[pulumi.Input[str]]
+        """
+        The customer identifier for authenticating API calls.
+        """
+elif False:
+    ZeroTrustDevicePostureIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustDevicePostureIntegrationConfigArgs:
@@ -27424,6 +35502,163 @@ class ZeroTrustDevicePostureIntegrationConfigArgs:
     def customer_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "customer_id", value)
 
+
+if not MYPY:
+    class ZeroTrustDevicePostureRuleInputArgsDict(TypedDict):
+        active_threats: NotRequired[pulumi.Input[int]]
+        """
+        The number of active threats from SentinelOne.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        The UUID of a Cloudflare managed certificate.
+        """
+        check_disks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specific volume(s) to check for encryption.
+        """
+        check_private_key: NotRequired[pulumi.Input[bool]]
+        """
+        Confirm the certificate was not imported from another device.
+        """
+        cn: NotRequired[pulumi.Input[str]]
+        """
+        The common name for a certificate.
+        """
+        compliance_status: NotRequired[pulumi.Input[str]]
+        """
+        The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        """
+        connection_id: NotRequired[pulumi.Input[str]]
+        """
+        The workspace one or intune connection id.
+        """
+        count_operator: NotRequired[pulumi.Input[str]]
+        """
+        The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        The domain that the client must join.
+        """
+        eid_last_seen: NotRequired[pulumi.Input[str]]
+        """
+        The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the firewall must be enabled.
+        """
+        exists: NotRequired[pulumi.Input[bool]]
+        """
+        Checks if the file should exist.
+        """
+        extended_key_usages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        """
+        infected: NotRequired[pulumi.Input[bool]]
+        """
+        True if SentinelOne device is infected.
+        """
+        is_active: NotRequired[pulumi.Input[bool]]
+        """
+        True if SentinelOne device is active.
+        """
+        issue_count: NotRequired[pulumi.Input[str]]
+        """
+        The number of issues for kolide.
+        """
+        last_seen: NotRequired[pulumi.Input[str]]
+        """
+        The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgsDict']]]]
+        """
+        List of operating system locations to check for a client certificate..
+        """
+        network_status: NotRequired[pulumi.Input[str]]
+        """
+        The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        os: NotRequired[pulumi.Input[str]]
+        """
+        OS signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        os_distro_name: NotRequired[pulumi.Input[str]]
+        """
+        The operating system excluding version information.
+        """
+        os_distro_revision: NotRequired[pulumi.Input[str]]
+        """
+        The operating system version excluding OS name information or release name.
+        """
+        os_version_extra: NotRequired[pulumi.Input[str]]
+        """
+        Extra version value following the operating system semantic version.
+        """
+        overall: NotRequired[pulumi.Input[str]]
+        """
+        Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the file.
+        """
+        require_all: NotRequired[pulumi.Input[bool]]
+        """
+        True if all drives must be encrypted.
+        """
+        risk_level: NotRequired[pulumi.Input[str]]
+        """
+        The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        """
+        running: NotRequired[pulumi.Input[bool]]
+        """
+        Checks if the application should be running.
+        """
+        score: NotRequired[pulumi.Input[int]]
+        """
+        A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        """
+        sensor_config: NotRequired[pulumi.Input[str]]
+        """
+        Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        The sha256 hash of the file.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        """
+        thumbprint: NotRequired[pulumi.Input[str]]
+        """
+        The thumbprint of the file certificate.
+        """
+        total_score: NotRequired[pulumi.Input[int]]
+        """
+        The total score from Tanium.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The operating system semantic version.
+        """
+        version_operator: NotRequired[pulumi.Input[str]]
+        """
+        The version comparison operator for Crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+elif False:
+    ZeroTrustDevicePostureRuleInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustDevicePostureRuleInputArgs:
@@ -28040,6 +36275,19 @@ class ZeroTrustDevicePostureRuleInputArgs:
         pulumi.set(self, "version_operator", value)
 
 
+if not MYPY:
+    class ZeroTrustDevicePostureRuleInputLocationArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of paths to check for client certificate rule.
+        """
+        trust_stores: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of trust stores to check for client certificate rule. Available values: `system`, `user`.
+        """
+elif False:
+    ZeroTrustDevicePostureRuleInputLocationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDevicePostureRuleInputLocationArgs:
     def __init__(__self__, *,
@@ -28079,6 +36327,15 @@ class ZeroTrustDevicePostureRuleInputLocationArgs:
         pulumi.set(self, "trust_stores", value)
 
 
+if not MYPY:
+    class ZeroTrustDevicePostureRuleMatchArgsDict(TypedDict):
+        platform: NotRequired[pulumi.Input[str]]
+        """
+        The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
+        """
+elif False:
+    ZeroTrustDevicePostureRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDevicePostureRuleMatchArgs:
     def __init__(__self__, *,
@@ -28101,6 +36358,23 @@ class ZeroTrustDevicePostureRuleMatchArgs:
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
 
+
+if not MYPY:
+    class ZeroTrustDexTestDataArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        """
+        kind: pulumi.Input[str]
+        """
+        The type of Device Dex Test. Available values: `http`, `traceroute`.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The http request method. Available values: `GET`.
+        """
+elif False:
+    ZeroTrustDexTestDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustDexTestDataArgs:
@@ -28155,6 +36429,19 @@ class ZeroTrustDexTestDataArgs:
         pulumi.set(self, "method", value)
 
 
+if not MYPY:
+    class ZeroTrustDlpProfileContextAwarenessArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        skip: pulumi.Input['ZeroTrustDlpProfileContextAwarenessSkipArgsDict']
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+elif False:
+    ZeroTrustDlpProfileContextAwarenessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDlpProfileContextAwarenessArgs:
     def __init__(__self__, *,
@@ -28192,6 +36479,15 @@ class ZeroTrustDlpProfileContextAwarenessArgs:
         pulumi.set(self, "skip", value)
 
 
+if not MYPY:
+    class ZeroTrustDlpProfileContextAwarenessSkipArgsDict(TypedDict):
+        files: pulumi.Input[bool]
+        """
+        Return all matches, regardless of context analysis result, if the data is a file.
+        """
+elif False:
+    ZeroTrustDlpProfileContextAwarenessSkipArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDlpProfileContextAwarenessSkipArgs:
     def __init__(__self__, *,
@@ -28213,6 +36509,24 @@ class ZeroTrustDlpProfileContextAwarenessSkipArgs:
     def files(self, value: pulumi.Input[bool]):
         pulumi.set(self, "files", value)
 
+
+if not MYPY:
+    class ZeroTrustDlpProfileEntryArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the entry to deploy.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the entry is active. Defaults to `false`.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique entry identifier.
+        """
+        pattern: NotRequired[pulumi.Input['ZeroTrustDlpProfileEntryPatternArgsDict']]
+elif False:
+    ZeroTrustDlpProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustDlpProfileEntryArgs:
@@ -28280,6 +36594,19 @@ class ZeroTrustDlpProfileEntryArgs:
         pulumi.set(self, "pattern", value)
 
 
+if not MYPY:
+    class ZeroTrustDlpProfileEntryPatternArgsDict(TypedDict):
+        regex: pulumi.Input[str]
+        """
+        The regex that defines the pattern.
+        """
+        validation: NotRequired[pulumi.Input[str]]
+        """
+        The validation algorithm to apply with this pattern.
+        """
+elif False:
+    ZeroTrustDlpProfileEntryPatternArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDlpProfileEntryPatternArgs:
     def __init__(__self__, *,
@@ -28318,6 +36645,19 @@ class ZeroTrustDlpProfileEntryPatternArgs:
         pulumi.set(self, "validation", value)
 
 
+if not MYPY:
+    class ZeroTrustDnsLocationNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        CIDR notation representation of the network IP.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
+        """
+elif False:
+    ZeroTrustDnsLocationNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustDnsLocationNetworkArgs:
     def __init__(__self__, *,
@@ -28355,6 +36695,91 @@ class ZeroTrustDnsLocationNetworkArgs:
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
+        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Add custom headers to allowed requests in the form of key-value pairs.
+        """
+        allow_child_bypass: NotRequired[pulumi.Input[bool]]
+        """
+        Allow parent MSP accounts to enable bypass their children's rules.
+        """
+        audit_ssh: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict']]
+        """
+        Settings for auditing SSH usage.
+        """
+        biso_admin_controls: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict']]
+        """
+        Configure how browser isolation behaves.
+        """
+        block_page_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Indicator of block page enablement.
+        """
+        block_page_reason: NotRequired[pulumi.Input[str]]
+        """
+        The displayed reason for a user being blocked.
+        """
+        bypass_parent_rule: NotRequired[pulumi.Input[bool]]
+        """
+        Allow child MSP accounts to bypass their parent's rule.
+        """
+        check_session: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict']]
+        """
+        Configure how session check behaves.
+        """
+        dns_resolvers: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict']]
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        """
+        egress: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsEgressArgsDict']]
+        """
+        Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        """
+        ignore_cname_category_matches: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response.
+        """
+        insecure_disable_dnssec_validation: NotRequired[pulumi.Input[bool]]
+        """
+        Disable DNSSEC validation (must be Allow rule).
+        """
+        ip_categories: NotRequired[pulumi.Input[bool]]
+        """
+        Turns on IP category based filter on dns if the rule contains dns category checks.
+        """
+        l4override: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsL4overrideArgsDict']]
+        """
+        Settings to forward layer 4 traffic.
+        """
+        notification_settings: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgsDict']]
+        """
+        Notification settings on a block rule.
+        """
+        override_host: NotRequired[pulumi.Input[str]]
+        """
+        The host to override matching DNS queries with.
+        """
+        override_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The IPs to override matching DNS queries with.
+        """
+        payload_log: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict']]
+        """
+        Configure DLP Payload Logging settings for this rule.
+        """
+        resolve_dns_through_cloudflare: NotRequired[pulumi.Input[bool]]
+        """
+        Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        """
+        untrusted_cert: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgsDict']]
+        """
+        Configure untrusted certificate settings for this rule.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsArgs:
@@ -28683,6 +37108,15 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
         pulumi.set(self, "untrusted_cert", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict(TypedDict):
+        command_logging: pulumi.Input[bool]
+        """
+        Log all SSH commands.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs:
     def __init__(__self__, *,
@@ -28704,6 +37138,35 @@ class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs:
     def command_logging(self, value: pulumi.Input[bool]):
         pulumi.set(self, "command_logging", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict(TypedDict):
+        disable_clipboard_redirection: NotRequired[pulumi.Input[bool]]
+        """
+        Disable clipboard redirection.
+        """
+        disable_copy_paste: NotRequired[pulumi.Input[bool]]
+        """
+        Disable copy-paste.
+        """
+        disable_download: NotRequired[pulumi.Input[bool]]
+        """
+        Disable download.
+        """
+        disable_keyboard: NotRequired[pulumi.Input[bool]]
+        """
+        Disable keyboard usage.
+        """
+        disable_printing: NotRequired[pulumi.Input[bool]]
+        """
+        Disable printing.
+        """
+        disable_upload: NotRequired[pulumi.Input[bool]]
+        """
+        Disable upload.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs:
@@ -28808,6 +37271,19 @@ class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs:
         pulumi.set(self, "disable_upload", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict(TypedDict):
+        duration: pulumi.Input[str]
+        """
+        Configure how fresh the session needs to be to be considered valid.
+        """
+        enforce: pulumi.Input[bool]
+        """
+        Enable session enforcement for this rule.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs:
     def __init__(__self__, *,
@@ -28844,6 +37320,19 @@ class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs:
     def enforce(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enforce", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict(TypedDict):
+        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4ArgsDict']]]]
+        """
+        IPv4 resolvers.
+        """
+        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArgsDict']]]]
+        """
+        IPv6 resolvers.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs:
@@ -28883,6 +37372,27 @@ class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs:
     def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args']]]]):
         pulumi.set(self, "ipv6s", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args:
@@ -28954,6 +37464,27 @@ class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args:
         pulumi.set(self, "vnet_id", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        route_through_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        vnet_id: NotRequired[pulumi.Input[str]]
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args:
     def __init__(__self__, *,
@@ -29024,6 +37555,23 @@ class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args:
         pulumi.set(self, "vnet_id", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsEgressArgsDict(TypedDict):
+        ipv4: pulumi.Input[str]
+        """
+        The IPv4 address to be used for egress.
+        """
+        ipv6: pulumi.Input[str]
+        """
+        The IPv6 range to be used for egress.
+        """
+        ipv4_fallback: NotRequired[pulumi.Input[str]]
+        """
+        The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsEgressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsEgressArgs:
     def __init__(__self__, *,
@@ -29077,6 +37625,19 @@ class ZeroTrustGatewayPolicyRuleSettingsEgressArgs:
         pulumi.set(self, "ipv4_fallback", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        Override IP to forward traffic to.
+        """
+        port: pulumi.Input[int]
+        """
+        Override Port to forward traffic to.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsL4overrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs:
     def __init__(__self__, *,
@@ -29113,6 +37674,23 @@ class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable notification settings.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Notification content.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Support URL to show in the notification.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs:
@@ -29169,6 +37747,15 @@ class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs:
         pulumi.set(self, "support_url", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable or disable DLP Payload Logging for this rule.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs:
     def __init__(__self__, *,
@@ -29190,6 +37777,15 @@ class ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs:
@@ -29213,6 +37809,27 @@ class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs:
     def action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsAntivirusArgsDict(TypedDict):
+        enabled_download_phase: pulumi.Input[bool]
+        """
+        Scan on file download.
+        """
+        enabled_upload_phase: pulumi.Input[bool]
+        """
+        Scan on file upload.
+        """
+        fail_closed: pulumi.Input[bool]
+        """
+        Block requests for files that cannot be scanned.
+        """
+        notification_settings: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgsDict']]
+        """
+        Set notifications for antivirus.
+        """
+elif False:
+    ZeroTrustGatewaySettingsAntivirusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsAntivirusArgs:
@@ -29282,6 +37899,23 @@ class ZeroTrustGatewaySettingsAntivirusArgs:
         pulumi.set(self, "notification_settings", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable notification settings.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Notification content.
+        """
+        support_url: NotRequired[pulumi.Input[str]]
+        """
+        Support URL to show in the notification.
+        """
+elif False:
+    ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs:
     def __init__(__self__, *,
@@ -29336,6 +37970,43 @@ class ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs:
     def support_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "support_url", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsBlockPageArgsDict(TypedDict):
+        background_color: NotRequired[pulumi.Input[str]]
+        """
+        Hex code of block page background color.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Indicator of enablement.
+        """
+        footer_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page footer text.
+        """
+        header_text: NotRequired[pulumi.Input[str]]
+        """
+        Block page header text.
+        """
+        logo_path: NotRequired[pulumi.Input[str]]
+        """
+        URL of block page logo.
+        """
+        mailto_address: NotRequired[pulumi.Input[str]]
+        """
+        Admin email for users to contact.
+        """
+        mailto_subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject line for emails created from block page.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of block page configuration.
+        """
+elif False:
+    ZeroTrustGatewaySettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsBlockPageArgs:
@@ -29472,6 +38143,15 @@ class ZeroTrustGatewaySettingsBlockPageArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsBodyScanningArgsDict(TypedDict):
+        inspection_mode: pulumi.Input[str]
+        """
+        Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+elif False:
+    ZeroTrustGatewaySettingsBodyScanningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsBodyScanningArgs:
     def __init__(__self__, *,
@@ -29494,6 +38174,15 @@ class ZeroTrustGatewaySettingsBodyScanningArgs:
         pulumi.set(self, "inspection_mode", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsCertificateArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of certificate for TLS interception.
+        """
+elif False:
+    ZeroTrustGatewaySettingsCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsCertificateArgs:
     def __init__(__self__, *,
@@ -29515,6 +38204,20 @@ class ZeroTrustGatewaySettingsCertificateArgs:
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsCustomCertificateArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether TLS encryption should use a custom certificate.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        ID of custom certificate.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+elif False:
+    ZeroTrustGatewaySettingsCustomCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsCustomCertificateArgs:
@@ -29566,6 +38269,15 @@ class ZeroTrustGatewaySettingsCustomCertificateArgs:
         pulumi.set(self, "updated_at", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+elif False:
+    ZeroTrustGatewaySettingsExtendedEmailMatchingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsExtendedEmailMatchingArgs:
     def __init__(__self__, *,
@@ -29587,6 +38299,15 @@ class ZeroTrustGatewaySettingsExtendedEmailMatchingArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsFipsArgsDict(TypedDict):
+        tls: NotRequired[pulumi.Input[bool]]
+        """
+        Only allow FIPS-compliant TLS configuration.
+        """
+elif False:
+    ZeroTrustGatewaySettingsFipsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsFipsArgs:
@@ -29610,6 +38331,19 @@ class ZeroTrustGatewaySettingsFipsArgs:
     def tls(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsLoggingArgsDict(TypedDict):
+        redact_pii: pulumi.Input[bool]
+        """
+        Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        """
+        settings_by_rule_type: pulumi.Input['ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgsDict']
+        """
+        Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
+        """
+elif False:
+    ZeroTrustGatewaySettingsLoggingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsLoggingArgs:
@@ -29647,6 +38381,23 @@ class ZeroTrustGatewaySettingsLoggingArgs:
     def settings_by_rule_type(self, value: pulumi.Input['ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs']):
         pulumi.set(self, "settings_by_rule_type", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgsDict(TypedDict):
+        dns: pulumi.Input['ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgsDict']
+        """
+        Logging configuration for DNS requests.
+        """
+        http: pulumi.Input['ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgsDict']
+        """
+        Logging configuration for HTTP requests.
+        """
+        l4: pulumi.Input['ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4ArgsDict']
+        """
+        Logging configuration for layer 4 requests.
+        """
+elif False:
+    ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs:
@@ -29700,6 +38451,16 @@ class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs:
         pulumi.set(self, "l4", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs:
     def __init__(__self__, *,
@@ -29732,6 +38493,16 @@ class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs:
     def log_blocks(self, value: pulumi.Input[bool]):
         pulumi.set(self, "log_blocks", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs:
@@ -29766,6 +38537,16 @@ class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs:
         pulumi.set(self, "log_blocks", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4ArgsDict(TypedDict):
+        log_all: pulumi.Input[bool]
+        """
+        Whether to log all activity.
+        """
+        log_blocks: pulumi.Input[bool]
+elif False:
+    ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args:
     def __init__(__self__, *,
@@ -29799,6 +38580,15 @@ class ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args:
         pulumi.set(self, "log_blocks", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsPayloadLogArgsDict(TypedDict):
+        public_key: pulumi.Input[str]
+        """
+        Public key used to encrypt matched payloads.
+        """
+elif False:
+    ZeroTrustGatewaySettingsPayloadLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsPayloadLogArgs:
     def __init__(__self__, *,
@@ -29820,6 +38610,31 @@ class ZeroTrustGatewaySettingsPayloadLogArgs:
     def public_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_key", value)
 
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsProxyArgsDict(TypedDict):
+        disable_for_time: pulumi.Input[int]
+        """
+        Sets the time limit in seconds that a user can use an override code to bypass WARP.
+        """
+        root_ca: pulumi.Input[bool]
+        """
+        Whether root ca is enabled account wide for ZT clients.
+        """
+        tcp: pulumi.Input[bool]
+        """
+        Whether gateway proxy is enabled on gateway devices for TCP traffic.
+        """
+        udp: pulumi.Input[bool]
+        """
+        Whether gateway proxy is enabled on gateway devices for UDP traffic.
+        """
+        virtual_ip: pulumi.Input[bool]
+        """
+        Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        """
+elif False:
+    ZeroTrustGatewaySettingsProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsProxyArgs:
@@ -29903,6 +38718,15 @@ class ZeroTrustGatewaySettingsProxyArgs:
         pulumi.set(self, "virtual_ip", value)
 
 
+if not MYPY:
+    class ZeroTrustGatewaySettingsSshSessionLogArgsDict(TypedDict):
+        public_key: pulumi.Input[str]
+        """
+        Public key used to encrypt ssh session.
+        """
+elif False:
+    ZeroTrustGatewaySettingsSshSessionLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustGatewaySettingsSshSessionLogArgs:
     def __init__(__self__, *,
@@ -29924,6 +38748,13 @@ class ZeroTrustGatewaySettingsSshSessionLogArgs:
     def public_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_key", value)
 
+
+if not MYPY:
+    class ZeroTrustListItemsWithDescriptionArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    ZeroTrustListItemsWithDescriptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustListItemsWithDescriptionArgs:
@@ -29951,6 +38782,23 @@ class ZeroTrustListItemsWithDescriptionArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ZeroTrustLocalFallbackDomainDomainArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the fallback domain, displayed in the client UI.
+        """
+        dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IP addresses to handle domain resolution.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        The domain suffix to match when resolving locally.
+        """
+elif False:
+    ZeroTrustLocalFallbackDomainDomainArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustLocalFallbackDomainDomainArgs:
@@ -30007,6 +38855,23 @@ class ZeroTrustLocalFallbackDomainDomainArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class ZeroTrustRiskBehaviorBehaviorArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether this risk behavior type is enabled.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of this risk behavior type
+        """
+        risk_level: pulumi.Input[str]
+        """
+        Risk level. Available values: `low`, `medium`, `high`
+        """
+elif False:
+    ZeroTrustRiskBehaviorBehaviorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustRiskBehaviorBehaviorArgs:
     def __init__(__self__, *,
@@ -30058,6 +38923,23 @@ class ZeroTrustRiskBehaviorBehaviorArgs:
     def risk_level(self, value: pulumi.Input[str]):
         pulumi.set(self, "risk_level", value)
 
+
+if not MYPY:
+    class ZeroTrustSplitTunnelTunnelArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The address for the tunnel.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description for the tunnel.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The domain name for the tunnel.
+        """
+elif False:
+    ZeroTrustSplitTunnelTunnelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustSplitTunnelTunnelArgs:
@@ -30114,6 +38996,20 @@ class ZeroTrustSplitTunnelTunnelArgs:
         pulumi.set(self, "host", value)
 
 
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigArgsDict(TypedDict):
+        ingress_rules: pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgsDict']]]
+        """
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        """
+        origin_request: NotRequired[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict']]
+        warp_routing: NotRequired[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgsDict']]
+        """
+        If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigArgs:
     def __init__(__self__, *,
@@ -30163,6 +39059,24 @@ class ZeroTrustTunnelCloudflaredConfigConfigArgs:
     def warp_routing(self, value: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs']]):
         pulumi.set(self, "warp_routing", value)
 
+
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Name of the service to which the request will be sent.
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        """
+        origin_request: NotRequired[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgsDict']]
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path of the incoming request. If the path matches, the request will be sent to the local service.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs:
@@ -30229,6 +39143,83 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgsDict']]
+        """
+        Access rules for the ingress service.
+        """
+        bastion_mode: NotRequired[pulumi.Input[bool]]
+        """
+        Runs as jump host.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        connect_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        ip_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgsDict']]]]
+        """
+        IP rules for the proxy service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        proxy_address: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        proxy_port: NotRequired[pulumi.Input[int]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[str]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        tls_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgs:
@@ -30525,6 +39516,23 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgs:
         pulumi.set(self, "tls_timeout", value)
 
 
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience tags of the access rule.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the access rule is required.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the team to which the access rule applies.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs:
     def __init__(__self__, *,
@@ -30580,6 +39588,23 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs:
         pulumi.set(self, "team_name", value)
 
 
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow the IP prefix.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Ports to use within the IP rule.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP rule prefix.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgs:
     def __init__(__self__, *,
@@ -30634,6 +39659,83 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestIpRuleArgs:
     def prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "prefix", value)
 
+
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict(TypedDict):
+        access: NotRequired[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgsDict']]
+        """
+        Access rules for the ingress service.
+        """
+        bastion_mode: NotRequired[pulumi.Input[bool]]
+        """
+        Runs as jump host.
+        """
+        ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        """
+        connect_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        """
+        disable_chunked_encoding: NotRequired[pulumi.Input[bool]]
+        """
+        Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        """
+        http2_origin: NotRequired[pulumi.Input[bool]]
+        """
+        Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        """
+        http_host_header: NotRequired[pulumi.Input[str]]
+        """
+        Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        """
+        ip_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgsDict']]]]
+        """
+        IP rules for the proxy service.
+        """
+        keep_alive_connections: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        """
+        keep_alive_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        """
+        no_happy_eyeballs: NotRequired[pulumi.Input[bool]]
+        """
+        Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        """
+        no_tls_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        """
+        origin_server_name: NotRequired[pulumi.Input[str]]
+        """
+        Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        """
+        proxy_address: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
+        """
+        proxy_port: NotRequired[pulumi.Input[int]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        """
+        tcp_keep_alive: NotRequired[pulumi.Input[str]]
+        """
+        The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        """
+        tls_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs:
@@ -30930,6 +40032,23 @@ class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs:
         pulumi.set(self, "tls_timeout", value)
 
 
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgsDict(TypedDict):
+        aud_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience tags of the access rule.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the access rule is required.
+        """
+        team_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the team to which the access rule applies.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs:
     def __init__(__self__, *,
@@ -30984,6 +40103,23 @@ class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs:
     def team_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team_name", value)
 
+
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow the IP prefix.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Ports to use within the IP rule.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        IP rule prefix.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs:
@@ -31040,6 +40176,15 @@ class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
+if not MYPY:
+    class ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether WARP routing is enabled.
+        """
+elif False:
+    ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs:
     def __init__(__self__, *,
@@ -31062,6 +40207,19 @@ class ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ZoneLockdownConfigurationArgsDict(TypedDict):
+        target: pulumi.Input[str]
+        """
+        The request property to target. Available values: `ip`, `ip_range`.
+        """
+        value: pulumi.Input[str]
+        """
+        The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
+        """
+elif False:
+    ZoneLockdownConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneLockdownConfigurationArgs:
@@ -31099,6 +40257,70 @@ class ZoneLockdownConfigurationArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideInitialSettingArgsDict(TypedDict):
+        always_online: NotRequired[pulumi.Input[str]]
+        always_use_https: NotRequired[pulumi.Input[str]]
+        automatic_https_rewrites: NotRequired[pulumi.Input[str]]
+        binary_ast: NotRequired[pulumi.Input[str]]
+        brotli: NotRequired[pulumi.Input[str]]
+        browser_cache_ttl: NotRequired[pulumi.Input[int]]
+        browser_check: NotRequired[pulumi.Input[str]]
+        cache_level: NotRequired[pulumi.Input[str]]
+        challenge_ttl: NotRequired[pulumi.Input[int]]
+        ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        cname_flattening: NotRequired[pulumi.Input[str]]
+        development_mode: NotRequired[pulumi.Input[str]]
+        early_hints: NotRequired[pulumi.Input[str]]
+        email_obfuscation: NotRequired[pulumi.Input[str]]
+        filter_logs_to_cloudflare: NotRequired[pulumi.Input[str]]
+        fonts: NotRequired[pulumi.Input[str]]
+        h2_prioritization: NotRequired[pulumi.Input[str]]
+        hotlink_protection: NotRequired[pulumi.Input[str]]
+        http2: NotRequired[pulumi.Input[str]]
+        http3: NotRequired[pulumi.Input[str]]
+        image_resizing: NotRequired[pulumi.Input[str]]
+        ip_geolocation: NotRequired[pulumi.Input[str]]
+        ipv6: NotRequired[pulumi.Input[str]]
+        log_to_cloudflare: NotRequired[pulumi.Input[str]]
+        max_upload: NotRequired[pulumi.Input[int]]
+        min_tls_version: NotRequired[pulumi.Input[str]]
+        minify: NotRequired[pulumi.Input['ZoneSettingsOverrideInitialSettingMinifyArgsDict']]
+        mirage: NotRequired[pulumi.Input[str]]
+        mobile_redirect: NotRequired[pulumi.Input['ZoneSettingsOverrideInitialSettingMobileRedirectArgsDict']]
+        nel: NotRequired[pulumi.Input['ZoneSettingsOverrideInitialSettingNelArgsDict']]
+        opportunistic_encryption: NotRequired[pulumi.Input[str]]
+        opportunistic_onion: NotRequired[pulumi.Input[str]]
+        orange_to_orange: NotRequired[pulumi.Input[str]]
+        origin_error_page_pass_thru: NotRequired[pulumi.Input[str]]
+        origin_max_http_version: NotRequired[pulumi.Input[str]]
+        polish: NotRequired[pulumi.Input[str]]
+        prefetch_preload: NotRequired[pulumi.Input[str]]
+        privacy_pass: NotRequired[pulumi.Input[str]]
+        proxy_read_timeout: NotRequired[pulumi.Input[str]]
+        pseudo_ipv4: NotRequired[pulumi.Input[str]]
+        replace_insecure_js: NotRequired[pulumi.Input[str]]
+        response_buffering: NotRequired[pulumi.Input[str]]
+        rocket_loader: NotRequired[pulumi.Input[str]]
+        security_header: NotRequired[pulumi.Input['ZoneSettingsOverrideInitialSettingSecurityHeaderArgsDict']]
+        security_level: NotRequired[pulumi.Input[str]]
+        server_side_exclude: NotRequired[pulumi.Input[str]]
+        sort_query_string_for_cache: NotRequired[pulumi.Input[str]]
+        speed_brain: NotRequired[pulumi.Input[str]]
+        ssl: NotRequired[pulumi.Input[str]]
+        tls12_only: NotRequired[pulumi.Input[str]]
+        tls13: NotRequired[pulumi.Input[str]]
+        tls_client_auth: NotRequired[pulumi.Input[str]]
+        true_client_ip_header: NotRequired[pulumi.Input[str]]
+        universal_ssl: NotRequired[pulumi.Input[str]]
+        visitor_ip: NotRequired[pulumi.Input[str]]
+        waf: NotRequired[pulumi.Input[str]]
+        webp: NotRequired[pulumi.Input[str]]
+        websockets: NotRequired[pulumi.Input[str]]
+        zero_rtt: NotRequired[pulumi.Input[str]]
+elif False:
+    ZoneSettingsOverrideInitialSettingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideInitialSettingArgs:
@@ -31821,6 +41043,14 @@ class ZoneSettingsOverrideInitialSettingArgs:
         pulumi.set(self, "zero_rtt", value)
 
 
+if not MYPY:
+    class ZoneSettingsOverrideInitialSettingMinifyArgsDict(TypedDict):
+        css: pulumi.Input[str]
+        html: pulumi.Input[str]
+        js: pulumi.Input[str]
+elif False:
+    ZoneSettingsOverrideInitialSettingMinifyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneSettingsOverrideInitialSettingMinifyArgs:
     def __init__(__self__, *,
@@ -31858,6 +41088,14 @@ class ZoneSettingsOverrideInitialSettingMinifyArgs:
     def js(self, value: pulumi.Input[str]):
         pulumi.set(self, "js", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideInitialSettingMobileRedirectArgsDict(TypedDict):
+        mobile_subdomain: pulumi.Input[str]
+        status: pulumi.Input[str]
+        strip_uri: pulumi.Input[bool]
+elif False:
+    ZoneSettingsOverrideInitialSettingMobileRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideInitialSettingMobileRedirectArgs:
@@ -31897,6 +41135,12 @@ class ZoneSettingsOverrideInitialSettingMobileRedirectArgs:
         pulumi.set(self, "strip_uri", value)
 
 
+if not MYPY:
+    class ZoneSettingsOverrideInitialSettingNelArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ZoneSettingsOverrideInitialSettingNelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneSettingsOverrideInitialSettingNelArgs:
     def __init__(__self__, *,
@@ -31912,6 +41156,16 @@ class ZoneSettingsOverrideInitialSettingNelArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideInitialSettingSecurityHeaderArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        include_subdomains: NotRequired[pulumi.Input[bool]]
+        max_age: NotRequired[pulumi.Input[int]]
+        nosniff: NotRequired[pulumi.Input[bool]]
+        preload: NotRequired[pulumi.Input[bool]]
+elif False:
+    ZoneSettingsOverrideInitialSettingSecurityHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideInitialSettingSecurityHeaderArgs:
@@ -31977,6 +41231,70 @@ class ZoneSettingsOverrideInitialSettingSecurityHeaderArgs:
     def preload(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preload", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideSettingsArgsDict(TypedDict):
+        always_online: NotRequired[pulumi.Input[str]]
+        always_use_https: NotRequired[pulumi.Input[str]]
+        automatic_https_rewrites: NotRequired[pulumi.Input[str]]
+        binary_ast: NotRequired[pulumi.Input[str]]
+        brotli: NotRequired[pulumi.Input[str]]
+        browser_cache_ttl: NotRequired[pulumi.Input[int]]
+        browser_check: NotRequired[pulumi.Input[str]]
+        cache_level: NotRequired[pulumi.Input[str]]
+        challenge_ttl: NotRequired[pulumi.Input[int]]
+        ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        cname_flattening: NotRequired[pulumi.Input[str]]
+        development_mode: NotRequired[pulumi.Input[str]]
+        early_hints: NotRequired[pulumi.Input[str]]
+        email_obfuscation: NotRequired[pulumi.Input[str]]
+        filter_logs_to_cloudflare: NotRequired[pulumi.Input[str]]
+        fonts: NotRequired[pulumi.Input[str]]
+        h2_prioritization: NotRequired[pulumi.Input[str]]
+        hotlink_protection: NotRequired[pulumi.Input[str]]
+        http2: NotRequired[pulumi.Input[str]]
+        http3: NotRequired[pulumi.Input[str]]
+        image_resizing: NotRequired[pulumi.Input[str]]
+        ip_geolocation: NotRequired[pulumi.Input[str]]
+        ipv6: NotRequired[pulumi.Input[str]]
+        log_to_cloudflare: NotRequired[pulumi.Input[str]]
+        max_upload: NotRequired[pulumi.Input[int]]
+        min_tls_version: NotRequired[pulumi.Input[str]]
+        minify: NotRequired[pulumi.Input['ZoneSettingsOverrideSettingsMinifyArgsDict']]
+        mirage: NotRequired[pulumi.Input[str]]
+        mobile_redirect: NotRequired[pulumi.Input['ZoneSettingsOverrideSettingsMobileRedirectArgsDict']]
+        nel: NotRequired[pulumi.Input['ZoneSettingsOverrideSettingsNelArgsDict']]
+        opportunistic_encryption: NotRequired[pulumi.Input[str]]
+        opportunistic_onion: NotRequired[pulumi.Input[str]]
+        orange_to_orange: NotRequired[pulumi.Input[str]]
+        origin_error_page_pass_thru: NotRequired[pulumi.Input[str]]
+        origin_max_http_version: NotRequired[pulumi.Input[str]]
+        polish: NotRequired[pulumi.Input[str]]
+        prefetch_preload: NotRequired[pulumi.Input[str]]
+        privacy_pass: NotRequired[pulumi.Input[str]]
+        proxy_read_timeout: NotRequired[pulumi.Input[str]]
+        pseudo_ipv4: NotRequired[pulumi.Input[str]]
+        replace_insecure_js: NotRequired[pulumi.Input[str]]
+        response_buffering: NotRequired[pulumi.Input[str]]
+        rocket_loader: NotRequired[pulumi.Input[str]]
+        security_header: NotRequired[pulumi.Input['ZoneSettingsOverrideSettingsSecurityHeaderArgsDict']]
+        security_level: NotRequired[pulumi.Input[str]]
+        server_side_exclude: NotRequired[pulumi.Input[str]]
+        sort_query_string_for_cache: NotRequired[pulumi.Input[str]]
+        speed_brain: NotRequired[pulumi.Input[str]]
+        ssl: NotRequired[pulumi.Input[str]]
+        tls12_only: NotRequired[pulumi.Input[str]]
+        tls13: NotRequired[pulumi.Input[str]]
+        tls_client_auth: NotRequired[pulumi.Input[str]]
+        true_client_ip_header: NotRequired[pulumi.Input[str]]
+        universal_ssl: NotRequired[pulumi.Input[str]]
+        visitor_ip: NotRequired[pulumi.Input[str]]
+        waf: NotRequired[pulumi.Input[str]]
+        webp: NotRequired[pulumi.Input[str]]
+        websockets: NotRequired[pulumi.Input[str]]
+        zero_rtt: NotRequired[pulumi.Input[str]]
+elif False:
+    ZoneSettingsOverrideSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideSettingsArgs:
@@ -32699,6 +42017,14 @@ class ZoneSettingsOverrideSettingsArgs:
         pulumi.set(self, "zero_rtt", value)
 
 
+if not MYPY:
+    class ZoneSettingsOverrideSettingsMinifyArgsDict(TypedDict):
+        css: pulumi.Input[str]
+        html: pulumi.Input[str]
+        js: pulumi.Input[str]
+elif False:
+    ZoneSettingsOverrideSettingsMinifyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneSettingsOverrideSettingsMinifyArgs:
     def __init__(__self__, *,
@@ -32736,6 +42062,14 @@ class ZoneSettingsOverrideSettingsMinifyArgs:
     def js(self, value: pulumi.Input[str]):
         pulumi.set(self, "js", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideSettingsMobileRedirectArgsDict(TypedDict):
+        mobile_subdomain: pulumi.Input[str]
+        status: pulumi.Input[str]
+        strip_uri: pulumi.Input[bool]
+elif False:
+    ZoneSettingsOverrideSettingsMobileRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideSettingsMobileRedirectArgs:
@@ -32775,6 +42109,12 @@ class ZoneSettingsOverrideSettingsMobileRedirectArgs:
         pulumi.set(self, "strip_uri", value)
 
 
+if not MYPY:
+    class ZoneSettingsOverrideSettingsNelArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ZoneSettingsOverrideSettingsNelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneSettingsOverrideSettingsNelArgs:
     def __init__(__self__, *,
@@ -32790,6 +42130,16 @@ class ZoneSettingsOverrideSettingsNelArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ZoneSettingsOverrideSettingsSecurityHeaderArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        include_subdomains: NotRequired[pulumi.Input[bool]]
+        max_age: NotRequired[pulumi.Input[int]]
+        nosniff: NotRequired[pulumi.Input[bool]]
+        preload: NotRequired[pulumi.Input[bool]]
+elif False:
+    ZoneSettingsOverrideSettingsSecurityHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
@@ -32856,6 +42206,15 @@ class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
         pulumi.set(self, "preload", value)
 
 
+if not MYPY:
+    class GetLoadBalancerPoolsFilterArgsDict(TypedDict):
+        name: NotRequired[str]
+        """
+        A regular expression matching the name of the Load Balancer pool to lookup.
+        """
+elif False:
+    GetLoadBalancerPoolsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLoadBalancerPoolsFilterArgs:
     def __init__(__self__, *,
@@ -32878,6 +42237,67 @@ class GetLoadBalancerPoolsFilterArgs:
     def name(self, value: Optional[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GetLoadBalancerPoolsPoolArgsDict(TypedDict):
+        check_regions: Sequence[str]
+        """
+        List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        """
+        created_on: str
+        """
+        The RFC3339 timestamp of when the load balancer was created.
+        """
+        description: str
+        """
+        Brief description of the Load Balancer Pool intention.
+        """
+        enabled: bool
+        """
+        Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        """
+        id: str
+        """
+        ID for this load balancer pool.
+        """
+        latitude: float
+        """
+        Latitude this pool is physically located at; used for proximity steering.
+        """
+        load_sheddings: Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgsDict']
+        """
+        Setting for controlling load shedding for this pool.
+        """
+        longitude: float
+        """
+        Longitude this pool is physically located at; used for proximity steering.
+        """
+        minimum_origins: int
+        """
+        Minimum number of origins that must be healthy for this pool to serve traffic.
+        """
+        modified_on: str
+        """
+        The RFC3339 timestamp of when the load balancer was last modified.
+        """
+        monitor: str
+        """
+        ID of the Monitor to use for health checking origins within this pool.
+        """
+        name: str
+        """
+        Short name (tag) for the pool.
+        """
+        notification_email: str
+        """
+        Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+        """
+        origins: Sequence['GetLoadBalancerPoolsPoolOriginArgsDict']
+        """
+        The list of origins within this pool.
+        """
+elif False:
+    GetLoadBalancerPoolsPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLoadBalancerPoolsPoolArgs:
@@ -33096,6 +42516,27 @@ class GetLoadBalancerPoolsPoolArgs:
         pulumi.set(self, "origins", value)
 
 
+if not MYPY:
+    class GetLoadBalancerPoolsPoolLoadSheddingArgsDict(TypedDict):
+        default_percent: NotRequired[float]
+        """
+        Percent of traffic to shed 0 - 100.
+        """
+        default_policy: NotRequired[str]
+        """
+        Method of shedding traffic. Available values: `""`, `hash`, `random`
+        """
+        session_percent: NotRequired[float]
+        """
+        Percent of session traffic to shed 0 - 100.
+        """
+        session_policy: NotRequired[str]
+        """
+        Method of shedding traffic. Available values: `""`, `hash`
+        """
+elif False:
+    GetLoadBalancerPoolsPoolLoadSheddingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     def __init__(__self__, *,
@@ -33166,6 +42607,35 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     def session_policy(self, value: Optional[str]):
         pulumi.set(self, "session_policy", value)
 
+
+if not MYPY:
+    class GetLoadBalancerPoolsPoolOriginArgsDict(TypedDict):
+        address: str
+        """
+        The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        """
+        name: str
+        """
+        A human-identifiable name for the origin.
+        """
+        enabled: NotRequired[bool]
+        """
+        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
+        """
+        headers: NotRequired[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgsDict']]
+        """
+        HTTP request headers.
+        """
+        virtual_network_id: NotRequired[str]
+        """
+        The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+        """
+        weight: NotRequired[float]
+        """
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
+        """
+elif False:
+    GetLoadBalancerPoolsPoolOriginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetLoadBalancerPoolsPoolOriginArgs:
@@ -33268,6 +42738,19 @@ class GetLoadBalancerPoolsPoolOriginArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class GetLoadBalancerPoolsPoolOriginHeaderArgsDict(TypedDict):
+        header: str
+        """
+        HTTP Header name.
+        """
+        values: Sequence[str]
+        """
+        Values for the HTTP headers.
+        """
+elif False:
+    GetLoadBalancerPoolsPoolOriginHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     def __init__(__self__, *,
@@ -33304,6 +42787,31 @@ class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetRulesetsFilterArgsDict(TypedDict):
+        id: NotRequired[str]
+        """
+        The ID of the Ruleset to target.
+        """
+        kind: NotRequired[str]
+        """
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        """
+        name: NotRequired[str]
+        """
+        Name of the ruleset.
+        """
+        phase: NotRequired[str]
+        """
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        """
+        version: NotRequired[str]
+        """
+        Version of the ruleset to filter on.
+        """
+elif False:
+    GetRulesetsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRulesetsFilterArgs:
@@ -33391,6 +42899,35 @@ class GetRulesetsFilterArgs:
     def version(self, value: Optional[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class GetZonesFilterArgsDict(TypedDict):
+        account_id: NotRequired[str]
+        """
+        The account identifier to target for the resource.
+        """
+        lookup_type: NotRequired[str]
+        """
+        The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
+        """
+        match: NotRequired[str]
+        """
+        A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookup_type`	are performed on the Cloudflare server side.
+        """
+        name: NotRequired[str]
+        """
+        A string value to search for.
+        """
+        paused: NotRequired[bool]
+        """
+        Paused status of the zone to lookup. Defaults to `false`.
+        """
+        status: NotRequired[str]
+        """
+        Status of the zone to lookup.
+        """
+elif False:
+    GetZonesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetZonesFilterArgs:

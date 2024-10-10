@@ -28,11 +28,13 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// me, err := cloudflare.GetUser(ctx, nil, nil);
+// me, err := cloudflare.GetUser(ctx, map[string]interface{}{
+// }, nil);
 // if err != nil {
 // return err
 // }
-// all, err := cloudflare.GetApiTokenPermissionGroups(ctx, nil, nil);
+// all, err := cloudflare.GetApiTokenPermissionGroups(ctx, map[string]interface{}{
+// }, nil);
 // if err != nil {
 // return err
 // }

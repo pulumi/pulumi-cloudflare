@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -129,9 +134,6 @@ def get_device_posture_rules(account_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         rules=pulumi.get(__ret__, 'rules'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_device_posture_rules)
 def get_device_posture_rules_output(account_id: Optional[pulumi.Input[str]] = None,
                                     name: Optional[pulumi.Input[Optional[str]]] = None,
                                     type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -155,4 +157,15 @@ def get_device_posture_rules_output(account_id: Optional[pulumi.Input[str]] = No
     :param str name: Name of the Device Posture Rule.
     :param str type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['name'] = name
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getDevicePostureRules:getDevicePostureRules', __args__, opts=opts, typ=GetDevicePostureRulesResult)
+    return __ret__.apply(lambda __response__: GetDevicePostureRulesResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        rules=pulumi.get(__response__, 'rules'),
+        type=pulumi.get(__response__, 'type')))

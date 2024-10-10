@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_infrastructure_access_targets(account_id: Optional[str] = None,
         modified_after=pulumi.get(__ret__, 'modified_after'),
         targets=pulumi.get(__ret__, 'targets'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
-
-
-@_utilities.lift_output_func(get_infrastructure_access_targets)
 def get_infrastructure_access_targets_output(account_id: Optional[pulumi.Input[str]] = None,
                                              created_after: Optional[pulumi.Input[Optional[str]]] = None,
                                              hostname: Optional[pulumi.Input[Optional[str]]] = None,
@@ -220,4 +222,25 @@ def get_infrastructure_access_targets_output(account_id: Optional[pulumi.Input[s
     :param str modified_after: A date and time after a target was modified to filter on.
     :param str virtual_network_id: The name of the app type.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['createdAfter'] = created_after
+    __args__['hostname'] = hostname
+    __args__['hostnameContains'] = hostname_contains
+    __args__['ipv4'] = ipv4
+    __args__['ipv6'] = ipv6
+    __args__['modifiedAfter'] = modified_after
+    __args__['virtualNetworkId'] = virtual_network_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets', __args__, opts=opts, typ=GetInfrastructureAccessTargetsResult)
+    return __ret__.apply(lambda __response__: GetInfrastructureAccessTargetsResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        created_after=pulumi.get(__response__, 'created_after'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        hostname_contains=pulumi.get(__response__, 'hostname_contains'),
+        id=pulumi.get(__response__, 'id'),
+        ipv4=pulumi.get(__response__, 'ipv4'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
+        modified_after=pulumi.get(__response__, 'modified_after'),
+        targets=pulumi.get(__response__, 'targets'),
+        virtual_network_id=pulumi.get(__response__, 'virtual_network_id')))

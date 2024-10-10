@@ -60,7 +60,7 @@ import (
 //					},
 //				},
 //				Latitude:          pulumi.Float64(55),
-//				Longitude:         -12,
+//				Longitude:         pulumi.Float64(-12),
 //				Description:       pulumi.String("example load balancer pool"),
 //				Enabled:           pulumi.Bool(false),
 //				MinimumOrigins:    pulumi.Int(1),
