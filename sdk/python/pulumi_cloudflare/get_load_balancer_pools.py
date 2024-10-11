@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -118,9 +123,6 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         pools=pulumi.get(__ret__, 'pools'))
-
-
-@_utilities.lift_output_func(get_load_balancer_pools)
 def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = None,
                                    filter: Optional[pulumi.Input[Optional[Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict']]]] = None,
                                    pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']]]]] = None,
@@ -145,4 +147,14 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = Non
     :param Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
     :param Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']] pools: A list of Load Balancer Pools details.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['filter'] = filter
+    __args__['pools'] = pools
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLoadBalancerPools:getLoadBalancerPools', __args__, opts=opts, typ=GetLoadBalancerPoolsResult)
+    return __ret__.apply(lambda __response__: GetLoadBalancerPoolsResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        pools=pulumi.get(__response__, 'pools')))

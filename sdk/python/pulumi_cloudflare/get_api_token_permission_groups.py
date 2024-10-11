@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
         r2=pulumi.get(__ret__, 'r2'),
         user=pulumi.get(__ret__, 'user'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_api_token_permission_groups)
 def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiTokenPermissionGroupsResult]:
     """
     Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
@@ -153,4 +155,13 @@ def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] 
     pulumi.export("userMembershipsReadId", all.user["Memberships Read"])
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups', __args__, opts=opts, typ=GetApiTokenPermissionGroupsResult)
+    return __ret__.apply(lambda __response__: GetApiTokenPermissionGroupsResult(
+        account=pulumi.get(__response__, 'account'),
+        id=pulumi.get(__response__, 'id'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        r2=pulumi.get(__response__, 'r2'),
+        user=pulumi.get(__response__, 'user'),
+        zone=pulumi.get(__response__, 'zone')))
