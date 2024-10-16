@@ -33,7 +33,7 @@ class CertificatePackArgs:
                  wait_for_active_status: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
-        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] validation_method: Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
@@ -61,7 +61,7 @@ class CertificatePackArgs:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[str]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -187,7 +187,7 @@ class _CertificatePackState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificatePack resources.
-        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
@@ -221,7 +221,7 @@ class _CertificatePackState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -363,7 +363,7 @@ class CertificatePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
@@ -474,7 +474,7 @@ class CertificatePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
@@ -503,7 +503,7 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[str]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate_authority")
 

@@ -1941,6 +1941,10 @@ export interface DevicePostureRuleInput {
      */
     networkStatus?: pulumi.Input<string>;
     /**
+     * The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+     */
+    operationalState?: pulumi.Input<string>;
+    /**
      * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     operator?: pulumi.Input<string>;
@@ -2581,7 +2585,7 @@ export interface ListItem {
      * An optional comment for the item.
      */
     comment?: pulumi.Input<string>;
-    value: pulumi.Input<inputs.ListItemValue>;
+    value?: pulumi.Input<inputs.ListItemValue>;
 }
 
 export interface ListItemHostname {
@@ -7386,6 +7390,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      */
     networkStatus?: pulumi.Input<string>;
+    /**
+     * The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+     */
+    operationalState?: pulumi.Input<string>;
     /**
      * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */

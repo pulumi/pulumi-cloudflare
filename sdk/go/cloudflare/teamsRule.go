@@ -67,22 +67,22 @@ type TeamsRule struct {
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
-	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
+	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayOutput `pulumi:"filters"`
 	// The wirefilter expression to be used for identity matching.
-	Identity pulumi.StringPtrOutput `pulumi:"identity"`
+	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the teams rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
 	// Additional rule settings.
-	RuleSettings TeamsRuleRuleSettingsPtrOutput `pulumi:"ruleSettings"`
+	RuleSettings TeamsRuleRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
-	Traffic pulumi.StringPtrOutput `pulumi:"traffic"`
-	Version pulumi.IntOutput       `pulumi:"version"`
+	Traffic pulumi.StringOutput `pulumi:"traffic"`
+	Version pulumi.IntOutput    `pulumi:"version"`
 }
 
 // NewTeamsRule registers a new resource with the given unique name, arguments, and options.
@@ -339,8 +339,8 @@ func (o TeamsRuleOutput) Description() pulumi.StringOutput {
 }
 
 // The wirefilter expression to be used for devicePosture check matching.
-func (o TeamsRuleOutput) DevicePosture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
+func (o TeamsRuleOutput) DevicePosture() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.DevicePosture }).(pulumi.StringOutput)
 }
 
 // Indicator of rule enablement.
@@ -354,8 +354,8 @@ func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
 }
 
 // The wirefilter expression to be used for identity matching.
-func (o TeamsRuleOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Identity }).(pulumi.StringPtrOutput)
+func (o TeamsRuleOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
 
 // The name of the teams rule.
@@ -369,13 +369,13 @@ func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
 }
 
 // Additional rule settings.
-func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) TeamsRuleRuleSettingsPtrOutput { return v.RuleSettings }).(TeamsRuleRuleSettingsPtrOutput)
+func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsOutput {
+	return o.ApplyT(func(v *TeamsRule) TeamsRuleRuleSettingsOutput { return v.RuleSettings }).(TeamsRuleRuleSettingsOutput)
 }
 
 // The wirefilter expression to be used for traffic matching.
-func (o TeamsRuleOutput) Traffic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Traffic }).(pulumi.StringPtrOutput)
+func (o TeamsRuleOutput) Traffic() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Traffic }).(pulumi.StringOutput)
 }
 
 func (o TeamsRuleOutput) Version() pulumi.IntOutput {

@@ -48,7 +48,7 @@ export class CertificatePack extends pulumi.CustomResource {
     }
 
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly certificateAuthority!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export class CertificatePack extends pulumi.CustomResource {
  */
 export interface CertificatePackState {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
@@ -186,7 +186,7 @@ export interface CertificatePackState {
  */
 export interface CertificatePackArgs {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
      */
     certificateAuthority: pulumi.Input<string>;
     /**

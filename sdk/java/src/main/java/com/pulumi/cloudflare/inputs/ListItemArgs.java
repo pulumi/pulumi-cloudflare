@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ListItemValueArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,11 +31,11 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.comment);
     }
 
-    @Import(name="value", required=true)
-    private Output<ListItemValueArgs> value;
+    @Import(name="value")
+    private @Nullable Output<ListItemValueArgs> value;
 
-    public Output<ListItemValueArgs> value() {
-        return this.value;
+    public Optional<Output<ListItemValueArgs>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private ListItemArgs() {}
@@ -85,7 +84,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
             return comment(Output.of(comment));
         }
 
-        public Builder value(Output<ListItemValueArgs> value) {
+        public Builder value(@Nullable Output<ListItemValueArgs> value) {
             $.value = value;
             return this;
         }
@@ -95,9 +94,6 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListItemArgs build() {
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("ListItemArgs", "value");
-            }
             return $;
         }
     }

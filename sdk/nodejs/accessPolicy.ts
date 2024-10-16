@@ -64,7 +64,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * The rules that define how users may connect to the targets secured by your application.
+     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     public readonly connectionRules!: pulumi.Output<outputs.AccessPolicyConnectionRules | undefined>;
     /**
@@ -189,7 +189,7 @@ export interface AccessPolicyState {
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
     /**
-     * The rules that define how users may connect to the targets secured by your application.
+     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
     /**
@@ -253,7 +253,7 @@ export interface AccessPolicyArgs {
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
     /**
-     * The rules that define how users may connect to the targets secured by your application.
+     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
     /**

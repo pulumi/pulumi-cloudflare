@@ -36,14 +36,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/certificatePack:CertificatePack")
 public class CertificatePack extends com.pulumi.resources.CustomResource {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output<String> certificateAuthority;
 
     /**
-     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> certificateAuthority() {

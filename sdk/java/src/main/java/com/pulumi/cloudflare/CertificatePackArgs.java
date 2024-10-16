@@ -22,14 +22,14 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     public static final CertificatePackArgs Empty = new CertificatePackArgs();
 
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="certificateAuthority", required=true)
     private Output<String> certificateAuthority;
 
     /**
-     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> certificateAuthority() {
@@ -189,7 +189,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

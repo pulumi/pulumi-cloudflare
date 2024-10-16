@@ -1941,6 +1941,10 @@ export interface DevicePostureRuleInput {
      */
     networkStatus?: string;
     /**
+     * The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+     */
+    operationalState?: string;
+    /**
      * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     operator?: string;
@@ -3472,7 +3476,7 @@ export interface ListItem {
      * An optional comment for the item.
      */
     comment?: string;
-    value: outputs.ListItemValue;
+    value?: outputs.ListItemValue;
 }
 
 export interface ListItemHostname {
@@ -8277,6 +8281,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      */
     networkStatus?: string;
+    /**
+     * The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+     */
+    operationalState?: string;
     /**
      * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */

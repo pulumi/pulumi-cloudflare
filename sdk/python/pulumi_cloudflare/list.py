@@ -29,9 +29,10 @@ class ListArgs:
         """
         The set of arguments for constructing a List resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        :param pulumi.Input[str] name: The name of the list.
         :param pulumi.Input[str] description: An optional description of the list.
+        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "kind", kind)
@@ -57,7 +58,7 @@ class ListArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         """
         return pulumi.get(self, "kind")
 
@@ -69,7 +70,7 @@ class ListArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the list. **Modifying this attribute will force creation of a new resource.**
+        The name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -92,6 +93,9 @@ class ListArgs:
     @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
+        """
+        The items in the list.
+        """
         return pulumi.get(self, "items")
 
     @items.setter
@@ -111,8 +115,9 @@ class _ListState:
         Input properties used for looking up and filtering List resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list.
+        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        :param pulumi.Input[str] name: The name of the list.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -152,6 +157,9 @@ class _ListState:
     @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
+        """
+        The items in the list.
+        """
         return pulumi.get(self, "items")
 
     @items.setter
@@ -162,7 +170,7 @@ class _ListState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         """
         return pulumi.get(self, "kind")
 
@@ -174,7 +182,7 @@ class _ListState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the list. **Modifying this attribute will force creation of a new resource.**
+        The name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -207,8 +215,9 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        :param pulumi.Input[str] name: The name of the list.
         """
         ...
     @overload
@@ -289,8 +298,9 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        :param pulumi.Input[str] name: The name of the list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -322,13 +332,16 @@ class List(pulumi.CustomResource):
     @property
     @pulumi.getter
     def items(self) -> pulumi.Output[Optional[Sequence['outputs.ListItem']]]:
+        """
+        The items in the list.
+        """
         return pulumi.get(self, "items")
 
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         """
         return pulumi.get(self, "kind")
 
@@ -336,7 +349,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the list. **Modifying this attribute will force creation of a new resource.**
+        The name of the list.
         """
         return pulumi.get(self, "name")
 

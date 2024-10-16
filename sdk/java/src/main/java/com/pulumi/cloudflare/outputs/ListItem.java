@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ListItemValue;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,7 +17,7 @@ public final class ListItem {
      * 
      */
     private @Nullable String comment;
-    private ListItemValue value;
+    private @Nullable ListItemValue value;
 
     private ListItem() {}
     /**
@@ -28,8 +27,8 @@ public final class ListItem {
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    public ListItemValue value() {
-        return this.value;
+    public Optional<ListItemValue> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -42,7 +41,7 @@ public final class ListItem {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
-        private ListItemValue value;
+        private @Nullable ListItemValue value;
         public Builder() {}
         public Builder(ListItem defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,10 +56,8 @@ public final class ListItem {
             return this;
         }
         @CustomType.Setter
-        public Builder value(ListItemValue value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("ListItem", "value");
-            }
+        public Builder value(@Nullable ListItemValue value) {
+
             this.value = value;
             return this;
         }

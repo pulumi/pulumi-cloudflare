@@ -88,7 +88,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -537,7 +537,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
         """
-        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "target_criterias")
 
@@ -642,7 +642,7 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -1105,7 +1105,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
         """
-        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "target_criterias")
 
@@ -1228,7 +1228,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -1432,7 +1432,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -1737,7 +1737,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationTargetCriteria']]]:
         """
-        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "target_criterias")
 

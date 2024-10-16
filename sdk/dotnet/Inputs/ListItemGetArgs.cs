@@ -18,8 +18,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        [Input("value", required: true)]
-        public Input<Inputs.ListItemValueGetArgs> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<Inputs.ListItemValueGetArgs>? Value { get; set; }
 
         public ListItemGetArgs()
         {

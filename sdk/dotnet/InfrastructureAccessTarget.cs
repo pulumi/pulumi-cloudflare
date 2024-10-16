@@ -30,12 +30,12 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args
     ///             {
-    ///                 IpAddr = "210.26.29.230",
+    ///                 IpAddr = "198.51.100.1",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
     ///             },
     ///             Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args
     ///             {
-    ///                 IpAddr = "24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0",
+    ///                 IpAddr = "2001:db8::",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
     ///             },
     ///         },
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args
     ///             {
-    ///                 IpAddr = "210.26.29.230",
+    ///                 IpAddr = "198.51.100.1",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
     ///             },
     ///         },

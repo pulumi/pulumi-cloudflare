@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// The wirefilter expression to be used for device_posture check matching.
         /// </summary>
         [Output("devicePosture")]
-        public Output<string?> DevicePosture { get; private set; } = null!;
+        public Output<string> DevicePosture { get; private set; } = null!;
 
         /// <summary>
         /// Indicator of rule enablement.
@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// The wirefilter expression to be used for identity matching.
         /// </summary>
         [Output("identity")]
-        public Output<string?> Identity { get; private set; } = null!;
+        public Output<string> Identity { get; private set; } = null!;
 
         /// <summary>
         /// The name of the teams rule.
@@ -111,13 +111,13 @@ namespace Pulumi.Cloudflare
         /// Additional rule settings.
         /// </summary>
         [Output("ruleSettings")]
-        public Output<Outputs.ZeroTrustGatewayPolicyRuleSettings?> RuleSettings { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustGatewayPolicyRuleSettings> RuleSettings { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression to be used for traffic matching.
         /// </summary>
         [Output("traffic")]
-        public Output<string?> Traffic { get; private set; } = null!;
+        public Output<string> Traffic { get; private set; } = null!;
 
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;

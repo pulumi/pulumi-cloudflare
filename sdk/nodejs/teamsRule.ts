@@ -79,7 +79,7 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The wirefilter expression to be used for devicePosture check matching.
      */
-    public readonly devicePosture!: pulumi.Output<string | undefined>;
+    public readonly devicePosture!: pulumi.Output<string>;
     /**
      * Indicator of rule enablement.
      */
@@ -91,7 +91,7 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The wirefilter expression to be used for identity matching.
      */
-    public readonly identity!: pulumi.Output<string | undefined>;
+    public readonly identity!: pulumi.Output<string>;
     /**
      * The name of the teams rule.
      */
@@ -103,11 +103,11 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * Additional rule settings.
      */
-    public readonly ruleSettings!: pulumi.Output<outputs.TeamsRuleRuleSettings | undefined>;
+    public readonly ruleSettings!: pulumi.Output<outputs.TeamsRuleRuleSettings>;
     /**
      * The wirefilter expression to be used for traffic matching.
      */
-    public readonly traffic!: pulumi.Output<string | undefined>;
+    public readonly traffic!: pulumi.Output<string>;
     public /*out*/ readonly version!: pulumi.Output<number>;
 
     /**

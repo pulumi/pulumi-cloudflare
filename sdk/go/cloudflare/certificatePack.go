@@ -26,7 +26,7 @@ import (
 type CertificatePack struct {
 	pulumi.CustomResourceState
 
-	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
 	CloudflareBranding pulumi.BoolPtrOutput `pulumi:"cloudflareBranding"`
@@ -94,7 +94,7 @@ func GetCertificatePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificatePack resources.
 type certificatePackState struct {
-	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
@@ -115,7 +115,7 @@ type certificatePackState struct {
 }
 
 type CertificatePackState struct {
-	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 	CertificateAuthority pulumi.StringPtrInput
 	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
 	CloudflareBranding pulumi.BoolPtrInput
@@ -140,7 +140,7 @@ func (CertificatePackState) ElementType() reflect.Type {
 }
 
 type certificatePackArgs struct {
-	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
@@ -162,7 +162,7 @@ type certificatePackArgs struct {
 
 // The set of arguments for constructing a CertificatePack resource.
 type CertificatePackArgs struct {
-	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 	CertificateAuthority pulumi.StringInput
 	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
 	CloudflareBranding pulumi.BoolPtrInput
@@ -269,7 +269,7 @@ func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Co
 	return o
 }
 
-// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`, `sslCom`. **Modifying this attribute will force creation of a new resource.**
 func (o CertificatePackOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }

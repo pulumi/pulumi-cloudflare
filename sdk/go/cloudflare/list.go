@@ -25,11 +25,12 @@ type List struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An optional description of the list.
-	Description pulumi.StringPtrOutput  `pulumi:"description"`
-	Items       ListItemTypeArrayOutput `pulumi:"items"`
-	// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The items in the list.
+	Items ListItemTypeArrayOutput `pulumi:"items"`
+	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the list. **Modifying this attribute will force creation of a new resource.**
+	// The name of the list.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -75,11 +76,12 @@ type listState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// An optional description of the list.
-	Description *string        `pulumi:"description"`
-	Items       []ListItemType `pulumi:"items"`
-	// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	Description *string `pulumi:"description"`
+	// The items in the list.
+	Items []ListItemType `pulumi:"items"`
+	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 	Kind *string `pulumi:"kind"`
-	// The name of the list. **Modifying this attribute will force creation of a new resource.**
+	// The name of the list.
 	Name *string `pulumi:"name"`
 }
 
@@ -88,10 +90,11 @@ type ListState struct {
 	AccountId pulumi.StringPtrInput
 	// An optional description of the list.
 	Description pulumi.StringPtrInput
-	Items       ListItemTypeArrayInput
-	// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// The items in the list.
+	Items ListItemTypeArrayInput
+	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 	Kind pulumi.StringPtrInput
-	// The name of the list. **Modifying this attribute will force creation of a new resource.**
+	// The name of the list.
 	Name pulumi.StringPtrInput
 }
 
@@ -103,11 +106,12 @@ type listArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// An optional description of the list.
-	Description *string        `pulumi:"description"`
-	Items       []ListItemType `pulumi:"items"`
-	// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	Description *string `pulumi:"description"`
+	// The items in the list.
+	Items []ListItemType `pulumi:"items"`
+	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 	Kind string `pulumi:"kind"`
-	// The name of the list. **Modifying this attribute will force creation of a new resource.**
+	// The name of the list.
 	Name string `pulumi:"name"`
 }
 
@@ -117,10 +121,11 @@ type ListArgs struct {
 	AccountId pulumi.StringInput
 	// An optional description of the list.
 	Description pulumi.StringPtrInput
-	Items       ListItemTypeArrayInput
-	// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// The items in the list.
+	Items ListItemTypeArrayInput
+	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 	Kind pulumi.StringInput
-	// The name of the list. **Modifying this attribute will force creation of a new resource.**
+	// The name of the list.
 	Name pulumi.StringInput
 }
 
@@ -221,16 +226,17 @@ func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The items in the list.
 func (o ListOutput) Items() ListItemTypeArrayOutput {
 	return o.ApplyT(func(v *List) ListItemTypeArrayOutput { return v.Items }).(ListItemTypeArrayOutput)
 }
 
-// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
 func (o ListOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the list. **Modifying this attribute will force creation of a new resource.**
+// The name of the list.
 func (o ListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

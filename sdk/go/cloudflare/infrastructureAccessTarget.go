@@ -33,11 +33,11 @@ import (
 //				Hostname:  pulumi.String("example-target"),
 //				Ip: &cloudflare.InfrastructureAccessTargetIpArgs{
 //					Ipv4: &cloudflare.InfrastructureAccessTargetIpIpv4Args{
-//						IpAddr:           pulumi.String("210.26.29.230"),
+//						IpAddr:           pulumi.String("198.51.100.1"),
 //						VirtualNetworkId: pulumi.String("238dccd1-149b-463d-8228-560ab83a54fd"),
 //					},
 //					Ipv6: &cloudflare.InfrastructureAccessTargetIpIpv6Args{
-//						IpAddr:           pulumi.String("24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0"),
+//						IpAddr:           pulumi.String("2001:db8::"),
 //						VirtualNetworkId: pulumi.String("238dccd1-149b-463d-8228-560ab83a54fd"),
 //					},
 //				},
@@ -50,7 +50,7 @@ import (
 //				Hostname:  pulumi.String("example-ipv4-only"),
 //				Ip: &cloudflare.InfrastructureAccessTargetIpArgs{
 //					Ipv4: &cloudflare.InfrastructureAccessTargetIpIpv4Args{
-//						IpAddr:           pulumi.String("210.26.29.230"),
+//						IpAddr:           pulumi.String("198.51.100.1"),
 //						VirtualNetworkId: pulumi.String("238dccd1-149b-463d-8228-560ab83a54fd"),
 //					},
 //				},

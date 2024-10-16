@@ -180,7 +180,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     public readonly targetCriterias!: pulumi.Output<outputs.AccessApplicationTargetCriteria[] | undefined>;
     /**
@@ -416,7 +416,7 @@ export interface AccessApplicationState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**
@@ -558,7 +558,7 @@ export interface AccessApplicationArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      */
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**

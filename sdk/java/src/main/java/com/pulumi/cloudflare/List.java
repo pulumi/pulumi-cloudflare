@@ -55,35 +55,43 @@ public class List extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The items in the list.
+     * 
+     */
     @Export(name="items", refs={java.util.List.class,ListItem.class}, tree="[0,1]")
     private Output</* @Nullable */ java.util.List<ListItem>> items;
 
+    /**
+     * @return The items in the list.
+     * 
+     */
     public Output<Optional<java.util.List<ListItem>>> items() {
         return Codegen.optional(this.items);
     }
     /**
-     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      * 
      */
     public Output<String> kind() {
         return this.kind;
     }
     /**
-     * The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * The name of the list.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * @return The name of the list.
      * 
      */
     public Output<String> name() {

@@ -44,7 +44,7 @@ class ZeroTrustAccessPolicyArgs:
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application.
+        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
@@ -166,7 +166,7 @@ class ZeroTrustAccessPolicyArgs:
     @pulumi.getter(name="connectionRules")
     def connection_rules(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]:
         """
-        The rules that define how users may connect to the targets secured by your application.
+        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "connection_rules")
 
@@ -294,7 +294,7 @@ class _ZeroTrustAccessPolicyState:
         Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application.
+        :param pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
@@ -386,7 +386,7 @@ class _ZeroTrustAccessPolicyState:
     @pulumi.getter(name="connectionRules")
     def connection_rules(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyConnectionRulesArgs']]:
         """
-        The rules that define how users may connect to the targets secured by your application.
+        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "connection_rules")
 
@@ -572,7 +572,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application.
+        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
@@ -707,7 +707,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application.
+        :param pulumi.Input[Union['ZeroTrustAccessPolicyConnectionRulesArgs', 'ZeroTrustAccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyExcludeArgs', 'ZeroTrustAccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyIncludeArgs', 'ZeroTrustAccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
@@ -772,7 +772,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
     @pulumi.getter(name="connectionRules")
     def connection_rules(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessPolicyConnectionRules']]:
         """
-        The rules that define how users may connect to the targets secured by your application.
+        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         """
         return pulumi.get(self, "connection_rules")
 

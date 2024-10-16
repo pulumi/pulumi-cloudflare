@@ -10366,6 +10366,10 @@ if not MYPY:
         """
         The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         """
+        operational_state: NotRequired[pulumi.Input[str]]
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
         operator: NotRequired[pulumi.Input[str]]
         """
         The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -10464,6 +10468,7 @@ class DevicePostureRuleInputArgs:
                  last_seen: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgs']]]] = None,
                  network_status: Optional[pulumi.Input[str]] = None,
+                 operational_state: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_distro_name: Optional[pulumi.Input[str]] = None,
@@ -10503,6 +10508,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[str] last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputLocationArgs']]] locations: List of operating system locations to check for a client certificate..
         :param pulumi.Input[str] network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        :param pulumi.Input[str] operational_state: The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] os_distro_name: The operating system excluding version information.
@@ -10562,6 +10568,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "locations", locations)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
+        if operational_state is not None:
+            pulumi.set(__self__, "operational_state", operational_state)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -10838,6 +10846,18 @@ class DevicePostureRuleInputArgs:
     @network_status.setter
     def network_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_status", value)
+
+    @property
+    @pulumi.getter(name="operationalState")
+    def operational_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
+        return pulumi.get(self, "operational_state")
+
+    @operational_state.setter
+    def operational_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operational_state", value)
 
     @property
     @pulumi.getter
@@ -12074,34 +12094,26 @@ class InfrastructureAccessTargetIpIpv6Args:
 
 if not MYPY:
     class ListItemArgsDict(TypedDict):
-        value: pulumi.Input['ListItemValueArgsDict']
         comment: NotRequired[pulumi.Input[str]]
         """
         An optional comment for the item.
         """
+        value: NotRequired[pulumi.Input['ListItemValueArgsDict']]
 elif False:
     ListItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListItemArgs:
     def __init__(__self__, *,
-                 value: pulumi.Input['ListItemValueArgs'],
-                 comment: Optional[pulumi.Input[str]] = None):
+                 comment: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['ListItemValueArgs']] = None):
         """
         :param pulumi.Input[str] comment: An optional comment for the item.
         """
-        pulumi.set(__self__, "value", value)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input['ListItemValueArgs']:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input['ListItemValueArgs']):
-        pulumi.set(self, "value", value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -12114,6 +12126,15 @@ class ListItemArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ListItemValueArgs']]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ListItemValueArgs']]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -35585,6 +35606,10 @@ if not MYPY:
         """
         The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         """
+        operational_state: NotRequired[pulumi.Input[str]]
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
         operator: NotRequired[pulumi.Input[str]]
         """
         The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -35683,6 +35708,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
                  last_seen: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgs']]]] = None,
                  network_status: Optional[pulumi.Input[str]] = None,
+                 operational_state: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_distro_name: Optional[pulumi.Input[str]] = None,
@@ -35722,6 +35748,7 @@ class ZeroTrustDevicePostureRuleInputArgs:
         :param pulumi.Input[str] last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputLocationArgs']]] locations: List of operating system locations to check for a client certificate..
         :param pulumi.Input[str] network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        :param pulumi.Input[str] operational_state: The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] os_distro_name: The operating system excluding version information.
@@ -35781,6 +35808,8 @@ class ZeroTrustDevicePostureRuleInputArgs:
             pulumi.set(__self__, "locations", locations)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
+        if operational_state is not None:
+            pulumi.set(__self__, "operational_state", operational_state)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -36057,6 +36086,18 @@ class ZeroTrustDevicePostureRuleInputArgs:
     @network_status.setter
     def network_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_status", value)
+
+    @property
+    @pulumi.getter(name="operationalState")
+    def operational_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
+        return pulumi.get(self, "operational_state")
+
+    @operational_state.setter
+    def operational_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operational_state", value)
 
     @property
     @pulumi.getter

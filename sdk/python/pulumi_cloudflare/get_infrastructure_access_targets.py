@@ -79,7 +79,7 @@ class GetInfrastructureAccessTargetsResult:
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         """
-        The name of the app type.
+        The hostname of the target.
         """
         return pulumi.get(self, "hostname")
 
@@ -87,7 +87,7 @@ class GetInfrastructureAccessTargetsResult:
     @pulumi.getter(name="hostnameContains")
     def hostname_contains(self) -> Optional[str]:
         """
-        The name of the app type.
+        Partial match to the hostname of a target
         """
         return pulumi.get(self, "hostname_contains")
 
@@ -103,7 +103,7 @@ class GetInfrastructureAccessTargetsResult:
     @pulumi.getter
     def ipv4(self) -> Optional[str]:
         """
-        The name of the app type.
+        The target's IPv4 address.
         """
         return pulumi.get(self, "ipv4")
 
@@ -111,7 +111,7 @@ class GetInfrastructureAccessTargetsResult:
     @pulumi.getter
     def ipv6(self) -> Optional[str]:
         """
-        The name of the app type.
+        The target's IPv6 address.
         """
         return pulumi.get(self, "ipv6")
 
@@ -132,7 +132,7 @@ class GetInfrastructureAccessTargetsResult:
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> Optional[str]:
         """
-        The name of the app type.
+        The private virtual network identifier for the target.
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -167,15 +167,27 @@ def get_infrastructure_access_targets(account_id: Optional[str] = None,
     """
     Use this data source to retrieve all Infrastructure Access Targets.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_infrastructure_access_targets(account_id="f037e56e89293a057740de681ac9abbe",
+        hostname_contains="example",
+        ipv4="198.51.100.1")
+    pulumi.export("targets", example.targets)
+    ```
+
 
     :param str account_id: The account identifier to target for the resource.
     :param str created_after: A date and time after a target was created to filter on.
-    :param str hostname: The name of the app type.
-    :param str hostname_contains: The name of the app type.
-    :param str ipv4: The name of the app type.
-    :param str ipv6: The name of the app type.
+    :param str hostname: The hostname of the target.
+    :param str hostname_contains: Partial match to the hostname of a target
+    :param str ipv4: The target's IPv4 address.
+    :param str ipv6: The target's IPv6 address.
     :param str modified_after: A date and time after a target was modified to filter on.
-    :param str virtual_network_id: The name of the app type.
+    :param str virtual_network_id: The private virtual network identifier for the target.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -212,15 +224,27 @@ def get_infrastructure_access_targets_output(account_id: Optional[pulumi.Input[s
     """
     Use this data source to retrieve all Infrastructure Access Targets.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_infrastructure_access_targets(account_id="f037e56e89293a057740de681ac9abbe",
+        hostname_contains="example",
+        ipv4="198.51.100.1")
+    pulumi.export("targets", example.targets)
+    ```
+
 
     :param str account_id: The account identifier to target for the resource.
     :param str created_after: A date and time after a target was created to filter on.
-    :param str hostname: The name of the app type.
-    :param str hostname_contains: The name of the app type.
-    :param str ipv4: The name of the app type.
-    :param str ipv6: The name of the app type.
+    :param str hostname: The hostname of the target.
+    :param str hostname_contains: Partial match to the hostname of a target
+    :param str ipv4: The target's IPv4 address.
+    :param str ipv6: The target's IPv6 address.
     :param str modified_after: A date and time after a target was modified to filter on.
-    :param str virtual_network_id: The name of the app type.
+    :param str virtual_network_id: The private virtual network identifier for the target.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

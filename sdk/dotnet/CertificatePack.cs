@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     public partial class CertificatePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }

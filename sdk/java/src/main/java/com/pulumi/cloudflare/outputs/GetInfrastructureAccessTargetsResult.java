@@ -25,12 +25,12 @@ public final class GetInfrastructureAccessTargetsResult {
      */
     private @Nullable String createdAfter;
     /**
-     * @return The name of the app type.
+     * @return The hostname of the target.
      * 
      */
     private @Nullable String hostname;
     /**
-     * @return The name of the app type.
+     * @return Partial match to the hostname of a target
      * 
      */
     private @Nullable String hostnameContains;
@@ -40,12 +40,12 @@ public final class GetInfrastructureAccessTargetsResult {
      */
     private String id;
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv4 address.
      * 
      */
     private @Nullable String ipv4;
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv6 address.
      * 
      */
     private @Nullable String ipv6;
@@ -56,7 +56,7 @@ public final class GetInfrastructureAccessTargetsResult {
     private @Nullable String modifiedAfter;
     private List<GetInfrastructureAccessTargetsTarget> targets;
     /**
-     * @return The name of the app type.
+     * @return The private virtual network identifier for the target.
      * 
      */
     private @Nullable String virtualNetworkId;
@@ -77,14 +77,14 @@ public final class GetInfrastructureAccessTargetsResult {
         return Optional.ofNullable(this.createdAfter);
     }
     /**
-     * @return The name of the app type.
+     * @return The hostname of the target.
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return The name of the app type.
+     * @return Partial match to the hostname of a target
      * 
      */
     public Optional<String> hostnameContains() {
@@ -98,14 +98,14 @@ public final class GetInfrastructureAccessTargetsResult {
         return this.id;
     }
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv4 address.
      * 
      */
     public Optional<String> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv6 address.
      * 
      */
     public Optional<String> ipv6() {
@@ -122,7 +122,7 @@ public final class GetInfrastructureAccessTargetsResult {
         return this.targets;
     }
     /**
-     * @return The name of the app type.
+     * @return The private virtual network identifier for the target.
      * 
      */
     public Optional<String> virtualNetworkId() {

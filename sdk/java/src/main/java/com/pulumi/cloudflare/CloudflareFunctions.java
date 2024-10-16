@@ -1798,12 +1798,88 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to retrieve all Infrastructure Access Targets.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs args) {
         return getInfrastructureAccessTargets(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargetsPlain(GetInfrastructureAccessTargetsPlainArgs args) {
@@ -1812,12 +1888,88 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to retrieve all Infrastructure Access Targets.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", TypeShape.of(GetInfrastructureAccessTargetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getInfrastructureAccessTargetsResult -> getInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInfrastructureAccessTargetsResult> getInfrastructureAccessTargetsPlain(GetInfrastructureAccessTargetsPlainArgs args, InvokeOptions options) {

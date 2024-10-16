@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to retrieve all Infrastructure Access Targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getInfrastructureAccessTargets({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     hostnameContains: "example",
+ *     ipv4: "198.51.100.1",
+ * });
+ * export const targets = example.then(example => example.targets);
+ * ```
  */
 export function getInfrastructureAccessTargets(args: GetInfrastructureAccessTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetInfrastructureAccessTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,19 +50,19 @@ export interface GetInfrastructureAccessTargetsArgs {
      */
     createdAfter?: string;
     /**
-     * The name of the app type.
+     * The hostname of the target.
      */
     hostname?: string;
     /**
-     * The name of the app type.
+     * Partial match to the hostname of a target
      */
     hostnameContains?: string;
     /**
-     * The name of the app type.
+     * The target's IPv4 address.
      */
     ipv4?: string;
     /**
-     * The name of the app type.
+     * The target's IPv6 address.
      */
     ipv6?: string;
     /**
@@ -56,7 +70,7 @@ export interface GetInfrastructureAccessTargetsArgs {
      */
     modifiedAfter?: string;
     /**
-     * The name of the app type.
+     * The private virtual network identifier for the target.
      */
     virtualNetworkId?: string;
 }
@@ -74,11 +88,11 @@ export interface GetInfrastructureAccessTargetsResult {
      */
     readonly createdAfter?: string;
     /**
-     * The name of the app type.
+     * The hostname of the target.
      */
     readonly hostname?: string;
     /**
-     * The name of the app type.
+     * Partial match to the hostname of a target
      */
     readonly hostnameContains?: string;
     /**
@@ -86,11 +100,11 @@ export interface GetInfrastructureAccessTargetsResult {
      */
     readonly id: string;
     /**
-     * The name of the app type.
+     * The target's IPv4 address.
      */
     readonly ipv4?: string;
     /**
-     * The name of the app type.
+     * The target's IPv6 address.
      */
     readonly ipv6?: string;
     /**
@@ -99,12 +113,26 @@ export interface GetInfrastructureAccessTargetsResult {
     readonly modifiedAfter?: string;
     readonly targets: outputs.GetInfrastructureAccessTargetsTarget[];
     /**
-     * The name of the app type.
+     * The private virtual network identifier for the target.
      */
     readonly virtualNetworkId?: string;
 }
 /**
  * Use this data source to retrieve all Infrastructure Access Targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getInfrastructureAccessTargets({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     hostnameContains: "example",
+ *     ipv4: "198.51.100.1",
+ * });
+ * export const targets = example.then(example => example.targets);
+ * ```
  */
 export function getInfrastructureAccessTargetsOutput(args: GetInfrastructureAccessTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfrastructureAccessTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -133,19 +161,19 @@ export interface GetInfrastructureAccessTargetsOutputArgs {
      */
     createdAfter?: pulumi.Input<string>;
     /**
-     * The name of the app type.
+     * The hostname of the target.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The name of the app type.
+     * Partial match to the hostname of a target
      */
     hostnameContains?: pulumi.Input<string>;
     /**
-     * The name of the app type.
+     * The target's IPv4 address.
      */
     ipv4?: pulumi.Input<string>;
     /**
-     * The name of the app type.
+     * The target's IPv6 address.
      */
     ipv6?: pulumi.Input<string>;
     /**
@@ -153,7 +181,7 @@ export interface GetInfrastructureAccessTargetsOutputArgs {
      */
     modifiedAfter?: pulumi.Input<string>;
     /**
-     * The name of the app type.
+     * The private virtual network identifier for the target.
      */
     virtualNetworkId?: pulumi.Input<string>;
 }

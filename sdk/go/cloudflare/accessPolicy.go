@@ -39,7 +39,7 @@ type AccessPolicy struct {
 	ApplicationId    pulumi.StringPtrOutput               `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules AccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -110,7 +110,7 @@ type accessPolicyState struct {
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision *string `pulumi:"decision"`
@@ -143,7 +143,7 @@ type AccessPolicyState struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringPtrInput
@@ -180,7 +180,7 @@ type accessPolicyArgs struct {
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules *AccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision string `pulumi:"decision"`
@@ -214,7 +214,7 @@ type AccessPolicyArgs struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules AccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringInput
@@ -345,7 +345,7 @@ func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
-// The rules that define how users may connect to the targets secured by your application.
+// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 func (o AccessPolicyOutput) ConnectionRules() AccessPolicyConnectionRulesPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(AccessPolicyConnectionRulesPtrOutput)
 }
