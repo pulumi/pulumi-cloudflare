@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application.
+        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         [Output("connectionRules")]
         public Output<Outputs.AccessPolicyConnectionRules?> ConnectionRules { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application.
+        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         [Input("connectionRules")]
         public Input<Inputs.AccessPolicyConnectionRulesArgs>? ConnectionRules { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application.
+        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         [Input("connectionRules")]
         public Input<Inputs.AccessPolicyConnectionRulesGetArgs>? ConnectionRules { get; set; }

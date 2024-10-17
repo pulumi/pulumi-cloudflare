@@ -630,7 +630,7 @@ class TeamsRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="devicePosture")
-    def device_posture(self) -> pulumi.Output[Optional[str]]:
+    def device_posture(self) -> pulumi.Output[str]:
         """
         The wirefilter expression to be used for device_posture check matching.
         """
@@ -654,7 +654,7 @@ class TeamsRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def identity(self) -> pulumi.Output[Optional[str]]:
+    def identity(self) -> pulumi.Output[str]:
         """
         The wirefilter expression to be used for identity matching.
         """
@@ -678,7 +678,7 @@ class TeamsRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleSettings")
-    def rule_settings(self) -> pulumi.Output[Optional['outputs.TeamsRuleRuleSettings']]:
+    def rule_settings(self) -> pulumi.Output['outputs.TeamsRuleRuleSettings']:
         """
         Additional rule settings.
         """
@@ -686,7 +686,7 @@ class TeamsRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def traffic(self) -> pulumi.Output[Optional[str]]:
+    def traffic(self) -> pulumi.Output[str]:
         """
         The wirefilter expression to be used for traffic matching.
         """

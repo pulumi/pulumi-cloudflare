@@ -67,22 +67,22 @@ type ZeroTrustGatewayPolicy struct {
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
-	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
+	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayOutput `pulumi:"filters"`
 	// The wirefilter expression to be used for identity matching.
-	Identity pulumi.StringPtrOutput `pulumi:"identity"`
+	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the teams rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
 	// Additional rule settings.
-	RuleSettings ZeroTrustGatewayPolicyRuleSettingsPtrOutput `pulumi:"ruleSettings"`
+	RuleSettings ZeroTrustGatewayPolicyRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
-	Traffic pulumi.StringPtrOutput `pulumi:"traffic"`
-	Version pulumi.IntOutput       `pulumi:"version"`
+	Traffic pulumi.StringOutput `pulumi:"traffic"`
+	Version pulumi.IntOutput    `pulumi:"version"`
 }
 
 // NewZeroTrustGatewayPolicy registers a new resource with the given unique name, arguments, and options.
@@ -339,8 +339,8 @@ func (o ZeroTrustGatewayPolicyOutput) Description() pulumi.StringOutput {
 }
 
 // The wirefilter expression to be used for devicePosture check matching.
-func (o ZeroTrustGatewayPolicyOutput) DevicePosture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) DevicePosture() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.DevicePosture }).(pulumi.StringOutput)
 }
 
 // Indicator of rule enablement.
@@ -354,8 +354,8 @@ func (o ZeroTrustGatewayPolicyOutput) Filters() pulumi.StringArrayOutput {
 }
 
 // The wirefilter expression to be used for identity matching.
-func (o ZeroTrustGatewayPolicyOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Identity }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
 
 // The name of the teams rule.
@@ -369,13 +369,13 @@ func (o ZeroTrustGatewayPolicyOutput) Precedence() pulumi.IntOutput {
 }
 
 // Additional rule settings.
-func (o ZeroTrustGatewayPolicyOutput) RuleSettings() ZeroTrustGatewayPolicyRuleSettingsPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyRuleSettingsPtrOutput { return v.RuleSettings }).(ZeroTrustGatewayPolicyRuleSettingsPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) RuleSettings() ZeroTrustGatewayPolicyRuleSettingsOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyRuleSettingsOutput { return v.RuleSettings }).(ZeroTrustGatewayPolicyRuleSettingsOutput)
 }
 
 // The wirefilter expression to be used for traffic matching.
-func (o ZeroTrustGatewayPolicyOutput) Traffic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Traffic }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Traffic() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Traffic }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustGatewayPolicyOutput) Version() pulumi.IntOutput {

@@ -39,7 +39,7 @@ type ZeroTrustAccessPolicy struct {
 	ApplicationId    pulumi.StringPtrOutput                        `pulumi:"applicationId"`
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                          `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -110,7 +110,7 @@ type zeroTrustAccessPolicyState struct {
 	ApplicationId    *string                              `pulumi:"applicationId"`
 	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision *string `pulumi:"decision"`
@@ -143,7 +143,7 @@ type ZeroTrustAccessPolicyState struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringPtrInput
@@ -180,7 +180,7 @@ type zeroTrustAccessPolicyArgs struct {
 	ApplicationId    *string                              `pulumi:"applicationId"`
 	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision string `pulumi:"decision"`
@@ -214,7 +214,7 @@ type ZeroTrustAccessPolicyArgs struct {
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application.
+	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
 	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringInput
@@ -345,7 +345,7 @@ func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
-// The rules that define how users may connect to the targets secured by your application.
+// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
 func (o ZeroTrustAccessPolicyOutput) ConnectionRules() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
 }

@@ -20,11 +20,11 @@ import * as utilities from "./utilities";
  *     hostname: "example-target",
  *     ip: {
  *         ipv4: {
- *             ipAddr: "210.26.29.230",
+ *             ipAddr: "198.51.100.1",
  *             virtualNetworkId: "238dccd1-149b-463d-8228-560ab83a54fd",
  *         },
  *         ipv6: {
- *             ipAddr: "24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0",
+ *             ipAddr: "2001:db8::",
  *             virtualNetworkId: "238dccd1-149b-463d-8228-560ab83a54fd",
  *         },
  *     },
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     hostname: "example-ipv4-only",
  *     ip: {
  *         ipv4: {
- *             ipAddr: "210.26.29.230",
+ *             ipAddr: "198.51.100.1",
  *             virtualNetworkId: "238dccd1-149b-463d-8228-560ab83a54fd",
  *         },
  *     },

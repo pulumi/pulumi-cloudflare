@@ -123,14 +123,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="devicePosture", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> devicePosture;
+    private Output<String> devicePosture;
 
     /**
      * @return The wirefilter expression to be used for device_posture check matching.
      * 
      */
-    public Output<Optional<String>> devicePosture() {
-        return Codegen.optional(this.devicePosture);
+    public Output<String> devicePosture() {
+        return this.devicePosture;
     }
     /**
      * Indicator of rule enablement.
@@ -165,14 +165,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="identity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> identity;
+    private Output<String> identity;
 
     /**
      * @return The wirefilter expression to be used for identity matching.
      * 
      */
-    public Output<Optional<String>> identity() {
-        return Codegen.optional(this.identity);
+    public Output<String> identity() {
+        return this.identity;
     }
     /**
      * The name of the teams rule.
@@ -207,28 +207,28 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ruleSettings", refs={TeamsRuleRuleSettings.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsRuleRuleSettings> ruleSettings;
+    private Output<TeamsRuleRuleSettings> ruleSettings;
 
     /**
      * @return Additional rule settings.
      * 
      */
-    public Output<Optional<TeamsRuleRuleSettings>> ruleSettings() {
-        return Codegen.optional(this.ruleSettings);
+    public Output<TeamsRuleRuleSettings> ruleSettings() {
+        return this.ruleSettings;
     }
     /**
      * The wirefilter expression to be used for traffic matching.
      * 
      */
     @Export(name="traffic", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> traffic;
+    private Output<String> traffic;
 
     /**
      * @return The wirefilter expression to be used for traffic matching.
      * 
      */
-    public Output<Optional<String>> traffic() {
-        return Codegen.optional(this.traffic);
+    public Output<String> traffic() {
+        return this.traffic;
     }
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;

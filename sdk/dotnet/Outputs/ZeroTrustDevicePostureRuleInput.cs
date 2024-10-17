@@ -94,6 +94,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NetworkStatus;
         /// <summary>
+        /// The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        /// </summary>
+        public readonly string? OperationalState;
+        /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         public readonly string? Operator;
@@ -208,6 +212,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? networkStatus,
 
+            string? operationalState,
+
             string? @operator,
 
             string? os,
@@ -264,6 +270,7 @@ namespace Pulumi.Cloudflare.Outputs
             LastSeen = lastSeen;
             Locations = locations;
             NetworkStatus = networkStatus;
+            OperationalState = operationalState;
             Operator = @operator;
             Os = os;
             OsDistroName = osDistroName;

@@ -13,12 +13,60 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to retrieve all Infrastructure Access Targets.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetInfrastructureAccessTargets.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         HostnameContains = "example",
+        ///         Ipv4 = "198.51.100.1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["targets"] = example.Apply(getInfrastructureAccessTargetsResult =&gt; getInfrastructureAccessTargetsResult.Targets),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetInfrastructureAccessTargetsResult> InvokeAsync(GetInfrastructureAccessTargetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInfrastructureAccessTargetsResult>("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", args ?? new GetInfrastructureAccessTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve all Infrastructure Access Targets.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetInfrastructureAccessTargets.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         HostnameContains = "example",
+        ///         Ipv4 = "198.51.100.1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["targets"] = example.Apply(getInfrastructureAccessTargetsResult =&gt; getInfrastructureAccessTargetsResult.Targets),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInfrastructureAccessTargetsResult> Invoke(GetInfrastructureAccessTargetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfrastructureAccessTargetsResult>("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", args ?? new GetInfrastructureAccessTargetsInvokeArgs(), options.WithDefaults());
@@ -40,25 +88,25 @@ namespace Pulumi.Cloudflare
         public string? CreatedAfter { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The hostname of the target.
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// Partial match to the hostname of a target
         /// </summary>
         [Input("hostnameContains")]
         public string? HostnameContains { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv4 address.
         /// </summary>
         [Input("ipv4")]
         public string? Ipv4 { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv6 address.
         /// </summary>
         [Input("ipv6")]
         public string? Ipv6 { get; set; }
@@ -70,7 +118,7 @@ namespace Pulumi.Cloudflare
         public string? ModifiedAfter { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The private virtual network identifier for the target.
         /// </summary>
         [Input("virtualNetworkId")]
         public string? VirtualNetworkId { get; set; }
@@ -96,25 +144,25 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAfter { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The hostname of the target.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// Partial match to the hostname of a target
         /// </summary>
         [Input("hostnameContains")]
         public Input<string>? HostnameContains { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv4 address.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv6 address.
         /// </summary>
         [Input("ipv6")]
         public Input<string>? Ipv6 { get; set; }
@@ -126,7 +174,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedAfter { get; set; }
 
         /// <summary>
-        /// The name of the app type.
+        /// The private virtual network identifier for the target.
         /// </summary>
         [Input("virtualNetworkId")]
         public Input<string>? VirtualNetworkId { get; set; }
@@ -150,11 +198,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? CreatedAfter;
         /// <summary>
-        /// The name of the app type.
+        /// The hostname of the target.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// The name of the app type.
+        /// Partial match to the hostname of a target
         /// </summary>
         public readonly string? HostnameContains;
         /// <summary>
@@ -162,11 +210,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv4 address.
         /// </summary>
         public readonly string? Ipv4;
         /// <summary>
-        /// The name of the app type.
+        /// The target's IPv6 address.
         /// </summary>
         public readonly string? Ipv6;
         /// <summary>
@@ -175,7 +223,7 @@ namespace Pulumi.Cloudflare
         public readonly string? ModifiedAfter;
         public readonly ImmutableArray<Outputs.GetInfrastructureAccessTargetsTargetResult> Targets;
         /// <summary>
-        /// The name of the app type.
+        /// The private virtual network identifier for the target.
         /// </summary>
         public readonly string? VirtualNetworkId;
 

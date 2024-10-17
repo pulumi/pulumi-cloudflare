@@ -33,17 +33,20 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The items in the list.
+        /// </summary>
         [Output("items")]
         public Output<ImmutableArray<Outputs.ListItem>> Items { get; private set; } = null!;
 
         /// <summary>
-        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
+        /// The name of the list.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -108,6 +111,10 @@ namespace Pulumi.Cloudflare
 
         [Input("items")]
         private InputList<Inputs.ListItemArgs>? _items;
+
+        /// <summary>
+        /// The items in the list.
+        /// </summary>
         public InputList<Inputs.ListItemArgs> Items
         {
             get => _items ?? (_items = new InputList<Inputs.ListItemArgs>());
@@ -115,13 +122,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
+        /// The name of the list.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -148,6 +155,10 @@ namespace Pulumi.Cloudflare
 
         [Input("items")]
         private InputList<Inputs.ListItemGetArgs>? _items;
+
+        /// <summary>
+        /// The items in the list.
+        /// </summary>
         public InputList<Inputs.ListItemGetArgs> Items
         {
             get => _items ?? (_items = new InputList<Inputs.ListItemGetArgs>());
@@ -155,13 +166,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
+        /// The name of the list.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

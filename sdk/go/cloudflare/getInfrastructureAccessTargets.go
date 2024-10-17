@@ -12,6 +12,35 @@ import (
 )
 
 // Use this data source to retrieve all Infrastructure Access Targets.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudflare.GetInfrastructureAccessTargets(ctx, &cloudflare.GetInfrastructureAccessTargetsArgs{
+//				AccountId:        "f037e56e89293a057740de681ac9abbe",
+//				HostnameContains: pulumi.StringRef("example"),
+//				Ipv4:             pulumi.StringRef("198.51.100.1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("targets", example.Targets)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInfrastructureAccessTargets(ctx *pulumi.Context, args *GetInfrastructureAccessTargetsArgs, opts ...pulumi.InvokeOption) (*GetInfrastructureAccessTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInfrastructureAccessTargetsResult
@@ -28,17 +57,17 @@ type GetInfrastructureAccessTargetsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// A date and time after a target was created to filter on.
 	CreatedAfter *string `pulumi:"createdAfter"`
-	// The name of the app type.
+	// The hostname of the target.
 	Hostname *string `pulumi:"hostname"`
-	// The name of the app type.
+	// Partial match to the hostname of a target
 	HostnameContains *string `pulumi:"hostnameContains"`
-	// The name of the app type.
+	// The target's IPv4 address.
 	Ipv4 *string `pulumi:"ipv4"`
-	// The name of the app type.
+	// The target's IPv6 address.
 	Ipv6 *string `pulumi:"ipv6"`
 	// A date and time after a target was modified to filter on.
 	ModifiedAfter *string `pulumi:"modifiedAfter"`
-	// The name of the app type.
+	// The private virtual network identifier for the target.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
@@ -48,20 +77,20 @@ type GetInfrastructureAccessTargetsResult struct {
 	AccountId string `pulumi:"accountId"`
 	// A date and time after a target was created to filter on.
 	CreatedAfter *string `pulumi:"createdAfter"`
-	// The name of the app type.
+	// The hostname of the target.
 	Hostname *string `pulumi:"hostname"`
-	// The name of the app type.
+	// Partial match to the hostname of a target
 	HostnameContains *string `pulumi:"hostnameContains"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The name of the app type.
+	// The target's IPv4 address.
 	Ipv4 *string `pulumi:"ipv4"`
-	// The name of the app type.
+	// The target's IPv6 address.
 	Ipv6 *string `pulumi:"ipv6"`
 	// A date and time after a target was modified to filter on.
 	ModifiedAfter *string                                `pulumi:"modifiedAfter"`
 	Targets       []GetInfrastructureAccessTargetsTarget `pulumi:"targets"`
-	// The name of the app type.
+	// The private virtual network identifier for the target.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
@@ -90,17 +119,17 @@ type GetInfrastructureAccessTargetsOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A date and time after a target was created to filter on.
 	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
-	// The name of the app type.
+	// The hostname of the target.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The name of the app type.
+	// Partial match to the hostname of a target
 	HostnameContains pulumi.StringPtrInput `pulumi:"hostnameContains"`
-	// The name of the app type.
+	// The target's IPv4 address.
 	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
-	// The name of the app type.
+	// The target's IPv6 address.
 	Ipv6 pulumi.StringPtrInput `pulumi:"ipv6"`
 	// A date and time after a target was modified to filter on.
 	ModifiedAfter pulumi.StringPtrInput `pulumi:"modifiedAfter"`
-	// The name of the app type.
+	// The private virtual network identifier for the target.
 	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
 }
 
@@ -133,12 +162,12 @@ func (o GetInfrastructureAccessTargetsResultOutput) CreatedAfter() pulumi.String
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
 }
 
-// The name of the app type.
+// The hostname of the target.
 func (o GetInfrastructureAccessTargetsResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// The name of the app type.
+// Partial match to the hostname of a target
 func (o GetInfrastructureAccessTargetsResultOutput) HostnameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.HostnameContains }).(pulumi.StringPtrOutput)
 }
@@ -148,12 +177,12 @@ func (o GetInfrastructureAccessTargetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the app type.
+// The target's IPv4 address.
 func (o GetInfrastructureAccessTargetsResultOutput) Ipv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
 }
 
-// The name of the app type.
+// The target's IPv6 address.
 func (o GetInfrastructureAccessTargetsResultOutput) Ipv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +196,7 @@ func (o GetInfrastructureAccessTargetsResultOutput) Targets() GetInfrastructureA
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) []GetInfrastructureAccessTargetsTarget { return v.Targets }).(GetInfrastructureAccessTargetsTargetArrayOutput)
 }
 
-// The name of the app type.
+// The private virtual network identifier for the target.
 func (o GetInfrastructureAccessTargetsResultOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfrastructureAccessTargetsResult) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }

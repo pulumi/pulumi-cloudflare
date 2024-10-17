@@ -7802,6 +7802,8 @@ class DevicePostureRuleInput(dict):
             suggest = "last_seen"
         elif key == "networkStatus":
             suggest = "network_status"
+        elif key == "operationalState":
+            suggest = "operational_state"
         elif key == "osDistroName":
             suggest = "os_distro_name"
         elif key == "osDistroRevision":
@@ -7851,6 +7853,7 @@ class DevicePostureRuleInput(dict):
                  last_seen: Optional[str] = None,
                  locations: Optional[Sequence['outputs.DevicePostureRuleInputLocation']] = None,
                  network_status: Optional[str] = None,
+                 operational_state: Optional[str] = None,
                  operator: Optional[str] = None,
                  os: Optional[str] = None,
                  os_distro_name: Optional[str] = None,
@@ -7890,6 +7893,7 @@ class DevicePostureRuleInput(dict):
         :param str last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param Sequence['DevicePostureRuleInputLocationArgs'] locations: List of operating system locations to check for a client certificate..
         :param str network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        :param str operational_state: The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
         :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param str os_distro_name: The operating system excluding version information.
@@ -7949,6 +7953,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "locations", locations)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
+        if operational_state is not None:
+            pulumi.set(__self__, "operational_state", operational_state)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -8145,6 +8151,14 @@ class DevicePostureRuleInput(dict):
         The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         """
         return pulumi.get(self, "network_status")
+
+    @property
+    @pulumi.getter(name="operationalState")
+    def operational_state(self) -> Optional[str]:
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
+        return pulumi.get(self, "operational_state")
 
     @property
     @pulumi.getter
@@ -9002,19 +9016,15 @@ class InfrastructureAccessTargetIpIpv6(dict):
 @pulumi.output_type
 class ListItem(dict):
     def __init__(__self__, *,
-                 value: 'outputs.ListItemValue',
-                 comment: Optional[str] = None):
+                 comment: Optional[str] = None,
+                 value: Optional['outputs.ListItemValue'] = None):
         """
         :param str comment: An optional comment for the item.
         """
-        pulumi.set(__self__, "value", value)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def value(self) -> 'outputs.ListItemValue':
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9023,6 +9033,11 @@ class ListItem(dict):
         An optional comment for the item.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.ListItemValue']:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -26508,6 +26523,8 @@ class ZeroTrustDevicePostureRuleInput(dict):
             suggest = "last_seen"
         elif key == "networkStatus":
             suggest = "network_status"
+        elif key == "operationalState":
+            suggest = "operational_state"
         elif key == "osDistroName":
             suggest = "os_distro_name"
         elif key == "osDistroRevision":
@@ -26557,6 +26574,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
                  last_seen: Optional[str] = None,
                  locations: Optional[Sequence['outputs.ZeroTrustDevicePostureRuleInputLocation']] = None,
                  network_status: Optional[str] = None,
+                 operational_state: Optional[str] = None,
                  operator: Optional[str] = None,
                  os: Optional[str] = None,
                  os_distro_name: Optional[str] = None,
@@ -26596,6 +26614,7 @@ class ZeroTrustDevicePostureRuleInput(dict):
         :param str last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param Sequence['ZeroTrustDevicePostureRuleInputLocationArgs'] locations: List of operating system locations to check for a client certificate..
         :param str network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        :param str operational_state: The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
         :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param str os_distro_name: The operating system excluding version information.
@@ -26655,6 +26674,8 @@ class ZeroTrustDevicePostureRuleInput(dict):
             pulumi.set(__self__, "locations", locations)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
+        if operational_state is not None:
+            pulumi.set(__self__, "operational_state", operational_state)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -26851,6 +26872,14 @@ class ZeroTrustDevicePostureRuleInput(dict):
         The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         """
         return pulumi.get(self, "network_status")
+
+    @property
+    @pulumi.getter(name="operationalState")
+    def operational_state(self) -> Optional[str]:
+        """
+        The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        """
+        return pulumi.get(self, "operational_state")
 
     @property
     @pulumi.getter

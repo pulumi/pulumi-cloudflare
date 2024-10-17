@@ -3055,6 +3055,10 @@
                     "type": "string",
                     "description": "The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.\n"
                 },
+                "operationalState": {
+                    "type": "string",
+                    "description": "The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The version comparison operator. Available values: `\u003e`, `\u003e=`, `\u003c`, `\u003c=`, `==`.\n"
@@ -3483,10 +3487,7 @@
                     "$ref": "#/types/cloudflare:index/ListItemValue:ListItemValue"
                 }
             },
-            "type": "object",
-            "required": [
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/ListItemHostname:ListItemHostname": {
             "properties": {
@@ -10405,6 +10406,10 @@
                     "type": "string",
                     "description": "The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.\n"
                 },
+                "operationalState": {
+                    "type": "string",
+                    "description": "The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The version comparison operator. Available values: `\u003e`, `\u003e=`, `\u003c`, `\u003c=`, `==`.\n"
@@ -14209,7 +14214,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
                     },
-                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "type": {
                     "type": "string",
@@ -14378,7 +14383,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
                     },
-                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "type": {
                     "type": "string",
@@ -14546,7 +14551,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/AccessApplicationTargetCriteria:AccessApplicationTargetCriteria"
                         },
-                        "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                        "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                     },
                     "type": {
                         "type": "string",
@@ -15372,7 +15377,7 @@
                 },
                 "connectionRules": {
                     "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
-                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                    "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -15454,7 +15459,7 @@
                 },
                 "connectionRules": {
                     "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
-                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                    "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -15538,7 +15543,7 @@
                     },
                     "connectionRules": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyConnectionRules:AccessPolicyConnectionRules",
-                        "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                        "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                     },
                     "decision": {
                         "type": "string",
@@ -17119,7 +17124,7 @@
             "properties": {
                 "certificateAuthority": {
                     "type": "string",
-                    "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "cloudflareBranding": {
                     "type": "boolean",
@@ -17178,7 +17183,7 @@
             "inputProperties": {
                 "certificateAuthority": {
                     "type": "string",
-                    "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "cloudflareBranding": {
@@ -17245,7 +17250,7 @@
                 "properties": {
                     "certificateAuthority": {
                         "type": "string",
-                        "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "cloudflareBranding": {
@@ -20131,7 +20136,7 @@
             }
         },
         "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": {
-            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.InfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"210.26.29.230\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"210.26.29.230\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.InfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"210.26.29.230\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"210.26.29.230\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.InfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"210.26.29.230\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"210.26.29.230\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"210.26.29.230\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.InfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"210.26.29.230\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.InfrastructureAccessTarget;\nimport com.pulumi.cloudflare.InfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfrastructureAccessTarget(\"example\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"210.26.29.230\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new InfrastructureAccessTarget(\"ipv4OnlyExample\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"210.26.29.230\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:InfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 210.26.29.230\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: 24c0:64e8:f0b4:8dbf:7104:72b0:ef8f:f5e0\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:InfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 210.26.29.230\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
+            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.InfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"2001:db8::\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.InfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"2001:db8::\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.InfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"2001:db8::\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.InfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"2001:db8::\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.InfrastructureAccessTarget;\nimport com.pulumi.cloudflare.InfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfrastructureAccessTarget(\"example\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"2001:db8::\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new InfrastructureAccessTarget(\"ipv4OnlyExample\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:InfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: '2001:db8::'\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:InfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -20598,15 +20603,16 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/ListItem:ListItem"
-                    }
+                    },
+                    "description": "The items in the list.\n"
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the list. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The name of the list.\n"
                 }
             },
             "required": [
@@ -20627,17 +20633,16 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/ListItem:ListItem"
-                    }
+                    },
+                    "description": "The items in the list.\n"
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the list. **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the list.\n"
                 }
             },
             "requiredInputs": [
@@ -20660,17 +20665,16 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/ListItem:ListItem"
-                        }
+                        },
+                        "description": "The items in the list.\n"
                     },
                     "kind": {
                         "type": "string",
-                        "description": "The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the list. **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the list.\n"
                     }
                 },
                 "type": "object"
@@ -25360,8 +25364,12 @@
                 "accountId",
                 "action",
                 "description",
+                "devicePosture",
+                "identity",
                 "name",
                 "precedence",
+                "ruleSettings",
+                "traffic",
                 "version"
             ],
             "inputProperties": {
@@ -28813,7 +28821,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
                     },
-                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "type": {
                     "type": "string",
@@ -28982,7 +28990,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
                     },
-                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                    "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "type": {
                     "type": "string",
@@ -29150,7 +29158,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationTargetCriteria:ZeroTrustAccessApplicationTargetCriteria"
                         },
-                        "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
+                        "description": "The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                     },
                     "type": {
                         "type": "string",
@@ -29857,7 +29865,7 @@
                 },
                 "connectionRules": {
                     "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
-                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                    "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -29939,7 +29947,7 @@
                 },
                 "connectionRules": {
                     "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
-                    "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                    "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -30023,7 +30031,7 @@
                     },
                     "connectionRules": {
                         "$ref": "#/types/cloudflare:index/ZeroTrustAccessPolicyConnectionRules:ZeroTrustAccessPolicyConnectionRules",
-                        "description": "The rules that define how users may connect to the targets secured by your application.\n"
+                        "description": "The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.\n"
                     },
                     "decision": {
                         "type": "string",
@@ -31524,8 +31532,12 @@
                 "accountId",
                 "action",
                 "description",
+                "devicePosture",
+                "identity",
                 "name",
                 "precedence",
+                "ruleSettings",
+                "traffic",
                 "version"
             ],
             "inputProperties": {
@@ -34124,7 +34136,7 @@
             }
         },
         "cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets": {
-            "description": "Use this data source to retrieve all Infrastructure Access Targets.\n",
+            "description": "Use this data source to retrieve all Infrastructure Access Targets.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getInfrastructureAccessTargets({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostnameContains: \"example\",\n    ipv4: \"198.51.100.1\",\n});\nexport const targets = example.then(example =\u003e example.targets);\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_infrastructure_access_targets(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname_contains=\"example\",\n    ipv4=\"198.51.100.1\")\npulumi.export(\"targets\", example.targets)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetInfrastructureAccessTargets.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        HostnameContains = \"example\",\n        Ipv4 = \"198.51.100.1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"targets\"] = example.Apply(getInfrastructureAccessTargetsResult =\u003e getInfrastructureAccessTargetsResult.Targets),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.GetInfrastructureAccessTargets(ctx, \u0026cloudflare.GetInfrastructureAccessTargetsArgs{\n\t\t\tAccountId:        \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tHostnameContains: pulumi.StringRef(\"example\"),\n\t\t\tIpv4:             pulumi.StringRef(\"198.51.100.1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"targets\", example.Targets)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetInfrastructureAccessTargetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getInfrastructureAccessTargets(GetInfrastructureAccessTargetsArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostnameContains(\"example\")\n            .ipv4(\"198.51.100.1\")\n            .build());\n\n        ctx.export(\"targets\", example.applyValue(getInfrastructureAccessTargetsResult -\u003e getInfrastructureAccessTargetsResult.targets()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getInfrastructureAccessTargets\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        hostnameContains: example\n        ipv4: 198.51.100.1\noutputs:\n  # output the list of targets the data source contains\n  targets: ${example.targets}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInfrastructureAccessTargets.\n",
                 "properties": {
@@ -34138,19 +34150,19 @@
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "The name of the app type.\n"
+                        "description": "The hostname of the target.\n"
                     },
                     "hostnameContains": {
                         "type": "string",
-                        "description": "The name of the app type.\n"
+                        "description": "Partial match to the hostname of a target\n"
                     },
                     "ipv4": {
                         "type": "string",
-                        "description": "The name of the app type.\n"
+                        "description": "The target's IPv4 address.\n"
                     },
                     "ipv6": {
                         "type": "string",
-                        "description": "The name of the app type.\n"
+                        "description": "The target's IPv6 address.\n"
                     },
                     "modifiedAfter": {
                         "type": "string",
@@ -34158,7 +34170,7 @@
                     },
                     "virtualNetworkId": {
                         "type": "string",
-                        "description": "The name of the app type.\n"
+                        "description": "The private virtual network identifier for the target.\n"
                     }
                 },
                 "type": "object",
@@ -34178,11 +34190,11 @@
                         "type": "string"
                     },
                     "hostname": {
-                        "description": "The name of the app type.\n",
+                        "description": "The hostname of the target.\n",
                         "type": "string"
                     },
                     "hostnameContains": {
-                        "description": "The name of the app type.\n",
+                        "description": "Partial match to the hostname of a target\n",
                         "type": "string"
                     },
                     "id": {
@@ -34190,11 +34202,11 @@
                         "type": "string"
                     },
                     "ipv4": {
-                        "description": "The name of the app type.\n",
+                        "description": "The target's IPv4 address.\n",
                         "type": "string"
                     },
                     "ipv6": {
-                        "description": "The name of the app type.\n",
+                        "description": "The target's IPv6 address.\n",
                         "type": "string"
                     },
                     "modifiedAfter": {
@@ -34208,7 +34220,7 @@
                         "type": "array"
                     },
                     "virtualNetworkId": {
-                        "description": "The name of the app type.\n",
+                        "description": "The private virtual network identifier for the target.\n",
                         "type": "string"
                     }
                 },

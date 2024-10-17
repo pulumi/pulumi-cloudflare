@@ -94,7 +94,7 @@ type ZeroTrustAccessApplication struct {
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
 	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -196,7 +196,7 @@ type zeroTrustAccessApplicationState struct {
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags []string `pulumi:"tags"`
-	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 	TargetCriterias []ZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
@@ -269,7 +269,7 @@ type ZeroTrustAccessApplicationState struct {
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
 	Tags pulumi.StringArrayInput
-	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayInput
 	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
@@ -344,7 +344,7 @@ type zeroTrustAccessApplicationArgs struct {
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The itags associated with the application.
 	Tags []string `pulumi:"tags"`
-	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 	TargetCriterias []ZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
@@ -416,7 +416,7 @@ type ZeroTrustAccessApplicationArgs struct {
 	SkipInterstitial pulumi.BoolPtrInput
 	// The itags associated with the application.
 	Tags pulumi.StringArrayInput
-	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+	// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayInput
 	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
@@ -677,7 +677,7 @@ func (o ZeroTrustAccessApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
 func (o ZeroTrustAccessApplicationOutput) TargetCriterias() ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
 		return v.TargetCriterias

@@ -222,7 +222,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         [Output("targetCriterias")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessApplicationTargetCriteria>> TargetCriterias { get; private set; } = null!;
@@ -517,7 +517,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs>? _targetCriterias;
 
         /// <summary>
-        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs> TargetCriterias
         {
@@ -783,7 +783,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs>? _targetCriterias;
 
         /// <summary>
-        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs> TargetCriterias
         {

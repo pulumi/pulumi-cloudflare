@@ -17,13 +17,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// An optional comment for the item.
         /// </summary>
         public readonly string? Comment;
-        public readonly Outputs.ListItemValue Value;
+        public readonly Outputs.ListItemValue? Value;
 
         [OutputConstructor]
         private ListItem(
             string? comment,
 
-            Outputs.ListItemValue value)
+            Outputs.ListItemValue? value)
         {
             Comment = comment;
             Value = value;

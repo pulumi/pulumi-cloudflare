@@ -85,14 +85,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.approvalRequired);
     }
     /**
-     * The rules that define how users may connect to the targets secured by your application.
+     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     @Export(name="connectionRules", refs={AccessPolicyConnectionRules.class}, tree="[0]")
     private Output</* @Nullable */ AccessPolicyConnectionRules> connectionRules;
 
     /**
-     * @return The rules that define how users may connect to the targets secured by your application.
+     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     public Output<Optional<AccessPolicyConnectionRules>> connectionRules() {

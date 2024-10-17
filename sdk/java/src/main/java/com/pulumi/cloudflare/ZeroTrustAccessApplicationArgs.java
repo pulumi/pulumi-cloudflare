@@ -489,14 +489,14 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     @Import(name="targetCriterias")
     private @Nullable Output<List<ZeroTrustAccessApplicationTargetCriteriaArgs>> targetCriterias;
 
     /**
-     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * @return The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     public Optional<Output<List<ZeroTrustAccessApplicationTargetCriteriaArgs>>> targetCriterias() {
@@ -1312,7 +1312,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
          * 
          * @return builder
          * 
@@ -1323,7 +1323,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
          * 
          * @return builder
          * 
@@ -1333,7 +1333,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetCriterias A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+         * @param targetCriterias The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
          * 
          * @return builder
          * 

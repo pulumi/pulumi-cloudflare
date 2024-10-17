@@ -320,6 +320,21 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
+     * The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * 
+     */
+    @Import(name="operationalState")
+    private @Nullable Output<String> operationalState;
+
+    /**
+     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * 
+     */
+    public Optional<Output<String>> operationalState() {
+        return Optional.ofNullable(this.operationalState);
+    }
+
+    /**
      * The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
@@ -612,6 +627,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         this.lastSeen = $.lastSeen;
         this.locations = $.locations;
         this.networkStatus = $.networkStatus;
+        this.operationalState = $.operationalState;
         this.operator = $.operator;
         this.os = $.os;
         this.osDistroName = $.osDistroName;
@@ -1098,6 +1114,27 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
          */
         public Builder networkStatus(String networkStatus) {
             return networkStatus(Output.of(networkStatus));
+        }
+
+        /**
+         * @param operationalState The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalState(@Nullable Output<String> operationalState) {
+            $.operationalState = operationalState;
+            return this;
+        }
+
+        /**
+         * @param operationalState The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalState(String operationalState) {
+            return operationalState(Output.of(operationalState));
         }
 
         /**

@@ -4373,6 +4373,11 @@
                     "require.$.external_evaluation": true
                 }
             },
+            "cloudflare_list": {
+                "maxItemsOneOverrides": {
+                    "item.$.value": true
+                }
+            },
             "cloudflare_ruleset": {
                 "maxItemsOneOverrides": {
                     "rules.$.action_parameters.$.autominify": false,
@@ -4440,7 +4445,7 @@
             "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": 1,
             "cloudflare:index/ipsecTunnel:IpsecTunnel": 0,
             "cloudflare:index/keylessCertificate:KeylessCertificate": 0,
-            "cloudflare:index/list:List": 0,
+            "cloudflare:index/list:List": 1,
             "cloudflare:index/listItem:ListItem": 1,
             "cloudflare:index/loadBalancer:LoadBalancer": 0,
             "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor": 0,

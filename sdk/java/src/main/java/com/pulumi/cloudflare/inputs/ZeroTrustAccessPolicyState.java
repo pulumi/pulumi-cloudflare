@@ -68,14 +68,14 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The rules that define how users may connect to the targets secured by your application.
+     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     @Import(name="connectionRules")
     private @Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules;
 
     /**
-     * @return The rules that define how users may connect to the targets secured by your application.
+     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     public Optional<Output<ZeroTrustAccessPolicyConnectionRulesArgs>> connectionRules() {
@@ -351,7 +351,7 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application.
+         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
          * 
          * @return builder
          * 

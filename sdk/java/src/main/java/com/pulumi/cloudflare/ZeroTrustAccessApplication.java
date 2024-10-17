@@ -491,14 +491,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.tags);
     }
     /**
-     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     @Export(name="targetCriterias", refs={List.class,ZeroTrustAccessApplicationTargetCriteria.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
 
     /**
-     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+     * @return The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
      * 
      */
     public Output<Optional<List<ZeroTrustAccessApplicationTargetCriteria>>> targetCriterias() {

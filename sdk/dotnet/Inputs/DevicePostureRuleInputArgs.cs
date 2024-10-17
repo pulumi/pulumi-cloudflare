@@ -151,6 +151,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NetworkStatus { get; set; }
 
         /// <summary>
+        /// The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        /// </summary>
+        [Input("operationalState")]
+        public Input<string>? OperationalState { get; set; }
+
+        /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         [Input("operator")]

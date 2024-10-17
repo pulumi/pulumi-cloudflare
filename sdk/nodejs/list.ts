@@ -51,13 +51,16 @@ export class List extends pulumi.CustomResource {
      * An optional description of the list.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The items in the list.
+     */
     public readonly items!: pulumi.Output<outputs.ListItem[] | undefined>;
     /**
-     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * The name of the list.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -113,13 +116,16 @@ export interface ListState {
      * An optional description of the list.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The items in the list.
+     */
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      */
     kind?: pulumi.Input<string>;
     /**
-     * The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * The name of the list.
      */
     name?: pulumi.Input<string>;
 }
@@ -136,13 +142,16 @@ export interface ListArgs {
      * An optional description of the list.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The items in the list.
+     */
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      */
     kind: pulumi.Input<string>;
     /**
-     * The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * The name of the list.
      */
     name: pulumi.Input<string>;
 }

@@ -47,14 +47,14 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the app type.
+     * The hostname of the target.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The name of the app type.
+     * @return The hostname of the target.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -62,14 +62,14 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the app type.
+     * Partial match to the hostname of a target
      * 
      */
     @Import(name="hostnameContains")
     private @Nullable Output<String> hostnameContains;
 
     /**
-     * @return The name of the app type.
+     * @return Partial match to the hostname of a target
      * 
      */
     public Optional<Output<String>> hostnameContains() {
@@ -77,14 +77,14 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the app type.
+     * The target&#39;s IPv4 address.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<String> ipv4;
 
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv4 address.
      * 
      */
     public Optional<Output<String>> ipv4() {
@@ -92,14 +92,14 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the app type.
+     * The target&#39;s IPv6 address.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<String> ipv6;
 
     /**
-     * @return The name of the app type.
+     * @return The target&#39;s IPv6 address.
      * 
      */
     public Optional<Output<String>> ipv6() {
@@ -122,14 +122,14 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the app type.
+     * The private virtual network identifier for the target.
      * 
      */
     @Import(name="virtualNetworkId")
     private @Nullable Output<String> virtualNetworkId;
 
     /**
-     * @return The name of the app type.
+     * @return The private virtual network identifier for the target.
      * 
      */
     public Optional<Output<String>> virtualNetworkId() {
@@ -210,7 +210,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostname The name of the app type.
+         * @param hostname The hostname of the target.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostname The name of the app type.
+         * @param hostname The hostname of the target.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostnameContains The name of the app type.
+         * @param hostnameContains Partial match to the hostname of a target
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostnameContains The name of the app type.
+         * @param hostnameContains Partial match to the hostname of a target
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipv4 The name of the app type.
+         * @param ipv4 The target&#39;s IPv4 address.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipv4 The name of the app type.
+         * @param ipv4 The target&#39;s IPv4 address.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipv6 The name of the app type.
+         * @param ipv6 The target&#39;s IPv6 address.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipv6 The name of the app type.
+         * @param ipv6 The target&#39;s IPv6 address.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param virtualNetworkId The name of the app type.
+         * @param virtualNetworkId The private virtual network identifier for the target.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class GetInfrastructureAccessTargetsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param virtualNetworkId The name of the app type.
+         * @param virtualNetworkId The private virtual network identifier for the target.
          * 
          * @return builder
          * 

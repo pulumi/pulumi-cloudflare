@@ -13269,6 +13269,8 @@ type DevicePostureRuleInputType struct {
 	Locations []DevicePostureRuleInputLocation `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus *string `pulumi:"networkStatus"`
+	// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+	OperationalState *string `pulumi:"operationalState"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator *string `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -13359,6 +13361,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	Locations DevicePostureRuleInputLocationArrayInput `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
+	// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+	OperationalState pulumi.StringPtrInput `pulumi:"operationalState"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -13546,6 +13550,11 @@ func (o DevicePostureRuleInputTypeOutput) Locations() DevicePostureRuleInputLoca
 // The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 func (o DevicePostureRuleInputTypeOutput) NetworkStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.NetworkStatus }).(pulumi.StringPtrOutput)
+}
+
+// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+func (o DevicePostureRuleInputTypeOutput) OperationalState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OperationalState }).(pulumi.StringPtrOutput)
 }
 
 // The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -15991,8 +16000,8 @@ func (o InfrastructureAccessTargetIpIpv6PtrOutput) VirtualNetworkId() pulumi.Str
 
 type ListItemType struct {
 	// An optional comment for the item.
-	Comment *string       `pulumi:"comment"`
-	Value   ListItemValue `pulumi:"value"`
+	Comment *string        `pulumi:"comment"`
+	Value   *ListItemValue `pulumi:"value"`
 }
 
 // ListItemTypeInput is an input type that accepts ListItemTypeArgs and ListItemTypeOutput values.
@@ -16009,7 +16018,7 @@ type ListItemTypeInput interface {
 type ListItemTypeArgs struct {
 	// An optional comment for the item.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Value   ListItemValueInput    `pulumi:"value"`
+	Value   ListItemValuePtrInput `pulumi:"value"`
 }
 
 func (ListItemTypeArgs) ElementType() reflect.Type {
@@ -16068,8 +16077,8 @@ func (o ListItemTypeOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListItemType) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-func (o ListItemTypeOutput) Value() ListItemValueOutput {
-	return o.ApplyT(func(v ListItemType) ListItemValue { return v.Value }).(ListItemValueOutput)
+func (o ListItemTypeOutput) Value() ListItemValuePtrOutput {
+	return o.ApplyT(func(v ListItemType) *ListItemValue { return v.Value }).(ListItemValuePtrOutput)
 }
 
 type ListItemTypeArrayOutput struct{ *pulumi.OutputState }
@@ -16517,6 +16526,47 @@ func (i ListItemValueArgs) ToListItemValueOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ListItemValueOutput)
 }
 
+func (i ListItemValueArgs) ToListItemValuePtrOutput() ListItemValuePtrOutput {
+	return i.ToListItemValuePtrOutputWithContext(context.Background())
+}
+
+func (i ListItemValueArgs) ToListItemValuePtrOutputWithContext(ctx context.Context) ListItemValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemValueOutput).ToListItemValuePtrOutputWithContext(ctx)
+}
+
+// ListItemValuePtrInput is an input type that accepts ListItemValueArgs, ListItemValuePtr and ListItemValuePtrOutput values.
+// You can construct a concrete instance of `ListItemValuePtrInput` via:
+//
+//	        ListItemValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListItemValuePtrInput interface {
+	pulumi.Input
+
+	ToListItemValuePtrOutput() ListItemValuePtrOutput
+	ToListItemValuePtrOutputWithContext(context.Context) ListItemValuePtrOutput
+}
+
+type listItemValuePtrType ListItemValueArgs
+
+func ListItemValuePtr(v *ListItemValueArgs) ListItemValuePtrInput {
+	return (*listItemValuePtrType)(v)
+}
+
+func (*listItemValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemValue)(nil)).Elem()
+}
+
+func (i *listItemValuePtrType) ToListItemValuePtrOutput() ListItemValuePtrOutput {
+	return i.ToListItemValuePtrOutputWithContext(context.Background())
+}
+
+func (i *listItemValuePtrType) ToListItemValuePtrOutputWithContext(ctx context.Context) ListItemValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemValuePtrOutput)
+}
+
 type ListItemValueOutput struct{ *pulumi.OutputState }
 
 func (ListItemValueOutput) ElementType() reflect.Type {
@@ -16529,6 +16579,16 @@ func (o ListItemValueOutput) ToListItemValueOutput() ListItemValueOutput {
 
 func (o ListItemValueOutput) ToListItemValueOutputWithContext(ctx context.Context) ListItemValueOutput {
 	return o
+}
+
+func (o ListItemValueOutput) ToListItemValuePtrOutput() ListItemValuePtrOutput {
+	return o.ToListItemValuePtrOutputWithContext(context.Background())
+}
+
+func (o ListItemValueOutput) ToListItemValuePtrOutputWithContext(ctx context.Context) ListItemValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListItemValue) *ListItemValue {
+		return &v
+	}).(ListItemValuePtrOutput)
 }
 
 func (o ListItemValueOutput) Asn() pulumi.IntPtrOutput {
@@ -16545,6 +16605,66 @@ func (o ListItemValueOutput) Ip() pulumi.StringPtrOutput {
 
 func (o ListItemValueOutput) Redirects() ListItemValueRedirectArrayOutput {
 	return o.ApplyT(func(v ListItemValue) []ListItemValueRedirect { return v.Redirects }).(ListItemValueRedirectArrayOutput)
+}
+
+type ListItemValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ListItemValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemValue)(nil)).Elem()
+}
+
+func (o ListItemValuePtrOutput) ToListItemValuePtrOutput() ListItemValuePtrOutput {
+	return o
+}
+
+func (o ListItemValuePtrOutput) ToListItemValuePtrOutputWithContext(ctx context.Context) ListItemValuePtrOutput {
+	return o
+}
+
+func (o ListItemValuePtrOutput) Elem() ListItemValueOutput {
+	return o.ApplyT(func(v *ListItemValue) ListItemValue {
+		if v != nil {
+			return *v
+		}
+		var ret ListItemValue
+		return ret
+	}).(ListItemValueOutput)
+}
+
+func (o ListItemValuePtrOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListItemValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Asn
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ListItemValuePtrOutput) Hostnames() ListItemValueHostnameArrayOutput {
+	return o.ApplyT(func(v *ListItemValue) []ListItemValueHostname {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(ListItemValueHostnameArrayOutput)
+}
+
+func (o ListItemValuePtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListItemValuePtrOutput) Redirects() ListItemValueRedirectArrayOutput {
+	return o.ApplyT(func(v *ListItemValue) []ListItemValueRedirect {
+		if v == nil {
+			return nil
+		}
+		return v.Redirects
+	}).(ListItemValueRedirectArrayOutput)
 }
 
 type ListItemValueHostname struct {
@@ -54768,6 +54888,8 @@ type ZeroTrustDevicePostureRuleInputType struct {
 	Locations []ZeroTrustDevicePostureRuleInputLocation `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus *string `pulumi:"networkStatus"`
+	// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+	OperationalState *string `pulumi:"operationalState"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator *string `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -54858,6 +54980,8 @@ type ZeroTrustDevicePostureRuleInputTypeArgs struct {
 	Locations ZeroTrustDevicePostureRuleInputLocationArrayInput `pulumi:"locations"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
+	// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+	OperationalState pulumi.StringPtrInput `pulumi:"operationalState"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -55047,6 +55171,11 @@ func (o ZeroTrustDevicePostureRuleInputTypeOutput) Locations() ZeroTrustDevicePo
 // The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 func (o ZeroTrustDevicePostureRuleInputTypeOutput) NetworkStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.NetworkStatus }).(pulumi.StringPtrOutput)
+}
+
+// The current operational state of a SentinelOne Agent. Available values: `na`, `partiallyDisabled`, `autoFullyDisabled`, `fullyDisabled`, `autoPartiallyDisabled`, `disabledError`, `dbCorruption`.
+func (o ZeroTrustDevicePostureRuleInputTypeOutput) OperationalState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDevicePostureRuleInputType) *string { return v.OperationalState }).(pulumi.StringPtrOutput)
 }
 
 // The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -75991,6 +76120,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectInput)(nil)).Elem(), ListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectPtrInput)(nil)).Elem(), ListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueInput)(nil)).Elem(), ListItemValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValuePtrInput)(nil)).Elem(), ListItemValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueHostnameInput)(nil)).Elem(), ListItemValueHostnameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueHostnameArrayInput)(nil)).Elem(), ListItemValueHostnameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectInput)(nil)).Elem(), ListItemValueRedirectArgs{})
@@ -76916,6 +77046,7 @@ func init() {
 	pulumi.RegisterOutputType(ListItemRedirectOutput{})
 	pulumi.RegisterOutputType(ListItemRedirectPtrOutput{})
 	pulumi.RegisterOutputType(ListItemValueOutput{})
+	pulumi.RegisterOutputType(ListItemValuePtrOutput{})
 	pulumi.RegisterOutputType(ListItemValueHostnameOutput{})
 	pulumi.RegisterOutputType(ListItemValueHostnameArrayOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectOutput{})

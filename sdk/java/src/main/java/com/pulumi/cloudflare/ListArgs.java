@@ -48,22 +48,30 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The items in the list.
+     * 
+     */
     @Import(name="items")
     private @Nullable Output<List<ListItemArgs>> items;
 
+    /**
+     * @return The items in the list.
+     * 
+     */
     public Optional<Output<List<ListItemArgs>>> items() {
         return Optional.ofNullable(this.items);
     }
 
     /**
-     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
      * 
      */
     public Output<String> kind() {
@@ -71,14 +79,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * The name of the list.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the list. **Modifying this attribute will force creation of a new resource.**
+     * @return The name of the list.
      * 
      */
     public Output<String> name() {
@@ -155,21 +163,39 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param items The items in the list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder items(@Nullable Output<List<ListItemArgs>> items) {
             $.items = items;
             return this;
         }
 
+        /**
+         * @param items The items in the list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder items(List<ListItemArgs> items) {
             return items(Output.of(items));
         }
 
+        /**
+         * @param items The items in the list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder items(ListItemArgs... items) {
             return items(List.of(items));
         }
 
         /**
-         * @param kind The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
          * 
          * @return builder
          * 
@@ -180,7 +206,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
          * 
          * @return builder
          * 
@@ -190,7 +216,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list. **Modifying this attribute will force creation of a new resource.**
+         * @param name The name of the list.
          * 
          * @return builder
          * 
@@ -201,7 +227,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list. **Modifying this attribute will force creation of a new resource.**
+         * @param name The name of the list.
          * 
          * @return builder
          * 

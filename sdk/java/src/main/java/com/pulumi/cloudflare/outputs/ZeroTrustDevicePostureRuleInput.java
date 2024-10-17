@@ -116,6 +116,11 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String networkStatus;
     /**
+     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * 
+     */
+    private @Nullable String operationalState;
+    /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
@@ -348,6 +353,13 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.networkStatus);
     }
     /**
+     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * 
+     */
+    public Optional<String> operationalState() {
+        return Optional.ofNullable(this.operationalState);
+    }
+    /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
@@ -503,6 +515,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         private @Nullable String lastSeen;
         private @Nullable List<ZeroTrustDevicePostureRuleInputLocation> locations;
         private @Nullable String networkStatus;
+        private @Nullable String operationalState;
         private @Nullable String operator;
         private @Nullable String os;
         private @Nullable String osDistroName;
@@ -544,6 +557,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     	      this.lastSeen = defaults.lastSeen;
     	      this.locations = defaults.locations;
     	      this.networkStatus = defaults.networkStatus;
+    	      this.operationalState = defaults.operationalState;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
     	      this.osDistroName = defaults.osDistroName;
@@ -694,6 +708,12 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder operationalState(@Nullable String operationalState) {
+
+            this.operationalState = operationalState;
+            return this;
+        }
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
 
             this.operator = operator;
@@ -823,6 +843,7 @@ public final class ZeroTrustDevicePostureRuleInput {
             _resultValue.lastSeen = lastSeen;
             _resultValue.locations = locations;
             _resultValue.networkStatus = networkStatus;
+            _resultValue.operationalState = operationalState;
             _resultValue.operator = operator;
             _resultValue.os = os;
             _resultValue.osDistroName = osDistroName;
