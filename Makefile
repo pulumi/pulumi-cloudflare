@@ -29,7 +29,7 @@ development: install_plugins provider build_sdks install_sdks
 
 build: install_plugins provider build_sdks install_sdks
 
-build_sdks: build_nodejs build_python build_dotnet build_go build_java 
+build_sdks: build_nodejs build_python build_dotnet build_go build_java build_registry_docs
 
 install_go_sdk:
 
@@ -95,6 +95,10 @@ build_python: upstream
 		./venv/bin/python -m pip install build==1.2.1 && \
 		cd ./bin && \
 		../venv/bin/python -m build .
+
+# Run the bridge's registry-docs command to generated the content of the installation docs/ folder at provider repo root
+build_registry_docs:
+	$(WORKING_DIR)/bin/$(TFGEN) registry-docs --out $(WORKING_DIR)/docs
 
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python}
