@@ -25,3 +25,4 @@ actions:
       run: |
         cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
 pulumiConvert: 1
+registryDocs: true
