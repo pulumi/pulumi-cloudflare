@@ -90,7 +90,7 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
         policies=[{
             "permission_groups": [all.user["User Details Read"]],
             "resources": {
-                "": "*",
+                f"com.cloudflare.api.user.{me.id}": "*",
             },
         }])
     ```
@@ -120,7 +120,7 @@ def get_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outpu
         policies=[{
             "permission_groups": [all.user["User Details Read"]],
             "resources": {
-                "": "*",
+                f"com.cloudflare.api.user.{me.id}": "*",
             },
         }])
     ```
