@@ -403,6 +403,9 @@ __all__ = [
     'ZeroTrustGatewaySettingsPayloadLog',
     'ZeroTrustGatewaySettingsProxy',
     'ZeroTrustGatewaySettingsSshSessionLog',
+    'ZeroTrustInfrastructureAccessTargetIp',
+    'ZeroTrustInfrastructureAccessTargetIpIpv4',
+    'ZeroTrustInfrastructureAccessTargetIpIpv6',
     'ZeroTrustListItemsWithDescription',
     'ZeroTrustLocalFallbackDomainDomain',
     'ZeroTrustRiskBehaviorBehavior',
@@ -480,6 +483,10 @@ __all__ = [
     'GetRulesetsRulesetRuleExposedCredentialCheckResult',
     'GetRulesetsRulesetRuleLoggingResult',
     'GetRulesetsRulesetRuleRatelimitResult',
+    'GetZeroTrustInfrastructureAccessTargetsTargetResult',
+    'GetZeroTrustInfrastructureAccessTargetsTargetIpResult',
+    'GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Result',
+    'GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Result',
     'GetZonesFilterResult',
     'GetZonesZoneResult',
 ]
@@ -14987,7 +14994,7 @@ class RulesetRuleActionParametersAlgorithm(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        :param str name: Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         """
         pulumi.set(__self__, "name", name)
 
@@ -14995,7 +15002,7 @@ class RulesetRuleActionParametersAlgorithm(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         """
         return pulumi.get(self, "name")
 
@@ -28904,6 +28911,133 @@ class ZeroTrustGatewaySettingsSshSessionLog(dict):
 
 
 @pulumi.output_type
+class ZeroTrustInfrastructureAccessTargetIp(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional['outputs.ZeroTrustInfrastructureAccessTargetIpIpv4'] = None,
+                 ipv6: Optional['outputs.ZeroTrustInfrastructureAccessTargetIpIpv6'] = None):
+        """
+        :param 'ZeroTrustInfrastructureAccessTargetIpIpv4Args' ipv4: The target's IPv4 address.
+        :param 'ZeroTrustInfrastructureAccessTargetIpIpv6Args' ipv6: The target's IPv6 address.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.ZeroTrustInfrastructureAccessTargetIpIpv4']:
+        """
+        The target's IPv4 address.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.ZeroTrustInfrastructureAccessTargetIpIpv6']:
+        """
+        The target's IPv6 address.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class ZeroTrustInfrastructureAccessTargetIpIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddr":
+            suggest = "ip_addr"
+        elif key == "virtualNetworkId":
+            suggest = "virtual_network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustInfrastructureAccessTargetIpIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustInfrastructureAccessTargetIpIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustInfrastructureAccessTargetIpIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+
+@pulumi.output_type
+class ZeroTrustInfrastructureAccessTargetIpIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddr":
+            suggest = "ip_addr"
+        elif key == "virtualNetworkId":
+            suggest = "virtual_network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustInfrastructureAccessTargetIpIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustInfrastructureAccessTargetIpIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustInfrastructureAccessTargetIpIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+
+@pulumi.output_type
 class ZeroTrustListItemsWithDescription(dict):
     def __init__(__self__, *,
                  description: str,
@@ -34909,6 +35043,168 @@ class GetRulesetsRulesetRuleRatelimitResult(dict):
         Name of HTTP header in the response, set by the origin server, with the score for the current request.
         """
         return pulumi.get(self, "score_response_header_name")
+
+
+@pulumi.output_type
+class GetZeroTrustInfrastructureAccessTargetsTargetResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 created_at: str,
+                 hostname: str,
+                 id: str,
+                 ip: 'outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpResult',
+                 modified_at: str):
+        """
+        :param str account_id: The account identifier to target for the resource.
+        :param str created_at: The date and time at which the target was created.
+        :param str hostname: A non-unique field that refers to a target.
+        :param str id: The identifier of this resource. This is target's unique identifier.
+        :param 'GetZeroTrustInfrastructureAccessTargetsTargetIpArgs' ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param str modified_at: The date and time at which the target was last modified.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "modified_at", modified_at)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time at which the target was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        A non-unique field that refers to a target.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier of this resource. This is target's unique identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> 'outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpResult':
+        """
+        The IPv4/IPv6 address that identifies where to reach a target.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> str:
+        """
+        The date and time at which the target was last modified.
+        """
+        return pulumi.get(self, "modified_at")
+
+
+@pulumi.output_type
+class GetZeroTrustInfrastructureAccessTargetsTargetIpResult(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional['outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Result'] = None,
+                 ipv6: Optional['outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Result'] = None):
+        """
+        :param 'GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args' ipv4: The target's IPv4 address.
+        :param 'GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args' ipv6: The target's IPv6 address.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Result']:
+        """
+        The target's IPv4 address.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Result']:
+        """
+        The target's IPv6 address.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Result(dict):
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+
+@pulumi.output_type
+class GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Result(dict):
+    def __init__(__self__, *,
+                 ip_addr: str,
+                 virtual_network_id: str):
+        """
+        :param str ip_addr: The IP address of the target.
+        :param str virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> str:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> str:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
 
 @pulumi.output_type

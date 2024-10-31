@@ -370,6 +370,11 @@ export const getZeroTrustAccessIdentityProvider: typeof import("./getZeroTrustAc
 export const getZeroTrustAccessIdentityProviderOutput: typeof import("./getZeroTrustAccessIdentityProvider").getZeroTrustAccessIdentityProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustAccessIdentityProvider","getZeroTrustAccessIdentityProviderOutput"], () => require("./getZeroTrustAccessIdentityProvider"));
 
+export { GetZeroTrustInfrastructureAccessTargetsArgs, GetZeroTrustInfrastructureAccessTargetsResult, GetZeroTrustInfrastructureAccessTargetsOutputArgs } from "./getZeroTrustInfrastructureAccessTargets";
+export const getZeroTrustInfrastructureAccessTargets: typeof import("./getZeroTrustInfrastructureAccessTargets").getZeroTrustInfrastructureAccessTargets = null as any;
+export const getZeroTrustInfrastructureAccessTargetsOutput: typeof import("./getZeroTrustInfrastructureAccessTargets").getZeroTrustInfrastructureAccessTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustInfrastructureAccessTargets","getZeroTrustInfrastructureAccessTargetsOutput"], () => require("./getZeroTrustInfrastructureAccessTargets"));
+
 export { GetZeroTrustTunnelCloudflaredArgs, GetZeroTrustTunnelCloudflaredResult, GetZeroTrustTunnelCloudflaredOutputArgs } from "./getZeroTrustTunnelCloudflared";
 export const getZeroTrustTunnelCloudflared: typeof import("./getZeroTrustTunnelCloudflared").getZeroTrustTunnelCloudflared = null as any;
 export const getZeroTrustTunnelCloudflaredOutput: typeof import("./getZeroTrustTunnelCloudflared").getZeroTrustTunnelCloudflaredOutput = null as any;
@@ -895,6 +900,11 @@ export type ZeroTrustGatewaySettings = import("./zeroTrustGatewaySettings").Zero
 export const ZeroTrustGatewaySettings: typeof import("./zeroTrustGatewaySettings").ZeroTrustGatewaySettings = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustGatewaySettings"], () => require("./zeroTrustGatewaySettings"));
 
+export { ZeroTrustInfrastructureAccessTargetArgs, ZeroTrustInfrastructureAccessTargetState } from "./zeroTrustInfrastructureAccessTarget";
+export type ZeroTrustInfrastructureAccessTarget = import("./zeroTrustInfrastructureAccessTarget").ZeroTrustInfrastructureAccessTarget;
+export const ZeroTrustInfrastructureAccessTarget: typeof import("./zeroTrustInfrastructureAccessTarget").ZeroTrustInfrastructureAccessTarget = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustInfrastructureAccessTarget"], () => require("./zeroTrustInfrastructureAccessTarget"));
+
 export { ZeroTrustKeyAccessKeyConfigurationArgs, ZeroTrustKeyAccessKeyConfigurationState } from "./zeroTrustKeyAccessKeyConfiguration";
 export type ZeroTrustKeyAccessKeyConfiguration = import("./zeroTrustKeyAccessKeyConfiguration").ZeroTrustKeyAccessKeyConfiguration;
 export const ZeroTrustKeyAccessKeyConfiguration: typeof import("./zeroTrustKeyAccessKeyConfiguration").ZeroTrustKeyAccessKeyConfiguration = null as any;
@@ -1286,6 +1296,8 @@ const _module = {
                 return new ZeroTrustGatewayProxyEndpoint(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings":
                 return new ZeroTrustGatewaySettings(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget":
+                return new ZeroTrustInfrastructureAccessTarget(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration":
                 return new ZeroTrustKeyAccessKeyConfiguration(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustList:ZeroTrustList":
@@ -1471,6 +1483,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayCerti
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustInfrastructureAccessTarget", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustKeyAccessKeyConfiguration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustLocalFallbackDomain", _module)

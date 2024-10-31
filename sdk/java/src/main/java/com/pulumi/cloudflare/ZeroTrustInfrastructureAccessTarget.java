@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.InfrastructureAccessTargetArgs;
 import com.pulumi.cloudflare.Utilities;
-import com.pulumi.cloudflare.inputs.InfrastructureAccessTargetState;
-import com.pulumi.cloudflare.outputs.InfrastructureAccessTargetIp;
+import com.pulumi.cloudflare.ZeroTrustInfrastructureAccessTargetArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetState;
+import com.pulumi.cloudflare.outputs.ZeroTrustInfrastructureAccessTargetIp;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -27,11 +27,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.InfrastructureAccessTarget;
- * import com.pulumi.cloudflare.InfrastructureAccessTargetArgs;
- * import com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;
- * import com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;
- * import com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;
+ * import com.pulumi.cloudflare.ZeroTrustInfrastructureAccessTarget;
+ * import com.pulumi.cloudflare.ZeroTrustInfrastructureAccessTargetArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpIpv6Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,26 +45,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new InfrastructureAccessTarget("example", InfrastructureAccessTargetArgs.builder()
+ *         var example = new ZeroTrustInfrastructureAccessTarget("example", ZeroTrustInfrastructureAccessTargetArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .hostname("example-target")
- *             .ip(InfrastructureAccessTargetIpArgs.builder()
- *                 .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()
+ *             .ip(ZeroTrustInfrastructureAccessTargetIpArgs.builder()
+ *                 .ipv4(ZeroTrustInfrastructureAccessTargetIpIpv4Args.builder()
  *                     .ipAddr("198.51.100.1")
  *                     .virtualNetworkId("238dccd1-149b-463d-8228-560ab83a54fd")
  *                     .build())
- *                 .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()
+ *                 .ipv6(ZeroTrustInfrastructureAccessTargetIpIpv6Args.builder()
  *                     .ipAddr("2001:db8::")
  *                     .virtualNetworkId("238dccd1-149b-463d-8228-560ab83a54fd")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var ipv4OnlyExample = new InfrastructureAccessTarget("ipv4OnlyExample", InfrastructureAccessTargetArgs.builder()
+ *         var ipv4OnlyExample = new ZeroTrustInfrastructureAccessTarget("ipv4OnlyExample", ZeroTrustInfrastructureAccessTargetArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .hostname("example-ipv4-only")
- *             .ip(InfrastructureAccessTargetIpArgs.builder()
- *                 .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()
+ *             .ip(ZeroTrustInfrastructureAccessTargetIpArgs.builder()
+ *                 .ipv4(ZeroTrustInfrastructureAccessTargetIpIpv4Args.builder()
  *                     .ipAddr("198.51.100.1")
  *                     .virtualNetworkId("238dccd1-149b-463d-8228-560ab83a54fd")
  *                     .build())
@@ -80,12 +80,12 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example &lt;account_id&gt;
  * ```
  * 
  */
-@ResourceType(type="cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget")
-public class InfrastructureAccessTarget extends com.pulumi.resources.CustomResource {
+@ResourceType(type="cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget")
+public class ZeroTrustInfrastructureAccessTarget extends com.pulumi.resources.CustomResource {
     /**
      * The account identifier to target for the resource.
      * 
@@ -132,14 +132,14 @@ public class InfrastructureAccessTarget extends com.pulumi.resources.CustomResou
      * The IPv4/IPv6 address that identifies where to reach a target.
      * 
      */
-    @Export(name="ip", refs={InfrastructureAccessTargetIp.class}, tree="[0]")
-    private Output<InfrastructureAccessTargetIp> ip;
+    @Export(name="ip", refs={ZeroTrustInfrastructureAccessTargetIp.class}, tree="[0]")
+    private Output<ZeroTrustInfrastructureAccessTargetIp> ip;
 
     /**
      * @return The IPv4/IPv6 address that identifies where to reach a target.
      * 
      */
-    public Output<InfrastructureAccessTargetIp> ip() {
+    public Output<ZeroTrustInfrastructureAccessTargetIp> ip() {
         return this.ip;
     }
     /**
@@ -161,15 +161,15 @@ public class InfrastructureAccessTarget extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InfrastructureAccessTarget(java.lang.String name) {
-        this(name, InfrastructureAccessTargetArgs.Empty);
+    public ZeroTrustInfrastructureAccessTarget(java.lang.String name) {
+        this(name, ZeroTrustInfrastructureAccessTargetArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InfrastructureAccessTarget(java.lang.String name, InfrastructureAccessTargetArgs args) {
+    public ZeroTrustInfrastructureAccessTarget(java.lang.String name, ZeroTrustInfrastructureAccessTargetArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,19 +178,19 @@ public class InfrastructureAccessTarget extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InfrastructureAccessTarget(java.lang.String name, InfrastructureAccessTargetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ZeroTrustInfrastructureAccessTarget(java.lang.String name, ZeroTrustInfrastructureAccessTargetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InfrastructureAccessTarget(java.lang.String name, Output<java.lang.String> id, @Nullable InfrastructureAccessTargetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget", name, state, makeResourceOptions(options, id), false);
+    private ZeroTrustInfrastructureAccessTarget(java.lang.String name, Output<java.lang.String> id, @Nullable ZeroTrustInfrastructureAccessTargetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static InfrastructureAccessTargetArgs makeArgs(InfrastructureAccessTargetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZeroTrustInfrastructureAccessTargetArgs makeArgs(ZeroTrustInfrastructureAccessTargetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? InfrastructureAccessTargetArgs.Empty : args;
+        return args == null ? ZeroTrustInfrastructureAccessTargetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -209,7 +209,7 @@ public class InfrastructureAccessTarget extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InfrastructureAccessTarget get(java.lang.String name, Output<java.lang.String> id, @Nullable InfrastructureAccessTargetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new InfrastructureAccessTarget(name, id, state, options);
+    public static ZeroTrustInfrastructureAccessTarget get(java.lang.String name, Output<java.lang.String> id, @Nullable ZeroTrustInfrastructureAccessTargetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ZeroTrustInfrastructureAccessTarget(name, id, state, options);
     }
 }

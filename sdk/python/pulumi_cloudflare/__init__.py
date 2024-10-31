@@ -78,6 +78,7 @@ from .get_tunnel_virtual_network import *
 from .get_user import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_identity_provider import *
+from .get_zero_trust_infrastructure_access_targets import *
 from .get_zero_trust_tunnel_cloudflared import *
 from .get_zero_trust_tunnel_virtual_network import *
 from .get_zone import *
@@ -183,6 +184,7 @@ from .zero_trust_gateway_certificate import *
 from .zero_trust_gateway_policy import *
 from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
+from .zero_trust_infrastructure_access_target import *
 from .zero_trust_key_access_key_configuration import *
 from .zero_trust_list import *
 from .zero_trust_local_fallback_domain import *
@@ -1379,6 +1381,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings": "ZeroTrustGatewaySettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustInfrastructureAccessTarget",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget": "ZeroTrustInfrastructureAccessTarget"
   }
  },
  {

@@ -28886,7 +28886,7 @@ func (o RulesetRuleActionParametersPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type RulesetRuleActionParametersAlgorithm struct {
-	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+	// Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
 	Name string `pulumi:"name"`
 }
 
@@ -28902,7 +28902,7 @@ type RulesetRuleActionParametersAlgorithmInput interface {
 }
 
 type RulesetRuleActionParametersAlgorithmArgs struct {
-	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+	// Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -28957,7 +28957,7 @@ func (o RulesetRuleActionParametersAlgorithmOutput) ToRulesetRuleActionParameter
 	return o
 }
 
-// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+// Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
 func (o RulesetRuleActionParametersAlgorithmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersAlgorithm) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -61213,6 +61213,478 @@ func (o ZeroTrustGatewaySettingsSshSessionLogPtrOutput) PublicKey() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type ZeroTrustInfrastructureAccessTargetIp struct {
+	// The target's IPv4 address.
+	Ipv4 *ZeroTrustInfrastructureAccessTargetIpIpv4 `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 *ZeroTrustInfrastructureAccessTargetIpIpv6 `pulumi:"ipv6"`
+}
+
+// ZeroTrustInfrastructureAccessTargetIpInput is an input type that accepts ZeroTrustInfrastructureAccessTargetIpArgs and ZeroTrustInfrastructureAccessTargetIpOutput values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpInput` via:
+//
+//	ZeroTrustInfrastructureAccessTargetIpArgs{...}
+type ZeroTrustInfrastructureAccessTargetIpInput interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpOutput() ZeroTrustInfrastructureAccessTargetIpOutput
+	ToZeroTrustInfrastructureAccessTargetIpOutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpOutput
+}
+
+type ZeroTrustInfrastructureAccessTargetIpArgs struct {
+	// The target's IPv4 address.
+	Ipv4 ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (ZeroTrustInfrastructureAccessTargetIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpArgs) ToZeroTrustInfrastructureAccessTargetIpOutput() ZeroTrustInfrastructureAccessTargetIpOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpArgs) ToZeroTrustInfrastructureAccessTargetIpOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpOutput)
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpArgs) ToZeroTrustInfrastructureAccessTargetIpPtrOutput() ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpArgs) ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpOutput).ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustInfrastructureAccessTargetIpPtrInput is an input type that accepts ZeroTrustInfrastructureAccessTargetIpArgs, ZeroTrustInfrastructureAccessTargetIpPtr and ZeroTrustInfrastructureAccessTargetIpPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpPtrInput` via:
+//
+//	        ZeroTrustInfrastructureAccessTargetIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustInfrastructureAccessTargetIpPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpPtrOutput() ZeroTrustInfrastructureAccessTargetIpPtrOutput
+	ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpPtrOutput
+}
+
+type zeroTrustInfrastructureAccessTargetIpPtrType ZeroTrustInfrastructureAccessTargetIpArgs
+
+func ZeroTrustInfrastructureAccessTargetIpPtr(v *ZeroTrustInfrastructureAccessTargetIpArgs) ZeroTrustInfrastructureAccessTargetIpPtrInput {
+	return (*zeroTrustInfrastructureAccessTargetIpPtrType)(v)
+}
+
+func (*zeroTrustInfrastructureAccessTargetIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpPtrType) ToZeroTrustInfrastructureAccessTargetIpPtrOutput() ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpPtrType) ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpPtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) ToZeroTrustInfrastructureAccessTargetIpOutput() ZeroTrustInfrastructureAccessTargetIpOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) ToZeroTrustInfrastructureAccessTargetIpOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) ToZeroTrustInfrastructureAccessTargetIpPtrOutput() ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return o.ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustInfrastructureAccessTargetIp) *ZeroTrustInfrastructureAccessTargetIp {
+		return &v
+	}).(ZeroTrustInfrastructureAccessTargetIpPtrOutput)
+}
+
+// The target's IPv4 address.
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) Ipv4() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIp) *ZeroTrustInfrastructureAccessTargetIpIpv4 {
+		return v.Ipv4
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o ZeroTrustInfrastructureAccessTargetIpOutput) Ipv6() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIp) *ZeroTrustInfrastructureAccessTargetIpIpv6 {
+		return v.Ipv6
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIp)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpPtrOutput) ToZeroTrustInfrastructureAccessTargetIpPtrOutput() ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpPtrOutput) ToZeroTrustInfrastructureAccessTargetIpPtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpPtrOutput) Elem() ZeroTrustInfrastructureAccessTargetIpOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIp) ZeroTrustInfrastructureAccessTargetIp {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustInfrastructureAccessTargetIp
+		return ret
+	}).(ZeroTrustInfrastructureAccessTargetIpOutput)
+}
+
+// The target's IPv4 address.
+func (o ZeroTrustInfrastructureAccessTargetIpPtrOutput) Ipv4() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIp) *ZeroTrustInfrastructureAccessTargetIpIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o ZeroTrustInfrastructureAccessTargetIpPtrOutput) Ipv6() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIp) *ZeroTrustInfrastructureAccessTargetIpIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv4 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// ZeroTrustInfrastructureAccessTargetIpIpv4Input is an input type that accepts ZeroTrustInfrastructureAccessTargetIpIpv4Args and ZeroTrustInfrastructureAccessTargetIpIpv4Output values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpIpv4Input` via:
+//
+//	ZeroTrustInfrastructureAccessTargetIpIpv4Args{...}
+type ZeroTrustInfrastructureAccessTargetIpIpv4Input interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpIpv4Output() ZeroTrustInfrastructureAccessTargetIpIpv4Output
+	ToZeroTrustInfrastructureAccessTargetIpIpv4OutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4Output
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv4Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv4Args) ToZeroTrustInfrastructureAccessTargetIpIpv4Output() ZeroTrustInfrastructureAccessTargetIpIpv4Output {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv4OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv4Args) ToZeroTrustInfrastructureAccessTargetIpIpv4OutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv4Output)
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv4Args) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv4Args) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv4Output).ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput is an input type that accepts ZeroTrustInfrastructureAccessTargetIpIpv4Args, ZeroTrustInfrastructureAccessTargetIpIpv4Ptr and ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput` via:
+//
+//	        ZeroTrustInfrastructureAccessTargetIpIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput
+	ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput
+}
+
+type zeroTrustInfrastructureAccessTargetIpIpv4PtrType ZeroTrustInfrastructureAccessTargetIpIpv4Args
+
+func ZeroTrustInfrastructureAccessTargetIpIpv4Ptr(v *ZeroTrustInfrastructureAccessTargetIpIpv4Args) ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput {
+	return (*zeroTrustInfrastructureAccessTargetIpIpv4PtrType)(v)
+}
+
+func (*zeroTrustInfrastructureAccessTargetIpIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpIpv4PtrType) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpIpv4PtrType) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv4Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) ToZeroTrustInfrastructureAccessTargetIpIpv4Output() ZeroTrustInfrastructureAccessTargetIpIpv4Output {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) ToZeroTrustInfrastructureAccessTargetIpIpv4OutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4Output {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustInfrastructureAccessTargetIpIpv4) *ZeroTrustInfrastructureAccessTargetIpIpv4 {
+		return &v
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput)
+}
+
+// The IP address of the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIpIpv4) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIpIpv4) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIpIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) ToZeroTrustInfrastructureAccessTargetIpIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) Elem() ZeroTrustInfrastructureAccessTargetIpIpv4Output {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv4) ZeroTrustInfrastructureAccessTargetIpIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustInfrastructureAccessTargetIpIpv4
+		return ret
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv4Output)
+}
+
+// The IP address of the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv6 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// ZeroTrustInfrastructureAccessTargetIpIpv6Input is an input type that accepts ZeroTrustInfrastructureAccessTargetIpIpv6Args and ZeroTrustInfrastructureAccessTargetIpIpv6Output values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpIpv6Input` via:
+//
+//	ZeroTrustInfrastructureAccessTargetIpIpv6Args{...}
+type ZeroTrustInfrastructureAccessTargetIpIpv6Input interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpIpv6Output() ZeroTrustInfrastructureAccessTargetIpIpv6Output
+	ToZeroTrustInfrastructureAccessTargetIpIpv6OutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6Output
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv6Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv6Args) ToZeroTrustInfrastructureAccessTargetIpIpv6Output() ZeroTrustInfrastructureAccessTargetIpIpv6Output {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv6OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv6Args) ToZeroTrustInfrastructureAccessTargetIpIpv6OutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv6Output)
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv6Args) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustInfrastructureAccessTargetIpIpv6Args) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv6Output).ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput is an input type that accepts ZeroTrustInfrastructureAccessTargetIpIpv6Args, ZeroTrustInfrastructureAccessTargetIpIpv6Ptr and ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput` via:
+//
+//	        ZeroTrustInfrastructureAccessTargetIpIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput
+	ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput
+}
+
+type zeroTrustInfrastructureAccessTargetIpIpv6PtrType ZeroTrustInfrastructureAccessTargetIpIpv6Args
+
+func ZeroTrustInfrastructureAccessTargetIpIpv6Ptr(v *ZeroTrustInfrastructureAccessTargetIpIpv6Args) ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput {
+	return (*zeroTrustInfrastructureAccessTargetIpIpv6PtrType)(v)
+}
+
+func (*zeroTrustInfrastructureAccessTargetIpIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpIpv6PtrType) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return i.ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustInfrastructureAccessTargetIpIpv6PtrType) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv6Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) ToZeroTrustInfrastructureAccessTargetIpIpv6Output() ZeroTrustInfrastructureAccessTargetIpIpv6Output {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) ToZeroTrustInfrastructureAccessTargetIpIpv6OutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6Output {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustInfrastructureAccessTargetIpIpv6) *ZeroTrustInfrastructureAccessTargetIpIpv6 {
+		return &v
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput)
+}
+
+// The IP address of the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIpIpv6) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustInfrastructureAccessTargetIpIpv6) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustInfrastructureAccessTargetIpIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput() ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) ToZeroTrustInfrastructureAccessTargetIpIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) Elem() ZeroTrustInfrastructureAccessTargetIpIpv6Output {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv6) ZeroTrustInfrastructureAccessTargetIpIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustInfrastructureAccessTargetIpIpv6
+		return ret
+	}).(ZeroTrustInfrastructureAccessTargetIpIpv6Output)
+}
+
+// The IP address of the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustInfrastructureAccessTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZeroTrustListItemsWithDescription struct {
 	Description string `pulumi:"description"`
 	Value       string `pulumi:"value"`
@@ -75691,6 +76163,527 @@ func (o GetRulesetsRulesetRuleRatelimitPtrOutput) ScoreResponseHeaderName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetZeroTrustInfrastructureAccessTargetsTarget struct {
+	// The account identifier to target for the resource.
+	AccountId string `pulumi:"accountId"`
+	// The date and time at which the target was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// A non-unique field that refers to a target.
+	Hostname string `pulumi:"hostname"`
+	// The identifier of this resource. This is target's unique identifier.
+	Id string `pulumi:"id"`
+	// The IPv4/IPv6 address that identifies where to reach a target.
+	Ip GetZeroTrustInfrastructureAccessTargetsTargetIp `pulumi:"ip"`
+	// The date and time at which the target was last modified.
+	ModifiedAt string `pulumi:"modifiedAt"`
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetInput is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetArgs and GetZeroTrustInfrastructureAccessTargetsTargetOutput values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetInput` via:
+//
+//	GetZeroTrustInfrastructureAccessTargetsTargetArgs{...}
+type GetZeroTrustInfrastructureAccessTargetsTargetInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetOutput() GetZeroTrustInfrastructureAccessTargetsTargetOutput
+	ToGetZeroTrustInfrastructureAccessTargetsTargetOutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetOutput
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetArgs struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The date and time at which the target was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A non-unique field that refers to a target.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The identifier of this resource. This is target's unique identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IPv4/IPv6 address that identifies where to reach a target.
+	Ip GetZeroTrustInfrastructureAccessTargetsTargetIpInput `pulumi:"ip"`
+	// The date and time at which the target was last modified.
+	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
+}
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetArgs) ToGetZeroTrustInfrastructureAccessTargetsTargetOutput() GetZeroTrustInfrastructureAccessTargetsTargetOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetArgs) ToGetZeroTrustInfrastructureAccessTargetsTargetOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetOutput)
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetArrayInput is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetArray and GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetArrayInput` via:
+//
+//	GetZeroTrustInfrastructureAccessTargetsTargetArray{ GetZeroTrustInfrastructureAccessTargetsTargetArgs{...} }
+type GetZeroTrustInfrastructureAccessTargetsTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutput() GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput
+	ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetArray []GetZeroTrustInfrastructureAccessTargetsTargetInput
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetArray) ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutput() GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetArray) ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetOutput() GetZeroTrustInfrastructureAccessTargetsTargetOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetOutput {
+	return o
+}
+
+// The account identifier to target for the resource.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The date and time at which the target was created.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A non-unique field that refers to a target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The identifier of this resource. This is target's unique identifier.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IPv4/IPv6 address that identifies where to reach a target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) Ip() GetZeroTrustInfrastructureAccessTargetsTargetIpOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) GetZeroTrustInfrastructureAccessTargetsTargetIp {
+		return v.Ip
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpOutput)
+}
+
+// The date and time at which the target was last modified.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTarget) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustInfrastructureAccessTargetsTarget)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutput() GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetArrayOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetZeroTrustInfrastructureAccessTargetsTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustInfrastructureAccessTargetsTarget {
+		return vs[0].([]GetZeroTrustInfrastructureAccessTargetsTarget)[vs[1].(int)]
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIp struct {
+	// The target's IPv4 address.
+	Ipv4 *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 `pulumi:"ipv6"`
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetIpInput is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetIpArgs and GetZeroTrustInfrastructureAccessTargetsTargetIpOutput values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetIpInput` via:
+//
+//	GetZeroTrustInfrastructureAccessTargetsTargetIpArgs{...}
+type GetZeroTrustInfrastructureAccessTargetsTargetIpInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpOutput
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpOutput
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpArgs struct {
+	// The target's IPv4 address.
+	Ipv4 GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput `pulumi:"ipv4"`
+	// The target's IPv6 address.
+	Ipv6 GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIp)(nil)).Elem()
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpArgs) ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpArgs) ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIp)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpOutput {
+	return o
+}
+
+// The target's IPv4 address.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpOutput) Ipv4() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIp) *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 {
+		return v.Ipv4
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+// The target's IPv6 address.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpOutput) Ipv6() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIp) *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 {
+		return v.Ipv6
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Input is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args and GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Input` via:
+//
+//	GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args{...}
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Input interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output)
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output).ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx)
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args, GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Ptr and GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput` via:
+//
+//	        GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput
+}
+
+type getZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrType GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args
+
+func GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Ptr(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput {
+	return (*getZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrType)(v)
+}
+
+func (*getZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (i *getZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrType) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *getZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrType) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4OutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 {
+		return &v
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput)
+}
+
+// The IP address of the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) Elem() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4
+		return ret
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output)
+}
+
+// The IP address of the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 struct {
+	// The IP address of the target.
+	IpAddr string `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Input is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args and GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Input` via:
+//
+//	GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args{...}
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Input interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args struct {
+	// The IP address of the target.
+	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
+	// The private virtual network identifier for the target.
+	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
+}
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output)
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output).ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx)
+}
+
+// GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput is an input type that accepts GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args, GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Ptr and GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput values.
+// You can construct a concrete instance of `GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput` via:
+//
+//	        GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput
+	ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput
+}
+
+type getZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrType GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args
+
+func GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Ptr(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput {
+	return (*getZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrType)(v)
+}
+
+func (*getZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (i *getZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrType) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return i.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *getZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrType) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6OutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 {
+		return &v
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput)
+}
+
+// The IP address of the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) IpAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) string { return v.IpAddr }).(pulumi.StringOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6)(nil)).Elem()
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) ToGetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutputWithContext(ctx context.Context) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput {
+	return o
+}
+
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) Elem() GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6
+		return ret
+	}).(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output)
+}
+
+// The IP address of the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) IpAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private virtual network identifier for the target.
+func (o GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetZonesFilter struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
@@ -76665,6 +77658,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsProxyPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSshSessionLogInput)(nil)).Elem(), ZeroTrustGatewaySettingsSshSessionLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSshSessionLogPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsSshSessionLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpInput)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpPtrInput)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv4Input)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv4PtrInput)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv6Input)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustInfrastructureAccessTargetIpIpv6PtrInput)(nil)).Elem(), ZeroTrustInfrastructureAccessTargetIpIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustListItemsWithDescriptionInput)(nil)).Elem(), ZeroTrustListItemsWithDescriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustListItemsWithDescriptionArrayInput)(nil)).Elem(), ZeroTrustListItemsWithDescriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustLocalFallbackDomainDomainInput)(nil)).Elem(), ZeroTrustLocalFallbackDomainDomainArgs{})
@@ -76818,6 +77817,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleLoggingPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleRatelimitInput)(nil)).Elem(), GetRulesetsRulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleRatelimitPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetInput)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetArrayInput)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpInput)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Input)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrInput)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Input)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrInput)(nil)).Elem(), GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesFilterInput)(nil)).Elem(), GetZonesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
@@ -77591,6 +78597,12 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsProxyPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSshSessionLogOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSshSessionLogPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpOutput{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpIpv4Output{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpIpv4PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpIpv6Output{})
+	pulumi.RegisterOutputType(ZeroTrustInfrastructureAccessTargetIpIpv6PtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustListItemsWithDescriptionOutput{})
 	pulumi.RegisterOutputType(ZeroTrustListItemsWithDescriptionArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustLocalFallbackDomainDomainOutput{})
@@ -77744,6 +78756,13 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleRatelimitOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleRatelimitPtrOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetIpOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4Output{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4PtrOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6Output{})
+	pulumi.RegisterOutputType(GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6PtrOutput{})
 	pulumi.RegisterOutputType(GetZonesFilterOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})

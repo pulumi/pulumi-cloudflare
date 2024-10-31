@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class RulesetRuleActionParametersAlgorithm {
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     private String name;
 
     private RulesetRuleActionParametersAlgorithm() {}
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     public String name() {
