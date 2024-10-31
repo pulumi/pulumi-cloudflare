@@ -5875,7 +5875,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                    "description": "Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`\n"
                 }
             },
             "type": "object",
@@ -11234,6 +11234,53 @@
                 "publicKey"
             ]
         },
+        "cloudflare:index/ZeroTrustInfrastructureAccessTargetIp:ZeroTrustInfrastructureAccessTargetIp": {
+            "properties": {
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustInfrastructureAccessTargetIpIpv4:ZeroTrustInfrastructureAccessTargetIpIpv4",
+                    "description": "The target's IPv4 address.\n"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustInfrastructureAccessTargetIpIpv6:ZeroTrustInfrastructureAccessTargetIpIpv6",
+                    "description": "The target's IPv6 address.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/ZeroTrustInfrastructureAccessTargetIpIpv4:ZeroTrustInfrastructureAccessTargetIpIpv4": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ]
+        },
+        "cloudflare:index/ZeroTrustInfrastructureAccessTargetIpIpv6:ZeroTrustInfrastructureAccessTargetIpIpv6": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ]
+        },
         "cloudflare:index/ZeroTrustListItemsWithDescription:ZeroTrustListItemsWithDescription": {
             "properties": {
                 "description": {
@@ -13881,6 +13928,105 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/getZeroTrustInfrastructureAccessTargetsTarget:getZeroTrustInfrastructureAccessTargetsTarget": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was created.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The identifier of this resource. This is target's unique identifier.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIp:getZeroTrustInfrastructureAccessTargetsTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was last modified.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "createdAt",
+                "hostname",
+                "id",
+                "ip",
+                "modifiedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIp:getZeroTrustInfrastructureAccessTargetsTargetIp": {
+            "properties": {
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIpIpv4:getZeroTrustInfrastructureAccessTargetsTargetIpIpv4",
+                    "description": "The target's IPv4 address.\n"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIpIpv6:getZeroTrustInfrastructureAccessTargetsTargetIpIpv6",
+                    "description": "The target's IPv6 address.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIpIpv4:getZeroTrustInfrastructureAccessTargetsTargetIpIpv4": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getZeroTrustInfrastructureAccessTargetsTargetIpIpv6:getZeroTrustInfrastructureAccessTargetsTargetIpIpv6": {
+            "properties": {
+                "ipAddr": {
+                    "type": "string",
+                    "description": "The IP address of the target.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The private virtual network identifier for the target.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipAddr",
+                "virtualNetworkId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "cloudflare:index/getZonesFilter:getZonesFilter": {
             "properties": {
@@ -20136,7 +20282,7 @@
             }
         },
         "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": {
-            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.InfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"2001:db8::\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.InfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"2001:db8::\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.InfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"2001:db8::\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.InfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"2001:db8::\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.InfrastructureAccessTarget;\nimport com.pulumi.cloudflare.InfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfrastructureAccessTarget(\"example\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"2001:db8::\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new InfrastructureAccessTarget(\"ipv4OnlyExample\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:InfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: '2001:db8::'\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:InfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
+            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target) resource allows you to configure Infrastructure Access Targets for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.InfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"2001:db8::\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.InfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"2001:db8::\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.InfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"2001:db8::\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.InfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"2001:db8::\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.InfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.InfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.InfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.InfrastructureAccessTarget;\nimport com.pulumi.cloudflare.InfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.InfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfrastructureAccessTarget(\"example\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(InfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"2001:db8::\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new InfrastructureAccessTarget(\"ipv4OnlyExample\", InfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(InfrastructureAccessTargetIpArgs.builder()\n                .ipv4(InfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:InfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: '2001:db8::'\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:InfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -31954,6 +32100,83 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget": {
+            "description": "The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target) resource allows you to configure Infrastructure Access Targets for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ZeroTrustInfrastructureAccessTarget(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-target\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        ipv6: {\n            ipAddr: \"2001:db8::\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\nconst ipv4OnlyExample = new cloudflare.ZeroTrustInfrastructureAccessTarget(\"ipv4_only_example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"example-ipv4-only\",\n    ip: {\n        ipv4: {\n            ipAddr: \"198.51.100.1\",\n            virtualNetworkId: \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ZeroTrustInfrastructureAccessTarget(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-target\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n        \"ipv6\": {\n            \"ip_addr\": \"2001:db8::\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\nipv4_only_example = cloudflare.ZeroTrustInfrastructureAccessTarget(\"ipv4_only_example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"example-ipv4-only\",\n    ip={\n        \"ipv4\": {\n            \"ip_addr\": \"198.51.100.1\",\n            \"virtual_network_id\": \"238dccd1-149b-463d-8228-560ab83a54fd\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ZeroTrustInfrastructureAccessTarget(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-target\",\n        Ip = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n            Ipv6 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv6Args\n            {\n                IpAddr = \"2001:db8::\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n    var ipv4OnlyExample = new Cloudflare.ZeroTrustInfrastructureAccessTarget(\"ipv4_only_example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"example-ipv4-only\",\n        Ip = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpArgs\n        {\n            Ipv4 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args\n            {\n                IpAddr = \"198.51.100.1\",\n                VirtualNetworkId = \"238dccd1-149b-463d-8228-560ab83a54fd\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZeroTrustInfrastructureAccessTarget(ctx, \"example\", \u0026cloudflare.ZeroTrustInfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-target\"),\n\t\t\tIp: \u0026cloudflare.ZeroTrustInfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.ZeroTrustInfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t\tIpv6: \u0026cloudflare.ZeroTrustInfrastructureAccessTargetIpIpv6Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"2001:db8::\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewZeroTrustInfrastructureAccessTarget(ctx, \"ipv4_only_example\", \u0026cloudflare.ZeroTrustInfrastructureAccessTargetArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"example-ipv4-only\"),\n\t\t\tIp: \u0026cloudflare.ZeroTrustInfrastructureAccessTargetIpArgs{\n\t\t\t\tIpv4: \u0026cloudflare.ZeroTrustInfrastructureAccessTargetIpIpv4Args{\n\t\t\t\t\tIpAddr:           pulumi.String(\"198.51.100.1\"),\n\t\t\t\t\tVirtualNetworkId: pulumi.String(\"238dccd1-149b-463d-8228-560ab83a54fd\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ZeroTrustInfrastructureAccessTarget;\nimport com.pulumi.cloudflare.ZeroTrustInfrastructureAccessTargetArgs;\nimport com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpArgs;\nimport com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args;\nimport com.pulumi.cloudflare.inputs.ZeroTrustInfrastructureAccessTargetIpIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ZeroTrustInfrastructureAccessTarget(\"example\", ZeroTrustInfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-target\")\n            .ip(ZeroTrustInfrastructureAccessTargetIpArgs.builder()\n                .ipv4(ZeroTrustInfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .ipv6(ZeroTrustInfrastructureAccessTargetIpIpv6Args.builder()\n                    .ipAddr(\"2001:db8::\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n        var ipv4OnlyExample = new ZeroTrustInfrastructureAccessTarget(\"ipv4OnlyExample\", ZeroTrustInfrastructureAccessTargetArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"example-ipv4-only\")\n            .ip(ZeroTrustInfrastructureAccessTargetIpArgs.builder()\n                .ipv4(ZeroTrustInfrastructureAccessTargetIpIpv4Args.builder()\n                    .ipAddr(\"198.51.100.1\")\n                    .virtualNetworkId(\"238dccd1-149b-463d-8228-560ab83a54fd\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ZeroTrustInfrastructureAccessTarget\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-target\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n        ipv6:\n          ipAddr: '2001:db8::'\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n  ipv4OnlyExample:\n    type: cloudflare:ZeroTrustInfrastructureAccessTarget\n    name: ipv4_only_example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: example-ipv4-only\n      ip:\n        ipv4:\n          ipAddr: 198.51.100.1\n          virtualNetworkId: 238dccd1-149b-463d-8228-560ab83a54fd\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example \u003caccount_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was created.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustInfrastructureAccessTargetIp:ZeroTrustInfrastructureAccessTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "description": "The date and time at which the target was last modified.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "createdAt",
+                "hostname",
+                "ip",
+                "modifiedAt"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "A non-unique field that refers to a target.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustInfrastructureAccessTargetIp:ZeroTrustInfrastructureAccessTargetIp",
+                    "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "hostname",
+                "ip"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZeroTrustInfrastructureAccessTarget resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time at which the target was created.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "A non-unique field that refers to a target.\n"
+                    },
+                    "ip": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustInfrastructureAccessTargetIp:ZeroTrustInfrastructureAccessTargetIp",
+                        "description": "The IPv4/IPv6 address that identifies where to reach a target.\n"
+                    },
+                    "modifiedAt": {
+                        "type": "string",
+                        "description": "The date and time at which the target was last modified.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration": {
             "description": "Access Keys Configuration defines the rotation policy for the keys\nthat access will use to sign data.\n",
             "properties": {
@@ -34949,6 +35172,103 @@
                 "required": [
                     "name",
                     "type",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets": {
+            "description": "Use this data source to retrieve all Infrastructure Access Targets.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getZeroTrustInfrastructureAccessTargets({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostnameContains: \"example\",\n    ipv4: \"198.51.100.1\",\n});\nexport const targets = example.then(example =\u003e example.targets);\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zero_trust_infrastructure_access_targets(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname_contains=\"example\",\n    ipv4=\"198.51.100.1\")\npulumi.export(\"targets\", example.targets)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetZeroTrustInfrastructureAccessTargets.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        HostnameContains = \"example\",\n        Ipv4 = \"198.51.100.1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"targets\"] = example.Apply(getZeroTrustInfrastructureAccessTargetsResult =\u003e getZeroTrustInfrastructureAccessTargetsResult.Targets),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.GetZeroTrustInfrastructureAccessTargets(ctx, \u0026cloudflare.GetZeroTrustInfrastructureAccessTargetsArgs{\n\t\t\tAccountId:        \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tHostnameContains: pulumi.StringRef(\"example\"),\n\t\t\tIpv4:             pulumi.StringRef(\"198.51.100.1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"targets\", example.Targets)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostnameContains(\"example\")\n            .ipv4(\"198.51.100.1\")\n            .build());\n\n        ctx.export(\"targets\", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -\u003e getZeroTrustInfrastructureAccessTargetsResult.targets()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getZeroTrustInfrastructureAccessTargets\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        hostnameContains: example\n        ipv4: 198.51.100.1\noutputs:\n  # output the list of targets the data source contains\n  targets: ${example.targets}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZeroTrustInfrastructureAccessTargets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "createdAfter": {
+                        "type": "string",
+                        "description": "A date and time after a target was created to filter on.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "The hostname of the target.\n"
+                    },
+                    "hostnameContains": {
+                        "type": "string",
+                        "description": "Partial match to the hostname of a target\n"
+                    },
+                    "ipv4": {
+                        "type": "string",
+                        "description": "The target's IPv4 address.\n"
+                    },
+                    "ipv6": {
+                        "type": "string",
+                        "description": "The target's IPv6 address.\n"
+                    },
+                    "modifiedAfter": {
+                        "type": "string",
+                        "description": "A date and time after a target was modified to filter on.\n"
+                    },
+                    "virtualNetworkId": {
+                        "type": "string",
+                        "description": "The private virtual network identifier for the target.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZeroTrustInfrastructureAccessTargets.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The account identifier to target for the resource.\n",
+                        "type": "string"
+                    },
+                    "createdAfter": {
+                        "description": "A date and time after a target was created to filter on.\n",
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "description": "The hostname of the target.\n",
+                        "type": "string"
+                    },
+                    "hostnameContains": {
+                        "description": "Partial match to the hostname of a target\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "ipv4": {
+                        "description": "The target's IPv4 address.\n",
+                        "type": "string"
+                    },
+                    "ipv6": {
+                        "description": "The target's IPv6 address.\n",
+                        "type": "string"
+                    },
+                    "modifiedAfter": {
+                        "description": "A date and time after a target was modified to filter on.\n",
+                        "type": "string"
+                    },
+                    "targets": {
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getZeroTrustInfrastructureAccessTargetsTarget:getZeroTrustInfrastructureAccessTargetsTarget"
+                        },
+                        "type": "array"
+                    },
+                    "virtualNetworkId": {
+                        "description": "The private virtual network identifier for the target.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "targets",
                     "id"
                 ],
                 "type": "object"

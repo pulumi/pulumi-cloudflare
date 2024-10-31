@@ -48,6 +48,8 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessIdentityProviderArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessIdentityProviderPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelVirtualNetworkArgs;
@@ -85,6 +87,7 @@ import com.pulumi.cloudflare.outputs.GetTunnelVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetUserResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProviderResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustInfrastructureAccessTargetsResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
@@ -4304,6 +4307,186 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdentityProviderPlain(GetZeroTrustAccessIdentityProviderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", TypeShape.of(GetZeroTrustAccessIdentityProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustInfrastructureAccessTargetsResult> getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs args) {
+        return getZeroTrustInfrastructureAccessTargets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustInfrastructureAccessTargetsResult> getZeroTrustInfrastructureAccessTargetsPlain(GetZeroTrustInfrastructureAccessTargetsPlainArgs args) {
+        return getZeroTrustInfrastructureAccessTargetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustInfrastructureAccessTargetsResult> getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", TypeShape.of(GetZeroTrustInfrastructureAccessTargetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all Infrastructure Access Targets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustInfrastructureAccessTargetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZeroTrustInfrastructureAccessTargets(GetZeroTrustInfrastructureAccessTargetsArgs.builder()
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .hostnameContains("example")
+     *             .ipv4("198.51.100.1")
+     *             .build());
+     * 
+     *         ctx.export("targets", example.applyValue(getZeroTrustInfrastructureAccessTargetsResult -> getZeroTrustInfrastructureAccessTargetsResult.targets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustInfrastructureAccessTargetsResult> getZeroTrustInfrastructureAccessTargetsPlain(GetZeroTrustInfrastructureAccessTargetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", TypeShape.of(GetZeroTrustInfrastructureAccessTargetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this datasource to lookup a tunnel in an account.

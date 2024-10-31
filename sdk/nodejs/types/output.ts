@@ -3339,6 +3339,66 @@ export interface GetRulesetsRulesetRuleRatelimit {
     scoreResponseHeaderName?: string;
 }
 
+export interface GetZeroTrustInfrastructureAccessTargetsTarget {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId: string;
+    /**
+     * The date and time at which the target was created.
+     */
+    createdAt: string;
+    /**
+     * A non-unique field that refers to a target.
+     */
+    hostname: string;
+    /**
+     * The identifier of this resource. This is target's unique identifier.
+     */
+    id: string;
+    /**
+     * The IPv4/IPv6 address that identifies where to reach a target.
+     */
+    ip: outputs.GetZeroTrustInfrastructureAccessTargetsTargetIp;
+    /**
+     * The date and time at which the target was last modified.
+     */
+    modifiedAt: string;
+}
+
+export interface GetZeroTrustInfrastructureAccessTargetsTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: outputs.GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6;
+}
+
+export interface GetZeroTrustInfrastructureAccessTargetsTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
+}
+
+export interface GetZeroTrustInfrastructureAccessTargetsTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
+}
+
 export interface GetZonesFilter {
     /**
      * The account identifier to target for the resource.
@@ -5107,7 +5167,7 @@ export interface RulesetRuleActionParameters {
 
 export interface RulesetRuleActionParametersAlgorithm {
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
      */
     name: string;
 }
@@ -8874,6 +8934,39 @@ export interface ZeroTrustGatewaySettingsSshSessionLog {
      * Public key used to encrypt ssh session.
      */
     publicKey: string;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: outputs.ZeroTrustInfrastructureAccessTargetIpIpv4;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: outputs.ZeroTrustInfrastructureAccessTargetIpIpv6;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: string;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: string;
 }
 
 export interface ZeroTrustListItemsWithDescription {

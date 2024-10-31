@@ -4216,7 +4216,7 @@ export interface RulesetRuleActionParameters {
 
 export interface RulesetRuleActionParametersAlgorithm {
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
      */
     name: pulumi.Input<string>;
 }
@@ -7983,6 +7983,39 @@ export interface ZeroTrustGatewaySettingsSshSessionLog {
      * Public key used to encrypt ssh session.
      */
     publicKey: pulumi.Input<string>;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIp {
+    /**
+     * The target's IPv4 address.
+     */
+    ipv4?: pulumi.Input<inputs.ZeroTrustInfrastructureAccessTargetIpIpv4>;
+    /**
+     * The target's IPv6 address.
+     */
+    ipv6?: pulumi.Input<inputs.ZeroTrustInfrastructureAccessTargetIpIpv6>;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIpIpv4 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: pulumi.Input<string>;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: pulumi.Input<string>;
+}
+
+export interface ZeroTrustInfrastructureAccessTargetIpIpv6 {
+    /**
+     * The IP address of the target.
+     */
+    ipAddr: pulumi.Input<string>;
+    /**
+     * The private virtual network identifier for the target.
+     */
+    virtualNetworkId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustListItemsWithDescription {

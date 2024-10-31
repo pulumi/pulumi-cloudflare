@@ -789,6 +789,12 @@ __all__ = [
     'ZeroTrustGatewaySettingsProxyArgsDict',
     'ZeroTrustGatewaySettingsSshSessionLogArgs',
     'ZeroTrustGatewaySettingsSshSessionLogArgsDict',
+    'ZeroTrustInfrastructureAccessTargetIpArgs',
+    'ZeroTrustInfrastructureAccessTargetIpArgsDict',
+    'ZeroTrustInfrastructureAccessTargetIpIpv4Args',
+    'ZeroTrustInfrastructureAccessTargetIpIpv4ArgsDict',
+    'ZeroTrustInfrastructureAccessTargetIpIpv6Args',
+    'ZeroTrustInfrastructureAccessTargetIpIpv6ArgsDict',
     'ZeroTrustListItemsWithDescriptionArgs',
     'ZeroTrustListItemsWithDescriptionArgsDict',
     'ZeroTrustLocalFallbackDomainDomainArgs',
@@ -20318,7 +20324,7 @@ if not MYPY:
     class RulesetRuleActionParametersAlgorithmArgsDict(TypedDict):
         name: pulumi.Input[str]
         """
-        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         """
 elif False:
     RulesetRuleActionParametersAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
@@ -20328,7 +20334,7 @@ class RulesetRuleActionParametersAlgorithmArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        :param pulumi.Input[str] name: Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         """
         pulumi.set(__self__, "name", name)
 
@@ -20336,7 +20342,7 @@ class RulesetRuleActionParametersAlgorithmArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         """
         return pulumi.get(self, "name")
 
@@ -38788,6 +38794,158 @@ class ZeroTrustGatewaySettingsSshSessionLogArgs:
     @public_key.setter
     def public_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_key", value)
+
+
+if not MYPY:
+    class ZeroTrustInfrastructureAccessTargetIpArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv4ArgsDict']]
+        """
+        The target's IPv4 address.
+        """
+        ipv6: NotRequired[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv6ArgsDict']]
+        """
+        The target's IPv6 address.
+        """
+elif False:
+    ZeroTrustInfrastructureAccessTargetIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustInfrastructureAccessTargetIpArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv4Args']] = None,
+                 ipv6: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv6Args']] = None):
+        """
+        :param pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv4Args'] ipv4: The target's IPv4 address.
+        :param pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv6Args'] ipv6: The target's IPv6 address.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv4Args']]:
+        """
+        The target's IPv4 address.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv6Args']]:
+        """
+        The target's IPv6 address.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class ZeroTrustInfrastructureAccessTargetIpIpv4ArgsDict(TypedDict):
+        ip_addr: pulumi.Input[str]
+        """
+        The IP address of the target.
+        """
+        virtual_network_id: pulumi.Input[str]
+        """
+        The private virtual network identifier for the target.
+        """
+elif False:
+    ZeroTrustInfrastructureAccessTargetIpIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustInfrastructureAccessTargetIpIpv4Args:
+    def __init__(__self__, *,
+                 ip_addr: pulumi.Input[str],
+                 virtual_network_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip_addr: The IP address of the target.
+        :param pulumi.Input[str] virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> pulumi.Input[str]:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @ip_addr.setter
+    def ip_addr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_addr", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> pulumi.Input[str]:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+    @virtual_network_id.setter
+    def virtual_network_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "virtual_network_id", value)
+
+
+if not MYPY:
+    class ZeroTrustInfrastructureAccessTargetIpIpv6ArgsDict(TypedDict):
+        ip_addr: pulumi.Input[str]
+        """
+        The IP address of the target.
+        """
+        virtual_network_id: pulumi.Input[str]
+        """
+        The private virtual network identifier for the target.
+        """
+elif False:
+    ZeroTrustInfrastructureAccessTargetIpIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustInfrastructureAccessTargetIpIpv6Args:
+    def __init__(__self__, *,
+                 ip_addr: pulumi.Input[str],
+                 virtual_network_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ip_addr: The IP address of the target.
+        :param pulumi.Input[str] virtual_network_id: The private virtual network identifier for the target.
+        """
+        pulumi.set(__self__, "ip_addr", ip_addr)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter(name="ipAddr")
+    def ip_addr(self) -> pulumi.Input[str]:
+        """
+        The IP address of the target.
+        """
+        return pulumi.get(self, "ip_addr")
+
+    @ip_addr.setter
+    def ip_addr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_addr", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> pulumi.Input[str]:
+        """
+        The private virtual network identifier for the target.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+    @virtual_network_id.setter
+    def virtual_network_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "virtual_network_id", value)
 
 
 if not MYPY:

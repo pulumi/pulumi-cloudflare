@@ -22,18 +22,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.InfrastructureAccessTarget("example", new()
+    ///     var example = new Cloudflare.ZeroTrustInfrastructureAccessTarget("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Hostname = "example-target",
-    ///         Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs
+    ///         Ip = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpArgs
     ///         {
-    ///             Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args
+    ///             Ipv4 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args
     ///             {
     ///                 IpAddr = "198.51.100.1",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
     ///             },
-    ///             Ipv6 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv6Args
+    ///             Ipv6 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv6Args
     ///             {
     ///                 IpAddr = "2001:db8::",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
@@ -41,13 +41,13 @@ namespace Pulumi.Cloudflare
     ///         },
     ///     });
     /// 
-    ///     var ipv4OnlyExample = new Cloudflare.InfrastructureAccessTarget("ipv4_only_example", new()
+    ///     var ipv4OnlyExample = new Cloudflare.ZeroTrustInfrastructureAccessTarget("ipv4_only_example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Hostname = "example-ipv4-only",
-    ///         Ip = new Cloudflare.Inputs.InfrastructureAccessTargetIpArgs
+    ///         Ip = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpArgs
     ///         {
-    ///             Ipv4 = new Cloudflare.Inputs.InfrastructureAccessTargetIpIpv4Args
+    ///             Ipv4 = new Cloudflare.Inputs.ZeroTrustInfrastructureAccessTargetIpIpv4Args
     ///             {
     ///                 IpAddr = "198.51.100.1",
     ///                 VirtualNetworkId = "238dccd1-149b-463d-8228-560ab83a54fd",
@@ -61,11 +61,11 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example &lt;account_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example &lt;account_id&gt;
     /// ```
     /// </summary>
-    [CloudflareResourceType("cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget")]
-    public partial class InfrastructureAccessTarget : global::Pulumi.CustomResource
+    [CloudflareResourceType("cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget")]
+    public partial class ZeroTrustInfrastructureAccessTarget : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// The IPv4/IPv6 address that identifies where to reach a target.
         /// </summary>
         [Output("ip")]
-        public Output<Outputs.InfrastructureAccessTargetIp> Ip { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustInfrastructureAccessTargetIp> Ip { get; private set; } = null!;
 
         /// <summary>
         /// The date and time at which the target was last modified.
@@ -99,19 +99,19 @@ namespace Pulumi.Cloudflare
 
 
         /// <summary>
-        /// Create a InfrastructureAccessTarget resource with the given unique name, arguments, and options.
+        /// Create a ZeroTrustInfrastructureAccessTarget resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public InfrastructureAccessTarget(string name, InfrastructureAccessTargetArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget", name, args ?? new InfrastructureAccessTargetArgs(), MakeResourceOptions(options, ""))
+        public ZeroTrustInfrastructureAccessTarget(string name, ZeroTrustInfrastructureAccessTargetArgs args, CustomResourceOptions? options = null)
+            : base("cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget", name, args ?? new ZeroTrustInfrastructureAccessTargetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private InfrastructureAccessTarget(string name, Input<string> id, InfrastructureAccessTargetState? state = null, CustomResourceOptions? options = null)
-            : base("cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget", name, state, MakeResourceOptions(options, id))
+        private ZeroTrustInfrastructureAccessTarget(string name, Input<string> id, ZeroTrustInfrastructureAccessTargetState? state = null, CustomResourceOptions? options = null)
+            : base("cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
             return merged;
         }
         /// <summary>
-        /// Get an existing InfrastructureAccessTarget resource's state with the given name, ID, and optional extra
+        /// Get an existing ZeroTrustInfrastructureAccessTarget resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -135,13 +135,13 @@ namespace Pulumi.Cloudflare
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static InfrastructureAccessTarget Get(string name, Input<string> id, InfrastructureAccessTargetState? state = null, CustomResourceOptions? options = null)
+        public static ZeroTrustInfrastructureAccessTarget Get(string name, Input<string> id, ZeroTrustInfrastructureAccessTargetState? state = null, CustomResourceOptions? options = null)
         {
-            return new InfrastructureAccessTarget(name, id, state, options);
+            return new ZeroTrustInfrastructureAccessTarget(name, id, state, options);
         }
     }
 
-    public sealed class InfrastructureAccessTargetArgs : global::Pulumi.ResourceArgs
+    public sealed class ZeroTrustInfrastructureAccessTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -159,15 +159,15 @@ namespace Pulumi.Cloudflare
         /// The IPv4/IPv6 address that identifies where to reach a target.
         /// </summary>
         [Input("ip", required: true)]
-        public Input<Inputs.InfrastructureAccessTargetIpArgs> Ip { get; set; } = null!;
+        public Input<Inputs.ZeroTrustInfrastructureAccessTargetIpArgs> Ip { get; set; } = null!;
 
-        public InfrastructureAccessTargetArgs()
+        public ZeroTrustInfrastructureAccessTargetArgs()
         {
         }
-        public static new InfrastructureAccessTargetArgs Empty => new InfrastructureAccessTargetArgs();
+        public static new ZeroTrustInfrastructureAccessTargetArgs Empty => new ZeroTrustInfrastructureAccessTargetArgs();
     }
 
-    public sealed class InfrastructureAccessTargetState : global::Pulumi.ResourceArgs
+    public sealed class ZeroTrustInfrastructureAccessTargetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         /// The IPv4/IPv6 address that identifies where to reach a target.
         /// </summary>
         [Input("ip")]
-        public Input<Inputs.InfrastructureAccessTargetIpGetArgs>? Ip { get; set; }
+        public Input<Inputs.ZeroTrustInfrastructureAccessTargetIpGetArgs>? Ip { get; set; }
 
         /// <summary>
         /// The date and time at which the target was last modified.
@@ -199,9 +199,9 @@ namespace Pulumi.Cloudflare
         [Input("modifiedAt")]
         public Input<string>? ModifiedAt { get; set; }
 
-        public InfrastructureAccessTargetState()
+        public ZeroTrustInfrastructureAccessTargetState()
         {
         }
-        public static new InfrastructureAccessTargetState Empty => new InfrastructureAccessTargetState();
+        public static new ZeroTrustInfrastructureAccessTargetState Empty => new ZeroTrustInfrastructureAccessTargetState();
     }
 }

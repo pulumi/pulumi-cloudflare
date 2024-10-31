@@ -16,19 +16,19 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InfrastructureAccessTargetArgs', 'InfrastructureAccessTarget']
+__all__ = ['ZeroTrustInfrastructureAccessTargetArgs', 'ZeroTrustInfrastructureAccessTarget']
 
 @pulumi.input_type
-class InfrastructureAccessTargetArgs:
+class ZeroTrustInfrastructureAccessTargetArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  hostname: pulumi.Input[str],
-                 ip: pulumi.Input['InfrastructureAccessTargetIpArgs']):
+                 ip: pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']):
         """
-        The set of arguments for constructing a InfrastructureAccessTarget resource.
+        The set of arguments for constructing a ZeroTrustInfrastructureAccessTarget resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] hostname: A non-unique field that refers to a target.
-        :param pulumi.Input['InfrastructureAccessTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
@@ -60,31 +60,31 @@ class InfrastructureAccessTargetArgs:
 
     @property
     @pulumi.getter
-    def ip(self) -> pulumi.Input['InfrastructureAccessTargetIpArgs']:
+    def ip(self) -> pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']:
         """
         The IPv4/IPv6 address that identifies where to reach a target.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: pulumi.Input['InfrastructureAccessTargetIpArgs']):
+    def ip(self, value: pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']):
         pulumi.set(self, "ip", value)
 
 
 @pulumi.input_type
-class _InfrastructureAccessTargetState:
+class _ZeroTrustInfrastructureAccessTargetState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input['InfrastructureAccessTargetIpArgs']] = None,
+                 ip: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']] = None,
                  modified_at: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering InfrastructureAccessTarget resources.
+        Input properties used for looking up and filtering ZeroTrustInfrastructureAccessTarget resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created_at: The date and time at which the target was created.
         :param pulumi.Input[str] hostname: A non-unique field that refers to a target.
-        :param pulumi.Input['InfrastructureAccessTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target.
         :param pulumi.Input[str] modified_at: The date and time at which the target was last modified.
         """
         if account_id is not None:
@@ -136,14 +136,14 @@ class _InfrastructureAccessTargetState:
 
     @property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['InfrastructureAccessTargetIpArgs']]:
+    def ip(self) -> Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']]:
         """
         The IPv4/IPv6 address that identifies where to reach a target.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['InfrastructureAccessTargetIpArgs']]):
+    def ip(self, value: Optional[pulumi.Input['ZeroTrustInfrastructureAccessTargetIpArgs']]):
         pulumi.set(self, "ip", value)
 
     @property
@@ -159,14 +159,14 @@ class _InfrastructureAccessTargetState:
         pulumi.set(self, "modified_at", value)
 
 
-class InfrastructureAccessTarget(pulumi.CustomResource):
+class ZeroTrustInfrastructureAccessTarget(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input[Union['InfrastructureAccessTargetIpArgs', 'InfrastructureAccessTargetIpArgsDict']]] = None,
+                 ip: Optional[pulumi.Input[Union['ZeroTrustInfrastructureAccessTargetIpArgs', 'ZeroTrustInfrastructureAccessTargetIpArgsDict']]] = None,
                  __props__=None):
         """
         The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target) resource allows you to configure Infrastructure Access Targets for an account.
@@ -177,7 +177,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.InfrastructureAccessTarget("example",
+        example = cloudflare.ZeroTrustInfrastructureAccessTarget("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             hostname="example-target",
             ip={
@@ -190,7 +190,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
                     "virtual_network_id": "238dccd1-149b-463d-8228-560ab83a54fd",
                 },
             })
-        ipv4_only_example = cloudflare.InfrastructureAccessTarget("ipv4_only_example",
+        ipv4_only_example = cloudflare.ZeroTrustInfrastructureAccessTarget("ipv4_only_example",
             account_id="f037e56e89293a057740de681ac9abbe",
             hostname="example-ipv4-only",
             ip={
@@ -204,20 +204,20 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example <account_id>
+        $ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] hostname: A non-unique field that refers to a target.
-        :param pulumi.Input[Union['InfrastructureAccessTargetIpArgs', 'InfrastructureAccessTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param pulumi.Input[Union['ZeroTrustInfrastructureAccessTargetIpArgs', 'ZeroTrustInfrastructureAccessTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InfrastructureAccessTargetArgs,
+                 args: ZeroTrustInfrastructureAccessTargetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The [Infrastructure Access Target](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target) resource allows you to configure Infrastructure Access Targets for an account.
@@ -228,7 +228,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.InfrastructureAccessTarget("example",
+        example = cloudflare.ZeroTrustInfrastructureAccessTarget("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             hostname="example-target",
             ip={
@@ -241,7 +241,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
                     "virtual_network_id": "238dccd1-149b-463d-8228-560ab83a54fd",
                 },
             })
-        ipv4_only_example = cloudflare.InfrastructureAccessTarget("ipv4_only_example",
+        ipv4_only_example = cloudflare.ZeroTrustInfrastructureAccessTarget("ipv4_only_example",
             account_id="f037e56e89293a057740de681ac9abbe",
             hostname="example-ipv4-only",
             ip={
@@ -255,16 +255,16 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example <account_id>
+        $ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
-        :param InfrastructureAccessTargetArgs args: The arguments to use to populate this resource's properties.
+        :param ZeroTrustInfrastructureAccessTargetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InfrastructureAccessTargetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ZeroTrustInfrastructureAccessTargetArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -275,7 +275,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input[Union['InfrastructureAccessTargetIpArgs', 'InfrastructureAccessTargetIpArgsDict']]] = None,
+                 ip: Optional[pulumi.Input[Union['ZeroTrustInfrastructureAccessTargetIpArgs', 'ZeroTrustInfrastructureAccessTargetIpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,7 +283,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InfrastructureAccessTargetArgs.__new__(InfrastructureAccessTargetArgs)
+            __props__ = ZeroTrustInfrastructureAccessTargetArgs.__new__(ZeroTrustInfrastructureAccessTargetArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
@@ -296,8 +296,8 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
             __props__.__dict__["ip"] = ip
             __props__.__dict__["created_at"] = None
             __props__.__dict__["modified_at"] = None
-        super(InfrastructureAccessTarget, __self__).__init__(
-            'cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget',
+        super(ZeroTrustInfrastructureAccessTarget, __self__).__init__(
+            'cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget',
             resource_name,
             __props__,
             opts)
@@ -309,10 +309,10 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
-            ip: Optional[pulumi.Input[Union['InfrastructureAccessTargetIpArgs', 'InfrastructureAccessTargetIpArgsDict']]] = None,
-            modified_at: Optional[pulumi.Input[str]] = None) -> 'InfrastructureAccessTarget':
+            ip: Optional[pulumi.Input[Union['ZeroTrustInfrastructureAccessTargetIpArgs', 'ZeroTrustInfrastructureAccessTargetIpArgsDict']]] = None,
+            modified_at: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustInfrastructureAccessTarget':
         """
-        Get an existing InfrastructureAccessTarget resource's state with the given name, id, and optional extra
+        Get an existing ZeroTrustInfrastructureAccessTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -321,19 +321,19 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created_at: The date and time at which the target was created.
         :param pulumi.Input[str] hostname: A non-unique field that refers to a target.
-        :param pulumi.Input[Union['InfrastructureAccessTargetIpArgs', 'InfrastructureAccessTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target.
+        :param pulumi.Input[Union['ZeroTrustInfrastructureAccessTargetIpArgs', 'ZeroTrustInfrastructureAccessTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target.
         :param pulumi.Input[str] modified_at: The date and time at which the target was last modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _InfrastructureAccessTargetState.__new__(_InfrastructureAccessTargetState)
+        __props__ = _ZeroTrustInfrastructureAccessTargetState.__new__(_ZeroTrustInfrastructureAccessTargetState)
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ip"] = ip
         __props__.__dict__["modified_at"] = modified_at
-        return InfrastructureAccessTarget(resource_name, opts=opts, __props__=__props__)
+        return ZeroTrustInfrastructureAccessTarget(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
@@ -361,7 +361,7 @@ class InfrastructureAccessTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ip(self) -> pulumi.Output['outputs.InfrastructureAccessTargetIp']:
+    def ip(self) -> pulumi.Output['outputs.ZeroTrustInfrastructureAccessTargetIp']:
         """
         The IPv4/IPv6 address that identifies where to reach a target.
         """

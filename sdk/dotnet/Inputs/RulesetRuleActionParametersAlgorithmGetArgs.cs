@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersAlgorithmGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

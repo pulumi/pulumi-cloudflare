@@ -3623,6 +3623,10 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_infrastructure_access_target": {
+                "current": "cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget",
+                "majorVersion": 5
+            },
             "cloudflare_zero_trust_key_access_key_configuration": {
                 "current": "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration",
                 "majorVersion": 5
@@ -4315,6 +4319,15 @@
                 "current": "cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider",
                 "majorVersion": 5
             },
+            "cloudflare_zero_trust_infrastructure_access_targets": {
+                "current": "cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets",
+                "majorVersion": 5,
+                "fields": {
+                    "targets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_zero_trust_tunnel_cloudflared": {
                 "current": "cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared",
                 "majorVersion": 5
@@ -4535,6 +4548,7 @@
             "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy": 0,
             "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint": 0,
             "cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings": 0,
+            "cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget": 1,
             "cloudflare:index/zeroTrustKeyAccessKeyConfiguration:ZeroTrustKeyAccessKeyConfiguration": 0,
             "cloudflare:index/zeroTrustList:ZeroTrustList": 0,
             "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain": 0,
@@ -4579,6 +4593,7 @@
             "cloudflare:index/getUser:getUser": 1,
             "cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication": 0,
             "cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider": 0,
+            "cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets": 1,
             "cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared": 0,
             "cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork": 0,
             "cloudflare:index/getZone:getZone": 0,

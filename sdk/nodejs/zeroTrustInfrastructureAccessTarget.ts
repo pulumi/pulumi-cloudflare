@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.InfrastructureAccessTarget("example", {
+ * const example = new cloudflare.ZeroTrustInfrastructureAccessTarget("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     hostname: "example-target",
  *     ip: {
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
- * const ipv4OnlyExample = new cloudflare.InfrastructureAccessTarget("ipv4_only_example", {
+ * const ipv4OnlyExample = new cloudflare.ZeroTrustInfrastructureAccessTarget("ipv4_only_example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     hostname: "example-ipv4-only",
  *     ip: {
@@ -44,12 +44,12 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget example <account_id>
+ * $ pulumi import cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget example <account_id>
  * ```
  */
-export class InfrastructureAccessTarget extends pulumi.CustomResource {
+export class ZeroTrustInfrastructureAccessTarget extends pulumi.CustomResource {
     /**
-     * Get an existing InfrastructureAccessTarget resource's state with the given name, ID, and optional extra
+     * Get an existing ZeroTrustInfrastructureAccessTarget resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -57,22 +57,22 @@ export class InfrastructureAccessTarget extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InfrastructureAccessTargetState, opts?: pulumi.CustomResourceOptions): InfrastructureAccessTarget {
-        return new InfrastructureAccessTarget(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustInfrastructureAccessTargetState, opts?: pulumi.CustomResourceOptions): ZeroTrustInfrastructureAccessTarget {
+        return new ZeroTrustInfrastructureAccessTarget(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget';
+    public static readonly __pulumiType = 'cloudflare:index/zeroTrustInfrastructureAccessTarget:ZeroTrustInfrastructureAccessTarget';
 
     /**
-     * Returns true if the given object is an instance of InfrastructureAccessTarget.  This is designed to work even
+     * Returns true if the given object is an instance of ZeroTrustInfrastructureAccessTarget.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is InfrastructureAccessTarget {
+    public static isInstance(obj: any): obj is ZeroTrustInfrastructureAccessTarget {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === InfrastructureAccessTarget.__pulumiType;
+        return obj['__pulumiType'] === ZeroTrustInfrastructureAccessTarget.__pulumiType;
     }
 
     /**
@@ -90,32 +90,32 @@ export class InfrastructureAccessTarget extends pulumi.CustomResource {
     /**
      * The IPv4/IPv6 address that identifies where to reach a target.
      */
-    public readonly ip!: pulumi.Output<outputs.InfrastructureAccessTargetIp>;
+    public readonly ip!: pulumi.Output<outputs.ZeroTrustInfrastructureAccessTargetIp>;
     /**
      * The date and time at which the target was last modified.
      */
     public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
 
     /**
-     * Create a InfrastructureAccessTarget resource with the given unique name, arguments, and options.
+     * Create a ZeroTrustInfrastructureAccessTarget resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InfrastructureAccessTargetArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: InfrastructureAccessTargetArgs | InfrastructureAccessTargetState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ZeroTrustInfrastructureAccessTargetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ZeroTrustInfrastructureAccessTargetArgs | ZeroTrustInfrastructureAccessTargetState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as InfrastructureAccessTargetState | undefined;
+            const state = argsOrState as ZeroTrustInfrastructureAccessTargetState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
         } else {
-            const args = argsOrState as InfrastructureAccessTargetArgs | undefined;
+            const args = argsOrState as ZeroTrustInfrastructureAccessTargetArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
@@ -132,14 +132,14 @@ export class InfrastructureAccessTarget extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InfrastructureAccessTarget.__pulumiType, name, resourceInputs, opts);
+        super(ZeroTrustInfrastructureAccessTarget.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering InfrastructureAccessTarget resources.
+ * Input properties used for looking up and filtering ZeroTrustInfrastructureAccessTarget resources.
  */
-export interface InfrastructureAccessTargetState {
+export interface ZeroTrustInfrastructureAccessTargetState {
     /**
      * The account identifier to target for the resource.
      */
@@ -155,7 +155,7 @@ export interface InfrastructureAccessTargetState {
     /**
      * The IPv4/IPv6 address that identifies where to reach a target.
      */
-    ip?: pulumi.Input<inputs.InfrastructureAccessTargetIp>;
+    ip?: pulumi.Input<inputs.ZeroTrustInfrastructureAccessTargetIp>;
     /**
      * The date and time at which the target was last modified.
      */
@@ -163,9 +163,9 @@ export interface InfrastructureAccessTargetState {
 }
 
 /**
- * The set of arguments for constructing a InfrastructureAccessTarget resource.
+ * The set of arguments for constructing a ZeroTrustInfrastructureAccessTarget resource.
  */
-export interface InfrastructureAccessTargetArgs {
+export interface ZeroTrustInfrastructureAccessTargetArgs {
     /**
      * The account identifier to target for the resource.
      */
@@ -177,5 +177,5 @@ export interface InfrastructureAccessTargetArgs {
     /**
      * The IPv4/IPv6 address that identifies where to reach a target.
      */
-    ip: pulumi.Input<inputs.InfrastructureAccessTargetIp>;
+    ip: pulumi.Input<inputs.ZeroTrustInfrastructureAccessTargetIp>;
 }
