@@ -24,7 +24,7 @@ import (
 
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
