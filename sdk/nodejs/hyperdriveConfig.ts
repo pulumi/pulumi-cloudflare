@@ -79,6 +79,10 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * The origin details for the Hyperdrive configuration.
      */
     public readonly origin!: pulumi.Output<outputs.HyperdriveConfigOrigin>;
+    /**
+     * The identifier of this resource. This is the hyperdrive config value.
+     */
+    public readonly resourceId!: pulumi.Output<string>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -97,6 +101,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["caching"] = state ? state.caching : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -112,6 +117,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["caching"] = args ? args.caching : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HyperdriveConfig.__pulumiType, name, resourceInputs, opts);
@@ -138,6 +144,10 @@ export interface HyperdriveConfigState {
      * The origin details for the Hyperdrive configuration.
      */
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The identifier of this resource. This is the hyperdrive config value.
+     */
+    resourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -160,4 +170,8 @@ export interface HyperdriveConfigArgs {
      * The origin details for the Hyperdrive configuration.
      */
     origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The identifier of this resource. This is the hyperdrive config value.
+     */
+    resourceId?: pulumi.Input<string>;
 }

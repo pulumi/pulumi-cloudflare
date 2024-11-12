@@ -136,8 +136,15 @@ func Provider() tfbridge.ProviderInfo {
 			//
 			// Set our ID as site Key, which is what it represents upstream:
 			// <https://developers.cloudflare.com/turnstile/get-started/terraform/#create-a-turnstile-widget>.
-			"cloudflare_turnstile_widget":      {ComputeID: delegateID("id")},
-			"cloudflare_hyperdrive_config":     {ComputeID: delegateID("accountId")},
+			"cloudflare_turnstile_widget": {ComputeID: delegateID("id")},
+			"cloudflare_hyperdrive_config": {
+				ComputeID: delegateID("accountId"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "resourceId",
+					},
+				},
+			},
 			"cloudflare_cloud_connector_rules": {ComputeID: delegateID("zoneId")},
 			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
 			"cloudflare_access_mutual_tls_hostname_settings": {

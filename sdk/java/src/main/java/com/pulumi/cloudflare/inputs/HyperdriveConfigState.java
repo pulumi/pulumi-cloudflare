@@ -77,6 +77,21 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.origin);
     }
 
+    /**
+     * The identifier of this resource. This is the hyperdrive config value.
+     * 
+     */
+    @Import(name="resourceId")
+    private @Nullable Output<String> resourceId;
+
+    /**
+     * @return The identifier of this resource. This is the hyperdrive config value.
+     * 
+     */
+    public Optional<Output<String>> resourceId() {
+        return Optional.ofNullable(this.resourceId);
+    }
+
     private HyperdriveConfigState() {}
 
     private HyperdriveConfigState(HyperdriveConfigState $) {
@@ -84,6 +99,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         this.caching = $.caching;
         this.name = $.name;
         this.origin = $.origin;
+        this.resourceId = $.resourceId;
     }
 
     public static Builder builder() {
@@ -186,6 +202,27 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
          */
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
+        }
+
+        /**
+         * @param resourceId The identifier of this resource. This is the hyperdrive config value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceId(@Nullable Output<String> resourceId) {
+            $.resourceId = resourceId;
+            return this;
+        }
+
+        /**
+         * @param resourceId The identifier of this resource. This is the hyperdrive config value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceId(String resourceId) {
+            return resourceId(Output.of(resourceId));
         }
 
         public HyperdriveConfigState build() {

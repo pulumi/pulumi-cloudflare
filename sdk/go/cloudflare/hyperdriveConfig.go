@@ -65,6 +65,8 @@ type HyperdriveConfig struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The origin details for the Hyperdrive configuration.
 	Origin HyperdriveConfigOriginOutput `pulumi:"origin"`
+	// The identifier of this resource. This is the hyperdrive config value.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 }
 
 // NewHyperdriveConfig registers a new resource with the given unique name, arguments, and options.
@@ -114,6 +116,8 @@ type hyperdriveConfigState struct {
 	Name *string `pulumi:"name"`
 	// The origin details for the Hyperdrive configuration.
 	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
+	// The identifier of this resource. This is the hyperdrive config value.
+	ResourceId *string `pulumi:"resourceId"`
 }
 
 type HyperdriveConfigState struct {
@@ -125,6 +129,8 @@ type HyperdriveConfigState struct {
 	Name pulumi.StringPtrInput
 	// The origin details for the Hyperdrive configuration.
 	Origin HyperdriveConfigOriginPtrInput
+	// The identifier of this resource. This is the hyperdrive config value.
+	ResourceId pulumi.StringPtrInput
 }
 
 func (HyperdriveConfigState) ElementType() reflect.Type {
@@ -140,6 +146,8 @@ type hyperdriveConfigArgs struct {
 	Name string `pulumi:"name"`
 	// The origin details for the Hyperdrive configuration.
 	Origin HyperdriveConfigOrigin `pulumi:"origin"`
+	// The identifier of this resource. This is the hyperdrive config value.
+	ResourceId *string `pulumi:"resourceId"`
 }
 
 // The set of arguments for constructing a HyperdriveConfig resource.
@@ -152,6 +160,8 @@ type HyperdriveConfigArgs struct {
 	Name pulumi.StringInput
 	// The origin details for the Hyperdrive configuration.
 	Origin HyperdriveConfigOriginInput
+	// The identifier of this resource. This is the hyperdrive config value.
+	ResourceId pulumi.StringPtrInput
 }
 
 func (HyperdriveConfigArgs) ElementType() reflect.Type {
@@ -259,6 +269,11 @@ func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {
 // The origin details for the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigOriginOutput { return v.Origin }).(HyperdriveConfigOriginOutput)
+}
+
+// The identifier of this resource. This is the hyperdrive config value.
+func (o HyperdriveConfigOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 type HyperdriveConfigArrayOutput struct{ *pulumi.OutputState }
