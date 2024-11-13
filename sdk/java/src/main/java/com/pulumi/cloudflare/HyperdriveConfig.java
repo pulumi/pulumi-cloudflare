@@ -128,6 +128,20 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<HyperdriveConfigOrigin> origin() {
         return this.origin;
     }
+    /**
+     * The identifier of this resource. This is the hyperdrive config value.
+     * 
+     */
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
+    private Output<String> resourceId;
+
+    /**
+     * @return The identifier of this resource. This is the hyperdrive config value.
+     * 
+     */
+    public Output<String> resourceId() {
+        return this.resourceId;
+    }
 
     /**
      *

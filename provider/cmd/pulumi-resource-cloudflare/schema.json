@@ -20227,11 +20227,16 @@
                 "origin": {
                     "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
                     "description": "The origin details for the Hyperdrive configuration.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of this resource. This is the hyperdrive config value.\n"
                 }
             },
             "required": [
                 "accountId",
                 "caching",
+                "resourceId",
                 "name",
                 "origin"
             ],
@@ -20251,6 +20256,10 @@
                 "origin": {
                     "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
                     "description": "The origin details for the Hyperdrive configuration.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of this resource. This is the hyperdrive config value.\n"
                 }
             },
             "requiredInputs": [
@@ -20276,6 +20285,10 @@
                     "origin": {
                         "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
                         "description": "The origin details for the Hyperdrive configuration.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of this resource. This is the hyperdrive config value.\n"
                     }
                 },
                 "type": "object"

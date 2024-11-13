@@ -73,6 +73,12 @@ namespace Pulumi.Cloudflare
         [Output("origin")]
         public Output<Outputs.HyperdriveConfigOrigin> Origin { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of this resource. This is the hyperdrive config value.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -143,6 +149,12 @@ namespace Pulumi.Cloudflare
         [Input("origin", required: true)]
         public Input<Inputs.HyperdriveConfigOriginArgs> Origin { get; set; } = null!;
 
+        /// <summary>
+        /// The identifier of this resource. This is the hyperdrive config value.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
         public HyperdriveConfigArgs()
         {
         }
@@ -174,6 +186,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("origin")]
         public Input<Inputs.HyperdriveConfigOriginGetArgs>? Origin { get; set; }
+
+        /// <summary>
+        /// The identifier of this resource. This is the hyperdrive config value.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         public HyperdriveConfigState()
         {
