@@ -50,7 +50,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`.
@@ -196,7 +196,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 
@@ -352,7 +352,7 @@ class _WaitingRoomState:
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`.
@@ -448,7 +448,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 
@@ -706,7 +706,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`.
@@ -879,7 +879,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
         :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_origin_commands: The list of enabled origin commands for the waiting room. Available values: `revoke`.
@@ -949,7 +949,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> pulumi.Output[Optional[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 
