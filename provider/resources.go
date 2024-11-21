@@ -26,6 +26,7 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -46,7 +47,7 @@ const (
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
-func Provider() tfbridge.ProviderInfo {
+func Provider() info.Provider {
 	// Instantiate the Terraform provider
 	p := pfbridge.MuxShimWithPF(context.Background(),
 		shimv2.NewProvider(
@@ -61,7 +62,7 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	// Create a Pulumi provider mapping
-	prov := tfbridge.ProviderInfo{
+	prov := info.Provider{
 		P:                p,
 		Name:             "cloudflare",
 		Description:      "A Pulumi package for creating and managing Cloudflare cloud resources.",
@@ -73,47 +74,47 @@ func Provider() tfbridge.ProviderInfo {
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
-		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
-		Config: map[string]*tfbridge.SchemaInfo{
+		DocRules:         &info.DocRule{EditRules: docEditRules},
+		Config: map[string]*info.Schema{
 			"rps": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					Value:   4,
 					EnvVars: []string{"CLOUDFLARE_RPS"},
 				},
 			},
 			"retries": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					Value:   3,
 					EnvVars: []string{"CLOUDFLARE_RETRIES"},
 				},
 			},
 			"min_backoff": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					Value:   1,
 					EnvVars: []string{"CLOUDFLARE_MIN_BACKOFF"},
 				},
 			},
 			"max_backoff": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					Value:   30,
 					EnvVars: []string{"CLOUDFLARE_MAX_BACKOFF"},
 				},
 			},
 			"api_client_logging": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					Value:   false,
 					EnvVars: []string{"CLOUDFLARE_API_CLIENT_LOGGING"},
 				},
 			},
 		},
 
-		Resources: map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*info.Resource{
 			"cloudflare_access_keys_configuration": {
 				// This resource has no upstream docs:
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Docs: &info.Doc{AllowMissing: true},
 			},
 			"cloudflare_zone": {
-				Fields: map[string]*tfbridge.SchemaInfo{
+				Fields: map[string]*info.Schema{
 					"zone": {CSharpName: "ZoneName"},
 				},
 			},
@@ -139,7 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_turnstile_widget": {ComputeID: delegateID("id")},
 			"cloudflare_hyperdrive_config": {
 				ComputeID: delegateID("accountId"),
-				Fields: map[string]*tfbridge.SchemaInfo{
+				Fields: map[string]*info.Schema{
 					"id": {
 						Name: "resourceId",
 					},
@@ -164,8 +165,16 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
+			"cloudflare_ruleset": {Fields: map[string]*info.Schema{
+				"rules": {Elem: &info.Schema{Fields: map[string]*info.Schema{
+					"action_parameters": {Elem: &info.Schema{Fields: map[string]*info.Schema{
+						"cache": {XAlwaysIncludeInImport: true},
+					}}},
+				}}},
+			}},
+
 			"cloudflare_zero_trust_risk_score_integration": {
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Docs: &info.Doc{AllowMissing: true},
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -213,7 +222,7 @@ func Provider() tfbridge.ProviderInfo {
 	return prov
 }
 
-func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+func docEditRules(defaults []info.DocsEdit) []info.DocsEdit {
 	return append(
 		defaults,
 		skipGettingStartedSection,
@@ -221,7 +230,7 @@ func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 }
 
 // Removes a "Getting Started" section that links to a tF tutorial
-var skipGettingStartedSection = tfbridge.DocsEdit{
+var skipGettingStartedSection = info.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
