@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The cloudflare provider is available as a package in all Pulumi languages:
+The Cloudflare provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/cloudflare`](https://www.npmjs.com/package/@pulumi/cloudflare)
 * Python: [`pulumi-cloudflare`](https://pypi.org/project/pulumi-cloudflare/)
