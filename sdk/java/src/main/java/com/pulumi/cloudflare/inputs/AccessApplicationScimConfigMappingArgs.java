@@ -79,6 +79,21 @@ public final class AccessApplicationScimConfigMappingArgs extends com.pulumi.res
     }
 
     /**
+     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * 
+     */
+    @Import(name="strictness")
+    private @Nullable Output<String> strictness;
+
+    /**
+     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * 
+     */
+    public Optional<Output<String>> strictness() {
+        return Optional.ofNullable(this.strictness);
+    }
+
+    /**
      * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      * 
      */
@@ -100,6 +115,7 @@ public final class AccessApplicationScimConfigMappingArgs extends com.pulumi.res
         this.filter = $.filter;
         this.operations = $.operations;
         this.schema = $.schema;
+        this.strictness = $.strictness;
         this.transformJsonata = $.transformJsonata;
     }
 
@@ -203,6 +219,27 @@ public final class AccessApplicationScimConfigMappingArgs extends com.pulumi.res
          */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param strictness How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictness(@Nullable Output<String> strictness) {
+            $.strictness = strictness;
+            return this;
+        }
+
+        /**
+         * @param strictness How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictness(String strictness) {
+            return strictness(Output.of(strictness));
         }
 
         /**

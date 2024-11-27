@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class ZeroTrustAccessIdentityProviderScimConfig {
     private @Nullable Boolean enabled;
     private @Nullable Boolean groupMemberDeprovision;
+    private @Nullable String identityUpdateBehavior;
     private @Nullable Boolean seatDeprovision;
     private @Nullable String secret;
     private @Nullable Boolean userDeprovision;
@@ -24,6 +25,9 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
     }
     public Optional<Boolean> groupMemberDeprovision() {
         return Optional.ofNullable(this.groupMemberDeprovision);
+    }
+    public Optional<String> identityUpdateBehavior() {
+        return Optional.ofNullable(this.identityUpdateBehavior);
     }
     public Optional<Boolean> seatDeprovision() {
         return Optional.ofNullable(this.seatDeprovision);
@@ -46,6 +50,7 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Boolean groupMemberDeprovision;
+        private @Nullable String identityUpdateBehavior;
         private @Nullable Boolean seatDeprovision;
         private @Nullable String secret;
         private @Nullable Boolean userDeprovision;
@@ -54,6 +59,7 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.groupMemberDeprovision = defaults.groupMemberDeprovision;
+    	      this.identityUpdateBehavior = defaults.identityUpdateBehavior;
     	      this.seatDeprovision = defaults.seatDeprovision;
     	      this.secret = defaults.secret;
     	      this.userDeprovision = defaults.userDeprovision;
@@ -69,6 +75,12 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
         public Builder groupMemberDeprovision(@Nullable Boolean groupMemberDeprovision) {
 
             this.groupMemberDeprovision = groupMemberDeprovision;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identityUpdateBehavior(@Nullable String identityUpdateBehavior) {
+
+            this.identityUpdateBehavior = identityUpdateBehavior;
             return this;
         }
         @CustomType.Setter
@@ -93,6 +105,7 @@ public final class ZeroTrustAccessIdentityProviderScimConfig {
             final var _resultValue = new ZeroTrustAccessIdentityProviderScimConfig();
             _resultValue.enabled = enabled;
             _resultValue.groupMemberDeprovision = groupMemberDeprovision;
+            _resultValue.identityUpdateBehavior = identityUpdateBehavior;
             _resultValue.seatDeprovision = seatDeprovision;
             _resultValue.secret = secret;
             _resultValue.userDeprovision = userDeprovision;

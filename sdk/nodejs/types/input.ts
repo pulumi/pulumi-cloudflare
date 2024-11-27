@@ -259,7 +259,7 @@ export interface AccessApplicationScimConfig {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      */
     idpUid: pulumi.Input<string>;
     /**
@@ -328,6 +328,10 @@ export interface AccessApplicationScimConfigMapping {
      * Which SCIM resource type this mapping applies to.
      */
     schema: pulumi.Input<string>;
+    /**
+     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+     */
+    strictness?: pulumi.Input<string>;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      */
@@ -523,11 +527,11 @@ export interface AccessGroupExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeOkta {
@@ -704,11 +708,11 @@ export interface AccessGroupIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeOkta {
@@ -885,11 +889,11 @@ export interface AccessGroupRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireOkta {
@@ -951,6 +955,7 @@ export interface AccessIdentityProviderConfig {
 export interface AccessIdentityProviderScimConfig {
     enabled?: pulumi.Input<boolean>;
     groupMemberDeprovision?: pulumi.Input<boolean>;
+    identityUpdateBehavior?: pulumi.Input<string>;
     seatDeprovision?: pulumi.Input<boolean>;
     secret?: pulumi.Input<string>;
     userDeprovision?: pulumi.Input<boolean>;
@@ -1179,11 +1184,11 @@ export interface AccessPolicyExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeOkta {
@@ -1360,11 +1365,11 @@ export interface AccessPolicyIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeOkta {
@@ -1541,11 +1546,11 @@ export interface AccessPolicyRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireOkta {
@@ -5948,7 +5953,7 @@ export interface ZeroTrustAccessApplicationScimConfig {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      */
     idpUid: pulumi.Input<string>;
     /**
@@ -6017,6 +6022,10 @@ export interface ZeroTrustAccessApplicationScimConfigMapping {
      * Which SCIM resource type this mapping applies to.
      */
     schema: pulumi.Input<string>;
+    /**
+     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+     */
+    strictness?: pulumi.Input<string>;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      */
@@ -6212,11 +6221,11 @@ export interface ZeroTrustAccessGroupExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupExcludeOkta {
@@ -6393,11 +6402,11 @@ export interface ZeroTrustAccessGroupIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupIncludeOkta {
@@ -6574,11 +6583,11 @@ export interface ZeroTrustAccessGroupRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessGroupRequireOkta {
@@ -6640,6 +6649,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
 export interface ZeroTrustAccessIdentityProviderScimConfig {
     enabled?: pulumi.Input<boolean>;
     groupMemberDeprovision?: pulumi.Input<boolean>;
+    identityUpdateBehavior?: pulumi.Input<string>;
     seatDeprovision?: pulumi.Input<boolean>;
     secret?: pulumi.Input<string>;
     userDeprovision?: pulumi.Input<boolean>;
@@ -6868,11 +6878,11 @@ export interface ZeroTrustAccessPolicyExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyExcludeOkta {
@@ -7049,11 +7059,11 @@ export interface ZeroTrustAccessPolicyIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyIncludeOkta {
@@ -7230,11 +7240,11 @@ export interface ZeroTrustAccessPolicyRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessPolicyRequireOkta {

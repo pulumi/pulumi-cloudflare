@@ -5,11 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessGroupExcludeGsuiteArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,30 +19,30 @@ public final class ZeroTrustAccessGroupExcludeGsuiteArgs extends com.pulumi.reso
      * The email of the Google Workspace group.
      * 
      */
-    @Import(name="emails")
-    private @Nullable Output<List<String>> emails;
+    @Import(name="emails", required=true)
+    private Output<List<String>> emails;
 
     /**
      * @return The email of the Google Workspace group.
      * 
      */
-    public Optional<Output<List<String>>> emails() {
-        return Optional.ofNullable(this.emails);
+    public Output<List<String>> emails() {
+        return this.emails;
     }
 
     /**
      * The ID of your Google Workspace identity provider.
      * 
      */
-    @Import(name="identityProviderId")
-    private @Nullable Output<String> identityProviderId;
+    @Import(name="identityProviderId", required=true)
+    private Output<String> identityProviderId;
 
     /**
      * @return The ID of your Google Workspace identity provider.
      * 
      */
-    public Optional<Output<String>> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public Output<String> identityProviderId() {
+        return this.identityProviderId;
     }
 
     private ZeroTrustAccessGroupExcludeGsuiteArgs() {}
@@ -77,7 +76,7 @@ public final class ZeroTrustAccessGroupExcludeGsuiteArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder emails(@Nullable Output<List<String>> emails) {
+        public Builder emails(Output<List<String>> emails) {
             $.emails = emails;
             return this;
         }
@@ -108,7 +107,7 @@ public final class ZeroTrustAccessGroupExcludeGsuiteArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
+        public Builder identityProviderId(Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
@@ -124,6 +123,12 @@ public final class ZeroTrustAccessGroupExcludeGsuiteArgs extends com.pulumi.reso
         }
 
         public ZeroTrustAccessGroupExcludeGsuiteArgs build() {
+            if ($.emails == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessGroupExcludeGsuiteArgs", "emails");
+            }
+            if ($.identityProviderId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessGroupExcludeGsuiteArgs", "identityProviderId");
+            }
             return $;
         }
     }

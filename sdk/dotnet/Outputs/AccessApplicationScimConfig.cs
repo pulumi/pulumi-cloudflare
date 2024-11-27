@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        /// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         /// </summary>
         public readonly string IdpUid;
         /// <summary>

@@ -4,11 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessGroupExcludeGsuite {
@@ -16,12 +15,12 @@ public final class AccessGroupExcludeGsuite {
      * @return The email of the Google Workspace group.
      * 
      */
-    private @Nullable List<String> emails;
+    private List<String> emails;
     /**
      * @return The ID of your Google Workspace identity provider.
      * 
      */
-    private @Nullable String identityProviderId;
+    private String identityProviderId;
 
     private AccessGroupExcludeGsuite() {}
     /**
@@ -29,14 +28,14 @@ public final class AccessGroupExcludeGsuite {
      * 
      */
     public List<String> emails() {
-        return this.emails == null ? List.of() : this.emails;
+        return this.emails;
     }
     /**
      * @return The ID of your Google Workspace identity provider.
      * 
      */
-    public Optional<String> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public String identityProviderId() {
+        return this.identityProviderId;
     }
 
     public static Builder builder() {
@@ -48,8 +47,8 @@ public final class AccessGroupExcludeGsuite {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> emails;
-        private @Nullable String identityProviderId;
+        private List<String> emails;
+        private String identityProviderId;
         public Builder() {}
         public Builder(AccessGroupExcludeGsuite defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,8 +57,10 @@ public final class AccessGroupExcludeGsuite {
         }
 
         @CustomType.Setter
-        public Builder emails(@Nullable List<String> emails) {
-
+        public Builder emails(List<String> emails) {
+            if (emails == null) {
+              throw new MissingRequiredPropertyException("AccessGroupExcludeGsuite", "emails");
+            }
             this.emails = emails;
             return this;
         }
@@ -67,8 +68,10 @@ public final class AccessGroupExcludeGsuite {
             return emails(List.of(emails));
         }
         @CustomType.Setter
-        public Builder identityProviderId(@Nullable String identityProviderId) {
-
+        public Builder identityProviderId(String identityProviderId) {
+            if (identityProviderId == null) {
+              throw new MissingRequiredPropertyException("AccessGroupExcludeGsuite", "identityProviderId");
+            }
             this.identityProviderId = identityProviderId;
             return this;
         }

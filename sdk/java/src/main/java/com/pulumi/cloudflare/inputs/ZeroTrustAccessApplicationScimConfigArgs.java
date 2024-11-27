@@ -66,14 +66,14 @@ public final class ZeroTrustAccessApplicationScimConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     @Import(name="idpUid", required=true)
     private Output<String> idpUid;
 
     /**
-     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public Output<String> idpUid() {
@@ -203,7 +203,7 @@ public final class ZeroTrustAccessApplicationScimConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
+         * @param idpUid The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ZeroTrustAccessApplicationScimConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
+         * @param idpUid The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 

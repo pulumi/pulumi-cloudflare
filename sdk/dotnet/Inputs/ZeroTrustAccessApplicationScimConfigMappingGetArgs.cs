@@ -37,6 +37,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
+        /// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        /// </summary>
+        [Input("strictness")]
+        public Input<string>? Strictness { get; set; }
+
+        /// <summary>
         /// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
         /// </summary>
         [Input("transformJsonata")]

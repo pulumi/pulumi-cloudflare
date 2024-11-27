@@ -30,6 +30,13 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
         return Optional.ofNullable(this.groupMemberDeprovision);
     }
 
+    @Import(name="identityUpdateBehavior")
+    private @Nullable Output<String> identityUpdateBehavior;
+
+    public Optional<Output<String>> identityUpdateBehavior() {
+        return Optional.ofNullable(this.identityUpdateBehavior);
+    }
+
     @Import(name="seatDeprovision")
     private @Nullable Output<Boolean> seatDeprovision;
 
@@ -56,6 +63,7 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
     private AccessIdentityProviderScimConfigArgs(AccessIdentityProviderScimConfigArgs $) {
         this.enabled = $.enabled;
         this.groupMemberDeprovision = $.groupMemberDeprovision;
+        this.identityUpdateBehavior = $.identityUpdateBehavior;
         this.seatDeprovision = $.seatDeprovision;
         this.secret = $.secret;
         this.userDeprovision = $.userDeprovision;
@@ -95,6 +103,15 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
 
         public Builder groupMemberDeprovision(Boolean groupMemberDeprovision) {
             return groupMemberDeprovision(Output.of(groupMemberDeprovision));
+        }
+
+        public Builder identityUpdateBehavior(@Nullable Output<String> identityUpdateBehavior) {
+            $.identityUpdateBehavior = identityUpdateBehavior;
+            return this;
+        }
+
+        public Builder identityUpdateBehavior(String identityUpdateBehavior) {
+            return identityUpdateBehavior(Output.of(identityUpdateBehavior));
         }
 
         public Builder seatDeprovision(@Nullable Output<Boolean> seatDeprovision) {

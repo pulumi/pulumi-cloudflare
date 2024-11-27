@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        /// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         /// </summary>
         [Input("idpUid", required: true)]
         public Input<string> IdpUid { get; set; } = null!;

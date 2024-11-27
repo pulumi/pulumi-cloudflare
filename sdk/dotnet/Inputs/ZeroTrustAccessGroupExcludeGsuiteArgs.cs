@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustAccessGroupExcludeGsuiteArgs : global::Pulumi.ResourceArgs
     {
-        [Input("emails")]
+        [Input("emails", required: true)]
         private InputList<string>? _emails;
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The ID of your Google Workspace identity provider.
         /// </summary>
-        [Input("identityProviderId")]
-        public Input<string>? IdentityProviderId { get; set; }
+        [Input("identityProviderId", required: true)]
+        public Input<string> IdentityProviderId { get; set; } = null!;
 
         public ZeroTrustAccessGroupExcludeGsuiteArgs()
         {
