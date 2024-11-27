@@ -259,7 +259,7 @@ export interface AccessApplicationScimConfig {
      */
     enabled?: boolean;
     /**
-     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      */
     idpUid: string;
     /**
@@ -328,6 +328,10 @@ export interface AccessApplicationScimConfigMapping {
      * Which SCIM resource type this mapping applies to.
      */
     schema: string;
+    /**
+     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+     */
+    strictness?: string;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      */
@@ -523,11 +527,11 @@ export interface AccessGroupExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupExcludeOkta {
@@ -704,11 +708,11 @@ export interface AccessGroupIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupIncludeOkta {
@@ -885,11 +889,11 @@ export interface AccessGroupRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupRequireOkta {
@@ -951,6 +955,7 @@ export interface AccessIdentityProviderConfig {
 export interface AccessIdentityProviderScimConfig {
     enabled?: boolean;
     groupMemberDeprovision?: boolean;
+    identityUpdateBehavior: string;
     seatDeprovision?: boolean;
     secret: string;
     userDeprovision?: boolean;
@@ -1179,11 +1184,11 @@ export interface AccessPolicyExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyExcludeOkta {
@@ -1360,11 +1365,11 @@ export interface AccessPolicyIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyIncludeOkta {
@@ -1541,11 +1546,11 @@ export interface AccessPolicyRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyRequireOkta {
@@ -6899,7 +6904,7 @@ export interface ZeroTrustAccessApplicationScimConfig {
      */
     enabled?: boolean;
     /**
-     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      */
     idpUid: string;
     /**
@@ -6968,6 +6973,10 @@ export interface ZeroTrustAccessApplicationScimConfigMapping {
      * Which SCIM resource type this mapping applies to.
      */
     schema: string;
+    /**
+     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+     */
+    strictness?: string;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      */
@@ -7163,11 +7172,11 @@ export interface ZeroTrustAccessGroupExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupExcludeOkta {
@@ -7344,11 +7353,11 @@ export interface ZeroTrustAccessGroupIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupIncludeOkta {
@@ -7525,11 +7534,11 @@ export interface ZeroTrustAccessGroupRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessGroupRequireOkta {
@@ -7591,6 +7600,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
 export interface ZeroTrustAccessIdentityProviderScimConfig {
     enabled?: boolean;
     groupMemberDeprovision?: boolean;
+    identityUpdateBehavior: string;
     seatDeprovision?: boolean;
     secret: string;
     userDeprovision?: boolean;
@@ -7819,11 +7829,11 @@ export interface ZeroTrustAccessPolicyExcludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyExcludeOkta {
@@ -8000,11 +8010,11 @@ export interface ZeroTrustAccessPolicyIncludeGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyIncludeOkta {
@@ -8181,11 +8191,11 @@ export interface ZeroTrustAccessPolicyRequireGsuite {
     /**
      * The email of the Google Workspace group.
      */
-    emails?: string[];
+    emails: string[];
     /**
      * The ID of your Google Workspace identity provider.
      */
-    identityProviderId?: string;
+    identityProviderId: string;
 }
 
 export interface ZeroTrustAccessPolicyRequireOkta {

@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly bool? Enabled;
         public readonly bool? GroupMemberDeprovision;
+        public readonly string? IdentityUpdateBehavior;
         public readonly bool? SeatDeprovision;
         public readonly string? Secret;
         public readonly bool? UserDeprovision;
@@ -25,6 +26,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? groupMemberDeprovision,
 
+            string? identityUpdateBehavior,
+
             bool? seatDeprovision,
 
             string? secret,
@@ -33,6 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Enabled = enabled;
             GroupMemberDeprovision = groupMemberDeprovision;
+            IdentityUpdateBehavior = identityUpdateBehavior;
             SeatDeprovision = seatDeprovision;
             Secret = secret;
             UserDeprovision = userDeprovision;

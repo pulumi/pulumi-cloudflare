@@ -56,7 +56,7 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`, `dlpForensicCopies`.
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface LogpushJobState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`, `dlpForensicCopies`.
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface LogpushJobArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`, `dlpForensicCopies`.
      */
     dataset: pulumi.Input<string>;
     /**

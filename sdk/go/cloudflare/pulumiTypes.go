@@ -1690,7 +1690,7 @@ type AccessApplicationScimConfig struct {
 	DeactivateOnDelete *bool `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled *bool `pulumi:"enabled"`
-	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+	// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid string `pulumi:"idpUid"`
 	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings []AccessApplicationScimConfigMapping `pulumi:"mappings"`
@@ -1716,7 +1716,7 @@ type AccessApplicationScimConfigArgs struct {
 	DeactivateOnDelete pulumi.BoolPtrInput `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+	// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid pulumi.StringInput `pulumi:"idpUid"`
 	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings AccessApplicationScimConfigMappingArrayInput `pulumi:"mappings"`
@@ -1818,7 +1818,7 @@ func (o AccessApplicationScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 func (o AccessApplicationScimConfigOutput) IdpUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) string { return v.IdpUid }).(pulumi.StringOutput)
 }
@@ -1887,7 +1887,7 @@ func (o AccessApplicationScimConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 func (o AccessApplicationScimConfigPtrOutput) IdpUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfig) *string {
 		if v == nil {
@@ -2215,6 +2215,8 @@ type AccessApplicationScimConfigMapping struct {
 	Operations *AccessApplicationScimConfigMappingOperations `pulumi:"operations"`
 	// Which SCIM resource type this mapping applies to.
 	Schema string `pulumi:"schema"`
+	// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+	Strictness *string `pulumi:"strictness"`
 	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 	TransformJsonata *string `pulumi:"transformJsonata"`
 }
@@ -2239,6 +2241,8 @@ type AccessApplicationScimConfigMappingArgs struct {
 	Operations AccessApplicationScimConfigMappingOperationsPtrInput `pulumi:"operations"`
 	// Which SCIM resource type this mapping applies to.
 	Schema pulumi.StringInput `pulumi:"schema"`
+	// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+	Strictness pulumi.StringPtrInput `pulumi:"strictness"`
 	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 	TransformJsonata pulumi.StringPtrInput `pulumi:"transformJsonata"`
 }
@@ -2314,6 +2318,11 @@ func (o AccessApplicationScimConfigMappingOutput) Operations() AccessApplication
 // Which SCIM resource type this mapping applies to.
 func (o AccessApplicationScimConfigMappingOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigMapping) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+func (o AccessApplicationScimConfigMappingOutput) Strictness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) *string { return v.Strictness }).(pulumi.StringPtrOutput)
 }
 
 // A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
@@ -3527,7 +3536,7 @@ type AccessGroupExcludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupExcludeGsuiteInput is an input type that accepts AccessGroupExcludeGsuiteArgs and AccessGroupExcludeGsuiteOutput values.
@@ -3545,7 +3554,7 @@ type AccessGroupExcludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -3605,8 +3614,8 @@ func (o AccessGroupExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessGroupExcludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -4638,7 +4647,7 @@ type AccessGroupIncludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupIncludeGsuiteInput is an input type that accepts AccessGroupIncludeGsuiteArgs and AccessGroupIncludeGsuiteOutput values.
@@ -4656,7 +4665,7 @@ type AccessGroupIncludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -4716,8 +4725,8 @@ func (o AccessGroupIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessGroupIncludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -5749,7 +5758,7 @@ type AccessGroupRequireGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessGroupRequireGsuiteInput is an input type that accepts AccessGroupRequireGsuiteArgs and AccessGroupRequireGsuiteOutput values.
@@ -5767,7 +5776,7 @@ type AccessGroupRequireGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
@@ -5827,8 +5836,8 @@ func (o AccessGroupRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessGroupRequireGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -6325,6 +6334,7 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 type AccessIdentityProviderScimConfig struct {
 	Enabled                *bool   `pulumi:"enabled"`
 	GroupMemberDeprovision *bool   `pulumi:"groupMemberDeprovision"`
+	IdentityUpdateBehavior *string `pulumi:"identityUpdateBehavior"`
 	SeatDeprovision        *bool   `pulumi:"seatDeprovision"`
 	Secret                 *string `pulumi:"secret"`
 	UserDeprovision        *bool   `pulumi:"userDeprovision"`
@@ -6344,6 +6354,7 @@ type AccessIdentityProviderScimConfigInput interface {
 type AccessIdentityProviderScimConfigArgs struct {
 	Enabled                pulumi.BoolPtrInput   `pulumi:"enabled"`
 	GroupMemberDeprovision pulumi.BoolPtrInput   `pulumi:"groupMemberDeprovision"`
+	IdentityUpdateBehavior pulumi.StringPtrInput `pulumi:"identityUpdateBehavior"`
 	SeatDeprovision        pulumi.BoolPtrInput   `pulumi:"seatDeprovision"`
 	Secret                 pulumi.StringPtrInput `pulumi:"secret"`
 	UserDeprovision        pulumi.BoolPtrInput   `pulumi:"userDeprovision"`
@@ -6406,6 +6417,10 @@ func (o AccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
 
 func (o AccessIdentityProviderScimConfigOutput) GroupMemberDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.GroupMemberDeprovision }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderScimConfigOutput) IdentityUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *string { return v.IdentityUpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolPtrOutput {
@@ -7968,7 +7983,7 @@ type AccessPolicyExcludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyExcludeGsuiteInput is an input type that accepts AccessPolicyExcludeGsuiteArgs and AccessPolicyExcludeGsuiteOutput values.
@@ -7986,7 +8001,7 @@ type AccessPolicyExcludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -8046,8 +8061,8 @@ func (o AccessPolicyExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessPolicyExcludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -9079,7 +9094,7 @@ type AccessPolicyIncludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyIncludeGsuiteInput is an input type that accepts AccessPolicyIncludeGsuiteArgs and AccessPolicyIncludeGsuiteOutput values.
@@ -9097,7 +9112,7 @@ type AccessPolicyIncludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -9157,8 +9172,8 @@ func (o AccessPolicyIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessPolicyIncludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -10190,7 +10205,7 @@ type AccessPolicyRequireGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyRequireGsuiteInput is an input type that accepts AccessPolicyRequireGsuiteArgs and AccessPolicyRequireGsuiteOutput values.
@@ -10208,7 +10223,7 @@ type AccessPolicyRequireGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
@@ -10268,8 +10283,8 @@ func (o AccessPolicyRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
 }
 
 // The ID of your Google Workspace identity provider.
-func (o AccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o AccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type AccessPolicyRequireGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -45994,7 +46009,7 @@ type ZeroTrustAccessApplicationScimConfig struct {
 	DeactivateOnDelete *bool `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled *bool `pulumi:"enabled"`
-	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+	// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid string `pulumi:"idpUid"`
 	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings []ZeroTrustAccessApplicationScimConfigMapping `pulumi:"mappings"`
@@ -46020,7 +46035,7 @@ type ZeroTrustAccessApplicationScimConfigArgs struct {
 	DeactivateOnDelete pulumi.BoolPtrInput `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+	// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid pulumi.StringInput `pulumi:"idpUid"`
 	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings ZeroTrustAccessApplicationScimConfigMappingArrayInput `pulumi:"mappings"`
@@ -46122,7 +46137,7 @@ func (o ZeroTrustAccessApplicationScimConfigOutput) Enabled() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 func (o ZeroTrustAccessApplicationScimConfigOutput) IdpUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfig) string { return v.IdpUid }).(pulumi.StringOutput)
 }
@@ -46193,7 +46208,7 @@ func (o ZeroTrustAccessApplicationScimConfigPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The UID of the IdP to use as the source for SCIM resources to provision to this application.
+// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
 func (o ZeroTrustAccessApplicationScimConfigPtrOutput) IdpUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfig) *string {
 		if v == nil {
@@ -46521,6 +46536,8 @@ type ZeroTrustAccessApplicationScimConfigMapping struct {
 	Operations *ZeroTrustAccessApplicationScimConfigMappingOperations `pulumi:"operations"`
 	// Which SCIM resource type this mapping applies to.
 	Schema string `pulumi:"schema"`
+	// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+	Strictness *string `pulumi:"strictness"`
 	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 	TransformJsonata *string `pulumi:"transformJsonata"`
 }
@@ -46545,6 +46562,8 @@ type ZeroTrustAccessApplicationScimConfigMappingArgs struct {
 	Operations ZeroTrustAccessApplicationScimConfigMappingOperationsPtrInput `pulumi:"operations"`
 	// Which SCIM resource type this mapping applies to.
 	Schema pulumi.StringInput `pulumi:"schema"`
+	// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+	Strictness pulumi.StringPtrInput `pulumi:"strictness"`
 	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 	TransformJsonata pulumi.StringPtrInput `pulumi:"transformJsonata"`
 }
@@ -46620,6 +46639,11 @@ func (o ZeroTrustAccessApplicationScimConfigMappingOutput) Operations() ZeroTrus
 // Which SCIM resource type this mapping applies to.
 func (o ZeroTrustAccessApplicationScimConfigMappingOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigMapping) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+func (o ZeroTrustAccessApplicationScimConfigMappingOutput) Strictness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigMapping) *string { return v.Strictness }).(pulumi.StringPtrOutput)
 }
 
 // A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
@@ -47785,7 +47809,7 @@ type ZeroTrustAccessGroupExcludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupExcludeGsuiteInput is an input type that accepts ZeroTrustAccessGroupExcludeGsuiteArgs and ZeroTrustAccessGroupExcludeGsuiteOutput values.
@@ -47803,7 +47827,7 @@ type ZeroTrustAccessGroupExcludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -47863,8 +47887,8 @@ func (o ZeroTrustAccessGroupExcludeGsuiteOutput) Emails() pulumi.StringArrayOutp
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessGroupExcludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -48848,7 +48872,7 @@ type ZeroTrustAccessGroupIncludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupIncludeGsuiteInput is an input type that accepts ZeroTrustAccessGroupIncludeGsuiteArgs and ZeroTrustAccessGroupIncludeGsuiteOutput values.
@@ -48866,7 +48890,7 @@ type ZeroTrustAccessGroupIncludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -48926,8 +48950,8 @@ func (o ZeroTrustAccessGroupIncludeGsuiteOutput) Emails() pulumi.StringArrayOutp
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessGroupIncludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -49911,7 +49935,7 @@ type ZeroTrustAccessGroupRequireGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessGroupRequireGsuiteInput is an input type that accepts ZeroTrustAccessGroupRequireGsuiteArgs and ZeroTrustAccessGroupRequireGsuiteOutput values.
@@ -49929,7 +49953,7 @@ type ZeroTrustAccessGroupRequireGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
@@ -49989,8 +50013,8 @@ func (o ZeroTrustAccessGroupRequireGsuiteOutput) Emails() pulumi.StringArrayOutp
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupRequireGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessGroupRequireGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -50487,6 +50511,7 @@ func (o ZeroTrustAccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInpu
 type ZeroTrustAccessIdentityProviderScimConfig struct {
 	Enabled                *bool   `pulumi:"enabled"`
 	GroupMemberDeprovision *bool   `pulumi:"groupMemberDeprovision"`
+	IdentityUpdateBehavior *string `pulumi:"identityUpdateBehavior"`
 	SeatDeprovision        *bool   `pulumi:"seatDeprovision"`
 	Secret                 *string `pulumi:"secret"`
 	UserDeprovision        *bool   `pulumi:"userDeprovision"`
@@ -50506,6 +50531,7 @@ type ZeroTrustAccessIdentityProviderScimConfigInput interface {
 type ZeroTrustAccessIdentityProviderScimConfigArgs struct {
 	Enabled                pulumi.BoolPtrInput   `pulumi:"enabled"`
 	GroupMemberDeprovision pulumi.BoolPtrInput   `pulumi:"groupMemberDeprovision"`
+	IdentityUpdateBehavior pulumi.StringPtrInput `pulumi:"identityUpdateBehavior"`
 	SeatDeprovision        pulumi.BoolPtrInput   `pulumi:"seatDeprovision"`
 	Secret                 pulumi.StringPtrInput `pulumi:"secret"`
 	UserDeprovision        pulumi.BoolPtrInput   `pulumi:"userDeprovision"`
@@ -50568,6 +50594,10 @@ func (o ZeroTrustAccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolPt
 
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) GroupMemberDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *bool { return v.GroupMemberDeprovision }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustAccessIdentityProviderScimConfigOutput) IdentityUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *string { return v.IdentityUpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolPtrOutput {
@@ -52082,7 +52112,7 @@ type ZeroTrustAccessPolicyExcludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyExcludeGsuiteInput is an input type that accepts ZeroTrustAccessPolicyExcludeGsuiteArgs and ZeroTrustAccessPolicyExcludeGsuiteOutput values.
@@ -52100,7 +52130,7 @@ type ZeroTrustAccessPolicyExcludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -52160,8 +52190,8 @@ func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) Emails() pulumi.StringArrayOut
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessPolicyExcludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -53145,7 +53175,7 @@ type ZeroTrustAccessPolicyIncludeGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyIncludeGsuiteInput is an input type that accepts ZeroTrustAccessPolicyIncludeGsuiteArgs and ZeroTrustAccessPolicyIncludeGsuiteOutput values.
@@ -53163,7 +53193,7 @@ type ZeroTrustAccessPolicyIncludeGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -53223,8 +53253,8 @@ func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) Emails() pulumi.StringArrayOut
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessPolicyIncludeGsuiteArrayOutput struct{ *pulumi.OutputState }
@@ -54208,7 +54238,7 @@ type ZeroTrustAccessPolicyRequireGsuite struct {
 	// The email of the Google Workspace group.
 	Emails []string `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
 }
 
 // ZeroTrustAccessPolicyRequireGsuiteInput is an input type that accepts ZeroTrustAccessPolicyRequireGsuiteArgs and ZeroTrustAccessPolicyRequireGsuiteOutput values.
@@ -54226,7 +54256,7 @@ type ZeroTrustAccessPolicyRequireGsuiteArgs struct {
 	// The email of the Google Workspace group.
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
 }
 
 func (ZeroTrustAccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
@@ -54286,8 +54316,8 @@ func (o ZeroTrustAccessPolicyRequireGsuiteOutput) Emails() pulumi.StringArrayOut
 }
 
 // The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessPolicyRequireGsuiteArrayOutput struct{ *pulumi.OutputState }

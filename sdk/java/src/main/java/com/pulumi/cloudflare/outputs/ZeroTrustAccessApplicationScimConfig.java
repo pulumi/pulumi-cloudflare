@@ -32,7 +32,7 @@ public final class ZeroTrustAccessApplicationScimConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     private String idpUid;
@@ -70,7 +70,7 @@ public final class ZeroTrustAccessApplicationScimConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public String idpUid() {

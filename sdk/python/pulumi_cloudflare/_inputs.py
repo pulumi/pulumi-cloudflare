@@ -2047,7 +2047,7 @@ if not MYPY:
     class AccessApplicationScimConfigArgsDict(TypedDict):
         idp_uid: pulumi.Input[str]
         """
-        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         """
         remote_uri: pulumi.Input[str]
         """
@@ -2082,7 +2082,7 @@ class AccessApplicationScimConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]] = None):
         """
-        :param pulumi.Input[str] idp_uid: The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        :param pulumi.Input[str] idp_uid: The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         :param pulumi.Input[str] remote_uri: The base URI for the application's SCIM-compatible API.
         :param pulumi.Input['AccessApplicationScimConfigAuthenticationArgs'] authentication: Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
         :param pulumi.Input[bool] deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
@@ -2104,7 +2104,7 @@ class AccessApplicationScimConfigArgs:
     @pulumi.getter(name="idpUid")
     def idp_uid(self) -> pulumi.Input[str]:
         """
-        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         """
         return pulumi.get(self, "idp_uid")
 
@@ -2382,6 +2382,10 @@ if not MYPY:
         """
         Whether or not this mapping applies to creates, updates, or deletes.
         """
+        strictness: NotRequired[pulumi.Input[str]]
+        """
+        How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        """
         transform_jsonata: NotRequired[pulumi.Input[str]]
         """
         A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
@@ -2396,12 +2400,14 @@ class AccessApplicationScimConfigMappingArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  operations: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']] = None,
+                 strictness: Optional[pulumi.Input[str]] = None,
                  transform_jsonata: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] schema: Which SCIM resource type this mapping applies to.
         :param pulumi.Input[bool] enabled: Whether or not this mapping is enabled.
         :param pulumi.Input[str] filter: A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
         :param pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs'] operations: Whether or not this mapping applies to creates, updates, or deletes.
+        :param pulumi.Input[str] strictness: How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
         :param pulumi.Input[str] transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2411,6 +2417,8 @@ class AccessApplicationScimConfigMappingArgs:
             pulumi.set(__self__, "filter", filter)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
+        if strictness is not None:
+            pulumi.set(__self__, "strictness", strictness)
         if transform_jsonata is not None:
             pulumi.set(__self__, "transform_jsonata", transform_jsonata)
 
@@ -2461,6 +2469,18 @@ class AccessApplicationScimConfigMappingArgs:
     @operations.setter
     def operations(self, value: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']]):
         pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def strictness(self) -> Optional[pulumi.Input[str]]:
+        """
+        How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        """
+        return pulumi.get(self, "strictness")
+
+    @strictness.setter
+    def strictness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strictness", value)
 
     @property
     @pulumi.getter(name="transformJsonata")
@@ -3378,11 +3398,11 @@ class AccessGroupExcludeGithubArgs:
 
 if not MYPY:
     class AccessGroupExcludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -3392,39 +3412,37 @@ elif False:
 @pulumi.input_type
 class AccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -4264,11 +4282,11 @@ class AccessGroupIncludeGithubArgs:
 
 if not MYPY:
     class AccessGroupIncludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -4278,39 +4296,37 @@ elif False:
 @pulumi.input_type
 class AccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -5150,11 +5166,11 @@ class AccessGroupRequireGithubArgs:
 
 if not MYPY:
     class AccessGroupRequireGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -5164,39 +5180,37 @@ elif False:
 @pulumi.input_type
 class AccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -5689,6 +5703,7 @@ if not MYPY:
     class AccessIdentityProviderScimConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        identity_update_behavior: NotRequired[pulumi.Input[str]]
         seat_deprovision: NotRequired[pulumi.Input[bool]]
         secret: NotRequired[pulumi.Input[str]]
         user_deprovision: NotRequired[pulumi.Input[bool]]
@@ -5700,6 +5715,7 @@ class AccessIdentityProviderScimConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  group_member_deprovision: Optional[pulumi.Input[bool]] = None,
+                 identity_update_behavior: Optional[pulumi.Input[str]] = None,
                  seat_deprovision: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  user_deprovision: Optional[pulumi.Input[bool]] = None):
@@ -5707,6 +5723,8 @@ class AccessIdentityProviderScimConfigArgs:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
             pulumi.set(__self__, "group_member_deprovision", group_member_deprovision)
+        if identity_update_behavior is not None:
+            pulumi.set(__self__, "identity_update_behavior", identity_update_behavior)
         if seat_deprovision is not None:
             pulumi.set(__self__, "seat_deprovision", seat_deprovision)
         if secret is not None:
@@ -5731,6 +5749,15 @@ class AccessIdentityProviderScimConfigArgs:
     @group_member_deprovision.setter
     def group_member_deprovision(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "group_member_deprovision", value)
+
+    @property
+    @pulumi.getter(name="identityUpdateBehavior")
+    def identity_update_behavior(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identity_update_behavior")
+
+    @identity_update_behavior.setter
+    def identity_update_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_update_behavior", value)
 
     @property
     @pulumi.getter(name="seatDeprovision")
@@ -6833,11 +6860,11 @@ class AccessPolicyExcludeGithubArgs:
 
 if not MYPY:
     class AccessPolicyExcludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -6847,39 +6874,37 @@ elif False:
 @pulumi.input_type
 class AccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -7719,11 +7744,11 @@ class AccessPolicyIncludeGithubArgs:
 
 if not MYPY:
     class AccessPolicyIncludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -7733,39 +7758,37 @@ elif False:
 @pulumi.input_type
 class AccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -8605,11 +8628,11 @@ class AccessPolicyRequireGithubArgs:
 
 if not MYPY:
     class AccessPolicyRequireGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -8619,39 +8642,37 @@ elif False:
 @pulumi.input_type
 class AccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -28576,7 +28597,7 @@ if not MYPY:
     class ZeroTrustAccessApplicationScimConfigArgsDict(TypedDict):
         idp_uid: pulumi.Input[str]
         """
-        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         """
         remote_uri: pulumi.Input[str]
         """
@@ -28611,7 +28632,7 @@ class ZeroTrustAccessApplicationScimConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingArgs']]]] = None):
         """
-        :param pulumi.Input[str] idp_uid: The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        :param pulumi.Input[str] idp_uid: The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         :param pulumi.Input[str] remote_uri: The base URI for the application's SCIM-compatible API.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigAuthenticationArgs'] authentication: Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
         :param pulumi.Input[bool] deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
@@ -28633,7 +28654,7 @@ class ZeroTrustAccessApplicationScimConfigArgs:
     @pulumi.getter(name="idpUid")
     def idp_uid(self) -> pulumi.Input[str]:
         """
-        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+        The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
         """
         return pulumi.get(self, "idp_uid")
 
@@ -28911,6 +28932,10 @@ if not MYPY:
         """
         Whether or not this mapping applies to creates, updates, or deletes.
         """
+        strictness: NotRequired[pulumi.Input[str]]
+        """
+        How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        """
         transform_jsonata: NotRequired[pulumi.Input[str]]
         """
         A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
@@ -28925,12 +28950,14 @@ class ZeroTrustAccessApplicationScimConfigMappingArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  operations: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingOperationsArgs']] = None,
+                 strictness: Optional[pulumi.Input[str]] = None,
                  transform_jsonata: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] schema: Which SCIM resource type this mapping applies to.
         :param pulumi.Input[bool] enabled: Whether or not this mapping is enabled.
         :param pulumi.Input[str] filter: A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingOperationsArgs'] operations: Whether or not this mapping applies to creates, updates, or deletes.
+        :param pulumi.Input[str] strictness: How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
         :param pulumi.Input[str] transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
         """
         pulumi.set(__self__, "schema", schema)
@@ -28940,6 +28967,8 @@ class ZeroTrustAccessApplicationScimConfigMappingArgs:
             pulumi.set(__self__, "filter", filter)
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
+        if strictness is not None:
+            pulumi.set(__self__, "strictness", strictness)
         if transform_jsonata is not None:
             pulumi.set(__self__, "transform_jsonata", transform_jsonata)
 
@@ -28990,6 +29019,18 @@ class ZeroTrustAccessApplicationScimConfigMappingArgs:
     @operations.setter
     def operations(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingOperationsArgs']]):
         pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def strictness(self) -> Optional[pulumi.Input[str]]:
+        """
+        How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        """
+        return pulumi.get(self, "strictness")
+
+    @strictness.setter
+    def strictness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strictness", value)
 
     @property
     @pulumi.getter(name="transformJsonata")
@@ -29907,11 +29948,11 @@ class ZeroTrustAccessGroupExcludeGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessGroupExcludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -29921,39 +29962,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -30793,11 +30832,11 @@ class ZeroTrustAccessGroupIncludeGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessGroupIncludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -30807,39 +30846,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -31679,11 +31716,11 @@ class ZeroTrustAccessGroupRequireGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessGroupRequireGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -31693,39 +31730,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -32218,6 +32253,7 @@ if not MYPY:
     class ZeroTrustAccessIdentityProviderScimConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        identity_update_behavior: NotRequired[pulumi.Input[str]]
         seat_deprovision: NotRequired[pulumi.Input[bool]]
         secret: NotRequired[pulumi.Input[str]]
         user_deprovision: NotRequired[pulumi.Input[bool]]
@@ -32229,6 +32265,7 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  group_member_deprovision: Optional[pulumi.Input[bool]] = None,
+                 identity_update_behavior: Optional[pulumi.Input[str]] = None,
                  seat_deprovision: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  user_deprovision: Optional[pulumi.Input[bool]] = None):
@@ -32236,6 +32273,8 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
             pulumi.set(__self__, "group_member_deprovision", group_member_deprovision)
+        if identity_update_behavior is not None:
+            pulumi.set(__self__, "identity_update_behavior", identity_update_behavior)
         if seat_deprovision is not None:
             pulumi.set(__self__, "seat_deprovision", seat_deprovision)
         if secret is not None:
@@ -32260,6 +32299,15 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @group_member_deprovision.setter
     def group_member_deprovision(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "group_member_deprovision", value)
+
+    @property
+    @pulumi.getter(name="identityUpdateBehavior")
+    def identity_update_behavior(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identity_update_behavior")
+
+    @identity_update_behavior.setter
+    def identity_update_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_update_behavior", value)
 
     @property
     @pulumi.getter(name="seatDeprovision")
@@ -33362,11 +33410,11 @@ class ZeroTrustAccessPolicyExcludeGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessPolicyExcludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -33376,39 +33424,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -34248,11 +34294,11 @@ class ZeroTrustAccessPolicyIncludeGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessPolicyIncludeGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -34262,39 +34308,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 
@@ -35134,11 +35178,11 @@ class ZeroTrustAccessPolicyRequireGithubArgs:
 
 if not MYPY:
     class ZeroTrustAccessPolicyRequireGsuiteArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        emails: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The email of the Google Workspace group.
         """
-        identity_provider_id: NotRequired[pulumi.Input[str]]
+        identity_provider_id: pulumi.Input[str]
         """
         The ID of your Google Workspace identity provider.
         """
@@ -35148,39 +35192,37 @@ elif False:
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
+                 emails: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] emails: The email of the Google Workspace group.
         :param pulumi.Input[str] identity_provider_id: The ID of your Google Workspace identity provider.
         """
-        if emails is not None:
-            pulumi.set(__self__, "emails", emails)
-        if identity_provider_id is not None:
-            pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def emails(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The email of the Google Workspace group.
         """
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def emails(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
-    def identity_provider_id(self) -> Optional[pulumi.Input[str]]:
+    def identity_provider_id(self) -> pulumi.Input[str]:
         """
         The ID of your Google Workspace identity provider.
         """
         return pulumi.get(self, "identity_provider_id")
 
     @identity_provider_id.setter
-    def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
+    def identity_provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "identity_provider_id", value)
 
 

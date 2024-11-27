@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The ID of your Google Workspace identity provider.
         /// </summary>
-        public readonly string? IdentityProviderId;
+        public readonly string IdentityProviderId;
 
         [OutputConstructor]
         private ZeroTrustAccessPolicyExcludeGsuite(
             ImmutableArray<string> emails,
 
-            string? identityProviderId)
+            string identityProviderId)
         {
             Emails = emails;
             IdentityProviderId = identityProviderId;

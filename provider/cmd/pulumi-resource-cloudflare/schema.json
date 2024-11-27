@@ -471,7 +471,7 @@
                 },
                 "idpUid": {
                     "type": "string",
-                    "description": "The UID of the IdP to use as the source for SCIM resources to provision to this application.\n"
+                    "description": "The UIDs of the IdP to use as the source for SCIM resources to provision to this application.\n"
                 },
                 "mappings": {
                     "type": "array",
@@ -555,6 +555,10 @@
                 "schema": {
                     "type": "string",
                     "description": "Which SCIM resource type this mapping applies to.\n"
+                },
+                "strictness": {
+                    "type": "string",
+                    "description": "How strictly to adhere to outbound resource schemas when provisioning to this mapping. \"strict\" will remove unknown values when provisioning, while \"passthrough\" will pass unknown values to the target.\n"
                 },
                 "transformJsonata": {
                     "type": "string",
@@ -860,7 +864,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessGroupExcludeOkta:AccessGroupExcludeOkta": {
             "properties": {
@@ -1127,7 +1135,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessGroupIncludeOkta:AccessGroupIncludeOkta": {
             "properties": {
@@ -1394,7 +1406,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessGroupRequireOkta:AccessGroupRequireOkta": {
             "properties": {
@@ -1542,6 +1558,9 @@
                 "groupMemberDeprovision": {
                     "type": "boolean"
                 },
+                "identityUpdateBehavior": {
+                    "type": "string"
+                },
                 "seatDeprovision": {
                     "type": "boolean"
                 },
@@ -1557,6 +1576,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "identityUpdateBehavior",
                         "secret"
                     ]
                 }
@@ -1901,7 +1921,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta": {
             "properties": {
@@ -2168,7 +2192,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta": {
             "properties": {
@@ -2435,7 +2463,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessPolicyRequireOkta:AccessPolicyRequireOkta": {
             "properties": {
@@ -8240,7 +8272,7 @@
                 },
                 "idpUid": {
                     "type": "string",
-                    "description": "The UID of the IdP to use as the source for SCIM resources to provision to this application.\n"
+                    "description": "The UIDs of the IdP to use as the source for SCIM resources to provision to this application.\n"
                 },
                 "mappings": {
                     "type": "array",
@@ -8324,6 +8356,10 @@
                 "schema": {
                     "type": "string",
                     "description": "Which SCIM resource type this mapping applies to.\n"
+                },
+                "strictness": {
+                    "type": "string",
+                    "description": "How strictly to adhere to outbound resource schemas when provisioning to this mapping. \"strict\" will remove unknown values when provisioning, while \"passthrough\" will pass unknown values to the target.\n"
                 },
                 "transformJsonata": {
                     "type": "string",
@@ -8632,7 +8668,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessGroupExcludeOkta:ZeroTrustAccessGroupExcludeOkta": {
             "properties": {
@@ -8902,7 +8942,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessGroupIncludeOkta:ZeroTrustAccessGroupIncludeOkta": {
             "properties": {
@@ -9172,7 +9216,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessGroupRequireOkta:ZeroTrustAccessGroupRequireOkta": {
             "properties": {
@@ -9320,6 +9368,9 @@
                 "groupMemberDeprovision": {
                     "type": "boolean"
                 },
+                "identityUpdateBehavior": {
+                    "type": "string"
+                },
                 "seatDeprovision": {
                     "type": "boolean"
                 },
@@ -9335,6 +9386,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "identityUpdateBehavior",
                         "secret"
                     ]
                 }
@@ -9682,7 +9734,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessPolicyExcludeOkta:ZeroTrustAccessPolicyExcludeOkta": {
             "properties": {
@@ -9952,7 +10008,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessPolicyIncludeOkta:ZeroTrustAccessPolicyIncludeOkta": {
             "properties": {
@@ -10222,7 +10282,11 @@
                     "description": "The ID of your Google Workspace identity provider.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "emails",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/ZeroTrustAccessPolicyRequireOkta:ZeroTrustAccessPolicyRequireOkta": {
             "properties": {
@@ -21842,7 +21906,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -21909,7 +21973,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -21978,7 +22042,7 @@
                     },
                     "dataset": {
                         "type": "string",
-                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`.\n"
+                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`, `page_shield_events`, `dlp_forensic_copies`.\n"
                     },
                     "destinationConf": {
                         "type": "string",
@@ -22975,7 +23039,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "created": {
                     "type": "string",
@@ -23038,7 +23102,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -23093,7 +23157,7 @@
                     },
                     "alertType": {
                         "type": "string",
-                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                     },
                     "created": {
                         "type": "string",
@@ -23788,7 +23852,7 @@
                 },
                 "location": {
                     "type": "string",
-                    "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`\n"
+                    "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`\n"
                 },
                 "name": {
                     "type": "string",
@@ -23807,7 +23871,7 @@
                 },
                 "location": {
                     "type": "string",
-                    "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`\n"
+                    "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`\n"
                 },
                 "name": {
                     "type": "string",
@@ -23827,7 +23891,7 @@
                     },
                     "location": {
                         "type": "string",
-                        "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`\n"
+                        "description": "The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`\n"
                     },
                     "name": {
                         "type": "string",

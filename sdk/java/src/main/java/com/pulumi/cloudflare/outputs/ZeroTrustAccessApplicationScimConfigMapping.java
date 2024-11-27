@@ -35,6 +35,11 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
      */
     private String schema;
     /**
+     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * 
+     */
+    private @Nullable String strictness;
+    /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      * 
      */
@@ -70,6 +75,13 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
         return this.schema;
     }
     /**
+     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * 
+     */
+    public Optional<String> strictness() {
+        return Optional.ofNullable(this.strictness);
+    }
+    /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
      * 
      */
@@ -90,6 +102,7 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
         private @Nullable String filter;
         private @Nullable ZeroTrustAccessApplicationScimConfigMappingOperations operations;
         private String schema;
+        private @Nullable String strictness;
         private @Nullable String transformJsonata;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationScimConfigMapping defaults) {
@@ -98,6 +111,7 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
     	      this.filter = defaults.filter;
     	      this.operations = defaults.operations;
     	      this.schema = defaults.schema;
+    	      this.strictness = defaults.strictness;
     	      this.transformJsonata = defaults.transformJsonata;
         }
 
@@ -128,6 +142,12 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
             return this;
         }
         @CustomType.Setter
+        public Builder strictness(@Nullable String strictness) {
+
+            this.strictness = strictness;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transformJsonata(@Nullable String transformJsonata) {
 
             this.transformJsonata = transformJsonata;
@@ -139,6 +159,7 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
             _resultValue.filter = filter;
             _resultValue.operations = operations;
             _resultValue.schema = schema;
+            _resultValue.strictness = strictness;
             _resultValue.transformJsonata = transformJsonata;
             return _resultValue;
         }

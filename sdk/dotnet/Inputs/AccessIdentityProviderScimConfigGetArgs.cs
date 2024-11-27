@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("groupMemberDeprovision")]
         public Input<bool>? GroupMemberDeprovision { get; set; }
 
+        [Input("identityUpdateBehavior")]
+        public Input<string>? IdentityUpdateBehavior { get; set; }
+
         [Input("seatDeprovision")]
         public Input<bool>? SeatDeprovision { get; set; }
 

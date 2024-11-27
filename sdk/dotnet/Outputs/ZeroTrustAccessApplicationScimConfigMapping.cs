@@ -30,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Schema;
         /// <summary>
+        /// How strictly to adhere to outbound resource schemas when provisioning to this mapping. "strict" will remove unknown values when provisioning, while "passthrough" will pass unknown values to the target.
+        /// </summary>
+        public readonly string? Strictness;
+        /// <summary>
         /// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
         /// </summary>
         public readonly string? TransformJsonata;
@@ -44,12 +48,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string schema,
 
+            string? strictness,
+
             string? transformJsonata)
         {
             Enabled = enabled;
             Filter = filter;
             Operations = operations;
             Schema = schema;
+            Strictness = strictness;
             TransformJsonata = transformJsonata;
         }
     }

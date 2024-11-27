@@ -31,14 +31,14 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
+     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
+     * @return The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
      * 
      */
     public Optional<Output<String>> location() {
@@ -108,7 +108,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
+         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
+         * @param location The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
          * 
          * @return builder
          * 
