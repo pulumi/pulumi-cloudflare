@@ -46,7 +46,7 @@ export interface GetZonesResult {
 /**
  * Use this data source to look up Zone results for use in other resources.
  */
-export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZones:getZones", {
         "filter": args.filter,

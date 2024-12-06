@@ -134,7 +134,7 @@ export interface GetZeroTrustInfrastructureAccessTargetsResult {
  * export const targets = example.then(example => example.targets);
  * ```
  */
-export function getZeroTrustInfrastructureAccessTargetsOutput(args: GetZeroTrustInfrastructureAccessTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustInfrastructureAccessTargetsResult> {
+export function getZeroTrustInfrastructureAccessTargetsOutput(args: GetZeroTrustInfrastructureAccessTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustInfrastructureAccessTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", {
         "accountId": args.accountId,

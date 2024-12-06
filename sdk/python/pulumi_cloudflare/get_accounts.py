@@ -98,7 +98,7 @@ def get_accounts(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_accounts_output(name: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Data source for looking up Cloudflare Accounts.
 
@@ -116,7 +116,7 @@ def get_accounts_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
         accounts=pulumi.get(__response__, 'accounts'),

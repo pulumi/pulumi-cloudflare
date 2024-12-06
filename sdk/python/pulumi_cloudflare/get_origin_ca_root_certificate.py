@@ -102,7 +102,7 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
         cert_pem=pulumi.get(__ret__, 'cert_pem'),
         id=pulumi.get(__ret__, 'id'))
 def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginCaRootCertificateResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaRootCertificateResult]:
     """
     Use this data source to get the
     [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
@@ -122,7 +122,7 @@ def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]]
     """
     __args__ = dict()
     __args__['algorithm'] = algorithm
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate', __args__, opts=opts, typ=GetOriginCaRootCertificateResult)
     return __ret__.apply(lambda __response__: GetOriginCaRootCertificateResult(
         algorithm=pulumi.get(__response__, 'algorithm'),

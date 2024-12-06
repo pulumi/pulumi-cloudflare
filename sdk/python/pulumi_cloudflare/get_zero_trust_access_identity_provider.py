@@ -125,7 +125,7 @@ def get_zero_trust_access_identity_provider(account_id: Optional[str] = None,
 def get_zero_trust_access_identity_provider_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                    name: Optional[pulumi.Input[str]] = None,
                                                    zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustAccessIdentityProviderResult]:
+                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessIdentityProviderResult]:
     """
     Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
 
@@ -138,7 +138,7 @@ def get_zero_trust_access_identity_provider_output(account_id: Optional[pulumi.I
     __args__['accountId'] = account_id
     __args__['name'] = name
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider', __args__, opts=opts, typ=GetZeroTrustAccessIdentityProviderResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessIdentityProviderResult(
         account_id=pulumi.get(__response__, 'account_id'),

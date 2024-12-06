@@ -104,7 +104,7 @@ export interface GetAccessIdentityProviderResult {
  * });
  * ```
  */
-export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessIdentityProviderResult> {
+export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessIdentityProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", {
         "accountId": args.accountId,

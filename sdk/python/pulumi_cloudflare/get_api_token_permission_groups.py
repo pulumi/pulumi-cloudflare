@@ -138,7 +138,7 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
         r2=pulumi.get(__ret__, 'r2'),
         user=pulumi.get(__ret__, 'user'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiTokenPermissionGroupsResult]:
+def get_api_token_permission_groups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokenPermissionGroupsResult]:
     """
     Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
     Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
@@ -156,7 +156,7 @@ def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] 
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups', __args__, opts=opts, typ=GetApiTokenPermissionGroupsResult)
     return __ret__.apply(lambda __response__: GetApiTokenPermissionGroupsResult(
         account=pulumi.get(__response__, 'account'),

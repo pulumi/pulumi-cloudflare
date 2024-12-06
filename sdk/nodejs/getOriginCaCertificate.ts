@@ -78,7 +78,7 @@ export interface GetOriginCaCertificateResult {
  * });
  * ```
  */
-export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaCertificateResult> {
+export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
         "id": args.id,

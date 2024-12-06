@@ -70,7 +70,7 @@ export interface GetOriginCaRootCertificateResult {
  * });
  * ```
  */
-export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
+export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", {
         "algorithm": args.algorithm,

@@ -217,7 +217,7 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDnssecResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDnssecResult]:
     """
     Use this data source to look up Zone DNSSEC settings.
 
@@ -235,7 +235,7 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZoneDnssec:getZoneDnssec', __args__, opts=opts, typ=GetZoneDnssecResult)
     return __ret__.apply(lambda __response__: GetZoneDnssecResult(
         algorithm=pulumi.get(__response__, 'algorithm'),

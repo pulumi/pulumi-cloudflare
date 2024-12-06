@@ -142,7 +142,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
                                              domain: Optional[pulumi.Input[Optional[str]]] = None,
                                              name: Optional[pulumi.Input[Optional[str]]] = None,
                                              zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustAccessApplicationResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessApplicationResult]:
     """
     Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
 
@@ -157,7 +157,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
     __args__['domain'] = domain
     __args__['name'] = name
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication', __args__, opts=opts, typ=GetZeroTrustAccessApplicationResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessApplicationResult(
         account_id=pulumi.get(__response__, 'account_id'),
