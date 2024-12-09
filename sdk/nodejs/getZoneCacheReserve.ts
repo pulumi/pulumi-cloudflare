@@ -68,7 +68,7 @@ export interface GetZoneCacheReserveResult {
  * });
  * ```
  */
-export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneCacheReserveResult> {
+export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneCacheReserveResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", {
         "zoneId": args.zoneId,

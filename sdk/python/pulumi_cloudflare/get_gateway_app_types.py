@@ -101,7 +101,7 @@ def get_gateway_app_types(account_id: Optional[str] = None,
         app_types=pulumi.get(__ret__, 'app_types'),
         id=pulumi.get(__ret__, 'id'))
 def get_gateway_app_types_output(account_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayAppTypesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayAppTypesResult]:
     """
     Use this data source to retrieve all Gateway application types for an account.
 
@@ -119,7 +119,7 @@ def get_gateway_app_types_output(account_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getGatewayAppTypes:getGatewayAppTypes', __args__, opts=opts, typ=GetGatewayAppTypesResult)
     return __ret__.apply(lambda __response__: GetGatewayAppTypesResult(
         account_id=pulumi.get(__response__, 'account_id'),

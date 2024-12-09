@@ -90,7 +90,7 @@ export interface GetDevicePostureRulesResult {
  * });
  * ```
  */
-export function getDevicePostureRulesOutput(args: GetDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePostureRulesResult> {
+export function getDevicePostureRulesOutput(args: GetDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDevicePostureRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDevicePostureRules:getDevicePostureRules", {
         "accountId": args.accountId,

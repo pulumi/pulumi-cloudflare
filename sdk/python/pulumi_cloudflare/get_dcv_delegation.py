@@ -91,7 +91,7 @@ def get_dcv_delegation(zone_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dcv_delegation_output(zone_id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDcvDelegationResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDcvDelegationResult]:
     """
     Use this data source to retrieve the DCV Delegation unique identifier for a zone.
 
@@ -100,7 +100,7 @@ def get_dcv_delegation_output(zone_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getDcvDelegation:getDcvDelegation', __args__, opts=opts, typ=GetDcvDelegationResult)
     return __ret__.apply(lambda __response__: GetDcvDelegationResult(
         hostname=pulumi.get(__response__, 'hostname'),

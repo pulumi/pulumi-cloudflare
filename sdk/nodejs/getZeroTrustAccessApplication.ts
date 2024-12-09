@@ -72,7 +72,7 @@ export interface GetZeroTrustAccessApplicationResult {
 /**
  * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
  */
-export function getZeroTrustAccessApplicationOutput(args?: GetZeroTrustAccessApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustAccessApplicationResult> {
+export function getZeroTrustAccessApplicationOutput(args?: GetZeroTrustAccessApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessApplicationResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", {

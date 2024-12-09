@@ -68,7 +68,7 @@ export interface GetGatewayAppTypesResult {
  * });
  * ```
  */
-export function getGatewayAppTypesOutput(args: GetGatewayAppTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayAppTypesResult> {
+export function getGatewayAppTypesOutput(args: GetGatewayAppTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayAppTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", {
         "accountId": args.accountId,

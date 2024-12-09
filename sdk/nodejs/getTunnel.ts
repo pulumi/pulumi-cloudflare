@@ -94,7 +94,7 @@ export interface GetTunnelResult {
  * });
  * ```
  */
-export function getTunnelOutput(args: GetTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelResult> {
+export function getTunnelOutput(args: GetTunnelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTunnel:getTunnel", {
         "accountId": args.accountId,

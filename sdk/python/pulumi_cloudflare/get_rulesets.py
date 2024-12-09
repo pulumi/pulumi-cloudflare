@@ -149,7 +149,7 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
                         filter: Optional[pulumi.Input[Optional[Union['GetRulesetsFilterArgs', 'GetRulesetsFilterArgsDict']]]] = None,
                         include_rules: Optional[pulumi.Input[Optional[bool]]] = None,
                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesetsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesetsResult]:
     """
     Use this datasource to lookup Rulesets in an account or zone.
 
@@ -175,7 +175,7 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
     __args__['filter'] = filter
     __args__['includeRules'] = include_rules
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getRulesets:getRulesets', __args__, opts=opts, typ=GetRulesetsResult)
     return __ret__.apply(lambda __response__: GetRulesetsResult(
         account_id=pulumi.get(__response__, 'account_id'),

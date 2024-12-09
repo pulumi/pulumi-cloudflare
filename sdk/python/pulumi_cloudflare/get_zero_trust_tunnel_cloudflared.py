@@ -151,7 +151,7 @@ def get_zero_trust_tunnel_cloudflared(account_id: Optional[str] = None,
 def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[str]] = None,
                                              is_deleted: Optional[pulumi.Input[Optional[bool]]] = None,
                                              name: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredResult]:
     """
     Use this datasource to lookup a tunnel in an account.
 
@@ -164,7 +164,7 @@ def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[s
     __args__['accountId'] = account_id
     __args__['isDeleted'] = is_deleted
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared', __args__, opts=opts, typ=GetZeroTrustTunnelCloudflaredResult)
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelCloudflaredResult(
         account_id=pulumi.get(__response__, 'account_id'),

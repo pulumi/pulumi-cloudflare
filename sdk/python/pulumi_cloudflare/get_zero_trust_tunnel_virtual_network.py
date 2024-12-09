@@ -121,7 +121,7 @@ def get_zero_trust_tunnel_virtual_network(account_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_zero_trust_tunnel_virtual_network_output(account_id: Optional[pulumi.Input[str]] = None,
                                                  name: Optional[pulumi.Input[str]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustTunnelVirtualNetworkResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelVirtualNetworkResult]:
     """
     Use this datasource to lookup a tunnel virtual network in an account.
 
@@ -132,7 +132,7 @@ def get_zero_trust_tunnel_virtual_network_output(account_id: Optional[pulumi.Inp
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork', __args__, opts=opts, typ=GetZeroTrustTunnelVirtualNetworkResult)
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelVirtualNetworkResult(
         account_id=pulumi.get(__response__, 'account_id'),

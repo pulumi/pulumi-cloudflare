@@ -102,7 +102,7 @@ export interface GetZoneDnssecResult {
  * });
  * ```
  */
-export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDnssecResult> {
+export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnssecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", {
         "zoneId": args.zoneId,

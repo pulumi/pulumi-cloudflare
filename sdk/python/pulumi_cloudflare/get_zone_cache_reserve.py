@@ -101,7 +101,7 @@ def get_zone_cache_reserve(zone_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneCacheReserveResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneCacheReserveResult]:
     """
     Provides a Cloudflare data source to look up Cache Reserve
     status for a given zone.
@@ -120,7 +120,7 @@ def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZoneCacheReserve:getZoneCacheReserve', __args__, opts=opts, typ=GetZoneCacheReserveResult)
     return __ret__.apply(lambda __response__: GetZoneCacheReserveResult(
         enabled=pulumi.get(__response__, 'enabled'),
