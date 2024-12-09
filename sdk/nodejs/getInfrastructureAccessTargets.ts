@@ -134,7 +134,7 @@ export interface GetInfrastructureAccessTargetsResult {
  * export const targets = example.then(example => example.targets);
  * ```
  */
-export function getInfrastructureAccessTargetsOutput(args: GetInfrastructureAccessTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfrastructureAccessTargetsResult> {
+export function getInfrastructureAccessTargetsOutput(args: GetInfrastructureAccessTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfrastructureAccessTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", {
         "accountId": args.accountId,

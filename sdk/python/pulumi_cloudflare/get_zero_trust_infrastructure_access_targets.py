@@ -220,7 +220,7 @@ def get_zero_trust_infrastructure_access_targets_output(account_id: Optional[pul
                                                         ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                                         modified_after: Optional[pulumi.Input[Optional[str]]] = None,
                                                         virtual_network_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZeroTrustInfrastructureAccessTargetsResult]:
+                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustInfrastructureAccessTargetsResult]:
     """
     Use this data source to retrieve all Infrastructure Access Targets.
 
@@ -255,7 +255,7 @@ def get_zero_trust_infrastructure_access_targets_output(account_id: Optional[pul
     __args__['ipv6'] = ipv6
     __args__['modifiedAfter'] = modified_after
     __args__['virtualNetworkId'] = virtual_network_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets', __args__, opts=opts, typ=GetZeroTrustInfrastructureAccessTargetsResult)
     return __ret__.apply(lambda __response__: GetZeroTrustInfrastructureAccessTargetsResult(
         account_id=pulumi.get(__response__, 'account_id'),

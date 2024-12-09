@@ -198,7 +198,7 @@ def get_zone(account_id: Optional[str] = None,
 def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
     Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
     info. This is the singular alternative to `get_zones`.
@@ -232,7 +232,7 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['accountId'] = account_id
     __args__['name'] = name
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult)
     return __ret__.apply(lambda __response__: GetZoneResult(
         account_id=pulumi.get(__response__, 'account_id'),

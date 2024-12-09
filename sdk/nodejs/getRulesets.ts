@@ -93,7 +93,7 @@ export interface GetRulesetsResult {
  * });
  * ```
  */
-export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetsResult> {
+export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRulesets:getRulesets", {

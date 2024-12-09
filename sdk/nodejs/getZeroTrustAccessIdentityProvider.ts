@@ -62,7 +62,7 @@ export interface GetZeroTrustAccessIdentityProviderResult {
 /**
  * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
  */
-export function getZeroTrustAccessIdentityProviderOutput(args: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
+export function getZeroTrustAccessIdentityProviderOutput(args: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
         "accountId": args.accountId,

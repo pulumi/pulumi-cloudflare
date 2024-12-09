@@ -71,7 +71,7 @@ export interface GetUserResult {
  * });
  * ```
  */
-export function getUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+export function getUserOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUser:getUser", {
     }, opts);

@@ -88,7 +88,7 @@ export interface GetLoadBalancerPoolsResult {
  * });
  * ```
  */
-export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
+export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,

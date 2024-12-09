@@ -80,7 +80,7 @@ export interface GetAccountRolesResult {
  * });
  * ```
  */
-export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountRolesResult> {
+export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,

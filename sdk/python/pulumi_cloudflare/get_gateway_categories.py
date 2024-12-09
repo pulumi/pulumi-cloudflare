@@ -101,7 +101,7 @@ def get_gateway_categories(account_id: Optional[str] = None,
         categories=pulumi.get(__ret__, 'categories'),
         id=pulumi.get(__ret__, 'id'))
 def get_gateway_categories_output(account_id: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayCategoriesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayCategoriesResult]:
     """
     Use this data source to retrieve all Gateway categories for an account.
 
@@ -119,7 +119,7 @@ def get_gateway_categories_output(account_id: Optional[pulumi.Input[str]] = None
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getGatewayCategories:getGatewayCategories', __args__, opts=opts, typ=GetGatewayCategoriesResult)
     return __ret__.apply(lambda __response__: GetGatewayCategoriesResult(
         account_id=pulumi.get(__response__, 'account_id'),

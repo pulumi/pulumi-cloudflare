@@ -220,7 +220,7 @@ def get_infrastructure_access_targets_output(account_id: Optional[pulumi.Input[s
                                              ipv6: Optional[pulumi.Input[Optional[str]]] = None,
                                              modified_after: Optional[pulumi.Input[Optional[str]]] = None,
                                              virtual_network_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfrastructureAccessTargetsResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfrastructureAccessTargetsResult]:
     """
     Use this data source to retrieve all Infrastructure Access Targets.
 
@@ -255,7 +255,7 @@ def get_infrastructure_access_targets_output(account_id: Optional[pulumi.Input[s
     __args__['ipv6'] = ipv6
     __args__['modifiedAfter'] = modified_after
     __args__['virtualNetworkId'] = virtual_network_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets', __args__, opts=opts, typ=GetInfrastructureAccessTargetsResult)
     return __ret__.apply(lambda __response__: GetInfrastructureAccessTargetsResult(
         account_id=pulumi.get(__response__, 'account_id'),

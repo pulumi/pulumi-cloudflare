@@ -65,7 +65,7 @@ export interface GetListsResult {
  * });
  * ```
  */
-export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListsResult> {
+export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLists:getLists", {
         "accountId": args.accountId,
