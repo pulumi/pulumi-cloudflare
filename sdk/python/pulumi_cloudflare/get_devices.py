@@ -98,7 +98,7 @@ def get_devices(account_id: Optional[str] = None,
         devices=pulumi.get(__ret__, 'devices'),
         id=pulumi.get(__ret__, 'id'))
 def get_devices_output(account_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDevicesResult]:
     """
     Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
 
@@ -116,7 +116,7 @@ def get_devices_output(account_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult)
     return __ret__.apply(lambda __response__: GetDevicesResult(
         account_id=pulumi.get(__response__, 'account_id'),

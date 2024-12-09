@@ -139,7 +139,7 @@ def get_origin_ca_certificate(id: Optional[str] = None,
         request_type=pulumi.get(__ret__, 'request_type'),
         revoked_at=pulumi.get(__ret__, 'revoked_at'))
 def get_origin_ca_certificate_output(id: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
     """
     Use this data source to retrieve an existing origin ca certificate.
 
@@ -157,7 +157,7 @@ def get_origin_ca_certificate_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaCertificate:getOriginCaCertificate', __args__, opts=opts, typ=GetOriginCaCertificateResult)
     return __ret__.apply(lambda __response__: GetOriginCaCertificateResult(
         certificate=pulumi.get(__response__, 'certificate'),

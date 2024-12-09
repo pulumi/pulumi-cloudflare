@@ -68,7 +68,7 @@ export interface GetGatewayCategoriesResult {
  * });
  * ```
  */
-export function getGatewayCategoriesOutput(args: GetGatewayCategoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCategoriesResult> {
+export function getGatewayCategoriesOutput(args: GetGatewayCategoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayCategoriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getGatewayCategories:getGatewayCategories", {
         "accountId": args.accountId,

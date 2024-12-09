@@ -44,7 +44,7 @@ export interface GetDcvDelegationResult {
 /**
  * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
  */
-export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDcvDelegationResult> {
+export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcvDelegationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDcvDelegation:getDcvDelegation", {
         "zoneId": args.zoneId,
