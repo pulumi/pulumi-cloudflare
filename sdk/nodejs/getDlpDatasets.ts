@@ -68,7 +68,7 @@ export interface GetDlpDatasetsResult {
  * });
  * ```
  */
-export function getDlpDatasetsOutput(args: GetDlpDatasetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDlpDatasetsResult> {
+export function getDlpDatasetsOutput(args: GetDlpDatasetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDlpDatasetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDlpDatasets:getDlpDatasets", {
         "accountId": args.accountId,

@@ -81,7 +81,7 @@ export interface GetTunnelVirtualNetworkResult {
  * });
  * ```
  */
-export function getTunnelVirtualNetworkOutput(args: GetTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelVirtualNetworkResult> {
+export function getTunnelVirtualNetworkOutput(args: GetTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelVirtualNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", {
         "accountId": args.accountId,

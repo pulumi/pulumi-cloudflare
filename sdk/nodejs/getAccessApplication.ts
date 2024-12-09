@@ -72,7 +72,7 @@ export interface GetAccessApplicationResult {
 /**
  * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
  */
-export function getAccessApplicationOutput(args?: GetAccessApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessApplicationResult> {
+export function getAccessApplicationOutput(args?: GetAccessApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessApplicationResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccessApplication:getAccessApplication", {

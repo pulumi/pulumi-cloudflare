@@ -208,7 +208,7 @@ def get_record_output(content: Optional[pulumi.Input[Optional[str]]] = None,
                       priority: Optional[pulumi.Input[Optional[int]]] = None,
                       type: Optional[pulumi.Input[Optional[str]]] = None,
                       zone_id: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordResult]:
     """
     Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
 
@@ -235,7 +235,7 @@ def get_record_output(content: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['priority'] = priority
     __args__['type'] = type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult)
     return __ret__.apply(lambda __response__: GetRecordResult(
         content=pulumi.get(__response__, 'content'),

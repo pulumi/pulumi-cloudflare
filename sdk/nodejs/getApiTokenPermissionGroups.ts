@@ -73,7 +73,7 @@ export interface GetApiTokenPermissionGroupsResult {
  * export const userMembershipsReadId = all.then(all => all.user?.["Memberships Read"]);
  * ```
  */
-export function getApiTokenPermissionGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApiTokenPermissionGroupsResult> {
+export function getApiTokenPermissionGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiTokenPermissionGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", {
     }, opts);

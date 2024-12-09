@@ -116,7 +116,7 @@ export interface GetRecordResult {
  * });
  * ```
  */
-export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
+export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRecord:getRecord", {
         "content": args.content,
