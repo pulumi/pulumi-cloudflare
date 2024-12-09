@@ -161,7 +161,7 @@ def get_tunnel(account_id: Optional[str] = None,
 def get_tunnel_output(account_id: Optional[pulumi.Input[str]] = None,
                       is_deleted: Optional[pulumi.Input[Optional[bool]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTunnelResult]:
     """
     Use this datasource to lookup a tunnel in an account.
 
@@ -184,7 +184,7 @@ def get_tunnel_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__['accountId'] = account_id
     __args__['isDeleted'] = is_deleted
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getTunnel:getTunnel', __args__, opts=opts, typ=GetTunnelResult)
     return __ret__.apply(lambda __response__: GetTunnelResult(
         account_id=pulumi.get(__response__, 'account_id'),

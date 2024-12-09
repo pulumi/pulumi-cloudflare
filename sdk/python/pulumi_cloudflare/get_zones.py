@@ -93,7 +93,7 @@ def get_zones(filter: Optional[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDi
         id=pulumi.get(__ret__, 'id'),
         zones=pulumi.get(__ret__, 'zones'))
 def get_zones_output(filter: Optional[pulumi.Input[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict']]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Use this data source to look up Zone results for use in other resources.
 
@@ -102,7 +102,7 @@ def get_zones_output(filter: Optional[pulumi.Input[Union['GetZonesFilterArgs', '
     """
     __args__ = dict()
     __args__['filter'] = filter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         filter=pulumi.get(__response__, 'filter'),

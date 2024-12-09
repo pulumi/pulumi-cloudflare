@@ -106,7 +106,7 @@ def get_account_roles(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         roles=pulumi.get(__ret__, 'roles'))
 def get_account_roles_output(account_id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountRolesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountRolesResult]:
     """
     Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 
@@ -129,7 +129,7 @@ def get_account_roles_output(account_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountRoles:getAccountRoles', __args__, opts=opts, typ=GetAccountRolesResult)
     return __ret__.apply(lambda __response__: GetAccountRolesResult(
         account_id=pulumi.get(__response__, 'account_id'),

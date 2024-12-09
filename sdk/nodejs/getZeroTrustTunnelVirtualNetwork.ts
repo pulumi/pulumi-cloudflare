@@ -57,7 +57,7 @@ export interface GetZeroTrustTunnelVirtualNetworkResult {
 /**
  * Use this datasource to lookup a tunnel virtual network in an account.
  */
-export function getZeroTrustTunnelVirtualNetworkOutput(args: GetZeroTrustTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustTunnelVirtualNetworkResult> {
+export function getZeroTrustTunnelVirtualNetworkOutput(args: GetZeroTrustTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelVirtualNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", {
         "accountId": args.accountId,

@@ -70,7 +70,7 @@ export interface GetZeroTrustTunnelCloudflaredResult {
 /**
  * Use this datasource to lookup a tunnel in an account.
  */
-export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
+export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,

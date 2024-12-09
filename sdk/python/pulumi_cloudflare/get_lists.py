@@ -98,7 +98,7 @@ def get_lists(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         lists=pulumi.get(__ret__, 'lists'))
 def get_lists_output(account_id: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListsResult]:
     """
     Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
 
@@ -116,7 +116,7 @@ def get_lists_output(account_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLists:getLists', __args__, opts=opts, typ=GetListsResult)
     return __ret__.apply(lambda __response__: GetListsResult(
         account_id=pulumi.get(__response__, 'account_id'),
