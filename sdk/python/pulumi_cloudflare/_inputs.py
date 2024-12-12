@@ -17,6 +17,8 @@ from . import _utilities
 __all__ = [
     'AccessApplicationCorsHeaderArgs',
     'AccessApplicationCorsHeaderArgsDict',
+    'AccessApplicationDestinationArgs',
+    'AccessApplicationDestinationArgsDict',
     'AccessApplicationFooterLinkArgs',
     'AccessApplicationFooterLinkArgsDict',
     'AccessApplicationLandingPageDesignArgs',
@@ -429,6 +431,10 @@ __all__ = [
     'RulesetRuleLoggingArgsDict',
     'RulesetRuleRatelimitArgs',
     'RulesetRuleRatelimitArgsDict',
+    'SnippetFileArgs',
+    'SnippetFileArgsDict',
+    'SnippetRulesRuleArgs',
+    'SnippetRulesRuleArgsDict',
     'SpectrumApplicationDnsArgs',
     'SpectrumApplicationDnsArgsDict',
     'SpectrumApplicationEdgeIpsArgs',
@@ -569,6 +575,8 @@ __all__ = [
     'WorkersScriptWebassemblyBindingArgsDict',
     'ZeroTrustAccessApplicationCorsHeaderArgs',
     'ZeroTrustAccessApplicationCorsHeaderArgsDict',
+    'ZeroTrustAccessApplicationDestinationArgs',
+    'ZeroTrustAccessApplicationDestinationArgsDict',
     'ZeroTrustAccessApplicationFooterLinkArgs',
     'ZeroTrustAccessApplicationFooterLinkArgsDict',
     'ZeroTrustAccessApplicationLandingPageDesignArgs',
@@ -1031,6 +1039,57 @@ class AccessApplicationCorsHeaderArgs:
     @max_age.setter
     def max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age", value)
+
+
+if not MYPY:
+    class AccessApplicationDestinationArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+elif False:
+    AccessApplicationDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationDestinationArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param pulumi.Input[str] type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:
@@ -5702,11 +5761,29 @@ class AccessIdentityProviderConfigArgs:
 if not MYPY:
     class AccessIdentityProviderScimConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         identity_update_behavior: NotRequired[pulumi.Input[str]]
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         seat_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         secret: NotRequired[pulumi.Input[str]]
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         user_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
 elif False:
     AccessIdentityProviderScimConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5719,6 +5796,14 @@ class AccessIdentityProviderScimConfigArgs:
                  seat_deprovision: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  user_deprovision: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: A flag to enable or disable SCIM for the identity provider.
+        :param pulumi.Input[bool] group_member_deprovision: Deprecated. Use `identity_update_behavior`.
+        :param pulumi.Input[str] identity_update_behavior: Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        :param pulumi.Input[bool] seat_deprovision: A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        :param pulumi.Input[str] secret: A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        :param pulumi.Input[bool] user_deprovision: A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
@@ -5735,6 +5820,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -5744,6 +5832,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="groupMemberDeprovision")
     def group_member_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         return pulumi.get(self, "group_member_deprovision")
 
     @group_member_deprovision.setter
@@ -5753,6 +5844,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="identityUpdateBehavior")
     def identity_update_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         return pulumi.get(self, "identity_update_behavior")
 
     @identity_update_behavior.setter
@@ -5762,6 +5856,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="seatDeprovision")
     def seat_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         return pulumi.get(self, "seat_deprovision")
 
     @seat_deprovision.setter
@@ -5771,6 +5868,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -5780,6 +5880,9 @@ class AccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="userDeprovision")
     def user_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         return pulumi.get(self, "user_deprovision")
 
     @user_deprovision.setter
@@ -6123,17 +6226,25 @@ if not MYPY:
         """
         Contains the Unix usernames that may be used when connecting over SSH.
         """
+        allow_email_alias: NotRequired[pulumi.Input[bool]]
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
 elif False:
     AccessPolicyConnectionRulesSshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPolicyConnectionRulesSshArgs:
     def __init__(__self__, *,
-                 usernames: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 usernames: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allow_email_alias: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        :param pulumi.Input[bool] allow_email_alias: Allows connecting to Unix username that matches the authenticating email prefix.
         """
         pulumi.set(__self__, "usernames", usernames)
+        if allow_email_alias is not None:
+            pulumi.set(__self__, "allow_email_alias", allow_email_alias)
 
     @property
     @pulumi.getter
@@ -6146,6 +6257,18 @@ class AccessPolicyConnectionRulesSshArgs:
     @usernames.setter
     def usernames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "usernames", value)
+
+    @property
+    @pulumi.getter(name="allowEmailAlias")
+    def allow_email_alias(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
+        return pulumi.get(self, "allow_email_alias")
+
+    @allow_email_alias.setter
+    def allow_email_alias(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_email_alias", value)
 
 
 if not MYPY:
@@ -14680,7 +14803,7 @@ if not MYPY:
         """
         affected_components: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         """
         airport_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -14849,7 +14972,7 @@ class NotificationPolicyFiltersArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Targeted actions for alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] airport_codes: Filter on Points of Presence.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: State of the pool to alert on.
@@ -14967,7 +15090,7 @@ class NotificationPolicyFiltersArgs:
     @pulumi.getter(name="affectedComponents")
     def affected_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         """
         return pulumi.get(self, "affected_components")
 
@@ -19035,10 +19158,6 @@ if not MYPY:
         """
         Unique rule identifier.
         """
-        last_updated: NotRequired[pulumi.Input[str]]
-        """
-        The most recent update to this rule.
-        """
         logging: NotRequired[pulumi.Input['RulesetRuleLoggingArgsDict']]
         """
         List parameters to configure how the rule generates logs. Only valid for skip action.
@@ -19050,10 +19169,6 @@ if not MYPY:
         ref: NotRequired[pulumi.Input[str]]
         """
         Rule reference.
-        """
-        version: NotRequired[pulumi.Input[str]]
-        """
-        Version of the ruleset to deploy.
         """
 elif False:
     RulesetRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -19068,11 +19183,9 @@ class RulesetRuleArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exposed_credential_check: Optional[pulumi.Input['RulesetRuleExposedCredentialCheckArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 last_updated: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['RulesetRuleLoggingArgs']] = None,
                  ratelimit: Optional[pulumi.Input['RulesetRuleRatelimitArgs']] = None,
-                 ref: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 ref: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
@@ -19081,11 +19194,9 @@ class RulesetRuleArgs:
         :param pulumi.Input[bool] enabled: Whether the rule is active.
         :param pulumi.Input['RulesetRuleExposedCredentialCheckArgs'] exposed_credential_check: List of parameters that configure exposed credential checks.
         :param pulumi.Input[str] id: Unique rule identifier.
-        :param pulumi.Input[str] last_updated: The most recent update to this rule.
         :param pulumi.Input['RulesetRuleLoggingArgs'] logging: List parameters to configure how the rule generates logs. Only valid for skip action.
         :param pulumi.Input['RulesetRuleRatelimitArgs'] ratelimit: List of parameters that configure HTTP rate limiting behaviour.
         :param pulumi.Input[str] ref: Rule reference.
-        :param pulumi.Input[str] version: Version of the ruleset to deploy.
         """
         pulumi.set(__self__, "expression", expression)
         if action is not None:
@@ -19100,16 +19211,12 @@ class RulesetRuleArgs:
             pulumi.set(__self__, "exposed_credential_check", exposed_credential_check)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
         if ratelimit is not None:
             pulumi.set(__self__, "ratelimit", ratelimit)
         if ref is not None:
             pulumi.set(__self__, "ref", ref)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -19196,18 +19303,6 @@ class RulesetRuleArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[str]]:
-        """
-        The most recent update to this rule.
-        """
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_updated", value)
-
-    @property
     @pulumi.getter
     def logging(self) -> Optional[pulumi.Input['RulesetRuleLoggingArgs']]:
         """
@@ -19242,18 +19337,6 @@ class RulesetRuleArgs:
     @ref.setter
     def ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ref", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Version of the ruleset to deploy.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -19467,10 +19550,6 @@ if not MYPY:
         """
         List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
         """
-        version: NotRequired[pulumi.Input[str]]
-        """
-        Version of the ruleset to deploy.
-        """
 elif False:
     RulesetRuleActionParametersArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -19529,8 +19608,7 @@ class RulesetRuleActionParametersArgs:
                  ssl: Optional[pulumi.Input[str]] = None,
                  status_code: Optional[pulumi.Input[int]] = None,
                  sxg: Optional[pulumi.Input[bool]] = None,
-                 uri: Optional[pulumi.Input['RulesetRuleActionParametersUriArgs']] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 uri: Optional[pulumi.Input['RulesetRuleActionParametersUriArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] additional_cacheable_ports: Specifies uncommon ports to allow cacheable assets to be served from.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersAlgorithmArgs']]] algorithms: Compression algorithms to use in order of preference.
@@ -19584,7 +19662,6 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[int] status_code: HTTP status code of the custom error response.
         :param pulumi.Input[bool] sxg: Turn on or off the SXG feature.
         :param pulumi.Input['RulesetRuleActionParametersUriArgs'] uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
-        :param pulumi.Input[str] version: Version of the ruleset to deploy.
         """
         if additional_cacheable_ports is not None:
             pulumi.set(__self__, "additional_cacheable_ports", additional_cacheable_ports)
@@ -19692,8 +19769,6 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "sxg", sxg)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="additionalCacheablePorts")
@@ -20327,18 +20402,6 @@ class RulesetRuleActionParametersArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input['RulesetRuleActionParametersUriArgs']]):
         pulumi.set(self, "uri", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Version of the ruleset to deploy.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -22452,6 +22515,147 @@ class RulesetRuleRatelimitArgs:
     @score_response_header_name.setter
     def score_response_header_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "score_response_header_name", value)
+
+
+if not MYPY:
+    class SnippetFileArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the snippet file.
+        """
+        content: NotRequired[pulumi.Input[str]]
+        """
+        Content of the snippet file.
+        """
+elif False:
+    SnippetFileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnippetFileArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 content: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the snippet file.
+        :param pulumi.Input[str] content: Content of the snippet file.
+        """
+        pulumi.set(__self__, "name", name)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the snippet file.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Content of the snippet file.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+
+if not MYPY:
+    class SnippetRulesRuleArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        """
+        snippet_name: pulumi.Input[str]
+        """
+        Name of the snippet invoked by this rule.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Brief summary of the snippet rule and its intended use.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the headers rule is active.
+        """
+elif False:
+    SnippetRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnippetRulesRuleArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 snippet_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] expression: Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        :param pulumi.Input[str] snippet_name: Name of the snippet invoked by this rule.
+        :param pulumi.Input[str] description: Brief summary of the snippet rule and its intended use.
+        :param pulumi.Input[bool] enabled: Whether the headers rule is active.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "snippet_name", snippet_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter(name="snippetName")
+    def snippet_name(self) -> pulumi.Input[str]:
+        """
+        Name of the snippet invoked by this rule.
+        """
+        return pulumi.get(self, "snippet_name")
+
+    @snippet_name.setter
+    def snippet_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "snippet_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Brief summary of the snippet rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the headers rule is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -27584,6 +27788,57 @@ class ZeroTrustAccessApplicationCorsHeaderArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessApplicationDestinationArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+elif False:
+    ZeroTrustAccessApplicationDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationDestinationArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param pulumi.Input[str] type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class ZeroTrustAccessApplicationFooterLinkArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
@@ -32252,11 +32507,29 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
 if not MYPY:
     class ZeroTrustAccessIdentityProviderScimConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         group_member_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         identity_update_behavior: NotRequired[pulumi.Input[str]]
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         seat_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         secret: NotRequired[pulumi.Input[str]]
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         user_deprovision: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
 elif False:
     ZeroTrustAccessIdentityProviderScimConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -32269,6 +32542,14 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
                  seat_deprovision: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  user_deprovision: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: A flag to enable or disable SCIM for the identity provider.
+        :param pulumi.Input[bool] group_member_deprovision: Deprecated. Use `identity_update_behavior`.
+        :param pulumi.Input[str] identity_update_behavior: Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        :param pulumi.Input[bool] seat_deprovision: A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        :param pulumi.Input[str] secret: A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        :param pulumi.Input[bool] user_deprovision: A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
@@ -32285,6 +32566,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -32294,6 +32578,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="groupMemberDeprovision")
     def group_member_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         return pulumi.get(self, "group_member_deprovision")
 
     @group_member_deprovision.setter
@@ -32303,6 +32590,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="identityUpdateBehavior")
     def identity_update_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         return pulumi.get(self, "identity_update_behavior")
 
     @identity_update_behavior.setter
@@ -32312,6 +32602,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="seatDeprovision")
     def seat_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         return pulumi.get(self, "seat_deprovision")
 
     @seat_deprovision.setter
@@ -32321,6 +32614,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -32330,6 +32626,9 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
     @property
     @pulumi.getter(name="userDeprovision")
     def user_deprovision(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         return pulumi.get(self, "user_deprovision")
 
     @user_deprovision.setter
@@ -32673,17 +32972,25 @@ if not MYPY:
         """
         Contains the Unix usernames that may be used when connecting over SSH.
         """
+        allow_email_alias: NotRequired[pulumi.Input[bool]]
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
 elif False:
     ZeroTrustAccessPolicyConnectionRulesSshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyConnectionRulesSshArgs:
     def __init__(__self__, *,
-                 usernames: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 usernames: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allow_email_alias: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        :param pulumi.Input[bool] allow_email_alias: Allows connecting to Unix username that matches the authenticating email prefix.
         """
         pulumi.set(__self__, "usernames", usernames)
+        if allow_email_alias is not None:
+            pulumi.set(__self__, "allow_email_alias", allow_email_alias)
 
     @property
     @pulumi.getter
@@ -32696,6 +33003,18 @@ class ZeroTrustAccessPolicyConnectionRulesSshArgs:
     @usernames.setter
     def usernames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "usernames", value)
+
+    @property
+    @pulumi.getter(name="allowEmailAlias")
+    def allow_email_alias(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
+        return pulumi.get(self, "allow_email_alias")
+
+    @allow_email_alias.setter
+    def allow_email_alias(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_email_alias", value)
 
 
 if not MYPY:

@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessPolicyConnectionRulesSsh
     {
         /// <summary>
+        /// Allows connecting to Unix username that matches the authenticating email prefix.
+        /// </summary>
+        public readonly bool? AllowEmailAlias;
+        /// <summary>
         /// Contains the Unix usernames that may be used when connecting over SSH.
         /// </summary>
         public readonly ImmutableArray<string> Usernames;
 
         [OutputConstructor]
-        private ZeroTrustAccessPolicyConnectionRulesSsh(ImmutableArray<string> usernames)
+        private ZeroTrustAccessPolicyConnectionRulesSsh(
+            bool? allowEmailAlias,
+
+            ImmutableArray<string> usernames)
         {
+            AllowEmailAlias = allowEmailAlias;
             Usernames = usernames;
         }
     }

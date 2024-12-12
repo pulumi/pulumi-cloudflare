@@ -56,8 +56,12 @@ type AccessApplication struct {
 	CustomNonIdentityDenyUrl pulumi.StringPtrOutput `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayOutput `pulumi:"customPages"`
+	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	Destinations AccessApplicationDestinationArrayOutput `pulumi:"destinations"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// The type of the primary domain. Available values: `public`, `private`.
+	DomainType pulumi.StringOutput `pulumi:"domainType"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
 	// The footer links of the app launcher.
@@ -82,7 +86,9 @@ type AccessApplication struct {
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrOutput `pulumi:"scimConfig"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+	//
+	// Deprecated: Use `destinations` instead
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
@@ -158,8 +164,12 @@ type accessApplicationState struct {
 	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages []string `pulumi:"customPages"`
+	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	Destinations []AccessApplicationDestination `pulumi:"destinations"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
+	// The type of the primary domain. Available values: `public`, `private`.
+	DomainType *string `pulumi:"domainType"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
 	// The footer links of the app launcher.
@@ -184,7 +194,9 @@ type accessApplicationState struct {
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+	//
+	// Deprecated: Use `destinations` instead
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -231,8 +243,12 @@ type AccessApplicationState struct {
 	CustomNonIdentityDenyUrl pulumi.StringPtrInput
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayInput
+	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	Destinations AccessApplicationDestinationArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
+	// The type of the primary domain. Available values: `public`, `private`.
+	DomainType pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
 	// The footer links of the app launcher.
@@ -257,7 +273,9 @@ type AccessApplicationState struct {
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+	//
+	// Deprecated: Use `destinations` instead
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -306,8 +324,12 @@ type accessApplicationArgs struct {
 	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages []string `pulumi:"customPages"`
+	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	Destinations []AccessApplicationDestination `pulumi:"destinations"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
+	// The type of the primary domain. Available values: `public`, `private`.
+	DomainType *string `pulumi:"domainType"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
 	// The footer links of the app launcher.
@@ -332,7 +354,9 @@ type accessApplicationArgs struct {
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+	//
+	// Deprecated: Use `destinations` instead
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -378,8 +402,12 @@ type AccessApplicationArgs struct {
 	CustomNonIdentityDenyUrl pulumi.StringPtrInput
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayInput
+	// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+	Destinations AccessApplicationDestinationArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
+	// The type of the primary domain. Available values: `public`, `private`.
+	DomainType pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
 	// The footer links of the app launcher.
@@ -404,7 +432,9 @@ type AccessApplicationArgs struct {
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+	// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+	//
+	// Deprecated: Use `destinations` instead
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -576,9 +606,19 @@ func (o AccessApplicationOutput) CustomPages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.CustomPages }).(pulumi.StringArrayOutput)
 }
 
+// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+func (o AccessApplicationOutput) Destinations() AccessApplicationDestinationArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationDestinationArrayOutput { return v.Destinations }).(AccessApplicationDestinationArrayOutput)
+}
+
 // The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 func (o AccessApplicationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The type of the primary domain. Available values: `public`, `private`.
+func (o AccessApplicationOutput) DomainType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.DomainType }).(pulumi.StringOutput)
 }
 
 // Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -641,7 +681,9 @@ func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigPtrOutp
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigPtrOutput { return v.ScimConfig }).(AccessApplicationScimConfigPtrOutput)
 }
 
-// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+//
+// Deprecated: Use `destinations` instead
 func (o AccessApplicationOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }

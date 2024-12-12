@@ -222,10 +222,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
-        /// <summary>
-        /// Version of the ruleset to deploy.
-        /// </summary>
-        public readonly string? Version;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
@@ -333,9 +329,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? sxg,
 
-            Outputs.RulesetRuleActionParametersUri? uri,
-
-            string? version)
+            Outputs.RulesetRuleActionParametersUri? uri)
         {
             AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
@@ -390,7 +384,6 @@ namespace Pulumi.Cloudflare.Outputs
             StatusCode = statusCode;
             Sxg = sxg;
             Uri = uri;
-            Version = version;
         }
     }
 }

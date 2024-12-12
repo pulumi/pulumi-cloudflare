@@ -292,11 +292,6 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable RulesetRuleActionParametersUri uri;
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    private @Nullable String version;
 
     private RulesetRuleActionParameters() {}
     /**
@@ -666,13 +661,6 @@ public final class RulesetRuleActionParameters {
     public Optional<RulesetRuleActionParametersUri> uri() {
         return Optional.ofNullable(this.uri);
     }
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    public Optional<String> version() {
-        return Optional.ofNullable(this.version);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -736,7 +724,6 @@ public final class RulesetRuleActionParameters {
         private @Nullable Integer statusCode;
         private @Nullable Boolean sxg;
         private @Nullable RulesetRuleActionParametersUri uri;
-        private @Nullable String version;
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -793,7 +780,6 @@ public final class RulesetRuleActionParameters {
     	      this.statusCode = defaults.statusCode;
     	      this.sxg = defaults.sxg;
     	      this.uri = defaults.uri;
-    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -1147,12 +1133,6 @@ public final class RulesetRuleActionParameters {
             this.uri = uri;
             return this;
         }
-        @CustomType.Setter
-        public Builder version(@Nullable String version) {
-
-            this.version = version;
-            return this;
-        }
         public RulesetRuleActionParameters build() {
             final var _resultValue = new RulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
@@ -1208,7 +1188,6 @@ public final class RulesetRuleActionParameters {
             _resultValue.statusCode = statusCode;
             _resultValue.sxg = sxg;
             _resultValue.uri = uri;
-            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -6,14 +6,32 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AccessPolicyConnectionRulesSshArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccessPolicyConnectionRulesSshArgs Empty = new AccessPolicyConnectionRulesSshArgs();
+
+    /**
+     * Allows connecting to Unix username that matches the authenticating email prefix.
+     * 
+     */
+    @Import(name="allowEmailAlias")
+    private @Nullable Output<Boolean> allowEmailAlias;
+
+    /**
+     * @return Allows connecting to Unix username that matches the authenticating email prefix.
+     * 
+     */
+    public Optional<Output<Boolean>> allowEmailAlias() {
+        return Optional.ofNullable(this.allowEmailAlias);
+    }
 
     /**
      * Contains the Unix usernames that may be used when connecting over SSH.
@@ -33,6 +51,7 @@ public final class AccessPolicyConnectionRulesSshArgs extends com.pulumi.resourc
     private AccessPolicyConnectionRulesSshArgs() {}
 
     private AccessPolicyConnectionRulesSshArgs(AccessPolicyConnectionRulesSshArgs $) {
+        this.allowEmailAlias = $.allowEmailAlias;
         this.usernames = $.usernames;
     }
 
@@ -52,6 +71,27 @@ public final class AccessPolicyConnectionRulesSshArgs extends com.pulumi.resourc
 
         public Builder(AccessPolicyConnectionRulesSshArgs defaults) {
             $ = new AccessPolicyConnectionRulesSshArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowEmailAlias Allows connecting to Unix username that matches the authenticating email prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowEmailAlias(@Nullable Output<Boolean> allowEmailAlias) {
+            $.allowEmailAlias = allowEmailAlias;
+            return this;
+        }
+
+        /**
+         * @param allowEmailAlias Allows connecting to Unix username that matches the authenticating email prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowEmailAlias(Boolean allowEmailAlias) {
+            return allowEmailAlias(Output.of(allowEmailAlias));
         }
 
         /**

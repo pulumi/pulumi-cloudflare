@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyConnectionRulesSshGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows connecting to Unix username that matches the authenticating email prefix.
+        /// </summary>
+        [Input("allowEmailAlias")]
+        public Input<bool>? AllowEmailAlias { get; set; }
+
         [Input("usernames", required: true)]
         private InputList<string>? _usernames;
 

@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessIdentityProviderScimConfig {
+    /**
+     * @return A flag to enable or disable SCIM for the identity provider.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Deprecated. Use `identity_update_behavior`.
+     * 
+     */
     private @Nullable Boolean groupMemberDeprovision;
+    /**
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * 
+     */
     private @Nullable String identityUpdateBehavior;
+    /**
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * 
+     */
     private @Nullable Boolean seatDeprovision;
+    /**
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * 
+     */
     private @Nullable String secret;
+    /**
+     * @return A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     * 
+     */
     private @Nullable Boolean userDeprovision;
 
     private ZeroTrustAccessIdentityProviderScimConfig() {}
+    /**
+     * @return A flag to enable or disable SCIM for the identity provider.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Deprecated. Use `identity_update_behavior`.
+     * 
+     */
     public Optional<Boolean> groupMemberDeprovision() {
         return Optional.ofNullable(this.groupMemberDeprovision);
     }
+    /**
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * 
+     */
     public Optional<String> identityUpdateBehavior() {
         return Optional.ofNullable(this.identityUpdateBehavior);
     }
+    /**
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * 
+     */
     public Optional<Boolean> seatDeprovision() {
         return Optional.ofNullable(this.seatDeprovision);
     }
+    /**
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     * 
+     */
     public Optional<Boolean> userDeprovision() {
         return Optional.ofNullable(this.userDeprovision);
     }

@@ -127,21 +127,6 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The most recent update to this rule.
-     * 
-     */
-    @Import(name="lastUpdated")
-    private @Nullable Output<String> lastUpdated;
-
-    /**
-     * @return The most recent update to this rule.
-     * 
-     */
-    public Optional<Output<String>> lastUpdated() {
-        return Optional.ofNullable(this.lastUpdated);
-    }
-
-    /**
      * List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
@@ -186,21 +171,6 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ref);
     }
 
-    /**
-     * Version of the ruleset to deploy.
-     * 
-     */
-    @Import(name="version")
-    private @Nullable Output<String> version;
-
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    public Optional<Output<String>> version() {
-        return Optional.ofNullable(this.version);
-    }
-
     private RulesetRuleArgs() {}
 
     private RulesetRuleArgs(RulesetRuleArgs $) {
@@ -211,11 +181,9 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.exposedCredentialCheck = $.exposedCredentialCheck;
         this.expression = $.expression;
         this.id = $.id;
-        this.lastUpdated = $.lastUpdated;
         this.logging = $.logging;
         this.ratelimit = $.ratelimit;
         this.ref = $.ref;
-        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -384,27 +352,6 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastUpdated The most recent update to this rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
-            $.lastUpdated = lastUpdated;
-            return this;
-        }
-
-        /**
-         * @param lastUpdated The most recent update to this rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastUpdated(String lastUpdated) {
-            return lastUpdated(Output.of(lastUpdated));
-        }
-
-        /**
          * @param logging List parameters to configure how the rule generates logs. Only valid for skip action.
          * 
          * @return builder
@@ -465,27 +412,6 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ref(String ref) {
             return ref(Output.of(ref));
-        }
-
-        /**
-         * @param version Version of the ruleset to deploy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(@Nullable Output<String> version) {
-            $.version = version;
-            return this;
-        }
-
-        /**
-         * @param version Version of the ruleset to deploy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(String version) {
-            return version(Output.of(version));
         }
 
         public RulesetRuleArgs build() {

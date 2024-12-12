@@ -173,6 +173,112 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 	}).(AccessApplicationCorsHeaderOutput)
 }
 
+type AccessApplicationDestination struct {
+	// The destination type. Available values: `public`, `private`. Defaults to `public`.
+	Type *string `pulumi:"type"`
+	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+	Uri string `pulumi:"uri"`
+}
+
+// AccessApplicationDestinationInput is an input type that accepts AccessApplicationDestinationArgs and AccessApplicationDestinationOutput values.
+// You can construct a concrete instance of `AccessApplicationDestinationInput` via:
+//
+//	AccessApplicationDestinationArgs{...}
+type AccessApplicationDestinationInput interface {
+	pulumi.Input
+
+	ToAccessApplicationDestinationOutput() AccessApplicationDestinationOutput
+	ToAccessApplicationDestinationOutputWithContext(context.Context) AccessApplicationDestinationOutput
+}
+
+type AccessApplicationDestinationArgs struct {
+	// The destination type. Available values: `public`, `private`. Defaults to `public`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (AccessApplicationDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationDestination)(nil)).Elem()
+}
+
+func (i AccessApplicationDestinationArgs) ToAccessApplicationDestinationOutput() AccessApplicationDestinationOutput {
+	return i.ToAccessApplicationDestinationOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationDestinationArgs) ToAccessApplicationDestinationOutputWithContext(ctx context.Context) AccessApplicationDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationDestinationOutput)
+}
+
+// AccessApplicationDestinationArrayInput is an input type that accepts AccessApplicationDestinationArray and AccessApplicationDestinationArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationDestinationArrayInput` via:
+//
+//	AccessApplicationDestinationArray{ AccessApplicationDestinationArgs{...} }
+type AccessApplicationDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationDestinationArrayOutput() AccessApplicationDestinationArrayOutput
+	ToAccessApplicationDestinationArrayOutputWithContext(context.Context) AccessApplicationDestinationArrayOutput
+}
+
+type AccessApplicationDestinationArray []AccessApplicationDestinationInput
+
+func (AccessApplicationDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationDestination)(nil)).Elem()
+}
+
+func (i AccessApplicationDestinationArray) ToAccessApplicationDestinationArrayOutput() AccessApplicationDestinationArrayOutput {
+	return i.ToAccessApplicationDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationDestinationArray) ToAccessApplicationDestinationArrayOutputWithContext(ctx context.Context) AccessApplicationDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationDestinationArrayOutput)
+}
+
+type AccessApplicationDestinationOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationDestination)(nil)).Elem()
+}
+
+func (o AccessApplicationDestinationOutput) ToAccessApplicationDestinationOutput() AccessApplicationDestinationOutput {
+	return o
+}
+
+func (o AccessApplicationDestinationOutput) ToAccessApplicationDestinationOutputWithContext(ctx context.Context) AccessApplicationDestinationOutput {
+	return o
+}
+
+// The destination type. Available values: `public`, `private`. Defaults to `public`.
+func (o AccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+func (o AccessApplicationDestinationOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type AccessApplicationDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationDestination)(nil)).Elem()
+}
+
+func (o AccessApplicationDestinationArrayOutput) ToAccessApplicationDestinationArrayOutput() AccessApplicationDestinationArrayOutput {
+	return o
+}
+
+func (o AccessApplicationDestinationArrayOutput) ToAccessApplicationDestinationArrayOutputWithContext(ctx context.Context) AccessApplicationDestinationArrayOutput {
+	return o
+}
+
+func (o AccessApplicationDestinationArrayOutput) Index(i pulumi.IntInput) AccessApplicationDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationDestination {
+		return vs[0].([]AccessApplicationDestination)[vs[1].(int)]
+	}).(AccessApplicationDestinationOutput)
+}
+
 type AccessApplicationFooterLink struct {
 	// The name of the footer link.
 	Name *string `pulumi:"name"`
@@ -6332,12 +6438,18 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 }
 
 type AccessIdentityProviderScimConfig struct {
-	Enabled                *bool   `pulumi:"enabled"`
-	GroupMemberDeprovision *bool   `pulumi:"groupMemberDeprovision"`
+	// A flag to enable or disable SCIM for the identity provider.
+	Enabled *bool `pulumi:"enabled"`
+	// Deprecated. Use `identityUpdateBehavior`.
+	GroupMemberDeprovision *bool `pulumi:"groupMemberDeprovision"`
+	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 	IdentityUpdateBehavior *string `pulumi:"identityUpdateBehavior"`
-	SeatDeprovision        *bool   `pulumi:"seatDeprovision"`
-	Secret                 *string `pulumi:"secret"`
-	UserDeprovision        *bool   `pulumi:"userDeprovision"`
+	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+	SeatDeprovision *bool `pulumi:"seatDeprovision"`
+	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+	Secret *string `pulumi:"secret"`
+	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+	UserDeprovision *bool `pulumi:"userDeprovision"`
 }
 
 // AccessIdentityProviderScimConfigInput is an input type that accepts AccessIdentityProviderScimConfigArgs and AccessIdentityProviderScimConfigOutput values.
@@ -6352,12 +6464,18 @@ type AccessIdentityProviderScimConfigInput interface {
 }
 
 type AccessIdentityProviderScimConfigArgs struct {
-	Enabled                pulumi.BoolPtrInput   `pulumi:"enabled"`
-	GroupMemberDeprovision pulumi.BoolPtrInput   `pulumi:"groupMemberDeprovision"`
+	// A flag to enable or disable SCIM for the identity provider.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Deprecated. Use `identityUpdateBehavior`.
+	GroupMemberDeprovision pulumi.BoolPtrInput `pulumi:"groupMemberDeprovision"`
+	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 	IdentityUpdateBehavior pulumi.StringPtrInput `pulumi:"identityUpdateBehavior"`
-	SeatDeprovision        pulumi.BoolPtrInput   `pulumi:"seatDeprovision"`
-	Secret                 pulumi.StringPtrInput `pulumi:"secret"`
-	UserDeprovision        pulumi.BoolPtrInput   `pulumi:"userDeprovision"`
+	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+	SeatDeprovision pulumi.BoolPtrInput `pulumi:"seatDeprovision"`
+	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+	UserDeprovision pulumi.BoolPtrInput `pulumi:"userDeprovision"`
 }
 
 func (AccessIdentityProviderScimConfigArgs) ElementType() reflect.Type {
@@ -6411,26 +6529,32 @@ func (o AccessIdentityProviderScimConfigOutput) ToAccessIdentityProviderScimConf
 	return o
 }
 
+// A flag to enable or disable SCIM for the identity provider.
 func (o AccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated. Use `identityUpdateBehavior`.
 func (o AccessIdentityProviderScimConfigOutput) GroupMemberDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.GroupMemberDeprovision }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 func (o AccessIdentityProviderScimConfigOutput) IdentityUpdateBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *string { return v.IdentityUpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
+// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
 func (o AccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.SeatDeprovision }).(pulumi.BoolPtrOutput)
 }
 
+// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
 func (o AccessIdentityProviderScimConfigOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
+// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
 func (o AccessIdentityProviderScimConfigOutput) UserDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.UserDeprovision }).(pulumi.BoolPtrOutput)
 }
@@ -7059,6 +7183,8 @@ func (o AccessPolicyConnectionRulesPtrOutput) Ssh() AccessPolicyConnectionRulesS
 }
 
 type AccessPolicyConnectionRulesSsh struct {
+	// Allows connecting to Unix username that matches the authenticating email prefix.
+	AllowEmailAlias *bool `pulumi:"allowEmailAlias"`
 	// Contains the Unix usernames that may be used when connecting over SSH.
 	Usernames []string `pulumi:"usernames"`
 }
@@ -7075,6 +7201,8 @@ type AccessPolicyConnectionRulesSshInput interface {
 }
 
 type AccessPolicyConnectionRulesSshArgs struct {
+	// Allows connecting to Unix username that matches the authenticating email prefix.
+	AllowEmailAlias pulumi.BoolPtrInput `pulumi:"allowEmailAlias"`
 	// Contains the Unix usernames that may be used when connecting over SSH.
 	Usernames pulumi.StringArrayInput `pulumi:"usernames"`
 }
@@ -7156,6 +7284,11 @@ func (o AccessPolicyConnectionRulesSshOutput) ToAccessPolicyConnectionRulesSshPt
 	}).(AccessPolicyConnectionRulesSshPtrOutput)
 }
 
+// Allows connecting to Unix username that matches the authenticating email prefix.
+func (o AccessPolicyConnectionRulesSshOutput) AllowEmailAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPolicyConnectionRulesSsh) *bool { return v.AllowEmailAlias }).(pulumi.BoolPtrOutput)
+}
+
 // Contains the Unix usernames that may be used when connecting over SSH.
 func (o AccessPolicyConnectionRulesSshOutput) Usernames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyConnectionRulesSsh) []string { return v.Usernames }).(pulumi.StringArrayOutput)
@@ -7183,6 +7316,16 @@ func (o AccessPolicyConnectionRulesSshPtrOutput) Elem() AccessPolicyConnectionRu
 		var ret AccessPolicyConnectionRulesSsh
 		return ret
 	}).(AccessPolicyConnectionRulesSshOutput)
+}
+
+// Allows connecting to Unix username that matches the authenticating email prefix.
+func (o AccessPolicyConnectionRulesSshPtrOutput) AllowEmailAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyConnectionRulesSsh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowEmailAlias
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Contains the Unix usernames that may be used when connecting over SSH.
@@ -20256,7 +20399,7 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 type NotificationPolicyFilters struct {
 	// Targeted actions for alert.
 	Actions []string `pulumi:"actions"`
-	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 	AffectedComponents []string `pulumi:"affectedComponents"`
 	// Filter on Points of Presence.
 	AirportCodes []string `pulumi:"airportCodes"`
@@ -20337,7 +20480,7 @@ type NotificationPolicyFiltersInput interface {
 type NotificationPolicyFiltersArgs struct {
 	// Targeted actions for alert.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 	AffectedComponents pulumi.StringArrayInput `pulumi:"affectedComponents"`
 	// Filter on Points of Presence.
 	AirportCodes pulumi.StringArrayInput `pulumi:"airportCodes"`
@@ -20486,7 +20629,7 @@ func (o NotificationPolicyFiltersOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 func (o NotificationPolicyFiltersOutput) AffectedComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AffectedComponents }).(pulumi.StringArrayOutput)
 }
@@ -20684,7 +20827,7 @@ func (o NotificationPolicyFiltersPtrOutput) Actions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 func (o NotificationPolicyFiltersPtrOutput) AffectedComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -27579,16 +27722,12 @@ type RulesetRule struct {
 	Expression string `pulumi:"expression"`
 	// Unique rule identifier.
 	Id *string `pulumi:"id"`
-	// The most recent update to this rule.
-	LastUpdated *string `pulumi:"lastUpdated"`
 	// List parameters to configure how the rule generates logs. Only valid for skip action.
 	Logging *RulesetRuleLogging `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour.
 	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
 	// Rule reference.
 	Ref *string `pulumi:"ref"`
-	// Version of the ruleset to deploy.
-	Version *string `pulumi:"version"`
 }
 
 // RulesetRuleInput is an input type that accepts RulesetRuleArgs and RulesetRuleOutput values.
@@ -27617,16 +27756,12 @@ type RulesetRuleArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Unique rule identifier.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The most recent update to this rule.
-	LastUpdated pulumi.StringPtrInput `pulumi:"lastUpdated"`
 	// List parameters to configure how the rule generates logs. Only valid for skip action.
 	Logging RulesetRuleLoggingPtrInput `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour.
 	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
 	// Rule reference.
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
-	// Version of the ruleset to deploy.
-	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (RulesetRuleArgs) ElementType() reflect.Type {
@@ -27715,11 +27850,6 @@ func (o RulesetRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The most recent update to this rule.
-func (o RulesetRuleOutput) LastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
-}
-
 // List parameters to configure how the rule generates logs. Only valid for skip action.
 func (o RulesetRuleOutput) Logging() RulesetRuleLoggingPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleLogging { return v.Logging }).(RulesetRuleLoggingPtrOutput)
@@ -27733,11 +27863,6 @@ func (o RulesetRuleOutput) Ratelimit() RulesetRuleRatelimitPtrOutput {
 // Rule reference.
 func (o RulesetRuleOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Ref }).(pulumi.StringPtrOutput)
-}
-
-// Version of the ruleset to deploy.
-func (o RulesetRuleOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type RulesetRuleArrayOutput struct{ *pulumi.OutputState }
@@ -27866,8 +27991,6 @@ type RulesetRuleActionParameters struct {
 	Sxg *bool `pulumi:"sxg"`
 	// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
 	Uri *RulesetRuleActionParametersUri `pulumi:"uri"`
-	// Version of the ruleset to deploy.
-	Version *string `pulumi:"version"`
 }
 
 // RulesetRuleActionParametersInput is an input type that accepts RulesetRuleActionParametersArgs and RulesetRuleActionParametersOutput values.
@@ -27987,8 +28110,6 @@ type RulesetRuleActionParametersArgs struct {
 	Sxg pulumi.BoolPtrInput `pulumi:"sxg"`
 	// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
 	Uri RulesetRuleActionParametersUriPtrInput `pulumi:"uri"`
-	// Version of the ruleset to deploy.
-	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (RulesetRuleActionParametersArgs) ElementType() reflect.Type {
@@ -28330,11 +28451,6 @@ func (o RulesetRuleActionParametersOutput) Sxg() pulumi.BoolPtrOutput {
 // List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
 func (o RulesetRuleActionParametersOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersUri { return v.Uri }).(RulesetRuleActionParametersUriPtrOutput)
-}
-
-// Version of the ruleset to deploy.
-func (o RulesetRuleActionParametersOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type RulesetRuleActionParametersPtrOutput struct{ *pulumi.OutputState }
@@ -28888,16 +29004,6 @@ func (o RulesetRuleActionParametersPtrOutput) Uri() RulesetRuleActionParametersU
 		}
 		return v.Uri
 	}).(RulesetRuleActionParametersUriPtrOutput)
-}
-
-// Version of the ruleset to deploy.
-func (o RulesetRuleActionParametersPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type RulesetRuleActionParametersAlgorithm struct {
@@ -33865,6 +33971,236 @@ func (o RulesetRuleRatelimitPtrOutput) ScoreResponseHeaderName() pulumi.StringPt
 		}
 		return v.ScoreResponseHeaderName
 	}).(pulumi.StringPtrOutput)
+}
+
+type SnippetFile struct {
+	// Content of the snippet file.
+	Content *string `pulumi:"content"`
+	// Name of the snippet file.
+	Name string `pulumi:"name"`
+}
+
+// SnippetFileInput is an input type that accepts SnippetFileArgs and SnippetFileOutput values.
+// You can construct a concrete instance of `SnippetFileInput` via:
+//
+//	SnippetFileArgs{...}
+type SnippetFileInput interface {
+	pulumi.Input
+
+	ToSnippetFileOutput() SnippetFileOutput
+	ToSnippetFileOutputWithContext(context.Context) SnippetFileOutput
+}
+
+type SnippetFileArgs struct {
+	// Content of the snippet file.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Name of the snippet file.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SnippetFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnippetFile)(nil)).Elem()
+}
+
+func (i SnippetFileArgs) ToSnippetFileOutput() SnippetFileOutput {
+	return i.ToSnippetFileOutputWithContext(context.Background())
+}
+
+func (i SnippetFileArgs) ToSnippetFileOutputWithContext(ctx context.Context) SnippetFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnippetFileOutput)
+}
+
+// SnippetFileArrayInput is an input type that accepts SnippetFileArray and SnippetFileArrayOutput values.
+// You can construct a concrete instance of `SnippetFileArrayInput` via:
+//
+//	SnippetFileArray{ SnippetFileArgs{...} }
+type SnippetFileArrayInput interface {
+	pulumi.Input
+
+	ToSnippetFileArrayOutput() SnippetFileArrayOutput
+	ToSnippetFileArrayOutputWithContext(context.Context) SnippetFileArrayOutput
+}
+
+type SnippetFileArray []SnippetFileInput
+
+func (SnippetFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnippetFile)(nil)).Elem()
+}
+
+func (i SnippetFileArray) ToSnippetFileArrayOutput() SnippetFileArrayOutput {
+	return i.ToSnippetFileArrayOutputWithContext(context.Background())
+}
+
+func (i SnippetFileArray) ToSnippetFileArrayOutputWithContext(ctx context.Context) SnippetFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnippetFileArrayOutput)
+}
+
+type SnippetFileOutput struct{ *pulumi.OutputState }
+
+func (SnippetFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnippetFile)(nil)).Elem()
+}
+
+func (o SnippetFileOutput) ToSnippetFileOutput() SnippetFileOutput {
+	return o
+}
+
+func (o SnippetFileOutput) ToSnippetFileOutputWithContext(ctx context.Context) SnippetFileOutput {
+	return o
+}
+
+// Content of the snippet file.
+func (o SnippetFileOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnippetFile) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Name of the snippet file.
+func (o SnippetFileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SnippetFile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SnippetFileArrayOutput struct{ *pulumi.OutputState }
+
+func (SnippetFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnippetFile)(nil)).Elem()
+}
+
+func (o SnippetFileArrayOutput) ToSnippetFileArrayOutput() SnippetFileArrayOutput {
+	return o
+}
+
+func (o SnippetFileArrayOutput) ToSnippetFileArrayOutputWithContext(ctx context.Context) SnippetFileArrayOutput {
+	return o
+}
+
+func (o SnippetFileArrayOutput) Index(i pulumi.IntInput) SnippetFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnippetFile {
+		return vs[0].([]SnippetFile)[vs[1].(int)]
+	}).(SnippetFileOutput)
+}
+
+type SnippetRulesRule struct {
+	// Brief summary of the snippet rule and its intended use.
+	Description *string `pulumi:"description"`
+	// Whether the headers rule is active.
+	Enabled *bool `pulumi:"enabled"`
+	// Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+	Expression string `pulumi:"expression"`
+	// Name of the snippet invoked by this rule.
+	SnippetName string `pulumi:"snippetName"`
+}
+
+// SnippetRulesRuleInput is an input type that accepts SnippetRulesRuleArgs and SnippetRulesRuleOutput values.
+// You can construct a concrete instance of `SnippetRulesRuleInput` via:
+//
+//	SnippetRulesRuleArgs{...}
+type SnippetRulesRuleInput interface {
+	pulumi.Input
+
+	ToSnippetRulesRuleOutput() SnippetRulesRuleOutput
+	ToSnippetRulesRuleOutputWithContext(context.Context) SnippetRulesRuleOutput
+}
+
+type SnippetRulesRuleArgs struct {
+	// Brief summary of the snippet rule and its intended use.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the headers rule is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Name of the snippet invoked by this rule.
+	SnippetName pulumi.StringInput `pulumi:"snippetName"`
+}
+
+func (SnippetRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnippetRulesRule)(nil)).Elem()
+}
+
+func (i SnippetRulesRuleArgs) ToSnippetRulesRuleOutput() SnippetRulesRuleOutput {
+	return i.ToSnippetRulesRuleOutputWithContext(context.Background())
+}
+
+func (i SnippetRulesRuleArgs) ToSnippetRulesRuleOutputWithContext(ctx context.Context) SnippetRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnippetRulesRuleOutput)
+}
+
+// SnippetRulesRuleArrayInput is an input type that accepts SnippetRulesRuleArray and SnippetRulesRuleArrayOutput values.
+// You can construct a concrete instance of `SnippetRulesRuleArrayInput` via:
+//
+//	SnippetRulesRuleArray{ SnippetRulesRuleArgs{...} }
+type SnippetRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToSnippetRulesRuleArrayOutput() SnippetRulesRuleArrayOutput
+	ToSnippetRulesRuleArrayOutputWithContext(context.Context) SnippetRulesRuleArrayOutput
+}
+
+type SnippetRulesRuleArray []SnippetRulesRuleInput
+
+func (SnippetRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnippetRulesRule)(nil)).Elem()
+}
+
+func (i SnippetRulesRuleArray) ToSnippetRulesRuleArrayOutput() SnippetRulesRuleArrayOutput {
+	return i.ToSnippetRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SnippetRulesRuleArray) ToSnippetRulesRuleArrayOutputWithContext(ctx context.Context) SnippetRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnippetRulesRuleArrayOutput)
+}
+
+type SnippetRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (SnippetRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnippetRulesRule)(nil)).Elem()
+}
+
+func (o SnippetRulesRuleOutput) ToSnippetRulesRuleOutput() SnippetRulesRuleOutput {
+	return o
+}
+
+func (o SnippetRulesRuleOutput) ToSnippetRulesRuleOutputWithContext(ctx context.Context) SnippetRulesRuleOutput {
+	return o
+}
+
+// Brief summary of the snippet rule and its intended use.
+func (o SnippetRulesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnippetRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether the headers rule is active.
+func (o SnippetRulesRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SnippetRulesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+func (o SnippetRulesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SnippetRulesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Name of the snippet invoked by this rule.
+func (o SnippetRulesRuleOutput) SnippetName() pulumi.StringOutput {
+	return o.ApplyT(func(v SnippetRulesRule) string { return v.SnippetName }).(pulumi.StringOutput)
+}
+
+type SnippetRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SnippetRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnippetRulesRule)(nil)).Elem()
+}
+
+func (o SnippetRulesRuleArrayOutput) ToSnippetRulesRuleArrayOutput() SnippetRulesRuleArrayOutput {
+	return o
+}
+
+func (o SnippetRulesRuleArrayOutput) ToSnippetRulesRuleArrayOutputWithContext(ctx context.Context) SnippetRulesRuleArrayOutput {
+	return o
+}
+
+func (o SnippetRulesRuleArrayOutput) Index(i pulumi.IntInput) SnippetRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnippetRulesRule {
+		return vs[0].([]SnippetRulesRule)[vs[1].(int)]
+	}).(SnippetRulesRuleOutput)
 }
 
 type SpectrumApplicationDns struct {
@@ -44486,6 +44822,112 @@ func (o ZeroTrustAccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput
 	}).(ZeroTrustAccessApplicationCorsHeaderOutput)
 }
 
+type ZeroTrustAccessApplicationDestination struct {
+	// The destination type. Available values: `public`, `private`. Defaults to `public`.
+	Type *string `pulumi:"type"`
+	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+	Uri string `pulumi:"uri"`
+}
+
+// ZeroTrustAccessApplicationDestinationInput is an input type that accepts ZeroTrustAccessApplicationDestinationArgs and ZeroTrustAccessApplicationDestinationOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationDestinationInput` via:
+//
+//	ZeroTrustAccessApplicationDestinationArgs{...}
+type ZeroTrustAccessApplicationDestinationInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationDestinationOutput() ZeroTrustAccessApplicationDestinationOutput
+	ToZeroTrustAccessApplicationDestinationOutputWithContext(context.Context) ZeroTrustAccessApplicationDestinationOutput
+}
+
+type ZeroTrustAccessApplicationDestinationArgs struct {
+	// The destination type. Available values: `public`, `private`. Defaults to `public`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (ZeroTrustAccessApplicationDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationDestination)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationDestinationArgs) ToZeroTrustAccessApplicationDestinationOutput() ZeroTrustAccessApplicationDestinationOutput {
+	return i.ToZeroTrustAccessApplicationDestinationOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationDestinationArgs) ToZeroTrustAccessApplicationDestinationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationDestinationOutput)
+}
+
+// ZeroTrustAccessApplicationDestinationArrayInput is an input type that accepts ZeroTrustAccessApplicationDestinationArray and ZeroTrustAccessApplicationDestinationArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessApplicationDestinationArrayInput` via:
+//
+//	ZeroTrustAccessApplicationDestinationArray{ ZeroTrustAccessApplicationDestinationArgs{...} }
+type ZeroTrustAccessApplicationDestinationArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessApplicationDestinationArrayOutput() ZeroTrustAccessApplicationDestinationArrayOutput
+	ToZeroTrustAccessApplicationDestinationArrayOutputWithContext(context.Context) ZeroTrustAccessApplicationDestinationArrayOutput
+}
+
+type ZeroTrustAccessApplicationDestinationArray []ZeroTrustAccessApplicationDestinationInput
+
+func (ZeroTrustAccessApplicationDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationDestination)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessApplicationDestinationArray) ToZeroTrustAccessApplicationDestinationArrayOutput() ZeroTrustAccessApplicationDestinationArrayOutput {
+	return i.ToZeroTrustAccessApplicationDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessApplicationDestinationArray) ToZeroTrustAccessApplicationDestinationArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationDestinationArrayOutput)
+}
+
+type ZeroTrustAccessApplicationDestinationOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessApplicationDestination)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationDestinationOutput) ToZeroTrustAccessApplicationDestinationOutput() ZeroTrustAccessApplicationDestinationOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationDestinationOutput) ToZeroTrustAccessApplicationDestinationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationDestinationOutput {
+	return o
+}
+
+// The destination type. Available values: `public`, `private`. Defaults to `public`.
+func (o ZeroTrustAccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+func (o ZeroTrustAccessApplicationDestinationOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessApplicationDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessApplicationDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustAccessApplicationDestination)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessApplicationDestinationArrayOutput) ToZeroTrustAccessApplicationDestinationArrayOutput() ZeroTrustAccessApplicationDestinationArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationDestinationArrayOutput) ToZeroTrustAccessApplicationDestinationArrayOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationDestinationArrayOutput {
+	return o
+}
+
+func (o ZeroTrustAccessApplicationDestinationArrayOutput) Index(i pulumi.IntInput) ZeroTrustAccessApplicationDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustAccessApplicationDestination {
+		return vs[0].([]ZeroTrustAccessApplicationDestination)[vs[1].(int)]
+	}).(ZeroTrustAccessApplicationDestinationOutput)
+}
+
 type ZeroTrustAccessApplicationFooterLink struct {
 	// The name of the footer link.
 	Name *string `pulumi:"name"`
@@ -50509,12 +50951,18 @@ func (o ZeroTrustAccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ZeroTrustAccessIdentityProviderScimConfig struct {
-	Enabled                *bool   `pulumi:"enabled"`
-	GroupMemberDeprovision *bool   `pulumi:"groupMemberDeprovision"`
+	// A flag to enable or disable SCIM for the identity provider.
+	Enabled *bool `pulumi:"enabled"`
+	// Deprecated. Use `identityUpdateBehavior`.
+	GroupMemberDeprovision *bool `pulumi:"groupMemberDeprovision"`
+	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 	IdentityUpdateBehavior *string `pulumi:"identityUpdateBehavior"`
-	SeatDeprovision        *bool   `pulumi:"seatDeprovision"`
-	Secret                 *string `pulumi:"secret"`
-	UserDeprovision        *bool   `pulumi:"userDeprovision"`
+	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+	SeatDeprovision *bool `pulumi:"seatDeprovision"`
+	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+	Secret *string `pulumi:"secret"`
+	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+	UserDeprovision *bool `pulumi:"userDeprovision"`
 }
 
 // ZeroTrustAccessIdentityProviderScimConfigInput is an input type that accepts ZeroTrustAccessIdentityProviderScimConfigArgs and ZeroTrustAccessIdentityProviderScimConfigOutput values.
@@ -50529,12 +50977,18 @@ type ZeroTrustAccessIdentityProviderScimConfigInput interface {
 }
 
 type ZeroTrustAccessIdentityProviderScimConfigArgs struct {
-	Enabled                pulumi.BoolPtrInput   `pulumi:"enabled"`
-	GroupMemberDeprovision pulumi.BoolPtrInput   `pulumi:"groupMemberDeprovision"`
+	// A flag to enable or disable SCIM for the identity provider.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Deprecated. Use `identityUpdateBehavior`.
+	GroupMemberDeprovision pulumi.BoolPtrInput `pulumi:"groupMemberDeprovision"`
+	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 	IdentityUpdateBehavior pulumi.StringPtrInput `pulumi:"identityUpdateBehavior"`
-	SeatDeprovision        pulumi.BoolPtrInput   `pulumi:"seatDeprovision"`
-	Secret                 pulumi.StringPtrInput `pulumi:"secret"`
-	UserDeprovision        pulumi.BoolPtrInput   `pulumi:"userDeprovision"`
+	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+	SeatDeprovision pulumi.BoolPtrInput `pulumi:"seatDeprovision"`
+	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+	UserDeprovision pulumi.BoolPtrInput `pulumi:"userDeprovision"`
 }
 
 func (ZeroTrustAccessIdentityProviderScimConfigArgs) ElementType() reflect.Type {
@@ -50588,26 +51042,32 @@ func (o ZeroTrustAccessIdentityProviderScimConfigOutput) ToZeroTrustAccessIdenti
 	return o
 }
 
+// A flag to enable or disable SCIM for the identity provider.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated. Use `identityUpdateBehavior`.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) GroupMemberDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *bool { return v.GroupMemberDeprovision }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) IdentityUpdateBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *string { return v.IdentityUpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
+// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *bool { return v.SeatDeprovision }).(pulumi.BoolPtrOutput)
 }
 
+// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
+// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
 func (o ZeroTrustAccessIdentityProviderScimConfigOutput) UserDeprovision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderScimConfig) *bool { return v.UserDeprovision }).(pulumi.BoolPtrOutput)
 }
@@ -51236,6 +51696,8 @@ func (o ZeroTrustAccessPolicyConnectionRulesPtrOutput) Ssh() ZeroTrustAccessPoli
 }
 
 type ZeroTrustAccessPolicyConnectionRulesSsh struct {
+	// Allows connecting to Unix username that matches the authenticating email prefix.
+	AllowEmailAlias *bool `pulumi:"allowEmailAlias"`
 	// Contains the Unix usernames that may be used when connecting over SSH.
 	Usernames []string `pulumi:"usernames"`
 }
@@ -51252,6 +51714,8 @@ type ZeroTrustAccessPolicyConnectionRulesSshInput interface {
 }
 
 type ZeroTrustAccessPolicyConnectionRulesSshArgs struct {
+	// Allows connecting to Unix username that matches the authenticating email prefix.
+	AllowEmailAlias pulumi.BoolPtrInput `pulumi:"allowEmailAlias"`
 	// Contains the Unix usernames that may be used when connecting over SSH.
 	Usernames pulumi.StringArrayInput `pulumi:"usernames"`
 }
@@ -51333,6 +51797,11 @@ func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) ToZeroTrustAccessPolicyCo
 	}).(ZeroTrustAccessPolicyConnectionRulesSshPtrOutput)
 }
 
+// Allows connecting to Unix username that matches the authenticating email prefix.
+func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) AllowEmailAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyConnectionRulesSsh) *bool { return v.AllowEmailAlias }).(pulumi.BoolPtrOutput)
+}
+
 // Contains the Unix usernames that may be used when connecting over SSH.
 func (o ZeroTrustAccessPolicyConnectionRulesSshOutput) Usernames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyConnectionRulesSsh) []string { return v.Usernames }).(pulumi.StringArrayOutput)
@@ -51360,6 +51829,16 @@ func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) Elem() ZeroTrustAccess
 		var ret ZeroTrustAccessPolicyConnectionRulesSsh
 		return ret
 	}).(ZeroTrustAccessPolicyConnectionRulesSshOutput)
+}
+
+// Allows connecting to Unix username that matches the authenticating email prefix.
+func (o ZeroTrustAccessPolicyConnectionRulesSshPtrOutput) AllowEmailAlias() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyConnectionRulesSsh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowEmailAlias
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Contains the Unix usernames that may be used when connecting over SSH.
@@ -76920,6 +77399,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderInput)(nil)).Elem(), AccessApplicationCorsHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderArrayInput)(nil)).Elem(), AccessApplicationCorsHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationDestinationInput)(nil)).Elem(), AccessApplicationDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationDestinationArrayInput)(nil)).Elem(), AccessApplicationDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationFooterLinkInput)(nil)).Elem(), AccessApplicationFooterLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationFooterLinkArrayInput)(nil)).Elem(), AccessApplicationFooterLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationLandingPageDesignInput)(nil)).Elem(), AccessApplicationLandingPageDesignArgs{})
@@ -77330,6 +77811,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingPtrInput)(nil)).Elem(), RulesetRuleLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnippetFileInput)(nil)).Elem(), SnippetFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnippetFileArrayInput)(nil)).Elem(), SnippetFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnippetRulesRuleInput)(nil)).Elem(), SnippetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnippetRulesRuleArrayInput)(nil)).Elem(), SnippetRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsPtrInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationEdgeIpsInput)(nil)).Elem(), SpectrumApplicationEdgeIpsArgs{})
@@ -77470,6 +77955,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptWebassemblyBindingArrayInput)(nil)).Elem(), WorkersScriptWebassemblyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationCorsHeaderInput)(nil)).Elem(), ZeroTrustAccessApplicationCorsHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationCorsHeaderArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationCorsHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationDestinationInput)(nil)).Elem(), ZeroTrustAccessApplicationDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationDestinationArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationFooterLinkInput)(nil)).Elem(), ZeroTrustAccessApplicationFooterLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationFooterLinkArrayInput)(nil)).Elem(), ZeroTrustAccessApplicationFooterLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationLandingPageDesignInput)(nil)).Elem(), ZeroTrustAccessApplicationLandingPageDesignArgs{})
@@ -77859,6 +78346,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
+	pulumi.RegisterOutputType(AccessApplicationDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationFooterLinkOutput{})
 	pulumi.RegisterOutputType(AccessApplicationFooterLinkArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationLandingPageDesignOutput{})
@@ -78269,6 +78758,10 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleLoggingPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
+	pulumi.RegisterOutputType(SnippetFileOutput{})
+	pulumi.RegisterOutputType(SnippetFileArrayOutput{})
+	pulumi.RegisterOutputType(SnippetRulesRuleOutput{})
+	pulumi.RegisterOutputType(SnippetRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationEdgeIpsOutput{})
@@ -78409,6 +78902,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkersScriptWebassemblyBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationCorsHeaderOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationCorsHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationDestinationOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessApplicationDestinationArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationFooterLinkOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationFooterLinkArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationLandingPageDesignOutput{})

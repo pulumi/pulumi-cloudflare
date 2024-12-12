@@ -40,6 +40,17 @@ export interface AccessApplicationCorsHeader {
     maxAge?: number;
 }
 
+export interface AccessApplicationDestination {
+    /**
+     * The destination type. Available values: `public`, `private`. Defaults to `public`.
+     */
+    type?: string;
+    /**
+     * The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     */
+    uri: string;
+}
+
 export interface AccessApplicationFooterLink {
     /**
      * The name of the footer link.
@@ -953,11 +964,29 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessIdentityProviderScimConfig {
+    /**
+     * A flag to enable or disable SCIM for the identity provider.
+     */
     enabled?: boolean;
+    /**
+     * Deprecated. Use `identityUpdateBehavior`.
+     */
     groupMemberDeprovision?: boolean;
+    /**
+     * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     */
     identityUpdateBehavior: string;
+    /**
+     * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+     */
     seatDeprovision?: boolean;
+    /**
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     */
     secret: string;
+    /**
+     * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     */
     userDeprovision?: boolean;
 }
 
@@ -1030,6 +1059,10 @@ export interface AccessPolicyConnectionRules {
 }
 
 export interface AccessPolicyConnectionRulesSsh {
+    /**
+     * Allows connecting to Unix username that matches the authenticating email prefix.
+     */
+    allowEmailAlias?: boolean;
     /**
      * Contains the Unix usernames that may be used when connecting over SSH.
      */
@@ -4069,7 +4102,7 @@ export interface NotificationPolicyFilters {
      */
     actions?: string[];
     /**
-     * Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
      */
     affectedComponents?: string[];
     /**
@@ -4933,10 +4966,6 @@ export interface RulesetRule {
      */
     id: string;
     /**
-     * The most recent update to this rule.
-     */
-    lastUpdated: string;
-    /**
      * List parameters to configure how the rule generates logs. Only valid for skip action.
      */
     logging?: outputs.RulesetRuleLogging;
@@ -4948,10 +4977,6 @@ export interface RulesetRule {
      * Rule reference.
      */
     ref: string;
-    /**
-     * Version of the ruleset to deploy.
-     */
-    version: string;
 }
 
 export interface RulesetRuleActionParameters {
@@ -5164,10 +5189,6 @@ export interface RulesetRuleActionParameters {
      * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
      */
     uri?: outputs.RulesetRuleActionParametersUri;
-    /**
-     * Version of the ruleset to deploy.
-     */
-    version: string;
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
@@ -5609,6 +5630,36 @@ export interface RulesetRuleRatelimit {
      * Name of HTTP header in the response, set by the origin server, with the score for the current request.
      */
     scoreResponseHeaderName?: string;
+}
+
+export interface SnippetFile {
+    /**
+     * Content of the snippet file.
+     */
+    content?: string;
+    /**
+     * Name of the snippet file.
+     */
+    name: string;
+}
+
+export interface SnippetRulesRule {
+    /**
+     * Brief summary of the snippet rule and its intended use.
+     */
+    description?: string;
+    /**
+     * Whether the headers rule is active.
+     */
+    enabled?: boolean;
+    /**
+     * Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+     */
+    expression: string;
+    /**
+     * Name of the snippet invoked by this rule.
+     */
+    snippetName: string;
 }
 
 export interface SpectrumApplicationDns {
@@ -6685,6 +6736,17 @@ export interface ZeroTrustAccessApplicationCorsHeader {
     maxAge?: number;
 }
 
+export interface ZeroTrustAccessApplicationDestination {
+    /**
+     * The destination type. Available values: `public`, `private`. Defaults to `public`.
+     */
+    type?: string;
+    /**
+     * The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     */
+    uri: string;
+}
+
 export interface ZeroTrustAccessApplicationFooterLink {
     /**
      * The name of the footer link.
@@ -7598,11 +7660,29 @@ export interface ZeroTrustAccessIdentityProviderConfig {
 }
 
 export interface ZeroTrustAccessIdentityProviderScimConfig {
+    /**
+     * A flag to enable or disable SCIM for the identity provider.
+     */
     enabled?: boolean;
+    /**
+     * Deprecated. Use `identityUpdateBehavior`.
+     */
     groupMemberDeprovision?: boolean;
+    /**
+     * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "noAction" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     */
     identityUpdateBehavior: string;
+    /**
+     * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
+     */
     seatDeprovision?: boolean;
+    /**
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     */
     secret: string;
+    /**
+     * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     */
     userDeprovision?: boolean;
 }
 
@@ -7675,6 +7755,10 @@ export interface ZeroTrustAccessPolicyConnectionRules {
 }
 
 export interface ZeroTrustAccessPolicyConnectionRulesSsh {
+    /**
+     * Allows connecting to Unix username that matches the authenticating email prefix.
+     */
+    allowEmailAlias?: boolean;
     /**
      * Contains the Unix usernames that may be used when connecting over SSH.
      */

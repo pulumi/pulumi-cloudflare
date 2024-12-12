@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyConnectionRulesSsh
     {
         /// <summary>
+        /// Allows connecting to Unix username that matches the authenticating email prefix.
+        /// </summary>
+        public readonly bool? AllowEmailAlias;
+        /// <summary>
         /// Contains the Unix usernames that may be used when connecting over SSH.
         /// </summary>
         public readonly ImmutableArray<string> Usernames;
 
         [OutputConstructor]
-        private AccessPolicyConnectionRulesSsh(ImmutableArray<string> usernames)
+        private AccessPolicyConnectionRulesSsh(
+            bool? allowEmailAlias,
+
+            ImmutableArray<string> usernames)
         {
+            AllowEmailAlias = allowEmailAlias;
             Usernames = usernames;
         }
     }

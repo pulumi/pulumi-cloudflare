@@ -55,12 +55,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The most recent update to this rule.
-        /// </summary>
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
-
-        /// <summary>
         /// List parameters to configure how the rule generates logs. Only valid for skip action.
         /// </summary>
         [Input("logging")]
@@ -77,12 +71,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }
-
-        /// <summary>
-        /// Version of the ruleset to deploy.
-        /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
 
         public RulesetRuleArgs()
         {

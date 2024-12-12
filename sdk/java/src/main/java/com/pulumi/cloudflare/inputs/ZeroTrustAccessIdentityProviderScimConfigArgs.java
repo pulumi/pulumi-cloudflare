@@ -16,44 +16,92 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
 
     public static final ZeroTrustAccessIdentityProviderScimConfigArgs Empty = new ZeroTrustAccessIdentityProviderScimConfigArgs();
 
+    /**
+     * A flag to enable or disable SCIM for the identity provider.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return A flag to enable or disable SCIM for the identity provider.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Deprecated. Use `identity_update_behavior`.
+     * 
+     */
     @Import(name="groupMemberDeprovision")
     private @Nullable Output<Boolean> groupMemberDeprovision;
 
+    /**
+     * @return Deprecated. Use `identity_update_behavior`.
+     * 
+     */
     public Optional<Output<Boolean>> groupMemberDeprovision() {
         return Optional.ofNullable(this.groupMemberDeprovision);
     }
 
+    /**
+     * Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * 
+     */
     @Import(name="identityUpdateBehavior")
     private @Nullable Output<String> identityUpdateBehavior;
 
+    /**
+     * @return Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+     * 
+     */
     public Optional<Output<String>> identityUpdateBehavior() {
         return Optional.ofNullable(this.identityUpdateBehavior);
     }
 
+    /**
+     * A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * 
+     */
     @Import(name="seatDeprovision")
     private @Nullable Output<Boolean> seatDeprovision;
 
+    /**
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * 
+     */
     public Optional<Output<Boolean>> seatDeprovision() {
         return Optional.ofNullable(this.seatDeprovision);
     }
 
+    /**
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     * 
+     */
     @Import(name="userDeprovision")
     private @Nullable Output<Boolean> userDeprovision;
 
+    /**
+     * @return A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+     * 
+     */
     public Optional<Output<Boolean>> userDeprovision() {
         return Optional.ofNullable(this.userDeprovision);
     }
@@ -87,56 +135,128 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
             $ = new ZeroTrustAccessIdentityProviderScimConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled A flag to enable or disable SCIM for the identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled A flag to enable or disable SCIM for the identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param groupMemberDeprovision Deprecated. Use `identity_update_behavior`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMemberDeprovision(@Nullable Output<Boolean> groupMemberDeprovision) {
             $.groupMemberDeprovision = groupMemberDeprovision;
             return this;
         }
 
+        /**
+         * @param groupMemberDeprovision Deprecated. Use `identity_update_behavior`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupMemberDeprovision(Boolean groupMemberDeprovision) {
             return groupMemberDeprovision(Output.of(groupMemberDeprovision));
         }
 
+        /**
+         * @param identityUpdateBehavior Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityUpdateBehavior(@Nullable Output<String> identityUpdateBehavior) {
             $.identityUpdateBehavior = identityUpdateBehavior;
             return this;
         }
 
+        /**
+         * @param identityUpdateBehavior Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityUpdateBehavior(String identityUpdateBehavior) {
             return identityUpdateBehavior(Output.of(identityUpdateBehavior));
         }
 
+        /**
+         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder seatDeprovision(@Nullable Output<Boolean> seatDeprovision) {
             $.seatDeprovision = seatDeprovision;
             return this;
         }
 
+        /**
+         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder seatDeprovision(Boolean seatDeprovision) {
             return seatDeprovision(Output.of(seatDeprovision));
         }
 
+        /**
+         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param userDeprovision A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDeprovision(@Nullable Output<Boolean> userDeprovision) {
             $.userDeprovision = userDeprovision;
             return this;
         }
 
+        /**
+         * @param userDeprovision A flag to enable revoking a user&#39;s session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userDeprovision(Boolean userDeprovision) {
             return userDeprovision(Output.of(userDeprovision));
         }

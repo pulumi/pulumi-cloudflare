@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'AccessApplicationCorsHeader',
+    'AccessApplicationDestination',
     'AccessApplicationFooterLink',
     'AccessApplicationLandingPageDesign',
     'AccessApplicationSaasApp',
@@ -223,6 +224,8 @@ __all__ = [
     'RulesetRuleExposedCredentialCheck',
     'RulesetRuleLogging',
     'RulesetRuleRatelimit',
+    'SnippetFile',
+    'SnippetRulesRule',
     'SpectrumApplicationDns',
     'SpectrumApplicationEdgeIps',
     'SpectrumApplicationOriginDns',
@@ -293,6 +296,7 @@ __all__ = [
     'WorkersScriptServiceBinding',
     'WorkersScriptWebassemblyBinding',
     'ZeroTrustAccessApplicationCorsHeader',
+    'ZeroTrustAccessApplicationDestination',
     'ZeroTrustAccessApplicationFooterLink',
     'ZeroTrustAccessApplicationLandingPageDesign',
     'ZeroTrustAccessApplicationSaasApp',
@@ -623,6 +627,36 @@ class AccessApplicationCorsHeader(dict):
         The maximum time a preflight request will be cached.
         """
         return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class AccessApplicationDestination(dict):
+    def __init__(__self__, *,
+                 uri: str,
+                 type: Optional[str] = None):
+        """
+        :param str uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param str type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -4234,6 +4268,14 @@ class AccessIdentityProviderScimConfig(dict):
                  seat_deprovision: Optional[bool] = None,
                  secret: Optional[str] = None,
                  user_deprovision: Optional[bool] = None):
+        """
+        :param bool enabled: A flag to enable or disable SCIM for the identity provider.
+        :param bool group_member_deprovision: Deprecated. Use `identity_update_behavior`.
+        :param str identity_update_behavior: Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        :param bool seat_deprovision: A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        :param str secret: A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        :param bool user_deprovision: A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
@@ -4250,31 +4292,49 @@ class AccessIdentityProviderScimConfig(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="groupMemberDeprovision")
     def group_member_deprovision(self) -> Optional[bool]:
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         return pulumi.get(self, "group_member_deprovision")
 
     @property
     @pulumi.getter(name="identityUpdateBehavior")
     def identity_update_behavior(self) -> Optional[str]:
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         return pulumi.get(self, "identity_update_behavior")
 
     @property
     @pulumi.getter(name="seatDeprovision")
     def seat_deprovision(self) -> Optional[bool]:
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         return pulumi.get(self, "seat_deprovision")
 
     @property
     @pulumi.getter
     def secret(self) -> Optional[str]:
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="userDeprovision")
     def user_deprovision(self) -> Optional[bool]:
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         return pulumi.get(self, "user_deprovision")
 
 
@@ -4558,12 +4618,33 @@ class AccessPolicyConnectionRules(dict):
 
 @pulumi.output_type
 class AccessPolicyConnectionRulesSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowEmailAlias":
+            suggest = "allow_email_alias"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyConnectionRulesSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyConnectionRulesSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyConnectionRulesSsh.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 usernames: Sequence[str]):
+                 usernames: Sequence[str],
+                 allow_email_alias: Optional[bool] = None):
         """
         :param Sequence[str] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        :param bool allow_email_alias: Allows connecting to Unix username that matches the authenticating email prefix.
         """
         pulumi.set(__self__, "usernames", usernames)
+        if allow_email_alias is not None:
+            pulumi.set(__self__, "allow_email_alias", allow_email_alias)
 
     @property
     @pulumi.getter
@@ -4572,6 +4653,14 @@ class AccessPolicyConnectionRulesSsh(dict):
         Contains the Unix usernames that may be used when connecting over SSH.
         """
         return pulumi.get(self, "usernames")
+
+    @property
+    @pulumi.getter(name="allowEmailAlias")
+    def allow_email_alias(self) -> Optional[bool]:
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
+        return pulumi.get(self, "allow_email_alias")
 
 
 @pulumi.output_type
@@ -11134,7 +11223,7 @@ class NotificationPolicyFilters(dict):
                  zones: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] actions: Targeted actions for alert.
-        :param Sequence[str] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        :param Sequence[str] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         :param Sequence[str] airport_codes: Filter on Points of Presence.
         :param Sequence[str] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param Sequence[str] enableds: State of the pool to alert on.
@@ -11248,7 +11337,7 @@ class NotificationPolicyFilters(dict):
     @pulumi.getter(name="affectedComponents")
     def affected_components(self) -> Optional[Sequence[str]]:
         """
-        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         """
         return pulumi.get(self, "affected_components")
 
@@ -14111,8 +14200,6 @@ class RulesetRule(dict):
             suggest = "action_parameters"
         elif key == "exposedCredentialCheck":
             suggest = "exposed_credential_check"
-        elif key == "lastUpdated":
-            suggest = "last_updated"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRule. Access the value via the '{suggest}' property getter instead.")
@@ -14133,11 +14220,9 @@ class RulesetRule(dict):
                  enabled: Optional[bool] = None,
                  exposed_credential_check: Optional['outputs.RulesetRuleExposedCredentialCheck'] = None,
                  id: Optional[str] = None,
-                 last_updated: Optional[str] = None,
                  logging: Optional['outputs.RulesetRuleLogging'] = None,
                  ratelimit: Optional['outputs.RulesetRuleRatelimit'] = None,
-                 ref: Optional[str] = None,
-                 version: Optional[str] = None):
+                 ref: Optional[str] = None):
         """
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
@@ -14146,11 +14231,9 @@ class RulesetRule(dict):
         :param bool enabled: Whether the rule is active.
         :param 'RulesetRuleExposedCredentialCheckArgs' exposed_credential_check: List of parameters that configure exposed credential checks.
         :param str id: Unique rule identifier.
-        :param str last_updated: The most recent update to this rule.
         :param 'RulesetRuleLoggingArgs' logging: List parameters to configure how the rule generates logs. Only valid for skip action.
         :param 'RulesetRuleRatelimitArgs' ratelimit: List of parameters that configure HTTP rate limiting behaviour.
         :param str ref: Rule reference.
-        :param str version: Version of the ruleset to deploy.
         """
         pulumi.set(__self__, "expression", expression)
         if action is not None:
@@ -14165,16 +14248,12 @@ class RulesetRule(dict):
             pulumi.set(__self__, "exposed_credential_check", exposed_credential_check)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
         if ratelimit is not None:
             pulumi.set(__self__, "ratelimit", ratelimit)
         if ref is not None:
             pulumi.set(__self__, "ref", ref)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -14233,14 +14312,6 @@ class RulesetRule(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[str]:
-        """
-        The most recent update to this rule.
-        """
-        return pulumi.get(self, "last_updated")
-
-    @property
     @pulumi.getter
     def logging(self) -> Optional['outputs.RulesetRuleLogging']:
         """
@@ -14263,14 +14334,6 @@ class RulesetRule(dict):
         Rule reference.
         """
         return pulumi.get(self, "ref")
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[str]:
-        """
-        Version of the ruleset to deploy.
-        """
-        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -14403,8 +14466,7 @@ class RulesetRuleActionParameters(dict):
                  ssl: Optional[str] = None,
                  status_code: Optional[int] = None,
                  sxg: Optional[bool] = None,
-                 uri: Optional['outputs.RulesetRuleActionParametersUri'] = None,
-                 version: Optional[str] = None):
+                 uri: Optional['outputs.RulesetRuleActionParametersUri'] = None):
         """
         :param Sequence[int] additional_cacheable_ports: Specifies uncommon ports to allow cacheable assets to be served from.
         :param Sequence['RulesetRuleActionParametersAlgorithmArgs'] algorithms: Compression algorithms to use in order of preference.
@@ -14458,7 +14520,6 @@ class RulesetRuleActionParameters(dict):
         :param int status_code: HTTP status code of the custom error response.
         :param bool sxg: Turn on or off the SXG feature.
         :param 'RulesetRuleActionParametersUriArgs' uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
-        :param str version: Version of the ruleset to deploy.
         """
         if additional_cacheable_ports is not None:
             pulumi.set(__self__, "additional_cacheable_ports", additional_cacheable_ports)
@@ -14566,8 +14627,6 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "sxg", sxg)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="additionalCacheablePorts")
@@ -14989,14 +15048,6 @@ class RulesetRuleActionParameters(dict):
         List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
         """
         return pulumi.get(self, "uri")
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[str]:
-        """
-        Version of the ruleset to deploy.
-        """
-        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -16576,6 +16627,106 @@ class RulesetRuleRatelimit(dict):
         Name of HTTP header in the response, set by the origin server, with the score for the current request.
         """
         return pulumi.get(self, "score_response_header_name")
+
+
+@pulumi.output_type
+class SnippetFile(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 content: Optional[str] = None):
+        """
+        :param str name: Name of the snippet file.
+        :param str content: Content of the snippet file.
+        """
+        pulumi.set(__self__, "name", name)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the snippet file.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        Content of the snippet file.
+        """
+        return pulumi.get(self, "content")
+
+
+@pulumi.output_type
+class SnippetRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "snippetName":
+            suggest = "snippet_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SnippetRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SnippetRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SnippetRulesRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expression: str,
+                 snippet_name: str,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param str expression: Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        :param str snippet_name: Name of the snippet invoked by this rule.
+        :param str description: Brief summary of the snippet rule and its intended use.
+        :param bool enabled: Whether the headers rule is active.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "snippet_name", snippet_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter(name="snippetName")
+    def snippet_name(self) -> str:
+        """
+        Name of the snippet invoked by this rule.
+        """
+        return pulumi.get(self, "snippet_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Brief summary of the snippet rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the headers rule is active.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -20312,6 +20463,36 @@ class ZeroTrustAccessApplicationCorsHeader(dict):
 
 
 @pulumi.output_type
+class ZeroTrustAccessApplicationDestination(dict):
+    def __init__(__self__, *,
+                 uri: str,
+                 type: Optional[str] = None):
+        """
+        :param str uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param str type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The destination type. Available values: `public`, `private`. Defaults to `public`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ZeroTrustAccessApplicationFooterLink(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
@@ -23920,6 +24101,14 @@ class ZeroTrustAccessIdentityProviderScimConfig(dict):
                  seat_deprovision: Optional[bool] = None,
                  secret: Optional[str] = None,
                  user_deprovision: Optional[bool] = None):
+        """
+        :param bool enabled: A flag to enable or disable SCIM for the identity provider.
+        :param bool group_member_deprovision: Deprecated. Use `identity_update_behavior`.
+        :param str identity_update_behavior: Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        :param bool seat_deprovision: A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        :param str secret: A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        :param bool user_deprovision: A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if group_member_deprovision is not None:
@@ -23936,31 +24125,49 @@ class ZeroTrustAccessIdentityProviderScimConfig(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        A flag to enable or disable SCIM for the identity provider.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="groupMemberDeprovision")
     def group_member_deprovision(self) -> Optional[bool]:
+        """
+        Deprecated. Use `identity_update_behavior`.
+        """
         return pulumi.get(self, "group_member_deprovision")
 
     @property
     @pulumi.getter(name="identityUpdateBehavior")
     def identity_update_behavior(self) -> Optional[str]:
+        """
+        Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
+        """
         return pulumi.get(self, "identity_update_behavior")
 
     @property
     @pulumi.getter(name="seatDeprovision")
     def seat_deprovision(self) -> Optional[bool]:
+        """
+        A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        """
         return pulumi.get(self, "seat_deprovision")
 
     @property
     @pulumi.getter
     def secret(self) -> Optional[str]:
+        """
+        A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="userDeprovision")
     def user_deprovision(self) -> Optional[bool]:
+        """
+        A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
+        """
         return pulumi.get(self, "user_deprovision")
 
 
@@ -24244,12 +24451,33 @@ class ZeroTrustAccessPolicyConnectionRules(dict):
 
 @pulumi.output_type
 class ZeroTrustAccessPolicyConnectionRulesSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowEmailAlias":
+            suggest = "allow_email_alias"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyConnectionRulesSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessPolicyConnectionRulesSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessPolicyConnectionRulesSsh.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 usernames: Sequence[str]):
+                 usernames: Sequence[str],
+                 allow_email_alias: Optional[bool] = None):
         """
         :param Sequence[str] usernames: Contains the Unix usernames that may be used when connecting over SSH.
+        :param bool allow_email_alias: Allows connecting to Unix username that matches the authenticating email prefix.
         """
         pulumi.set(__self__, "usernames", usernames)
+        if allow_email_alias is not None:
+            pulumi.set(__self__, "allow_email_alias", allow_email_alias)
 
     @property
     @pulumi.getter
@@ -24258,6 +24486,14 @@ class ZeroTrustAccessPolicyConnectionRulesSsh(dict):
         Contains the Unix usernames that may be used when connecting over SSH.
         """
         return pulumi.get(self, "usernames")
+
+    @property
+    @pulumi.getter(name="allowEmailAlias")
+    def allow_email_alias(self) -> Optional[bool]:
+        """
+        Allows connecting to Unix username that matches the authenticating email prefix.
+        """
+        return pulumi.get(self, "allow_email_alias")
 
 
 @pulumi.output_type
