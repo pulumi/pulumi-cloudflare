@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeaderArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationDestinationArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
@@ -204,6 +205,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * 
+     */
+    @Import(name="destinations")
+    private @Nullable Output<List<AccessApplicationDestinationArgs>> destinations;
+
+    /**
+     * @return A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationDestinationArgs>>> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
+
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
@@ -216,6 +232,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
+    }
+
+    /**
+     * The type of the primary domain. Available values: `public`, `private`.
+     * 
+     */
+    @Import(name="domainType")
+    private @Nullable Output<String> domainType;
+
+    /**
+     * @return The type of the primary domain. Available values: `public`, `private`.
+     * 
+     */
+    public Optional<Output<String>> domainType() {
+        return Optional.ofNullable(this.domainType);
     }
 
     /**
@@ -399,16 +430,24 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     * 
+     * @deprecated
+     * Use `destinations` instead
      * 
      */
+    @Deprecated /* Use `destinations` instead */
     @Import(name="selfHostedDomains")
     private @Nullable Output<List<String>> selfHostedDomains;
 
     /**
-     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * @return List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     * 
+     * @deprecated
+     * Use `destinations` instead
      * 
      */
+    @Deprecated /* Use `destinations` instead */
     public Optional<Output<List<String>>> selfHostedDomains() {
         return Optional.ofNullable(this.selfHostedDomains);
     }
@@ -548,7 +587,9 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.customDenyUrl = $.customDenyUrl;
         this.customNonIdentityDenyUrl = $.customNonIdentityDenyUrl;
         this.customPages = $.customPages;
+        this.destinations = $.destinations;
         this.domain = $.domain;
+        this.domainType = $.domainType;
         this.enableBindingCookie = $.enableBindingCookie;
         this.footerLinks = $.footerLinks;
         this.headerBgColor = $.headerBgColor;
@@ -873,6 +914,37 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(@Nullable Output<List<AccessApplicationDestinationArgs>> destinations) {
+            $.destinations = destinations;
+            return this;
+        }
+
+        /**
+         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(List<AccessApplicationDestinationArgs> destinations) {
+            return destinations(Output.of(destinations));
+        }
+
+        /**
+         * @param destinations A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(AccessApplicationDestinationArgs... destinations) {
+            return destinations(List.of(destinations));
+        }
+
+        /**
          * @param domain The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
          * 
          * @return builder
@@ -891,6 +963,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param domainType The type of the primary domain. Available values: `public`, `private`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainType(@Nullable Output<String> domainType) {
+            $.domainType = domainType;
+            return this;
+        }
+
+        /**
+         * @param domainType The type of the primary domain. Available values: `public`, `private`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainType(String domainType) {
+            return domainType(Output.of(domainType));
         }
 
         /**
@@ -1166,32 +1259,44 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `destinations` instead
+         * 
          */
+        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(@Nullable Output<List<String>> selfHostedDomains) {
             $.selfHostedDomains = selfHostedDomains;
             return this;
         }
 
         /**
-         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `destinations` instead
+         * 
          */
+        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(List<String> selfHostedDomains) {
             return selfHostedDomains(Output.of(selfHostedDomains));
         }
 
         /**
-         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+         * @param selfHostedDomains List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `destinations` instead
+         * 
          */
+        @Deprecated /* Use `destinations` instead */
         public Builder selfHostedDomains(String... selfHostedDomains) {
             return selfHostedDomains(List.of(selfHostedDomains));
         }

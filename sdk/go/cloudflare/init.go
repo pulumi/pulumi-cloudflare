@@ -133,6 +133,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpsecTunnel{}
 	case "cloudflare:index/keylessCertificate:KeylessCertificate":
 		r = &KeylessCertificate{}
+	case "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck":
+		r = &LeakedCredentialCheck{}
+	case "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule":
+		r = &LeakedCredentialCheckRule{}
 	case "cloudflare:index/list:List":
 		r = &List{}
 	case "cloudflare:index/listItem:ListItem":
@@ -191,6 +195,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RiskBehavior{}
 	case "cloudflare:index/ruleset:Ruleset":
 		r = &Ruleset{}
+	case "cloudflare:index/snippet:Snippet":
+		r = &Snippet{}
+	case "cloudflare:index/snippetRules:SnippetRules":
+		r = &SnippetRules{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
 	case "cloudflare:index/splitTunnel:SplitTunnel":
@@ -662,6 +670,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/leakedCredentialCheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/leakedCredentialCheckRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/list",
 		&module{version},
 	)
@@ -803,6 +821,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/ruleset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/snippet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/snippetRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

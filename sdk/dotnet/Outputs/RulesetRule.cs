@@ -42,10 +42,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The most recent update to this rule.
-        /// </summary>
-        public readonly string? LastUpdated;
-        /// <summary>
         /// List parameters to configure how the rule generates logs. Only valid for skip action.
         /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
@@ -57,10 +53,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Rule reference.
         /// </summary>
         public readonly string? Ref;
-        /// <summary>
-        /// Version of the ruleset to deploy.
-        /// </summary>
-        public readonly string? Version;
 
         [OutputConstructor]
         private RulesetRule(
@@ -78,15 +70,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
-            string? lastUpdated,
-
             Outputs.RulesetRuleLogging? logging,
 
             Outputs.RulesetRuleRatelimit? ratelimit,
 
-            string? @ref,
-
-            string? version)
+            string? @ref)
         {
             Action = action;
             ActionParameters = actionParameters;
@@ -95,11 +83,9 @@ namespace Pulumi.Cloudflare.Outputs
             ExposedCredentialCheck = exposedCredentialCheck;
             Expression = expression;
             Id = id;
-            LastUpdated = lastUpdated;
             Logging = logging;
             Ratelimit = ratelimit;
             Ref = @ref;
-            Version = version;
         }
     }
 }

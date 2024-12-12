@@ -822,21 +822,6 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.uri);
     }
 
-    /**
-     * Version of the ruleset to deploy.
-     * 
-     */
-    @Import(name="version")
-    private @Nullable Output<String> version;
-
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    public Optional<Output<String>> version() {
-        return Optional.ofNullable(this.version);
-    }
-
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
@@ -893,7 +878,6 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.statusCode = $.statusCode;
         this.sxg = $.sxg;
         this.uri = $.uri;
-        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -2123,27 +2107,6 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder uri(RulesetRuleActionParametersUriArgs uri) {
             return uri(Output.of(uri));
-        }
-
-        /**
-         * @param version Version of the ruleset to deploy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(@Nullable Output<String> version) {
-            $.version = version;
-            return this;
-        }
-
-        /**
-         * @param version Version of the ruleset to deploy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder version(String version) {
-            return version(Output.of(version));
         }
 
         public RulesetRuleActionParametersArgs build() {

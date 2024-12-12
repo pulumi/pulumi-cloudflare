@@ -108,10 +108,22 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> CustomPages { get; private set; } = null!;
 
         /// <summary>
+        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// </summary>
+        [Output("destinations")]
+        public Output<ImmutableArray<Outputs.ZeroTrustAccessApplicationDestination>> Destinations { get; private set; } = null!;
+
+        /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the primary domain. Available values: `public`, `private`.
+        /// </summary>
+        [Output("domainType")]
+        public Output<string> DomainType { get; private set; } = null!;
 
         /// <summary>
         /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -186,7 +198,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustAccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         /// </summary>
         [Output("selfHostedDomains")]
         public Output<ImmutableArray<string>> SelfHostedDomains { get; private set; } = null!;
@@ -375,11 +387,29 @@ namespace Pulumi.Cloudflare
             set => _customPages = value;
         }
 
+        [Input("destinations")]
+        private InputList<Inputs.ZeroTrustAccessApplicationDestinationArgs>? _destinations;
+
+        /// <summary>
+        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustAccessApplicationDestinationArgs> Destinations
+        {
+            get => _destinations ?? (_destinations = new InputList<Inputs.ZeroTrustAccessApplicationDestinationArgs>());
+            set => _destinations = value;
+        }
+
         /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// The type of the primary domain. Available values: `public`, `private`.
+        /// </summary>
+        [Input("domainType")]
+        public Input<string>? DomainType { get; set; }
 
         /// <summary>
         /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -469,8 +499,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         /// </summary>
+        [Obsolete(@"Use `destinations` instead")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
@@ -641,11 +672,29 @@ namespace Pulumi.Cloudflare
             set => _customPages = value;
         }
 
+        [Input("destinations")]
+        private InputList<Inputs.ZeroTrustAccessApplicationDestinationGetArgs>? _destinations;
+
+        /// <summary>
+        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustAccessApplicationDestinationGetArgs> Destinations
+        {
+            get => _destinations ?? (_destinations = new InputList<Inputs.ZeroTrustAccessApplicationDestinationGetArgs>());
+            set => _destinations = value;
+        }
+
         /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// The type of the primary domain. Available values: `public`, `private`.
+        /// </summary>
+        [Input("domainType")]
+        public Input<string>? DomainType { get; set; }
 
         /// <summary>
         /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -735,8 +784,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         /// </summary>
+        [Obsolete(@"Use `destinations` instead")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());

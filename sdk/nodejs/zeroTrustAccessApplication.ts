@@ -104,9 +104,17 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     public readonly customPages!: pulumi.Output<string[] | undefined>;
     /**
+     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+     */
+    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[] | undefined>;
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */
     public readonly domain!: pulumi.Output<string>;
+    /**
+     * The type of the primary domain. Available values: `public`, `private`.
+     */
+    public readonly domainType!: pulumi.Output<string>;
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
@@ -156,7 +164,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig | undefined>;
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     *
+     * @deprecated Use `destinations` instead
      */
     public readonly selfHostedDomains!: pulumi.Output<string[] | undefined>;
     /**
@@ -218,7 +228,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
             resourceInputs["customNonIdentityDenyUrl"] = state ? state.customNonIdentityDenyUrl : undefined;
             resourceInputs["customPages"] = state ? state.customPages : undefined;
+            resourceInputs["destinations"] = state ? state.destinations : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["domainType"] = state ? state.domainType : undefined;
             resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
             resourceInputs["footerLinks"] = state ? state.footerLinks : undefined;
             resourceInputs["headerBgColor"] = state ? state.headerBgColor : undefined;
@@ -254,7 +266,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
             resourceInputs["customNonIdentityDenyUrl"] = args ? args.customNonIdentityDenyUrl : undefined;
             resourceInputs["customPages"] = args ? args.customPages : undefined;
+            resourceInputs["destinations"] = args ? args.destinations : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["domainType"] = args ? args.domainType : undefined;
             resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
             resourceInputs["footerLinks"] = args ? args.footerLinks : undefined;
             resourceInputs["headerBgColor"] = args ? args.headerBgColor : undefined;
@@ -340,9 +354,17 @@ export interface ZeroTrustAccessApplicationState {
      */
     customPages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+     */
+    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[]>;
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */
     domain?: pulumi.Input<string>;
+    /**
+     * The type of the primary domain. Available values: `public`, `private`.
+     */
+    domainType?: pulumi.Input<string>;
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
@@ -392,7 +414,9 @@ export interface ZeroTrustAccessApplicationState {
      */
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     *
+     * @deprecated Use `destinations` instead
      */
     selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -482,9 +506,17 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     customPages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `selfHostedDomains` to allow for more flexibility in defining different types of destinations. Conflicts with `selfHostedDomains`.
+     */
+    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[]>;
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */
     domain?: pulumi.Input<string>;
+    /**
+     * The type of the primary domain. Available values: `public`, `private`.
+     */
+    domainType?: pulumi.Input<string>;
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
@@ -534,7 +566,9 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     *
+     * @deprecated Use `destinations` instead
      */
     selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**

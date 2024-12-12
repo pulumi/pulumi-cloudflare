@@ -399,12 +399,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriGetArgs>? Uri { get; set; }
 
-        /// <summary>
-        /// Version of the ruleset to deploy.
-        /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
         public RulesetRuleActionParametersGetArgs()
         {
         }

@@ -93,6 +93,8 @@ from .hyperdrive_config import *
 from .infrastructure_access_target import *
 from .ipsec_tunnel import *
 from .keyless_certificate import *
+from .leaked_credential_check import *
+from .leaked_credential_check_rule import *
 from .list import *
 from .list_item import *
 from .load_balancer import *
@@ -123,6 +125,8 @@ from .regional_hostname import *
 from .regional_tiered_cache import *
 from .risk_behavior import *
 from .ruleset import *
+from .snippet import *
+from .snippet_rules import *
 from .spectrum_application import *
 from .split_tunnel import *
 from .static_route import *
@@ -665,6 +669,22 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/leakedCredentialCheck",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck": "LeakedCredentialCheck"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/leakedCredentialCheckRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule": "LeakedCredentialCheckRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/list",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -893,6 +913,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/ruleset:Ruleset": "Ruleset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/snippet",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/snippet:Snippet": "Snippet"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/snippetRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/snippetRules:SnippetRules": "SnippetRules"
   }
  },
  {

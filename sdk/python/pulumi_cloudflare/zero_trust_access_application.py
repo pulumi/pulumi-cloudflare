@@ -33,7 +33,9 @@ class ZeroTrustAccessApplicationArgs:
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -69,7 +71,9 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
@@ -82,7 +86,7 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
@@ -116,8 +120,12 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if domain_type is not None:
+            pulumi.set(__self__, "domain_type", domain_type)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if footer_links is not None:
@@ -142,6 +150,9 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
+        if self_hosted_domains is not None:
+            warnings.warn("""Use `destinations` instead""", DeprecationWarning)
+            pulumi.log.warn("""self_hosted_domains is deprecated: Use `destinations` instead""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -307,6 +318,18 @@ class ZeroTrustAccessApplicationArgs:
 
     @property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]:
+        """
+        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
         The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -316,6 +339,18 @@ class ZeroTrustAccessApplicationArgs:
     @domain.setter
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="domainType")
+    def domain_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the primary domain. Available values: `public`, `private`.
+        """
+        return pulumi.get(self, "domain_type")
+
+    @domain_type.setter
+    def domain_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_type", value)
 
     @property
     @pulumi.getter(name="enableBindingCookie")
@@ -463,9 +498,10 @@ class ZeroTrustAccessApplicationArgs:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -586,7 +622,9 @@ class _ZeroTrustAccessApplicationState:
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -623,7 +661,9 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
@@ -636,7 +676,7 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
@@ -672,8 +712,12 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if domain_type is not None:
+            pulumi.set(__self__, "domain_type", domain_type)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if footer_links is not None:
@@ -698,6 +742,9 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
+        if self_hosted_domains is not None:
+            warnings.warn("""Use `destinations` instead""", DeprecationWarning)
+            pulumi.log.warn("""self_hosted_domains is deprecated: Use `destinations` instead""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -875,6 +922,18 @@ class _ZeroTrustAccessApplicationState:
 
     @property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]:
+        """
+        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
         The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -884,6 +943,18 @@ class _ZeroTrustAccessApplicationState:
     @domain.setter
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="domainType")
+    def domain_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the primary domain. Available values: `public`, `private`.
+        """
+        return pulumi.get(self, "domain_type")
+
+    @domain_type.setter
+    def domain_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_type", value)
 
     @property
     @pulumi.getter(name="enableBindingCookie")
@@ -1031,9 +1102,10 @@ class _ZeroTrustAccessApplicationState:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -1155,7 +1227,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1209,7 +1283,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
@@ -1222,7 +1298,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
@@ -1282,7 +1358,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1325,7 +1403,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["custom_deny_url"] = custom_deny_url
             __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
             __props__.__dict__["custom_pages"] = custom_pages
+            __props__.__dict__["destinations"] = destinations
             __props__.__dict__["domain"] = domain
+            __props__.__dict__["domain_type"] = domain_type
             __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
             __props__.__dict__["footer_links"] = footer_links
             __props__.__dict__["header_bg_color"] = header_bg_color
@@ -1371,7 +1451,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             custom_deny_url: Optional[pulumi.Input[str]] = None,
             custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
+            domain_type: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
             footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
             header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1413,7 +1495,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
@@ -1426,7 +1510,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
@@ -1453,7 +1537,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["custom_deny_url"] = custom_deny_url
         __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
         __props__.__dict__["custom_pages"] = custom_pages
+        __props__.__dict__["destinations"] = destinations
         __props__.__dict__["domain"] = domain
+        __props__.__dict__["domain_type"] = domain_type
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
         __props__.__dict__["footer_links"] = footer_links
         __props__.__dict__["header_bg_color"] = header_bg_color
@@ -1583,11 +1669,27 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationDestination']]]:
+        """
+        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
         The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainType")
+    def domain_type(self) -> pulumi.Output[str]:
+        """
+        The type of the primary domain. Available values: `public`, `private`.
+        """
+        return pulumi.get(self, "domain_type")
 
     @property
     @pulumi.getter(name="enableBindingCookie")
@@ -1687,9 +1789,10 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
         """
         return pulumi.get(self, "self_hosted_domains")
 

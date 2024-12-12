@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessApplicationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationCorsHeader;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationDestination;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationLandingPageDesign;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasApp;
@@ -225,6 +226,20 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.customPages);
     }
     /**
+     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * 
+     */
+    @Export(name="destinations", refs={List.class,ZeroTrustAccessApplicationDestination.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationDestination>> destinations;
+
+    /**
+     * @return A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * 
+     */
+    public Output<Optional<List<ZeroTrustAccessApplicationDestination>>> destinations() {
+        return Codegen.optional(this.destinations);
+    }
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
@@ -237,6 +252,20 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      */
     public Output<String> domain() {
         return this.domain;
+    }
+    /**
+     * The type of the primary domain. Available values: `public`, `private`.
+     * 
+     */
+    @Export(name="domainType", refs={String.class}, tree="[0]")
+    private Output<String> domainType;
+
+    /**
+     * @return The type of the primary domain. Available values: `public`, `private`.
+     * 
+     */
+    public Output<String> domainType() {
+        return this.domainType;
     }
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
@@ -407,14 +436,18 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.scimConfig);
     }
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     * 
+     * @deprecated
+     * Use `destinations` instead
      * 
      */
+    @Deprecated /* Use `destinations` instead */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selfHostedDomains;
 
     /**
-     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
+     * @return List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
      * 
      */
     public Output<Optional<List<String>>> selfHostedDomains() {

@@ -176,6 +176,24 @@ func Provider() info.Provider {
 			"cloudflare_zero_trust_risk_score_integration": {
 				Docs: &info.Doc{AllowMissing: true},
 			},
+
+			"cloudflare_leaked_credential_check": {
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					return resource.ID(state["enabled"].String() + "_" + state["zoneId"].String()), nil
+				},
+			},
+			"cloudflare_snippet": {
+				Docs: &info.Doc{AllowMissing: true},
+				ComputeID: func(context.Context, resource.PropertyMap) (resource.ID, error) {
+					return resource.ID("missing ID"), nil
+				},
+			},
+			"cloudflare_snippet_rules": {
+				Docs: &info.Doc{AllowMissing: true},
+				ComputeID: func(context.Context, resource.PropertyMap) (resource.ID, error) {
+					return resource.ID("missing ID"), nil
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

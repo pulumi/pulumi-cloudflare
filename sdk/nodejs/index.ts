@@ -445,6 +445,16 @@ export type KeylessCertificate = import("./keylessCertificate").KeylessCertifica
 export const KeylessCertificate: typeof import("./keylessCertificate").KeylessCertificate = null as any;
 utilities.lazyLoad(exports, ["KeylessCertificate"], () => require("./keylessCertificate"));
 
+export { LeakedCredentialCheckArgs, LeakedCredentialCheckState } from "./leakedCredentialCheck";
+export type LeakedCredentialCheck = import("./leakedCredentialCheck").LeakedCredentialCheck;
+export const LeakedCredentialCheck: typeof import("./leakedCredentialCheck").LeakedCredentialCheck = null as any;
+utilities.lazyLoad(exports, ["LeakedCredentialCheck"], () => require("./leakedCredentialCheck"));
+
+export { LeakedCredentialCheckRuleArgs, LeakedCredentialCheckRuleState } from "./leakedCredentialCheckRule";
+export type LeakedCredentialCheckRule = import("./leakedCredentialCheckRule").LeakedCredentialCheckRule;
+export const LeakedCredentialCheckRule: typeof import("./leakedCredentialCheckRule").LeakedCredentialCheckRule = null as any;
+utilities.lazyLoad(exports, ["LeakedCredentialCheckRule"], () => require("./leakedCredentialCheckRule"));
+
 export { ListArgs, ListState } from "./list";
 export type List = import("./list").List;
 export const List: typeof import("./list").List = null as any;
@@ -594,6 +604,16 @@ export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
 utilities.lazyLoad(exports, ["Ruleset"], () => require("./ruleset"));
+
+export { SnippetArgs, SnippetState } from "./snippet";
+export type Snippet = import("./snippet").Snippet;
+export const Snippet: typeof import("./snippet").Snippet = null as any;
+utilities.lazyLoad(exports, ["Snippet"], () => require("./snippet"));
+
+export { SnippetRulesArgs, SnippetRulesState } from "./snippetRules";
+export type SnippetRules = import("./snippetRules").SnippetRules;
+export const SnippetRules: typeof import("./snippetRules").SnippetRules = null as any;
+utilities.lazyLoad(exports, ["SnippetRules"], () => require("./snippetRules"));
 
 export { SpectrumApplicationArgs, SpectrumApplicationState } from "./spectrumApplication";
 export type SpectrumApplication = import("./spectrumApplication").SpectrumApplication;
@@ -1116,6 +1136,10 @@ const _module = {
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/keylessCertificate:KeylessCertificate":
                 return new KeylessCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck":
+                return new LeakedCredentialCheck(name, <any>undefined, { urn })
+            case "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule":
+                return new LeakedCredentialCheckRule(name, <any>undefined, { urn })
             case "cloudflare:index/list:List":
                 return new List(name, <any>undefined, { urn })
             case "cloudflare:index/listItem:ListItem":
@@ -1174,6 +1198,10 @@ const _module = {
                 return new RiskBehavior(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
                 return new Ruleset(name, <any>undefined, { urn })
+            case "cloudflare:index/snippet:Snippet":
+                return new Snippet(name, <any>undefined, { urn })
+            case "cloudflare:index/snippetRules:SnippetRules":
+                return new SnippetRules(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
             case "cloudflare:index/splitTunnel:SplitTunnel":
@@ -1393,6 +1421,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/hyperdriveConfig", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/infrastructureAccessTarget", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/keylessCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/leakedCredentialCheck", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/leakedCredentialCheckRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/listItem", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
@@ -1422,6 +1452,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/riskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/snippet", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/snippetRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/splitTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)

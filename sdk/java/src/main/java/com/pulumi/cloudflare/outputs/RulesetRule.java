@@ -53,11 +53,6 @@ public final class RulesetRule {
      */
     private @Nullable String id;
     /**
-     * @return The most recent update to this rule.
-     * 
-     */
-    private @Nullable String lastUpdated;
-    /**
      * @return List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
@@ -72,11 +67,6 @@ public final class RulesetRule {
      * 
      */
     private @Nullable String ref;
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    private @Nullable String version;
 
     private RulesetRule() {}
     /**
@@ -129,13 +119,6 @@ public final class RulesetRule {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The most recent update to this rule.
-     * 
-     */
-    public Optional<String> lastUpdated() {
-        return Optional.ofNullable(this.lastUpdated);
-    }
-    /**
      * @return List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
@@ -156,13 +139,6 @@ public final class RulesetRule {
     public Optional<String> ref() {
         return Optional.ofNullable(this.ref);
     }
-    /**
-     * @return Version of the ruleset to deploy.
-     * 
-     */
-    public Optional<String> version() {
-        return Optional.ofNullable(this.version);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -180,11 +156,9 @@ public final class RulesetRule {
         private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
         private String expression;
         private @Nullable String id;
-        private @Nullable String lastUpdated;
         private @Nullable RulesetRuleLogging logging;
         private @Nullable RulesetRuleRatelimit ratelimit;
         private @Nullable String ref;
-        private @Nullable String version;
         public Builder() {}
         public Builder(RulesetRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -195,11 +169,9 @@ public final class RulesetRule {
     	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
-    	      this.lastUpdated = defaults.lastUpdated;
     	      this.logging = defaults.logging;
     	      this.ratelimit = defaults.ratelimit;
     	      this.ref = defaults.ref;
-    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -247,12 +219,6 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder lastUpdated(@Nullable String lastUpdated) {
-
-            this.lastUpdated = lastUpdated;
-            return this;
-        }
-        @CustomType.Setter
         public Builder logging(@Nullable RulesetRuleLogging logging) {
 
             this.logging = logging;
@@ -270,12 +236,6 @@ public final class RulesetRule {
             this.ref = ref;
             return this;
         }
-        @CustomType.Setter
-        public Builder version(@Nullable String version) {
-
-            this.version = version;
-            return this;
-        }
         public RulesetRule build() {
             final var _resultValue = new RulesetRule();
             _resultValue.action = action;
@@ -285,11 +245,9 @@ public final class RulesetRule {
             _resultValue.exposedCredentialCheck = exposedCredentialCheck;
             _resultValue.expression = expression;
             _resultValue.id = id;
-            _resultValue.lastUpdated = lastUpdated;
             _resultValue.logging = logging;
             _resultValue.ratelimit = ratelimit;
             _resultValue.ref = ref;
-            _resultValue.version = version;
             return _resultValue;
         }
     }

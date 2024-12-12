@@ -5,12 +5,20 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyConnectionRulesSsh {
+    /**
+     * @return Allows connecting to Unix username that matches the authenticating email prefix.
+     * 
+     */
+    private @Nullable Boolean allowEmailAlias;
     /**
      * @return Contains the Unix usernames that may be used when connecting over SSH.
      * 
@@ -18,6 +26,13 @@ public final class AccessPolicyConnectionRulesSsh {
     private List<String> usernames;
 
     private AccessPolicyConnectionRulesSsh() {}
+    /**
+     * @return Allows connecting to Unix username that matches the authenticating email prefix.
+     * 
+     */
+    public Optional<Boolean> allowEmailAlias() {
+        return Optional.ofNullable(this.allowEmailAlias);
+    }
     /**
      * @return Contains the Unix usernames that may be used when connecting over SSH.
      * 
@@ -35,13 +50,21 @@ public final class AccessPolicyConnectionRulesSsh {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowEmailAlias;
         private List<String> usernames;
         public Builder() {}
         public Builder(AccessPolicyConnectionRulesSsh defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowEmailAlias = defaults.allowEmailAlias;
     	      this.usernames = defaults.usernames;
         }
 
+        @CustomType.Setter
+        public Builder allowEmailAlias(@Nullable Boolean allowEmailAlias) {
+
+            this.allowEmailAlias = allowEmailAlias;
+            return this;
+        }
         @CustomType.Setter
         public Builder usernames(List<String> usernames) {
             if (usernames == null) {
@@ -55,6 +78,7 @@ public final class AccessPolicyConnectionRulesSsh {
         }
         public AccessPolicyConnectionRulesSsh build() {
             final var _resultValue = new AccessPolicyConnectionRulesSsh();
+            _resultValue.allowEmailAlias = allowEmailAlias;
             _resultValue.usernames = usernames;
             return _resultValue;
         }
