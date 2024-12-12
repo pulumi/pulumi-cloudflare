@@ -177,6 +177,22 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessApplicationDestination:AccessApplicationDestination": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The destination type. Available values: `public`, `private`. Defaults to `public`.\n"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uri"
+            ]
+        },
         "cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink": {
             "properties": {
                 "name": {
@@ -1553,23 +1569,29 @@
         "cloudflare:index/AccessIdentityProviderScimConfig:AccessIdentityProviderScimConfig": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to enable or disable SCIM for the identity provider.\n"
                 },
                 "groupMemberDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Deprecated. Use `identity_update_behavior`.\n"
                 },
                 "identityUpdateBehavior": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.\n"
                 },
                 "seatDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.\n"
                 },
                 "secret": {
                     "type": "string",
+                    "description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.\n",
                     "secret": true
                 },
                 "userDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.\n"
                 }
             },
             "type": "object",
@@ -1676,6 +1698,10 @@
         },
         "cloudflare:index/AccessPolicyConnectionRulesSsh:AccessPolicyConnectionRulesSsh": {
             "properties": {
+                "allowEmailAlias": {
+                    "type": "boolean",
+                    "description": "Allows connecting to Unix username that matches the authenticating email prefix.\n"
+                },
                 "usernames": {
                     "type": "array",
                     "items": {
@@ -4282,7 +4308,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.\n"
+                    "description": "Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.\n"
                 },
                 "airportCodes": {
                     "type": "array",
@@ -5601,10 +5627,6 @@
                     "type": "string",
                     "description": "Unique rule identifier.\n"
                 },
-                "lastUpdated": {
-                    "type": "string",
-                    "description": "The most recent update to this rule.\n"
-                },
                 "logging": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleLogging:RulesetRuleLogging",
                     "description": "List parameters to configure how the rule generates logs. Only valid for skip action.\n"
@@ -5616,10 +5638,6 @@
                 "ref": {
                     "type": "string",
                     "description": "Rule reference.\n"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "Version of the ruleset to deploy.\n"
                 }
             },
             "type": "object",
@@ -5633,9 +5651,7 @@
                         "enabled",
                         "expression",
                         "id",
-                        "lastUpdated",
-                        "ref",
-                        "version"
+                        "ref"
                     ]
                 }
             }
@@ -5888,20 +5904,9 @@
                 "uri": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri",
                     "description": "List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.\n"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "Version of the ruleset to deploy.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "version"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersAlgorithm:RulesetRuleActionParametersAlgorithm": {
             "properties": {
@@ -6474,6 +6479,47 @@
                     ]
                 }
             }
+        },
+        "cloudflare:index/SnippetFile:SnippetFile": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "Content of the snippet file.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the snippet file.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "cloudflare:index/SnippetRulesRule:SnippetRulesRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the snippet rule and its intended use.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the headers rule is active.\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.\n"
+                },
+                "snippetName": {
+                    "type": "string",
+                    "description": "Name of the snippet invoked by this rule.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "snippetName"
+            ]
         },
         "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
@@ -7978,6 +8024,22 @@
             },
             "type": "object"
         },
+        "cloudflare:index/ZeroTrustAccessApplicationDestination:ZeroTrustAccessApplicationDestination": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The destination type. Available values: `public`, `private`. Defaults to `public`.\n"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uri"
+            ]
+        },
         "cloudflare:index/ZeroTrustAccessApplicationFooterLink:ZeroTrustAccessApplicationFooterLink": {
             "properties": {
                 "name": {
@@ -9363,23 +9425,29 @@
         "cloudflare:index/ZeroTrustAccessIdentityProviderScimConfig:ZeroTrustAccessIdentityProviderScimConfig": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to enable or disable SCIM for the identity provider.\n"
                 },
                 "groupMemberDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Deprecated. Use `identity_update_behavior`.\n"
                 },
                 "identityUpdateBehavior": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Indicates how a SCIM event updates a user identity used for policy evaluation. Use \"automatic\" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use \"reauth\" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With \"reauth\" identities will not contain fields from the SCIM user resource. With \"no_action\" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.\n"
                 },
                 "seatDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.\n"
                 },
                 "secret": {
                     "type": "string",
+                    "description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.\n",
                     "secret": true
                 },
                 "userDeprovision": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.\n"
                 }
             },
             "type": "object",
@@ -9486,6 +9554,10 @@
         },
         "cloudflare:index/ZeroTrustAccessPolicyConnectionRulesSsh:ZeroTrustAccessPolicyConnectionRulesSsh": {
             "properties": {
+                "allowEmailAlias": {
+                    "type": "boolean",
+                    "description": "Allows connecting to Unix username that matches the authenticating email prefix.\n"
+                },
                 "usernames": {
                     "type": "array",
                     "items": {
@@ -14331,9 +14403,20 @@
                     },
                     "description": "The custom pages selected for the application.\n"
                 },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationDestination:AccessApplicationDestination"
+                    },
+                    "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                },
                 "domain": {
                     "type": "string",
                     "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                },
+                "domainType": {
+                    "type": "string",
+                    "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                 },
                 "enableBindingCookie": {
                     "type": "boolean",
@@ -14394,7 +14477,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                    "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                    "deprecationMessage": "Use `destinations` instead"
                 },
                 "serviceAuth401Redirect": {
                     "type": "boolean",
@@ -14439,6 +14523,7 @@
                 "accountId",
                 "aud",
                 "domain",
+                "domainType",
                 "name",
                 "zoneId"
             ],
@@ -14500,9 +14585,20 @@
                     },
                     "description": "The custom pages selected for the application.\n"
                 },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationDestination:AccessApplicationDestination"
+                    },
+                    "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                },
                 "domain": {
                     "type": "string",
                     "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                },
+                "domainType": {
+                    "type": "string",
+                    "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                 },
                 "enableBindingCookie": {
                     "type": "boolean",
@@ -14563,7 +14659,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                    "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                    "deprecationMessage": "Use `destinations` instead"
                 },
                 "serviceAuth401Redirect": {
                     "type": "boolean",
@@ -14668,9 +14765,20 @@
                         },
                         "description": "The custom pages selected for the application.\n"
                     },
+                    "destinations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/AccessApplicationDestination:AccessApplicationDestination"
+                        },
+                        "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                    },
                     "domain": {
                         "type": "string",
                         "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                    },
+                    "domainType": {
+                        "type": "string",
+                        "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                     },
                     "enableBindingCookie": {
                         "type": "boolean",
@@ -14731,7 +14839,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                        "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                        "deprecationMessage": "Use `destinations` instead"
                     },
                     "serviceAuth401Redirect": {
                         "type": "boolean",
@@ -20811,6 +20920,110 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck": {
+            "description": "Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Enable the Leaked Credentials Check detection\nconst example = new cloudflare.LeakedCredentialCheck(\"example\", {\n    zoneId: \"399c6f4950c01a5a141b99ff7fbcbd8b\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Enable the Leaked Credentials Check detection\nexample = cloudflare.LeakedCredentialCheck(\"example\",\n    zone_id=\"399c6f4950c01a5a141b99ff7fbcbd8b\",\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Enable the Leaked Credentials Check detection\n    var example = new Cloudflare.LeakedCredentialCheck(\"example\", new()\n    {\n        ZoneId = \"399c6f4950c01a5a141b99ff7fbcbd8b\",\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Enable the Leaked Credentials Check detection\n\t\t_, err := cloudflare.NewLeakedCredentialCheck(ctx, \"example\", \u0026cloudflare.LeakedCredentialCheckArgs{\n\t\t\tZoneId:  pulumi.String(\"399c6f4950c01a5a141b99ff7fbcbd8b\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.LeakedCredentialCheck;\nimport com.pulumi.cloudflare.LeakedCredentialCheckArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Enable the Leaked Credentials Check detection\n        var example = new LeakedCredentialCheck(\"example\", LeakedCredentialCheckArgs.builder()\n            .zoneId(\"399c6f4950c01a5a141b99ff7fbcbd8b\")\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Enable the Leaked Credentials Check detection\n  example:\n    type: cloudflare:LeakedCredentialCheck\n    properties:\n      zoneId: 399c6f4950c01a5a141b99ff7fbcbd8b\n      enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example \u003czone_id\u003e\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "State of the Leaked Credential Check detection\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "State of the Leaked Credential Check detection\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LeakedCredentialCheck resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "State of the Leaked Credential Check detection\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule": {
+            "description": "Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Enable the Leaked Credentials Check detection before trying\n// to add detections.\nconst example = new cloudflare.LeakedCredentialCheck(\"example\", {\n    zoneId: \"399c6f4950c01a5a141b99ff7fbcbd8b\",\n    enabled: true,\n});\nconst exampleLeakedCredentialCheckRule = new cloudflare.LeakedCredentialCheckRule(\"example\", {\n    zoneId: example.zoneId,\n    username: \"lookup_json_string(http.request.body.raw, \\\"user\\\")\",\n    password: \"lookup_json_string(http.request.body.raw, \\\"pass\\\")\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Enable the Leaked Credentials Check detection before trying\n# to add detections.\nexample = cloudflare.LeakedCredentialCheck(\"example\",\n    zone_id=\"399c6f4950c01a5a141b99ff7fbcbd8b\",\n    enabled=True)\nexample_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule(\"example\",\n    zone_id=example.zone_id,\n    username=\"lookup_json_string(http.request.body.raw, \\\"user\\\")\",\n    password=\"lookup_json_string(http.request.body.raw, \\\"pass\\\")\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Enable the Leaked Credentials Check detection before trying\n    // to add detections.\n    var example = new Cloudflare.LeakedCredentialCheck(\"example\", new()\n    {\n        ZoneId = \"399c6f4950c01a5a141b99ff7fbcbd8b\",\n        Enabled = true,\n    });\n\n    var exampleLeakedCredentialCheckRule = new Cloudflare.LeakedCredentialCheckRule(\"example\", new()\n    {\n        ZoneId = example.ZoneId,\n        Username = \"lookup_json_string(http.request.body.raw, \\\"user\\\")\",\n        Password = \"lookup_json_string(http.request.body.raw, \\\"pass\\\")\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Enable the Leaked Credentials Check detection before trying\n\t\t// to add detections.\n\t\texample, err := cloudflare.NewLeakedCredentialCheck(ctx, \"example\", \u0026cloudflare.LeakedCredentialCheckArgs{\n\t\t\tZoneId:  pulumi.String(\"399c6f4950c01a5a141b99ff7fbcbd8b\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewLeakedCredentialCheckRule(ctx, \"example\", \u0026cloudflare.LeakedCredentialCheckRuleArgs{\n\t\t\tZoneId:   example.ZoneId,\n\t\t\tUsername: pulumi.String(\"lookup_json_string(http.request.body.raw, \\\"user\\\")\"),\n\t\t\tPassword: pulumi.String(\"lookup_json_string(http.request.body.raw, \\\"pass\\\")\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.LeakedCredentialCheck;\nimport com.pulumi.cloudflare.LeakedCredentialCheckArgs;\nimport com.pulumi.cloudflare.LeakedCredentialCheckRule;\nimport com.pulumi.cloudflare.LeakedCredentialCheckRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Enable the Leaked Credentials Check detection before trying\n        // to add detections.\n        var example = new LeakedCredentialCheck(\"example\", LeakedCredentialCheckArgs.builder()\n            .zoneId(\"399c6f4950c01a5a141b99ff7fbcbd8b\")\n            .enabled(true)\n            .build());\n\n        var exampleLeakedCredentialCheckRule = new LeakedCredentialCheckRule(\"exampleLeakedCredentialCheckRule\", LeakedCredentialCheckRuleArgs.builder()\n            .zoneId(example.zoneId())\n            .username(\"lookup_json_string(http.request.body.raw, \\\"user\\\")\")\n            .password(\"lookup_json_string(http.request.body.raw, \\\"pass\\\")\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Enable the Leaked Credentials Check detection before trying\n  # to add detections.\n  example:\n    type: cloudflare:LeakedCredentialCheck\n    properties:\n      zoneId: 399c6f4950c01a5a141b99ff7fbcbd8b\n      enabled: true\n  exampleLeakedCredentialCheckRule:\n    type: cloudflare:LeakedCredentialCheckRule\n    name: example\n    properties:\n      zoneId: ${example.zoneId}\n      username: lookup_json_string(http.request.body.raw, \"user\")\n      password: lookup_json_string(http.request.body.raw, \"pass\")\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example \u003czone_id\u003e/\u003cresource_id\u003e\n```\n\n",
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The ruleset expression to use in matching the password in a request\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The ruleset expression to use in matching the username in a request.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "password",
+                "username",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "password": {
+                    "type": "string",
+                    "description": "The ruleset expression to use in matching the password in a request\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The ruleset expression to use in matching the username in a request.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "password",
+                "username",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LeakedCredentialCheckRule resources.\n",
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "description": "The ruleset expression to use in matching the password in a request\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The ruleset expression to use in matching the username in a request.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/list:List": {
             "description": "## Example Usage\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/list:List example \u003caccount_id\u003e/\u003clist_id\u003e\n```\n\n",
             "properties": {
@@ -24552,6 +24765,136 @@
                             "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
                         },
                         "description": "List of rules to apply to the ruleset.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/snippet:Snippet": {
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SnippetFile:SnippetFile"
+                    },
+                    "description": "List of Snippet Files\n"
+                },
+                "mainModule": {
+                    "type": "string",
+                    "description": "Main module file name of the snippet.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the snippet.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "mainModule",
+                "name",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SnippetFile:SnippetFile"
+                    },
+                    "description": "List of Snippet Files\n"
+                },
+                "mainModule": {
+                    "type": "string",
+                    "description": "Main module file name of the snippet.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the snippet.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "mainModule",
+                "name",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Snippet resources.\n",
+                "properties": {
+                    "files": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/SnippetFile:SnippetFile"
+                        },
+                        "description": "List of Snippet Files\n"
+                    },
+                    "mainModule": {
+                        "type": "string",
+                        "description": "Main module file name of the snippet.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the snippet.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/snippetRules:SnippetRules": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SnippetRulesRule:SnippetRulesRule"
+                    },
+                    "description": "List of Snippet Rules\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "zoneId"
+            ],
+            "inputProperties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SnippetRulesRule:SnippetRulesRule"
+                    },
+                    "description": "List of Snippet Rules\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SnippetRules resources.\n",
+                "properties": {
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/SnippetRulesRule:SnippetRulesRule"
+                        },
+                        "description": "List of Snippet Rules\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -28951,9 +29294,20 @@
                     },
                     "description": "The custom pages selected for the application.\n"
                 },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationDestination:ZeroTrustAccessApplicationDestination"
+                    },
+                    "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                },
                 "domain": {
                     "type": "string",
                     "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                },
+                "domainType": {
+                    "type": "string",
+                    "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                 },
                 "enableBindingCookie": {
                     "type": "boolean",
@@ -29014,7 +29368,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                    "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                    "deprecationMessage": "Use `destinations` instead"
                 },
                 "serviceAuth401Redirect": {
                     "type": "boolean",
@@ -29059,6 +29414,7 @@
                 "accountId",
                 "aud",
                 "domain",
+                "domainType",
                 "name",
                 "zoneId"
             ],
@@ -29120,9 +29476,20 @@
                     },
                     "description": "The custom pages selected for the application.\n"
                 },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationDestination:ZeroTrustAccessApplicationDestination"
+                    },
+                    "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                },
                 "domain": {
                     "type": "string",
                     "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                },
+                "domainType": {
+                    "type": "string",
+                    "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                 },
                 "enableBindingCookie": {
                     "type": "boolean",
@@ -29183,7 +29550,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                    "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                    "deprecationMessage": "Use `destinations` instead"
                 },
                 "serviceAuth401Redirect": {
                     "type": "boolean",
@@ -29288,9 +29656,20 @@
                         },
                         "description": "The custom pages selected for the application.\n"
                     },
+                    "destinations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/ZeroTrustAccessApplicationDestination:ZeroTrustAccessApplicationDestination"
+                        },
+                        "description": "A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.\n"
+                    },
                     "domain": {
                         "type": "string",
                         "description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.\n"
+                    },
+                    "domainType": {
+                        "type": "string",
+                        "description": "The type of the primary domain. Available values: `public`, `private`.\n"
                     },
                     "enableBindingCookie": {
                         "type": "boolean",
@@ -29351,7 +29730,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.\n"
+                        "description": "List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.\n",
+                        "deprecationMessage": "Use `destinations` instead"
                     },
                     "serviceAuth401Redirect": {
                         "type": "boolean",

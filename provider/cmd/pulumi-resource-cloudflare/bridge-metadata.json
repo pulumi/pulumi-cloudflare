@@ -27,6 +27,9 @@
                     "custom_pages": {
                         "maxItemsOne": false
                     },
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
                     "footer_links": {
                         "maxItemsOne": false
                     },
@@ -1216,6 +1219,14 @@
                 "current": "cloudflare:index/keylessCertificate:KeylessCertificate",
                 "majorVersion": 5
             },
+            "cloudflare_leaked_credential_check": {
+                "current": "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck",
+                "majorVersion": 5
+            },
+            "cloudflare_leaked_credential_check_rule": {
+                "current": "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule",
+                "majorVersion": 5
+            },
             "cloudflare_list": {
                 "current": "cloudflare:index/list:List",
                 "majorVersion": 5,
@@ -2090,6 +2101,24 @@
                     }
                 }
             },
+            "cloudflare_snippet": {
+                "current": "cloudflare:index/snippet:Snippet",
+                "majorVersion": 5,
+                "fields": {
+                    "files": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_snippet_rules": {
+                "current": "cloudflare:index/snippetRules:SnippetRules",
+                "majorVersion": 5,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_spectrum_application": {
                 "current": "cloudflare:index/spectrumApplication:SpectrumApplication",
                 "majorVersion": 5,
@@ -2631,6 +2660,9 @@
                         }
                     },
                     "custom_pages": {
+                        "maxItemsOne": false
+                    },
+                    "destinations": {
                         "maxItemsOne": false
                     },
                     "footer_links": {
@@ -4458,6 +4490,8 @@
             "cloudflare:index/infrastructureAccessTarget:InfrastructureAccessTarget": 1,
             "cloudflare:index/ipsecTunnel:IpsecTunnel": 0,
             "cloudflare:index/keylessCertificate:KeylessCertificate": 0,
+            "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck": 1,
+            "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule": 1,
             "cloudflare:index/list:List": 1,
             "cloudflare:index/listItem:ListItem": 1,
             "cloudflare:index/loadBalancer:LoadBalancer": 0,
@@ -4487,6 +4521,8 @@
             "cloudflare:index/regionalTieredCache:RegionalTieredCache": 0,
             "cloudflare:index/riskBehavior:RiskBehavior": 1,
             "cloudflare:index/ruleset:Ruleset": 1,
+            "cloudflare:index/snippet:Snippet": 1,
+            "cloudflare:index/snippetRules:SnippetRules": 1,
             "cloudflare:index/spectrumApplication:SpectrumApplication": 0,
             "cloudflare:index/splitTunnel:SplitTunnel": 0,
             "cloudflare:index/staticRoute:StaticRoute": 0,
