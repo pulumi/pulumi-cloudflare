@@ -75,21 +75,11 @@ type GetDevicePostureRulesResult struct {
 }
 
 func GetDevicePostureRulesOutput(ctx *pulumi.Context, args GetDevicePostureRulesOutputArgs, opts ...pulumi.InvokeOption) GetDevicePostureRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDevicePostureRulesResultOutput, error) {
 			args := v.(GetDevicePostureRulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDevicePostureRulesResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args, &rv, "", opts...)
-			if err != nil {
-				return GetDevicePostureRulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDevicePostureRulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDevicePostureRulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args, GetDevicePostureRulesResultOutput{}, options).(GetDevicePostureRulesResultOutput), nil
 		}).(GetDevicePostureRulesResultOutput)
 }
 

@@ -60,6 +60,31 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetRecord.Invoke(new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Hostname = "example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
     }
 
 

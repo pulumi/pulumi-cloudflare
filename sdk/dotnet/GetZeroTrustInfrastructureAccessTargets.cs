@@ -70,6 +70,36 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZeroTrustInfrastructureAccessTargetsResult> Invoke(GetZeroTrustInfrastructureAccessTargetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustInfrastructureAccessTargetsResult>("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", args ?? new GetZeroTrustInfrastructureAccessTargetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve all Infrastructure Access Targets.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZeroTrustInfrastructureAccessTargets.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         HostnameContains = "example",
+        ///         Ipv4 = "198.51.100.1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["targets"] = example.Apply(getZeroTrustInfrastructureAccessTargetsResult =&gt; getZeroTrustInfrastructureAccessTargetsResult.Targets),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZeroTrustInfrastructureAccessTargetsResult> Invoke(GetZeroTrustInfrastructureAccessTargetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustInfrastructureAccessTargetsResult>("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", args ?? new GetZeroTrustInfrastructureAccessTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

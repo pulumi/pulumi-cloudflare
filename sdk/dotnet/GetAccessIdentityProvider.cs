@@ -88,6 +88,45 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         Name = "Google SSO",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("example", new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Name = "name",
+        ///         Domain = "name.example.com",
+        ///         Type = "self_hosted",
+        ///         SessionDuration = "24h",
+        ///         AllowedIdps = new[]
+        ///         {
+        ///             example.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///         },
+        ///         AutoRedirectToIdentity = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,18 +80,8 @@ type GetUserResult struct {
 
 func GetUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUserResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetUserResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetUserResult
-		secret, err := ctx.InvokePackageRaw("cloudflare:index/getUser:getUser", nil, &rv, "", opts...)
-		if err != nil {
-			return GetUserResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetUserResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetUserResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("cloudflare:index/getUser:getUser", nil, GetUserResultOutput{}, options).(GetUserResultOutput), nil
 	}).(GetUserResultOutput)
 }
 

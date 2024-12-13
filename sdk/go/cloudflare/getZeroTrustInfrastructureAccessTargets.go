@@ -95,21 +95,11 @@ type GetZeroTrustInfrastructureAccessTargetsResult struct {
 }
 
 func GetZeroTrustInfrastructureAccessTargetsOutput(ctx *pulumi.Context, args GetZeroTrustInfrastructureAccessTargetsOutputArgs, opts ...pulumi.InvokeOption) GetZeroTrustInfrastructureAccessTargetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetZeroTrustInfrastructureAccessTargetsResultOutput, error) {
 			args := v.(GetZeroTrustInfrastructureAccessTargetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetZeroTrustInfrastructureAccessTargetsResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", args, &rv, "", opts...)
-			if err != nil {
-				return GetZeroTrustInfrastructureAccessTargetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetZeroTrustInfrastructureAccessTargetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetZeroTrustInfrastructureAccessTargetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZeroTrustInfrastructureAccessTargets:getZeroTrustInfrastructureAccessTargets", args, GetZeroTrustInfrastructureAccessTargetsResultOutput{}, options).(GetZeroTrustInfrastructureAccessTargetsResultOutput), nil
 		}).(GetZeroTrustInfrastructureAccessTargetsResultOutput)
 }
 

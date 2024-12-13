@@ -22,6 +22,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+        /// </summary>
+        public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationInvokeArgs(), options.WithDefaults());
     }
 
 

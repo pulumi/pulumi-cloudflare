@@ -65,21 +65,11 @@ type GetGatewayCategoriesResult struct {
 }
 
 func GetGatewayCategoriesOutput(ctx *pulumi.Context, args GetGatewayCategoriesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayCategoriesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewayCategoriesResultOutput, error) {
 			args := v.(GetGatewayCategoriesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewayCategoriesResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getGatewayCategories:getGatewayCategories", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewayCategoriesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewayCategoriesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewayCategoriesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getGatewayCategories:getGatewayCategories", args, GetGatewayCategoriesResultOutput{}, options).(GetGatewayCategoriesResultOutput), nil
 		}).(GetGatewayCategoriesResultOutput)
 }
 

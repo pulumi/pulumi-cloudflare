@@ -39,21 +39,11 @@ type GetZonesResult struct {
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
 			args := v.(GetZonesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetZonesResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZones:getZones", args, &rv, "", opts...)
-			if err != nil {
-				return GetZonesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetZonesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetZonesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
 		}).(GetZonesResultOutput)
 }
 

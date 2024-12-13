@@ -84,6 +84,43 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetIpRangesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// using Example = Pulumi.Example;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
+        /// 
+        ///     var example = new Example.Index.FirewallResource("example", new()
+        ///     {
+        ///         Name = "from-cloudflare",
+        ///         Network = "default",
+        ///         SourceRanges = cloudflare.Apply(getIpRangesResult =&gt; getIpRangesResult.Ipv4CidrBlocks),
+        ///         Allow = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "ports", "443" },
+        ///                 { "protocol", "tcp" },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIpRangesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

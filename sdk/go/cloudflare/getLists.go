@@ -64,21 +64,11 @@ type GetListsResult struct {
 }
 
 func GetListsOutput(ctx *pulumi.Context, args GetListsOutputArgs, opts ...pulumi.InvokeOption) GetListsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetListsResultOutput, error) {
 			args := v.(GetListsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetListsResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getLists:getLists", args, &rv, "", opts...)
-			if err != nil {
-				return GetListsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetListsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetListsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getLists:getLists", args, GetListsResultOutput{}, options).(GetListsResultOutput), nil
 		}).(GetListsResultOutput)
 }
 

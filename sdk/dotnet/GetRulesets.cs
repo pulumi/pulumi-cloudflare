@@ -66,6 +66,34 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetRulesetsResult> Invoke(GetRulesetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to lookup Rulesets in an account or zone.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetRulesets.Invoke(new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
+        ///         {
+        ///             Name = ".*OWASP.*",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRulesetsResult> Invoke(GetRulesetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsInvokeArgs(), options.WithDefaults());
     }
 
 

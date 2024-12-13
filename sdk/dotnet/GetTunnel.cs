@@ -60,6 +60,31 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetTunnelResult> Invoke(GetTunnelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelResult>("cloudflare:index/getTunnel:getTunnel", args ?? new GetTunnelInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to lookup a tunnel in an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetTunnel.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         Name = "my-tunnel",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTunnelResult> Invoke(GetTunnelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelResult>("cloudflare:index/getTunnel:getTunnel", args ?? new GetTunnelInvokeArgs(), options.WithDefaults());
     }
 
 

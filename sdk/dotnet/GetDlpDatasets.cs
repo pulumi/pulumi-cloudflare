@@ -58,6 +58,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetDlpDatasetsResult> Invoke(GetDlpDatasetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDlpDatasetsResult>("cloudflare:index/getDlpDatasets:getDlpDatasets", args ?? new GetDlpDatasetsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve all DLP datasets for an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetDlpDatasets.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDlpDatasetsResult> Invoke(GetDlpDatasetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDlpDatasetsResult>("cloudflare:index/getDlpDatasets:getDlpDatasets", args ?? new GetDlpDatasetsInvokeArgs(), options.WithDefaults());
     }
 
 
