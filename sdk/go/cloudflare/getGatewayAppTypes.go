@@ -65,21 +65,11 @@ type GetGatewayAppTypesResult struct {
 }
 
 func GetGatewayAppTypesOutput(ctx *pulumi.Context, args GetGatewayAppTypesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayAppTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewayAppTypesResultOutput, error) {
 			args := v.(GetGatewayAppTypesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewayAppTypesResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewayAppTypesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewayAppTypesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewayAppTypesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getGatewayAppTypes:getGatewayAppTypes", args, GetGatewayAppTypesResultOutput{}, options).(GetGatewayAppTypesResultOutput), nil
 		}).(GetGatewayAppTypesResultOutput)
 }
 

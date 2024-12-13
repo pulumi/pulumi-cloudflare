@@ -88,6 +88,45 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+        /// info. This is the singular alternative to `cloudflare.getZones`.
+        /// 
+        /// &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+        /// accounts to have the same zone created but in different states. If you are
+        /// using this setup, it is advised to use the `account_id` attribute on this
+        /// resource or swap to `cloudflare.getZones` to further filter the results.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("example", new()
+        ///     {
+        ///         ZoneId = example.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Content = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
 
 

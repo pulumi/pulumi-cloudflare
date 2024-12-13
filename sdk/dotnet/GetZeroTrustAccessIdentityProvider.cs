@@ -22,6 +22,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZeroTrustAccessIdentityProviderResult> Invoke(GetZeroTrustAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessIdentityProviderResult>("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", args ?? new GetZeroTrustAccessIdentityProviderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// </summary>
+        public static Output<GetZeroTrustAccessIdentityProviderResult> Invoke(GetZeroTrustAccessIdentityProviderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessIdentityProviderResult>("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", args ?? new GetZeroTrustAccessIdentityProviderInvokeArgs(), options.WithDefaults());
     }
 
 

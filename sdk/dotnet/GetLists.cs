@@ -58,6 +58,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetListsResult> Invoke(GetListsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetLists.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetListsResult> Invoke(GetListsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());
     }
 
 

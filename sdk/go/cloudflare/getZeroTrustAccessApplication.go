@@ -51,21 +51,11 @@ type LookupZeroTrustAccessApplicationResult struct {
 }
 
 func LookupZeroTrustAccessApplicationOutput(ctx *pulumi.Context, args LookupZeroTrustAccessApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessApplicationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupZeroTrustAccessApplicationResultOutput, error) {
 			args := v.(LookupZeroTrustAccessApplicationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupZeroTrustAccessApplicationResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args, &rv, "", opts...)
-			if err != nil {
-				return LookupZeroTrustAccessApplicationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupZeroTrustAccessApplicationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupZeroTrustAccessApplicationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args, LookupZeroTrustAccessApplicationResultOutput{}, options).(LookupZeroTrustAccessApplicationResultOutput), nil
 		}).(LookupZeroTrustAccessApplicationResultOutput)
 }
 

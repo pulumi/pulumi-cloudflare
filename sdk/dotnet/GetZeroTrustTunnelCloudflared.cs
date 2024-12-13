@@ -22,6 +22,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to lookup a tunnel in an account.
+        /// </summary>
+        public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredInvokeArgs(), options.WithDefaults());
     }
 
 

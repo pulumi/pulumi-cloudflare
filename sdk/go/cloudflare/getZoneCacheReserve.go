@@ -66,21 +66,11 @@ type LookupZoneCacheReserveResult struct {
 }
 
 func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReserveOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheReserveResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupZoneCacheReserveResultOutput, error) {
 			args := v.(LookupZoneCacheReserveArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupZoneCacheReserveResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args, &rv, "", opts...)
-			if err != nil {
-				return LookupZoneCacheReserveResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupZoneCacheReserveResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupZoneCacheReserveResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args, LookupZoneCacheReserveResultOutput{}, options).(LookupZoneCacheReserveResultOutput), nil
 		}).(LookupZoneCacheReserveResultOutput)
 }
 
