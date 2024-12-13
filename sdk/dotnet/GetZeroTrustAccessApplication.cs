@@ -22,6 +22,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZeroTrustAccessApplicationResult> Invoke(GetZeroTrustAccessApplicationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessApplicationResult>("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args ?? new GetZeroTrustAccessApplicationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+        /// </summary>
+        public static Output<GetZeroTrustAccessApplicationResult> Invoke(GetZeroTrustAccessApplicationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessApplicationResult>("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", args ?? new GetZeroTrustAccessApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

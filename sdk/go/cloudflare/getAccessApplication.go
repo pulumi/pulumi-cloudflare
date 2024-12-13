@@ -51,21 +51,11 @@ type LookupAccessApplicationResult struct {
 }
 
 func LookupAccessApplicationOutput(ctx *pulumi.Context, args LookupAccessApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupAccessApplicationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessApplicationResultOutput, error) {
 			args := v.(LookupAccessApplicationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessApplicationResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getAccessApplication:getAccessApplication", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessApplicationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessApplicationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessApplicationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getAccessApplication:getAccessApplication", args, LookupAccessApplicationResultOutput{}, options).(LookupAccessApplicationResultOutput), nil
 		}).(LookupAccessApplicationResultOutput)
 }
 

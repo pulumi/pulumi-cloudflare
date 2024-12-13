@@ -62,6 +62,32 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetDevicePostureRulesResult> Invoke(GetDevicePostureRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicePostureRulesResult>("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args ?? new GetDevicePostureRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetDevicePostureRules.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         Name = "check for /dev/random",
+        ///         Type = "file",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDevicePostureRulesResult> Invoke(GetDevicePostureRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicePostureRulesResult>("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args ?? new GetDevicePostureRulesInvokeArgs(), options.WithDefaults());
     }
 
 

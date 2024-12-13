@@ -94,6 +94,48 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetUserResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about the currently authenticated user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var me = Cloudflare.GetUser.Invoke();
+        /// 
+        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
+        /// 
+        ///     var example = new Cloudflare.ApiToken("example", new()
+        ///     {
+        ///         Name = "Terraform Cloud (Terraform)",
+        ///         Policies = new[]
+        ///         {
+        ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
+        ///             {
+        ///                 PermissionGroups = new[]
+        ///                 {
+        ///                     all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.User_Details_Read),
+        ///                 },
+        ///                 Resources = 
+        ///                 {
+        ///                     { $"com.cloudflare.api.user.{me.Apply(getUserResult =&gt; getUserResult.Id)}", "*" },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUserResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

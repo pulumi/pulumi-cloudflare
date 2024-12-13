@@ -95,21 +95,11 @@ type GetInfrastructureAccessTargetsResult struct {
 }
 
 func GetInfrastructureAccessTargetsOutput(ctx *pulumi.Context, args GetInfrastructureAccessTargetsOutputArgs, opts ...pulumi.InvokeOption) GetInfrastructureAccessTargetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInfrastructureAccessTargetsResultOutput, error) {
 			args := v.(GetInfrastructureAccessTargetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetInfrastructureAccessTargetsResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", args, &rv, "", opts...)
-			if err != nil {
-				return GetInfrastructureAccessTargetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInfrastructureAccessTargetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInfrastructureAccessTargetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getInfrastructureAccessTargets:getInfrastructureAccessTargets", args, GetInfrastructureAccessTargetsResultOutput{}, options).(GetInfrastructureAccessTargetsResultOutput), nil
 		}).(GetInfrastructureAccessTargetsResultOutput)
 }
 

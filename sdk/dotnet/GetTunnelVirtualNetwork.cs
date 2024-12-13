@@ -60,6 +60,31 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetTunnelVirtualNetworkResult> Invoke(GetTunnelVirtualNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelVirtualNetworkResult>("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", args ?? new GetTunnelVirtualNetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this datasource to lookup a tunnel virtual network in an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetTunnelVirtualNetwork.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         Name = "example",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTunnelVirtualNetworkResult> Invoke(GetTunnelVirtualNetworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelVirtualNetworkResult>("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", args ?? new GetTunnelVirtualNetworkInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -45,21 +45,11 @@ type LookupZeroTrustTunnelVirtualNetworkResult struct {
 }
 
 func LookupZeroTrustTunnelVirtualNetworkOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelVirtualNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupZeroTrustTunnelVirtualNetworkResultOutput, error) {
 			args := v.(LookupZeroTrustTunnelVirtualNetworkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupZeroTrustTunnelVirtualNetworkResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return LookupZeroTrustTunnelVirtualNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupZeroTrustTunnelVirtualNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupZeroTrustTunnelVirtualNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelVirtualNetwork:getZeroTrustTunnelVirtualNetwork", args, LookupZeroTrustTunnelVirtualNetworkResultOutput{}, options).(LookupZeroTrustTunnelVirtualNetworkResultOutput), nil
 		}).(LookupZeroTrustTunnelVirtualNetworkResultOutput)
 }
 

@@ -60,6 +60,31 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetZoneCacheReserveResult> Invoke(GetZoneCacheReserveInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides a Cloudflare data source to look up Cache Reserve
+        /// status for a given zone.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZoneCacheReserveResult> Invoke(GetZoneCacheReserveInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveInvokeArgs(), options.WithDefaults());
     }
 
 

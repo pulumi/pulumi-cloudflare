@@ -65,21 +65,11 @@ type GetDlpDatasetsResult struct {
 }
 
 func GetDlpDatasetsOutput(ctx *pulumi.Context, args GetDlpDatasetsOutputArgs, opts ...pulumi.InvokeOption) GetDlpDatasetsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDlpDatasetsResultOutput, error) {
 			args := v.(GetDlpDatasetsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDlpDatasetsResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getDlpDatasets:getDlpDatasets", args, &rv, "", opts...)
-			if err != nil {
-				return GetDlpDatasetsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDlpDatasetsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDlpDatasetsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getDlpDatasets:getDlpDatasets", args, GetDlpDatasetsResultOutput{}, options).(GetDlpDatasetsResultOutput), nil
 		}).(GetDlpDatasetsResultOutput)
 }
 

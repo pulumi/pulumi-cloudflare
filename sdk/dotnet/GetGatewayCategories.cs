@@ -58,6 +58,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Output<GetGatewayCategoriesResult> Invoke(GetGatewayCategoriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayCategoriesResult>("cloudflare:index/getGatewayCategories:getGatewayCategories", args ?? new GetGatewayCategoriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve all Gateway categories for an account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetGatewayCategories.Invoke(new()
+        ///     {
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGatewayCategoriesResult> Invoke(GetGatewayCategoriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayCategoriesResult>("cloudflare:index/getGatewayCategories:getGatewayCategories", args ?? new GetGatewayCategoriesInvokeArgs(), options.WithDefaults());
     }
 
 

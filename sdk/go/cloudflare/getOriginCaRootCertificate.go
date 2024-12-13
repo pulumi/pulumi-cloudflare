@@ -67,21 +67,11 @@ type GetOriginCaRootCertificateResult struct {
 }
 
 func GetOriginCaRootCertificateOutput(ctx *pulumi.Context, args GetOriginCaRootCertificateOutputArgs, opts ...pulumi.InvokeOption) GetOriginCaRootCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOriginCaRootCertificateResultOutput, error) {
 			args := v.(GetOriginCaRootCertificateArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOriginCaRootCertificateResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return GetOriginCaRootCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOriginCaRootCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOriginCaRootCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args, GetOriginCaRootCertificateResultOutput{}, options).(GetOriginCaRootCertificateResultOutput), nil
 		}).(GetOriginCaRootCertificateResultOutput)
 }
 

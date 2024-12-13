@@ -78,21 +78,11 @@ type LookupTunnelResult struct {
 }
 
 func LookupTunnelOutput(ctx *pulumi.Context, args LookupTunnelOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTunnelResultOutput, error) {
 			args := v.(LookupTunnelArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTunnelResult
-			secret, err := ctx.InvokePackageRaw("cloudflare:index/getTunnel:getTunnel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTunnelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTunnelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTunnelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudflare:index/getTunnel:getTunnel", args, LookupTunnelResultOutput{}, options).(LookupTunnelResultOutput), nil
 		}).(LookupTunnelResultOutput)
 }
 
