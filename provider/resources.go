@@ -65,6 +65,7 @@ func Provider() info.Provider {
 	prov := info.Provider{
 		P:                p,
 		Name:             "cloudflare",
+		DisplayName:      "Cloudflare",
 		Description:      "A Pulumi package for creating and managing Cloudflare cloud resources.",
 		Keywords:         []string{"pulumi", "cloudflare"},
 		License:          "Apache-2.0",
