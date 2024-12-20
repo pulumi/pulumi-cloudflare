@@ -74,9 +74,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiBasePath"] = args ? args.apiBasePath : undefined;
             resourceInputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
             resourceInputs["apiHostname"] = args ? args.apiHostname : undefined;
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
-            resourceInputs["apiUserServiceKey"] = args ? args.apiUserServiceKey : undefined;
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
+            resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
+            resourceInputs["apiUserServiceKey"] = args?.apiUserServiceKey ? pulumi.secret(args.apiUserServiceKey) : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
             resourceInputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
@@ -85,6 +85,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["userAgentOperatorSuffix"] = args ? args.userAgentOperatorSuffix : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey", "apiToken", "apiUserServiceKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

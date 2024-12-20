@@ -84,6 +84,12 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "apiKey",
+                    "apiToken",
+                    "apiUserServiceKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -115,29 +121,59 @@ namespace Pulumi.Cloudflare
         [Input("apiHostname")]
         public Input<string>? ApiHostname { get; set; }
 
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
         /// <summary>
         /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         /// keys are [now considered legacy by
         /// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
         /// instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("apiToken")]
+        private Input<string>? _apiToken;
 
         /// <summary>
         /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
         /// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
-        [Input("apiToken")]
-        public Input<string>? ApiToken { get; set; }
+        public Input<string>? ApiToken
+        {
+            get => _apiToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("apiUserServiceKey")]
+        private Input<string>? _apiUserServiceKey;
 
         /// <summary>
         /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
         /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
         /// `api_user_service_key`.
         /// </summary>
-        [Input("apiUserServiceKey")]
-        public Input<string>? ApiUserServiceKey { get; set; }
+        public Input<string>? ApiUserServiceKey
+        {
+            get => _apiUserServiceKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiUserServiceKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
