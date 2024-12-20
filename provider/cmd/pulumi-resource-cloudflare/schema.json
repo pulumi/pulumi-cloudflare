@@ -72,15 +72,18 @@
             },
             "apiKey": {
                 "type": "string",
-                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiToken": {
                 "type": "string",
-                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiUserServiceKey": {
                 "type": "string",
-                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n"
+                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n",
+                "secret": true
             },
             "email": {
                 "type": "string",
@@ -14225,15 +14228,18 @@
             },
             "apiKey": {
                 "type": "string",
-                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiToken": {
                 "type": "string",
-                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiUserServiceKey": {
                 "type": "string",
-                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n"
+                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n",
+                "secret": true
             },
             "email": {
                 "type": "string",
@@ -14280,15 +14286,18 @@
             },
             "apiKey": {
                 "type": "string",
-                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API\nkeys are [now considered legacy by\nCloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used\ninstead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiToken": {
                 "type": "string",
-                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n"
+                "description": "The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.\nMust provide only one of `api_key`, `api_token`, `api_user_service_key`.\n",
+                "secret": true
             },
             "apiUserServiceKey": {
                 "type": "string",
-                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n"
+                "description": "A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the\n`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,\n`api_user_service_key`.\n",
+                "secret": true
             },
             "email": {
                 "type": "string",
