@@ -107,6 +107,18 @@ func Provider() info.Provider {
 					EnvVars: []string{"CLOUDFLARE_API_CLIENT_LOGGING"},
 				},
 			},
+			"api_token": {
+				Secret: tfbridge.True(),
+			},
+			"api_key": {
+				Secret: tfbridge.True(),
+			},
+			"api_user_service_key": {
+				Secret: tfbridge.True(),
+			},
+			"account_id": {
+				Secret: tfbridge.True(),
+			},
 		},
 
 		Resources: map[string]*info.Resource{
