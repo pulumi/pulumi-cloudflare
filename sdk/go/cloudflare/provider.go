@@ -74,6 +74,21 @@ func NewProvider(ctx *pulumi.Context,
 			args.Rps = pulumi.IntPtr(d.(int))
 		}
 	}
+	if args.ApiKey != nil {
+		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringPtrInput)
+	}
+	if args.ApiToken != nil {
+		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringPtrInput)
+	}
+	if args.ApiUserServiceKey != nil {
+		args.ApiUserServiceKey = pulumi.ToSecret(args.ApiUserServiceKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+		"apiToken",
+		"apiUserServiceKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:cloudflare", name, args, &resource, opts...)

@@ -355,9 +355,9 @@ class Provider(pulumi.ProviderResource):
                 api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__.__dict__["api_client_logging"] = pulumi.Output.from_input(api_client_logging).apply(pulumi.runtime.to_json) if api_client_logging is not None else None
             __props__.__dict__["api_hostname"] = api_hostname
-            __props__.__dict__["api_key"] = api_key
-            __props__.__dict__["api_token"] = api_token
-            __props__.__dict__["api_user_service_key"] = api_user_service_key
+            __props__.__dict__["api_key"] = None if api_key is None else pulumi.Output.secret(api_key)
+            __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
+            __props__.__dict__["api_user_service_key"] = None if api_user_service_key is None else pulumi.Output.secret(api_user_service_key)
             __props__.__dict__["email"] = email
             if max_backoff is None:
                 max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
@@ -372,6 +372,8 @@ class Provider(pulumi.ProviderResource):
                 rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
             __props__.__dict__["rps"] = pulumi.Output.from_input(rps).apply(pulumi.runtime.to_json) if rps is not None else None
             __props__.__dict__["user_agent_operator_suffix"] = user_agent_operator_suffix
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey", "apiToken", "apiUserServiceKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'cloudflare',
             resource_name,
