@@ -102,7 +102,7 @@ type Record struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 	Value pulumi.StringOutput `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -178,7 +178,7 @@ type recordState struct {
 	Type *string `pulumi:"type"`
 	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 	Value *string `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
@@ -216,7 +216,7 @@ type RecordState struct {
 	Type pulumi.StringPtrInput
 	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 	Value pulumi.StringPtrInput
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
@@ -248,7 +248,7 @@ type recordArgs struct {
 	Type string `pulumi:"type"`
 	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 	Value *string `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
@@ -277,7 +277,7 @@ type RecordArgs struct {
 	Type pulumi.StringInput
 	// The value of the record. Must provide only one of `data`, `content`, `value`.
 	//
-	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+	// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 	Value pulumi.StringPtrInput
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
@@ -446,7 +446,7 @@ func (o RecordOutput) Type() pulumi.StringOutput {
 
 // The value of the record. Must provide only one of `data`, `content`, `value`.
 //
-// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.
+// Deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
 func (o RecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

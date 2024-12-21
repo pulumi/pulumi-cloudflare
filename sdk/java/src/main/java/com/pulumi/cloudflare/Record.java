@@ -294,10 +294,10 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      * 
      */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
