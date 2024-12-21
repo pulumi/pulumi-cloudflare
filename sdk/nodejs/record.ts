@@ -134,7 +134,7 @@ export class Record extends pulumi.CustomResource {
     /**
      * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -270,7 +270,7 @@ export interface RecordState {
     /**
      * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      */
     value?: pulumi.Input<string>;
     /**
@@ -323,7 +323,7 @@ export interface RecordArgs {
     /**
      * The value of the record. Must provide only one of `data`, `content`, `value`.
      *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      */
     value?: pulumi.Input<string>;
     /**
