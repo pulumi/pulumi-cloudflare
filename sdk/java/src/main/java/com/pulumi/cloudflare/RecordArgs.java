@@ -166,10 +166,10 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
      * The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      * 
      */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
     @Import(name="value")
     private @Nullable Output<String> value;
 
@@ -177,10 +177,10 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
      * @return The value of the record. Must provide only one of `data`, `content`, `value`.
      * 
      * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release.
+     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
      * 
      */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
+    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -449,10 +449,10 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release.
+         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
          * 
          */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
+        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
@@ -464,10 +464,10 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release.
+         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
          * 
          */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. */
+        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
         public Builder value(String value) {
             return value(Output.of(value));
         }
