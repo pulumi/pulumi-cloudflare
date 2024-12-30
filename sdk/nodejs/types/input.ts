@@ -285,39 +285,36 @@ export interface AccessApplicationScimConfig {
 
 export interface AccessApplicationScimConfigAuthentication {
     /**
-     * URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * URL used to generate the auth code used during token generation.
      */
     authorizationUrl?: pulumi.Input<string>;
     /**
-     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
      */
     clientSecret?: pulumi.Input<string>;
-    /**
-     * Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-     */
     password?: pulumi.Input<string>;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
      */
     scheme: pulumi.Input<string>;
     /**
-     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     * Token used to authenticate with the remote SCIM service.
      */
     token?: pulumi.Input<string>;
     /**
-     * URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * URL used to generate the token used to authenticate with the remote SCIM service.
      */
     tokenUrl?: pulumi.Input<string>;
     /**
-     * User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     * User name used to authenticate with the remote SCIM service.
      */
     user?: pulumi.Input<string>;
 }
@@ -6030,39 +6027,36 @@ export interface ZeroTrustAccessApplicationScimConfig {
 
 export interface ZeroTrustAccessApplicationScimConfigAuthentication {
     /**
-     * URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * URL used to generate the auth code used during token generation.
      */
     authorizationUrl?: pulumi.Input<string>;
     /**
-     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
      */
     clientSecret?: pulumi.Input<string>;
-    /**
-     * Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-     */
     password?: pulumi.Input<string>;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
      */
     scheme: pulumi.Input<string>;
     /**
-     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     * Token used to authenticate with the remote SCIM service.
      */
     token?: pulumi.Input<string>;
     /**
-     * URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+     * URL used to generate the token used to authenticate with the remote SCIM service.
      */
     tokenUrl?: pulumi.Input<string>;
     /**
-     * User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+     * User name used to authenticate with the remote SCIM service.
      */
     user?: pulumi.Input<string>;
 }

@@ -77,8 +77,7 @@ type TeamsLocation struct {
 	// Name of the teams location.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
-	Networks  TeamsLocationNetworkArrayOutput `pulumi:"networks"`
-	PolicyIds pulumi.StringArrayOutput        `pulumi:"policyIds"`
+	Networks TeamsLocationNetworkArrayOutput `pulumi:"networks"`
 }
 
 // NewTeamsLocation registers a new resource with the given unique name, arguments, and options.
@@ -134,8 +133,7 @@ type teamsLocationState struct {
 	// Name of the teams location.
 	Name *string `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
-	Networks  []TeamsLocationNetwork `pulumi:"networks"`
-	PolicyIds []string               `pulumi:"policyIds"`
+	Networks []TeamsLocationNetwork `pulumi:"networks"`
 }
 
 type TeamsLocationState struct {
@@ -156,8 +154,7 @@ type TeamsLocationState struct {
 	// Name of the teams location.
 	Name pulumi.StringPtrInput
 	// The networks CIDRs that comprise the location.
-	Networks  TeamsLocationNetworkArrayInput
-	PolicyIds pulumi.StringArrayInput
+	Networks TeamsLocationNetworkArrayInput
 }
 
 func (TeamsLocationState) ElementType() reflect.Type {
@@ -321,10 +318,6 @@ func (o TeamsLocationOutput) Name() pulumi.StringOutput {
 // The networks CIDRs that comprise the location.
 func (o TeamsLocationOutput) Networks() TeamsLocationNetworkArrayOutput {
 	return o.ApplyT(func(v *TeamsLocation) TeamsLocationNetworkArrayOutput { return v.Networks }).(TeamsLocationNetworkArrayOutput)
-}
-
-func (o TeamsLocationOutput) PolicyIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TeamsLocation) pulumi.StringArrayOutput { return v.PolicyIds }).(pulumi.StringArrayOutput)
 }
 
 type TeamsLocationArrayOutput struct{ *pulumi.OutputState }

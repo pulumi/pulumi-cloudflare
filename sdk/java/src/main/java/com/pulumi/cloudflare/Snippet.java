@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The [Snippet](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet for a zone.
+ * 
+ */
 @ResourceType(type="cloudflare:index/snippet:Snippet")
 public class Snippet extends com.pulumi.resources.CustomResource {
     /**

@@ -102,7 +102,6 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      * The networks CIDRs that comprise the location.
      */
     public readonly networks!: pulumi.Output<outputs.ZeroTrustDnsLocationNetwork[] | undefined>;
-    public /*out*/ readonly policyIds!: pulumi.Output<string[]>;
 
     /**
      * Create a ZeroTrustDnsLocation resource with the given unique name, arguments, and options.
@@ -126,7 +125,6 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["ipv4Destination"] = state ? state.ipv4Destination : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["policyIds"] = state ? state.policyIds : undefined;
         } else {
             const args = argsOrState as ZeroTrustDnsLocationArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -144,7 +142,6 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["dohSubdomain"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["ipv4Destination"] = undefined /*out*/;
-            resourceInputs["policyIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDnsLocation.__pulumiType, name, resourceInputs, opts);
@@ -191,7 +188,6 @@ export interface ZeroTrustDnsLocationState {
      * The networks CIDRs that comprise the location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationNetwork>[]>;
-    policyIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**

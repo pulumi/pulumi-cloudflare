@@ -115,8 +115,7 @@ class _TeamsLocationState:
                  ip: Optional[pulumi.Input[str]] = None,
                  ipv4_destination: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
-                 policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
         Input properties used for looking up and filtering TeamsLocation resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -147,8 +146,6 @@ class _TeamsLocationState:
             pulumi.set(__self__, "name", name)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
-        if policy_ids is not None:
-            pulumi.set(__self__, "policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="accountId")
@@ -257,15 +254,6 @@ class _TeamsLocationState:
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
-
-    @property
-    @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "policy_ids")
-
-    @policy_ids.setter
-    def policy_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "policy_ids", value)
 
 
 class TeamsLocation(pulumi.CustomResource):
@@ -397,7 +385,6 @@ class TeamsLocation(pulumi.CustomResource):
             __props__.__dict__["doh_subdomain"] = None
             __props__.__dict__["ip"] = None
             __props__.__dict__["ipv4_destination"] = None
-            __props__.__dict__["policy_ids"] = None
         super(TeamsLocation, __self__).__init__(
             'cloudflare:index/teamsLocation:TeamsLocation',
             resource_name,
@@ -416,8 +403,7 @@ class TeamsLocation(pulumi.CustomResource):
             ip: Optional[pulumi.Input[str]] = None,
             ipv4_destination: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
-            policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'TeamsLocation':
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None) -> 'TeamsLocation':
         """
         Get an existing TeamsLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -448,7 +434,6 @@ class TeamsLocation(pulumi.CustomResource):
         __props__.__dict__["ipv4_destination"] = ipv4_destination
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
-        __props__.__dict__["policy_ids"] = policy_ids
         return TeamsLocation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -522,9 +507,4 @@ class TeamsLocation(pulumi.CustomResource):
         The networks CIDRs that comprise the location.
         """
         return pulumi.get(self, "networks")
-
-    @property
-    @pulumi.getter(name="policyIds")
-    def policy_ids(self) -> pulumi.Output[Sequence[str]]:
-        return pulumi.get(self, "policy_ids")
 

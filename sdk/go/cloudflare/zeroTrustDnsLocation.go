@@ -77,8 +77,7 @@ type ZeroTrustDnsLocation struct {
 	// Name of the teams location.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
-	Networks  ZeroTrustDnsLocationNetworkArrayOutput `pulumi:"networks"`
-	PolicyIds pulumi.StringArrayOutput               `pulumi:"policyIds"`
+	Networks ZeroTrustDnsLocationNetworkArrayOutput `pulumi:"networks"`
 }
 
 // NewZeroTrustDnsLocation registers a new resource with the given unique name, arguments, and options.
@@ -134,8 +133,7 @@ type zeroTrustDnsLocationState struct {
 	// Name of the teams location.
 	Name *string `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
-	Networks  []ZeroTrustDnsLocationNetwork `pulumi:"networks"`
-	PolicyIds []string                      `pulumi:"policyIds"`
+	Networks []ZeroTrustDnsLocationNetwork `pulumi:"networks"`
 }
 
 type ZeroTrustDnsLocationState struct {
@@ -156,8 +154,7 @@ type ZeroTrustDnsLocationState struct {
 	// Name of the teams location.
 	Name pulumi.StringPtrInput
 	// The networks CIDRs that comprise the location.
-	Networks  ZeroTrustDnsLocationNetworkArrayInput
-	PolicyIds pulumi.StringArrayInput
+	Networks ZeroTrustDnsLocationNetworkArrayInput
 }
 
 func (ZeroTrustDnsLocationState) ElementType() reflect.Type {
@@ -321,10 +318,6 @@ func (o ZeroTrustDnsLocationOutput) Name() pulumi.StringOutput {
 // The networks CIDRs that comprise the location.
 func (o ZeroTrustDnsLocationOutput) Networks() ZeroTrustDnsLocationNetworkArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) ZeroTrustDnsLocationNetworkArrayOutput { return v.Networks }).(ZeroTrustDnsLocationNetworkArrayOutput)
-}
-
-func (o ZeroTrustDnsLocationOutput) PolicyIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringArrayOutput { return v.PolicyIds }).(pulumi.StringArrayOutput)
 }
 
 type ZeroTrustDnsLocationArrayOutput struct{ *pulumi.OutputState }

@@ -2024,23 +2024,22 @@ func (o AccessApplicationScimConfigPtrOutput) RemoteUri() pulumi.StringPtrOutput
 }
 
 type AccessApplicationScimConfigAuthentication struct {
-	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the auth code used during token generation.
 	AuthorizationUrl *string `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 	ClientId *string `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-	Password *string `pulumi:"password"`
+	Password     *string `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme string `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes []string `pulumi:"scopes"`
-	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// Token used to authenticate with the remote SCIM service.
 	Token *string `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the token used to authenticate with the remote SCIM service.
 	TokenUrl *string `pulumi:"tokenUrl"`
-	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// User name used to authenticate with the remote SCIM service.
 	User *string `pulumi:"user"`
 }
 
@@ -2056,23 +2055,22 @@ type AccessApplicationScimConfigAuthenticationInput interface {
 }
 
 type AccessApplicationScimConfigAuthenticationArgs struct {
-	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the auth code used during token generation.
 	AuthorizationUrl pulumi.StringPtrInput `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// Token used to authenticate with the remote SCIM service.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the token used to authenticate with the remote SCIM service.
 	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
-	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// User name used to authenticate with the remote SCIM service.
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
@@ -2153,22 +2151,21 @@ func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScim
 	}).(AccessApplicationScimConfigAuthenticationPtrOutput)
 }
 
-// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the auth code used during token generation.
 func (o AccessApplicationScimConfigAuthenticationOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.AuthorizationUrl }).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -2178,22 +2175,22 @@ func (o AccessApplicationScimConfigAuthenticationOutput) Scheme() pulumi.StringO
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// Token used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the token used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
 
-// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// User name used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -2222,7 +2219,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Elem() AccessApplica
 	}).(AccessApplicationScimConfigAuthenticationOutput)
 }
 
-// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the auth code used during token generation.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2232,7 +2229,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2242,7 +2239,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2252,7 +2249,6 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2272,7 +2268,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) []string {
 		if v == nil {
@@ -2282,7 +2278,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// Token used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2292,7 +2288,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the token used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -2302,7 +2298,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// User name used to authenticate with the remote SCIM service.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46681,23 +46677,22 @@ func (o ZeroTrustAccessApplicationScimConfigPtrOutput) RemoteUri() pulumi.String
 }
 
 type ZeroTrustAccessApplicationScimConfigAuthentication struct {
-	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the auth code used during token generation.
 	AuthorizationUrl *string `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 	ClientId *string `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-	Password *string `pulumi:"password"`
+	Password     *string `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme string `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes []string `pulumi:"scopes"`
-	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// Token used to authenticate with the remote SCIM service.
 	Token *string `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the token used to authenticate with the remote SCIM service.
 	TokenUrl *string `pulumi:"tokenUrl"`
-	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// User name used to authenticate with the remote SCIM service.
 	User *string `pulumi:"user"`
 }
 
@@ -46713,23 +46708,22 @@ type ZeroTrustAccessApplicationScimConfigAuthenticationInput interface {
 }
 
 type ZeroTrustAccessApplicationScimConfigAuthenticationArgs struct {
-	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the auth code used during token generation.
 	AuthorizationUrl pulumi.StringPtrInput `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// Token used to authenticate with the remote SCIM service.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+	// URL used to generate the token used to authenticate with the remote SCIM service.
 	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
-	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+	// User name used to authenticate with the remote SCIM service.
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
@@ -46810,22 +46804,21 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) ToZeroTrustAcc
 	}).(ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput)
 }
 
-// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the auth code used during token generation.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.AuthorizationUrl }).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -46835,22 +46828,22 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) Scheme() pulum
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// Token used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the token used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
 
-// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// User name used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationScimConfigAuthentication) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -46879,7 +46872,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Elem() Zero
 	}).(ZeroTrustAccessApplicationScimConfigAuthenticationOutput)
 }
 
-// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the auth code used during token generation.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46889,7 +46882,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Authorizati
 	}).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46899,7 +46892,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) ClientId() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46909,7 +46902,6 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) ClientSecre
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46929,7 +46921,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) []string {
 		if v == nil {
@@ -46939,7 +46931,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// Token used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46949,7 +46941,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) Token() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+// URL used to generate the token used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -46959,7 +46951,7 @@ func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+// User name used to authenticate with the remote SCIM service.
 func (o ZeroTrustAccessApplicationScimConfigAuthenticationPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplicationScimConfigAuthentication) *string {
 		if v == nil {

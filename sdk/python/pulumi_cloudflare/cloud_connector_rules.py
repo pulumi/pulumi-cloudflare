@@ -106,7 +106,7 @@ class CloudConnectorRules(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Cloud Connector Rules resource allows you to create and manage cloud connector rules for a zone.
+        The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -120,7 +120,7 @@ class CloudConnectorRules(pulumi.CustomResource):
                  args: CloudConnectorRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Cloud Connector Rules resource allows you to create and manage cloud connector rules for a zone.
+        The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
 
         :param str resource_name: The name of the resource.
         :param CloudConnectorRulesArgs args: The arguments to use to populate this resource's properties.

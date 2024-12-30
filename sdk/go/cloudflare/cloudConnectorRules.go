@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cloud Connector Rules resource allows you to create and manage cloud connector rules for a zone.
+// The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
 type CloudConnectorRules struct {
 	pulumi.CustomResourceState
 

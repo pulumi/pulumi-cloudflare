@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * be used to limit the traffic you receive zone-wide, or matching more
  * specific types of requests/responses.
  * 
- * &gt; `cloudflare.RateLimit` is in a deprecation phase until January 15th, 2025.
+ * &gt; `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the

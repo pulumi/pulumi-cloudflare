@@ -202,12 +202,6 @@ public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ZeroTrustDnsLocationNetwork>>> networks() {
         return Codegen.optional(this.networks);
     }
-    @Export(name="policyIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> policyIds;
-
-    public Output<List<String>> policyIds() {
-        return this.policyIds;
-    }
 
     /**
      *

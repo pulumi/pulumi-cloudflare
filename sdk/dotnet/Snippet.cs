@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// The [Snippet](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet for a zone.
+    /// </summary>
     [CloudflareResourceType("cloudflare:index/snippet:Snippet")]
     public partial class Snippet : global::Pulumi.CustomResource
     {

@@ -16,7 +16,7 @@ import (
 // e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
 // for more details and available fields and operators.
 //
-// > `Filter` is in a deprecation phase until January 15th, 2025.
+// > `Filter` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still fully
 //	supported but you are strongly advised to move to the

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Cloud Connector Rules resource allows you to create and manage cloud connector rules for a zone.
+ * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
  */
 export class CloudConnectorRules extends pulumi.CustomResource {
     /**

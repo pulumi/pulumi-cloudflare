@@ -3,21 +3,19 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.CloudConnectorRulesArgs;
+import com.pulumi.cloudflare.ContentScanningArgs;
 import com.pulumi.cloudflare.Utilities;
-import com.pulumi.cloudflare.inputs.CloudConnectorRulesState;
-import com.pulumi.cloudflare.outputs.CloudConnectorRulesRule;
+import com.pulumi.cloudflare.inputs.ContentScanningState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+ * Provides a Content Scanning resource to be used for managing the status of the Content Scanning feature within a specific zone.
  * 
  * ## Example Usage
  * 
@@ -29,9 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudConnectorRules;
- * import com.pulumi.cloudflare.CloudConnectorRulesArgs;
- * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleArgs;
+ * import com.pulumi.cloudflare.ContentScanning;
+ * import com.pulumi.cloudflare.ContentScanningArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,17 +42,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CloudConnectorRules("example", CloudConnectorRulesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .rules(CloudConnectorRulesRuleArgs.builder()
- *                 .description("connect aws bucket")
- *                 .enabled(true)
- *                 .expression("http.uri")
- *                 .provider("aws_s3")
- *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
- *                     .host("mystorage.s3.ams.amazonaws.com")
- *                     .build())
- *                 .build())
+ *         // Enable Content Scanning
+ *         var example = new ContentScanning("example", ContentScanningArgs.builder()
+ *             .zoneId("399c6f4950c01a5a141b99ff7fbcbd8b")
+ *             .enabled(true)
  *             .build());
  * 
  *     }
@@ -64,22 +54,28 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/contentScanning:ContentScanning example &lt;zone_id&gt;
+ * ```
+ * 
  */
-@ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
-public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
+@ResourceType(type="cloudflare:index/contentScanning:ContentScanning")
+public class ContentScanning extends com.pulumi.resources.CustomResource {
     /**
-     * List of Cloud Connector Rules
+     * State of the Content Scanning feature
      * 
      */
-    @Export(name="rules", refs={List.class,CloudConnectorRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CloudConnectorRulesRule>> rules;
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
 
     /**
-     * @return List of Cloud Connector Rules
+     * @return State of the Content Scanning feature
      * 
      */
-    public Output<Optional<List<CloudConnectorRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * The zone identifier to target for the resource.
@@ -100,15 +96,15 @@ public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudConnectorRules(java.lang.String name) {
-        this(name, CloudConnectorRulesArgs.Empty);
+    public ContentScanning(java.lang.String name) {
+        this(name, ContentScanningArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudConnectorRules(java.lang.String name, CloudConnectorRulesArgs args) {
+    public ContentScanning(java.lang.String name, ContentScanningArgs args) {
         this(name, args, null);
     }
     /**
@@ -117,19 +113,19 @@ public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudConnectorRules(java.lang.String name, CloudConnectorRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/cloudConnectorRules:CloudConnectorRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public ContentScanning(java.lang.String name, ContentScanningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/contentScanning:ContentScanning", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudConnectorRules(java.lang.String name, Output<java.lang.String> id, @Nullable CloudConnectorRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/cloudConnectorRules:CloudConnectorRules", name, state, makeResourceOptions(options, id), false);
+    private ContentScanning(java.lang.String name, Output<java.lang.String> id, @Nullable ContentScanningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/contentScanning:ContentScanning", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static CloudConnectorRulesArgs makeArgs(CloudConnectorRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ContentScanningArgs makeArgs(ContentScanningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? CloudConnectorRulesArgs.Empty : args;
+        return args == null ? ContentScanningArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
@@ -148,7 +144,7 @@ public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudConnectorRules get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudConnectorRulesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new CloudConnectorRules(name, id, state, options);
+    public static ContentScanning get(java.lang.String name, Output<java.lang.String> id, @Nullable ContentScanningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ContentScanning(name, id, state, options);
     }
 }
