@@ -126,6 +126,7 @@ func Provider() info.Provider {
 				// This resource has no upstream docs:
 				Docs: &info.Doc{AllowMissing: true},
 			},
+			"cloudflare_content_scanning": {ComputeID: delegateID("zoneId")},
 			"cloudflare_zone": {
 				Fields: map[string]*info.Schema{
 					"zone": {CSharpName: "ZoneName"},
