@@ -12,13 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+// The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
 // allows you to create and deploy rules and rulesets.
 //
-// The engine syntax, inspired by the Wireshark Display Filter language, is the
-// same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
-// in different products, allowing you to configure several products using the same
-// basic syntax.
+// Cloudflare uses the Ruleset Engine in different products, allowing
+// you to configure several products using the same basic syntax.
 //
 // ## Import
 //

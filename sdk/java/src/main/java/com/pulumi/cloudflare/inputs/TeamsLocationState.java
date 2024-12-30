@@ -153,13 +153,6 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.networks);
     }
 
-    @Import(name="policyIds")
-    private @Nullable Output<List<String>> policyIds;
-
-    public Optional<Output<List<String>>> policyIds() {
-        return Optional.ofNullable(this.policyIds);
-    }
-
     private TeamsLocationState() {}
 
     private TeamsLocationState(TeamsLocationState $) {
@@ -172,7 +165,6 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         this.ipv4Destination = $.ipv4Destination;
         this.name = $.name;
         this.networks = $.networks;
-        this.policyIds = $.policyIds;
     }
 
     public static Builder builder() {
@@ -390,19 +382,6 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder networks(TeamsLocationNetworkArgs... networks) {
             return networks(List.of(networks));
-        }
-
-        public Builder policyIds(@Nullable Output<List<String>> policyIds) {
-            $.policyIds = policyIds;
-            return this;
-        }
-
-        public Builder policyIds(List<String> policyIds) {
-            return policyIds(Output.of(policyIds));
-        }
-
-        public Builder policyIds(String... policyIds) {
-            return policyIds(List.of(policyIds));
         }
 
         public TeamsLocationState build() {

@@ -34,6 +34,8 @@ from .bot_management import *
 from .byo_ip_prefix import *
 from .certificate_pack import *
 from .cloud_connector_rules import *
+from .content_scanning import *
+from .content_scanning_expression import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
@@ -449,6 +451,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/cloudConnectorRules:CloudConnectorRules": "CloudConnectorRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/contentScanning",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/contentScanning:ContentScanning": "ContentScanning"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/contentScanningExpression",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/contentScanningExpression:ContentScanningExpression": "ContentScanningExpression"
   }
  },
  {

@@ -150,6 +150,16 @@ export type CloudConnectorRules = import("./cloudConnectorRules").CloudConnector
 export const CloudConnectorRules: typeof import("./cloudConnectorRules").CloudConnectorRules = null as any;
 utilities.lazyLoad(exports, ["CloudConnectorRules"], () => require("./cloudConnectorRules"));
 
+export { ContentScanningArgs, ContentScanningState } from "./contentScanning";
+export type ContentScanning = import("./contentScanning").ContentScanning;
+export const ContentScanning: typeof import("./contentScanning").ContentScanning = null as any;
+utilities.lazyLoad(exports, ["ContentScanning"], () => require("./contentScanning"));
+
+export { ContentScanningExpressionArgs, ContentScanningExpressionState } from "./contentScanningExpression";
+export type ContentScanningExpression = import("./contentScanningExpression").ContentScanningExpression;
+export const ContentScanningExpression: typeof import("./contentScanningExpression").ContentScanningExpression = null as any;
+utilities.lazyLoad(exports, ["ContentScanningExpression"], () => require("./contentScanningExpression"));
+
 export { CustomHostnameArgs, CustomHostnameState } from "./customHostname";
 export type CustomHostname = import("./customHostname").CustomHostname;
 export const CustomHostname: typeof import("./customHostname").CustomHostname = null as any;
@@ -1082,6 +1092,10 @@ const _module = {
                 return new CertificatePack(name, <any>undefined, { urn })
             case "cloudflare:index/cloudConnectorRules:CloudConnectorRules":
                 return new CloudConnectorRules(name, <any>undefined, { urn })
+            case "cloudflare:index/contentScanning:ContentScanning":
+                return new ContentScanning(name, <any>undefined, { urn })
+            case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
+                return new ContentScanningExpression(name, <any>undefined, { urn })
             case "cloudflare:index/customHostname:CustomHostname":
                 return new CustomHostname(name, <any>undefined, { urn })
             case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
@@ -1394,6 +1408,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/certificatePack", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudConnectorRules", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanning", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpression", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)

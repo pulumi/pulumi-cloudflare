@@ -170,7 +170,8 @@ class Snippet(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Snippet resource with the given unique name, props, and options.
+        The [Snippet](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet for a zone.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]] files: List of Snippet Files
@@ -185,7 +186,8 @@ class Snippet(pulumi.CustomResource):
                  args: SnippetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Snippet resource with the given unique name, props, and options.
+        The [Snippet](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet for a zone.
+
         :param str resource_name: The name of the resource.
         :param SnippetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

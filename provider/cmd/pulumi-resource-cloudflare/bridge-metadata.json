@@ -927,6 +927,14 @@
                     }
                 }
             },
+            "cloudflare_content_scanning": {
+                "current": "cloudflare:index/contentScanning:ContentScanning",
+                "majorVersion": 5
+            },
+            "cloudflare_content_scanning_expression": {
+                "current": "cloudflare:index/contentScanningExpression:ContentScanningExpression",
+                "majorVersion": 5
+            },
             "cloudflare_custom_hostname": {
                 "current": "cloudflare:index/customHostname:CustomHostname",
                 "majorVersion": 5,
@@ -2252,9 +2260,6 @@
                 "fields": {
                     "networks": {
                         "maxItemsOne": false
-                    },
-                    "policy_ids": {
-                        "maxItemsOne": false
                     }
                 }
             },
@@ -3514,9 +3519,6 @@
                 "fields": {
                     "networks": {
                         "maxItemsOne": false
-                    },
-                    "policy_ids": {
-                        "maxItemsOne": false
                     }
                 }
             },
@@ -4404,6 +4406,11 @@
     },
     "auto-settings": {
         "resources": {
+            "cloudflare_access_application": {
+                "maxItemsOneOverrides": {
+                    "scim_config.$.authentication": true
+                }
+            },
             "cloudflare_access_group": {
                 "maxItemsOneOverrides": {
                     "exclude.$.external_evaluation": true,
@@ -4428,6 +4435,11 @@
                     "rules.$.action_parameters.$.autominify": false,
                     "rules.$.action_parameters.$.edge_ttl.$.status_code_ttl.$.status_code_range": false,
                     "rules.$.action_parameters.$.response": false
+                }
+            },
+            "cloudflare_zero_trust_access_application": {
+                "maxItemsOneOverrides": {
+                    "scim_config.$.authentication": true
                 }
             }
         }
@@ -4463,6 +4475,8 @@
             "cloudflare:index/byoIpPrefix:ByoIpPrefix": 0,
             "cloudflare:index/certificatePack:CertificatePack": 0,
             "cloudflare:index/cloudConnectorRules:CloudConnectorRules": 1,
+            "cloudflare:index/contentScanning:ContentScanning": 1,
+            "cloudflare:index/contentScanningExpression:ContentScanningExpression": 1,
             "cloudflare:index/customHostname:CustomHostname": 0,
             "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": 0,
             "cloudflare:index/customPages:CustomPages": 0,

@@ -108,9 +108,6 @@ namespace Pulumi.Cloudflare
         [Output("networks")]
         public Output<ImmutableArray<Outputs.TeamsLocationNetwork>> Networks { get; private set; } = null!;
 
-        [Output("policyIds")]
-        public Output<ImmutableArray<string>> PolicyIds { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a TeamsLocation resource with the given unique name, arguments, and options.
@@ -259,14 +256,6 @@ namespace Pulumi.Cloudflare
         {
             get => _networks ?? (_networks = new InputList<Inputs.TeamsLocationNetworkGetArgs>());
             set => _networks = value;
-        }
-
-        [Input("policyIds")]
-        private InputList<string>? _policyIds;
-        public InputList<string> PolicyIds
-        {
-            get => _policyIds ?? (_policyIds = new InputList<string>());
-            set => _policyIds = value;
         }
 
         public TeamsLocationState()

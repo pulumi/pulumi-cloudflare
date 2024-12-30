@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+ */
 export class SnippetRules extends pulumi.CustomResource {
     /**
      * Get an existing SnippetRules resource's state with the given name, ID, and optional extra

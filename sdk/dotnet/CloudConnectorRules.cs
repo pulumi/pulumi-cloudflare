@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The Cloud Connector Rules resource allows you to create and manage cloud connector rules for a zone.
+    /// The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudConnectorRules:CloudConnectorRules")]
     public partial class CloudConnectorRules : global::Pulumi.CustomResource

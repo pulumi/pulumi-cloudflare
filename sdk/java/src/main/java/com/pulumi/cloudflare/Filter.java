@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
  * for more details and available fields and operators.
  * 
- * &gt; `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
+ * &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still fully
  *   supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
