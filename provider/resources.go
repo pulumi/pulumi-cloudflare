@@ -116,9 +116,6 @@ func Provider() info.Provider {
 			"api_user_service_key": {
 				Secret: tfbridge.True(),
 			},
-			"account_id": {
-				Secret: tfbridge.True(),
-			},
 		},
 
 		Resources: map[string]*info.Resource{
