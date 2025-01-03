@@ -24425,7 +24425,7 @@
                 "value": {
                     "type": "string",
                     "description": "The value of the record. Must provide only one of `data`, `content`, `value`.\n",
-                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
+                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`."
                 },
                 "zoneId": {
                     "type": "string",
@@ -24493,7 +24493,7 @@
                 "value": {
                     "type": "string",
                     "description": "The value of the record. Must provide only one of `data`, `content`, `value`.\n",
-                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
+                    "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`."
                 },
                 "zoneId": {
                     "type": "string",
@@ -24579,7 +24579,7 @@
                     "value": {
                         "type": "string",
                         "description": "The value of the record. Must provide only one of `data`, `content`, `value`.\n",
-                        "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release."
+                        "deprecationMessage": "`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`."
                     },
                     "zoneId": {
                         "type": "string",
