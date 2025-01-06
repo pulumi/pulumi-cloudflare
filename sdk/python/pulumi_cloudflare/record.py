@@ -67,8 +67,8 @@ class RecordArgs:
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
         if value is not None:
-            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.""")
+            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""", DeprecationWarning)
+            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""")
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -203,7 +203,7 @@ class RecordArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value of the record. Must provide only one of `data`, `content`, `value`.
@@ -285,8 +285,8 @@ class _RecordState:
         if type is not None:
             pulumi.set(__self__, "type", type)
         if value is not None:
-            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release.""")
+            warnings.warn("""`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""", DeprecationWarning)
+            pulumi.log.warn("""value is deprecated: `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""")
         if value is not None:
             pulumi.set(__self__, "value", value)
         if zone_id is not None:
@@ -471,7 +471,7 @@ class _RecordState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value of the record. Must provide only one of `data`, `content`, `value`.
@@ -861,7 +861,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release.""")
+    @_utilities.deprecated("""`value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.""")
     def value(self) -> pulumi.Output[str]:
         """
         The value of the record. Must provide only one of `data`, `content`, `value`.

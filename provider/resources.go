@@ -136,7 +136,17 @@ func Provider() info.Provider {
 			// If `type` or `zoneId` is changed, then the resource will replace but the new
 			// resource will conflict with the old one. To avoid this, we set
 			// `DeleteBeforeReplace: true`.
-			"cloudflare_record": {DeleteBeforeReplace: true},
+			"cloudflare_record": {
+				DeleteBeforeReplace: true,
+				Fields: map[string]*info.Schema{
+					"value": {
+						DeprecationMessage: "`value` is deprecated in favour of `content` " +
+							"and will be removed in the next major release. " +
+							"Due to reports of inconsistent behavior on the `value` field, " +
+							"we strongly recommend migrating to `content`.",
+					},
+				},
+			},
 
 			"cloudflare_risk_behavior":                            {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
