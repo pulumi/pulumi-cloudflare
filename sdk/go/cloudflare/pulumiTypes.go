@@ -37672,9 +37672,1143 @@ func (o TeamsListItemsWithDescriptionArrayOutput) Index(i pulumi.IntInput) Teams
 	}).(TeamsListItemsWithDescriptionOutput)
 }
 
+type TeamsLocationEndpoints struct {
+	Doh  *TeamsLocationEndpointsDoh  `pulumi:"doh"`
+	Dot  *TeamsLocationEndpointsDot  `pulumi:"dot"`
+	Ipv4 *TeamsLocationEndpointsIpv4 `pulumi:"ipv4"`
+	Ipv6 *TeamsLocationEndpointsIpv6 `pulumi:"ipv6"`
+}
+
+// TeamsLocationEndpointsInput is an input type that accepts TeamsLocationEndpointsArgs and TeamsLocationEndpointsOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsInput` via:
+//
+//	TeamsLocationEndpointsArgs{...}
+type TeamsLocationEndpointsInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsOutput() TeamsLocationEndpointsOutput
+	ToTeamsLocationEndpointsOutputWithContext(context.Context) TeamsLocationEndpointsOutput
+}
+
+type TeamsLocationEndpointsArgs struct {
+	Doh  TeamsLocationEndpointsDohPtrInput  `pulumi:"doh"`
+	Dot  TeamsLocationEndpointsDotPtrInput  `pulumi:"dot"`
+	Ipv4 TeamsLocationEndpointsIpv4PtrInput `pulumi:"ipv4"`
+	Ipv6 TeamsLocationEndpointsIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (TeamsLocationEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpoints)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsArgs) ToTeamsLocationEndpointsOutput() TeamsLocationEndpointsOutput {
+	return i.ToTeamsLocationEndpointsOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsArgs) ToTeamsLocationEndpointsOutputWithContext(ctx context.Context) TeamsLocationEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsOutput)
+}
+
+func (i TeamsLocationEndpointsArgs) ToTeamsLocationEndpointsPtrOutput() TeamsLocationEndpointsPtrOutput {
+	return i.ToTeamsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsArgs) ToTeamsLocationEndpointsPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsOutput).ToTeamsLocationEndpointsPtrOutputWithContext(ctx)
+}
+
+// TeamsLocationEndpointsPtrInput is an input type that accepts TeamsLocationEndpointsArgs, TeamsLocationEndpointsPtr and TeamsLocationEndpointsPtrOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsPtrInput` via:
+//
+//	        TeamsLocationEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsLocationEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsPtrOutput() TeamsLocationEndpointsPtrOutput
+	ToTeamsLocationEndpointsPtrOutputWithContext(context.Context) TeamsLocationEndpointsPtrOutput
+}
+
+type teamsLocationEndpointsPtrType TeamsLocationEndpointsArgs
+
+func TeamsLocationEndpointsPtr(v *TeamsLocationEndpointsArgs) TeamsLocationEndpointsPtrInput {
+	return (*teamsLocationEndpointsPtrType)(v)
+}
+
+func (*teamsLocationEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpoints)(nil)).Elem()
+}
+
+func (i *teamsLocationEndpointsPtrType) ToTeamsLocationEndpointsPtrOutput() TeamsLocationEndpointsPtrOutput {
+	return i.ToTeamsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsLocationEndpointsPtrType) ToTeamsLocationEndpointsPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsPtrOutput)
+}
+
+type TeamsLocationEndpointsOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpoints)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsOutput) ToTeamsLocationEndpointsOutput() TeamsLocationEndpointsOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsOutput) ToTeamsLocationEndpointsOutputWithContext(ctx context.Context) TeamsLocationEndpointsOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsOutput) ToTeamsLocationEndpointsPtrOutput() TeamsLocationEndpointsPtrOutput {
+	return o.ToTeamsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsLocationEndpointsOutput) ToTeamsLocationEndpointsPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocationEndpoints) *TeamsLocationEndpoints {
+		return &v
+	}).(TeamsLocationEndpointsPtrOutput)
+}
+
+func (o TeamsLocationEndpointsOutput) Doh() TeamsLocationEndpointsDohPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpoints) *TeamsLocationEndpointsDoh { return v.Doh }).(TeamsLocationEndpointsDohPtrOutput)
+}
+
+func (o TeamsLocationEndpointsOutput) Dot() TeamsLocationEndpointsDotPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpoints) *TeamsLocationEndpointsDot { return v.Dot }).(TeamsLocationEndpointsDotPtrOutput)
+}
+
+func (o TeamsLocationEndpointsOutput) Ipv4() TeamsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpoints) *TeamsLocationEndpointsIpv4 { return v.Ipv4 }).(TeamsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o TeamsLocationEndpointsOutput) Ipv6() TeamsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpoints) *TeamsLocationEndpointsIpv6 { return v.Ipv6 }).(TeamsLocationEndpointsIpv6PtrOutput)
+}
+
+type TeamsLocationEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpoints)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsPtrOutput) ToTeamsLocationEndpointsPtrOutput() TeamsLocationEndpointsPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsPtrOutput) ToTeamsLocationEndpointsPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsPtrOutput) Elem() TeamsLocationEndpointsOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpoints) TeamsLocationEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocationEndpoints
+		return ret
+	}).(TeamsLocationEndpointsOutput)
+}
+
+func (o TeamsLocationEndpointsPtrOutput) Doh() TeamsLocationEndpointsDohPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpoints) *TeamsLocationEndpointsDoh {
+		if v == nil {
+			return nil
+		}
+		return v.Doh
+	}).(TeamsLocationEndpointsDohPtrOutput)
+}
+
+func (o TeamsLocationEndpointsPtrOutput) Dot() TeamsLocationEndpointsDotPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpoints) *TeamsLocationEndpointsDot {
+		if v == nil {
+			return nil
+		}
+		return v.Dot
+	}).(TeamsLocationEndpointsDotPtrOutput)
+}
+
+func (o TeamsLocationEndpointsPtrOutput) Ipv4() TeamsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpoints) *TeamsLocationEndpointsIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(TeamsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o TeamsLocationEndpointsPtrOutput) Ipv6() TeamsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpoints) *TeamsLocationEndpointsIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(TeamsLocationEndpointsIpv6PtrOutput)
+}
+
+type TeamsLocationEndpointsDoh struct {
+	AuthenticationEnabled *bool                              `pulumi:"authenticationEnabled"`
+	Enabled               bool                               `pulumi:"enabled"`
+	Networks              []TeamsLocationEndpointsDohNetwork `pulumi:"networks"`
+	RequireToken          *bool                              `pulumi:"requireToken"`
+}
+
+// TeamsLocationEndpointsDohInput is an input type that accepts TeamsLocationEndpointsDohArgs and TeamsLocationEndpointsDohOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDohInput` via:
+//
+//	TeamsLocationEndpointsDohArgs{...}
+type TeamsLocationEndpointsDohInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDohOutput() TeamsLocationEndpointsDohOutput
+	ToTeamsLocationEndpointsDohOutputWithContext(context.Context) TeamsLocationEndpointsDohOutput
+}
+
+type TeamsLocationEndpointsDohArgs struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                        `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                           `pulumi:"enabled"`
+	Networks              TeamsLocationEndpointsDohNetworkArrayInput `pulumi:"networks"`
+	RequireToken          pulumi.BoolPtrInput                        `pulumi:"requireToken"`
+}
+
+func (TeamsLocationEndpointsDohArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDohArgs) ToTeamsLocationEndpointsDohOutput() TeamsLocationEndpointsDohOutput {
+	return i.ToTeamsLocationEndpointsDohOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDohArgs) ToTeamsLocationEndpointsDohOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDohOutput)
+}
+
+func (i TeamsLocationEndpointsDohArgs) ToTeamsLocationEndpointsDohPtrOutput() TeamsLocationEndpointsDohPtrOutput {
+	return i.ToTeamsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDohArgs) ToTeamsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDohOutput).ToTeamsLocationEndpointsDohPtrOutputWithContext(ctx)
+}
+
+// TeamsLocationEndpointsDohPtrInput is an input type that accepts TeamsLocationEndpointsDohArgs, TeamsLocationEndpointsDohPtr and TeamsLocationEndpointsDohPtrOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDohPtrInput` via:
+//
+//	        TeamsLocationEndpointsDohArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsLocationEndpointsDohPtrInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDohPtrOutput() TeamsLocationEndpointsDohPtrOutput
+	ToTeamsLocationEndpointsDohPtrOutputWithContext(context.Context) TeamsLocationEndpointsDohPtrOutput
+}
+
+type teamsLocationEndpointsDohPtrType TeamsLocationEndpointsDohArgs
+
+func TeamsLocationEndpointsDohPtr(v *TeamsLocationEndpointsDohArgs) TeamsLocationEndpointsDohPtrInput {
+	return (*teamsLocationEndpointsDohPtrType)(v)
+}
+
+func (*teamsLocationEndpointsDohPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i *teamsLocationEndpointsDohPtrType) ToTeamsLocationEndpointsDohPtrOutput() TeamsLocationEndpointsDohPtrOutput {
+	return i.ToTeamsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsLocationEndpointsDohPtrType) ToTeamsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDohPtrOutput)
+}
+
+type TeamsLocationEndpointsDohOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDohOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDohOutput) ToTeamsLocationEndpointsDohOutput() TeamsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohOutput) ToTeamsLocationEndpointsDohOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohOutput) ToTeamsLocationEndpointsDohPtrOutput() TeamsLocationEndpointsDohPtrOutput {
+	return o.ToTeamsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsLocationEndpointsDohOutput) ToTeamsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocationEndpointsDoh) *TeamsLocationEndpointsDoh {
+		return &v
+	}).(TeamsLocationEndpointsDohPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDohOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDoh) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDohOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDoh) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o TeamsLocationEndpointsDohOutput) Networks() TeamsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDoh) []TeamsLocationEndpointsDohNetwork { return v.Networks }).(TeamsLocationEndpointsDohNetworkArrayOutput)
+}
+
+func (o TeamsLocationEndpointsDohOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDoh) *bool { return v.RequireToken }).(pulumi.BoolPtrOutput)
+}
+
+type TeamsLocationEndpointsDohPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDohPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) ToTeamsLocationEndpointsDohPtrOutput() TeamsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) ToTeamsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) Elem() TeamsLocationEndpointsDohOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDoh) TeamsLocationEndpointsDoh {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocationEndpointsDoh
+		return ret
+	}).(TeamsLocationEndpointsDohOutput)
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) Networks() TeamsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDoh) []TeamsLocationEndpointsDohNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(TeamsLocationEndpointsDohNetworkArrayOutput)
+}
+
+func (o TeamsLocationEndpointsDohPtrOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsLocationEndpointsDohNetwork struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// TeamsLocationEndpointsDohNetworkInput is an input type that accepts TeamsLocationEndpointsDohNetworkArgs and TeamsLocationEndpointsDohNetworkOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDohNetworkInput` via:
+//
+//	TeamsLocationEndpointsDohNetworkArgs{...}
+type TeamsLocationEndpointsDohNetworkInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDohNetworkOutput() TeamsLocationEndpointsDohNetworkOutput
+	ToTeamsLocationEndpointsDohNetworkOutputWithContext(context.Context) TeamsLocationEndpointsDohNetworkOutput
+}
+
+type TeamsLocationEndpointsDohNetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (TeamsLocationEndpointsDohNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDohNetworkArgs) ToTeamsLocationEndpointsDohNetworkOutput() TeamsLocationEndpointsDohNetworkOutput {
+	return i.ToTeamsLocationEndpointsDohNetworkOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDohNetworkArgs) ToTeamsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDohNetworkOutput)
+}
+
+// TeamsLocationEndpointsDohNetworkArrayInput is an input type that accepts TeamsLocationEndpointsDohNetworkArray and TeamsLocationEndpointsDohNetworkArrayOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDohNetworkArrayInput` via:
+//
+//	TeamsLocationEndpointsDohNetworkArray{ TeamsLocationEndpointsDohNetworkArgs{...} }
+type TeamsLocationEndpointsDohNetworkArrayInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDohNetworkArrayOutput() TeamsLocationEndpointsDohNetworkArrayOutput
+	ToTeamsLocationEndpointsDohNetworkArrayOutputWithContext(context.Context) TeamsLocationEndpointsDohNetworkArrayOutput
+}
+
+type TeamsLocationEndpointsDohNetworkArray []TeamsLocationEndpointsDohNetworkInput
+
+func (TeamsLocationEndpointsDohNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDohNetworkArray) ToTeamsLocationEndpointsDohNetworkArrayOutput() TeamsLocationEndpointsDohNetworkArrayOutput {
+	return i.ToTeamsLocationEndpointsDohNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDohNetworkArray) ToTeamsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDohNetworkArrayOutput)
+}
+
+type TeamsLocationEndpointsDohNetworkOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDohNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDohNetworkOutput) ToTeamsLocationEndpointsDohNetworkOutput() TeamsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohNetworkOutput) ToTeamsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o TeamsLocationEndpointsDohNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDohNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type TeamsLocationEndpointsDohNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDohNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDohNetworkArrayOutput) ToTeamsLocationEndpointsDohNetworkArrayOutput() TeamsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohNetworkArrayOutput) ToTeamsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDohNetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationEndpointsDohNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsLocationEndpointsDohNetwork {
+		return vs[0].([]TeamsLocationEndpointsDohNetwork)[vs[1].(int)]
+	}).(TeamsLocationEndpointsDohNetworkOutput)
+}
+
+type TeamsLocationEndpointsDot struct {
+	AuthenticationEnabled *bool                              `pulumi:"authenticationEnabled"`
+	Enabled               bool                               `pulumi:"enabled"`
+	Networks              []TeamsLocationEndpointsDotNetwork `pulumi:"networks"`
+	RequireToken          *bool                              `pulumi:"requireToken"`
+}
+
+// TeamsLocationEndpointsDotInput is an input type that accepts TeamsLocationEndpointsDotArgs and TeamsLocationEndpointsDotOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDotInput` via:
+//
+//	TeamsLocationEndpointsDotArgs{...}
+type TeamsLocationEndpointsDotInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDotOutput() TeamsLocationEndpointsDotOutput
+	ToTeamsLocationEndpointsDotOutputWithContext(context.Context) TeamsLocationEndpointsDotOutput
+}
+
+type TeamsLocationEndpointsDotArgs struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                        `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                           `pulumi:"enabled"`
+	Networks              TeamsLocationEndpointsDotNetworkArrayInput `pulumi:"networks"`
+	RequireToken          pulumi.BoolPtrInput                        `pulumi:"requireToken"`
+}
+
+func (TeamsLocationEndpointsDotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDotArgs) ToTeamsLocationEndpointsDotOutput() TeamsLocationEndpointsDotOutput {
+	return i.ToTeamsLocationEndpointsDotOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDotArgs) ToTeamsLocationEndpointsDotOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDotOutput)
+}
+
+func (i TeamsLocationEndpointsDotArgs) ToTeamsLocationEndpointsDotPtrOutput() TeamsLocationEndpointsDotPtrOutput {
+	return i.ToTeamsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDotArgs) ToTeamsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDotOutput).ToTeamsLocationEndpointsDotPtrOutputWithContext(ctx)
+}
+
+// TeamsLocationEndpointsDotPtrInput is an input type that accepts TeamsLocationEndpointsDotArgs, TeamsLocationEndpointsDotPtr and TeamsLocationEndpointsDotPtrOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDotPtrInput` via:
+//
+//	        TeamsLocationEndpointsDotArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsLocationEndpointsDotPtrInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDotPtrOutput() TeamsLocationEndpointsDotPtrOutput
+	ToTeamsLocationEndpointsDotPtrOutputWithContext(context.Context) TeamsLocationEndpointsDotPtrOutput
+}
+
+type teamsLocationEndpointsDotPtrType TeamsLocationEndpointsDotArgs
+
+func TeamsLocationEndpointsDotPtr(v *TeamsLocationEndpointsDotArgs) TeamsLocationEndpointsDotPtrInput {
+	return (*teamsLocationEndpointsDotPtrType)(v)
+}
+
+func (*teamsLocationEndpointsDotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i *teamsLocationEndpointsDotPtrType) ToTeamsLocationEndpointsDotPtrOutput() TeamsLocationEndpointsDotPtrOutput {
+	return i.ToTeamsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsLocationEndpointsDotPtrType) ToTeamsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDotPtrOutput)
+}
+
+type TeamsLocationEndpointsDotOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDotOutput) ToTeamsLocationEndpointsDotOutput() TeamsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotOutput) ToTeamsLocationEndpointsDotOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotOutput) ToTeamsLocationEndpointsDotPtrOutput() TeamsLocationEndpointsDotPtrOutput {
+	return o.ToTeamsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsLocationEndpointsDotOutput) ToTeamsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocationEndpointsDot) *TeamsLocationEndpointsDot {
+		return &v
+	}).(TeamsLocationEndpointsDotPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDotOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDot) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDotOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDot) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o TeamsLocationEndpointsDotOutput) Networks() TeamsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDot) []TeamsLocationEndpointsDotNetwork { return v.Networks }).(TeamsLocationEndpointsDotNetworkArrayOutput)
+}
+
+func (o TeamsLocationEndpointsDotOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDot) *bool { return v.RequireToken }).(pulumi.BoolPtrOutput)
+}
+
+type TeamsLocationEndpointsDotPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) ToTeamsLocationEndpointsDotPtrOutput() TeamsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) ToTeamsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) Elem() TeamsLocationEndpointsDotOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDot) TeamsLocationEndpointsDot {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocationEndpointsDot
+		return ret
+	}).(TeamsLocationEndpointsDotOutput)
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) Networks() TeamsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDot) []TeamsLocationEndpointsDotNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(TeamsLocationEndpointsDotNetworkArrayOutput)
+}
+
+func (o TeamsLocationEndpointsDotPtrOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsLocationEndpointsDotNetwork struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// TeamsLocationEndpointsDotNetworkInput is an input type that accepts TeamsLocationEndpointsDotNetworkArgs and TeamsLocationEndpointsDotNetworkOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDotNetworkInput` via:
+//
+//	TeamsLocationEndpointsDotNetworkArgs{...}
+type TeamsLocationEndpointsDotNetworkInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDotNetworkOutput() TeamsLocationEndpointsDotNetworkOutput
+	ToTeamsLocationEndpointsDotNetworkOutputWithContext(context.Context) TeamsLocationEndpointsDotNetworkOutput
+}
+
+type TeamsLocationEndpointsDotNetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (TeamsLocationEndpointsDotNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDotNetworkArgs) ToTeamsLocationEndpointsDotNetworkOutput() TeamsLocationEndpointsDotNetworkOutput {
+	return i.ToTeamsLocationEndpointsDotNetworkOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDotNetworkArgs) ToTeamsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDotNetworkOutput)
+}
+
+// TeamsLocationEndpointsDotNetworkArrayInput is an input type that accepts TeamsLocationEndpointsDotNetworkArray and TeamsLocationEndpointsDotNetworkArrayOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsDotNetworkArrayInput` via:
+//
+//	TeamsLocationEndpointsDotNetworkArray{ TeamsLocationEndpointsDotNetworkArgs{...} }
+type TeamsLocationEndpointsDotNetworkArrayInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsDotNetworkArrayOutput() TeamsLocationEndpointsDotNetworkArrayOutput
+	ToTeamsLocationEndpointsDotNetworkArrayOutputWithContext(context.Context) TeamsLocationEndpointsDotNetworkArrayOutput
+}
+
+type TeamsLocationEndpointsDotNetworkArray []TeamsLocationEndpointsDotNetworkInput
+
+func (TeamsLocationEndpointsDotNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsDotNetworkArray) ToTeamsLocationEndpointsDotNetworkArrayOutput() TeamsLocationEndpointsDotNetworkArrayOutput {
+	return i.ToTeamsLocationEndpointsDotNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsDotNetworkArray) ToTeamsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsDotNetworkArrayOutput)
+}
+
+type TeamsLocationEndpointsDotNetworkOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDotNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDotNetworkOutput) ToTeamsLocationEndpointsDotNetworkOutput() TeamsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotNetworkOutput) ToTeamsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o TeamsLocationEndpointsDotNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsDotNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type TeamsLocationEndpointsDotNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsDotNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsDotNetworkArrayOutput) ToTeamsLocationEndpointsDotNetworkArrayOutput() TeamsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotNetworkArrayOutput) ToTeamsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsDotNetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationEndpointsDotNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsLocationEndpointsDotNetwork {
+		return vs[0].([]TeamsLocationEndpointsDotNetwork)[vs[1].(int)]
+	}).(TeamsLocationEndpointsDotNetworkOutput)
+}
+
+type TeamsLocationEndpointsIpv4 struct {
+	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
+	Enabled               bool  `pulumi:"enabled"`
+}
+
+// TeamsLocationEndpointsIpv4Input is an input type that accepts TeamsLocationEndpointsIpv4Args and TeamsLocationEndpointsIpv4Output values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv4Input` via:
+//
+//	TeamsLocationEndpointsIpv4Args{...}
+type TeamsLocationEndpointsIpv4Input interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv4Output() TeamsLocationEndpointsIpv4Output
+	ToTeamsLocationEndpointsIpv4OutputWithContext(context.Context) TeamsLocationEndpointsIpv4Output
+}
+
+type TeamsLocationEndpointsIpv4Args struct {
+	AuthenticationEnabled pulumi.BoolPtrInput `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput    `pulumi:"enabled"`
+}
+
+func (TeamsLocationEndpointsIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsIpv4Args) ToTeamsLocationEndpointsIpv4Output() TeamsLocationEndpointsIpv4Output {
+	return i.ToTeamsLocationEndpointsIpv4OutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv4Args) ToTeamsLocationEndpointsIpv4OutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv4Output)
+}
+
+func (i TeamsLocationEndpointsIpv4Args) ToTeamsLocationEndpointsIpv4PtrOutput() TeamsLocationEndpointsIpv4PtrOutput {
+	return i.ToTeamsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv4Args) ToTeamsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv4Output).ToTeamsLocationEndpointsIpv4PtrOutputWithContext(ctx)
+}
+
+// TeamsLocationEndpointsIpv4PtrInput is an input type that accepts TeamsLocationEndpointsIpv4Args, TeamsLocationEndpointsIpv4Ptr and TeamsLocationEndpointsIpv4PtrOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv4PtrInput` via:
+//
+//	        TeamsLocationEndpointsIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type TeamsLocationEndpointsIpv4PtrInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv4PtrOutput() TeamsLocationEndpointsIpv4PtrOutput
+	ToTeamsLocationEndpointsIpv4PtrOutputWithContext(context.Context) TeamsLocationEndpointsIpv4PtrOutput
+}
+
+type teamsLocationEndpointsIpv4PtrType TeamsLocationEndpointsIpv4Args
+
+func TeamsLocationEndpointsIpv4Ptr(v *TeamsLocationEndpointsIpv4Args) TeamsLocationEndpointsIpv4PtrInput {
+	return (*teamsLocationEndpointsIpv4PtrType)(v)
+}
+
+func (*teamsLocationEndpointsIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i *teamsLocationEndpointsIpv4PtrType) ToTeamsLocationEndpointsIpv4PtrOutput() TeamsLocationEndpointsIpv4PtrOutput {
+	return i.ToTeamsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *teamsLocationEndpointsIpv4PtrType) ToTeamsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv4PtrOutput)
+}
+
+type TeamsLocationEndpointsIpv4Output struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv4Output) ToTeamsLocationEndpointsIpv4Output() TeamsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv4Output) ToTeamsLocationEndpointsIpv4OutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv4Output) ToTeamsLocationEndpointsIpv4PtrOutput() TeamsLocationEndpointsIpv4PtrOutput {
+	return o.ToTeamsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o TeamsLocationEndpointsIpv4Output) ToTeamsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocationEndpointsIpv4) *TeamsLocationEndpointsIpv4 {
+		return &v
+	}).(TeamsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv4Output) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv4) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv4Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv4) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type TeamsLocationEndpointsIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv4PtrOutput) ToTeamsLocationEndpointsIpv4PtrOutput() TeamsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv4PtrOutput) ToTeamsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv4PtrOutput) Elem() TeamsLocationEndpointsIpv4Output {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv4) TeamsLocationEndpointsIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocationEndpointsIpv4
+		return ret
+	}).(TeamsLocationEndpointsIpv4Output)
+}
+
+func (o TeamsLocationEndpointsIpv4PtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv4PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsLocationEndpointsIpv6 struct {
+	AuthenticationEnabled *bool                               `pulumi:"authenticationEnabled"`
+	Enabled               bool                                `pulumi:"enabled"`
+	Networks              []TeamsLocationEndpointsIpv6Network `pulumi:"networks"`
+}
+
+// TeamsLocationEndpointsIpv6Input is an input type that accepts TeamsLocationEndpointsIpv6Args and TeamsLocationEndpointsIpv6Output values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv6Input` via:
+//
+//	TeamsLocationEndpointsIpv6Args{...}
+type TeamsLocationEndpointsIpv6Input interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv6Output() TeamsLocationEndpointsIpv6Output
+	ToTeamsLocationEndpointsIpv6OutputWithContext(context.Context) TeamsLocationEndpointsIpv6Output
+}
+
+type TeamsLocationEndpointsIpv6Args struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                         `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                            `pulumi:"enabled"`
+	Networks              TeamsLocationEndpointsIpv6NetworkArrayInput `pulumi:"networks"`
+}
+
+func (TeamsLocationEndpointsIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsIpv6Args) ToTeamsLocationEndpointsIpv6Output() TeamsLocationEndpointsIpv6Output {
+	return i.ToTeamsLocationEndpointsIpv6OutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv6Args) ToTeamsLocationEndpointsIpv6OutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv6Output)
+}
+
+func (i TeamsLocationEndpointsIpv6Args) ToTeamsLocationEndpointsIpv6PtrOutput() TeamsLocationEndpointsIpv6PtrOutput {
+	return i.ToTeamsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv6Args) ToTeamsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv6Output).ToTeamsLocationEndpointsIpv6PtrOutputWithContext(ctx)
+}
+
+// TeamsLocationEndpointsIpv6PtrInput is an input type that accepts TeamsLocationEndpointsIpv6Args, TeamsLocationEndpointsIpv6Ptr and TeamsLocationEndpointsIpv6PtrOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv6PtrInput` via:
+//
+//	        TeamsLocationEndpointsIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type TeamsLocationEndpointsIpv6PtrInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv6PtrOutput() TeamsLocationEndpointsIpv6PtrOutput
+	ToTeamsLocationEndpointsIpv6PtrOutputWithContext(context.Context) TeamsLocationEndpointsIpv6PtrOutput
+}
+
+type teamsLocationEndpointsIpv6PtrType TeamsLocationEndpointsIpv6Args
+
+func TeamsLocationEndpointsIpv6Ptr(v *TeamsLocationEndpointsIpv6Args) TeamsLocationEndpointsIpv6PtrInput {
+	return (*teamsLocationEndpointsIpv6PtrType)(v)
+}
+
+func (*teamsLocationEndpointsIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i *teamsLocationEndpointsIpv6PtrType) ToTeamsLocationEndpointsIpv6PtrOutput() TeamsLocationEndpointsIpv6PtrOutput {
+	return i.ToTeamsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *teamsLocationEndpointsIpv6PtrType) ToTeamsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv6PtrOutput)
+}
+
+type TeamsLocationEndpointsIpv6Output struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv6Output) ToTeamsLocationEndpointsIpv6Output() TeamsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6Output) ToTeamsLocationEndpointsIpv6OutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6Output) ToTeamsLocationEndpointsIpv6PtrOutput() TeamsLocationEndpointsIpv6PtrOutput {
+	return o.ToTeamsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o TeamsLocationEndpointsIpv6Output) ToTeamsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocationEndpointsIpv6) *TeamsLocationEndpointsIpv6 {
+		return &v
+	}).(TeamsLocationEndpointsIpv6PtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv6Output) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv6) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv6Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv6) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o TeamsLocationEndpointsIpv6Output) Networks() TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv6) []TeamsLocationEndpointsIpv6Network { return v.Networks }).(TeamsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type TeamsLocationEndpointsIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) ToTeamsLocationEndpointsIpv6PtrOutput() TeamsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) ToTeamsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) Elem() TeamsLocationEndpointsIpv6Output {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv6) TeamsLocationEndpointsIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocationEndpointsIpv6
+		return ret
+	}).(TeamsLocationEndpointsIpv6Output)
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsLocationEndpointsIpv6PtrOutput) Networks() TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v *TeamsLocationEndpointsIpv6) []TeamsLocationEndpointsIpv6Network {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(TeamsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type TeamsLocationEndpointsIpv6Network struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// TeamsLocationEndpointsIpv6NetworkInput is an input type that accepts TeamsLocationEndpointsIpv6NetworkArgs and TeamsLocationEndpointsIpv6NetworkOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv6NetworkInput` via:
+//
+//	TeamsLocationEndpointsIpv6NetworkArgs{...}
+type TeamsLocationEndpointsIpv6NetworkInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv6NetworkOutput() TeamsLocationEndpointsIpv6NetworkOutput
+	ToTeamsLocationEndpointsIpv6NetworkOutputWithContext(context.Context) TeamsLocationEndpointsIpv6NetworkOutput
+}
+
+type TeamsLocationEndpointsIpv6NetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (TeamsLocationEndpointsIpv6NetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsIpv6NetworkArgs) ToTeamsLocationEndpointsIpv6NetworkOutput() TeamsLocationEndpointsIpv6NetworkOutput {
+	return i.ToTeamsLocationEndpointsIpv6NetworkOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv6NetworkArgs) ToTeamsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv6NetworkOutput)
+}
+
+// TeamsLocationEndpointsIpv6NetworkArrayInput is an input type that accepts TeamsLocationEndpointsIpv6NetworkArray and TeamsLocationEndpointsIpv6NetworkArrayOutput values.
+// You can construct a concrete instance of `TeamsLocationEndpointsIpv6NetworkArrayInput` via:
+//
+//	TeamsLocationEndpointsIpv6NetworkArray{ TeamsLocationEndpointsIpv6NetworkArgs{...} }
+type TeamsLocationEndpointsIpv6NetworkArrayInput interface {
+	pulumi.Input
+
+	ToTeamsLocationEndpointsIpv6NetworkArrayOutput() TeamsLocationEndpointsIpv6NetworkArrayOutput
+	ToTeamsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Context) TeamsLocationEndpointsIpv6NetworkArrayOutput
+}
+
+type TeamsLocationEndpointsIpv6NetworkArray []TeamsLocationEndpointsIpv6NetworkInput
+
+func (TeamsLocationEndpointsIpv6NetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i TeamsLocationEndpointsIpv6NetworkArray) ToTeamsLocationEndpointsIpv6NetworkArrayOutput() TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return i.ToTeamsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsLocationEndpointsIpv6NetworkArray) ToTeamsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type TeamsLocationEndpointsIpv6NetworkOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv6NetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv6NetworkOutput) ToTeamsLocationEndpointsIpv6NetworkOutput() TeamsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6NetworkOutput) ToTeamsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o TeamsLocationEndpointsIpv6NetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsLocationEndpointsIpv6Network) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type TeamsLocationEndpointsIpv6NetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsLocationEndpointsIpv6NetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o TeamsLocationEndpointsIpv6NetworkArrayOutput) ToTeamsLocationEndpointsIpv6NetworkArrayOutput() TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6NetworkArrayOutput) ToTeamsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) TeamsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o TeamsLocationEndpointsIpv6NetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsLocationEndpointsIpv6Network {
+		return vs[0].([]TeamsLocationEndpointsIpv6Network)[vs[1].(int)]
+	}).(TeamsLocationEndpointsIpv6NetworkOutput)
+}
+
 type TeamsLocationNetwork struct {
-	// The ID of this resource.
-	Id *string `pulumi:"id"`
 	// CIDR notation representation of the network IP.
 	Network string `pulumi:"network"`
 }
@@ -37691,8 +38825,6 @@ type TeamsLocationNetworkInput interface {
 }
 
 type TeamsLocationNetworkArgs struct {
-	// The ID of this resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// CIDR notation representation of the network IP.
 	Network pulumi.StringInput `pulumi:"network"`
 }
@@ -37746,11 +38878,6 @@ func (o TeamsLocationNetworkOutput) ToTeamsLocationNetworkOutput() TeamsLocation
 
 func (o TeamsLocationNetworkOutput) ToTeamsLocationNetworkOutputWithContext(ctx context.Context) TeamsLocationNetworkOutput {
 	return o
-}
-
-// The ID of this resource.
-func (o TeamsLocationNetworkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TeamsLocationNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // CIDR notation representation of the network IP.
@@ -56737,9 +57864,1145 @@ func (o ZeroTrustDlpProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ZeroTrustDnsLocationEndpoints struct {
+	Doh  *ZeroTrustDnsLocationEndpointsDoh  `pulumi:"doh"`
+	Dot  *ZeroTrustDnsLocationEndpointsDot  `pulumi:"dot"`
+	Ipv4 *ZeroTrustDnsLocationEndpointsIpv4 `pulumi:"ipv4"`
+	Ipv6 *ZeroTrustDnsLocationEndpointsIpv6 `pulumi:"ipv6"`
+}
+
+// ZeroTrustDnsLocationEndpointsInput is an input type that accepts ZeroTrustDnsLocationEndpointsArgs and ZeroTrustDnsLocationEndpointsOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsArgs{...}
+type ZeroTrustDnsLocationEndpointsInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsOutput() ZeroTrustDnsLocationEndpointsOutput
+	ToZeroTrustDnsLocationEndpointsOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsOutput
+}
+
+type ZeroTrustDnsLocationEndpointsArgs struct {
+	Doh  ZeroTrustDnsLocationEndpointsDohPtrInput  `pulumi:"doh"`
+	Dot  ZeroTrustDnsLocationEndpointsDotPtrInput  `pulumi:"dot"`
+	Ipv4 ZeroTrustDnsLocationEndpointsIpv4PtrInput `pulumi:"ipv4"`
+	Ipv6 ZeroTrustDnsLocationEndpointsIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (ZeroTrustDnsLocationEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpoints)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsArgs) ToZeroTrustDnsLocationEndpointsOutput() ZeroTrustDnsLocationEndpointsOutput {
+	return i.ToZeroTrustDnsLocationEndpointsOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsArgs) ToZeroTrustDnsLocationEndpointsOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsOutput)
+}
+
+func (i ZeroTrustDnsLocationEndpointsArgs) ToZeroTrustDnsLocationEndpointsPtrOutput() ZeroTrustDnsLocationEndpointsPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsArgs) ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsOutput).ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsPtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsArgs, ZeroTrustDnsLocationEndpointsPtr and ZeroTrustDnsLocationEndpointsPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsPtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsPtrOutput() ZeroTrustDnsLocationEndpointsPtrOutput
+	ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsPtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsPtrType ZeroTrustDnsLocationEndpointsArgs
+
+func ZeroTrustDnsLocationEndpointsPtr(v *ZeroTrustDnsLocationEndpointsArgs) ZeroTrustDnsLocationEndpointsPtrInput {
+	return (*zeroTrustDnsLocationEndpointsPtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpoints)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsPtrType) ToZeroTrustDnsLocationEndpointsPtrOutput() ZeroTrustDnsLocationEndpointsPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsPtrType) ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpoints)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) ToZeroTrustDnsLocationEndpointsOutput() ZeroTrustDnsLocationEndpointsOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) ToZeroTrustDnsLocationEndpointsOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) ToZeroTrustDnsLocationEndpointsPtrOutput() ZeroTrustDnsLocationEndpointsPtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpoints {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) Doh() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsDoh { return v.Doh }).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) Dot() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsDot { return v.Dot }).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) Ipv4() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsIpv4 { return v.Ipv4 }).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsOutput) Ipv6() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsIpv6 { return v.Ipv6 }).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpoints)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) ToZeroTrustDnsLocationEndpointsPtrOutput() ZeroTrustDnsLocationEndpointsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) ToZeroTrustDnsLocationEndpointsPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) Elem() ZeroTrustDnsLocationEndpointsOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpoints) ZeroTrustDnsLocationEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpoints
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) Doh() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsDoh {
+		if v == nil {
+			return nil
+		}
+		return v.Doh
+	}).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) Dot() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsDot {
+		if v == nil {
+			return nil
+		}
+		return v.Dot
+	}).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) Ipv4() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsPtrOutput) Ipv6() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpoints) *ZeroTrustDnsLocationEndpointsIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDoh struct {
+	AuthenticationEnabled *bool                                     `pulumi:"authenticationEnabled"`
+	Enabled               bool                                      `pulumi:"enabled"`
+	Networks              []ZeroTrustDnsLocationEndpointsDohNetwork `pulumi:"networks"`
+	RequireToken          *bool                                     `pulumi:"requireToken"`
+}
+
+// ZeroTrustDnsLocationEndpointsDohInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohArgs and ZeroTrustDnsLocationEndpointsDohOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohArgs{...}
+type ZeroTrustDnsLocationEndpointsDohInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput
+	ToZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohArgs struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                               `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                                  `pulumi:"enabled"`
+	Networks              ZeroTrustDnsLocationEndpointsDohNetworkArrayInput `pulumi:"networks"`
+	RequireToken          pulumi.BoolPtrInput                               `pulumi:"requireToken"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDohArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohOutput)
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohArgs) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohOutput).ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsDohPtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohArgs, ZeroTrustDnsLocationEndpointsDohPtr and ZeroTrustDnsLocationEndpointsDohPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohPtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsDohArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsDohPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput
+	ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsDohPtrType ZeroTrustDnsLocationEndpointsDohArgs
+
+func ZeroTrustDnsLocationEndpointsDohPtr(v *ZeroTrustDnsLocationEndpointsDohArgs) ZeroTrustDnsLocationEndpointsDohPtrInput {
+	return (*zeroTrustDnsLocationEndpointsDohPtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsDohPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsDohPtrType) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsDohPtrType) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohOutput() ZeroTrustDnsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsDoh) *ZeroTrustDnsLocationEndpointsDoh {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsDohPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) Networks() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) []ZeroTrustDnsLocationEndpointsDohNetwork { return v.Networks }).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDoh) *bool { return v.RequireToken }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDoh)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutput() ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) ToZeroTrustDnsLocationEndpointsDohPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Elem() ZeroTrustDnsLocationEndpointsDohOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) ZeroTrustDnsLocationEndpointsDoh {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsDoh
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsDohOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) Networks() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) []ZeroTrustDnsLocationEndpointsDohNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohPtrOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDoh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetwork struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsDohNetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohNetworkArgs and ZeroTrustDnsLocationEndpointsDohNetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohNetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohNetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsDohNetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput
+	ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArgs) ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArgs) ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohNetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsDohNetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsDohNetworkArray and ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDohNetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDohNetworkArray{ ZeroTrustDnsLocationEndpointsDohNetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsDohNetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArray []ZeroTrustDnsLocationEndpointsDohNetworkInput
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArray) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDohNetworkArray) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) ToZeroTrustDnsLocationEndpointsDohNetworkOutput() ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) ToZeroTrustDnsLocationEndpointsDohNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o ZeroTrustDnsLocationEndpointsDohNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDohNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDohNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDohNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsDohNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsDohNetwork {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsDohNetwork)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsDohNetworkOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDot struct {
+	AuthenticationEnabled *bool                                     `pulumi:"authenticationEnabled"`
+	Enabled               bool                                      `pulumi:"enabled"`
+	Networks              []ZeroTrustDnsLocationEndpointsDotNetwork `pulumi:"networks"`
+	RequireToken          *bool                                     `pulumi:"requireToken"`
+}
+
+// ZeroTrustDnsLocationEndpointsDotInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotArgs and ZeroTrustDnsLocationEndpointsDotOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotArgs{...}
+type ZeroTrustDnsLocationEndpointsDotInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput
+	ToZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotArgs struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                               `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                                  `pulumi:"enabled"`
+	Networks              ZeroTrustDnsLocationEndpointsDotNetworkArrayInput `pulumi:"networks"`
+	RequireToken          pulumi.BoolPtrInput                               `pulumi:"requireToken"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotOutput)
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotArgs) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotOutput).ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsDotPtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotArgs, ZeroTrustDnsLocationEndpointsDotPtr and ZeroTrustDnsLocationEndpointsDotPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotPtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsDotArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsDotPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput
+	ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsDotPtrType ZeroTrustDnsLocationEndpointsDotArgs
+
+func ZeroTrustDnsLocationEndpointsDotPtr(v *ZeroTrustDnsLocationEndpointsDotArgs) ZeroTrustDnsLocationEndpointsDotPtrInput {
+	return (*zeroTrustDnsLocationEndpointsDotPtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsDotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsDotPtrType) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsDotPtrType) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotOutput() ZeroTrustDnsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsDot) *ZeroTrustDnsLocationEndpointsDot {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsDotPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) Networks() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) []ZeroTrustDnsLocationEndpointsDotNetwork { return v.Networks }).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDot) *bool { return v.RequireToken }).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsDot)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutput() ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) ToZeroTrustDnsLocationEndpointsDotPtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotPtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Elem() ZeroTrustDnsLocationEndpointsDotOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) ZeroTrustDnsLocationEndpointsDot {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsDot
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsDotOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) Networks() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) []ZeroTrustDnsLocationEndpointsDotNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotPtrOutput) RequireToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsDot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetwork struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsDotNetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotNetworkArgs and ZeroTrustDnsLocationEndpointsDotNetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotNetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotNetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsDotNetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput
+	ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArgs) ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArgs) ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotNetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsDotNetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsDotNetworkArray and ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsDotNetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsDotNetworkArray{ ZeroTrustDnsLocationEndpointsDotNetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsDotNetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArray []ZeroTrustDnsLocationEndpointsDotNetworkInput
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArray) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsDotNetworkArray) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) ToZeroTrustDnsLocationEndpointsDotNetworkOutput() ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) ToZeroTrustDnsLocationEndpointsDotNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o ZeroTrustDnsLocationEndpointsDotNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsDotNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsDotNetwork)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutput() ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) ToZeroTrustDnsLocationEndpointsDotNetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsDotNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsDotNetwork {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsDotNetwork)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsDotNetworkOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4 struct {
+	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
+	Enabled               bool  `pulumi:"enabled"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv4Input is an input type that accepts ZeroTrustDnsLocationEndpointsIpv4Args and ZeroTrustDnsLocationEndpointsIpv4Output values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv4Input` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv4Args{...}
+type ZeroTrustDnsLocationEndpointsIpv4Input interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output
+	ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv4Output
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4Args struct {
+	AuthenticationEnabled pulumi.BoolPtrInput `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput    `pulumi:"enabled"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4Output)
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv4Args) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4Output).ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv4PtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv4Args, ZeroTrustDnsLocationEndpointsIpv4Ptr and ZeroTrustDnsLocationEndpointsIpv4PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv4PtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsIpv4PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput
+	ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsIpv4PtrType ZeroTrustDnsLocationEndpointsIpv4Args
+
+func ZeroTrustDnsLocationEndpointsIpv4Ptr(v *ZeroTrustDnsLocationEndpointsIpv4Args) ZeroTrustDnsLocationEndpointsIpv4PtrInput {
+	return (*zeroTrustDnsLocationEndpointsIpv4PtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv4PtrType) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv4PtrType) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4Output() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsIpv4) *ZeroTrustDnsLocationEndpointsIpv4 {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsIpv4PtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv4) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv4) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv4)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ToZeroTrustDnsLocationEndpointsIpv4PtrOutput() ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) ToZeroTrustDnsLocationEndpointsIpv4PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv4PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) Elem() ZeroTrustDnsLocationEndpointsIpv4Output {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv4) ZeroTrustDnsLocationEndpointsIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsIpv4
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsIpv4Output)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv4PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6 struct {
+	AuthenticationEnabled *bool                                      `pulumi:"authenticationEnabled"`
+	Enabled               bool                                       `pulumi:"enabled"`
+	Networks              []ZeroTrustDnsLocationEndpointsIpv6Network `pulumi:"networks"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6Input is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6Args and ZeroTrustDnsLocationEndpointsIpv6Output values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6Input` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6Args{...}
+type ZeroTrustDnsLocationEndpointsIpv6Input interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output
+	ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6Output
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Args struct {
+	AuthenticationEnabled pulumi.BoolPtrInput                                `pulumi:"authenticationEnabled"`
+	Enabled               pulumi.BoolInput                                   `pulumi:"enabled"`
+	Networks              ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput `pulumi:"networks"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6Output)
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6Args) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6Output).ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6PtrInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6Args, ZeroTrustDnsLocationEndpointsIpv6Ptr and ZeroTrustDnsLocationEndpointsIpv6PtrOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6PtrInput` via:
+//
+//	        ZeroTrustDnsLocationEndpointsIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustDnsLocationEndpointsIpv6PtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput
+	ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput
+}
+
+type zeroTrustDnsLocationEndpointsIpv6PtrType ZeroTrustDnsLocationEndpointsIpv6Args
+
+func ZeroTrustDnsLocationEndpointsIpv6Ptr(v *ZeroTrustDnsLocationEndpointsIpv6Args) ZeroTrustDnsLocationEndpointsIpv6PtrInput {
+	return (*zeroTrustDnsLocationEndpointsIpv6PtrType)(v)
+}
+
+func (*zeroTrustDnsLocationEndpointsIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv6PtrType) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustDnsLocationEndpointsIpv6PtrType) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Output struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6Output() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6OutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustDnsLocationEndpointsIpv6) *ZeroTrustDnsLocationEndpointsIpv6 {
+		return &v
+	}).(ZeroTrustDnsLocationEndpointsIpv6PtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6) *bool { return v.AuthenticationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6Output) Networks() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6) []ZeroTrustDnsLocationEndpointsIpv6Network {
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustDnsLocationEndpointsIpv6)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ToZeroTrustDnsLocationEndpointsIpv6PtrOutput() ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) ToZeroTrustDnsLocationEndpointsIpv6PtrOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6PtrOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Elem() ZeroTrustDnsLocationEndpointsIpv6Output {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) ZeroTrustDnsLocationEndpointsIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustDnsLocationEndpointsIpv6
+		return ret
+	}).(ZeroTrustDnsLocationEndpointsIpv6Output)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) AuthenticationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6PtrOutput) Networks() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocationEndpointsIpv6) []ZeroTrustDnsLocationEndpointsIpv6Network {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6Network struct {
+	// CIDR notation representation of the network IP.
+	Network string `pulumi:"network"`
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6NetworkInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6NetworkArgs and ZeroTrustDnsLocationEndpointsIpv6NetworkOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6NetworkInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{...}
+type ZeroTrustDnsLocationEndpointsIpv6NetworkInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArgs struct {
+	// CIDR notation representation of the network IP.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArgs) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput)
+}
+
+// ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput is an input type that accepts ZeroTrustDnsLocationEndpointsIpv6NetworkArray and ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput values.
+// You can construct a concrete instance of `ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput` via:
+//
+//	ZeroTrustDnsLocationEndpointsIpv6NetworkArray{ ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{...} }
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput interface {
+	pulumi.Input
+
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput
+	ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArray []ZeroTrustDnsLocationEndpointsIpv6NetworkInput
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return i.ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustDnsLocationEndpointsIpv6NetworkArray) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return o
+}
+
+// CIDR notation representation of the network IP.
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustDnsLocationEndpointsIpv6Network) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZeroTrustDnsLocationEndpointsIpv6Network)(nil)).Elem()
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput() ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) ToZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutputWithContext(ctx context.Context) ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput {
+	return o
+}
+
+func (o ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput) Index(i pulumi.IntInput) ZeroTrustDnsLocationEndpointsIpv6NetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZeroTrustDnsLocationEndpointsIpv6Network {
+		return vs[0].([]ZeroTrustDnsLocationEndpointsIpv6Network)[vs[1].(int)]
+	}).(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput)
+}
+
 type ZeroTrustDnsLocationNetwork struct {
-	// The ID of this resource.
-	Id *string `pulumi:"id"`
 	// CIDR notation representation of the network IP.
 	Network string `pulumi:"network"`
 }
@@ -56756,8 +59019,6 @@ type ZeroTrustDnsLocationNetworkInput interface {
 }
 
 type ZeroTrustDnsLocationNetworkArgs struct {
-	// The ID of this resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// CIDR notation representation of the network IP.
 	Network pulumi.StringInput `pulumi:"network"`
 }
@@ -56811,11 +59072,6 @@ func (o ZeroTrustDnsLocationNetworkOutput) ToZeroTrustDnsLocationNetworkOutput()
 
 func (o ZeroTrustDnsLocationNetworkOutput) ToZeroTrustDnsLocationNetworkOutputWithContext(ctx context.Context) ZeroTrustDnsLocationNetworkOutput {
 	return o
-}
-
-// The ID of this resource.
-func (o ZeroTrustDnsLocationNetworkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustDnsLocationNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // CIDR notation representation of the network IP.
@@ -64699,6 +66955,7 @@ func (o ZoneLockdownConfigurationArrayOutput) Index(i pulumi.IntInput) ZoneLockd
 }
 
 type ZoneSettingsOverrideInitialSetting struct {
+	Aegis                  *ZoneSettingsOverrideInitialSettingAegis  `pulumi:"aegis"`
 	AlwaysOnline           *string                                   `pulumi:"alwaysOnline"`
 	AlwaysUseHttps         *string                                   `pulumi:"alwaysUseHttps"`
 	AutomaticHttpsRewrites *string                                   `pulumi:"automaticHttpsRewrites"`
@@ -64749,6 +67006,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	SortQueryStringForCache *string                                           `pulumi:"sortQueryStringForCache"`
 	SpeedBrain              *string                                           `pulumi:"speedBrain"`
 	Ssl                     *string                                           `pulumi:"ssl"`
+	SslAutomaticMode        *string                                           `pulumi:"sslAutomaticMode"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
 	Tls13              *string `pulumi:"tls13"`
@@ -64774,6 +67032,7 @@ type ZoneSettingsOverrideInitialSettingInput interface {
 }
 
 type ZoneSettingsOverrideInitialSettingArgs struct {
+	Aegis                  ZoneSettingsOverrideInitialSettingAegisPtrInput  `pulumi:"aegis"`
 	AlwaysOnline           pulumi.StringPtrInput                            `pulumi:"alwaysOnline"`
 	AlwaysUseHttps         pulumi.StringPtrInput                            `pulumi:"alwaysUseHttps"`
 	AutomaticHttpsRewrites pulumi.StringPtrInput                            `pulumi:"automaticHttpsRewrites"`
@@ -64824,6 +67083,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	SortQueryStringForCache pulumi.StringPtrInput                                    `pulumi:"sortQueryStringForCache"`
 	SpeedBrain              pulumi.StringPtrInput                                    `pulumi:"speedBrain"`
 	Ssl                     pulumi.StringPtrInput                                    `pulumi:"ssl"`
+	SslAutomaticMode        pulumi.StringPtrInput                                    `pulumi:"sslAutomaticMode"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
@@ -64886,6 +67146,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) ToZoneSettingsOverrideInitialS
 
 func (o ZoneSettingsOverrideInitialSettingOutput) ToZoneSettingsOverrideInitialSettingOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingOutput {
 	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) Aegis() ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingAegis { return v.Aegis }).(ZoneSettingsOverrideInitialSettingAegisPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) AlwaysOnline() pulumi.StringPtrOutput {
@@ -65089,6 +67353,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) SslAutomaticMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SslAutomaticMode }).(pulumi.StringPtrOutput)
+}
+
 // Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideInitialSettingOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
@@ -65148,6 +67416,162 @@ func (o ZoneSettingsOverrideInitialSettingArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneSettingsOverrideInitialSetting {
 		return vs[0].([]ZoneSettingsOverrideInitialSetting)[vs[1].(int)]
 	}).(ZoneSettingsOverrideInitialSettingOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingAegis struct {
+	// Whether Aegis zone setting is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+	PoolId *string `pulumi:"poolId"`
+}
+
+// ZoneSettingsOverrideInitialSettingAegisInput is an input type that accepts ZoneSettingsOverrideInitialSettingAegisArgs and ZoneSettingsOverrideInitialSettingAegisOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingAegisInput` via:
+//
+//	ZoneSettingsOverrideInitialSettingAegisArgs{...}
+type ZoneSettingsOverrideInitialSettingAegisInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideInitialSettingAegisOutput() ZoneSettingsOverrideInitialSettingAegisOutput
+	ToZoneSettingsOverrideInitialSettingAegisOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingAegisOutput
+}
+
+type ZoneSettingsOverrideInitialSettingAegisArgs struct {
+	// Whether Aegis zone setting is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+	PoolId pulumi.StringPtrInput `pulumi:"poolId"`
+}
+
+func (ZoneSettingsOverrideInitialSettingAegisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingAegis)(nil)).Elem()
+}
+
+func (i ZoneSettingsOverrideInitialSettingAegisArgs) ToZoneSettingsOverrideInitialSettingAegisOutput() ZoneSettingsOverrideInitialSettingAegisOutput {
+	return i.ToZoneSettingsOverrideInitialSettingAegisOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideInitialSettingAegisArgs) ToZoneSettingsOverrideInitialSettingAegisOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingAegisOutput)
+}
+
+func (i ZoneSettingsOverrideInitialSettingAegisArgs) ToZoneSettingsOverrideInitialSettingAegisPtrOutput() ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideInitialSettingAegisArgs) ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingAegisOutput).ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(ctx)
+}
+
+// ZoneSettingsOverrideInitialSettingAegisPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingAegisArgs, ZoneSettingsOverrideInitialSettingAegisPtr and ZoneSettingsOverrideInitialSettingAegisPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingAegisPtrInput` via:
+//
+//	        ZoneSettingsOverrideInitialSettingAegisArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneSettingsOverrideInitialSettingAegisPtrInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideInitialSettingAegisPtrOutput() ZoneSettingsOverrideInitialSettingAegisPtrOutput
+	ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingAegisPtrOutput
+}
+
+type zoneSettingsOverrideInitialSettingAegisPtrType ZoneSettingsOverrideInitialSettingAegisArgs
+
+func ZoneSettingsOverrideInitialSettingAegisPtr(v *ZoneSettingsOverrideInitialSettingAegisArgs) ZoneSettingsOverrideInitialSettingAegisPtrInput {
+	return (*zoneSettingsOverrideInitialSettingAegisPtrType)(v)
+}
+
+func (*zoneSettingsOverrideInitialSettingAegisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingAegis)(nil)).Elem()
+}
+
+func (i *zoneSettingsOverrideInitialSettingAegisPtrType) ToZoneSettingsOverrideInitialSettingAegisPtrOutput() ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSettingsOverrideInitialSettingAegisPtrType) ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingAegisPtrOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingAegisOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingAegisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingAegis)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) ToZoneSettingsOverrideInitialSettingAegisOutput() ZoneSettingsOverrideInitialSettingAegisOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) ToZoneSettingsOverrideInitialSettingAegisOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) ToZoneSettingsOverrideInitialSettingAegisPtrOutput() ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return o.ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideInitialSettingAegis) *ZoneSettingsOverrideInitialSettingAegis {
+		return &v
+	}).(ZoneSettingsOverrideInitialSettingAegisPtrOutput)
+}
+
+// Whether Aegis zone setting is enabled.
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingAegis) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+func (o ZoneSettingsOverrideInitialSettingAegisOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingAegis) *string { return v.PoolId }).(pulumi.StringPtrOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingAegisPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingAegisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingAegis)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisPtrOutput) ToZoneSettingsOverrideInitialSettingAegisPtrOutput() ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisPtrOutput) ToZoneSettingsOverrideInitialSettingAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingAegisPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingAegisPtrOutput) Elem() ZoneSettingsOverrideInitialSettingAegisOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingAegis) ZoneSettingsOverrideInitialSettingAegis {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideInitialSettingAegis
+		return ret
+	}).(ZoneSettingsOverrideInitialSettingAegisOutput)
+}
+
+// Whether Aegis zone setting is enabled.
+func (o ZoneSettingsOverrideInitialSettingAegisPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingAegis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+func (o ZoneSettingsOverrideInitialSettingAegisPtrOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingAegis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingsOverrideInitialSettingMinify struct {
@@ -65803,6 +68227,7 @@ func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Preload() pul
 }
 
 type ZoneSettingsOverrideSettings struct {
+	Aegis                  *ZoneSettingsOverrideSettingsAegis  `pulumi:"aegis"`
 	AlwaysOnline           *string                             `pulumi:"alwaysOnline"`
 	AlwaysUseHttps         *string                             `pulumi:"alwaysUseHttps"`
 	AutomaticHttpsRewrites *string                             `pulumi:"automaticHttpsRewrites"`
@@ -65853,6 +68278,7 @@ type ZoneSettingsOverrideSettings struct {
 	SortQueryStringForCache *string                                     `pulumi:"sortQueryStringForCache"`
 	SpeedBrain              *string                                     `pulumi:"speedBrain"`
 	Ssl                     *string                                     `pulumi:"ssl"`
+	SslAutomaticMode        *string                                     `pulumi:"sslAutomaticMode"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
 	Tls13              *string `pulumi:"tls13"`
@@ -65878,6 +68304,7 @@ type ZoneSettingsOverrideSettingsInput interface {
 }
 
 type ZoneSettingsOverrideSettingsArgs struct {
+	Aegis                  ZoneSettingsOverrideSettingsAegisPtrInput  `pulumi:"aegis"`
 	AlwaysOnline           pulumi.StringPtrInput                      `pulumi:"alwaysOnline"`
 	AlwaysUseHttps         pulumi.StringPtrInput                      `pulumi:"alwaysUseHttps"`
 	AutomaticHttpsRewrites pulumi.StringPtrInput                      `pulumi:"automaticHttpsRewrites"`
@@ -65928,6 +68355,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	SortQueryStringForCache pulumi.StringPtrInput                              `pulumi:"sortQueryStringForCache"`
 	SpeedBrain              pulumi.StringPtrInput                              `pulumi:"speedBrain"`
 	Ssl                     pulumi.StringPtrInput                              `pulumi:"ssl"`
+	SslAutomaticMode        pulumi.StringPtrInput                              `pulumi:"sslAutomaticMode"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
@@ -66016,6 +68444,10 @@ func (o ZoneSettingsOverrideSettingsOutput) ToZoneSettingsOverrideSettingsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettings {
 		return &v
 	}).(ZoneSettingsOverrideSettingsPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) Aegis() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsAegis { return v.Aegis }).(ZoneSettingsOverrideSettingsAegisPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) AlwaysOnline() pulumi.StringPtrOutput {
@@ -66219,6 +68651,10 @@ func (o ZoneSettingsOverrideSettingsOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) SslAutomaticMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SslAutomaticMode }).(pulumi.StringPtrOutput)
+}
+
 // Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
@@ -66282,6 +68718,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Elem() ZoneSettingsOverrideSettin
 		var ret ZoneSettingsOverrideSettings
 		return ret
 	}).(ZoneSettingsOverrideSettingsOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) Aegis() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsAegis {
+		if v == nil {
+			return nil
+		}
+		return v.Aegis
+	}).(ZoneSettingsOverrideSettingsAegisPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
@@ -66726,6 +69171,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) SslAutomaticMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslAutomaticMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
@@ -66814,6 +69268,162 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) ZeroRtt() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.ZeroRtt
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZoneSettingsOverrideSettingsAegis struct {
+	// Whether Aegis zone setting is enabled. Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
+	// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+	PoolId *string `pulumi:"poolId"`
+}
+
+// ZoneSettingsOverrideSettingsAegisInput is an input type that accepts ZoneSettingsOverrideSettingsAegisArgs and ZoneSettingsOverrideSettingsAegisOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideSettingsAegisInput` via:
+//
+//	ZoneSettingsOverrideSettingsAegisArgs{...}
+type ZoneSettingsOverrideSettingsAegisInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideSettingsAegisOutput() ZoneSettingsOverrideSettingsAegisOutput
+	ToZoneSettingsOverrideSettingsAegisOutputWithContext(context.Context) ZoneSettingsOverrideSettingsAegisOutput
+}
+
+type ZoneSettingsOverrideSettingsAegisArgs struct {
+	// Whether Aegis zone setting is enabled. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+	PoolId pulumi.StringPtrInput `pulumi:"poolId"`
+}
+
+func (ZoneSettingsOverrideSettingsAegisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideSettingsAegis)(nil)).Elem()
+}
+
+func (i ZoneSettingsOverrideSettingsAegisArgs) ToZoneSettingsOverrideSettingsAegisOutput() ZoneSettingsOverrideSettingsAegisOutput {
+	return i.ToZoneSettingsOverrideSettingsAegisOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideSettingsAegisArgs) ToZoneSettingsOverrideSettingsAegisOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsAegisOutput)
+}
+
+func (i ZoneSettingsOverrideSettingsAegisArgs) ToZoneSettingsOverrideSettingsAegisPtrOutput() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return i.ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideSettingsAegisArgs) ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsAegisOutput).ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(ctx)
+}
+
+// ZoneSettingsOverrideSettingsAegisPtrInput is an input type that accepts ZoneSettingsOverrideSettingsAegisArgs, ZoneSettingsOverrideSettingsAegisPtr and ZoneSettingsOverrideSettingsAegisPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideSettingsAegisPtrInput` via:
+//
+//	        ZoneSettingsOverrideSettingsAegisArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneSettingsOverrideSettingsAegisPtrInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideSettingsAegisPtrOutput() ZoneSettingsOverrideSettingsAegisPtrOutput
+	ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(context.Context) ZoneSettingsOverrideSettingsAegisPtrOutput
+}
+
+type zoneSettingsOverrideSettingsAegisPtrType ZoneSettingsOverrideSettingsAegisArgs
+
+func ZoneSettingsOverrideSettingsAegisPtr(v *ZoneSettingsOverrideSettingsAegisArgs) ZoneSettingsOverrideSettingsAegisPtrInput {
+	return (*zoneSettingsOverrideSettingsAegisPtrType)(v)
+}
+
+func (*zoneSettingsOverrideSettingsAegisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideSettingsAegis)(nil)).Elem()
+}
+
+func (i *zoneSettingsOverrideSettingsAegisPtrType) ToZoneSettingsOverrideSettingsAegisPtrOutput() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return i.ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSettingsOverrideSettingsAegisPtrType) ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsAegisPtrOutput)
+}
+
+type ZoneSettingsOverrideSettingsAegisOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideSettingsAegisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideSettingsAegis)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideSettingsAegisOutput) ToZoneSettingsOverrideSettingsAegisOutput() ZoneSettingsOverrideSettingsAegisOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsAegisOutput) ToZoneSettingsOverrideSettingsAegisOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsAegisOutput) ToZoneSettingsOverrideSettingsAegisPtrOutput() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o.ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSettingsOverrideSettingsAegisOutput) ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettingsAegis) *ZoneSettingsOverrideSettingsAegis {
+		return &v
+	}).(ZoneSettingsOverrideSettingsAegisPtrOutput)
+}
+
+// Whether Aegis zone setting is enabled. Defaults to `true`.
+func (o ZoneSettingsOverrideSettingsAegisOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettingsAegis) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+func (o ZoneSettingsOverrideSettingsAegisOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettingsAegis) *string { return v.PoolId }).(pulumi.StringPtrOutput)
+}
+
+type ZoneSettingsOverrideSettingsAegisPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideSettingsAegisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideSettingsAegis)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideSettingsAegisPtrOutput) ToZoneSettingsOverrideSettingsAegisPtrOutput() ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsAegisPtrOutput) ToZoneSettingsOverrideSettingsAegisPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsAegisPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsAegisPtrOutput) Elem() ZoneSettingsOverrideSettingsAegisOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsAegis) ZoneSettingsOverrideSettingsAegis {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettingsAegis
+		return ret
+	}).(ZoneSettingsOverrideSettingsAegisOutput)
+}
+
+// Whether Aegis zone setting is enabled. Defaults to `true`.
+func (o ZoneSettingsOverrideSettingsAegisPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsAegis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+func (o ZoneSettingsOverrideSettingsAegisPtrOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsAegis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -77851,6 +80461,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountSshSessionLogPtrInput)(nil)).Elem(), TeamsAccountSshSessionLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListItemsWithDescriptionInput)(nil)).Elem(), TeamsListItemsWithDescriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListItemsWithDescriptionArrayInput)(nil)).Elem(), TeamsListItemsWithDescriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsInput)(nil)).Elem(), TeamsLocationEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsPtrInput)(nil)).Elem(), TeamsLocationEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDohInput)(nil)).Elem(), TeamsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDohPtrInput)(nil)).Elem(), TeamsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDohNetworkInput)(nil)).Elem(), TeamsLocationEndpointsDohNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDohNetworkArrayInput)(nil)).Elem(), TeamsLocationEndpointsDohNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDotInput)(nil)).Elem(), TeamsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDotPtrInput)(nil)).Elem(), TeamsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDotNetworkInput)(nil)).Elem(), TeamsLocationEndpointsDotNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsDotNetworkArrayInput)(nil)).Elem(), TeamsLocationEndpointsDotNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv4Input)(nil)).Elem(), TeamsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv4PtrInput)(nil)).Elem(), TeamsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv6Input)(nil)).Elem(), TeamsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv6PtrInput)(nil)).Elem(), TeamsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv6NetworkInput)(nil)).Elem(), TeamsLocationEndpointsIpv6NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationEndpointsIpv6NetworkArrayInput)(nil)).Elem(), TeamsLocationEndpointsIpv6NetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
@@ -78109,6 +80735,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDlpProfileEntryArrayInput)(nil)).Elem(), ZeroTrustDlpProfileEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDlpProfileEntryPatternInput)(nil)).Elem(), ZeroTrustDlpProfileEntryPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDlpProfileEntryPatternPtrInput)(nil)).Elem(), ZeroTrustDlpProfileEntryPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsPtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohPtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDohNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDohNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotPtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsDotNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsDotNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4Input)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv4PtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6Input)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6PtrInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6NetworkInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationEndpointsIpv6NetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationEndpointsIpv6NetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationNetworkInput)(nil)).Elem(), ZeroTrustDnsLocationNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustDnsLocationNetworkArrayInput)(nil)).Elem(), ZeroTrustDnsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsArgs{})
@@ -78203,6 +80845,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationArrayInput)(nil)).Elem(), ZoneLockdownConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingArrayInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingAegisInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingAegisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingAegisPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingAegisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinifyInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMobileRedirectArgs{})
@@ -78213,6 +80857,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsInput)(nil)).Elem(), ZoneSettingsOverrideSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsAegisInput)(nil)).Elem(), ZoneSettingsOverrideSettingsAegisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsAegisPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsAegisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMinifyInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
@@ -78798,6 +81444,22 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountSshSessionLogPtrOutput{})
 	pulumi.RegisterOutputType(TeamsListItemsWithDescriptionOutput{})
 	pulumi.RegisterOutputType(TeamsListItemsWithDescriptionArrayOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDohOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDohPtrOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDohNetworkOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDohNetworkArrayOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDotOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDotPtrOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDotNetworkOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsDotNetworkArrayOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv4Output{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv4PtrOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv6Output{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv6PtrOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv6NetworkOutput{})
+	pulumi.RegisterOutputType(TeamsLocationEndpointsIpv6NetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})
@@ -79056,6 +81718,22 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustDlpProfileEntryArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustDlpProfileEntryPatternOutput{})
 	pulumi.RegisterOutputType(ZeroTrustDlpProfileEntryPatternPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohNetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDohNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotNetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsDotNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv4Output{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv4PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6Output{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6PtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6NetworkOutput{})
+	pulumi.RegisterOutputType(ZeroTrustDnsLocationEndpointsIpv6NetworkArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustDnsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(ZeroTrustDnsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsOutput{})
@@ -79150,6 +81828,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingArrayOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingAegisOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingAegisPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMinifyOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMinifyPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMobileRedirectOutput{})
@@ -79160,6 +81840,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsAegisOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsAegisPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMinifyOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMinifyPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMobileRedirectOutput{})

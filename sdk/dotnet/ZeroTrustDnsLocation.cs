@@ -73,6 +73,18 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ClientDefault { get; private set; } = null!;
 
         /// <summary>
+        /// IPv4 binding assigned to this location.
+        /// </summary>
+        [Output("dnsDestinationIpsId")]
+        public Output<string> DnsDestinationIpsId { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 block binding assigned to this location.
+        /// </summary>
+        [Output("dnsDestinationIpv6BlockId")]
+        public Output<string> DnsDestinationIpv6BlockId { get; private set; } = null!;
+
+        /// <summary>
         /// The FQDN that DoH clients should be pointed at.
         /// </summary>
         [Output("dohSubdomain")]
@@ -85,16 +97,28 @@ namespace Pulumi.Cloudflare
         public Output<bool?> EcsSupport { get; private set; } = null!;
 
         /// <summary>
+        /// Endpoints assigned to this location.
+        /// </summary>
+        [Output("endpoints")]
+        public Output<Outputs.ZeroTrustDnsLocationEndpoints?> Endpoints { get; private set; } = null!;
+
+        /// <summary>
         /// Client IP address.
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IP to direct all IPv4 DNS queries to.
+        /// IPv4 to direct all IPv4 DNS queries to.
         /// </summary>
         [Output("ipv4Destination")]
         public Output<string> Ipv4Destination { get; private set; } = null!;
+
+        /// <summary>
+        /// Backup IPv4 to direct all IPv4 DNS queries to.
+        /// </summary>
+        [Output("ipv4DestinationBackup")]
+        public Output<string> Ipv4DestinationBackup { get; private set; } = null!;
 
         /// <summary>
         /// Name of the teams location.
@@ -167,10 +191,28 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ClientDefault { get; set; }
 
         /// <summary>
+        /// IPv4 binding assigned to this location.
+        /// </summary>
+        [Input("dnsDestinationIpsId")]
+        public Input<string>? DnsDestinationIpsId { get; set; }
+
+        /// <summary>
+        /// IPv6 block binding assigned to this location.
+        /// </summary>
+        [Input("dnsDestinationIpv6BlockId")]
+        public Input<string>? DnsDestinationIpv6BlockId { get; set; }
+
+        /// <summary>
         /// Indicator that this location needs to resolve EDNS queries.
         /// </summary>
         [Input("ecsSupport")]
         public Input<bool>? EcsSupport { get; set; }
+
+        /// <summary>
+        /// Endpoints assigned to this location.
+        /// </summary>
+        [Input("endpoints")]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsArgs>? Endpoints { get; set; }
 
         /// <summary>
         /// Name of the teams location.
@@ -217,6 +259,18 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ClientDefault { get; set; }
 
         /// <summary>
+        /// IPv4 binding assigned to this location.
+        /// </summary>
+        [Input("dnsDestinationIpsId")]
+        public Input<string>? DnsDestinationIpsId { get; set; }
+
+        /// <summary>
+        /// IPv6 block binding assigned to this location.
+        /// </summary>
+        [Input("dnsDestinationIpv6BlockId")]
+        public Input<string>? DnsDestinationIpv6BlockId { get; set; }
+
+        /// <summary>
         /// The FQDN that DoH clients should be pointed at.
         /// </summary>
         [Input("dohSubdomain")]
@@ -229,16 +283,28 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EcsSupport { get; set; }
 
         /// <summary>
+        /// Endpoints assigned to this location.
+        /// </summary>
+        [Input("endpoints")]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsGetArgs>? Endpoints { get; set; }
+
+        /// <summary>
         /// Client IP address.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IP to direct all IPv4 DNS queries to.
+        /// IPv4 to direct all IPv4 DNS queries to.
         /// </summary>
         [Input("ipv4Destination")]
         public Input<string>? Ipv4Destination { get; set; }
+
+        /// <summary>
+        /// Backup IPv4 to direct all IPv4 DNS queries to.
+        /// </summary>
+        [Input("ipv4DestinationBackup")]
+        public Input<string>? Ipv4DestinationBackup { get; set; }
 
         /// <summary>
         /// Name of the teams location.

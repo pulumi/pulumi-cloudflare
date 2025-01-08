@@ -8,28 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class TeamsLocationNetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsLocationNetworkArgs Empty = new TeamsLocationNetworkArgs();
-
-    /**
-     * The ID of this resource.
-     * 
-     */
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    /**
-     * @return The ID of this resource.
-     * 
-     */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-    }
 
     /**
      * CIDR notation representation of the network IP.
@@ -49,7 +32,6 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
     private TeamsLocationNetworkArgs() {}
 
     private TeamsLocationNetworkArgs(TeamsLocationNetworkArgs $) {
-        this.id = $.id;
         this.network = $.network;
     }
 
@@ -69,27 +51,6 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
 
         public Builder(TeamsLocationNetworkArgs defaults) {
             $ = new TeamsLocationNetworkArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param id The ID of this resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id The ID of this resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
         }
 
         /**

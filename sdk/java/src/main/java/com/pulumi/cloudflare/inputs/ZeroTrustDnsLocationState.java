@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -64,6 +65,36 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * IPv4 binding assigned to this location.
+     * 
+     */
+    @Import(name="dnsDestinationIpsId")
+    private @Nullable Output<String> dnsDestinationIpsId;
+
+    /**
+     * @return IPv4 binding assigned to this location.
+     * 
+     */
+    public Optional<Output<String>> dnsDestinationIpsId() {
+        return Optional.ofNullable(this.dnsDestinationIpsId);
+    }
+
+    /**
+     * IPv6 block binding assigned to this location.
+     * 
+     */
+    @Import(name="dnsDestinationIpv6BlockId")
+    private @Nullable Output<String> dnsDestinationIpv6BlockId;
+
+    /**
+     * @return IPv6 block binding assigned to this location.
+     * 
+     */
+    public Optional<Output<String>> dnsDestinationIpv6BlockId() {
+        return Optional.ofNullable(this.dnsDestinationIpv6BlockId);
+    }
+
+    /**
      * The FQDN that DoH clients should be pointed at.
      * 
      */
@@ -94,6 +125,21 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Endpoints assigned to this location.
+     * 
+     */
+    @Import(name="endpoints")
+    private @Nullable Output<ZeroTrustDnsLocationEndpointsArgs> endpoints;
+
+    /**
+     * @return Endpoints assigned to this location.
+     * 
+     */
+    public Optional<Output<ZeroTrustDnsLocationEndpointsArgs>> endpoints() {
+        return Optional.ofNullable(this.endpoints);
+    }
+
+    /**
      * Client IP address.
      * 
      */
@@ -109,18 +155,33 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
     }
 
     /**
-     * IP to direct all IPv4 DNS queries to.
+     * IPv4 to direct all IPv4 DNS queries to.
      * 
      */
     @Import(name="ipv4Destination")
     private @Nullable Output<String> ipv4Destination;
 
     /**
-     * @return IP to direct all IPv4 DNS queries to.
+     * @return IPv4 to direct all IPv4 DNS queries to.
      * 
      */
     public Optional<Output<String>> ipv4Destination() {
         return Optional.ofNullable(this.ipv4Destination);
+    }
+
+    /**
+     * Backup IPv4 to direct all IPv4 DNS queries to.
+     * 
+     */
+    @Import(name="ipv4DestinationBackup")
+    private @Nullable Output<String> ipv4DestinationBackup;
+
+    /**
+     * @return Backup IPv4 to direct all IPv4 DNS queries to.
+     * 
+     */
+    public Optional<Output<String>> ipv4DestinationBackup() {
+        return Optional.ofNullable(this.ipv4DestinationBackup);
     }
 
     /**
@@ -159,10 +220,14 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         this.accountId = $.accountId;
         this.anonymizedLogsEnabled = $.anonymizedLogsEnabled;
         this.clientDefault = $.clientDefault;
+        this.dnsDestinationIpsId = $.dnsDestinationIpsId;
+        this.dnsDestinationIpv6BlockId = $.dnsDestinationIpv6BlockId;
         this.dohSubdomain = $.dohSubdomain;
         this.ecsSupport = $.ecsSupport;
+        this.endpoints = $.endpoints;
         this.ip = $.ip;
         this.ipv4Destination = $.ipv4Destination;
+        this.ipv4DestinationBackup = $.ipv4DestinationBackup;
         this.name = $.name;
         this.networks = $.networks;
     }
@@ -249,6 +314,48 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpsId(@Nullable Output<String> dnsDestinationIpsId) {
+            $.dnsDestinationIpsId = dnsDestinationIpsId;
+            return this;
+        }
+
+        /**
+         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpsId(String dnsDestinationIpsId) {
+            return dnsDestinationIpsId(Output.of(dnsDestinationIpsId));
+        }
+
+        /**
+         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpv6BlockId(@Nullable Output<String> dnsDestinationIpv6BlockId) {
+            $.dnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
+            return this;
+        }
+
+        /**
+         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpv6BlockId(String dnsDestinationIpv6BlockId) {
+            return dnsDestinationIpv6BlockId(Output.of(dnsDestinationIpv6BlockId));
+        }
+
+        /**
          * @param dohSubdomain The FQDN that DoH clients should be pointed at.
          * 
          * @return builder
@@ -291,6 +398,27 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param endpoints Endpoints assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(@Nullable Output<ZeroTrustDnsLocationEndpointsArgs> endpoints) {
+            $.endpoints = endpoints;
+            return this;
+        }
+
+        /**
+         * @param endpoints Endpoints assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(ZeroTrustDnsLocationEndpointsArgs endpoints) {
+            return endpoints(Output.of(endpoints));
+        }
+
+        /**
          * @param ip Client IP address.
          * 
          * @return builder
@@ -312,7 +440,7 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv4Destination IP to direct all IPv4 DNS queries to.
+         * @param ipv4Destination IPv4 to direct all IPv4 DNS queries to.
          * 
          * @return builder
          * 
@@ -323,13 +451,34 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv4Destination IP to direct all IPv4 DNS queries to.
+         * @param ipv4Destination IPv4 to direct all IPv4 DNS queries to.
          * 
          * @return builder
          * 
          */
         public Builder ipv4Destination(String ipv4Destination) {
             return ipv4Destination(Output.of(ipv4Destination));
+        }
+
+        /**
+         * @param ipv4DestinationBackup Backup IPv4 to direct all IPv4 DNS queries to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4DestinationBackup(@Nullable Output<String> ipv4DestinationBackup) {
+            $.ipv4DestinationBackup = ipv4DestinationBackup;
+            return this;
+        }
+
+        /**
+         * @param ipv4DestinationBackup Backup IPv4 to direct all IPv4 DNS queries to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4DestinationBackup(String ipv4DestinationBackup) {
+            return ipv4DestinationBackup(Output.of(ipv4DestinationBackup));
         }
 
         /**

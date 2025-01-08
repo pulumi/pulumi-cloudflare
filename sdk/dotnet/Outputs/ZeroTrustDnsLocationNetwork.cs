@@ -14,21 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDnsLocationNetwork
     {
         /// <summary>
-        /// The ID of this resource.
-        /// </summary>
-        public readonly string? Id;
-        /// <summary>
         /// CIDR notation representation of the network IP.
         /// </summary>
         public readonly string Network;
 
         [OutputConstructor]
-        private ZeroTrustDnsLocationNetwork(
-            string? id,
-
-            string network)
+        private ZeroTrustDnsLocationNetwork(string network)
         {
-            Id = id;
             Network = network;
         }
     }

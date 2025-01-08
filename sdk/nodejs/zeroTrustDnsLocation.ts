@@ -79,6 +79,14 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      */
     public readonly clientDefault!: pulumi.Output<boolean | undefined>;
     /**
+     * IPv4 binding assigned to this location.
+     */
+    public readonly dnsDestinationIpsId!: pulumi.Output<string>;
+    /**
+     * IPv6 block binding assigned to this location.
+     */
+    public readonly dnsDestinationIpv6BlockId!: pulumi.Output<string>;
+    /**
      * The FQDN that DoH clients should be pointed at.
      */
     public /*out*/ readonly dohSubdomain!: pulumi.Output<string>;
@@ -87,13 +95,21 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      */
     public readonly ecsSupport!: pulumi.Output<boolean | undefined>;
     /**
+     * Endpoints assigned to this location.
+     */
+    public readonly endpoints!: pulumi.Output<outputs.ZeroTrustDnsLocationEndpoints | undefined>;
+    /**
      * Client IP address.
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
-     * IP to direct all IPv4 DNS queries to.
+     * IPv4 to direct all IPv4 DNS queries to.
      */
     public /*out*/ readonly ipv4Destination!: pulumi.Output<string>;
+    /**
+     * Backup IPv4 to direct all IPv4 DNS queries to.
+     */
+    public /*out*/ readonly ipv4DestinationBackup!: pulumi.Output<string>;
     /**
      * Name of the teams location.
      */
@@ -119,10 +135,14 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["anonymizedLogsEnabled"] = state ? state.anonymizedLogsEnabled : undefined;
             resourceInputs["clientDefault"] = state ? state.clientDefault : undefined;
+            resourceInputs["dnsDestinationIpsId"] = state ? state.dnsDestinationIpsId : undefined;
+            resourceInputs["dnsDestinationIpv6BlockId"] = state ? state.dnsDestinationIpv6BlockId : undefined;
             resourceInputs["dohSubdomain"] = state ? state.dohSubdomain : undefined;
             resourceInputs["ecsSupport"] = state ? state.ecsSupport : undefined;
+            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["ipv4Destination"] = state ? state.ipv4Destination : undefined;
+            resourceInputs["ipv4DestinationBackup"] = state ? state.ipv4DestinationBackup : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
         } else {
@@ -135,13 +155,17 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["clientDefault"] = args ? args.clientDefault : undefined;
+            resourceInputs["dnsDestinationIpsId"] = args ? args.dnsDestinationIpsId : undefined;
+            resourceInputs["dnsDestinationIpv6BlockId"] = args ? args.dnsDestinationIpv6BlockId : undefined;
             resourceInputs["ecsSupport"] = args ? args.ecsSupport : undefined;
+            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["anonymizedLogsEnabled"] = undefined /*out*/;
             resourceInputs["dohSubdomain"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["ipv4Destination"] = undefined /*out*/;
+            resourceInputs["ipv4DestinationBackup"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDnsLocation.__pulumiType, name, resourceInputs, opts);
@@ -165,6 +189,14 @@ export interface ZeroTrustDnsLocationState {
      */
     clientDefault?: pulumi.Input<boolean>;
     /**
+     * IPv4 binding assigned to this location.
+     */
+    dnsDestinationIpsId?: pulumi.Input<string>;
+    /**
+     * IPv6 block binding assigned to this location.
+     */
+    dnsDestinationIpv6BlockId?: pulumi.Input<string>;
+    /**
      * The FQDN that DoH clients should be pointed at.
      */
     dohSubdomain?: pulumi.Input<string>;
@@ -173,13 +205,21 @@ export interface ZeroTrustDnsLocationState {
      */
     ecsSupport?: pulumi.Input<boolean>;
     /**
+     * Endpoints assigned to this location.
+     */
+    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints>;
+    /**
      * Client IP address.
      */
     ip?: pulumi.Input<string>;
     /**
-     * IP to direct all IPv4 DNS queries to.
+     * IPv4 to direct all IPv4 DNS queries to.
      */
     ipv4Destination?: pulumi.Input<string>;
+    /**
+     * Backup IPv4 to direct all IPv4 DNS queries to.
+     */
+    ipv4DestinationBackup?: pulumi.Input<string>;
     /**
      * Name of the teams location.
      */
@@ -203,9 +243,21 @@ export interface ZeroTrustDnsLocationArgs {
      */
     clientDefault?: pulumi.Input<boolean>;
     /**
+     * IPv4 binding assigned to this location.
+     */
+    dnsDestinationIpsId?: pulumi.Input<string>;
+    /**
+     * IPv6 block binding assigned to this location.
+     */
+    dnsDestinationIpv6BlockId?: pulumi.Input<string>;
+    /**
      * Indicator that this location needs to resolve EDNS queries.
      */
     ecsSupport?: pulumi.Input<boolean>;
+    /**
+     * Endpoints assigned to this location.
+     */
+    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints>;
     /**
      * Name of the teams location.
      */

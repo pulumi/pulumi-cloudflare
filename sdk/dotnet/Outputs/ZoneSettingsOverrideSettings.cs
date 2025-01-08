@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZoneSettingsOverrideSettings
     {
+        public readonly Outputs.ZoneSettingsOverrideSettingsAegis? Aegis;
         public readonly string? AlwaysOnline;
         public readonly string? AlwaysUseHttps;
         public readonly string? AutomaticHttpsRewrites;
@@ -62,6 +63,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? SortQueryStringForCache;
         public readonly string? SpeedBrain;
         public readonly string? Ssl;
+        public readonly string? SslAutomaticMode;
         public readonly string? Tls12Only;
         public readonly string? Tls13;
         public readonly string? TlsClientAuth;
@@ -75,6 +77,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZoneSettingsOverrideSettings(
+            Outputs.ZoneSettingsOverrideSettingsAegis? aegis,
+
             string? alwaysOnline,
 
             string? alwaysUseHttps,
@@ -173,6 +177,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? ssl,
 
+            string? sslAutomaticMode,
+
             string? tls12Only,
 
             string? tls13,
@@ -193,6 +199,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? zeroRtt)
         {
+            Aegis = aegis;
             AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
@@ -242,6 +249,7 @@ namespace Pulumi.Cloudflare.Outputs
             SortQueryStringForCache = sortQueryStringForCache;
             SpeedBrain = speedBrain;
             Ssl = ssl;
+            SslAutomaticMode = sslAutomaticMode;
             Tls12Only = tls12Only;
             Tls13 = tls13;
             TlsClientAuth = tlsClientAuth;

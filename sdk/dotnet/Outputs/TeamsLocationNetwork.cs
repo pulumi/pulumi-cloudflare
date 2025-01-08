@@ -14,21 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsLocationNetwork
     {
         /// <summary>
-        /// The ID of this resource.
-        /// </summary>
-        public readonly string? Id;
-        /// <summary>
         /// CIDR notation representation of the network IP.
         /// </summary>
         public readonly string Network;
 
         [OutputConstructor]
-        private TeamsLocationNetwork(
-            string? id,
-
-            string network)
+        private TeamsLocationNetwork(string network)
         {
-            Id = id;
             Network = network;
         }
     }

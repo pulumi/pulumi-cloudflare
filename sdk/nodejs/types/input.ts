@@ -4968,11 +4968,60 @@ export interface TeamsListItemsWithDescription {
     value: pulumi.Input<string>;
 }
 
-export interface TeamsLocationNetwork {
+export interface TeamsLocationEndpoints {
+    doh?: pulumi.Input<inputs.TeamsLocationEndpointsDoh>;
+    dot?: pulumi.Input<inputs.TeamsLocationEndpointsDot>;
+    ipv4?: pulumi.Input<inputs.TeamsLocationEndpointsIpv4>;
+    ipv6?: pulumi.Input<inputs.TeamsLocationEndpointsIpv6>;
+}
+
+export interface TeamsLocationEndpointsDoh {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDohNetwork>[]>;
+    requireToken?: pulumi.Input<boolean>;
+}
+
+export interface TeamsLocationEndpointsDohNetwork {
     /**
-     * The ID of this resource.
+     * CIDR notation representation of the network IP.
      */
-    id?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationEndpointsDot {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDotNetwork>[]>;
+    requireToken?: pulumi.Input<boolean>;
+}
+
+export interface TeamsLocationEndpointsDotNetwork {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationEndpointsIpv4 {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface TeamsLocationEndpointsIpv6 {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsIpv6Network>[]>;
+}
+
+export interface TeamsLocationEndpointsIpv6Network {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface TeamsLocationNetwork {
     /**
      * CIDR notation representation of the network IP.
      */
@@ -7634,11 +7683,60 @@ export interface ZeroTrustDlpProfileEntryPattern {
     validation?: pulumi.Input<string>;
 }
 
-export interface ZeroTrustDnsLocationNetwork {
+export interface ZeroTrustDnsLocationEndpoints {
+    doh?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDoh>;
+    dot?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDot>;
+    ipv4?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsIpv4>;
+    ipv6?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsIpv6>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDoh {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDohNetwork>[]>;
+    requireToken?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDohNetwork {
     /**
-     * The ID of this resource.
+     * CIDR notation representation of the network IP.
      */
-    id?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDot {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDotNetwork>[]>;
+    requireToken?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDotNetwork {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv4 {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6 {
+    authenticationEnabled?: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsIpv6Network>[]>;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6Network {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDnsLocationNetwork {
     /**
      * CIDR notation representation of the network IP.
      */
@@ -8413,6 +8511,7 @@ export interface ZoneLockdownConfiguration {
 }
 
 export interface ZoneSettingsOverrideInitialSetting {
+    aegis?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingAegis>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -8465,6 +8564,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     sortQueryStringForCache?: pulumi.Input<string>;
     speedBrain?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
+    sslAutomaticMode?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
@@ -8478,6 +8578,17 @@ export interface ZoneSettingsOverrideInitialSetting {
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
+}
+
+export interface ZoneSettingsOverrideInitialSettingAegis {
+    /**
+     * Whether Aegis zone setting is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+     */
+    poolId?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMinify {
@@ -8505,6 +8616,7 @@ export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
+    aegis?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsAegis>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -8557,6 +8669,7 @@ export interface ZoneSettingsOverrideSettings {
     sortQueryStringForCache?: pulumi.Input<string>;
     speedBrain?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
+    sslAutomaticMode?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
@@ -8570,6 +8683,17 @@ export interface ZoneSettingsOverrideSettings {
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
+}
+
+export interface ZoneSettingsOverrideSettingsAegis {
+    /**
+     * Whether Aegis zone setting is enabled. Defaults to `true`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+     */
+    poolId?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {

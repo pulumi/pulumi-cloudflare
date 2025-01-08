@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsArgs;
 import com.pulumi.cloudflare.inputs.TeamsLocationNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -50,6 +51,36 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * IPv4 binding assigned to this location.
+     * 
+     */
+    @Import(name="dnsDestinationIpsId")
+    private @Nullable Output<String> dnsDestinationIpsId;
+
+    /**
+     * @return IPv4 binding assigned to this location.
+     * 
+     */
+    public Optional<Output<String>> dnsDestinationIpsId() {
+        return Optional.ofNullable(this.dnsDestinationIpsId);
+    }
+
+    /**
+     * IPv6 block binding assigned to this location.
+     * 
+     */
+    @Import(name="dnsDestinationIpv6BlockId")
+    private @Nullable Output<String> dnsDestinationIpv6BlockId;
+
+    /**
+     * @return IPv6 block binding assigned to this location.
+     * 
+     */
+    public Optional<Output<String>> dnsDestinationIpv6BlockId() {
+        return Optional.ofNullable(this.dnsDestinationIpv6BlockId);
+    }
+
+    /**
      * Indicator that this location needs to resolve EDNS queries.
      * 
      */
@@ -62,6 +93,21 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> ecsSupport() {
         return Optional.ofNullable(this.ecsSupport);
+    }
+
+    /**
+     * Endpoints assigned to this location.
+     * 
+     */
+    @Import(name="endpoints")
+    private @Nullable Output<TeamsLocationEndpointsArgs> endpoints;
+
+    /**
+     * @return Endpoints assigned to this location.
+     * 
+     */
+    public Optional<Output<TeamsLocationEndpointsArgs>> endpoints() {
+        return Optional.ofNullable(this.endpoints);
     }
 
     /**
@@ -99,7 +145,10 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     private TeamsLocationArgs(TeamsLocationArgs $) {
         this.accountId = $.accountId;
         this.clientDefault = $.clientDefault;
+        this.dnsDestinationIpsId = $.dnsDestinationIpsId;
+        this.dnsDestinationIpv6BlockId = $.dnsDestinationIpv6BlockId;
         this.ecsSupport = $.ecsSupport;
+        this.endpoints = $.endpoints;
         this.name = $.name;
         this.networks = $.networks;
     }
@@ -165,6 +214,48 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpsId(@Nullable Output<String> dnsDestinationIpsId) {
+            $.dnsDestinationIpsId = dnsDestinationIpsId;
+            return this;
+        }
+
+        /**
+         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpsId(String dnsDestinationIpsId) {
+            return dnsDestinationIpsId(Output.of(dnsDestinationIpsId));
+        }
+
+        /**
+         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpv6BlockId(@Nullable Output<String> dnsDestinationIpv6BlockId) {
+            $.dnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
+            return this;
+        }
+
+        /**
+         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsDestinationIpv6BlockId(String dnsDestinationIpv6BlockId) {
+            return dnsDestinationIpv6BlockId(Output.of(dnsDestinationIpv6BlockId));
+        }
+
+        /**
          * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
          * 
          * @return builder
@@ -183,6 +274,27 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ecsSupport(Boolean ecsSupport) {
             return ecsSupport(Output.of(ecsSupport));
+        }
+
+        /**
+         * @param endpoints Endpoints assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(@Nullable Output<TeamsLocationEndpointsArgs> endpoints) {
+            $.endpoints = endpoints;
+            return this;
+        }
+
+        /**
+         * @param endpoints Endpoints assigned to this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(TeamsLocationEndpointsArgs endpoints) {
+            return endpoints(Output.of(endpoints));
         }
 
         /**

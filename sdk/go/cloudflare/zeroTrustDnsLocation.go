@@ -66,14 +66,22 @@ type ZeroTrustDnsLocation struct {
 	AnonymizedLogsEnabled pulumi.BoolOutput `pulumi:"anonymizedLogsEnabled"`
 	// Indicator that this is the default location.
 	ClientDefault pulumi.BoolPtrOutput `pulumi:"clientDefault"`
+	// IPv4 binding assigned to this location.
+	DnsDestinationIpsId pulumi.StringOutput `pulumi:"dnsDestinationIpsId"`
+	// IPv6 block binding assigned to this location.
+	DnsDestinationIpv6BlockId pulumi.StringOutput `pulumi:"dnsDestinationIpv6BlockId"`
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain pulumi.StringOutput `pulumi:"dohSubdomain"`
 	// Indicator that this location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrOutput `pulumi:"ecsSupport"`
+	// Endpoints assigned to this location.
+	Endpoints ZeroTrustDnsLocationEndpointsPtrOutput `pulumi:"endpoints"`
 	// Client IP address.
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IP to direct all IPv4 DNS queries to.
+	// IPv4 to direct all IPv4 DNS queries to.
 	Ipv4Destination pulumi.StringOutput `pulumi:"ipv4Destination"`
+	// Backup IPv4 to direct all IPv4 DNS queries to.
+	Ipv4DestinationBackup pulumi.StringOutput `pulumi:"ipv4DestinationBackup"`
 	// Name of the teams location.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
@@ -122,14 +130,22 @@ type zeroTrustDnsLocationState struct {
 	AnonymizedLogsEnabled *bool `pulumi:"anonymizedLogsEnabled"`
 	// Indicator that this is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
+	// IPv4 binding assigned to this location.
+	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
+	// IPv6 block binding assigned to this location.
+	DnsDestinationIpv6BlockId *string `pulumi:"dnsDestinationIpv6BlockId"`
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain *string `pulumi:"dohSubdomain"`
 	// Indicator that this location needs to resolve EDNS queries.
 	EcsSupport *bool `pulumi:"ecsSupport"`
+	// Endpoints assigned to this location.
+	Endpoints *ZeroTrustDnsLocationEndpoints `pulumi:"endpoints"`
 	// Client IP address.
 	Ip *string `pulumi:"ip"`
-	// IP to direct all IPv4 DNS queries to.
+	// IPv4 to direct all IPv4 DNS queries to.
 	Ipv4Destination *string `pulumi:"ipv4Destination"`
+	// Backup IPv4 to direct all IPv4 DNS queries to.
+	Ipv4DestinationBackup *string `pulumi:"ipv4DestinationBackup"`
 	// Name of the teams location.
 	Name *string `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
@@ -143,14 +159,22 @@ type ZeroTrustDnsLocationState struct {
 	AnonymizedLogsEnabled pulumi.BoolPtrInput
 	// Indicator that this is the default location.
 	ClientDefault pulumi.BoolPtrInput
+	// IPv4 binding assigned to this location.
+	DnsDestinationIpsId pulumi.StringPtrInput
+	// IPv6 block binding assigned to this location.
+	DnsDestinationIpv6BlockId pulumi.StringPtrInput
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain pulumi.StringPtrInput
 	// Indicator that this location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrInput
+	// Endpoints assigned to this location.
+	Endpoints ZeroTrustDnsLocationEndpointsPtrInput
 	// Client IP address.
 	Ip pulumi.StringPtrInput
-	// IP to direct all IPv4 DNS queries to.
+	// IPv4 to direct all IPv4 DNS queries to.
 	Ipv4Destination pulumi.StringPtrInput
+	// Backup IPv4 to direct all IPv4 DNS queries to.
+	Ipv4DestinationBackup pulumi.StringPtrInput
 	// Name of the teams location.
 	Name pulumi.StringPtrInput
 	// The networks CIDRs that comprise the location.
@@ -166,8 +190,14 @@ type zeroTrustDnsLocationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Indicator that this is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
+	// IPv4 binding assigned to this location.
+	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
+	// IPv6 block binding assigned to this location.
+	DnsDestinationIpv6BlockId *string `pulumi:"dnsDestinationIpv6BlockId"`
 	// Indicator that this location needs to resolve EDNS queries.
 	EcsSupport *bool `pulumi:"ecsSupport"`
+	// Endpoints assigned to this location.
+	Endpoints *ZeroTrustDnsLocationEndpoints `pulumi:"endpoints"`
 	// Name of the teams location.
 	Name string `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
@@ -180,8 +210,14 @@ type ZeroTrustDnsLocationArgs struct {
 	AccountId pulumi.StringInput
 	// Indicator that this is the default location.
 	ClientDefault pulumi.BoolPtrInput
+	// IPv4 binding assigned to this location.
+	DnsDestinationIpsId pulumi.StringPtrInput
+	// IPv6 block binding assigned to this location.
+	DnsDestinationIpv6BlockId pulumi.StringPtrInput
 	// Indicator that this location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrInput
+	// Endpoints assigned to this location.
+	Endpoints ZeroTrustDnsLocationEndpointsPtrInput
 	// Name of the teams location.
 	Name pulumi.StringInput
 	// The networks CIDRs that comprise the location.
@@ -290,6 +326,16 @@ func (o ZeroTrustDnsLocationOutput) ClientDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.BoolPtrOutput { return v.ClientDefault }).(pulumi.BoolPtrOutput)
 }
 
+// IPv4 binding assigned to this location.
+func (o ZeroTrustDnsLocationOutput) DnsDestinationIpsId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.DnsDestinationIpsId }).(pulumi.StringOutput)
+}
+
+// IPv6 block binding assigned to this location.
+func (o ZeroTrustDnsLocationOutput) DnsDestinationIpv6BlockId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.DnsDestinationIpv6BlockId }).(pulumi.StringOutput)
+}
+
 // The FQDN that DoH clients should be pointed at.
 func (o ZeroTrustDnsLocationOutput) DohSubdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.DohSubdomain }).(pulumi.StringOutput)
@@ -300,14 +346,24 @@ func (o ZeroTrustDnsLocationOutput) EcsSupport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.BoolPtrOutput { return v.EcsSupport }).(pulumi.BoolPtrOutput)
 }
 
+// Endpoints assigned to this location.
+func (o ZeroTrustDnsLocationOutput) Endpoints() ZeroTrustDnsLocationEndpointsPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) ZeroTrustDnsLocationEndpointsPtrOutput { return v.Endpoints }).(ZeroTrustDnsLocationEndpointsPtrOutput)
+}
+
 // Client IP address.
 func (o ZeroTrustDnsLocationOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IP to direct all IPv4 DNS queries to.
+// IPv4 to direct all IPv4 DNS queries to.
 func (o ZeroTrustDnsLocationOutput) Ipv4Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.Ipv4Destination }).(pulumi.StringOutput)
+}
+
+// Backup IPv4 to direct all IPv4 DNS queries to.
+func (o ZeroTrustDnsLocationOutput) Ipv4DestinationBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.Ipv4DestinationBackup }).(pulumi.StringOutput)
 }
 
 // Name of the teams location.
