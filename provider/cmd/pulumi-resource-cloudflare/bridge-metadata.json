@@ -2258,6 +2258,46 @@
                 "current": "cloudflare:index/teamsLocation:TeamsLocation",
                 "majorVersion": 5,
                 "fields": {
+                    "endpoints": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "doh": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "dot": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ipv4": {
+                                    "maxItemsOne": true
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "networks": {
                         "maxItemsOne": false
                     }
@@ -3517,6 +3557,46 @@
                 "current": "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation",
                 "majorVersion": 5,
                 "fields": {
+                    "endpoints": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "doh": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "dot": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ipv4": {
+                                    "maxItemsOne": true
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "networks": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "networks": {
                         "maxItemsOne": false
                     }
@@ -3887,6 +3967,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "aegis": {
+                                    "maxItemsOne": true
+                                },
                                 "ciphers": {
                                     "maxItemsOne": false
                                 },
@@ -3912,6 +3995,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "aegis": {
+                                    "maxItemsOne": true
+                                },
                                 "ciphers": {
                                     "maxItemsOne": false
                                 },
