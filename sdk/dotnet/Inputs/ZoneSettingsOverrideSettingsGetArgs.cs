@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZoneSettingsOverrideSettingsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aegis")]
+        public Input<Inputs.ZoneSettingsOverrideSettingsAegisGetArgs>? Aegis { get; set; }
+
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -163,6 +166,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
+
+        [Input("sslAutomaticMode")]
+        public Input<string>? SslAutomaticMode { get; set; }
 
         [Input("tls12Only")]
         public Input<string>? Tls12Only { get; set; }

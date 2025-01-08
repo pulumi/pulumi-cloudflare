@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingAegis;
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingMinify;
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingNel;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZoneSettingsOverrideInitialSetting {
+    private @Nullable ZoneSettingsOverrideInitialSettingAegis aegis;
     private @Nullable String alwaysOnline;
     private @Nullable String alwaysUseHttps;
     private @Nullable String automaticHttpsRewrites;
@@ -72,6 +74,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable String sortQueryStringForCache;
     private @Nullable String speedBrain;
     private @Nullable String ssl;
+    private @Nullable String sslAutomaticMode;
     /**
      * @deprecated
      * tls_1_2_only has been deprecated in favour of using `min_tls_version = &#34;1.2&#34;` instead.
@@ -90,6 +93,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable String zeroRtt;
 
     private ZoneSettingsOverrideInitialSetting() {}
+    public Optional<ZoneSettingsOverrideInitialSettingAegis> aegis() {
+        return Optional.ofNullable(this.aegis);
+    }
     public Optional<String> alwaysOnline() {
         return Optional.ofNullable(this.alwaysOnline);
     }
@@ -243,6 +249,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
+    public Optional<String> sslAutomaticMode() {
+        return Optional.ofNullable(this.sslAutomaticMode);
+    }
     /**
      * @deprecated
      * tls_1_2_only has been deprecated in favour of using `min_tls_version = &#34;1.2&#34;` instead.
@@ -289,6 +298,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ZoneSettingsOverrideInitialSettingAegis aegis;
         private @Nullable String alwaysOnline;
         private @Nullable String alwaysUseHttps;
         private @Nullable String automaticHttpsRewrites;
@@ -338,6 +348,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         private @Nullable String sortQueryStringForCache;
         private @Nullable String speedBrain;
         private @Nullable String ssl;
+        private @Nullable String sslAutomaticMode;
         private @Nullable String tls12Only;
         private @Nullable String tls13;
         private @Nullable String tlsClientAuth;
@@ -351,6 +362,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         public Builder() {}
         public Builder(ZoneSettingsOverrideInitialSetting defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aegis = defaults.aegis;
     	      this.alwaysOnline = defaults.alwaysOnline;
     	      this.alwaysUseHttps = defaults.alwaysUseHttps;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
@@ -400,6 +412,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.sortQueryStringForCache = defaults.sortQueryStringForCache;
     	      this.speedBrain = defaults.speedBrain;
     	      this.ssl = defaults.ssl;
+    	      this.sslAutomaticMode = defaults.sslAutomaticMode;
     	      this.tls12Only = defaults.tls12Only;
     	      this.tls13 = defaults.tls13;
     	      this.tlsClientAuth = defaults.tlsClientAuth;
@@ -412,6 +425,12 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.zeroRtt = defaults.zeroRtt;
         }
 
+        @CustomType.Setter
+        public Builder aegis(@Nullable ZoneSettingsOverrideInitialSettingAegis aegis) {
+
+            this.aegis = aegis;
+            return this;
+        }
         @CustomType.Setter
         public Builder alwaysOnline(@Nullable String alwaysOnline) {
 
@@ -710,6 +729,12 @@ public final class ZoneSettingsOverrideInitialSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder sslAutomaticMode(@Nullable String sslAutomaticMode) {
+
+            this.sslAutomaticMode = sslAutomaticMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tls12Only(@Nullable String tls12Only) {
 
             this.tls12Only = tls12Only;
@@ -771,6 +796,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         }
         public ZoneSettingsOverrideInitialSetting build() {
             final var _resultValue = new ZoneSettingsOverrideInitialSetting();
+            _resultValue.aegis = aegis;
             _resultValue.alwaysOnline = alwaysOnline;
             _resultValue.alwaysUseHttps = alwaysUseHttps;
             _resultValue.automaticHttpsRewrites = automaticHttpsRewrites;
@@ -820,6 +846,7 @@ public final class ZoneSettingsOverrideInitialSetting {
             _resultValue.sortQueryStringForCache = sortQueryStringForCache;
             _resultValue.speedBrain = speedBrain;
             _resultValue.ssl = ssl;
+            _resultValue.sslAutomaticMode = sslAutomaticMode;
             _resultValue.tls12Only = tls12Only;
             _resultValue.tls13 = tls13;
             _resultValue.tlsClientAuth = tlsClientAuth;

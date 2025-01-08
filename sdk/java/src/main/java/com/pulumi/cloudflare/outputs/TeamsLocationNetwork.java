@@ -7,16 +7,9 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsLocationNetwork {
-    /**
-     * @return The ID of this resource.
-     * 
-     */
-    private @Nullable String id;
     /**
      * @return CIDR notation representation of the network IP.
      * 
@@ -24,13 +17,6 @@ public final class TeamsLocationNetwork {
     private String network;
 
     private TeamsLocationNetwork() {}
-    /**
-     * @return The ID of this resource.
-     * 
-     */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
     /**
      * @return CIDR notation representation of the network IP.
      * 
@@ -48,21 +34,13 @@ public final class TeamsLocationNetwork {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
         private String network;
         public Builder() {}
         public Builder(TeamsLocationNetwork defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.network = defaults.network;
         }
 
-        @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder network(String network) {
             if (network == null) {
@@ -73,7 +51,6 @@ public final class TeamsLocationNetwork {
         }
         public TeamsLocationNetwork build() {
             final var _resultValue = new TeamsLocationNetwork();
-            _resultValue.id = id;
             _resultValue.network = network;
             return _resultValue;
         }

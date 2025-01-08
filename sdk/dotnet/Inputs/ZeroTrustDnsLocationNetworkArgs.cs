@@ -13,12 +13,6 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDnsLocationNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of this resource.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// CIDR notation representation of the network IP.
         /// </summary>
         [Input("network", required: true)]

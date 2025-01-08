@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsLocationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsLocationState;
+import com.pulumi.cloudflare.outputs.TeamsLocationEndpoints;
 import com.pulumi.cloudflare.outputs.TeamsLocationNetwork;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -119,6 +120,34 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientDefault);
     }
     /**
+     * IPv4 binding assigned to this location.
+     * 
+     */
+    @Export(name="dnsDestinationIpsId", refs={String.class}, tree="[0]")
+    private Output<String> dnsDestinationIpsId;
+
+    /**
+     * @return IPv4 binding assigned to this location.
+     * 
+     */
+    public Output<String> dnsDestinationIpsId() {
+        return this.dnsDestinationIpsId;
+    }
+    /**
+     * IPv6 block binding assigned to this location.
+     * 
+     */
+    @Export(name="dnsDestinationIpv6BlockId", refs={String.class}, tree="[0]")
+    private Output<String> dnsDestinationIpv6BlockId;
+
+    /**
+     * @return IPv6 block binding assigned to this location.
+     * 
+     */
+    public Output<String> dnsDestinationIpv6BlockId() {
+        return this.dnsDestinationIpv6BlockId;
+    }
+    /**
      * The FQDN that DoH clients should be pointed at.
      * 
      */
@@ -147,6 +176,20 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ecsSupport);
     }
     /**
+     * Endpoints assigned to this location.
+     * 
+     */
+    @Export(name="endpoints", refs={TeamsLocationEndpoints.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsLocationEndpoints> endpoints;
+
+    /**
+     * @return Endpoints assigned to this location.
+     * 
+     */
+    public Output<Optional<TeamsLocationEndpoints>> endpoints() {
+        return Codegen.optional(this.endpoints);
+    }
+    /**
      * Client IP address.
      * 
      */
@@ -161,18 +204,32 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
         return this.ip;
     }
     /**
-     * IP to direct all IPv4 DNS queries to.
+     * IPv4 to direct all IPv4 DNS queries to.
      * 
      */
     @Export(name="ipv4Destination", refs={String.class}, tree="[0]")
     private Output<String> ipv4Destination;
 
     /**
-     * @return IP to direct all IPv4 DNS queries to.
+     * @return IPv4 to direct all IPv4 DNS queries to.
      * 
      */
     public Output<String> ipv4Destination() {
         return this.ipv4Destination;
+    }
+    /**
+     * Backup IPv4 to direct all IPv4 DNS queries to.
+     * 
+     */
+    @Export(name="ipv4DestinationBackup", refs={String.class}, tree="[0]")
+    private Output<String> ipv4DestinationBackup;
+
+    /**
+     * @return Backup IPv4 to direct all IPv4 DNS queries to.
+     * 
+     */
+    public Output<String> ipv4DestinationBackup() {
+        return this.ipv4DestinationBackup;
     }
     /**
      * Name of the teams location.

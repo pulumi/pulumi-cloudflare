@@ -248,6 +248,14 @@ __all__ = [
     'TeamsAccountProxy',
     'TeamsAccountSshSessionLog',
     'TeamsListItemsWithDescription',
+    'TeamsLocationEndpoints',
+    'TeamsLocationEndpointsDoh',
+    'TeamsLocationEndpointsDohNetwork',
+    'TeamsLocationEndpointsDot',
+    'TeamsLocationEndpointsDotNetwork',
+    'TeamsLocationEndpointsIpv4',
+    'TeamsLocationEndpointsIpv6',
+    'TeamsLocationEndpointsIpv6Network',
     'TeamsLocationNetwork',
     'TeamsRuleRuleSettings',
     'TeamsRuleRuleSettingsAuditSsh',
@@ -378,6 +386,14 @@ __all__ = [
     'ZeroTrustDlpProfileContextAwarenessSkip',
     'ZeroTrustDlpProfileEntry',
     'ZeroTrustDlpProfileEntryPattern',
+    'ZeroTrustDnsLocationEndpoints',
+    'ZeroTrustDnsLocationEndpointsDoh',
+    'ZeroTrustDnsLocationEndpointsDohNetwork',
+    'ZeroTrustDnsLocationEndpointsDot',
+    'ZeroTrustDnsLocationEndpointsDotNetwork',
+    'ZeroTrustDnsLocationEndpointsIpv4',
+    'ZeroTrustDnsLocationEndpointsIpv6',
+    'ZeroTrustDnsLocationEndpointsIpv6Network',
     'ZeroTrustDnsLocationNetwork',
     'ZeroTrustGatewayPolicyRuleSettings',
     'ZeroTrustGatewayPolicyRuleSettingsAuditSsh',
@@ -425,11 +441,13 @@ __all__ = [
     'ZeroTrustTunnelCloudflaredConfigConfigWarpRouting',
     'ZoneLockdownConfiguration',
     'ZoneSettingsOverrideInitialSetting',
+    'ZoneSettingsOverrideInitialSettingAegis',
     'ZoneSettingsOverrideInitialSettingMinify',
     'ZoneSettingsOverrideInitialSettingMobileRedirect',
     'ZoneSettingsOverrideInitialSettingNel',
     'ZoneSettingsOverrideInitialSettingSecurityHeader',
     'ZoneSettingsOverrideSettings',
+    'ZoneSettingsOverrideSettingsAegis',
     'ZoneSettingsOverrideSettingsMinify',
     'ZoneSettingsOverrideSettingsMobileRedirect',
     'ZoneSettingsOverrideSettingsNel',
@@ -17689,17 +17707,105 @@ class TeamsListItemsWithDescription(dict):
 
 
 @pulumi.output_type
-class TeamsLocationNetwork(dict):
+class TeamsLocationEndpoints(dict):
     def __init__(__self__, *,
-                 network: str,
-                 id: Optional[str] = None):
+                 doh: Optional['outputs.TeamsLocationEndpointsDoh'] = None,
+                 dot: Optional['outputs.TeamsLocationEndpointsDot'] = None,
+                 ipv4: Optional['outputs.TeamsLocationEndpointsIpv4'] = None,
+                 ipv6: Optional['outputs.TeamsLocationEndpointsIpv6'] = None):
+        if doh is not None:
+            pulumi.set(__self__, "doh", doh)
+        if dot is not None:
+            pulumi.set(__self__, "dot", dot)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def doh(self) -> Optional['outputs.TeamsLocationEndpointsDoh']:
+        return pulumi.get(self, "doh")
+
+    @property
+    @pulumi.getter
+    def dot(self) -> Optional['outputs.TeamsLocationEndpointsDot']:
+        return pulumi.get(self, "dot")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.TeamsLocationEndpointsIpv4']:
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.TeamsLocationEndpointsIpv6']:
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsDoh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+        elif key == "requireToken":
+            suggest = "require_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsLocationEndpointsDoh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsLocationEndpointsDoh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsLocationEndpointsDoh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.TeamsLocationEndpointsDohNetwork']] = None,
+                 require_token: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if require_token is not None:
+            pulumi.set(__self__, "require_token", require_token)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.TeamsLocationEndpointsDohNetwork']]:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="requireToken")
+    def require_token(self) -> Optional[bool]:
+        return pulumi.get(self, "require_token")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsDohNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
         """
         :param str network: CIDR notation representation of the network IP.
-        :param str id: The ID of this resource.
         """
         pulumi.set(__self__, "network", network)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -17709,13 +17815,196 @@ class TeamsLocationNetwork(dict):
         """
         return pulumi.get(self, "network")
 
+
+@pulumi.output_type
+class TeamsLocationEndpointsDot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+        elif key == "requireToken":
+            suggest = "require_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsLocationEndpointsDot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsLocationEndpointsDot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsLocationEndpointsDot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.TeamsLocationEndpointsDotNetwork']] = None,
+                 require_token: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if require_token is not None:
+            pulumi.set(__self__, "require_token", require_token)
+
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.TeamsLocationEndpointsDotNetwork']]:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="requireToken")
+    def require_token(self) -> Optional[bool]:
+        return pulumi.get(self, "require_token")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsDotNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
         """
-        The ID of this resource.
+        :param str network: CIDR notation representation of the network IP.
         """
-        return pulumi.get(self, "id")
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsLocationEndpointsIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsLocationEndpointsIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsLocationEndpointsIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsLocationEndpointsIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsLocationEndpointsIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsLocationEndpointsIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.TeamsLocationEndpointsIpv6Network']] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.TeamsLocationEndpointsIpv6Network']]:
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class TeamsLocationEndpointsIpv6Network(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: CIDR notation representation of the network IP.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class TeamsLocationNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: CIDR notation representation of the network IP.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
 
 
 @pulumi.output_type
@@ -27517,17 +27806,105 @@ class ZeroTrustDlpProfileEntryPattern(dict):
 
 
 @pulumi.output_type
-class ZeroTrustDnsLocationNetwork(dict):
+class ZeroTrustDnsLocationEndpoints(dict):
     def __init__(__self__, *,
-                 network: str,
-                 id: Optional[str] = None):
+                 doh: Optional['outputs.ZeroTrustDnsLocationEndpointsDoh'] = None,
+                 dot: Optional['outputs.ZeroTrustDnsLocationEndpointsDot'] = None,
+                 ipv4: Optional['outputs.ZeroTrustDnsLocationEndpointsIpv4'] = None,
+                 ipv6: Optional['outputs.ZeroTrustDnsLocationEndpointsIpv6'] = None):
+        if doh is not None:
+            pulumi.set(__self__, "doh", doh)
+        if dot is not None:
+            pulumi.set(__self__, "dot", dot)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @property
+    @pulumi.getter
+    def doh(self) -> Optional['outputs.ZeroTrustDnsLocationEndpointsDoh']:
+        return pulumi.get(self, "doh")
+
+    @property
+    @pulumi.getter
+    def dot(self) -> Optional['outputs.ZeroTrustDnsLocationEndpointsDot']:
+        return pulumi.get(self, "dot")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.ZeroTrustDnsLocationEndpointsIpv4']:
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.ZeroTrustDnsLocationEndpointsIpv6']:
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsDoh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+        elif key == "requireToken":
+            suggest = "require_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDnsLocationEndpointsDoh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDnsLocationEndpointsDoh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDnsLocationEndpointsDoh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsDohNetwork']] = None,
+                 require_token: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if require_token is not None:
+            pulumi.set(__self__, "require_token", require_token)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsDohNetwork']]:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="requireToken")
+    def require_token(self) -> Optional[bool]:
+        return pulumi.get(self, "require_token")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsDohNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
         """
         :param str network: CIDR notation representation of the network IP.
-        :param str id: The ID of this resource.
         """
         pulumi.set(__self__, "network", network)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -27537,13 +27914,196 @@ class ZeroTrustDnsLocationNetwork(dict):
         """
         return pulumi.get(self, "network")
 
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsDot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+        elif key == "requireToken":
+            suggest = "require_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDnsLocationEndpointsDot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDnsLocationEndpointsDot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDnsLocationEndpointsDot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsDotNetwork']] = None,
+                 require_token: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if require_token is not None:
+            pulumi.set(__self__, "require_token", require_token)
+
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsDotNetwork']]:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="requireToken")
+    def require_token(self) -> Optional[bool]:
+        return pulumi.get(self, "require_token")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsDotNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
         """
-        The ID of this resource.
+        :param str network: CIDR notation representation of the network IP.
         """
-        return pulumi.get(self, "id")
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDnsLocationEndpointsIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDnsLocationEndpointsIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDnsLocationEndpointsIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationEnabled":
+            suggest = "authentication_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDnsLocationEndpointsIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDnsLocationEndpointsIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDnsLocationEndpointsIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 authentication_enabled: Optional[bool] = None,
+                 networks: Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsIpv6Network']] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if authentication_enabled is not None:
+            pulumi.set(__self__, "authentication_enabled", authentication_enabled)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="authenticationEnabled")
+    def authentication_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "authentication_enabled")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.ZeroTrustDnsLocationEndpointsIpv6Network']]:
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationEndpointsIpv6Network(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: CIDR notation representation of the network IP.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ZeroTrustDnsLocationNetwork(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: CIDR notation representation of the network IP.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        CIDR notation representation of the network IP.
+        """
+        return pulumi.get(self, "network")
 
 
 @pulumi.output_type
@@ -30473,6 +31033,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "sort_query_string_for_cache"
         elif key == "speedBrain":
             suggest = "speed_brain"
+        elif key == "sslAutomaticMode":
+            suggest = "ssl_automatic_mode"
         elif key == "tls12Only":
             suggest = "tls12_only"
         elif key == "tlsClientAuth":
@@ -30498,6 +31060,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aegis: Optional['outputs.ZoneSettingsOverrideInitialSettingAegis'] = None,
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
@@ -30547,6 +31110,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  sort_query_string_for_cache: Optional[str] = None,
                  speed_brain: Optional[str] = None,
                  ssl: Optional[str] = None,
+                 ssl_automatic_mode: Optional[str] = None,
                  tls12_only: Optional[str] = None,
                  tls13: Optional[str] = None,
                  tls_client_auth: Optional[str] = None,
@@ -30557,6 +31121,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  webp: Optional[str] = None,
                  websockets: Optional[str] = None,
                  zero_rtt: Optional[str] = None):
+        if aegis is not None:
+            pulumi.set(__self__, "aegis", aegis)
         if always_online is not None:
             pulumi.set(__self__, "always_online", always_online)
         if always_use_https is not None:
@@ -30655,6 +31221,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "speed_brain", speed_brain)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
+        if ssl_automatic_mode is not None:
+            pulumi.set(__self__, "ssl_automatic_mode", ssl_automatic_mode)
         if tls12_only is not None:
             pulumi.set(__self__, "tls12_only", tls12_only)
         if tls13 is not None:
@@ -30675,6 +31243,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "websockets", websockets)
         if zero_rtt is not None:
             pulumi.set(__self__, "zero_rtt", zero_rtt)
+
+    @property
+    @pulumi.getter
+    def aegis(self) -> Optional['outputs.ZoneSettingsOverrideInitialSettingAegis']:
+        return pulumi.get(self, "aegis")
 
     @property
     @pulumi.getter(name="alwaysOnline")
@@ -30923,6 +31496,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "ssl")
 
     @property
+    @pulumi.getter(name="sslAutomaticMode")
+    def ssl_automatic_mode(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_automatic_mode")
+
+    @property
     @pulumi.getter(name="tls12Only")
     @_utilities.deprecated("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
     def tls12_only(self) -> Optional[str]:
@@ -30972,6 +31550,54 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @pulumi.getter(name="zeroRtt")
     def zero_rtt(self) -> Optional[str]:
         return pulumi.get(self, "zero_rtt")
+
+
+@pulumi.output_type
+class ZoneSettingsOverrideInitialSettingAegis(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolId":
+            suggest = "pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideInitialSettingAegis. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideInitialSettingAegis.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideInitialSettingAegis.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 pool_id: Optional[str] = None):
+        """
+        :param bool enabled: Whether Aegis zone setting is enabled.
+        :param str pool_id: Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether Aegis zone setting is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> Optional[str]:
+        """
+        Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+        """
+        return pulumi.get(self, "pool_id")
 
 
 @pulumi.output_type
@@ -31202,6 +31828,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "sort_query_string_for_cache"
         elif key == "speedBrain":
             suggest = "speed_brain"
+        elif key == "sslAutomaticMode":
+            suggest = "ssl_automatic_mode"
         elif key == "tls12Only":
             suggest = "tls12_only"
         elif key == "tlsClientAuth":
@@ -31227,6 +31855,7 @@ class ZoneSettingsOverrideSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aegis: Optional['outputs.ZoneSettingsOverrideSettingsAegis'] = None,
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
@@ -31276,6 +31905,7 @@ class ZoneSettingsOverrideSettings(dict):
                  sort_query_string_for_cache: Optional[str] = None,
                  speed_brain: Optional[str] = None,
                  ssl: Optional[str] = None,
+                 ssl_automatic_mode: Optional[str] = None,
                  tls12_only: Optional[str] = None,
                  tls13: Optional[str] = None,
                  tls_client_auth: Optional[str] = None,
@@ -31286,6 +31916,8 @@ class ZoneSettingsOverrideSettings(dict):
                  webp: Optional[str] = None,
                  websockets: Optional[str] = None,
                  zero_rtt: Optional[str] = None):
+        if aegis is not None:
+            pulumi.set(__self__, "aegis", aegis)
         if always_online is not None:
             pulumi.set(__self__, "always_online", always_online)
         if always_use_https is not None:
@@ -31384,6 +32016,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "speed_brain", speed_brain)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
+        if ssl_automatic_mode is not None:
+            pulumi.set(__self__, "ssl_automatic_mode", ssl_automatic_mode)
         if tls12_only is not None:
             pulumi.set(__self__, "tls12_only", tls12_only)
         if tls13 is not None:
@@ -31404,6 +32038,11 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "websockets", websockets)
         if zero_rtt is not None:
             pulumi.set(__self__, "zero_rtt", zero_rtt)
+
+    @property
+    @pulumi.getter
+    def aegis(self) -> Optional['outputs.ZoneSettingsOverrideSettingsAegis']:
+        return pulumi.get(self, "aegis")
 
     @property
     @pulumi.getter(name="alwaysOnline")
@@ -31652,6 +32291,11 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "ssl")
 
     @property
+    @pulumi.getter(name="sslAutomaticMode")
+    def ssl_automatic_mode(self) -> Optional[str]:
+        return pulumi.get(self, "ssl_automatic_mode")
+
+    @property
     @pulumi.getter(name="tls12Only")
     @_utilities.deprecated("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
     def tls12_only(self) -> Optional[str]:
@@ -31701,6 +32345,54 @@ class ZoneSettingsOverrideSettings(dict):
     @pulumi.getter(name="zeroRtt")
     def zero_rtt(self) -> Optional[str]:
         return pulumi.get(self, "zero_rtt")
+
+
+@pulumi.output_type
+class ZoneSettingsOverrideSettingsAegis(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolId":
+            suggest = "pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideSettingsAegis. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideSettingsAegis.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideSettingsAegis.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 pool_id: Optional[str] = None):
+        """
+        :param bool enabled: Whether Aegis zone setting is enabled. Defaults to `true`.
+        :param str pool_id: Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether Aegis zone setting is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> Optional[str]:
+        """
+        Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+        """
+        return pulumi.get(self, "pool_id")
 
 
 @pulumi.output_type

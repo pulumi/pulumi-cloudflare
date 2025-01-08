@@ -5919,11 +5919,60 @@ export interface TeamsListItemsWithDescription {
     value: string;
 }
 
-export interface TeamsLocationNetwork {
+export interface TeamsLocationEndpoints {
+    doh?: outputs.TeamsLocationEndpointsDoh;
+    dot?: outputs.TeamsLocationEndpointsDot;
+    ipv4?: outputs.TeamsLocationEndpointsIpv4;
+    ipv6?: outputs.TeamsLocationEndpointsIpv6;
+}
+
+export interface TeamsLocationEndpointsDoh {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.TeamsLocationEndpointsDohNetwork[];
+    requireToken: boolean;
+}
+
+export interface TeamsLocationEndpointsDohNetwork {
     /**
-     * The ID of this resource.
+     * CIDR notation representation of the network IP.
      */
-    id: string;
+    network: string;
+}
+
+export interface TeamsLocationEndpointsDot {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.TeamsLocationEndpointsDotNetwork[];
+    requireToken: boolean;
+}
+
+export interface TeamsLocationEndpointsDotNetwork {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: string;
+}
+
+export interface TeamsLocationEndpointsIpv4 {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+}
+
+export interface TeamsLocationEndpointsIpv6 {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.TeamsLocationEndpointsIpv6Network[];
+}
+
+export interface TeamsLocationEndpointsIpv6Network {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: string;
+}
+
+export interface TeamsLocationNetwork {
     /**
      * CIDR notation representation of the network IP.
      */
@@ -8585,11 +8634,60 @@ export interface ZeroTrustDlpProfileEntryPattern {
     validation?: string;
 }
 
-export interface ZeroTrustDnsLocationNetwork {
+export interface ZeroTrustDnsLocationEndpoints {
+    doh?: outputs.ZeroTrustDnsLocationEndpointsDoh;
+    dot?: outputs.ZeroTrustDnsLocationEndpointsDot;
+    ipv4?: outputs.ZeroTrustDnsLocationEndpointsIpv4;
+    ipv6?: outputs.ZeroTrustDnsLocationEndpointsIpv6;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDoh {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.ZeroTrustDnsLocationEndpointsDohNetwork[];
+    requireToken: boolean;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDohNetwork {
     /**
-     * The ID of this resource.
+     * CIDR notation representation of the network IP.
      */
-    id: string;
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDot {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.ZeroTrustDnsLocationEndpointsDotNetwork[];
+    requireToken: boolean;
+}
+
+export interface ZeroTrustDnsLocationEndpointsDotNetwork {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv4 {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6 {
+    authenticationEnabled: boolean;
+    enabled: boolean;
+    networks?: outputs.ZeroTrustDnsLocationEndpointsIpv6Network[];
+}
+
+export interface ZeroTrustDnsLocationEndpointsIpv6Network {
+    /**
+     * CIDR notation representation of the network IP.
+     */
+    network: string;
+}
+
+export interface ZeroTrustDnsLocationNetwork {
     /**
      * CIDR notation representation of the network IP.
      */
@@ -9364,6 +9462,7 @@ export interface ZoneLockdownConfiguration {
 }
 
 export interface ZoneSettingsOverrideInitialSetting {
+    aegis: outputs.ZoneSettingsOverrideInitialSettingAegis;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -9416,6 +9515,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     sortQueryStringForCache: string;
     speedBrain: string;
     ssl: string;
+    sslAutomaticMode: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
@@ -9429,6 +9529,17 @@ export interface ZoneSettingsOverrideInitialSetting {
     webp: string;
     websockets: string;
     zeroRtt: string;
+}
+
+export interface ZoneSettingsOverrideInitialSettingAegis {
+    /**
+     * Whether Aegis zone setting is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+     */
+    poolId?: string;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMinify {
@@ -9456,6 +9567,7 @@ export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
+    aegis: outputs.ZoneSettingsOverrideSettingsAegis;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -9508,6 +9620,7 @@ export interface ZoneSettingsOverrideSettings {
     sortQueryStringForCache: string;
     speedBrain: string;
     ssl: string;
+    sslAutomaticMode: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
@@ -9521,6 +9634,17 @@ export interface ZoneSettingsOverrideSettings {
     webp: string;
     websockets: string;
     zeroRtt: string;
+}
+
+export interface ZoneSettingsOverrideSettingsAegis {
+    /**
+     * Whether Aegis zone setting is enabled. Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.
+     */
+    poolId?: string;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {

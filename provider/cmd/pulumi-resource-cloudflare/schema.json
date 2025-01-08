@@ -6921,12 +6921,57 @@
                 "value"
             ]
         },
-        "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
+        "cloudflare:index/TeamsLocationEndpoints:TeamsLocationEndpoints": {
             "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                "doh": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsDoh:TeamsLocationEndpointsDoh"
                 },
+                "dot": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsDot:TeamsLocationEndpointsDot"
+                },
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsIpv4:TeamsLocationEndpointsIpv4"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsIpv6:TeamsLocationEndpointsIpv6"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/TeamsLocationEndpointsDoh:TeamsLocationEndpointsDoh": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsDohNetwork:TeamsLocationEndpointsDohNetwork"
+                    }
+                },
+                "requireToken": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled",
+                        "requireToken"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/TeamsLocationEndpointsDohNetwork:TeamsLocationEndpointsDohNetwork": {
+            "properties": {
                 "network": {
                     "type": "string",
                     "description": "CIDR notation representation of the network IP.\n"
@@ -6935,15 +6980,125 @@
             "type": "object",
             "required": [
                 "network"
+            ]
+        },
+        "cloudflare:index/TeamsLocationEndpointsDot:TeamsLocationEndpointsDot": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsDotNetwork:TeamsLocationEndpointsDotNetwork"
+                    }
+                },
+                "requireToken": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "id",
-                        "network"
+                        "authenticationEnabled",
+                        "enabled",
+                        "requireToken"
                     ]
                 }
             }
+        },
+        "cloudflare:index/TeamsLocationEndpointsDotNetwork:TeamsLocationEndpointsDotNetwork": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
+        },
+        "cloudflare:index/TeamsLocationEndpointsIpv4:TeamsLocationEndpointsIpv4": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/TeamsLocationEndpointsIpv6:TeamsLocationEndpointsIpv6": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationEndpointsIpv6Network:TeamsLocationEndpointsIpv6Network"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/TeamsLocationEndpointsIpv6Network:TeamsLocationEndpointsIpv6Network": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
+        },
+        "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
         },
         "cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings": {
             "properties": {
@@ -10760,12 +10915,57 @@
                 "regex"
             ]
         },
-        "cloudflare:index/ZeroTrustDnsLocationNetwork:ZeroTrustDnsLocationNetwork": {
+        "cloudflare:index/ZeroTrustDnsLocationEndpoints:ZeroTrustDnsLocationEndpoints": {
             "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                "doh": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsDoh:ZeroTrustDnsLocationEndpointsDoh"
                 },
+                "dot": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsDot:ZeroTrustDnsLocationEndpointsDot"
+                },
+                "ipv4": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsIpv4:ZeroTrustDnsLocationEndpointsIpv4"
+                },
+                "ipv6": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsIpv6:ZeroTrustDnsLocationEndpointsIpv6"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsDoh:ZeroTrustDnsLocationEndpointsDoh": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsDohNetwork:ZeroTrustDnsLocationEndpointsDohNetwork"
+                    }
+                },
+                "requireToken": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled",
+                        "requireToken"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsDohNetwork:ZeroTrustDnsLocationEndpointsDohNetwork": {
+            "properties": {
                 "network": {
                     "type": "string",
                     "description": "CIDR notation representation of the network IP.\n"
@@ -10774,15 +10974,125 @@
             "type": "object",
             "required": [
                 "network"
+            ]
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsDot:ZeroTrustDnsLocationEndpointsDot": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsDotNetwork:ZeroTrustDnsLocationEndpointsDotNetwork"
+                    }
+                },
+                "requireToken": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "id",
-                        "network"
+                        "authenticationEnabled",
+                        "enabled",
+                        "requireToken"
                     ]
                 }
             }
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsDotNetwork:ZeroTrustDnsLocationEndpointsDotNetwork": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsIpv4:ZeroTrustDnsLocationEndpointsIpv4": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsIpv6:ZeroTrustDnsLocationEndpointsIpv6": {
+            "properties": {
+                "authenticationEnabled": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpointsIpv6Network:ZeroTrustDnsLocationEndpointsIpv6Network"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authenticationEnabled",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/ZeroTrustDnsLocationEndpointsIpv6Network:ZeroTrustDnsLocationEndpointsIpv6Network": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
+        },
+        "cloudflare:index/ZeroTrustDnsLocationNetwork:ZeroTrustDnsLocationNetwork": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "CIDR notation representation of the network IP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
         },
         "cloudflare:index/ZeroTrustGatewayPolicyRuleSettings:ZeroTrustGatewayPolicyRuleSettings": {
             "properties": {
@@ -11806,6 +12116,9 @@
         },
         "cloudflare:index/ZoneSettingsOverrideInitialSetting:ZoneSettingsOverrideInitialSetting": {
             "properties": {
+                "aegis": {
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingAegis:ZoneSettingsOverrideInitialSettingAegis"
+                },
                 "alwaysOnline": {
                     "type": "string"
                 },
@@ -11957,6 +12270,9 @@
                 "ssl": {
                     "type": "string"
                 },
+                "sslAutomaticMode": {
+                    "type": "string"
+                },
                 "tls12Only": {
                     "type": "string",
                     "deprecationMessage": "tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead."
@@ -11993,6 +12309,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "aegis",
                         "alwaysOnline",
                         "alwaysUseHttps",
                         "automaticHttpsRewrites",
@@ -12042,6 +12359,7 @@
                         "sortQueryStringForCache",
                         "speedBrain",
                         "ssl",
+                        "sslAutomaticMode",
                         "tls12Only",
                         "tls13",
                         "tlsClientAuth",
@@ -12055,6 +12373,19 @@
                     ]
                 }
             }
+        },
+        "cloudflare:index/ZoneSettingsOverrideInitialSettingAegis:ZoneSettingsOverrideInitialSettingAegis": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether Aegis zone setting is enabled.\n"
+                },
+                "poolId": {
+                    "type": "string",
+                    "description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.\n"
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/ZoneSettingsOverrideInitialSettingMinify:ZoneSettingsOverrideInitialSettingMinify": {
             "properties": {
@@ -12138,6 +12469,9 @@
         },
         "cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings": {
             "properties": {
+                "aegis": {
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsAegis:ZoneSettingsOverrideSettingsAegis"
+                },
                 "alwaysOnline": {
                     "type": "string"
                 },
@@ -12289,6 +12623,9 @@
                 "ssl": {
                     "type": "string"
                 },
+                "sslAutomaticMode": {
+                    "type": "string"
+                },
                 "tls12Only": {
                     "type": "string",
                     "deprecationMessage": "tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead."
@@ -12325,6 +12662,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "aegis",
                         "alwaysOnline",
                         "alwaysUseHttps",
                         "automaticHttpsRewrites",
@@ -12374,6 +12712,7 @@
                         "sortQueryStringForCache",
                         "speedBrain",
                         "ssl",
+                        "sslAutomaticMode",
                         "tls12Only",
                         "tls13",
                         "tlsClientAuth",
@@ -12387,6 +12726,19 @@
                     ]
                 }
             }
+        },
+        "cloudflare:index/ZoneSettingsOverrideSettingsAegis:ZoneSettingsOverrideSettingsAegis": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether Aegis zone setting is enabled. Defaults to `true`.\n"
+                },
+                "poolId": {
+                    "type": "string",
+                    "description": "Egress pool id which refers to a grouping of dedicated egress IPs through which Cloudflare will connect to origin.\n"
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify": {
             "properties": {
@@ -25771,6 +26123,14 @@
                     "type": "boolean",
                     "description": "Indicator that this is the default location.\n"
                 },
+                "dnsDestinationIpsId": {
+                    "type": "string",
+                    "description": "IPv4 binding assigned to this location.\n"
+                },
+                "dnsDestinationIpv6BlockId": {
+                    "type": "string",
+                    "description": "IPv6 block binding assigned to this location.\n"
+                },
                 "dohSubdomain": {
                     "type": "string",
                     "description": "The FQDN that DoH clients should be pointed at.\n"
@@ -25779,13 +26139,21 @@
                     "type": "boolean",
                     "description": "Indicator that this location needs to resolve EDNS queries.\n"
                 },
+                "endpoints": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpoints:TeamsLocationEndpoints",
+                    "description": "Endpoints assigned to this location.\n"
+                },
                 "ip": {
                     "type": "string",
                     "description": "Client IP address.\n"
                 },
                 "ipv4Destination": {
                     "type": "string",
-                    "description": "IP to direct all IPv4 DNS queries to.\n"
+                    "description": "IPv4 to direct all IPv4 DNS queries to.\n"
+                },
+                "ipv4DestinationBackup": {
+                    "type": "string",
+                    "description": "Backup IPv4 to direct all IPv4 DNS queries to.\n"
                 },
                 "name": {
                     "type": "string",
@@ -25802,9 +26170,12 @@
             "required": [
                 "accountId",
                 "anonymizedLogsEnabled",
+                "dnsDestinationIpsId",
+                "dnsDestinationIpv6BlockId",
                 "dohSubdomain",
                 "ip",
                 "ipv4Destination",
+                "ipv4DestinationBackup",
                 "name"
             ],
             "inputProperties": {
@@ -25816,9 +26187,21 @@
                     "type": "boolean",
                     "description": "Indicator that this is the default location.\n"
                 },
+                "dnsDestinationIpsId": {
+                    "type": "string",
+                    "description": "IPv4 binding assigned to this location.\n"
+                },
+                "dnsDestinationIpv6BlockId": {
+                    "type": "string",
+                    "description": "IPv6 block binding assigned to this location.\n"
+                },
                 "ecsSupport": {
                     "type": "boolean",
                     "description": "Indicator that this location needs to resolve EDNS queries.\n"
+                },
+                "endpoints": {
+                    "$ref": "#/types/cloudflare:index/TeamsLocationEndpoints:TeamsLocationEndpoints",
+                    "description": "Endpoints assigned to this location.\n"
                 },
                 "name": {
                     "type": "string",
@@ -25851,6 +26234,14 @@
                         "type": "boolean",
                         "description": "Indicator that this is the default location.\n"
                     },
+                    "dnsDestinationIpsId": {
+                        "type": "string",
+                        "description": "IPv4 binding assigned to this location.\n"
+                    },
+                    "dnsDestinationIpv6BlockId": {
+                        "type": "string",
+                        "description": "IPv6 block binding assigned to this location.\n"
+                    },
                     "dohSubdomain": {
                         "type": "string",
                         "description": "The FQDN that DoH clients should be pointed at.\n"
@@ -25859,13 +26250,21 @@
                         "type": "boolean",
                         "description": "Indicator that this location needs to resolve EDNS queries.\n"
                     },
+                    "endpoints": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationEndpoints:TeamsLocationEndpoints",
+                        "description": "Endpoints assigned to this location.\n"
+                    },
                     "ip": {
                         "type": "string",
                         "description": "Client IP address.\n"
                     },
                     "ipv4Destination": {
                         "type": "string",
-                        "description": "IP to direct all IPv4 DNS queries to.\n"
+                        "description": "IPv4 to direct all IPv4 DNS queries to.\n"
+                    },
+                    "ipv4DestinationBackup": {
+                        "type": "string",
+                        "description": "Backup IPv4 to direct all IPv4 DNS queries to.\n"
                     },
                     "name": {
                         "type": "string",
@@ -31913,6 +32312,14 @@
                     "type": "boolean",
                     "description": "Indicator that this is the default location.\n"
                 },
+                "dnsDestinationIpsId": {
+                    "type": "string",
+                    "description": "IPv4 binding assigned to this location.\n"
+                },
+                "dnsDestinationIpv6BlockId": {
+                    "type": "string",
+                    "description": "IPv6 block binding assigned to this location.\n"
+                },
                 "dohSubdomain": {
                     "type": "string",
                     "description": "The FQDN that DoH clients should be pointed at.\n"
@@ -31921,13 +32328,21 @@
                     "type": "boolean",
                     "description": "Indicator that this location needs to resolve EDNS queries.\n"
                 },
+                "endpoints": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpoints:ZeroTrustDnsLocationEndpoints",
+                    "description": "Endpoints assigned to this location.\n"
+                },
                 "ip": {
                     "type": "string",
                     "description": "Client IP address.\n"
                 },
                 "ipv4Destination": {
                     "type": "string",
-                    "description": "IP to direct all IPv4 DNS queries to.\n"
+                    "description": "IPv4 to direct all IPv4 DNS queries to.\n"
+                },
+                "ipv4DestinationBackup": {
+                    "type": "string",
+                    "description": "Backup IPv4 to direct all IPv4 DNS queries to.\n"
                 },
                 "name": {
                     "type": "string",
@@ -31944,9 +32359,12 @@
             "required": [
                 "accountId",
                 "anonymizedLogsEnabled",
+                "dnsDestinationIpsId",
+                "dnsDestinationIpv6BlockId",
                 "dohSubdomain",
                 "ip",
                 "ipv4Destination",
+                "ipv4DestinationBackup",
                 "name"
             ],
             "inputProperties": {
@@ -31958,9 +32376,21 @@
                     "type": "boolean",
                     "description": "Indicator that this is the default location.\n"
                 },
+                "dnsDestinationIpsId": {
+                    "type": "string",
+                    "description": "IPv4 binding assigned to this location.\n"
+                },
+                "dnsDestinationIpv6BlockId": {
+                    "type": "string",
+                    "description": "IPv6 block binding assigned to this location.\n"
+                },
                 "ecsSupport": {
                     "type": "boolean",
                     "description": "Indicator that this location needs to resolve EDNS queries.\n"
+                },
+                "endpoints": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpoints:ZeroTrustDnsLocationEndpoints",
+                    "description": "Endpoints assigned to this location.\n"
                 },
                 "name": {
                     "type": "string",
@@ -31993,6 +32423,14 @@
                         "type": "boolean",
                         "description": "Indicator that this is the default location.\n"
                     },
+                    "dnsDestinationIpsId": {
+                        "type": "string",
+                        "description": "IPv4 binding assigned to this location.\n"
+                    },
+                    "dnsDestinationIpv6BlockId": {
+                        "type": "string",
+                        "description": "IPv6 block binding assigned to this location.\n"
+                    },
                     "dohSubdomain": {
                         "type": "string",
                         "description": "The FQDN that DoH clients should be pointed at.\n"
@@ -32001,13 +32439,21 @@
                         "type": "boolean",
                         "description": "Indicator that this location needs to resolve EDNS queries.\n"
                     },
+                    "endpoints": {
+                        "$ref": "#/types/cloudflare:index/ZeroTrustDnsLocationEndpoints:ZeroTrustDnsLocationEndpoints",
+                        "description": "Endpoints assigned to this location.\n"
+                    },
                     "ip": {
                         "type": "string",
                         "description": "Client IP address.\n"
                     },
                     "ipv4Destination": {
                         "type": "string",
-                        "description": "IP to direct all IPv4 DNS queries to.\n"
+                        "description": "IPv4 to direct all IPv4 DNS queries to.\n"
+                    },
+                    "ipv4DestinationBackup": {
+                        "type": "string",
+                        "description": "Backup IPv4 to direct all IPv4 DNS queries to.\n"
                     },
                     "name": {
                         "type": "string",

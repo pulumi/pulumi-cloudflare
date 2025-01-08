@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingAegisArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingMinifyArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingMobileRedirectArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingNelArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneSettingsOverrideInitialSettingArgs Empty = new ZoneSettingsOverrideInitialSettingArgs();
+
+    @Import(name="aegis")
+    private @Nullable Output<ZoneSettingsOverrideInitialSettingAegisArgs> aegis;
+
+    public Optional<Output<ZoneSettingsOverrideInitialSettingAegisArgs>> aegis() {
+        return Optional.ofNullable(this.aegis);
+    }
 
     @Import(name="alwaysOnline")
     private @Nullable Output<String> alwaysOnline;
@@ -376,6 +384,13 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.ssl);
     }
 
+    @Import(name="sslAutomaticMode")
+    private @Nullable Output<String> sslAutomaticMode;
+
+    public Optional<Output<String>> sslAutomaticMode() {
+        return Optional.ofNullable(this.sslAutomaticMode);
+    }
+
     /**
      * @deprecated
      * tls_1_2_only has been deprecated in favour of using `min_tls_version = &#34;1.2&#34;` instead.
@@ -461,6 +476,7 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
     private ZoneSettingsOverrideInitialSettingArgs() {}
 
     private ZoneSettingsOverrideInitialSettingArgs(ZoneSettingsOverrideInitialSettingArgs $) {
+        this.aegis = $.aegis;
         this.alwaysOnline = $.alwaysOnline;
         this.alwaysUseHttps = $.alwaysUseHttps;
         this.automaticHttpsRewrites = $.automaticHttpsRewrites;
@@ -510,6 +526,7 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         this.sortQueryStringForCache = $.sortQueryStringForCache;
         this.speedBrain = $.speedBrain;
         this.ssl = $.ssl;
+        this.sslAutomaticMode = $.sslAutomaticMode;
         this.tls12Only = $.tls12Only;
         this.tls13 = $.tls13;
         this.tlsClientAuth = $.tlsClientAuth;
@@ -538,6 +555,15 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
         public Builder(ZoneSettingsOverrideInitialSettingArgs defaults) {
             $ = new ZoneSettingsOverrideInitialSettingArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aegis(@Nullable Output<ZoneSettingsOverrideInitialSettingAegisArgs> aegis) {
+            $.aegis = aegis;
+            return this;
+        }
+
+        public Builder aegis(ZoneSettingsOverrideInitialSettingAegisArgs aegis) {
+            return aegis(Output.of(aegis));
         }
 
         public Builder alwaysOnline(@Nullable Output<String> alwaysOnline) {
@@ -999,6 +1025,15 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
         public Builder ssl(String ssl) {
             return ssl(Output.of(ssl));
+        }
+
+        public Builder sslAutomaticMode(@Nullable Output<String> sslAutomaticMode) {
+            $.sslAutomaticMode = sslAutomaticMode;
+            return this;
+        }
+
+        public Builder sslAutomaticMode(String sslAutomaticMode) {
+            return sslAutomaticMode(Output.of(sslAutomaticMode));
         }
 
         /**

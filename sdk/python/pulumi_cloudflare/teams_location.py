@@ -24,22 +24,34 @@ class TeamsLocationArgs:
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
+                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
+                 endpoints: Optional[pulumi.Input['TeamsLocationEndpointsArgs']] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsLocation resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
         :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
+        :param pulumi.Input['TeamsLocationEndpointsArgs'] endpoints: Endpoints assigned to this location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
+        if dns_destination_ips_id is not None:
+            pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
+        if dns_destination_ipv6_block_id is not None:
+            pulumi.set(__self__, "dns_destination_ipv6_block_id", dns_destination_ipv6_block_id)
         if ecs_support is not None:
             pulumi.set(__self__, "ecs_support", ecs_support)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
@@ -80,6 +92,30 @@ class TeamsLocationArgs:
         pulumi.set(self, "client_default", value)
 
     @property
+    @pulumi.getter(name="dnsDestinationIpsId")
+    def dns_destination_ips_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ips_id")
+
+    @dns_destination_ips_id.setter
+    def dns_destination_ips_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_destination_ips_id", value)
+
+    @property
+    @pulumi.getter(name="dnsDestinationIpv6BlockId")
+    def dns_destination_ipv6_block_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 block binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ipv6_block_id")
+
+    @dns_destination_ipv6_block_id.setter
+    def dns_destination_ipv6_block_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_destination_ipv6_block_id", value)
+
+    @property
     @pulumi.getter(name="ecsSupport")
     def ecs_support(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -90,6 +126,18 @@ class TeamsLocationArgs:
     @ecs_support.setter
     def ecs_support(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ecs_support", value)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input['TeamsLocationEndpointsArgs']]:
+        """
+        Endpoints assigned to this location.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input['TeamsLocationEndpointsArgs']]):
+        pulumi.set(self, "endpoints", value)
 
     @property
     @pulumi.getter
@@ -110,10 +158,14 @@ class _TeamsLocationState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
+                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  doh_subdomain: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
+                 endpoints: Optional[pulumi.Input['TeamsLocationEndpointsArgs']] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  ipv4_destination: Optional[pulumi.Input[str]] = None,
+                 ipv4_destination_backup: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
@@ -121,10 +173,14 @@ class _TeamsLocationState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
         :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
+        :param pulumi.Input['TeamsLocationEndpointsArgs'] endpoints: Endpoints assigned to this location.
         :param pulumi.Input[str] ip: Client IP address.
-        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
+        :param pulumi.Input[str] ipv4_destination: IPv4 to direct all IPv4 DNS queries to.
+        :param pulumi.Input[str] ipv4_destination_backup: Backup IPv4 to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
@@ -134,14 +190,22 @@ class _TeamsLocationState:
             pulumi.set(__self__, "anonymized_logs_enabled", anonymized_logs_enabled)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
+        if dns_destination_ips_id is not None:
+            pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
+        if dns_destination_ipv6_block_id is not None:
+            pulumi.set(__self__, "dns_destination_ipv6_block_id", dns_destination_ipv6_block_id)
         if doh_subdomain is not None:
             pulumi.set(__self__, "doh_subdomain", doh_subdomain)
         if ecs_support is not None:
             pulumi.set(__self__, "ecs_support", ecs_support)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if ipv4_destination is not None:
             pulumi.set(__self__, "ipv4_destination", ipv4_destination)
+        if ipv4_destination_backup is not None:
+            pulumi.set(__self__, "ipv4_destination_backup", ipv4_destination_backup)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -184,6 +248,30 @@ class _TeamsLocationState:
         pulumi.set(self, "client_default", value)
 
     @property
+    @pulumi.getter(name="dnsDestinationIpsId")
+    def dns_destination_ips_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ips_id")
+
+    @dns_destination_ips_id.setter
+    def dns_destination_ips_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_destination_ips_id", value)
+
+    @property
+    @pulumi.getter(name="dnsDestinationIpv6BlockId")
+    def dns_destination_ipv6_block_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 block binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ipv6_block_id")
+
+    @dns_destination_ipv6_block_id.setter
+    def dns_destination_ipv6_block_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_destination_ipv6_block_id", value)
+
+    @property
     @pulumi.getter(name="dohSubdomain")
     def doh_subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -209,6 +297,18 @@ class _TeamsLocationState:
 
     @property
     @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input['TeamsLocationEndpointsArgs']]:
+        """
+        Endpoints assigned to this location.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input['TeamsLocationEndpointsArgs']]):
+        pulumi.set(self, "endpoints", value)
+
+    @property
+    @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
         Client IP address.
@@ -223,13 +323,25 @@ class _TeamsLocationState:
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> Optional[pulumi.Input[str]]:
         """
-        IP to direct all IPv4 DNS queries to.
+        IPv4 to direct all IPv4 DNS queries to.
         """
         return pulumi.get(self, "ipv4_destination")
 
     @ipv4_destination.setter
     def ipv4_destination(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_destination", value)
+
+    @property
+    @pulumi.getter(name="ipv4DestinationBackup")
+    def ipv4_destination_backup(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup IPv4 to direct all IPv4 DNS queries to.
+        """
+        return pulumi.get(self, "ipv4_destination_backup")
+
+    @ipv4_destination_backup.setter
+    def ipv4_destination_backup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_destination_backup", value)
 
     @property
     @pulumi.getter
@@ -263,7 +375,10 @@ class TeamsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
+                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
+                 endpoints: Optional[pulumi.Input[Union['TeamsLocationEndpointsArgs', 'TeamsLocationEndpointsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
@@ -302,7 +417,10 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
         :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
+        :param pulumi.Input[Union['TeamsLocationEndpointsArgs', 'TeamsLocationEndpointsArgsDict']] endpoints: Endpoints assigned to this location.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
         """
@@ -360,7 +478,10 @@ class TeamsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
+                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
+                 endpoints: Optional[pulumi.Input[Union['TeamsLocationEndpointsArgs', 'TeamsLocationEndpointsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
@@ -376,7 +497,10 @@ class TeamsLocation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
+            __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
+            __props__.__dict__["dns_destination_ipv6_block_id"] = dns_destination_ipv6_block_id
             __props__.__dict__["ecs_support"] = ecs_support
+            __props__.__dict__["endpoints"] = endpoints
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -385,6 +509,7 @@ class TeamsLocation(pulumi.CustomResource):
             __props__.__dict__["doh_subdomain"] = None
             __props__.__dict__["ip"] = None
             __props__.__dict__["ipv4_destination"] = None
+            __props__.__dict__["ipv4_destination_backup"] = None
         super(TeamsLocation, __self__).__init__(
             'cloudflare:index/teamsLocation:TeamsLocation',
             resource_name,
@@ -398,10 +523,14 @@ class TeamsLocation(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
             client_default: Optional[pulumi.Input[bool]] = None,
+            dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
+            dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
             doh_subdomain: Optional[pulumi.Input[str]] = None,
             ecs_support: Optional[pulumi.Input[bool]] = None,
+            endpoints: Optional[pulumi.Input[Union['TeamsLocationEndpointsArgs', 'TeamsLocationEndpointsArgsDict']]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             ipv4_destination: Optional[pulumi.Input[str]] = None,
+            ipv4_destination_backup: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]]] = None) -> 'TeamsLocation':
         """
@@ -414,10 +543,14 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
         :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
+        :param pulumi.Input[Union['TeamsLocationEndpointsArgs', 'TeamsLocationEndpointsArgsDict']] endpoints: Endpoints assigned to this location.
         :param pulumi.Input[str] ip: Client IP address.
-        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
+        :param pulumi.Input[str] ipv4_destination: IPv4 to direct all IPv4 DNS queries to.
+        :param pulumi.Input[str] ipv4_destination_backup: Backup IPv4 to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsLocationNetworkArgs', 'TeamsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
         """
@@ -428,10 +561,14 @@ class TeamsLocation(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["anonymized_logs_enabled"] = anonymized_logs_enabled
         __props__.__dict__["client_default"] = client_default
+        __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
+        __props__.__dict__["dns_destination_ipv6_block_id"] = dns_destination_ipv6_block_id
         __props__.__dict__["doh_subdomain"] = doh_subdomain
         __props__.__dict__["ecs_support"] = ecs_support
+        __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["ip"] = ip
         __props__.__dict__["ipv4_destination"] = ipv4_destination
+        __props__.__dict__["ipv4_destination_backup"] = ipv4_destination_backup
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         return TeamsLocation(resource_name, opts=opts, __props__=__props__)
@@ -461,6 +598,22 @@ class TeamsLocation(pulumi.CustomResource):
         return pulumi.get(self, "client_default")
 
     @property
+    @pulumi.getter(name="dnsDestinationIpsId")
+    def dns_destination_ips_id(self) -> pulumi.Output[str]:
+        """
+        IPv4 binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ips_id")
+
+    @property
+    @pulumi.getter(name="dnsDestinationIpv6BlockId")
+    def dns_destination_ipv6_block_id(self) -> pulumi.Output[str]:
+        """
+        IPv6 block binding assigned to this location.
+        """
+        return pulumi.get(self, "dns_destination_ipv6_block_id")
+
+    @property
     @pulumi.getter(name="dohSubdomain")
     def doh_subdomain(self) -> pulumi.Output[str]:
         """
@@ -478,6 +631,14 @@ class TeamsLocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def endpoints(self) -> pulumi.Output[Optional['outputs.TeamsLocationEndpoints']]:
+        """
+        Endpoints assigned to this location.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
         Client IP address.
@@ -488,9 +649,17 @@ class TeamsLocation(pulumi.CustomResource):
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> pulumi.Output[str]:
         """
-        IP to direct all IPv4 DNS queries to.
+        IPv4 to direct all IPv4 DNS queries to.
         """
         return pulumi.get(self, "ipv4_destination")
+
+    @property
+    @pulumi.getter(name="ipv4DestinationBackup")
+    def ipv4_destination_backup(self) -> pulumi.Output[str]:
+        """
+        Backup IPv4 to direct all IPv4 DNS queries to.
+        """
+        return pulumi.get(self, "ipv4_destination_backup")
 
     @property
     @pulumi.getter
