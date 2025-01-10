@@ -15,11 +15,6 @@ env:
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 team: ecosystem
-
-actions:
-  preTest:
-    - name: Run provider tests
-      run: |
-        cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
 pulumiConvert: 1
 registryDocs: true
+integrationTestProvider: true
