@@ -174,10 +174,20 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 }
 
 type AccessApplicationDestination struct {
+	// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+	Cidr *string `pulumi:"cidr"`
+	// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+	Hostname *string `pulumi:"hostname"`
+	// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	L4Protocol *string `pulumi:"l4Protocol"`
+	// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+	PortRange *string `pulumi:"portRange"`
 	// The destination type. Available values: `public`, `private`. Defaults to `public`.
 	Type *string `pulumi:"type"`
-	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-	Uri string `pulumi:"uri"`
+	// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+	Uri *string `pulumi:"uri"`
+	// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	VnetId *string `pulumi:"vnetId"`
 }
 
 // AccessApplicationDestinationInput is an input type that accepts AccessApplicationDestinationArgs and AccessApplicationDestinationOutput values.
@@ -192,10 +202,20 @@ type AccessApplicationDestinationInput interface {
 }
 
 type AccessApplicationDestinationArgs struct {
+	// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	L4Protocol pulumi.StringPtrInput `pulumi:"l4Protocol"`
+	// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
 	// The destination type. Available values: `public`, `private`. Defaults to `public`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-	Uri pulumi.StringInput `pulumi:"uri"`
+	// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
 }
 
 func (AccessApplicationDestinationArgs) ElementType() reflect.Type {
@@ -249,14 +269,39 @@ func (o AccessApplicationDestinationOutput) ToAccessApplicationDestinationOutput
 	return o
 }
 
+// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+func (o AccessApplicationDestinationOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+func (o AccessApplicationDestinationOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+func (o AccessApplicationDestinationOutput) L4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.L4Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+func (o AccessApplicationDestinationOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
 // The destination type. Available values: `public`, `private`. Defaults to `public`.
 func (o AccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-func (o AccessApplicationDestinationOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessApplicationDestination) string { return v.Uri }).(pulumi.StringOutput)
+// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+func (o AccessApplicationDestinationOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+func (o AccessApplicationDestinationOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.VnetId }).(pulumi.StringPtrOutput)
 }
 
 type AccessApplicationDestinationArrayOutput struct{ *pulumi.OutputState }
@@ -27947,7 +27992,7 @@ type RulesetRuleActionParameters struct {
 	OriginErrorPagePassthru *bool `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
 	Overrides *RulesetRuleActionParametersOverrides `pulumi:"overrides"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phases []string `pulumi:"phases"`
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish *string `pulumi:"polish"`
@@ -28066,7 +28111,7 @@ type RulesetRuleActionParametersArgs struct {
 	OriginErrorPagePassthru pulumi.BoolPtrInput `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
 	Overrides RulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phases pulumi.StringArrayInput `pulumi:"phases"`
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish pulumi.StringPtrInput `pulumi:"polish"`
@@ -28349,7 +28394,7 @@ func (o RulesetRuleActionParametersOutput) Overrides() RulesetRuleActionParamete
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides { return v.Overrides }).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o RulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
 }
@@ -28802,7 +28847,7 @@ func (o RulesetRuleActionParametersPtrOutput) Overrides() RulesetRuleActionParam
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o RulesetRuleActionParametersPtrOutput) Phases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
 		if v == nil {
@@ -38942,6 +38987,8 @@ type TeamsRuleRuleSettings struct {
 	OverrideIps []string `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog *TeamsRuleRuleSettingsPayloadLog `pulumi:"payloadLog"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+	ResolveDnsInternally *TeamsRuleRuleSettingsResolveDnsInternally `pulumi:"resolveDnsInternally"`
 	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
 	ResolveDnsThroughCloudflare *bool `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
@@ -38996,6 +39043,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog TeamsRuleRuleSettingsPayloadLogPtrInput `pulumi:"payloadLog"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+	ResolveDnsInternally TeamsRuleRuleSettingsResolveDnsInternallyPtrInput `pulumi:"resolveDnsInternally"`
 	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
 	ResolveDnsThroughCloudflare pulumi.BoolPtrInput `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
@@ -39169,6 +39218,13 @@ func (o TeamsRuleRuleSettingsOutput) OverrideIps() pulumi.StringArrayOutput {
 // Configure DLP Payload Logging settings for this rule.
 func (o TeamsRuleRuleSettingsOutput) PayloadLog() TeamsRuleRuleSettingsPayloadLogPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsPayloadLog { return v.PayloadLog }).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+func (o TeamsRuleRuleSettingsOutput) ResolveDnsInternally() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsResolveDnsInternally {
+		return v.ResolveDnsInternally
+	}).(TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput)
 }
 
 // Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
@@ -39383,6 +39439,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) PayloadLog() TeamsRuleRuleSettingsPayloa
 		}
 		return v.PayloadLog
 	}).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+func (o TeamsRuleRuleSettingsPtrOutput) ResolveDnsInternally() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsResolveDnsInternally {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveDnsInternally
+	}).(TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput)
 }
 
 // Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
@@ -40975,6 +41041,162 @@ func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Enabled() pulumi.BoolPtrOutput
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsResolveDnsInternally struct {
+	// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+	Fallback *string `pulumi:"fallback"`
+	// The internal DNS view identifier that's passed to the internal DNS service.
+	ViewId *string `pulumi:"viewId"`
+}
+
+// TeamsRuleRuleSettingsResolveDnsInternallyInput is an input type that accepts TeamsRuleRuleSettingsResolveDnsInternallyArgs and TeamsRuleRuleSettingsResolveDnsInternallyOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsResolveDnsInternallyInput` via:
+//
+//	TeamsRuleRuleSettingsResolveDnsInternallyArgs{...}
+type TeamsRuleRuleSettingsResolveDnsInternallyInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsResolveDnsInternallyOutput() TeamsRuleRuleSettingsResolveDnsInternallyOutput
+	ToTeamsRuleRuleSettingsResolveDnsInternallyOutputWithContext(context.Context) TeamsRuleRuleSettingsResolveDnsInternallyOutput
+}
+
+type TeamsRuleRuleSettingsResolveDnsInternallyArgs struct {
+	// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+	Fallback pulumi.StringPtrInput `pulumi:"fallback"`
+	// The internal DNS view identifier that's passed to the internal DNS service.
+	ViewId pulumi.StringPtrInput `pulumi:"viewId"`
+}
+
+func (TeamsRuleRuleSettingsResolveDnsInternallyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsResolveDnsInternallyArgs) ToTeamsRuleRuleSettingsResolveDnsInternallyOutput() TeamsRuleRuleSettingsResolveDnsInternallyOutput {
+	return i.ToTeamsRuleRuleSettingsResolveDnsInternallyOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsResolveDnsInternallyArgs) ToTeamsRuleRuleSettingsResolveDnsInternallyOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsResolveDnsInternallyOutput)
+}
+
+func (i TeamsRuleRuleSettingsResolveDnsInternallyArgs) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutput() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return i.ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsResolveDnsInternallyArgs) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsResolveDnsInternallyOutput).ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsResolveDnsInternallyPtrInput is an input type that accepts TeamsRuleRuleSettingsResolveDnsInternallyArgs, TeamsRuleRuleSettingsResolveDnsInternallyPtr and TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsResolveDnsInternallyPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsResolveDnsInternallyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsResolveDnsInternallyPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutput() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput
+	ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput
+}
+
+type teamsRuleRuleSettingsResolveDnsInternallyPtrType TeamsRuleRuleSettingsResolveDnsInternallyArgs
+
+func TeamsRuleRuleSettingsResolveDnsInternallyPtr(v *TeamsRuleRuleSettingsResolveDnsInternallyArgs) TeamsRuleRuleSettingsResolveDnsInternallyPtrInput {
+	return (*teamsRuleRuleSettingsResolveDnsInternallyPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsResolveDnsInternallyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsResolveDnsInternallyPtrType) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutput() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return i.ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsResolveDnsInternallyPtrType) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+type TeamsRuleRuleSettingsResolveDnsInternallyOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsResolveDnsInternallyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyOutput() TeamsRuleRuleSettingsResolveDnsInternallyOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutput() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsResolveDnsInternally) *TeamsRuleRuleSettingsResolveDnsInternally {
+		return &v
+	}).(TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) Fallback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsResolveDnsInternally) *string { return v.Fallback }).(pulumi.StringPtrOutput)
+}
+
+// The internal DNS view identifier that's passed to the internal DNS service.
+func (o TeamsRuleRuleSettingsResolveDnsInternallyOutput) ViewId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsResolveDnsInternally) *string { return v.ViewId }).(pulumi.StringPtrOutput)
+}
+
+type TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutput() TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) ToTeamsRuleRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) Elem() TeamsRuleRuleSettingsResolveDnsInternallyOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsResolveDnsInternally) TeamsRuleRuleSettingsResolveDnsInternally {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsResolveDnsInternally
+		return ret
+	}).(TeamsRuleRuleSettingsResolveDnsInternallyOutput)
+}
+
+// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+func (o TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) Fallback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsResolveDnsInternally) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fallback
+	}).(pulumi.StringPtrOutput)
+}
+
+// The internal DNS view identifier that's passed to the internal DNS service.
+func (o TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput) ViewId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsResolveDnsInternally) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ViewId
+	}).(pulumi.StringPtrOutput)
 }
 
 type TeamsRuleRuleSettingsUntrustedCert struct {
@@ -45946,10 +46168,20 @@ func (o ZeroTrustAccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput
 }
 
 type ZeroTrustAccessApplicationDestination struct {
+	// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+	Cidr *string `pulumi:"cidr"`
+	// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+	Hostname *string `pulumi:"hostname"`
+	// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	L4Protocol *string `pulumi:"l4Protocol"`
+	// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+	PortRange *string `pulumi:"portRange"`
 	// The destination type. Available values: `public`, `private`. Defaults to `public`.
 	Type *string `pulumi:"type"`
-	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-	Uri string `pulumi:"uri"`
+	// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+	Uri *string `pulumi:"uri"`
+	// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	VnetId *string `pulumi:"vnetId"`
 }
 
 // ZeroTrustAccessApplicationDestinationInput is an input type that accepts ZeroTrustAccessApplicationDestinationArgs and ZeroTrustAccessApplicationDestinationOutput values.
@@ -45964,10 +46196,20 @@ type ZeroTrustAccessApplicationDestinationInput interface {
 }
 
 type ZeroTrustAccessApplicationDestinationArgs struct {
+	// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	L4Protocol pulumi.StringPtrInput `pulumi:"l4Protocol"`
+	// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
 	// The destination type. Available values: `public`, `private`. Defaults to `public`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-	Uri pulumi.StringInput `pulumi:"uri"`
+	// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
 }
 
 func (ZeroTrustAccessApplicationDestinationArgs) ElementType() reflect.Type {
@@ -46021,14 +46263,39 @@ func (o ZeroTrustAccessApplicationDestinationOutput) ToZeroTrustAccessApplicatio
 	return o
 }
 
+// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+func (o ZeroTrustAccessApplicationDestinationOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+func (o ZeroTrustAccessApplicationDestinationOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+func (o ZeroTrustAccessApplicationDestinationOutput) L4Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.L4Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+func (o ZeroTrustAccessApplicationDestinationOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
 // The destination type. Available values: `public`, `private`. Defaults to `public`.
 func (o ZeroTrustAccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
-func (o ZeroTrustAccessApplicationDestinationOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) string { return v.Uri }).(pulumi.StringOutput)
+// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+func (o ZeroTrustAccessApplicationDestinationOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+func (o ZeroTrustAccessApplicationDestinationOutput) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessApplicationDestination) *string { return v.VnetId }).(pulumi.StringPtrOutput)
 }
 
 type ZeroTrustAccessApplicationDestinationArrayOutput struct{ *pulumi.OutputState }
@@ -59136,6 +59403,8 @@ type ZeroTrustGatewayPolicyRuleSettings struct {
 	OverrideIps []string `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog *ZeroTrustGatewayPolicyRuleSettingsPayloadLog `pulumi:"payloadLog"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+	ResolveDnsInternally *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally `pulumi:"resolveDnsInternally"`
 	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
 	ResolveDnsThroughCloudflare *bool `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
@@ -59190,6 +59459,8 @@ type ZeroTrustGatewayPolicyRuleSettingsArgs struct {
 	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrInput `pulumi:"payloadLog"`
+	// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+	ResolveDnsInternally ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput `pulumi:"resolveDnsInternally"`
 	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
 	ResolveDnsThroughCloudflare pulumi.BoolPtrInput `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
@@ -59375,6 +59646,13 @@ func (o ZeroTrustGatewayPolicyRuleSettingsOutput) PayloadLog() ZeroTrustGatewayP
 	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
 		return v.PayloadLog
 	}).(ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+func (o ZeroTrustGatewayPolicyRuleSettingsOutput) ResolveDnsInternally() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		return v.ResolveDnsInternally
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
 }
 
 // Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
@@ -59591,6 +59869,16 @@ func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) PayloadLog() ZeroTrustGatew
 		}
 		return v.PayloadLog
 	}).(ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+func (o ZeroTrustGatewayPolicyRuleSettingsPtrOutput) ResolveDnsInternally() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettings) *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveDnsInternally
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
 }
 
 // Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
@@ -61189,6 +61477,162 @@ func (o ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput) Enabled() pulumi.
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally struct {
+	// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+	Fallback *string `pulumi:"fallback"`
+	// The internal DNS view identifier that's passed to the internal DNS service.
+	ViewId *string `pulumi:"viewId"`
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs and ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyInput` via:
+//
+//	ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs{...}
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput
+	ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs struct {
+	// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+	Fallback pulumi.StringPtrInput `pulumi:"fallback"`
+	// The internal DNS view identifier that's passed to the internal DNS service.
+	ViewId pulumi.StringPtrInput `pulumi:"viewId"`
+}
+
+func (ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput)
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput).ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput is an input type that accepts ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs, ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtr and ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput` via:
+//
+//	        ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput
+	ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput
+}
+
+type zeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrType ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs
+
+func ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtr(v *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput {
+	return (*zeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrType)(v)
+}
+
+func (*zeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrType) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return i.ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrType) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		return &v
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput)
+}
+
+// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) Fallback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) *string { return v.Fallback }).(pulumi.StringPtrOutput)
+}
+
+// The internal DNS view identifier that's passed to the internal DNS service.
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput) ViewId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) *string { return v.ViewId }).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) ToZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutputWithContext(ctx context.Context) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) Elem() ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally
+		return ret
+	}).(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput)
+}
+
+// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) Fallback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fallback
+	}).(pulumi.StringPtrOutput)
+}
+
+// The internal DNS view identifier that's passed to the internal DNS service.
+func (o ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput) ViewId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ViewId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZeroTrustGatewayPolicyRuleSettingsUntrustedCert struct {
@@ -72642,7 +73086,7 @@ type GetRulesetsFilter struct {
 	Kind *string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name *string `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase *string `pulumi:"phase"`
 	// Version of the ruleset to filter on.
 	Version *string `pulumi:"version"`
@@ -72666,7 +73110,7 @@ type GetRulesetsFilterArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the ruleset.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Version of the ruleset to filter on.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -72764,7 +73208,7 @@ func (o GetRulesetsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o GetRulesetsFilterOutput) Phase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Phase }).(pulumi.StringPtrOutput)
 }
@@ -72828,7 +73272,7 @@ func (o GetRulesetsFilterPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o GetRulesetsFilterPtrOutput) Phase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRulesetsFilter) *string {
 		if v == nil {
@@ -72857,7 +73301,7 @@ type GetRulesetsRuleset struct {
 	Kind string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name string `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+	// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 	Phase string `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules []GetRulesetsRulesetRule `pulumi:"rules"`
@@ -72885,7 +73329,7 @@ type GetRulesetsRulesetArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Name of the ruleset.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+	// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 	Phase pulumi.StringInput `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules GetRulesetsRulesetRuleArrayInput `pulumi:"rules"`
@@ -72964,7 +73408,7 @@ func (o GetRulesetsRulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetsRuleset) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+// Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 func (o GetRulesetsRulesetOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetsRuleset) string { return v.Phase }).(pulumi.StringOutput)
 }
@@ -73257,7 +73701,7 @@ type GetRulesetsRulesetRuleActionParameters struct {
 	OriginErrorPagePassthru *bool `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
 	Overrides *GetRulesetsRulesetRuleActionParametersOverrides `pulumi:"overrides"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 	Phases []string `pulumi:"phases"`
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish *string `pulumi:"polish"`
@@ -73372,7 +73816,7 @@ type GetRulesetsRulesetRuleActionParametersArgs struct {
 	OriginErrorPagePassthru pulumi.BoolPtrInput `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
 	Overrides GetRulesetsRulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 	Phases pulumi.StringArrayInput `pulumi:"phases"`
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish pulumi.StringPtrInput `pulumi:"polish"`
@@ -73664,7 +74108,7 @@ func (o GetRulesetsRulesetRuleActionParametersOutput) Overrides() GetRulesetsRul
 	}).(GetRulesetsRulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 func (o GetRulesetsRulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
 }
@@ -74100,7 +74544,7 @@ func (o GetRulesetsRulesetRuleActionParametersPtrOutput) Overrides() GetRulesets
 	}).(GetRulesetsRulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
 func (o GetRulesetsRulesetRuleActionParametersPtrOutput) Phases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) []string {
 		if v == nil {
@@ -80501,6 +80945,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsNotificationSettingsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsResolveDnsInternallyInput)(nil)).Elem(), TeamsRuleRuleSettingsResolveDnsInternallyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsResolveDnsInternallyPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsResolveDnsInternallyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCertInput)(nil)).Elem(), TeamsRuleRuleSettingsUntrustedCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCertPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsUntrustedCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigInput)(nil)).Elem(), TunnelConfigConfigArgs{})
@@ -80775,6 +81221,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsPayloadLogInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsUntrustedCertInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrInput)(nil)).Elem(), ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsAntivirusInput)(nil)).Elem(), ZeroTrustGatewaySettingsAntivirusArgs{})
@@ -81484,6 +81932,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsResolveDnsInternallyOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsResolveDnsInternallyPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsUntrustedCertOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsUntrustedCertPtrOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOutput{})
@@ -81758,6 +82208,8 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsPayloadLogOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsPayloadLogPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsAntivirusOutput{})

@@ -25,10 +25,10 @@ class ApiShieldOperationArgs:
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ApiShieldOperation resource.
-        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] method: The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        :param pulumi.Input[str] host: RFC3986-compliant host
+        :param pulumi.Input[str] method: The HTTP method used to access the endpoint
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "host", host)
@@ -39,7 +39,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
         """
         return pulumi.get(self, "endpoint")
 
@@ -51,7 +51,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+        RFC3986-compliant host
         """
         return pulumi.get(self, "host")
 
@@ -63,7 +63,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
         """
-        The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+        The HTTP method used to access the endpoint
         """
         return pulumi.get(self, "method")
 
@@ -75,7 +75,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -93,10 +93,10 @@ class _ApiShieldOperationState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperation resources.
-        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] method: The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        :param pulumi.Input[str] host: RFC3986-compliant host
+        :param pulumi.Input[str] method: The HTTP method used to access the endpoint
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -111,7 +111,7 @@ class _ApiShieldOperationState:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
         """
         return pulumi.get(self, "endpoint")
 
@@ -123,7 +123,7 @@ class _ApiShieldOperationState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+        RFC3986-compliant host
         """
         return pulumi.get(self, "host")
 
@@ -135,7 +135,7 @@ class _ApiShieldOperationState:
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+        The HTTP method used to access the endpoint
         """
         return pulumi.get(self, "method")
 
@@ -147,7 +147,7 @@ class _ApiShieldOperationState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -167,7 +167,7 @@ class ApiShieldOperation(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource to manage an operation in API Shield Endpoint Management.
+        Api shield operation
 
         ## Example Usage
 
@@ -184,10 +184,10 @@ class ApiShieldOperation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] method: The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        :param pulumi.Input[str] host: RFC3986-compliant host
+        :param pulumi.Input[str] method: The HTTP method used to access the endpoint
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -196,7 +196,7 @@ class ApiShieldOperation(pulumi.CustomResource):
                  args: ApiShieldOperationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to manage an operation in API Shield Endpoint Management.
+        Api shield operation
 
         ## Example Usage
 
@@ -272,10 +272,10 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] host: RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] method: The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        :param pulumi.Input[str] host: RFC3986-compliant host
+        :param pulumi.Input[str] method: The HTTP method used to access the endpoint
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,7 +291,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[str]:
         """
-        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+        The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
         """
         return pulumi.get(self, "endpoint")
 
@@ -299,7 +299,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+        RFC3986-compliant host
         """
         return pulumi.get(self, "host")
 
@@ -307,7 +307,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter
     def method(self) -> pulumi.Output[str]:
         """
-        The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+        The HTTP method used to access the endpoint
         """
         return pulumi.get(self, "method")
 
@@ -315,7 +315,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

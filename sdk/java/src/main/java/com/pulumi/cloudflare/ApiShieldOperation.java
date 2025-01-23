@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage an operation in API Shield Endpoint Management.
+ * Api shield operation
  * 
  * ## Example Usage
  * 
@@ -58,56 +58,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/apiShieldOperation:ApiShieldOperation")
 public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
      * 
      */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
-     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
      * 
      */
     public Output<String> endpoint() {
         return this.endpoint;
     }
     /**
-     * RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+     * RFC3986-compliant host
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
-     * @return RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+     * @return RFC3986-compliant host
      * 
      */
     public Output<String> host() {
         return this.host;
     }
     /**
-     * The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+     * The HTTP method used to access the endpoint
      * 
      */
     @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
-     * @return The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+     * @return The HTTP method used to access the endpoint
      * 
      */
     public Output<String> method() {
         return this.method;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {

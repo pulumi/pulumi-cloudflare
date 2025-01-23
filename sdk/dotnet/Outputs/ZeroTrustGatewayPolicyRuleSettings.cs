@@ -86,6 +86,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog? PayloadLog;
         /// <summary>
+        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally? ResolveDnsInternally;
+        /// <summary>
         /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
         /// </summary>
         public readonly bool? ResolveDnsThroughCloudflare;
@@ -132,6 +136,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog? payloadLog,
 
+            Outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally? resolveDnsInternally,
+
             bool? resolveDnsThroughCloudflare,
 
             Outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert? untrustedCert)
@@ -154,6 +160,7 @@ namespace Pulumi.Cloudflare.Outputs
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;
             PayloadLog = payloadLog;
+            ResolveDnsInternally = resolveDnsInternally;
             ResolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             UntrustedCert = untrustedCert;
         }

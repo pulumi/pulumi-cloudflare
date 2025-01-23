@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,17 +12,70 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationDestination {
     /**
+     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    private @Nullable String cidr;
+    /**
+     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    private @Nullable String hostname;
+    /**
+     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    private @Nullable String l4Protocol;
+    /**
+     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    private @Nullable String portRange;
+    /**
      * @return The destination type. Available values: `public`, `private`. Defaults to `public`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      * 
      */
-    private String uri;
+    private @Nullable String uri;
+    /**
+     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    private @Nullable String vnetId;
 
     private AccessApplicationDestination() {}
+    /**
+     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<String> cidr() {
+        return Optional.ofNullable(this.cidr);
+    }
+    /**
+     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+    /**
+     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<String> l4Protocol() {
+        return Optional.ofNullable(this.l4Protocol);
+    }
+    /**
+     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<String> portRange() {
+        return Optional.ofNullable(this.portRange);
+    }
     /**
      * @return The destination type. Available values: `public`, `private`. Defaults to `public`.
      * 
@@ -32,11 +84,18 @@ public final class AccessApplicationDestination {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      * 
      */
-    public String uri() {
-        return this.uri;
+    public Optional<String> uri() {
+        return Optional.ofNullable(this.uri);
+    }
+    /**
+     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<String> vnetId() {
+        return Optional.ofNullable(this.vnetId);
     }
 
     public static Builder builder() {
@@ -48,15 +107,49 @@ public final class AccessApplicationDestination {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String cidr;
+        private @Nullable String hostname;
+        private @Nullable String l4Protocol;
+        private @Nullable String portRange;
         private @Nullable String type;
-        private String uri;
+        private @Nullable String uri;
+        private @Nullable String vnetId;
         public Builder() {}
         public Builder(AccessApplicationDestination defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cidr = defaults.cidr;
+    	      this.hostname = defaults.hostname;
+    	      this.l4Protocol = defaults.l4Protocol;
+    	      this.portRange = defaults.portRange;
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
+    	      this.vnetId = defaults.vnetId;
         }
 
+        @CustomType.Setter
+        public Builder cidr(@Nullable String cidr) {
+
+            this.cidr = cidr;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(@Nullable String hostname) {
+
+            this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder l4Protocol(@Nullable String l4Protocol) {
+
+            this.l4Protocol = l4Protocol;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder portRange(@Nullable String portRange) {
+
+            this.portRange = portRange;
+            return this;
+        }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
 
@@ -64,17 +157,26 @@ public final class AccessApplicationDestination {
             return this;
         }
         @CustomType.Setter
-        public Builder uri(String uri) {
-            if (uri == null) {
-              throw new MissingRequiredPropertyException("AccessApplicationDestination", "uri");
-            }
+        public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vnetId(@Nullable String vnetId) {
+
+            this.vnetId = vnetId;
             return this;
         }
         public AccessApplicationDestination build() {
             final var _resultValue = new AccessApplicationDestination();
+            _resultValue.cidr = cidr;
+            _resultValue.hostname = hostname;
+            _resultValue.l4Protocol = l4Protocol;
+            _resultValue.portRange = portRange;
             _resultValue.type = type;
             _resultValue.uri = uri;
+            _resultValue.vnetId = vnetId;
             return _resultValue;
         }
     }

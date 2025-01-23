@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +14,66 @@ import javax.annotation.Nullable;
 public final class AccessApplicationDestinationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccessApplicationDestinationArgs Empty = new AccessApplicationDestinationArgs();
+
+    /**
+     * The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    @Import(name="cidr")
+    private @Nullable Output<String> cidr;
+
+    /**
+     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<Output<String>> cidr() {
+        return Optional.ofNullable(this.cidr);
+    }
+
+    /**
+     * The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    @Import(name="l4Protocol")
+    private @Nullable Output<String> l4Protocol;
+
+    /**
+     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<Output<String>> l4Protocol() {
+        return Optional.ofNullable(this.l4Protocol);
+    }
+
+    /**
+     * The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    @Import(name="portRange")
+    private @Nullable Output<String> portRange;
+
+    /**
+     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<Output<String>> portRange() {
+        return Optional.ofNullable(this.portRange);
+    }
 
     /**
      * The destination type. Available values: `public`, `private`. Defaults to `public`.
@@ -32,25 +91,45 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      * 
      */
-    @Import(name="uri", required=true)
-    private Output<String> uri;
+    @Import(name="uri")
+    private @Nullable Output<String> uri;
 
     /**
-     * @return The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      * 
      */
-    public Output<String> uri() {
-        return this.uri;
+    public Optional<Output<String>> uri() {
+        return Optional.ofNullable(this.uri);
+    }
+
+    /**
+     * The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    @Import(name="vnetId")
+    private @Nullable Output<String> vnetId;
+
+    /**
+     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * 
+     */
+    public Optional<Output<String>> vnetId() {
+        return Optional.ofNullable(this.vnetId);
     }
 
     private AccessApplicationDestinationArgs() {}
 
     private AccessApplicationDestinationArgs(AccessApplicationDestinationArgs $) {
+        this.cidr = $.cidr;
+        this.hostname = $.hostname;
+        this.l4Protocol = $.l4Protocol;
+        this.portRange = $.portRange;
         this.type = $.type;
         this.uri = $.uri;
+        this.vnetId = $.vnetId;
     }
 
     public static Builder builder() {
@@ -69,6 +148,90 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
 
         public Builder(AccessApplicationDestinationArgs defaults) {
             $ = new AccessApplicationDestinationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cidr The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(@Nullable Output<String> cidr) {
+            $.cidr = cidr;
+            return this;
+        }
+
+        /**
+         * @param cidr The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(String cidr) {
+            return cidr(Output.of(cidr));
+        }
+
+        /**
+         * @param hostname The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param l4Protocol The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder l4Protocol(@Nullable Output<String> l4Protocol) {
+            $.l4Protocol = l4Protocol;
+            return this;
+        }
+
+        /**
+         * @param l4Protocol The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder l4Protocol(String l4Protocol) {
+            return l4Protocol(Output.of(l4Protocol));
+        }
+
+        /**
+         * @param portRange The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portRange(@Nullable Output<String> portRange) {
+            $.portRange = portRange;
+            return this;
+        }
+
+        /**
+         * @param portRange The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder portRange(String portRange) {
+            return portRange(Output.of(portRange));
         }
 
         /**
@@ -93,18 +256,18 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param uri The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+         * @param uri The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
          * 
          * @return builder
          * 
          */
-        public Builder uri(Output<String> uri) {
+        public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
         /**
-         * @param uri The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+         * @param uri The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
          * 
          * @return builder
          * 
@@ -113,10 +276,28 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
             return uri(Output.of(uri));
         }
 
+        /**
+         * @param vnetId The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vnetId(@Nullable Output<String> vnetId) {
+            $.vnetId = vnetId;
+            return this;
+        }
+
+        /**
+         * @param vnetId The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vnetId(String vnetId) {
+            return vnetId(Output.of(vnetId));
+        }
+
         public AccessApplicationDestinationArgs build() {
-            if ($.uri == null) {
-                throw new MissingRequiredPropertyException("AccessApplicationDestinationArgs", "uri");
-            }
             return $;
         }
     }

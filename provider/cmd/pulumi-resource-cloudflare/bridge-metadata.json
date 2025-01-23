@@ -2360,6 +2360,9 @@
                                 "payload_log": {
                                     "maxItemsOne": true
                                 },
+                                "resolve_dns_internally": {
+                                    "maxItemsOne": true
+                                },
                                 "untrusted_cert": {
                                     "maxItemsOne": true
                                 }
@@ -3654,6 +3657,9 @@
                                 "payload_log": {
                                     "maxItemsOne": true
                                 },
+                                "resolve_dns_internally": {
+                                    "maxItemsOne": true
+                                },
                                 "untrusted_cert": {
                                     "maxItemsOne": true
                                 }
@@ -4549,7 +4555,7 @@
             "cloudflare:index/accountMember:AccountMember": 0,
             "cloudflare:index/addressMap:AddressMap": 0,
             "cloudflare:index/apiShield:ApiShield": 0,
-            "cloudflare:index/apiShieldOperation:ApiShieldOperation": 0,
+            "cloudflare:index/apiShieldOperation:ApiShieldOperation": 1,
             "cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings": 0,
             "cloudflare:index/apiShieldSchema:ApiShieldSchema": 0,
             "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings": 0,
