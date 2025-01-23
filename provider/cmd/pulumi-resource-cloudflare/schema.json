@@ -183,19 +183,44 @@
         },
         "cloudflare:index/AccessApplicationDestination:AccessApplicationDestination": {
             "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "l4Protocol": {
+                    "type": "string",
+                    "description": "The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "portRange": {
+                    "type": "string",
+                    "description": "The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
                 "type": {
                     "type": "string",
                     "description": "The destination type. Available values: `public`, `private`. Defaults to `public`.\n"
                 },
                 "uri": {
                     "type": "string",
-                    "description": "The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.\n"
+                    "description": "The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.\n"
                 }
             },
             "type": "object",
-            "required": [
-                "uri"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "portRange"
+                    ]
+                }
+            }
         },
         "cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink": {
             "properties": {
@@ -5812,7 +5837,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "polish": {
                     "type": "string",
@@ -7180,6 +7205,10 @@
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsPayloadLog:TeamsRuleRuleSettingsPayloadLog",
                     "description": "Configure DLP Payload Logging settings for this rule.\n"
                 },
+                "resolveDnsInternally": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsResolveDnsInternally:TeamsRuleRuleSettingsResolveDnsInternally",
+                    "description": "Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.\n"
+                },
                 "resolveDnsThroughCloudflare": {
                     "type": "boolean",
                     "description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.\n"
@@ -7382,6 +7411,19 @@
             "required": [
                 "enabled"
             ]
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsResolveDnsInternally:TeamsRuleRuleSettingsResolveDnsInternally": {
+            "properties": {
+                "fallback": {
+                    "type": "string",
+                    "description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.\n"
+                },
+                "viewId": {
+                    "type": "string",
+                    "description": "The internal DNS view identifier that's passed to the internal DNS service.\n"
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/TeamsRuleRuleSettingsUntrustedCert:TeamsRuleRuleSettingsUntrustedCert": {
             "properties": {
@@ -8184,19 +8226,44 @@
         },
         "cloudflare:index/ZeroTrustAccessApplicationDestination:ZeroTrustAccessApplicationDestination": {
             "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "l4Protocol": {
+                    "type": "string",
+                    "description": "The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
+                "portRange": {
+                    "type": "string",
+                    "description": "The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.\n"
+                },
                 "type": {
                     "type": "string",
                     "description": "The destination type. Available values: `public`, `private`. Defaults to `public`.\n"
                 },
                 "uri": {
                     "type": "string",
-                    "description": "The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.\n"
+                    "description": "The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.\n"
                 }
             },
             "type": "object",
-            "required": [
-                "uri"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "portRange"
+                    ]
+                }
+            }
         },
         "cloudflare:index/ZeroTrustAccessApplicationFooterLink:ZeroTrustAccessApplicationFooterLink": {
             "properties": {
@@ -11174,6 +11241,10 @@
                     "$ref": "#/types/cloudflare:index/ZeroTrustGatewayPolicyRuleSettingsPayloadLog:ZeroTrustGatewayPolicyRuleSettingsPayloadLog",
                     "description": "Configure DLP Payload Logging settings for this rule.\n"
                 },
+                "resolveDnsInternally": {
+                    "$ref": "#/types/cloudflare:index/ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally:ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally",
+                    "description": "Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.\n"
+                },
                 "resolveDnsThroughCloudflare": {
                     "type": "boolean",
                     "description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.\n"
@@ -11376,6 +11447,19 @@
             "required": [
                 "enabled"
             ]
+        },
+        "cloudflare:index/ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally:ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally": {
+            "properties": {
+                "fallback": {
+                    "type": "string",
+                    "description": "The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.\n"
+                },
+                "viewId": {
+                    "type": "string",
+                    "description": "The internal DNS view identifier that's passed to the internal DNS service.\n"
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/ZeroTrustGatewayPolicyRuleSettingsUntrustedCert:ZeroTrustGatewayPolicyRuleSettingsUntrustedCert": {
             "properties": {
@@ -13451,7 +13535,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "version": {
                     "type": "string",
@@ -13480,7 +13564,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`\n"
+                    "description": "Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`\n"
                 },
                 "rules": {
                     "type": "array",
@@ -13710,7 +13794,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`\n"
                 },
                 "polish": {
                     "type": "string",
@@ -16872,23 +16956,23 @@
             }
         },
         "cloudflare:index/apiShieldOperation:ApiShieldOperation": {
-            "description": "Provides a resource to manage an operation in API Shield Endpoint Management.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ApiShieldOperation(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    method: \"GET\",\n    host: \"api.example.com\",\n    endpoint: \"/path\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ApiShieldOperation(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    method=\"GET\",\n    host=\"api.example.com\",\n    endpoint=\"/path\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ApiShieldOperation(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Method = \"GET\",\n        Host = \"api.example.com\",\n        Endpoint = \"/path\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldOperation(ctx, \"example\", \u0026cloudflare.ApiShieldOperationArgs{\n\t\t\tZoneId:   pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tMethod:   pulumi.String(\"GET\"),\n\t\t\tHost:     pulumi.String(\"api.example.com\"),\n\t\t\tEndpoint: pulumi.String(\"/path\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldOperation;\nimport com.pulumi.cloudflare.ApiShieldOperationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ApiShieldOperation(\"example\", ApiShieldOperationArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .method(\"GET\")\n            .host(\"api.example.com\")\n            .endpoint(\"/path\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ApiShieldOperation\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      method: GET\n      host: api.example.com\n      endpoint: /path\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Api shield operation\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ApiShieldOperation(\"example\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    method: \"GET\",\n    host: \"api.example.com\",\n    endpoint: \"/path\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ApiShieldOperation(\"example\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    method=\"GET\",\n    host=\"api.example.com\",\n    endpoint=\"/path\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ApiShieldOperation(\"example\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Method = \"GET\",\n        Host = \"api.example.com\",\n        Endpoint = \"/path\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldOperation(ctx, \"example\", \u0026cloudflare.ApiShieldOperationArgs{\n\t\t\tZoneId:   pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tMethod:   pulumi.String(\"GET\"),\n\t\t\tHost:     pulumi.String(\"api.example.com\"),\n\t\t\tEndpoint: pulumi.String(\"/path\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldOperation;\nimport com.pulumi.cloudflare.ApiShieldOperationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ApiShieldOperation(\"example\", ApiShieldOperationArgs.builder()\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .method(\"GET\")\n            .host(\"api.example.com\")\n            .endpoint(\"/path\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ApiShieldOperation\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      method: GET\n      host: api.example.com\n      endpoint: /path\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "RFC3986-compliant host\n"
                 },
                 "method": {
                     "type": "string",
-                    "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The HTTP method used to access the endpoint\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The zone identifier to target for the resource.\n"
                 }
             },
             "required": [
@@ -16900,23 +16984,19 @@
             "inputProperties": {
                 "endpoint": {
                     "type": "string",
-                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "RFC3986-compliant host\n"
                 },
                 "method": {
                     "type": "string",
-                    "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "The HTTP method used to access the endpoint\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
-                    "willReplaceOnChanges": true
+                    "description": "The zone identifier to target for the resource.\n"
                 }
             },
             "requiredInputs": [
@@ -16930,23 +17010,19 @@
                 "properties": {
                     "endpoint": {
                         "type": "string",
-                        "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)\n"
                     },
                     "host": {
                         "type": "string",
-                        "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "RFC3986-compliant host\n"
                     },
                     "method": {
                         "type": "string",
-                        "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "The HTTP method used to access the endpoint\n"
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
-                        "willReplaceOnChanges": true
+                        "description": "The zone identifier to target for the resource.\n"
                     }
                 },
                 "type": "object"
@@ -25128,7 +25204,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -25167,7 +25243,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -25207,7 +25283,7 @@
                     },
                     "phase": {
                         "type": "string",
-                        "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
+                        "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                     },
                     "rules": {
                         "type": "array",
