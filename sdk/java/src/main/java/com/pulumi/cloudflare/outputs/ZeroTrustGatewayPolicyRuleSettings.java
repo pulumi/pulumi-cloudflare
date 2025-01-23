@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -113,6 +114,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
+    /**
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * 
+     */
+    private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
     /**
      * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
      * 
@@ -252,6 +258,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.payloadLog);
     }
     /**
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * 
+     */
+    public Optional<ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally> resolveDnsInternally() {
+        return Optional.ofNullable(this.resolveDnsInternally);
+    }
+    /**
      * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
      * 
      */
@@ -293,6 +306,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
+        private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
         private @Nullable Boolean resolveDnsThroughCloudflare;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
         public Builder() {}
@@ -316,6 +330,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
     	      this.payloadLog = defaults.payloadLog;
+    	      this.resolveDnsInternally = defaults.resolveDnsInternally;
     	      this.resolveDnsThroughCloudflare = defaults.resolveDnsThroughCloudflare;
     	      this.untrustedCert = defaults.untrustedCert;
         }
@@ -432,6 +447,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder resolveDnsInternally(@Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally) {
+
+            this.resolveDnsInternally = resolveDnsInternally;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resolveDnsThroughCloudflare(@Nullable Boolean resolveDnsThroughCloudflare) {
 
             this.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
@@ -463,6 +484,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.overrideHost = overrideHost;
             _resultValue.overrideIps = overrideIps;
             _resultValue.payloadLog = payloadLog;
+            _resultValue.resolveDnsInternally = resolveDnsInternally;
             _resultValue.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             _resultValue.untrustedCert = untrustedCert;
             return _resultValue;

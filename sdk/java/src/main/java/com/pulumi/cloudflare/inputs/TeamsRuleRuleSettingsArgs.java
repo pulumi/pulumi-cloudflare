@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsResolveDnsInternallyArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsUntrustedCertArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -298,6 +299,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * 
+     */
+    @Import(name="resolveDnsInternally")
+    private @Nullable Output<TeamsRuleRuleSettingsResolveDnsInternallyArgs> resolveDnsInternally;
+
+    /**
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsResolveDnsInternallyArgs>> resolveDnsInternally() {
+        return Optional.ofNullable(this.resolveDnsInternally);
+    }
+
+    /**
      * Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
      * 
      */
@@ -348,6 +364,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
         this.payloadLog = $.payloadLog;
+        this.resolveDnsInternally = $.resolveDnsInternally;
         this.resolveDnsThroughCloudflare = $.resolveDnsThroughCloudflare;
         this.untrustedCert = $.untrustedCert;
     }
@@ -756,6 +773,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder payloadLog(TeamsRuleRuleSettingsPayloadLogArgs payloadLog) {
             return payloadLog(Output.of(payloadLog));
+        }
+
+        /**
+         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveDnsInternally(@Nullable Output<TeamsRuleRuleSettingsResolveDnsInternallyArgs> resolveDnsInternally) {
+            $.resolveDnsInternally = resolveDnsInternally;
+            return this;
+        }
+
+        /**
+         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveDnsInternally(TeamsRuleRuleSettingsResolveDnsInternallyArgs resolveDnsInternally) {
+            return resolveDnsInternally(Output.of(resolveDnsInternally));
         }
 
         /**

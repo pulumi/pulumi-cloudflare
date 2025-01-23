@@ -268,6 +268,7 @@ __all__ = [
     'TeamsRuleRuleSettingsL4override',
     'TeamsRuleRuleSettingsNotificationSettings',
     'TeamsRuleRuleSettingsPayloadLog',
+    'TeamsRuleRuleSettingsResolveDnsInternally',
     'TeamsRuleRuleSettingsUntrustedCert',
     'TunnelConfigConfig',
     'TunnelConfigConfigIngressRule',
@@ -406,6 +407,7 @@ __all__ = [
     'ZeroTrustGatewayPolicyRuleSettingsL4override',
     'ZeroTrustGatewayPolicyRuleSettingsNotificationSettings',
     'ZeroTrustGatewayPolicyRuleSettingsPayloadLog',
+    'ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally',
     'ZeroTrustGatewayPolicyRuleSettingsUntrustedCert',
     'ZeroTrustGatewaySettingsAntivirus',
     'ZeroTrustGatewaySettingsAntivirusNotificationSettings',
@@ -649,24 +651,90 @@ class AccessApplicationCorsHeader(dict):
 
 @pulumi.output_type
 class AccessApplicationDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "l4Protocol":
+            suggest = "l4_protocol"
+        elif key == "portRange":
+            suggest = "port_range"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 uri: str,
-                 type: Optional[str] = None):
+                 cidr: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 l4_protocol: Optional[str] = None,
+                 port_range: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uri: Optional[str] = None,
+                 vnet_id: Optional[str] = None):
         """
-        :param str uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param str cidr: The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+        :param str hostname: The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        :param str l4_protocol: The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        :param str port_range: The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
         :param str type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        :param str uri: The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        :param str vnet_id: The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
         """
-        pulumi.set(__self__, "uri", uri)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if l4_protocol is not None:
+            pulumi.set(__self__, "l4_protocol", l4_protocol)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
 
     @property
     @pulumi.getter
-    def uri(self) -> str:
+    def cidr(self) -> Optional[str]:
         """
-        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
         """
-        return pulumi.get(self, "uri")
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="l4Protocol")
+    def l4_protocol(self) -> Optional[str]:
+        """
+        The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "l4_protocol")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[str]:
+        """
+        The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "port_range")
 
     @property
     @pulumi.getter
@@ -675,6 +743,22 @@ class AccessApplicationDestination(dict):
         The destination type. Available values: `public`, `private`. Defaults to `public`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "vnet_id")
 
 
 @pulumi.output_type
@@ -14514,7 +14598,7 @@ class RulesetRuleActionParameters(dict):
         :param bool origin_cache_control: Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
         :param bool origin_error_page_passthru: Pass-through error page for origin.
         :param 'RulesetRuleActionParametersOverridesArgs' overrides: List of override configurations to apply to the ruleset.
-        :param Sequence[str] phases: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        :param Sequence[str] phases: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         :param str polish: Apply options from the Polish feature of the Cloudflare Speed app.
         :param Sequence[str] products: Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
         :param int read_timeout: Specifies a maximum timeout for reading content from an origin server.
@@ -14907,7 +14991,7 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter
     def phases(self) -> Optional[Sequence[str]]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         """
         return pulumi.get(self, "phases")
 
@@ -18044,6 +18128,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "override_ips"
         elif key == "payloadLog":
             suggest = "payload_log"
+        elif key == "resolveDnsInternally":
+            suggest = "resolve_dns_internally"
         elif key == "resolveDnsThroughCloudflare":
             suggest = "resolve_dns_through_cloudflare"
         elif key == "untrustedCert":
@@ -18079,6 +18165,7 @@ class TeamsRuleRuleSettings(dict):
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None,
                  payload_log: Optional['outputs.TeamsRuleRuleSettingsPayloadLog'] = None,
+                 resolve_dns_internally: Optional['outputs.TeamsRuleRuleSettingsResolveDnsInternally'] = None,
                  resolve_dns_through_cloudflare: Optional[bool] = None,
                  untrusted_cert: Optional['outputs.TeamsRuleRuleSettingsUntrustedCert'] = None):
         """
@@ -18100,6 +18187,7 @@ class TeamsRuleRuleSettings(dict):
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
         :param 'TeamsRuleRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
+        :param 'TeamsRuleRuleSettingsResolveDnsInternallyArgs' resolve_dns_internally: Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         :param bool resolve_dns_through_cloudflare: Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
         :param 'TeamsRuleRuleSettingsUntrustedCertArgs' untrusted_cert: Configure untrusted certificate settings for this rule.
         """
@@ -18139,6 +18227,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "override_ips", override_ips)
         if payload_log is not None:
             pulumi.set(__self__, "payload_log", payload_log)
+        if resolve_dns_internally is not None:
+            pulumi.set(__self__, "resolve_dns_internally", resolve_dns_internally)
         if resolve_dns_through_cloudflare is not None:
             pulumi.set(__self__, "resolve_dns_through_cloudflare", resolve_dns_through_cloudflare)
         if untrusted_cert is not None:
@@ -18287,6 +18377,14 @@ class TeamsRuleRuleSettings(dict):
         Configure DLP Payload Logging settings for this rule.
         """
         return pulumi.get(self, "payload_log")
+
+    @property
+    @pulumi.getter(name="resolveDnsInternally")
+    def resolve_dns_internally(self) -> Optional['outputs.TeamsRuleRuleSettingsResolveDnsInternally']:
+        """
+        Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        return pulumi.get(self, "resolve_dns_internally")
 
     @property
     @pulumi.getter(name="resolveDnsThroughCloudflare")
@@ -18815,6 +18913,54 @@ class TeamsRuleRuleSettingsPayloadLog(dict):
         Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsResolveDnsInternally(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "viewId":
+            suggest = "view_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsResolveDnsInternally. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsResolveDnsInternally.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsResolveDnsInternally.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fallback: Optional[str] = None,
+                 view_id: Optional[str] = None):
+        """
+        :param str fallback: The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        :param str view_id: The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if view_id is not None:
+            pulumi.set(__self__, "view_id", view_id)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[str]:
+        """
+        The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        """
+        return pulumi.get(self, "fallback")
+
+    @property
+    @pulumi.getter(name="viewId")
+    def view_id(self) -> Optional[str]:
+        """
+        The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        return pulumi.get(self, "view_id")
 
 
 @pulumi.output_type
@@ -20749,24 +20895,90 @@ class ZeroTrustAccessApplicationCorsHeader(dict):
 
 @pulumi.output_type
 class ZeroTrustAccessApplicationDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "l4Protocol":
+            suggest = "l4_protocol"
+        elif key == "portRange":
+            suggest = "port_range"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessApplicationDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustAccessApplicationDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustAccessApplicationDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 uri: str,
-                 type: Optional[str] = None):
+                 cidr: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 l4_protocol: Optional[str] = None,
+                 port_range: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uri: Optional[str] = None,
+                 vnet_id: Optional[str] = None):
         """
-        :param str uri: The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        :param str cidr: The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+        :param str hostname: The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        :param str l4_protocol: The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        :param str port_range: The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
         :param str type: The destination type. Available values: `public`, `private`. Defaults to `public`.
+        :param str uri: The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        :param str vnet_id: The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
         """
-        pulumi.set(__self__, "uri", uri)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if l4_protocol is not None:
+            pulumi.set(__self__, "l4_protocol", l4_protocol)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
 
     @property
     @pulumi.getter
-    def uri(self) -> str:
+    def cidr(self) -> Optional[str]:
         """
-        The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+        The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
         """
-        return pulumi.get(self, "uri")
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="l4Protocol")
+    def l4_protocol(self) -> Optional[str]:
+        """
+        The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "l4_protocol")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[str]:
+        """
+        The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "port_range")
 
     @property
     @pulumi.getter
@@ -20775,6 +20987,22 @@ class ZeroTrustAccessApplicationDestination(dict):
         The destination type. Available values: `public`, `private`. Defaults to `public`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        """
+        return pulumi.get(self, "vnet_id")
 
 
 @pulumi.output_type
@@ -28143,6 +28371,8 @@ class ZeroTrustGatewayPolicyRuleSettings(dict):
             suggest = "override_ips"
         elif key == "payloadLog":
             suggest = "payload_log"
+        elif key == "resolveDnsInternally":
+            suggest = "resolve_dns_internally"
         elif key == "resolveDnsThroughCloudflare":
             suggest = "resolve_dns_through_cloudflare"
         elif key == "untrustedCert":
@@ -28178,6 +28408,7 @@ class ZeroTrustGatewayPolicyRuleSettings(dict):
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None,
                  payload_log: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog'] = None,
+                 resolve_dns_internally: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally'] = None,
                  resolve_dns_through_cloudflare: Optional[bool] = None,
                  untrusted_cert: Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert'] = None):
         """
@@ -28199,6 +28430,7 @@ class ZeroTrustGatewayPolicyRuleSettings(dict):
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
         :param 'ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
+        :param 'ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs' resolve_dns_internally: Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         :param bool resolve_dns_through_cloudflare: Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
         :param 'ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs' untrusted_cert: Configure untrusted certificate settings for this rule.
         """
@@ -28238,6 +28470,8 @@ class ZeroTrustGatewayPolicyRuleSettings(dict):
             pulumi.set(__self__, "override_ips", override_ips)
         if payload_log is not None:
             pulumi.set(__self__, "payload_log", payload_log)
+        if resolve_dns_internally is not None:
+            pulumi.set(__self__, "resolve_dns_internally", resolve_dns_internally)
         if resolve_dns_through_cloudflare is not None:
             pulumi.set(__self__, "resolve_dns_through_cloudflare", resolve_dns_through_cloudflare)
         if untrusted_cert is not None:
@@ -28386,6 +28620,14 @@ class ZeroTrustGatewayPolicyRuleSettings(dict):
         Configure DLP Payload Logging settings for this rule.
         """
         return pulumi.get(self, "payload_log")
+
+    @property
+    @pulumi.getter(name="resolveDnsInternally")
+    def resolve_dns_internally(self) -> Optional['outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally']:
+        """
+        Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        """
+        return pulumi.get(self, "resolve_dns_internally")
 
     @property
     @pulumi.getter(name="resolveDnsThroughCloudflare")
@@ -28914,6 +29156,54 @@ class ZeroTrustGatewayPolicyRuleSettingsPayloadLog(dict):
         Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "viewId":
+            suggest = "view_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fallback: Optional[str] = None,
+                 view_id: Optional[str] = None):
+        """
+        :param str fallback: The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        :param str view_id: The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if view_id is not None:
+            pulumi.set(__self__, "view_id", view_id)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[str]:
+        """
+        The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        """
+        return pulumi.get(self, "fallback")
+
+    @property
+    @pulumi.getter(name="viewId")
+    def view_id(self) -> Optional[str]:
+        """
+        The internal DNS view identifier that's passed to the internal DNS service.
+        """
+        return pulumi.get(self, "view_id")
 
 
 @pulumi.output_type
@@ -33792,7 +34082,7 @@ class GetRulesetsFilterResult(dict):
         :param str id: The ID of the Ruleset to target.
         :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param str name: Name of the ruleset.
-        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         :param str version: Version of the ruleset to filter on.
         """
         if id is not None:
@@ -33834,7 +34124,7 @@ class GetRulesetsFilterResult(dict):
     @pulumi.getter
     def phase(self) -> Optional[str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         """
         return pulumi.get(self, "phase")
 
@@ -33861,7 +34151,7 @@ class GetRulesetsRulesetResult(dict):
         :param str id: ID of the ruleset.
         :param str kind: Type of Ruleset. Available values: `custom`, `managed`, `root`, `zone`
         :param str name: Name of the ruleset.
-        :param str phase: Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+        :param str phase: Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
         :param str version: Version of the ruleset.
         :param str description: Brief summary of the ruleset and its intended use.
         :param Sequence['GetRulesetsRulesetRuleArgs'] rules: List of rules to apply to the ruleset.
@@ -33904,7 +34194,7 @@ class GetRulesetsRulesetResult(dict):
     @pulumi.getter
     def phase(self) -> str:
         """
-        Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+        Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
         """
         return pulumi.get(self, "phase")
 
@@ -34165,7 +34455,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
         :param bool origin_cache_control: Sets a more compliant mode for parsing Cache Control headers
         :param bool origin_error_page_passthru: Pass-through error page for origin.
         :param 'GetRulesetsRulesetRuleActionParametersOverridesArgs' overrides: List of override configurations to apply to the ruleset.
-        :param Sequence[str] phases: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+        :param Sequence[str] phases: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
         :param str polish: Apply options from the Polish feature of the Cloudflare Speed app.
         :param Sequence[str] products: Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`
         :param int read_timeout: Sets the timeout value for reading content from an origin server.
@@ -34537,7 +34827,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
     @pulumi.getter
     def phases(self) -> Optional[Sequence[str]]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
         """
         return pulumi.get(self, "phases")
 

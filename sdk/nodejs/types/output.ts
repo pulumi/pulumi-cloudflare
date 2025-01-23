@@ -42,13 +42,33 @@ export interface AccessApplicationCorsHeader {
 
 export interface AccessApplicationDestination {
     /**
+     * The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    cidr: string;
+    /**
+     * The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     */
+    hostname?: string;
+    /**
+     * The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    l4Protocol?: string;
+    /**
+     * The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    portRange: string;
+    /**
      * The destination type. Available values: `public`, `private`. Defaults to `public`.
      */
     type?: string;
     /**
-     * The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      */
-    uri: string;
+    uri?: string;
+    /**
+     * The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    vnetId?: string;
 }
 
 export interface AccessApplicationFooterLink {
@@ -2621,7 +2641,7 @@ export interface GetRulesetsFilter {
      */
     name?: string;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
      */
     phase?: string;
     /**
@@ -2648,7 +2668,7 @@ export interface GetRulesetsRuleset {
      */
     name: string;
     /**
-     * Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+     * Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
      */
     phase: string;
     /**
@@ -2831,7 +2851,7 @@ export interface GetRulesetsRulesetRuleActionParameters {
      */
     overrides?: outputs.GetRulesetsRulesetRuleActionParametersOverrides;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
      */
     phases?: string[];
     /**
@@ -5107,7 +5127,7 @@ export interface RulesetRuleActionParameters {
      */
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
      */
     phases?: string[];
     /**
@@ -6053,6 +6073,10 @@ export interface TeamsRuleRuleSettings {
      */
     payloadLog?: outputs.TeamsRuleRuleSettingsPayloadLog;
     /**
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsInternally?: outputs.TeamsRuleRuleSettingsResolveDnsInternally;
+    /**
      * Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
      */
     resolveDnsThroughCloudflare?: boolean;
@@ -6202,6 +6226,17 @@ export interface TeamsRuleRuleSettingsPayloadLog {
      * Enable or disable DLP Payload Logging for this rule.
      */
     enabled: boolean;
+}
+
+export interface TeamsRuleRuleSettingsResolveDnsInternally {
+    /**
+     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     */
+    fallback?: string;
+    /**
+     * The internal DNS view identifier that's passed to the internal DNS service.
+     */
+    viewId?: string;
 }
 
 export interface TeamsRuleRuleSettingsUntrustedCert {
@@ -6784,13 +6819,33 @@ export interface ZeroTrustAccessApplicationCorsHeader {
 
 export interface ZeroTrustAccessApplicationDestination {
     /**
+     * The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    cidr: string;
+    /**
+     * The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     */
+    hostname?: string;
+    /**
+     * The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    l4Protocol?: string;
+    /**
+     * The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    portRange: string;
+    /**
      * The destination type. Available values: `public`, `private`. Defaults to `public`.
      */
     type?: string;
     /**
-     * The URI of the destination. Public destinations can include a domain and path with wildcards. Private destinations are an early access feature and gated behind a feature flag. Private destinations support private IPv4, IPv6, and Server Name Indications (SNI) with optional port ranges.
+     * The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
      */
-    uri: string;
+    uri?: string;
+    /**
+     * The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     */
+    vnetId?: string;
 }
 
 export interface ZeroTrustAccessApplicationFooterLink {
@@ -8768,6 +8823,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     payloadLog?: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
     /**
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     */
+    resolveDnsInternally?: outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
+    /**
      * Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
      */
     resolveDnsThroughCloudflare?: boolean;
@@ -8917,6 +8976,17 @@ export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
      * Enable or disable DLP Payload Logging for this rule.
      */
     enabled: boolean;
+}
+
+export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
+    /**
+     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     */
+    fallback?: string;
+    /**
+     * The internal DNS view identifier that's passed to the internal DNS service.
+     */
+    viewId?: string;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {

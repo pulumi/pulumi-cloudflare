@@ -133,6 +133,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs>? PayloadLog { get; set; }
 
         /// <summary>
+        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        /// </summary>
+        [Input("resolveDnsInternally")]
+        public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs>? ResolveDnsInternally { get; set; }
+
+        /// <summary>
         /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
         /// </summary>
         [Input("resolveDnsThroughCloudflare")]

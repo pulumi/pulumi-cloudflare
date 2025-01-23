@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage an operation in API Shield Endpoint Management.
+ * Api shield operation
  *
  * ## Example Usage
  *
@@ -50,19 +50,19 @@ export class ApiShieldOperation extends pulumi.CustomResource {
     }
 
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
      */
     public readonly endpoint!: pulumi.Output<string>;
     /**
-     * RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+     * RFC3986-compliant host
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+     * The HTTP method used to access the endpoint
      */
     public readonly method!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -112,19 +112,19 @@ export class ApiShieldOperation extends pulumi.CustomResource {
  */
 export interface ApiShieldOperationState {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+     * RFC3986-compliant host
      */
     host?: pulumi.Input<string>;
     /**
-     * The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+     * The HTTP method used to access the endpoint
      */
     method?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -134,19 +134,19 @@ export interface ApiShieldOperationState {
  */
 export interface ApiShieldOperationArgs {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
      */
     endpoint: pulumi.Input<string>;
     /**
-     * RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**
+     * RFC3986-compliant host
      */
     host: pulumi.Input<string>;
     /**
-     * The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**
+     * The HTTP method used to access the endpoint
      */
     method: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }
