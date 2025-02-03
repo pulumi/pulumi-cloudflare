@@ -29,13 +29,9 @@ import (
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
-//go:embed bridge-metadata.json
-var bridgeMetadata []byte
-
 func main() {
 	meta := tfbridge.ProviderMetadata{
-		PackageSchema:  pulumiSchema,
-		BridgeMetadata: bridgeMetadata,
+		PackageSchema: pulumiSchema,
 	}
 	tfbridge.Main(context.Background(), "cloudflare", cloudflare.Provider(), meta)
 }
