@@ -21,5 +21,5 @@ import (
 )
 
 func main() {
-	tfgen.MainWithMuxer("cloudflare", cloudflare.Provider())
+	tfgen.Main("cloudflare", cloudflare.Provider())
 }

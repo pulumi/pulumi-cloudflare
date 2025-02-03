@@ -29,7 +29,6 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
@@ -49,12 +48,7 @@ var metadata []byte
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() info.Provider {
 	// Instantiate the Terraform provider
-	p := pfbridge.MuxShimWithPF(context.Background(),
-		shimv2.NewProvider(
-			provShim.SDKProvider(),
-		),
-		provShim.PFProvider(),
-	)
+	p := pfbridge.ShimProvider(provShim.PFProvider())
 
 	delegateID := func(pulumiField string) tfbridge.ComputeID {
 		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
@@ -63,20 +57,20 @@ func Provider() info.Provider {
 
 	// Create a Pulumi provider mapping
 	prov := info.Provider{
-		P:                p,
-		Name:             "cloudflare",
-		DisplayName:      "Cloudflare",
-		Description:      "A Pulumi package for creating and managing Cloudflare cloud resources.",
-		Keywords:         []string{"pulumi", "cloudflare"},
-		License:          "Apache-2.0",
-		Homepage:         "https://pulumi.io",
-		GitHubOrg:        "cloudflare",
-		Repository:       "https://github.com/pulumi/pulumi-cloudflare",
-		UpstreamRepoPath: "./upstream",
-		Version:          version.Version,
+		P:                       p,
+		Name:                    "cloudflare",
+		DisplayName:             "Cloudflare",
+		Description:             "A Pulumi package for creating and managing Cloudflare cloud resources.",
+		Keywords:                []string{"pulumi", "cloudflare"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://pulumi.io",
+		GitHubOrg:               "cloudflare",
+		Repository:              "https://github.com/pulumi/pulumi-cloudflare",
+		UpstreamRepoPath:        "./upstream",
+		Version:                 version.Version,
 		TFProviderModuleVersion: "v5",
-		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
-		DocRules:         &info.DocRule{EditRules: docEditRules},
+		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
+		DocRules:                &info.DocRule{EditRules: docEditRules},
 		Config: map[string]*info.Schema{
 			"rps": {
 				Default: &info.Default{
