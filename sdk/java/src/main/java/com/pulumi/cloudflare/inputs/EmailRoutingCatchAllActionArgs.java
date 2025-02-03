@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +18,25 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
     public static final EmailRoutingCatchAllActionArgs Empty = new EmailRoutingCatchAllActionArgs();
 
     /**
-     * Type of supported action. Available values: `drop`, `forward`, `worker`.
+     * Type of action for catch-all rule.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of supported action. Available values: `drop`, `forward`, `worker`.
+     * @return Type of action for catch-all rule.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
 
-    /**
-     * A list with items in the following form.
-     * 
-     */
-    @Import(name="values", required=true)
-    private Output<List<String>> values;
+    @Import(name="values")
+    private @Nullable Output<List<String>> values;
 
-    /**
-     * @return A list with items in the following form.
-     * 
-     */
-    public Output<List<String>> values() {
-        return this.values;
+    public Optional<Output<List<String>>> values() {
+        return Optional.ofNullable(this.values);
     }
 
     private EmailRoutingCatchAllActionArgs() {}
@@ -71,7 +65,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Type of supported action. Available values: `drop`, `forward`, `worker`.
+         * @param type Type of action for catch-all rule.
          * 
          * @return builder
          * 
@@ -82,7 +76,7 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Type of supported action. Available values: `drop`, `forward`, `worker`.
+         * @param type Type of action for catch-all rule.
          * 
          * @return builder
          * 
@@ -91,33 +85,15 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
             return type(Output.of(type));
         }
 
-        /**
-         * @param values A list with items in the following form.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(Output<List<String>> values) {
+        public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values A list with items in the following form.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values A list with items in the following form.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }
@@ -125,9 +101,6 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
         public EmailRoutingCatchAllActionArgs build() {
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingCatchAllActionArgs", "type");
-            }
-            if ($.values == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingCatchAllActionArgs", "values");
             }
             return $;
         }

@@ -4,7 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,29 +13,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOrigin {
     /**
-     * @return Origin Hostname where request is sent.
+     * @return Override the resolved hostname.
      * 
      */
     private @Nullable String host;
     /**
-     * @return Origin Port where request is sent.
+     * @return Override the destination port.
      * 
      */
-    private @Nullable Integer port;
+    private @Nullable Double port;
 
     private RulesetRuleActionParametersOrigin() {}
     /**
-     * @return Origin Hostname where request is sent.
+     * @return Override the resolved hostname.
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Origin Port where request is sent.
+     * @return Override the destination port.
      * 
      */
-    public Optional<Integer> port() {
+    public Optional<Double> port() {
         return Optional.ofNullable(this.port);
     }
 
@@ -49,7 +49,7 @@ public final class RulesetRuleActionParametersOrigin {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
-        private @Nullable Integer port;
+        private @Nullable Double port;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOrigin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -64,7 +64,7 @@ public final class RulesetRuleActionParametersOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable Double port) {
 
             this.port = port;
             return this;

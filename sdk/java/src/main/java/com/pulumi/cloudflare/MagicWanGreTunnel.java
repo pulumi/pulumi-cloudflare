@@ -6,6 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelState;
+import com.pulumi.cloudflare.outputs.MagicWanGreTunnelGreTunnel;
+import com.pulumi.cloudflare.outputs.MagicWanGreTunnelHealthCheck;
+import com.pulumi.cloudflare.outputs.MagicWanGreTunnelModifiedGreTunnel;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,12 +16,11 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages GRE tunnels for Magic Transit.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,18 +46,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MagicWanGreTunnel("example", MagicWanGreTunnelArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("GRE_1")
- *             .customerGreEndpoint("203.0.113.1")
- *             .cloudflareGreEndpoint("203.0.113.2")
- *             .interfaceAddress("192.0.2.0/31")
- *             .description("Tunnel for ISP X")
- *             .ttl(64)
- *             .mtu(1476)
- *             .healthCheckEnabled(true)
- *             .healthCheckTarget("203.0.113.1")
- *             .healthCheckType("reply")
+ *         var exampleMagicWanGreTunnel = new MagicWanGreTunnel("exampleMagicWanGreTunnel", MagicWanGreTunnelArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -64,154 +56,150 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")
 public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
      */
     @Export(name="cloudflareGreEndpoint", refs={String.class}, tree="[0]")
-    private Output<String> cloudflareGreEndpoint;
+    private Output</* @Nullable */ String> cloudflareGreEndpoint;
 
     /**
      * @return The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
      */
-    public Output<String> cloudflareGreEndpoint() {
-        return this.cloudflareGreEndpoint;
+    public Output<Optional<String>> cloudflareGreEndpoint() {
+        return Codegen.optional(this.cloudflareGreEndpoint);
     }
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
     @Export(name="customerGreEndpoint", refs={String.class}, tree="[0]")
-    private Output<String> customerGreEndpoint;
+    private Output</* @Nullable */ String> customerGreEndpoint;
 
     /**
      * @return The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
-    public Output<String> customerGreEndpoint() {
-        return this.customerGreEndpoint;
+    public Output<Optional<String>> customerGreEndpoint() {
+        return Codegen.optional(this.customerGreEndpoint);
     }
     /**
-     * Description of the GRE tunnel intent.
+     * An optional description of the GRE tunnel.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the GRE tunnel intent.
+     * @return An optional description of the GRE tunnel.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * Specifies if ICMP tunnel health checks are enabled.
-     * 
-     */
-    @Export(name="healthCheckEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> healthCheckEnabled;
+    @Export(name="greTunnel", refs={MagicWanGreTunnelGreTunnel.class}, tree="[0]")
+    private Output<MagicWanGreTunnelGreTunnel> greTunnel;
 
-    /**
-     * @return Specifies if ICMP tunnel health checks are enabled.
-     * 
-     */
-    public Output<Boolean> healthCheckEnabled() {
-        return this.healthCheckEnabled;
+    public Output<MagicWanGreTunnelGreTunnel> greTunnel() {
+        return this.greTunnel;
     }
     /**
-     * The IP address of the customer endpoint that will receive tunnel health checks.
+     * Identifier
      * 
      */
-    @Export(name="healthCheckTarget", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckTarget;
+    @Export(name="greTunnelId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> greTunnelId;
 
     /**
-     * @return The IP address of the customer endpoint that will receive tunnel health checks.
+     * @return Identifier
      * 
      */
-    public Output<String> healthCheckTarget() {
-        return this.healthCheckTarget;
+    public Output<Optional<String>> greTunnelId() {
+        return Codegen.optional(this.greTunnelId);
     }
-    /**
-     * Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-     * 
-     */
-    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
-    private Output<String> healthCheckType;
+    @Export(name="greTunnels", refs={List.class,MagicWanGreTunnelGreTunnel.class}, tree="[0,1]")
+    private Output<List<MagicWanGreTunnelGreTunnel>> greTunnels;
 
-    /**
-     * @return Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-     * 
-     */
-    public Output<String> healthCheckType() {
-        return this.healthCheckType;
+    public Output<List<MagicWanGreTunnelGreTunnel>> greTunnels() {
+        return this.greTunnels;
+    }
+    @Export(name="healthCheck", refs={MagicWanGreTunnelHealthCheck.class}, tree="[0]")
+    private Output<MagicWanGreTunnelHealthCheck> healthCheck;
+
+    public Output<MagicWanGreTunnelHealthCheck> healthCheck() {
+        return this.healthCheck;
     }
     /**
-     * 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+     * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
     @Export(name="interfaceAddress", refs={String.class}, tree="[0]")
-    private Output<String> interfaceAddress;
+    private Output</* @Nullable */ String> interfaceAddress;
 
     /**
-     * @return 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+     * @return A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
-    public Output<String> interfaceAddress() {
-        return this.interfaceAddress;
+    public Output<Optional<String>> interfaceAddress() {
+        return Codegen.optional(this.interfaceAddress);
+    }
+    @Export(name="modified", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> modified;
+
+    public Output<Boolean> modified() {
+        return this.modified;
+    }
+    @Export(name="modifiedGreTunnel", refs={MagicWanGreTunnelModifiedGreTunnel.class}, tree="[0]")
+    private Output<MagicWanGreTunnelModifiedGreTunnel> modifiedGreTunnel;
+
+    public Output<MagicWanGreTunnelModifiedGreTunnel> modifiedGreTunnel() {
+        return this.modifiedGreTunnel;
     }
     /**
-     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      * 
      */
     @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> mtu;
 
     /**
-     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      * 
      */
     public Output<Integer> mtu() {
         return this.mtu;
     }
     /**
-     * Name of the GRE tunnel.
+     * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
-     * @return Name of the GRE tunnel.
+     * @return The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.

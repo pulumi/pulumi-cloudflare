@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.AccountMemberPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,14 +19,14 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccountMemberArgs Empty = new AccountMemberArgs();
 
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID to create the account member in.
+     * @return Account identifier tag.
      * 
      */
     public Output<String> accountId() {
@@ -33,46 +34,53 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      * 
      */
-    @Import(name="emailAddress", required=true)
-    private Output<String> emailAddress;
+    @Import(name="email", required=true)
+    private Output<String> email;
 
     /**
-     * @return The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * @return The contact email address of the user.
      * 
      */
-    public Output<String> emailAddress() {
-        return this.emailAddress;
+    public Output<String> email() {
+        return this.email;
     }
 
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      * 
      */
-    @Import(name="roleIds", required=true)
-    private Output<List<String>> roleIds;
+    @Import(name="policies")
+    private @Nullable Output<List<AccountMemberPolicyArgs>> policies;
 
     /**
-     * @return List of account role IDs that you want to assign to a member.
+     * @return Array of policies associated with this member.
      * 
      */
-    public Output<List<String>> roleIds() {
-        return this.roleIds;
+    public Optional<Output<List<AccountMemberPolicyArgs>>> policies() {
+        return Optional.ofNullable(this.policies);
     }
 
     /**
-     * A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
      * 
      */
+    @Import(name="roles")
+    private @Nullable Output<List<String>> roles;
+
+    /**
+     * @return Array of roles associated with this member.
+     * 
+     */
+    public Optional<Output<List<String>>> roles() {
+        return Optional.ofNullable(this.roles);
+    }
+
     @Import(name="status")
     private @Nullable Output<String> status;
 
-    /**
-     * @return A member&#39;s status in the account. Available values: `accepted`, `pending`.
-     * 
-     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -81,8 +89,9 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
 
     private AccountMemberArgs(AccountMemberArgs $) {
         this.accountId = $.accountId;
-        this.emailAddress = $.emailAddress;
-        this.roleIds = $.roleIds;
+        this.email = $.email;
+        this.policies = $.policies;
+        this.roles = $.roles;
         this.status = $.status;
     }
 
@@ -105,7 +114,7 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID to create the account member in.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -116,7 +125,7 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID to create the account member in.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -126,74 +135,93 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailAddress The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
          */
-        public Builder emailAddress(Output<String> emailAddress) {
-            $.emailAddress = emailAddress;
+        public Builder email(Output<String> email) {
+            $.email = email;
             return this;
         }
 
         /**
-         * @param emailAddress The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
          */
-        public Builder emailAddress(String emailAddress) {
-            return emailAddress(Output.of(emailAddress));
+        public Builder email(String email) {
+            return email(Output.of(email));
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(Output<List<String>> roleIds) {
-            $.roleIds = roleIds;
+        public Builder policies(@Nullable Output<List<AccountMemberPolicyArgs>> policies) {
+            $.policies = policies;
             return this;
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(List<String> roleIds) {
-            return roleIds(Output.of(roleIds));
+        public Builder policies(List<AccountMemberPolicyArgs> policies) {
+            return policies(Output.of(policies));
         }
 
         /**
-         * @param roleIds List of account role IDs that you want to assign to a member.
+         * @param policies Array of policies associated with this member.
          * 
          * @return builder
          * 
          */
-        public Builder roleIds(String... roleIds) {
-            return roleIds(List.of(roleIds));
+        public Builder policies(AccountMemberPolicyArgs... policies) {
+            return policies(List.of(policies));
         }
 
         /**
-         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
+         * @param roles Array of roles associated with this member.
          * 
          * @return builder
          * 
          */
+        public Builder roles(@Nullable Output<List<String>> roles) {
+            $.roles = roles;
+            return this;
+        }
+
+        /**
+         * @param roles Array of roles associated with this member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(List<String> roles) {
+            return roles(Output.of(roles));
+        }
+
+        /**
+         * @param roles Array of roles associated with this member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roles(String... roles) {
+            return roles(List.of(roles));
+        }
+
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
@@ -202,11 +230,8 @@ public final class AccountMemberArgs extends com.pulumi.resources.ResourceArgs {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("AccountMemberArgs", "accountId");
             }
-            if ($.emailAddress == null) {
-                throw new MissingRequiredPropertyException("AccountMemberArgs", "emailAddress");
-            }
-            if ($.roleIds == null) {
-                throw new MissingRequiredPropertyException("AccountMemberArgs", "roleIds");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("AccountMemberArgs", "email");
             }
             return $;
         }

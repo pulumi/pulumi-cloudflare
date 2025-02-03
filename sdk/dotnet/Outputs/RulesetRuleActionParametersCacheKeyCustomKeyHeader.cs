@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHeader
     {
         /// <summary>
-        /// List of headers to check for presence in the custom key.
+        /// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
-        /// Dictionary of headers mapping to lists of values to check for presence in the custom key.
+        /// For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>>? Contains;
         /// <summary>
-        /// Exclude the origin header from the custom key.
+        /// Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
         /// </summary>
         public readonly bool? ExcludeOrigin;
         /// <summary>
-        /// List of headers to include in the custom key.
+        /// Include these headers' names and their values.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

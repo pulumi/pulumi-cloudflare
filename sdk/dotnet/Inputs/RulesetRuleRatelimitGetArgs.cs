@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleRatelimitGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("characteristics")]
+        [Input("characteristics", required: true)]
         private InputList<string>? _characteristics;
 
         /// <summary>
-        /// List of parameters that define how Cloudflare tracks the request rate for this rule.
+        /// Characteristics of the request on which the ratelimiter counter will be incremented.
         /// </summary>
         public InputList<string> Characteristics
         {
@@ -25,43 +25,43 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule's expression.
         /// </summary>
         [Input("countingExpression")]
         public Input<string>? CountingExpression { get; set; }
 
         /// <summary>
-        /// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+        /// Period of time in seconds after which the action will be disabled following its first execution.
         /// </summary>
         [Input("mitigationTimeout")]
         public Input<int>? MitigationTimeout { get; set; }
 
         /// <summary>
-        /// The period of time to consider (in seconds) when evaluating the request rate.
+        /// Period in seconds over which the counter is being incremented.
         /// </summary>
-        [Input("period")]
-        public Input<int>? Period { get; set; }
+        [Input("period", required: true)]
+        public Input<int> Period { get; set; } = null!;
 
         /// <summary>
-        /// The number of requests over the period of time that will trigger the Rate Limiting rule.
+        /// The threshold of requests per period after which the action will be executed for the first time.
         /// </summary>
         [Input("requestsPerPeriod")]
         public Input<int>? RequestsPerPeriod { get; set; }
 
         /// <summary>
-        /// Whether to include requests to origin within the Rate Limiting count.
+        /// Defines if ratelimit counting is only done when an origin is reached.
         /// </summary>
         [Input("requestsToOrigin")]
         public Input<bool>? RequestsToOrigin { get; set; }
 
         /// <summary>
-        /// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+        /// The score threshold per period for which the action will be executed the first time.
         /// </summary>
         [Input("scorePerPeriod")]
         public Input<int>? ScorePerPeriod { get; set; }
 
         /// <summary>
-        /// Name of HTTP header in the response, set by the origin server, with the score for the current request.
+        /// The response header name provided by the origin which should contain the score to increment ratelimit counter on.
         /// </summary>
         [Input("scoreResponseHeaderName")]
         public Input<string>? ScoreResponseHeaderName { get; set; }

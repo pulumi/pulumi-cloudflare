@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetZonesFilter;
-import com.pulumi.cloudflare.outputs.GetZonesZone;
+import com.pulumi.cloudflare.outputs.GetZonesResultAccount;
+import com.pulumi.cloudflare.outputs.GetZonesResultMeta;
+import com.pulumi.cloudflare.outputs.GetZonesResultOwner;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,42 +17,222 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesResult {
     /**
-     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+     * @return The account the zone belongs to
      * 
      */
-    private GetZonesFilter filter;
+    private GetZonesResultAccount account;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The last time proof of ownership was detected and the zone was made
+     * active
+     * 
+     */
+    private String activatedOn;
+    /**
+     * @return When the zone was created
+     * 
+     */
+    private String createdOn;
+    /**
+     * @return The interval (in seconds) from when development mode expires
+     * (positive integer) or last expired (negative integer) for the
+     * domain. If development mode has never been enabled, this value is 0.
+     * 
+     */
+    private Double developmentMode;
+    /**
+     * @return Identifier
      * 
      */
     private String id;
     /**
-     * @return A list of zone objects.
+     * @return Metadata about the zone
      * 
      */
-    private List<GetZonesZone> zones;
+    private GetZonesResultMeta meta;
+    /**
+     * @return When the zone was last modified
+     * 
+     */
+    private String modifiedOn;
+    /**
+     * @return The domain name
+     * 
+     */
+    private String name;
+    /**
+     * @return The name servers Cloudflare assigns to a zone
+     * 
+     */
+    private List<String> nameServers;
+    /**
+     * @return DNS host at the time of switching to Cloudflare
+     * 
+     */
+    private String originalDnshost;
+    /**
+     * @return Original name servers before moving to Cloudflare
+     * 
+     */
+    private List<String> originalNameServers;
+    /**
+     * @return Registrar for the domain at the time of switching to Cloudflare
+     * 
+     */
+    private String originalRegistrar;
+    /**
+     * @return The owner of the zone
+     * 
+     */
+    private GetZonesResultOwner owner;
+    /**
+     * @return Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
+     * 
+     */
+    private Boolean paused;
+    /**
+     * @return The zone status on Cloudflare.
+     * 
+     */
+    private String status;
+    /**
+     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+     * typically a partner-hosted zone or a CNAME setup.
+     * 
+     */
+    private String type;
+    /**
+     * @return An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
+     * 
+     */
+    private List<String> vanityNameServers;
 
     private GetZonesResult() {}
     /**
-     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+     * @return The account the zone belongs to
      * 
      */
-    public GetZonesFilter filter() {
-        return this.filter;
+    public GetZonesResultAccount account() {
+        return this.account;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The last time proof of ownership was detected and the zone was made
+     * active
+     * 
+     */
+    public String activatedOn() {
+        return this.activatedOn;
+    }
+    /**
+     * @return When the zone was created
+     * 
+     */
+    public String createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * @return The interval (in seconds) from when development mode expires
+     * (positive integer) or last expired (negative integer) for the
+     * domain. If development mode has never been enabled, this value is 0.
+     * 
+     */
+    public Double developmentMode() {
+        return this.developmentMode;
+    }
+    /**
+     * @return Identifier
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return A list of zone objects.
+     * @return Metadata about the zone
      * 
      */
-    public List<GetZonesZone> zones() {
-        return this.zones;
+    public GetZonesResultMeta meta() {
+        return this.meta;
+    }
+    /**
+     * @return When the zone was last modified
+     * 
+     */
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * @return The domain name
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return The name servers Cloudflare assigns to a zone
+     * 
+     */
+    public List<String> nameServers() {
+        return this.nameServers;
+    }
+    /**
+     * @return DNS host at the time of switching to Cloudflare
+     * 
+     */
+    public String originalDnshost() {
+        return this.originalDnshost;
+    }
+    /**
+     * @return Original name servers before moving to Cloudflare
+     * 
+     */
+    public List<String> originalNameServers() {
+        return this.originalNameServers;
+    }
+    /**
+     * @return Registrar for the domain at the time of switching to Cloudflare
+     * 
+     */
+    public String originalRegistrar() {
+        return this.originalRegistrar;
+    }
+    /**
+     * @return The owner of the zone
+     * 
+     */
+    public GetZonesResultOwner owner() {
+        return this.owner;
+    }
+    /**
+     * @return Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
+     * 
+     */
+    public Boolean paused() {
+        return this.paused;
+    }
+    /**
+     * @return The zone status on Cloudflare.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
+     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+     * typically a partner-hosted zone or a CNAME setup.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return An array of domains used for custom name servers. This is only available for Business and Enterprise plans.
+     * 
+     */
+    public List<String> vanityNameServers() {
+        return this.vanityNameServers;
     }
 
     public static Builder builder() {
@@ -61,23 +244,75 @@ public final class GetZonesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetZonesFilter filter;
+        private GetZonesResultAccount account;
+        private String activatedOn;
+        private String createdOn;
+        private Double developmentMode;
         private String id;
-        private List<GetZonesZone> zones;
+        private GetZonesResultMeta meta;
+        private String modifiedOn;
+        private String name;
+        private List<String> nameServers;
+        private String originalDnshost;
+        private List<String> originalNameServers;
+        private String originalRegistrar;
+        private GetZonesResultOwner owner;
+        private Boolean paused;
+        private String status;
+        private String type;
+        private List<String> vanityNameServers;
         public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.filter = defaults.filter;
+    	      this.account = defaults.account;
+    	      this.activatedOn = defaults.activatedOn;
+    	      this.createdOn = defaults.createdOn;
+    	      this.developmentMode = defaults.developmentMode;
     	      this.id = defaults.id;
-    	      this.zones = defaults.zones;
+    	      this.meta = defaults.meta;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.name = defaults.name;
+    	      this.nameServers = defaults.nameServers;
+    	      this.originalDnshost = defaults.originalDnshost;
+    	      this.originalNameServers = defaults.originalNameServers;
+    	      this.originalRegistrar = defaults.originalRegistrar;
+    	      this.owner = defaults.owner;
+    	      this.paused = defaults.paused;
+    	      this.status = defaults.status;
+    	      this.type = defaults.type;
+    	      this.vanityNameServers = defaults.vanityNameServers;
         }
 
         @CustomType.Setter
-        public Builder filter(GetZonesFilter filter) {
-            if (filter == null) {
-              throw new MissingRequiredPropertyException("GetZonesResult", "filter");
+        public Builder account(GetZonesResultAccount account) {
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "account");
             }
-            this.filter = filter;
+            this.account = account;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder activatedOn(String activatedOn) {
+            if (activatedOn == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "activatedOn");
+            }
+            this.activatedOn = activatedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "createdOn");
+            }
+            this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder developmentMode(Double developmentMode) {
+            if (developmentMode == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "developmentMode");
+            }
+            this.developmentMode = developmentMode;
             return this;
         }
         @CustomType.Setter
@@ -89,21 +324,129 @@ public final class GetZonesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zones(List<GetZonesZone> zones) {
-            if (zones == null) {
-              throw new MissingRequiredPropertyException("GetZonesResult", "zones");
+        public Builder meta(GetZonesResultMeta meta) {
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "meta");
             }
-            this.zones = zones;
+            this.meta = meta;
             return this;
         }
-        public Builder zones(GetZonesZone... zones) {
-            return zones(List.of(zones));
+        @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nameServers(List<String> nameServers) {
+            if (nameServers == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "nameServers");
+            }
+            this.nameServers = nameServers;
+            return this;
+        }
+        public Builder nameServers(String... nameServers) {
+            return nameServers(List.of(nameServers));
+        }
+        @CustomType.Setter
+        public Builder originalDnshost(String originalDnshost) {
+            if (originalDnshost == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "originalDnshost");
+            }
+            this.originalDnshost = originalDnshost;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder originalNameServers(List<String> originalNameServers) {
+            if (originalNameServers == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "originalNameServers");
+            }
+            this.originalNameServers = originalNameServers;
+            return this;
+        }
+        public Builder originalNameServers(String... originalNameServers) {
+            return originalNameServers(List.of(originalNameServers));
+        }
+        @CustomType.Setter
+        public Builder originalRegistrar(String originalRegistrar) {
+            if (originalRegistrar == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "originalRegistrar");
+            }
+            this.originalRegistrar = originalRegistrar;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder owner(GetZonesResultOwner owner) {
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "owner");
+            }
+            this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paused(Boolean paused) {
+            if (paused == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "paused");
+            }
+            this.paused = paused;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vanityNameServers(List<String> vanityNameServers) {
+            if (vanityNameServers == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "vanityNameServers");
+            }
+            this.vanityNameServers = vanityNameServers;
+            return this;
+        }
+        public Builder vanityNameServers(String... vanityNameServers) {
+            return vanityNameServers(List.of(vanityNameServers));
         }
         public GetZonesResult build() {
             final var _resultValue = new GetZonesResult();
-            _resultValue.filter = filter;
+            _resultValue.account = account;
+            _resultValue.activatedOn = activatedOn;
+            _resultValue.createdOn = createdOn;
+            _resultValue.developmentMode = developmentMode;
             _resultValue.id = id;
-            _resultValue.zones = zones;
+            _resultValue.meta = meta;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.name = name;
+            _resultValue.nameServers = nameServers;
+            _resultValue.originalDnshost = originalDnshost;
+            _resultValue.originalNameServers = originalNameServers;
+            _resultValue.originalRegistrar = originalRegistrar;
+            _resultValue.owner = owner;
+            _resultValue.paused = paused;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.vanityNameServers = vanityNameServers;
             return _resultValue;
         }
     }

@@ -24,9 +24,9 @@ class LogpushOwnershipChallengeArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogpushOwnershipChallenge resource.
-        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "destination_conf", destination_conf)
         if account_id is not None:
@@ -38,7 +38,7 @@ class LogpushOwnershipChallengeArgs:
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> pulumi.Input[str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
@@ -50,7 +50,7 @@ class LogpushOwnershipChallengeArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -62,7 +62,7 @@ class LogpushOwnershipChallengeArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -76,21 +76,26 @@ class _LogpushOwnershipChallengeState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
-                 ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
+                 filename: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 valid: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogpushOwnershipChallenge resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] ownership_challenge_filename: The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if destination_conf is not None:
             pulumi.set(__self__, "destination_conf", destination_conf)
-        if ownership_challenge_filename is not None:
-            pulumi.set(__self__, "ownership_challenge_filename", ownership_challenge_filename)
+        if filename is not None:
+            pulumi.set(__self__, "filename", filename)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if valid is not None:
+            pulumi.set(__self__, "valid", valid)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -98,7 +103,7 @@ class _LogpushOwnershipChallengeState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -110,7 +115,7 @@ class _LogpushOwnershipChallengeState:
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> Optional[pulumi.Input[str]]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
@@ -119,22 +124,37 @@ class _LogpushOwnershipChallengeState:
         pulumi.set(self, "destination_conf", value)
 
     @property
-    @pulumi.getter(name="ownershipChallengeFilename")
-    def ownership_challenge_filename(self) -> Optional[pulumi.Input[str]]:
-        """
-        The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-        """
-        return pulumi.get(self, "ownership_challenge_filename")
+    @pulumi.getter
+    def filename(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filename")
 
-    @ownership_challenge_filename.setter
-    def ownership_challenge_filename(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ownership_challenge_filename", value)
+    @filename.setter
+    def filename(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def valid(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "valid")
+
+    @valid.setter
+    def valid(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "valid", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -153,27 +173,22 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource which manages Cloudflare Logpush ownership
-        challenges to use in a Logpush Job. On it's own, doesn't do much
-        however this resource should be used in conjunction to create
-        Logpush jobs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogpushOwnershipChallenge("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            destination_conf="s3://my-bucket-path?region=us-west-2")
+        example_logpush_ownership_challenge = cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge",
+            destination_conf="s3://mybucket/logs?region=us-west-2",
+            zone_id="zone_id")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -182,20 +197,15 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                  args: LogpushOwnershipChallengeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource which manages Cloudflare Logpush ownership
-        challenges to use in a Logpush Job. On it's own, doesn't do much
-        however this resource should be used in conjunction to create
-        Logpush jobs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogpushOwnershipChallenge("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            destination_conf="s3://my-bucket-path?region=us-west-2")
+        example_logpush_ownership_challenge = cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge",
+            destination_conf="s3://mybucket/logs?region=us-west-2",
+            zone_id="zone_id")
         ```
 
         :param str resource_name: The name of the resource.
@@ -230,7 +240,9 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                 raise TypeError("Missing required property 'destination_conf'")
             __props__.__dict__["destination_conf"] = destination_conf
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["ownership_challenge_filename"] = None
+            __props__.__dict__["filename"] = None
+            __props__.__dict__["message"] = None
+            __props__.__dict__["valid"] = None
         super(LogpushOwnershipChallenge, __self__).__init__(
             'cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge',
             resource_name,
@@ -243,7 +255,9 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             destination_conf: Optional[pulumi.Input[str]] = None,
-            ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
+            filename: Optional[pulumi.Input[str]] = None,
+            message: Optional[pulumi.Input[str]] = None,
+            valid: Optional[pulumi.Input[bool]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'LogpushOwnershipChallenge':
         """
         Get an existing LogpushOwnershipChallenge resource's state with the given name, id, and optional extra
@@ -252,10 +266,9 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] ownership_challenge_filename: The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,7 +276,9 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["destination_conf"] = destination_conf
-        __props__.__dict__["ownership_challenge_filename"] = ownership_challenge_filename
+        __props__.__dict__["filename"] = filename
+        __props__.__dict__["message"] = message
+        __props__.__dict__["valid"] = valid
         __props__.__dict__["zone_id"] = zone_id
         return LogpushOwnershipChallenge(resource_name, opts=opts, __props__=__props__)
 
@@ -271,7 +286,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -279,23 +294,30 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
     @pulumi.getter(name="destinationConf")
     def destination_conf(self) -> pulumi.Output[str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
     @property
-    @pulumi.getter(name="ownershipChallengeFilename")
-    def ownership_challenge_filename(self) -> pulumi.Output[str]:
-        """
-        The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-        """
-        return pulumi.get(self, "ownership_challenge_filename")
+    @pulumi.getter
+    def filename(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "filename")
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def valid(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "valid")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

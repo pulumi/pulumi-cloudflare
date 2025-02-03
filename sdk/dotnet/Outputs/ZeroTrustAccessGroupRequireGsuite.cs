@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The email of the Google Workspace group.
         /// </summary>
-        public readonly ImmutableArray<string> Emails;
+        public readonly string Email;
         /// <summary>
         /// The ID of your Google Workspace identity provider.
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustAccessGroupRequireGsuite(
-            ImmutableArray<string> emails,
+            string email,
 
             string identityProviderId)
         {
-            Emails = emails;
+            Email = email;
             IdentityProviderId = identityProviderId;
         }
     }

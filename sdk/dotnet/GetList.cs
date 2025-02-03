@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetList
     {
         /// <summary>
-        /// Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,10 +22,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.GetList.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Name = "list_name",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///     });
         /// 
         /// });
@@ -37,8 +35,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListResult>("cloudflare:index/getList:getList", args ?? new GetListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -49,10 +45,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.GetList.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Name = "list_name",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///     });
         /// 
         /// });
@@ -62,8 +58,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetListResult>("cloudflare:index/getList:getList", args ?? new GetListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,10 +68,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.GetList.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Name = "list_name",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///     });
         /// 
         /// });
@@ -91,16 +85,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The list name to target for the resource.
+        /// The unique ID of the list.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("listId")]
+        public string? ListId { get; set; }
 
         public GetListArgs()
         {
@@ -111,16 +105,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The list name to target for the resource.
+        /// The unique ID of the list.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("listId")]
+        public Input<string>? ListId { get; set; }
 
         public GetListInvokeArgs()
         {
@@ -133,33 +127,51 @@ namespace Pulumi.Cloudflare
     public sealed class GetListResult
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// List description.
+        /// The RFC 3339 timestamp of when the list was created.
+        /// </summary>
+        public readonly string CreatedOn;
+        /// <summary>
+        /// An informative summary of the list.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The unique ID of the list.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List kind.
+        /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The list name to target for the resource.
+        /// The unique ID of the list.
+        /// </summary>
+        public readonly string? ListId;
+        /// <summary>
+        /// The RFC 3339 timestamp of when the list was last modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// An informative name for the list. Use this name in filter and rule expressions.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Number of items in list.
+        /// The number of items in the list.
         /// </summary>
-        public readonly int Numitems;
+        public readonly double NumItems;
+        /// <summary>
+        /// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        /// </summary>
+        public readonly double NumReferencingFilters;
 
         [OutputConstructor]
         private GetListResult(
             string accountId,
+
+            string createdOn,
 
             string description,
 
@@ -167,16 +179,26 @@ namespace Pulumi.Cloudflare
 
             string kind,
 
+            string? listId,
+
+            string modifiedOn,
+
             string name,
 
-            int numitems)
+            double numItems,
+
+            double numReferencingFilters)
         {
             AccountId = accountId;
+            CreatedOn = createdOn;
             Description = description;
             Id = id;
             Kind = kind;
+            ListId = listId;
+            ModifiedOn = modifiedOn;
             Name = name;
-            Numitems = numitems;
+            NumItems = numItems;
+            NumReferencingFilters = numReferencingFilters;
         }
     }
 }

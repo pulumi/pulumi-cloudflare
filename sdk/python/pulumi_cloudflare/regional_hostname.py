@@ -24,9 +24,9 @@ class RegionalHostnameArgs:
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a RegionalHostname resource.
-        :param pulumi.Input[str] hostname: The hostname to regionalize.
-        :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+        :param pulumi.Input[str] region_key: Identifying key for the region
+        :param pulumi.Input[str] zone_id: Identifier
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "region_key", region_key)
@@ -36,7 +36,7 @@ class RegionalHostnameArgs:
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
         """
-        The hostname to regionalize.
+        DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         """
         return pulumi.get(self, "hostname")
 
@@ -48,7 +48,7 @@ class RegionalHostnameArgs:
     @pulumi.getter(name="regionKey")
     def region_key(self) -> pulumi.Input[str]:
         """
-        The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        Identifying key for the region
         """
         return pulumi.get(self, "region_key")
 
@@ -60,7 +60,7 @@ class RegionalHostnameArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -78,10 +78,10 @@ class _RegionalHostnameState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionalHostname resources.
-        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the hostname was created.
-        :param pulumi.Input[str] hostname: The hostname to regionalize.
-        :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] created_on: When the regional hostname was created
+        :param pulumi.Input[str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+        :param pulumi.Input[str] region_key: Identifying key for the region
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -96,7 +96,7 @@ class _RegionalHostnameState:
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 timestamp of when the hostname was created.
+        When the regional hostname was created
         """
         return pulumi.get(self, "created_on")
 
@@ -108,7 +108,7 @@ class _RegionalHostnameState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The hostname to regionalize.
+        DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         """
         return pulumi.get(self, "hostname")
 
@@ -120,7 +120,7 @@ class _RegionalHostnameState:
     @pulumi.getter(name="regionKey")
     def region_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        Identifying key for the region
         """
         return pulumi.get(self, "region_key")
 
@@ -132,7 +132,7 @@ class _RegionalHostnameState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -151,35 +151,29 @@ class RegionalHostname(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Data Localization Suite Regional Hostname.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Regionalized hostname record resources are managed independently from the
-        # Regionalized Hostname resources.
-        example = cloudflare.Record("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example.com",
-            content="192.0.2.1",
-            type="A",
-            ttl=3600)
-        # The cloudflare_regional_hostname resource may exist with or without its
-        # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            hostname="example.com",
-            region_key="eu")
+        example_regional_hostname = cloudflare.RegionalHostname("example_regional_hostname",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            hostname="foo.example.com",
+            region_key="ca")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] hostname: The hostname to regionalize.
-        :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+        :param pulumi.Input[str] region_key: Identifying key for the region
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -188,28 +182,22 @@ class RegionalHostname(pulumi.CustomResource):
                  args: RegionalHostnameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Data Localization Suite Regional Hostname.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Regionalized hostname record resources are managed independently from the
-        # Regionalized Hostname resources.
-        example = cloudflare.Record("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example.com",
-            content="192.0.2.1",
-            type="A",
-            ttl=3600)
-        # The cloudflare_regional_hostname resource may exist with or without its
-        # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            hostname="example.com",
-            region_key="eu")
+        example_regional_hostname = cloudflare.RegionalHostname("example_regional_hostname",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            hostname="foo.example.com",
+            region_key="ca")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -270,10 +258,10 @@ class RegionalHostname(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the hostname was created.
-        :param pulumi.Input[str] hostname: The hostname to regionalize.
-        :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] created_on: When the regional hostname was created
+        :param pulumi.Input[str] hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
+        :param pulumi.Input[str] region_key: Identifying key for the region
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -289,7 +277,7 @@ class RegionalHostname(pulumi.CustomResource):
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[str]:
         """
-        The RFC3339 timestamp of when the hostname was created.
+        When the regional hostname was created
         """
         return pulumi.get(self, "created_on")
 
@@ -297,7 +285,7 @@ class RegionalHostname(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
         """
-        The hostname to regionalize.
+        DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
         """
         return pulumi.get(self, "hostname")
 
@@ -305,7 +293,7 @@ class RegionalHostname(pulumi.CustomResource):
     @pulumi.getter(name="regionKey")
     def region_key(self) -> pulumi.Output[str]:
         """
-        The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+        Identifying key for the region
         """
         return pulumi.get(self, "region_key")
 
@@ -313,7 +301,7 @@ class RegionalHostname(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

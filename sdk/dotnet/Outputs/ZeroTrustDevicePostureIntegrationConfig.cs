@@ -14,35 +14,35 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDevicePostureIntegrationConfig
     {
         /// <summary>
-        /// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
         /// </summary>
         public readonly string? AccessClientId;
         /// <summary>
-        /// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
         /// </summary>
         public readonly string? AccessClientSecret;
         /// <summary>
-        /// The third-party API's URL.
+        /// The Workspace One API URL provided in the Workspace One Admin Dashboard.
         /// </summary>
         public readonly string? ApiUrl;
         /// <summary>
-        /// The third-party authorization API URL.
+        /// The Workspace One Authorization URL depending on your region.
         /// </summary>
         public readonly string? AuthUrl;
         /// <summary>
-        /// The client identifier for authenticating API calls.
+        /// The Workspace One client ID provided in the Workspace One Admin Dashboard.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// The client key for authenticating API calls.
+        /// The Uptycs client secret.
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
-        /// The client secret for authenticating API calls.
+        /// The Workspace One client secret provided in the Workspace One Admin Dashboard.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
-        /// The customer identifier for authenticating API calls.
+        /// The Crowdstrike customer ID.
         /// </summary>
         public readonly string? CustomerId;
 

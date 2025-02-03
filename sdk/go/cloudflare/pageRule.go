@@ -8,53 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Cloudflare page rule resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Add a page rule to the domain
-//			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-//				ZoneId:   pulumi.Any(cloudflareZoneId),
-//				Target:   pulumi.Sprintf("sub.%v/page", cloudflareZone),
-//				Priority: pulumi.Int(1),
-//				Actions: &cloudflare.PageRuleActionsArgs{
-//					Ssl:              pulumi.String("flexible"),
-//					EmailObfuscation: pulumi.String("on"),
-//					Minifies: cloudflare.PageRuleActionsMinifyArray{
-//						&cloudflare.PageRuleActionsMinifyArgs{
-//							Html: pulumi.String("off"),
-//							Css:  pulumi.String("on"),
-//							Js:   pulumi.String("on"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -68,10 +26,14 @@ type PageRule struct {
 
 	// The actions taken by the page rule, options given below.
 	Actions PageRuleActionsOutput `pulumi:"actions"`
+	// The timestamp of when the Page Rule was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// The timestamp of when the Page Rule was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-	Priority pulumi.IntPtrOutput `pulumi:"priority"`
+	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Whether the page rule is active or disabled.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The URL pattern to target with the page rule.
 	Target pulumi.StringOutput `pulumi:"target"`
 	// The DNS zone ID to which the page rule should be added.
@@ -119,6 +81,10 @@ func GetPageRule(ctx *pulumi.Context,
 type pageRuleState struct {
 	// The actions taken by the page rule, options given below.
 	Actions *PageRuleActions `pulumi:"actions"`
+	// The timestamp of when the Page Rule was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// The timestamp of when the Page Rule was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
 	Priority *int `pulumi:"priority"`
 	// Whether the page rule is active or disabled.
@@ -132,6 +98,10 @@ type pageRuleState struct {
 type PageRuleState struct {
 	// The actions taken by the page rule, options given below.
 	Actions PageRuleActionsPtrInput
+	// The timestamp of when the Page Rule was created.
+	CreatedOn pulumi.StringPtrInput
+	// The timestamp of when the Page Rule was last modified.
+	ModifiedOn pulumi.StringPtrInput
 	// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
 	Priority pulumi.IntPtrInput
 	// Whether the page rule is active or disabled.
@@ -265,14 +235,24 @@ func (o PageRuleOutput) Actions() PageRuleActionsOutput {
 	return o.ApplyT(func(v *PageRule) PageRuleActionsOutput { return v.Actions }).(PageRuleActionsOutput)
 }
 
+// The timestamp of when the Page Rule was created.
+func (o PageRuleOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the Page Rule was last modified.
+func (o PageRuleOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 // The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-func (o PageRuleOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PageRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+func (o PageRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Whether the page rule is active or disabled.
-func (o PageRuleOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PageRule) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o PageRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The URL pattern to target with the page rule.

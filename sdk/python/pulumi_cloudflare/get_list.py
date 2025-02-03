@@ -26,10 +26,13 @@ class GetListResult:
     """
     A collection of values returned by getList.
     """
-    def __init__(__self__, account_id=None, description=None, id=None, kind=None, name=None, numitems=None):
+    def __init__(__self__, account_id=None, created_on=None, description=None, id=None, kind=None, list_id=None, modified_on=None, name=None, num_items=None, num_referencing_filters=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if created_on and not isinstance(created_on, str):
+            raise TypeError("Expected argument 'created_on' to be a str")
+        pulumi.set(__self__, "created_on", created_on)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -39,26 +42,43 @@ class GetListResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if list_id and not isinstance(list_id, str):
+            raise TypeError("Expected argument 'list_id' to be a str")
+        pulumi.set(__self__, "list_id", list_id)
+        if modified_on and not isinstance(modified_on, str):
+            raise TypeError("Expected argument 'modified_on' to be a str")
+        pulumi.set(__self__, "modified_on", modified_on)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if numitems and not isinstance(numitems, int):
-            raise TypeError("Expected argument 'numitems' to be a int")
-        pulumi.set(__self__, "numitems", numitems)
+        if num_items and not isinstance(num_items, float):
+            raise TypeError("Expected argument 'num_items' to be a float")
+        pulumi.set(__self__, "num_items", num_items)
+        if num_referencing_filters and not isinstance(num_referencing_filters, float):
+            raise TypeError("Expected argument 'num_referencing_filters' to be a float")
+        pulumi.set(__self__, "num_referencing_filters", num_referencing_filters)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> str:
+        """
+        The RFC 3339 timestamp of when the list was created.
+        """
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
     def description(self) -> str:
         """
-        List description.
+        An informative summary of the list.
         """
         return pulumi.get(self, "description")
 
@@ -66,7 +86,7 @@ class GetListResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique ID of the list.
         """
         return pulumi.get(self, "id")
 
@@ -74,25 +94,49 @@ class GetListResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        List kind.
+        The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="listId")
+    def list_id(self) -> Optional[str]:
+        """
+        The unique ID of the list.
+        """
+        return pulumi.get(self, "list_id")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> str:
+        """
+        The RFC 3339 timestamp of when the list was last modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The list name to target for the resource.
+        An informative name for the list. Use this name in filter and rule expressions.
         """
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter
-    def numitems(self) -> int:
+    @pulumi.getter(name="numItems")
+    def num_items(self) -> float:
         """
-        Number of items in list.
+        The number of items in the list.
         """
-        return pulumi.get(self, "numitems")
+        return pulumi.get(self, "num_items")
+
+    @property
+    @pulumi.getter(name="numReferencingFilters")
+    def num_referencing_filters(self) -> float:
+        """
+        The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        """
+        return pulumi.get(self, "num_referencing_filters")
 
 
 class AwaitableGetListResult(GetListResult):
@@ -102,75 +146,83 @@ class AwaitableGetListResult(GetListResult):
             yield self
         return GetListResult(
             account_id=self.account_id,
+            created_on=self.created_on,
             description=self.description,
             id=self.id,
             kind=self.kind,
+            list_id=self.list_id,
+            modified_on=self.modified_on,
             name=self.name,
-            numitems=self.numitems)
+            num_items=self.num_items,
+            num_referencing_filters=self.num_referencing_filters)
 
 
 def get_list(account_id: Optional[str] = None,
-             name: Optional[str] = None,
+             list_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListResult:
     """
-    Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_list(account_id="f037e56e89293a057740de681ac9abbe",
-        name="list_name")
+    example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
     ```
 
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: The list name to target for the resource.
+    :param str account_id: Identifier
+    :param str list_id: The unique ID of the list.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['listId'] = list_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getList:getList', __args__, opts=opts, typ=GetListResult).value
 
     return AwaitableGetListResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        created_on=pulumi.get(__ret__, 'created_on'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
+        list_id=pulumi.get(__ret__, 'list_id'),
+        modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
-        numitems=pulumi.get(__ret__, 'numitems'))
+        num_items=pulumi.get(__ret__, 'num_items'),
+        num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'))
 def get_list_output(account_id: Optional[pulumi.Input[str]] = None,
-                    name: Optional[pulumi.Input[str]] = None,
+                    list_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListResult]:
     """
-    Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_list(account_id="f037e56e89293a057740de681ac9abbe",
-        name="list_name")
+    example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
     ```
 
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: The list name to target for the resource.
+    :param str account_id: Identifier
+    :param str list_id: The unique ID of the list.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['listId'] = list_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getList:getList', __args__, opts=opts, typ=GetListResult)
     return __ret__.apply(lambda __response__: GetListResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        created_on=pulumi.get(__response__, 'created_on'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),
+        list_id=pulumi.get(__response__, 'list_id'),
+        modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
-        numitems=pulumi.get(__response__, 'numitems')))
+        num_items=pulumi.get(__response__, 'num_items'),
+        num_referencing_filters=pulumi.get(__response__, 'num_referencing_filters')))

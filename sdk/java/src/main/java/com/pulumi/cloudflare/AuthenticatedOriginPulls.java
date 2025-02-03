@@ -6,20 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsState;
+import com.pulumi.cloudflare.outputs.AuthenticatedOriginPullsConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`
- * resource is required to use Per-Zone or Per-Hostname Authenticated
- * Origin Pulls.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -32,8 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.AuthenticatedOriginPulls;
  * import com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;
+ * import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,39 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Authenticated Origin Pulls
- *         var myAop = new AuthenticatedOriginPulls("myAop", AuthenticatedOriginPullsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .enabled(true)
- *             .build());
- * 
- *         // Per-Zone Authenticated Origin Pulls
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .certificate("-----INSERT CERTIFICATE-----")
- *             .privateKey("-----INSERT PRIVATE KEY-----")
- *             .type("per-zone")
- *             .build());
- * 
- *         var myPerZoneAop = new AuthenticatedOriginPulls("myPerZoneAop", AuthenticatedOriginPullsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())
- *             .enabled(true)
- *             .build());
- * 
- *         // Per-Hostname Authenticated Origin Pulls
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .certificate("-----INSERT CERTIFICATE-----")
- *             .privateKey("-----INSERT PRIVATE KEY-----")
- *             .type("per-hostname")
- *             .build());
- * 
- *         var myPerHostnameAop = new AuthenticatedOriginPulls("myPerHostnameAop", AuthenticatedOriginPullsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())
- *             .hostname("aop.example.com")
- *             .enabled(true)
+ *         var exampleAuthenticatedOriginPulls = new AuthenticatedOriginPulls("exampleAuthenticatedOriginPulls", AuthenticatedOriginPullsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .configs(AuthenticatedOriginPullsConfigArgs.builder()
+ *                 .cert_id("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
+ *                 .enabled(true)
+ *                 .hostname("app.example.com")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -88,80 +59,220 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * global
- * 
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;
- * ```
- * 
- * per zone
- * 
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;
- * ```
- * 
- * per hostname
- * 
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * Identifier
      * 
      */
-    @Export(name="authenticatedOriginPullsCertificate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> authenticatedOriginPullsCertificate;
+    @Export(name="certId", refs={String.class}, tree="[0]")
+    private Output<String> certId;
 
     /**
-     * @return The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> authenticatedOriginPullsCertificate() {
-        return Codegen.optional(this.authenticatedOriginPullsCertificate);
+    public Output<String> certId() {
+        return this.certId;
     }
     /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Status of the certificate or the association.
+     * 
+     */
+    @Export(name="certStatus", refs={String.class}, tree="[0]")
+    private Output<String> certStatus;
+
+    /**
+     * @return Status of the certificate or the association.
+     * 
+     */
+    public Output<String> certStatus() {
+        return this.certStatus;
+    }
+    /**
+     * The time when the certificate was updated.
+     * 
+     */
+    @Export(name="certUpdatedAt", refs={String.class}, tree="[0]")
+    private Output<String> certUpdatedAt;
+
+    /**
+     * @return The time when the certificate was updated.
+     * 
+     */
+    public Output<String> certUpdatedAt() {
+        return this.certUpdatedAt;
+    }
+    /**
+     * The time when the certificate was uploaded.
+     * 
+     */
+    @Export(name="certUploadedOn", refs={String.class}, tree="[0]")
+    private Output<String> certUploadedOn;
+
+    /**
+     * @return The time when the certificate was uploaded.
+     * 
+     */
+    public Output<String> certUploadedOn() {
+        return this.certUploadedOn;
+    }
+    /**
+     * The hostname certificate.
+     * 
+     */
+    @Export(name="certificate", refs={String.class}, tree="[0]")
+    private Output<String> certificate;
+
+    /**
+     * @return The hostname certificate.
+     * 
+     */
+    public Output<String> certificate() {
+        return this.certificate;
+    }
+    @Export(name="configs", refs={List.class,AuthenticatedOriginPullsConfig.class}, tree="[0,1]")
+    private Output<List<AuthenticatedOriginPullsConfig>> configs;
+
+    public Output<List<AuthenticatedOriginPullsConfig>> configs() {
+        return this.configs;
+    }
+    /**
+     * The time when the certificate was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return The time when the certificate was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * @return Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The date when the certificate expires.
+     * 
+     */
+    @Export(name="expiresOn", refs={String.class}, tree="[0]")
+    private Output<String> expiresOn;
+
+    /**
+     * @return The date when the certificate expires.
+     * 
+     */
+    public Output<String> expiresOn() {
+        return this.expiresOn;
+    }
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostname;
 
     /**
-     * @return Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * @return The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     public Output<Optional<String>> hostname() {
         return Codegen.optional(this.hostname);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
+     * 
+     */
+    @Export(name="issuer", refs={String.class}, tree="[0]")
+    private Output<String> issuer;
+
+    /**
+     * @return The certificate authority that issued the certificate.
+     * 
+     */
+    public Output<String> issuer() {
+        return this.issuer;
+    }
+    /**
+     * The serial number on the uploaded certificate.
+     * 
+     */
+    @Export(name="serialNumber", refs={String.class}, tree="[0]")
+    private Output<String> serialNumber;
+
+    /**
+     * @return The serial number on the uploaded certificate.
+     * 
+     */
+    public Output<String> serialNumber() {
+        return this.serialNumber;
+    }
+    /**
+     * The type of hash used for the certificate.
+     * 
+     */
+    @Export(name="signature", refs={String.class}, tree="[0]")
+    private Output<String> signature;
+
+    /**
+     * @return The type of hash used for the certificate.
+     * 
+     */
+    public Output<String> signature() {
+        return this.signature;
+    }
+    /**
+     * Status of the certificate or the association.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return Status of the certificate or the association.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The time when the certificate was updated.
+     * 
+     */
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    /**
+     * @return The time when the certificate was updated.
+     * 
+     */
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

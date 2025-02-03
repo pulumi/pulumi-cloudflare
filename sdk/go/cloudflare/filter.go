@@ -8,15 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Filter expressions that can be referenced across multiple features,
-// e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-// for more details and available fields and operators.
-//
-// > `Filter` is in a deprecation phase until June 15th, 2025.
+// > `Filter` is in a deprecation phase until January 15th, 2025.
 //
 //	During this time period, this resource is still fully
 //	supported but you are strongly advised to move to the
@@ -30,17 +26,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewFilter(ctx, "wordpress", &cloudflare.FilterArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
-//				Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
+//			_, err := cloudflare.NewFilter(ctx, "example_filter", &cloudflare.FilterArgs{
+//				ZoneId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Expression: pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,24 +45,20 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
-// ```
 type Filter struct {
 	pulumi.CustomResourceState
 
-	// A note that you can use to describe the purpose of the filter.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The filter expression to be used.
+	// An informative summary of the filter.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringOutput `pulumi:"expression"`
-	// Whether this filter is currently paused.
-	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
-	// Short reference tag to quickly select related rules.
-	Ref pulumi.StringPtrOutput `pulumi:"ref"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the filter.
+	FilterId pulumi.StringPtrOutput `pulumi:"filterId"`
+	// When true, indicates that the filter is currently paused.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// A short reference tag. Allows you to select related filters.
+	Ref pulumi.StringOutput `pulumi:"ref"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,28 +98,32 @@ func GetFilter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Filter resources.
 type filterState struct {
-	// A note that you can use to describe the purpose of the filter.
+	// An informative summary of the filter.
 	Description *string `pulumi:"description"`
-	// The filter expression to be used.
+	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression *string `pulumi:"expression"`
-	// Whether this filter is currently paused.
+	// The unique identifier of the filter.
+	FilterId *string `pulumi:"filterId"`
+	// When true, indicates that the filter is currently paused.
 	Paused *bool `pulumi:"paused"`
-	// Short reference tag to quickly select related rules.
+	// A short reference tag. Allows you to select related filters.
 	Ref *string `pulumi:"ref"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type FilterState struct {
-	// A note that you can use to describe the purpose of the filter.
+	// An informative summary of the filter.
 	Description pulumi.StringPtrInput
-	// The filter expression to be used.
+	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringPtrInput
-	// Whether this filter is currently paused.
+	// The unique identifier of the filter.
+	FilterId pulumi.StringPtrInput
+	// When true, indicates that the filter is currently paused.
 	Paused pulumi.BoolPtrInput
-	// Short reference tag to quickly select related rules.
+	// A short reference tag. Allows you to select related filters.
 	Ref pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -137,29 +132,21 @@ func (FilterState) ElementType() reflect.Type {
 }
 
 type filterArgs struct {
-	// A note that you can use to describe the purpose of the filter.
-	Description *string `pulumi:"description"`
-	// The filter expression to be used.
+	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression string `pulumi:"expression"`
-	// Whether this filter is currently paused.
-	Paused *bool `pulumi:"paused"`
-	// Short reference tag to quickly select related rules.
-	Ref *string `pulumi:"ref"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the filter.
+	FilterId *string `pulumi:"filterId"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Filter resource.
 type FilterArgs struct {
-	// A note that you can use to describe the purpose of the filter.
-	Description pulumi.StringPtrInput
-	// The filter expression to be used.
+	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringInput
-	// Whether this filter is currently paused.
-	Paused pulumi.BoolPtrInput
-	// Short reference tag to quickly select related rules.
-	Ref pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the filter.
+	FilterId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -250,27 +237,32 @@ func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutpu
 	return o
 }
 
-// A note that you can use to describe the purpose of the filter.
-func (o FilterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// An informative summary of the filter.
+func (o FilterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The filter expression to be used.
+// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 func (o FilterOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
 }
 
-// Whether this filter is currently paused.
-func (o FilterOutput) Paused() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Filter) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+// The unique identifier of the filter.
+func (o FilterOutput) FilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.FilterId }).(pulumi.StringPtrOutput)
 }
 
-// Short reference tag to quickly select related rules.
-func (o FilterOutput) Ref() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Ref }).(pulumi.StringPtrOutput)
+// When true, indicates that the filter is currently paused.
+func (o FilterOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Filter) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// A short reference tag. Allows you to select related filters.
+func (o FilterOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o FilterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

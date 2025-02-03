@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
         /// </summary>
-        [Input("chinaNetwork")]
-        public Input<bool>? ChinaNetwork { get; set; }
+        [Input("chinaNetwork", required: true)]
+        public Input<bool> ChinaNetwork { get; set; } = null!;
 
         /// <summary>
         /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
         /// </summary>
-        [Input("clientCertificateForwarding")]
-        public Input<bool>? ClientCertificateForwarding { get; set; }
+        [Input("clientCertificateForwarding", required: true)]
+        public Input<bool> ClientCertificateForwarding { get; set; } = null!;
 
         /// <summary>
         /// The hostname that these settings apply to.

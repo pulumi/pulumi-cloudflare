@@ -3,10 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,51 +17,44 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRulesetsArgs Empty = new GetRulesetsArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="filter")
-    private @Nullable Output<GetRulesetsFilterArgs> filter;
+    /**
+     * Max items to fetch, default: 1000
+     * 
+     */
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
 
-    public Optional<Output<GetRulesetsFilterArgs>> filter() {
-        return Optional.ofNullable(this.filter);
+    /**
+     * @return Max items to fetch, default: 1000
+     * 
+     */
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
     }
 
     /**
-     * Include rule data in response.
-     * 
-     */
-    @Import(name="includeRules")
-    private @Nullable Output<Boolean> includeRules;
-
-    /**
-     * @return Include rule data in response.
-     * 
-     */
-    public Optional<Output<Boolean>> includeRules() {
-        return Optional.ofNullable(this.includeRules);
-    }
-
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -73,8 +65,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetRulesetsArgs(GetRulesetsArgs $) {
         this.accountId = $.accountId;
-        this.filter = $.filter;
-        this.includeRules = $.includeRules;
+        this.maxItems = $.maxItems;
         this.zoneId = $.zoneId;
     }
 
@@ -97,7 +88,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -108,7 +99,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -117,38 +108,29 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
             return accountId(Output.of(accountId));
         }
 
-        public Builder filter(@Nullable Output<GetRulesetsFilterArgs> filter) {
-            $.filter = filter;
-            return this;
-        }
-
-        public Builder filter(GetRulesetsFilterArgs filter) {
-            return filter(Output.of(filter));
-        }
-
         /**
-         * @param includeRules Include rule data in response.
+         * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
          * 
          */
-        public Builder includeRules(@Nullable Output<Boolean> includeRules) {
-            $.includeRules = includeRules;
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
             return this;
         }
 
         /**
-         * @param includeRules Include rule data in response.
+         * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
          * 
          */
-        public Builder includeRules(Boolean includeRules) {
-            return includeRules(Output.of(includeRules));
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -159,7 +141,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

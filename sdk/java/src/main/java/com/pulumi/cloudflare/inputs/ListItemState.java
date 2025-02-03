@@ -19,14 +19,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     public static final ListItemState Empty = new ListItemState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,14 +34,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      * 
      */
     @Import(name="asn")
     private @Nullable Output<Integer> asn;
 
     /**
-     * @return Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return A non-negative 32 bit integer
      * 
      */
     public Optional<Output<Integer>> asn() {
@@ -49,14 +49,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return An optional comment for the item.
+     * @return An informative summary of the list item.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -64,14 +64,29 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the item was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<ListItemHostnameArgs> hostname;
 
     /**
-     * @return Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public Optional<Output<ListItemHostnameArgs>> hostname() {
@@ -79,14 +94,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -94,14 +109,29 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the item in the List.
+     * 
+     */
+    @Import(name="itemId")
+    private @Nullable Output<String> itemId;
+
+    /**
+     * @return The unique ID of the item in the List.
+     * 
+     */
+    public Optional<Output<String>> itemId() {
+        return Optional.ofNullable(this.itemId);
+    }
+
+    /**
+     * The unique ID of the list.
      * 
      */
     @Import(name="listId")
     private @Nullable Output<String> listId;
 
     /**
-     * @return The list identifier to target for the resource.
+     * @return The unique ID of the list.
      * 
      */
     public Optional<Output<String>> listId() {
@@ -109,14 +139,44 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the item was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * The unique operation ID of the asynchronous action.
+     * 
+     */
+    @Import(name="operationId")
+    private @Nullable Output<String> operationId;
+
+    /**
+     * @return The unique operation ID of the asynchronous action.
+     * 
+     */
+    public Optional<Output<String>> operationId() {
+        return Optional.ofNullable(this.operationId);
+    }
+
+    /**
+     * The definition of the redirect.
      * 
      */
     @Import(name="redirect")
     private @Nullable Output<ListItemRedirectArgs> redirect;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return The definition of the redirect.
      * 
      */
     public Optional<Output<ListItemRedirectArgs>> redirect() {
@@ -129,9 +189,13 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.asn = $.asn;
         this.comment = $.comment;
+        this.createdOn = $.createdOn;
         this.hostname = $.hostname;
         this.ip = $.ip;
+        this.itemId = $.itemId;
         this.listId = $.listId;
+        this.modifiedOn = $.modifiedOn;
+        this.operationId = $.operationId;
         this.redirect = $.redirect;
     }
 
@@ -154,7 +218,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -165,7 +229,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -175,7 +239,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param asn A non-negative 32 bit integer
          * 
          * @return builder
          * 
@@ -186,7 +250,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param asn A non-negative 32 bit integer
          * 
          * @return builder
          * 
@@ -196,7 +260,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment An optional comment for the item.
+         * @param comment An informative summary of the list item.
          * 
          * @return builder
          * 
@@ -207,7 +271,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment An optional comment for the item.
+         * @param comment An informative summary of the list item.
          * 
          * @return builder
          * 
@@ -217,7 +281,28 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param createdOn The RFC 3339 timestamp of when the item was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The RFC 3339 timestamp of when the item was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 
@@ -228,7 +313,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 
@@ -238,7 +323,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
          * 
          * @return builder
          * 
@@ -249,7 +334,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
          * 
          * @return builder
          * 
@@ -259,7 +344,28 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listId The list identifier to target for the resource.
+         * @param itemId The unique ID of the item in the List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder itemId(@Nullable Output<String> itemId) {
+            $.itemId = itemId;
+            return this;
+        }
+
+        /**
+         * @param itemId The unique ID of the item in the List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder itemId(String itemId) {
+            return itemId(Output.of(itemId));
+        }
+
+        /**
+         * @param listId The unique ID of the list.
          * 
          * @return builder
          * 
@@ -270,7 +376,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listId The list identifier to target for the resource.
+         * @param listId The unique ID of the list.
          * 
          * @return builder
          * 
@@ -280,7 +386,49 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param modifiedOn The RFC 3339 timestamp of when the item was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The RFC 3339 timestamp of when the item was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param operationId The unique operation ID of the asynchronous action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationId(@Nullable Output<String> operationId) {
+            $.operationId = operationId;
+            return this;
+        }
+
+        /**
+         * @param operationId The unique operation ID of the asynchronous action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationId(String operationId) {
+            return operationId(Output.of(operationId));
+        }
+
+        /**
+         * @param redirect The definition of the redirect.
          * 
          * @return builder
          * 
@@ -291,7 +439,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+         * @param redirect The definition of the redirect.
          * 
          * @return builder
          * 

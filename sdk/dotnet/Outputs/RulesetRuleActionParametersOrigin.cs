@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOrigin
     {
         /// <summary>
-        /// Origin Hostname where request is sent.
+        /// Override the resolved hostname.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Origin Port where request is sent.
+        /// Override the destination port.
         /// </summary>
-        public readonly int? Port;
+        public readonly double? Port;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOrigin(
             string? host,
 
-            int? port)
+            double? port)
         {
             Host = host;
             Port = port;

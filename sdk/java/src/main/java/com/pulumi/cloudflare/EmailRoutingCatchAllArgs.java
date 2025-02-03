@@ -21,14 +21,14 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
     public static final EmailRoutingCatchAllArgs Empty = new EmailRoutingCatchAllArgs();
 
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      * 
      */
     @Import(name="actions", required=true)
     private Output<List<EmailRoutingCatchAllActionArgs>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return List actions for the catch-all routing rule.
      * 
      */
     public Output<List<EmailRoutingCatchAllActionArgs>> actions() {
@@ -51,14 +51,14 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      * 
      */
     @Import(name="matchers", required=true)
     private Output<List<EmailRoutingCatchAllMatcherArgs>> matchers;
 
     /**
-     * @return Matching patterns to forward to your actions.
+     * @return List of matchers for the catch-all routing rule.
      * 
      */
     public Output<List<EmailRoutingCatchAllMatcherArgs>> matchers() {
@@ -69,26 +69,26 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
      * Routing rule name.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Routing rule name.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -124,7 +124,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -228,7 +228,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -254,9 +254,6 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
             }
             if ($.matchers == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "matchers");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "name");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "zoneId");

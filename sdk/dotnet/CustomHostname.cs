@@ -10,93 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.CustomHostname("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Hostname = "hostname.example.com",
-    ///         Ssls = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.CustomHostnameSslArgs
-    ///             {
-    ///                 Method = "txt",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+    /// $ pulumi import cloudflare:index/customHostname:CustomHostname example '&lt;zone_id&gt;/&lt;custom_hostname_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customHostname:CustomHostname")]
     public partial class CustomHostname : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// This is the time the hostname was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         /// </summary>
         [Output("customMetadata")]
         public Output<ImmutableDictionary<string, string>?> CustomMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// The custom origin server used for certificates.
+        /// a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         /// </summary>
         [Output("customOriginServer")]
         public Output<string?> CustomOriginServer { get; private set; } = null!;
 
         /// <summary>
-        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         /// </summary>
         [Output("customOriginSni")]
         public Output<string?> CustomOriginSni { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+        /// The custom hostname that will point to your hostname via CNAME.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
+        /// <summary>
+        /// This is a record which can be placed to activate a hostname.
+        /// </summary>
         [Output("ownershipVerification")]
-        public Output<ImmutableDictionary<string, string>> OwnershipVerification { get; private set; } = null!;
+        public Output<Outputs.CustomHostnameOwnershipVerification> OwnershipVerification { get; private set; } = null!;
 
+        /// <summary>
+        /// This presents the token to be served by the given http url to activate a hostname.
+        /// </summary>
         [Output("ownershipVerificationHttp")]
-        public Output<ImmutableDictionary<string, string>> OwnershipVerificationHttp { get; private set; } = null!;
+        public Output<Outputs.CustomHostnameOwnershipVerificationHttp> OwnershipVerificationHttp { get; private set; } = null!;
 
         /// <summary>
         /// SSL properties used when creating the custom hostname.
         /// </summary>
-        [Output("ssls")]
-        public Output<ImmutableArray<Outputs.CustomHostnameSsl>> Ssls { get; private set; } = null!;
+        [Output("ssl")]
+        public Output<Outputs.CustomHostnameSsl> Ssl { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the certificate.
+        /// Status of the hostname's activation.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        /// These are errors that were encountered while trying to activate a hostname.
         /// </summary>
-        [Output("waitForSslPendingValidation")]
-        public Output<bool?> WaitForSslPendingValidation { get; private set; } = null!;
+        [Output("verificationErrors")]
+        public Output<ImmutableArray<string>> VerificationErrors { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -151,7 +137,7 @@ namespace Pulumi.Cloudflare
         private InputMap<string>? _customMetadata;
 
         /// <summary>
-        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         /// </summary>
         public InputMap<string> CustomMetadata
         {
@@ -160,43 +146,31 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The custom origin server used for certificates.
+        /// a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         /// </summary>
         [Input("customOriginServer")]
         public Input<string>? CustomOriginServer { get; set; }
 
         /// <summary>
-        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         /// </summary>
         [Input("customOriginSni")]
         public Input<string>? CustomOriginSni { get; set; }
 
         /// <summary>
-        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+        /// The custom hostname that will point to your hostname via CNAME.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
-        [Input("ssls")]
-        private InputList<Inputs.CustomHostnameSslArgs>? _ssls;
-
         /// <summary>
         /// SSL properties used when creating the custom hostname.
         /// </summary>
-        public InputList<Inputs.CustomHostnameSslArgs> Ssls
-        {
-            get => _ssls ?? (_ssls = new InputList<Inputs.CustomHostnameSslArgs>());
-            set => _ssls = value;
-        }
+        [Input("ssl", required: true)]
+        public Input<Inputs.CustomHostnameSslArgs> Ssl { get; set; } = null!;
 
         /// <summary>
-        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-        /// </summary>
-        [Input("waitForSslPendingValidation")]
-        public Input<bool>? WaitForSslPendingValidation { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -209,11 +183,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class CustomHostnameState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the time the hostname was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("customMetadata")]
         private InputMap<string>? _customMetadata;
 
         /// <summary>
-        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         /// </summary>
         public InputMap<string> CustomMetadata
         {
@@ -222,65 +202,61 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The custom origin server used for certificates.
+        /// a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         /// </summary>
         [Input("customOriginServer")]
         public Input<string>? CustomOriginServer { get; set; }
 
         /// <summary>
-        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         /// </summary>
         [Input("customOriginSni")]
         public Input<string>? CustomOriginSni { get; set; }
 
         /// <summary>
-        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+        /// The custom hostname that will point to your hostname via CNAME.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        /// <summary>
+        /// This is a record which can be placed to activate a hostname.
+        /// </summary>
         [Input("ownershipVerification")]
-        private InputMap<string>? _ownershipVerification;
-        public InputMap<string> OwnershipVerification
-        {
-            get => _ownershipVerification ?? (_ownershipVerification = new InputMap<string>());
-            set => _ownershipVerification = value;
-        }
+        public Input<Inputs.CustomHostnameOwnershipVerificationGetArgs>? OwnershipVerification { get; set; }
 
+        /// <summary>
+        /// This presents the token to be served by the given http url to activate a hostname.
+        /// </summary>
         [Input("ownershipVerificationHttp")]
-        private InputMap<string>? _ownershipVerificationHttp;
-        public InputMap<string> OwnershipVerificationHttp
-        {
-            get => _ownershipVerificationHttp ?? (_ownershipVerificationHttp = new InputMap<string>());
-            set => _ownershipVerificationHttp = value;
-        }
-
-        [Input("ssls")]
-        private InputList<Inputs.CustomHostnameSslGetArgs>? _ssls;
+        public Input<Inputs.CustomHostnameOwnershipVerificationHttpGetArgs>? OwnershipVerificationHttp { get; set; }
 
         /// <summary>
         /// SSL properties used when creating the custom hostname.
         /// </summary>
-        public InputList<Inputs.CustomHostnameSslGetArgs> Ssls
-        {
-            get => _ssls ?? (_ssls = new InputList<Inputs.CustomHostnameSslGetArgs>());
-            set => _ssls = value;
-        }
+        [Input("ssl")]
+        public Input<Inputs.CustomHostnameSslGetArgs>? Ssl { get; set; }
 
         /// <summary>
-        /// Status of the certificate.
+        /// Status of the hostname's activation.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        /// <summary>
-        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
-        /// </summary>
-        [Input("waitForSslPendingValidation")]
-        public Input<bool>? WaitForSslPendingValidation { get; set; }
+        [Input("verificationErrors")]
+        private InputList<string>? _verificationErrors;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// These are errors that were encountered while trying to activate a hostname.
+        /// </summary>
+        public InputList<string> VerificationErrors
+        {
+            get => _verificationErrors ?? (_verificationErrors = new InputList<string>());
+            set => _verificationErrors = value;
+        }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpointsDotNetwork;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -14,23 +13,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsDot {
-    private @Nullable Boolean authenticationEnabled;
-    private Boolean enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
+     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     private @Nullable List<ZeroTrustDnsLocationEndpointsDotNetwork> networks;
-    private @Nullable Boolean requireToken;
 
     private ZeroTrustDnsLocationEndpointsDot() {}
-    public Optional<Boolean> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
-    public Boolean enabled() {
-        return this.enabled;
-    }
+    /**
+     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     public List<ZeroTrustDnsLocationEndpointsDotNetwork> networks() {
         return this.networks == null ? List.of() : this.networks;
-    }
-    public Optional<Boolean> requireToken() {
-        return Optional.ofNullable(this.requireToken);
     }
 
     public static Builder builder() {
@@ -42,30 +49,18 @@ public final class ZeroTrustDnsLocationEndpointsDot {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean authenticationEnabled;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         private @Nullable List<ZeroTrustDnsLocationEndpointsDotNetwork> networks;
-        private @Nullable Boolean requireToken;
         public Builder() {}
         public Builder(ZeroTrustDnsLocationEndpointsDot defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.authenticationEnabled = defaults.authenticationEnabled;
     	      this.enabled = defaults.enabled;
     	      this.networks = defaults.networks;
-    	      this.requireToken = defaults.requireToken;
         }
 
         @CustomType.Setter
-        public Builder authenticationEnabled(@Nullable Boolean authenticationEnabled) {
+        public Builder enabled(@Nullable Boolean enabled) {
 
-            this.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsDot", "enabled");
-            }
             this.enabled = enabled;
             return this;
         }
@@ -78,18 +73,10 @@ public final class ZeroTrustDnsLocationEndpointsDot {
         public Builder networks(ZeroTrustDnsLocationEndpointsDotNetwork... networks) {
             return networks(List.of(networks));
         }
-        @CustomType.Setter
-        public Builder requireToken(@Nullable Boolean requireToken) {
-
-            this.requireToken = requireToken;
-            return this;
-        }
         public ZeroTrustDnsLocationEndpointsDot build() {
             final var _resultValue = new ZeroTrustDnsLocationEndpointsDot();
-            _resultValue.authenticationEnabled = authenticationEnabled;
             _resultValue.enabled = enabled;
             _resultValue.networks = networks;
-            _resultValue.requireToken = requireToken;
             return _resultValue;
         }
     }

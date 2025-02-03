@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,26 +19,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cloudflare.NewApiShieldOperation(ctx, "example", &cloudflare.ApiShieldOperationArgs{
-//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Method:   pulumi.String("GET"),
-//				Host:     pulumi.String("api.example.com"),
-//				Endpoint: pulumi.String("/path"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "example", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
-//				ZoneId:           pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				OperationId:      example.ID(),
-//				MitigationAction: pulumi.String("block"),
+//			_, err := cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "example_api_shield_operation_schema_validation_settings", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
+//				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				OperationId:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				MitigationAction: pulumi.String("log"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,14 +39,23 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
+// ```
 type ApiShieldOperationSchemaValidationSettings struct {
 	pulumi.CustomResourceState
 
-	// The mitigation action to apply to this operation.
+	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+	// Level Schema Validation Settings for mitigation action that will be applied
 	MitigationAction pulumi.StringPtrOutput `pulumi:"mitigationAction"`
-	// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+	// UUID
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -97,20 +95,26 @@ func GetApiShieldOperationSchemaValidationSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.
 type apiShieldOperationSchemaValidationSettingsState struct {
-	// The mitigation action to apply to this operation.
+	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+	// Level Schema Validation Settings for mitigation action that will be applied
 	MitigationAction *string `pulumi:"mitigationAction"`
-	// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+	// UUID
 	OperationId *string `pulumi:"operationId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldOperationSchemaValidationSettingsState struct {
-	// The mitigation action to apply to this operation.
+	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+	// Level Schema Validation Settings for mitigation action that will be applied
 	MitigationAction pulumi.StringPtrInput
-	// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+	// UUID
 	OperationId pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -119,21 +123,27 @@ func (ApiShieldOperationSchemaValidationSettingsState) ElementType() reflect.Typ
 }
 
 type apiShieldOperationSchemaValidationSettingsArgs struct {
-	// The mitigation action to apply to this operation.
+	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+	// Level Schema Validation Settings for mitigation action that will be applied
 	MitigationAction *string `pulumi:"mitigationAction"`
-	// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+	// UUID
 	OperationId string `pulumi:"operationId"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
 type ApiShieldOperationSchemaValidationSettingsArgs struct {
-	// The mitigation action to apply to this operation.
+	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+	// Level Schema Validation Settings for mitigation action that will be applied
 	MitigationAction pulumi.StringPtrInput
-	// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+	// UUID
 	OperationId pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -224,17 +234,20 @@ func (o ApiShieldOperationSchemaValidationSettingsOutput) ToApiShieldOperationSc
 	return o
 }
 
-// The mitigation action to apply to this operation.
+// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+// Level Schema Validation Settings for mitigation action that will be applied
 func (o ApiShieldOperationSchemaValidationSettingsOutput) MitigationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringPtrOutput { return v.MitigationAction }).(pulumi.StringPtrOutput)
 }
 
-// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+// UUID
 func (o ApiShieldOperationSchemaValidationSettingsOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o ApiShieldOperationSchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

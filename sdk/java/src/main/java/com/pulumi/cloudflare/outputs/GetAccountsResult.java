@@ -3,46 +3,63 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetAccountsAccount;
+import com.pulumi.cloudflare.outputs.GetAccountsResultSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
-    private List<GetAccountsAccount> accounts;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Timestamp for the creation of the account
+     * 
+     */
+    private String createdOn;
+    /**
+     * @return Identifier
      * 
      */
     private String id;
     /**
-     * @return The account name to target for the resource.
+     * @return Account name
      * 
      */
-    private @Nullable String name;
+    private String name;
+    /**
+     * @return Account settings
+     * 
+     */
+    private GetAccountsResultSettings settings;
 
     private GetAccountsResult() {}
-    public List<GetAccountsAccount> accounts() {
-        return this.accounts;
+    /**
+     * @return Timestamp for the creation of the account
+     * 
+     */
+    public String createdOn() {
+        return this.createdOn;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identifier
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The account name to target for the resource.
+     * @return Account name
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
+    }
+    /**
+     * @return Account settings
+     * 
+     */
+    public GetAccountsResultSettings settings() {
+        return this.settings;
     }
 
     public static Builder builder() {
@@ -54,27 +71,26 @@ public final class GetAccountsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetAccountsAccount> accounts;
+        private String createdOn;
         private String id;
-        private @Nullable String name;
+        private String name;
+        private GetAccountsResultSettings settings;
         public Builder() {}
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accounts = defaults.accounts;
+    	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.settings = defaults.settings;
         }
 
         @CustomType.Setter
-        public Builder accounts(List<GetAccountsAccount> accounts) {
-            if (accounts == null) {
-              throw new MissingRequiredPropertyException("GetAccountsResult", "accounts");
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "createdOn");
             }
-            this.accounts = accounts;
+            this.createdOn = createdOn;
             return this;
-        }
-        public Builder accounts(GetAccountsAccount... accounts) {
-            return accounts(List.of(accounts));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -85,16 +101,27 @@ public final class GetAccountsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "name");
+            }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder settings(GetAccountsResultSettings settings) {
+            if (settings == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "settings");
+            }
+            this.settings = settings;
             return this;
         }
         public GetAccountsResult build() {
             final var _resultValue = new GetAccountsResult();
-            _resultValue.accounts = accounts;
+            _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.settings = settings;
             return _resultValue;
         }
     }

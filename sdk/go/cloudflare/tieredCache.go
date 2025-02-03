@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Cloudflare Tiered Cache settings.
-// This allows you to adjust topologies for your zone.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTieredCache(ctx, "example", &cloudflare.TieredCacheArgs{
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				CacheType: pulumi.String("smart"),
+//			_, err := cloudflare.NewTieredCache(ctx, "example_tiered_cache", &cloudflare.TieredCacheArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Value:  pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
@@ -41,12 +38,22 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
+// ```
 type TieredCache struct {
 	pulumi.CustomResourceState
 
-	// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-	CacheType pulumi.StringOutput `pulumi:"cacheType"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Enable or disable the Smart Tiered Cache
+	Value pulumi.StringOutput `pulumi:"value"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -57,8 +64,8 @@ func NewTieredCache(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CacheType == nil {
-		return nil, errors.New("invalid value for required argument 'CacheType'")
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -86,16 +93,24 @@ func GetTieredCache(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TieredCache resources.
 type tieredCacheState struct {
-	// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-	CacheType *string `pulumi:"cacheType"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable *bool `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Enable or disable the Smart Tiered Cache
+	Value *string `pulumi:"value"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type TieredCacheState struct {
-	// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-	CacheType pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolPtrInput
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Enable or disable the Smart Tiered Cache
+	Value pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -104,17 +119,17 @@ func (TieredCacheState) ElementType() reflect.Type {
 }
 
 type tieredCacheArgs struct {
-	// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-	CacheType string `pulumi:"cacheType"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Enable or disable the Smart Tiered Cache
+	Value string `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a TieredCache resource.
 type TieredCacheArgs struct {
-	// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-	CacheType pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Enable or disable the Smart Tiered Cache
+	Value pulumi.StringInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -205,12 +220,22 @@ func (o TieredCacheOutput) ToTieredCacheOutputWithContext(ctx context.Context) T
 	return o
 }
 
-// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-func (o TieredCacheOutput) CacheType() pulumi.StringOutput {
-	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.CacheType }).(pulumi.StringOutput)
+// Whether the setting is editable
+func (o TieredCacheOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TieredCache) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Last time this setting was modified.
+func (o TieredCacheOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Enable or disable the Smart Tiered Cache
+func (o TieredCacheOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o TieredCacheOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

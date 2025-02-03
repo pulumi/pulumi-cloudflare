@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which manages Cloudflare Pages projects.
-//
 // > If you are using a `source` block configuration, you must first have a
 //
 //	connected GitHub or GitLab account connected to Cloudflare. See the
@@ -24,27 +22,30 @@ import (
 // !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
 //
 // ```sh
-// $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
+// $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
 // ```
 type PagesProject struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
-	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
+	// Configs for the project build process.
+	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
+	// Most recent deployment to the repo.
+	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Configuration for deployments in a project.
+	// Configs for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
+	// Most recent deployment to the repo.
+	LatestDeployment PagesProjectLatestDeploymentOutput `pulumi:"latestDeployment"`
 	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the branch that is used for the production environment.
-	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
-	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-	Source PagesProjectSourcePtrOutput `pulumi:"source"`
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch pulumi.StringPtrOutput   `pulumi:"productionBranch"`
+	Source           PagesProjectSourceOutput `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 }
@@ -61,9 +62,6 @@ func NewPagesProject(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.ProductionBranch == nil {
-		return nil, errors.New("invalid value for required argument 'ProductionBranch'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagesProject
@@ -88,43 +86,49 @@ func GetPagesProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesProject resources.
 type pagesProjectState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
+	// Most recent deployment to the repo.
+	CanonicalDeployment *PagesProjectCanonicalDeployment `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Configuration for deployments in a project.
+	// Configs for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
+	// Most recent deployment to the repo.
+	LatestDeployment *PagesProjectLatestDeployment `pulumi:"latestDeployment"`
 	// Name of the project.
 	Name *string `pulumi:"name"`
-	// The name of the branch that is used for the production environment.
-	ProductionBranch *string `pulumi:"productionBranch"`
-	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-	Source *PagesProjectSource `pulumi:"source"`
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch *string             `pulumi:"productionBranch"`
+	Source           *PagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain *string `pulumi:"subdomain"`
 }
 
 type PagesProjectState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
+	// Most recent deployment to the repo.
+	CanonicalDeployment PagesProjectCanonicalDeploymentPtrInput
 	// When the project was created.
 	CreatedOn pulumi.StringPtrInput
-	// Configuration for deployments in a project.
+	// Configs for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayInput
+	// Most recent deployment to the repo.
+	LatestDeployment PagesProjectLatestDeploymentPtrInput
 	// Name of the project.
 	Name pulumi.StringPtrInput
-	// The name of the branch that is used for the production environment.
+	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringPtrInput
-	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-	Source PagesProjectSourcePtrInput
+	Source           PagesProjectSourcePtrInput
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringPtrInput
 }
@@ -134,34 +138,30 @@ func (PagesProjectState) ElementType() reflect.Type {
 }
 
 type pagesProjectArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
-	// Configuration for deployments in a project.
+	// Configs for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// Name of the project.
 	Name string `pulumi:"name"`
-	// The name of the branch that is used for the production environment.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-	Source *PagesProjectSource `pulumi:"source"`
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch *string `pulumi:"productionBranch"`
 }
 
 // The set of arguments for constructing a PagesProject resource.
 type PagesProjectArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
-	// Configuration for deployments in a project.
+	// Configs for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// Name of the project.
 	Name pulumi.StringInput
-	// The name of the branch that is used for the production environment.
-	ProductionBranch pulumi.StringInput
-	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-	Source PagesProjectSourcePtrInput
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch pulumi.StringPtrInput
 }
 
 func (PagesProjectArgs) ElementType() reflect.Type {
@@ -251,14 +251,19 @@ func (o PagesProjectOutput) ToPagesProjectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
-func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
+// Configs for the project build process.
+func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
+}
+
+// Most recent deployment to the repo.
+func (o PagesProjectOutput) CanonicalDeployment() PagesProjectCanonicalDeploymentOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectCanonicalDeploymentOutput { return v.CanonicalDeployment }).(PagesProjectCanonicalDeploymentOutput)
 }
 
 // When the project was created.
@@ -266,7 +271,7 @@ func (o PagesProjectOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Configuration for deployments in a project.
+// Configs for deployments in a project.
 func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsOutput)
 }
@@ -276,19 +281,23 @@ func (o PagesProjectOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Most recent deployment to the repo.
+func (o PagesProjectOutput) LatestDeployment() PagesProjectLatestDeploymentOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectLatestDeploymentOutput { return v.LatestDeployment }).(PagesProjectLatestDeploymentOutput)
+}
+
 // Name of the project.
 func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the branch that is used for the production environment.
-func (o PagesProjectOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionBranch }).(pulumi.StringOutput)
+// Production branch of the project. Used to identify production deployments.
+func (o PagesProjectOutput) ProductionBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringPtrOutput { return v.ProductionBranch }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-func (o PagesProjectOutput) Source() PagesProjectSourcePtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectSourcePtrOutput { return v.Source }).(PagesProjectSourcePtrOutput)
+func (o PagesProjectOutput) Source() PagesProjectSourceOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectSourceOutput { return v.Source }).(PagesProjectSourceOutput)
 }
 
 // The Cloudflare subdomain associated with the project.

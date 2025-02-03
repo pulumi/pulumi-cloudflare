@@ -7,13 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare data source to look up Cache Reserve
-// status for a given zone.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZoneCacheReserve(ctx, &cloudflare.LookupZoneCacheReserveArgs{
-//				ZoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,18 +48,24 @@ func LookupZoneCacheReserve(ctx *pulumi.Context, args *LookupZoneCacheReserveArg
 
 // A collection of arguments for invoking getZoneCacheReserve.
 type LookupZoneCacheReserveArgs struct {
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneCacheReserve.
 type LookupZoneCacheReserveResult struct {
-	// The status of Cache Reserve support.
-	Enabled bool `pulumi:"enabled"`
+	// Whether the setting is editable
+	Editable bool `pulumi:"editable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The zone identifier to target for the resource.
+	// Last time this setting was modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// The value of the feature
+	Value string `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
+	// ID of the zone setting.
+	ZoneSettingId string `pulumi:"zoneSettingId"`
 }
 
 func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReserveOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheReserveResultOutput {
@@ -76,7 +79,7 @@ func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReser
 
 // A collection of arguments for invoking getZoneCacheReserve.
 type LookupZoneCacheReserveOutputArgs struct {
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -99,9 +102,9 @@ func (o LookupZoneCacheReserveResultOutput) ToLookupZoneCacheReserveResultOutput
 	return o
 }
 
-// The status of Cache Reserve support.
-func (o LookupZoneCacheReserveResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupZoneCacheReserveResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+// Whether the setting is editable
+func (o LookupZoneCacheReserveResultOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZoneCacheReserveResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -109,9 +112,24 @@ func (o LookupZoneCacheReserveResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Last time this setting was modified.
+func (o LookupZoneCacheReserveResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The value of the feature
+func (o LookupZoneCacheReserveResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o LookupZoneCacheReserveResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// ID of the zone setting.
+func (o LookupZoneCacheReserveResultOutput) ZoneSettingId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneSettingId }).(pulumi.StringOutput)
 }
 
 func init() {

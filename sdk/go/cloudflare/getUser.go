@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve information about the currently authenticated user.
-//
 // ## Example Usage
 //
 // ```go
@@ -20,47 +18,25 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// me, err := cloudflare.GetUser(ctx, map[string]interface{}{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// all, err := cloudflare.GetApiTokenPermissionGroups(ctx, map[string]interface{}{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = cloudflare.NewApiToken(ctx, "example", &cloudflare.ApiTokenArgs{
-// Name: pulumi.String("Terraform Cloud (Terraform)"),
-// Policies: cloudflare.ApiTokenPolicyArray{
-// &cloudflare.ApiTokenPolicyArgs{
-// PermissionGroups: pulumi.StringArray{
-// pulumi.String(all.User.User Details Read),
-// },
-// Resources: pulumi.StringMap{
-// fmt.Sprintf("com.cloudflare.api.user.%v", me.Id): pulumi.String("*"),
-// },
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupUser(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
-func GetUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUserResult, error) {
+func LookupUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetUserResult
+	var rv LookupUserResult
 	err := ctx.Invoke("cloudflare:index/getUser:getUser", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -69,52 +45,38 @@ func GetUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUserResult, 
 }
 
 // A collection of values returned by getUser.
-type GetUserResult struct {
-	// The user's email address.
-	Email string `pulumi:"email"`
-	// The user's unique identifier.
+type LookupUserResult struct {
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The user's username.
-	Username string `pulumi:"username"`
 }
 
-func GetUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetUserResultOutput, error) {
+func LookupUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupUserResultOutput, error) {
 		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("cloudflare:index/getUser:getUser", nil, GetUserResultOutput{}, options).(GetUserResultOutput), nil
-	}).(GetUserResultOutput)
+		return ctx.InvokeOutput("cloudflare:index/getUser:getUser", nil, LookupUserResultOutput{}, options).(LookupUserResultOutput), nil
+	}).(LookupUserResultOutput)
 }
 
 // A collection of values returned by getUser.
-type GetUserResultOutput struct{ *pulumi.OutputState }
+type LookupUserResultOutput struct{ *pulumi.OutputState }
 
-func (GetUserResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUserResult)(nil)).Elem()
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
 }
 
-func (o GetUserResultOutput) ToGetUserResultOutput() GetUserResultOutput {
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
 	return o
 }
 
-func (o GetUserResultOutput) ToGetUserResultOutputWithContext(ctx context.Context) GetUserResultOutput {
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
 	return o
 }
 
-// The user's email address.
-func (o GetUserResultOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserResult) string { return v.Email }).(pulumi.StringOutput)
-}
-
-// The user's unique identifier.
-func (o GetUserResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The user's username.
-func (o GetUserResultOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserResult) string { return v.Username }).(pulumi.StringOutput)
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetUserResultOutput{})
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

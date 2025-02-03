@@ -6,18 +6,17 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ApiShieldSchemaArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldSchemaState;
+import com.pulumi.cloudflare.outputs.ApiShieldSchemaSchema;
+import com.pulumi.cloudflare.outputs.ApiShieldSchemaUploadDetails;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage a schema in API Shield Schema Validation 2.0.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -43,14 +42,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var petstoreSchema = new ApiShieldSchema("petstoreSchema", ApiShieldSchemaArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("myschema")
+ *         var exampleApiShieldSchema = new ApiShieldSchema("exampleApiShieldSchema", ApiShieldSchemaArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .file("file.txt")
  *             .kind("openapi_v3")
- *             .validationEnabled(true)
- *             .source(StdFunctions.file(FileArgs.builder()
- *                 .input("./schemas/petstore.json")
- *                 .build()).result())
+ *             .name("petstore schema")
+ *             .validationEnabled("true")
  *             .build());
  * 
  *     }
@@ -62,71 +59,109 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/apiShieldSchema:ApiShieldSchema")
 public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+     * Schema file bytes
+     * 
+     */
+    @Export(name="file", refs={String.class}, tree="[0]")
+    private Output<String> file;
+
+    /**
+     * @return Schema file bytes
+     * 
+     */
+    public Output<String> file() {
+        return this.file;
+    }
+    /**
+     * Kind of schema
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kind;
+    private Output<String> kind;
 
     /**
-     * @return Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+     * @return Kind of schema
      * 
      */
-    public Output<Optional<String>> kind() {
-        return Codegen.optional(this.kind);
+    public Output<String> kind() {
+        return this.kind;
     }
     /**
-     * Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * Name of the schema
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
-     * @return Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the schema
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
+    }
+    @Export(name="schema", refs={ApiShieldSchemaSchema.class}, tree="[0]")
+    private Output<ApiShieldSchemaSchema> schema;
+
+    public Output<ApiShieldSchemaSchema> schema() {
+        return this.schema;
+    }
+    @Export(name="schemaId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> schemaId;
+
+    public Output<Optional<String>> schemaId() {
+        return Codegen.optional(this.schemaId);
     }
     /**
-     * Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * Source of the schema
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
-     * @return Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * @return Source of the schema
      * 
      */
     public Output<String> source() {
         return this.source;
     }
+    @Export(name="uploadDetails", refs={ApiShieldSchemaUploadDetails.class}, tree="[0]")
+    private Output<ApiShieldSchemaUploadDetails> uploadDetails;
+
+    public Output<ApiShieldSchemaUploadDetails> uploadDetails() {
+        return this.uploadDetails;
+    }
     /**
      * Flag whether schema is enabled for validation.
      * 
      */
-    @Export(name="validationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> validationEnabled;
+    @Export(name="validationEnabled", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> validationEnabled;
 
     /**
      * @return Flag whether schema is enabled for validation.
      * 
      */
-    public Output<Optional<Boolean>> validationEnabled() {
+    public Output<Optional<String>> validationEnabled() {
         return Codegen.optional(this.validationEnabled);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

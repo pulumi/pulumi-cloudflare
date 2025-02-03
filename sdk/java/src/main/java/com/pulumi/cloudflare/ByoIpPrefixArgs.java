@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     public static final ByoIpPrefixArgs Empty = new ByoIpPrefixArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Output<String> accountId() {
@@ -32,29 +33,44 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Autonomous System Number (ASN) the prefix will be advertised under.
      * 
      */
-    @Import(name="advertisement")
-    private @Nullable Output<String> advertisement;
+    @Import(name="asn", required=true)
+    private Output<Integer> asn;
 
     /**
-     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * @return Autonomous System Number (ASN) the prefix will be advertised under.
      * 
      */
-    public Optional<Output<String>> advertisement() {
-        return Optional.ofNullable(this.advertisement);
+    public Output<Integer> asn() {
+        return this.asn;
     }
 
     /**
-     * Description of the BYO IP prefix.
+     * IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    @Import(name="cidr", required=true)
+    private Output<String> cidr;
+
+    /**
+     * @return IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    public Output<String> cidr() {
+        return this.cidr;
+    }
+
+    /**
+     * Description of the prefix.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the BYO IP prefix.
+     * @return Description of the prefix.
      * 
      */
     public Optional<Output<String>> description() {
@@ -62,27 +78,28 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Identifier for the uploaded LOA document.
      * 
      */
-    @Import(name="prefixId", required=true)
-    private Output<String> prefixId;
+    @Import(name="loaDocumentId", required=true)
+    private Output<String> loaDocumentId;
 
     /**
-     * @return The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier for the uploaded LOA document.
      * 
      */
-    public Output<String> prefixId() {
-        return this.prefixId;
+    public Output<String> loaDocumentId() {
+        return this.loaDocumentId;
     }
 
     private ByoIpPrefixArgs() {}
 
     private ByoIpPrefixArgs(ByoIpPrefixArgs $) {
         this.accountId = $.accountId;
-        this.advertisement = $.advertisement;
+        this.asn = $.asn;
+        this.cidr = $.cidr;
         this.description = $.description;
-        this.prefixId = $.prefixId;
+        this.loaDocumentId = $.loaDocumentId;
     }
 
     public static Builder builder() {
@@ -104,7 +121,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -115,7 +132,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -125,28 +142,49 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
          * 
          * @return builder
          * 
          */
-        public Builder advertisement(@Nullable Output<String> advertisement) {
-            $.advertisement = advertisement;
+        public Builder asn(Output<Integer> asn) {
+            $.asn = asn;
             return this;
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
          * 
          * @return builder
          * 
          */
-        public Builder advertisement(String advertisement) {
-            return advertisement(Output.of(advertisement));
+        public Builder asn(Integer asn) {
+            return asn(Output.of(asn));
         }
 
         /**
-         * @param description Description of the BYO IP prefix.
+         * @param cidr IP Prefix in Classless Inter-Domain Routing format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(Output<String> cidr) {
+            $.cidr = cidr;
+            return this;
+        }
+
+        /**
+         * @param cidr IP Prefix in Classless Inter-Domain Routing format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(String cidr) {
+            return cidr(Output.of(cidr));
+        }
+
+        /**
+         * @param description Description of the prefix.
          * 
          * @return builder
          * 
@@ -157,7 +195,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the BYO IP prefix.
+         * @param description Description of the prefix.
          * 
          * @return builder
          * 
@@ -167,32 +205,38 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+         * @param loaDocumentId Identifier for the uploaded LOA document.
          * 
          * @return builder
          * 
          */
-        public Builder prefixId(Output<String> prefixId) {
-            $.prefixId = prefixId;
+        public Builder loaDocumentId(Output<String> loaDocumentId) {
+            $.loaDocumentId = loaDocumentId;
             return this;
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+         * @param loaDocumentId Identifier for the uploaded LOA document.
          * 
          * @return builder
          * 
          */
-        public Builder prefixId(String prefixId) {
-            return prefixId(Output.of(prefixId));
+        public Builder loaDocumentId(String loaDocumentId) {
+            return loaDocumentId(Output.of(loaDocumentId));
         }
 
         public ByoIpPrefixArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "accountId");
             }
-            if ($.prefixId == null) {
-                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "prefixId");
+            if ($.asn == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "asn");
+            }
+            if ($.cidr == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "cidr");
+            }
+            if ($.loaDocumentId == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "loaDocumentId");
             }
             return $;
         }

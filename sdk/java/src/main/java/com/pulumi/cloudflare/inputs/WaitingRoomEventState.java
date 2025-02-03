@@ -17,30 +17,22 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
 
     public static final WaitingRoomEventState Empty = new WaitingRoomEventState();
 
-    /**
-     * Creation time.
-     * 
-     */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
-    /**
-     * @return Creation time.
-     * 
-     */
     public Optional<Output<String>> createdOn() {
         return Optional.ofNullable(this.createdOn);
     }
 
     /**
-     * This is a templated html file that will be rendered at the edge.
+     * If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
      * 
      */
     @Import(name="customPageHtml")
     private @Nullable Output<String> customPageHtml;
 
     /**
-     * @return This is a templated html file that will be rendered at the edge.
+     * @return If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
      * 
      */
     public Optional<Output<String>> customPageHtml() {
@@ -48,14 +40,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A description to let users add more details about the event.
+     * A note that you can use to add more details about the event.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description to let users add more details about the event.
+     * @return A note that you can use to add more details about the event.
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,14 +55,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Disables automatic renewal of session cookies.
+     * If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
      * 
      */
     @Import(name="disableSessionRenewal")
     private @Nullable Output<Boolean> disableSessionRenewal;
 
     /**
-     * @return Disables automatic renewal of session cookies.
+     * @return If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
      * 
      */
     public Optional<Output<Boolean>> disableSessionRenewal() {
@@ -78,14 +70,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the end of the event.
      * 
      */
     @Import(name="eventEndTime")
     private @Nullable Output<String> eventEndTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * @return An ISO 8601 timestamp that marks the end of the event.
      * 
      */
     public Optional<Output<String>> eventEndTime() {
@@ -93,44 +85,36 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
      * 
      */
     @Import(name="eventStartTime")
     private @Nullable Output<String> eventStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+     * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
      * 
      */
     public Optional<Output<String>> eventStartTime() {
         return Optional.ofNullable(this.eventStartTime);
     }
 
-    /**
-     * Last modified time.
-     * 
-     */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
-    /**
-     * @return Last modified time.
-     * 
-     */
     public Optional<Output<String>> modifiedOn() {
         return Optional.ofNullable(this.modifiedOn);
     }
 
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * @return A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     public Optional<Output<String>> name() {
@@ -138,14 +122,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The number of new users that will be let into the route every minute.
+     * If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
      * 
      */
     @Import(name="newUsersPerMinute")
     private @Nullable Output<Integer> newUsersPerMinute;
 
     /**
-     * @return The number of new users that will be let into the route every minute.
+     * @return If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
      * 
      */
     public Optional<Output<Integer>> newUsersPerMinute() {
@@ -153,14 +137,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
      * 
      */
     @Import(name="prequeueStartTime")
     private @Nullable Output<String> prequeueStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+     * @return An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
      * 
      */
     public Optional<Output<String>> prequeueStartTime() {
@@ -168,14 +152,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
      * 
      */
     @Import(name="queueingMethod")
     private @Nullable Output<String> queueingMethod;
 
     /**
-     * @return The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * @return If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
      * 
      */
     public Optional<Output<String>> queueingMethod() {
@@ -183,14 +167,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<Integer> sessionDuration;
 
     /**
-     * @return Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * @return If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
      * 
      */
     public Optional<Output<Integer>> sessionDuration() {
@@ -198,14 +182,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+     * If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
     @Import(name="shuffleAtEventStart")
     private @Nullable Output<Boolean> shuffleAtEventStart;
 
     /**
-     * @return Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+     * @return If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
     public Optional<Output<Boolean>> shuffleAtEventStart() {
@@ -213,14 +197,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      * 
      */
     @Import(name="suspended")
     private @Nullable Output<Boolean> suspended;
 
     /**
-     * @return If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * @return Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      * 
      */
     public Optional<Output<Boolean>> suspended() {
@@ -228,44 +212,36 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The total number of active user sessions on the route at a point in time.
+     * If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
      * 
      */
     @Import(name="totalActiveUsers")
     private @Nullable Output<Integer> totalActiveUsers;
 
     /**
-     * @return The total number of active user sessions on the route at a point in time.
+     * @return If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
      * 
      */
     public Optional<Output<Integer>> totalActiveUsers() {
         return Optional.ofNullable(this.totalActiveUsers);
     }
 
-    /**
-     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="waitingRoomId")
     private @Nullable Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> waitingRoomId() {
         return Optional.ofNullable(this.waitingRoomId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -312,29 +288,17 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
             $ = new WaitingRoomEventState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param createdOn Creation time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(@Nullable Output<String> createdOn) {
             $.createdOn = createdOn;
             return this;
         }
 
-        /**
-         * @param createdOn Creation time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
         }
 
         /**
-         * @param customPageHtml This is a templated html file that will be rendered at the edge.
+         * @param customPageHtml If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -345,7 +309,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPageHtml This is a templated html file that will be rendered at the edge.
+         * @param customPageHtml If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -355,7 +319,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A description to let users add more details about the event.
+         * @param description A note that you can use to add more details about the event.
          * 
          * @return builder
          * 
@@ -366,7 +330,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A description to let users add more details about the event.
+         * @param description A note that you can use to add more details about the event.
          * 
          * @return builder
          * 
@@ -376,7 +340,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSessionRenewal Disables automatic renewal of session cookies.
+         * @param disableSessionRenewal If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -387,7 +351,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSessionRenewal Disables automatic renewal of session cookies.
+         * @param disableSessionRenewal If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -397,7 +361,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventEndTime ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+         * @param eventEndTime An ISO 8601 timestamp that marks the end of the event.
          * 
          * @return builder
          * 
@@ -408,7 +372,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventEndTime ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+         * @param eventEndTime An ISO 8601 timestamp that marks the end of the event.
          * 
          * @return builder
          * 
@@ -418,7 +382,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+         * @param eventStartTime An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
          * 
          * @return builder
          * 
@@ -429,7 +393,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+         * @param eventStartTime An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
          * 
          * @return builder
          * 
@@ -438,29 +402,17 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
             return eventStartTime(Output.of(eventStartTime));
         }
 
-        /**
-         * @param modifiedOn Last modified time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
             $.modifiedOn = modifiedOn;
             return this;
         }
 
-        /**
-         * @param modifiedOn Last modified time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(String modifiedOn) {
             return modifiedOn(Output.of(modifiedOn));
         }
 
         /**
-         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
          * 
          * @return builder
          * 
@@ -471,7 +423,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
          * 
          * @return builder
          * 
@@ -481,7 +433,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param newUsersPerMinute The number of new users that will be let into the route every minute.
+         * @param newUsersPerMinute If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
          * 
          * @return builder
          * 
@@ -492,7 +444,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param newUsersPerMinute The number of new users that will be let into the route every minute.
+         * @param newUsersPerMinute If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
          * 
          * @return builder
          * 
@@ -502,7 +454,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param prequeueStartTime ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+         * @param prequeueStartTime An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
          * 
          * @return builder
          * 
@@ -513,7 +465,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param prequeueStartTime ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+         * @param prequeueStartTime An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
          * 
          * @return builder
          * 
@@ -523,7 +475,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queueingMethod The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+         * @param queueingMethod If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -534,7 +486,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queueingMethod The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+         * @param queueingMethod If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -544,7 +496,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+         * @param sessionDuration If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -555,7 +507,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+         * @param sessionDuration If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
          * 
          * @return builder
          * 
@@ -565,7 +517,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shuffleAtEventStart Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+         * @param shuffleAtEventStart If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
          * 
          * @return builder
          * 
@@ -576,7 +528,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shuffleAtEventStart Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+         * @param shuffleAtEventStart If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
          * 
          * @return builder
          * 
@@ -586,7 +538,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param suspended If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+         * @param suspended Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
          * 
          * @return builder
          * 
@@ -597,7 +549,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param suspended If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+         * @param suspended Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
          * 
          * @return builder
          * 
@@ -607,7 +559,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param totalActiveUsers The total number of active user sessions on the route at a point in time.
+         * @param totalActiveUsers If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
          * 
          * @return builder
          * 
@@ -618,7 +570,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param totalActiveUsers The total number of active user sessions on the route at a point in time.
+         * @param totalActiveUsers If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
          * 
          * @return builder
          * 
@@ -627,29 +579,17 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
             return totalActiveUsers(Output.of(totalActiveUsers));
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(@Nullable Output<String> waitingRoomId) {
             $.waitingRoomId = waitingRoomId;
             return this;
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(String waitingRoomId) {
             return waitingRoomId(Output.of(waitingRoomId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -660,7 +600,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

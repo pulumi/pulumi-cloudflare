@@ -4,37 +4,38 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RateLimitActionResponse {
     /**
-     * @return The body to return, the content here should conform to the `content_type`.
+     * @return The response body to return. The value must conform to the configured content type.
      * 
      */
-    private String body;
+    private @Nullable String body;
     /**
-     * @return The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+     * @return The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
      * 
      */
-    private String contentType;
+    private @Nullable String contentType;
 
     private RateLimitActionResponse() {}
     /**
-     * @return The body to return, the content here should conform to the `content_type`.
+     * @return The response body to return. The value must conform to the configured content type.
      * 
      */
-    public String body() {
-        return this.body;
+    public Optional<String> body() {
+        return Optional.ofNullable(this.body);
     }
     /**
-     * @return The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+     * @return The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
      * 
      */
-    public String contentType() {
-        return this.contentType;
+    public Optional<String> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class RateLimitActionResponse {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String body;
-        private String contentType;
+        private @Nullable String body;
+        private @Nullable String contentType;
         public Builder() {}
         public Builder(RateLimitActionResponse defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class RateLimitActionResponse {
         }
 
         @CustomType.Setter
-        public Builder body(String body) {
-            if (body == null) {
-              throw new MissingRequiredPropertyException("RateLimitActionResponse", "body");
-            }
+        public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
-        public Builder contentType(String contentType) {
-            if (contentType == null) {
-              throw new MissingRequiredPropertyException("RateLimitActionResponse", "contentType");
-            }
+        public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }

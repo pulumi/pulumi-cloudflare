@@ -25,20 +25,17 @@ class ZeroTrustDnsLocationArgs:
                  name: pulumi.Input[str],
                  client_default: Optional[pulumi.Input[bool]] = None,
                  dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
-                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
                  endpoints: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDnsLocation resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[bool] client_default: Indicator that this is the default location.
-        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
-        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
-        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
-        :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: Endpoints assigned to this location.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[str] name: The name of the location.
+        :param pulumi.Input[bool] client_default: True if the location is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+        :param pulumi.Input[bool] ecs_support: True if the location needs to resolve EDNS queries.
+        :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -46,8 +43,6 @@ class ZeroTrustDnsLocationArgs:
             pulumi.set(__self__, "client_default", client_default)
         if dns_destination_ips_id is not None:
             pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
-        if dns_destination_ipv6_block_id is not None:
-            pulumi.set(__self__, "dns_destination_ipv6_block_id", dns_destination_ipv6_block_id)
         if ecs_support is not None:
             pulumi.set(__self__, "ecs_support", ecs_support)
         if endpoints is not None:
@@ -58,9 +53,6 @@ class ZeroTrustDnsLocationArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -71,7 +63,7 @@ class ZeroTrustDnsLocationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the teams location.
+        The name of the location.
         """
         return pulumi.get(self, "name")
 
@@ -83,7 +75,7 @@ class ZeroTrustDnsLocationArgs:
     @pulumi.getter(name="clientDefault")
     def client_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator that this is the default location.
+        True if the location is the default location.
         """
         return pulumi.get(self, "client_default")
 
@@ -95,7 +87,7 @@ class ZeroTrustDnsLocationArgs:
     @pulumi.getter(name="dnsDestinationIpsId")
     def dns_destination_ips_id(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 binding assigned to this location.
+        The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         """
         return pulumi.get(self, "dns_destination_ips_id")
 
@@ -104,22 +96,10 @@ class ZeroTrustDnsLocationArgs:
         pulumi.set(self, "dns_destination_ips_id", value)
 
     @property
-    @pulumi.getter(name="dnsDestinationIpv6BlockId")
-    def dns_destination_ipv6_block_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        IPv6 block binding assigned to this location.
-        """
-        return pulumi.get(self, "dns_destination_ipv6_block_id")
-
-    @dns_destination_ipv6_block_id.setter
-    def dns_destination_ipv6_block_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dns_destination_ipv6_block_id", value)
-
-    @property
     @pulumi.getter(name="ecsSupport")
     def ecs_support(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator that this location needs to resolve EDNS queries.
+        True if the location needs to resolve EDNS queries.
         """
         return pulumi.get(self, "ecs_support")
 
@@ -131,7 +111,7 @@ class ZeroTrustDnsLocationArgs:
     @pulumi.getter
     def endpoints(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]:
         """
-        Endpoints assigned to this location.
+        The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         """
         return pulumi.get(self, "endpoints")
 
@@ -143,7 +123,7 @@ class ZeroTrustDnsLocationArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
         """
-        The networks CIDRs that comprise the location.
+        A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         return pulumi.get(self, "networks")
 
@@ -156,8 +136,8 @@ class ZeroTrustDnsLocationArgs:
 class _ZeroTrustDnsLocationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
                  dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  doh_subdomain: Optional[pulumi.Input[str]] = None,
@@ -167,29 +147,28 @@ class _ZeroTrustDnsLocationState:
                  ipv4_destination: Optional[pulumi.Input[str]] = None,
                  ipv4_destination_backup: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None):
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
-        :param pulumi.Input[bool] client_default: Indicator that this is the default location.
-        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
-        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
-        :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
-        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
-        :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: Endpoints assigned to this location.
-        :param pulumi.Input[str] ip: Client IP address.
-        :param pulumi.Input[str] ipv4_destination: IPv4 to direct all IPv4 DNS queries to.
-        :param pulumi.Input[str] ipv4_destination_backup: Backup IPv4 to direct all IPv4 DNS queries to.
-        :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[bool] client_default: True if the location is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+        :param pulumi.Input[str] doh_subdomain: The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
+        :param pulumi.Input[bool] ecs_support: True if the location needs to resolve EDNS queries.
+        :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+        :param pulumi.Input[str] ip: IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
+        :param pulumi.Input[str] ipv4_destination: The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
+        :param pulumi.Input[str] ipv4_destination_backup: The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
+        :param pulumi.Input[str] name: The name of the location.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if anonymized_logs_enabled is not None:
-            pulumi.set(__self__, "anonymized_logs_enabled", anonymized_logs_enabled)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if dns_destination_ips_id is not None:
             pulumi.set(__self__, "dns_destination_ips_id", dns_destination_ips_id)
         if dns_destination_ipv6_block_id is not None:
@@ -210,13 +189,12 @@ class _ZeroTrustDnsLocationState:
             pulumi.set(__self__, "name", name)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -224,22 +202,10 @@ class _ZeroTrustDnsLocationState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="anonymizedLogsEnabled")
-    def anonymized_logs_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicator that anonymized logs are enabled.
-        """
-        return pulumi.get(self, "anonymized_logs_enabled")
-
-    @anonymized_logs_enabled.setter
-    def anonymized_logs_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "anonymized_logs_enabled", value)
-
-    @property
     @pulumi.getter(name="clientDefault")
     def client_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator that this is the default location.
+        True if the location is the default location.
         """
         return pulumi.get(self, "client_default")
 
@@ -248,10 +214,19 @@ class _ZeroTrustDnsLocationState:
         pulumi.set(self, "client_default", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter(name="dnsDestinationIpsId")
     def dns_destination_ips_id(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 binding assigned to this location.
+        The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         """
         return pulumi.get(self, "dns_destination_ips_id")
 
@@ -263,7 +238,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter(name="dnsDestinationIpv6BlockId")
     def dns_destination_ipv6_block_id(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv6 block binding assigned to this location.
+        The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
         """
         return pulumi.get(self, "dns_destination_ipv6_block_id")
 
@@ -275,7 +250,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter(name="dohSubdomain")
     def doh_subdomain(self) -> Optional[pulumi.Input[str]]:
         """
-        The FQDN that DoH clients should be pointed at.
+        The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
         """
         return pulumi.get(self, "doh_subdomain")
 
@@ -287,7 +262,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter(name="ecsSupport")
     def ecs_support(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator that this location needs to resolve EDNS queries.
+        True if the location needs to resolve EDNS queries.
         """
         return pulumi.get(self, "ecs_support")
 
@@ -299,7 +274,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter
     def endpoints(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]:
         """
-        Endpoints assigned to this location.
+        The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         """
         return pulumi.get(self, "endpoints")
 
@@ -311,7 +286,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Client IP address.
+        IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
         """
         return pulumi.get(self, "ip")
 
@@ -323,7 +298,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 to direct all IPv4 DNS queries to.
+        The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         """
         return pulumi.get(self, "ipv4_destination")
 
@@ -335,7 +310,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter(name="ipv4DestinationBackup")
     def ipv4_destination_backup(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup IPv4 to direct all IPv4 DNS queries to.
+        The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         """
         return pulumi.get(self, "ipv4_destination_backup")
 
@@ -347,7 +322,7 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the teams location.
+        The name of the location.
         """
         return pulumi.get(self, "name")
 
@@ -359,13 +334,22 @@ class _ZeroTrustDnsLocationState:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
         """
-        The networks CIDRs that comprise the location.
+        A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class ZeroTrustDnsLocation(pulumi.CustomResource):
@@ -376,53 +360,67 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
                  dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
-                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
                  endpoints: Optional[pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Location resource. Teams Locations are
-        referenced when creating secure web gateway policies.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustDnsLocation("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="office",
-            client_default=True,
+        example_zero_trust_dns_location = cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="Austin Office Location",
+            client_default=False,
+            dns_destination_ips_id="0e4a32c6-6fb8-4858-9296-98f51631e8e6",
             ecs_support=False,
-            networks=[
-                {
-                    "network": "203.0.113.1/32",
+            endpoints={
+                "doh": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
+                    "require_token": True,
                 },
-                {
-                    "network": "203.0.113.2/32",
+                "dot": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
                 },
-            ])
+                "ipv4": {
+                    "enabled": True,
+                },
+                "ipv6": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
+                },
+            },
+            networks=[{
+                "network": "192.0.2.1/32",
+            }])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example <account_id>/<teams_location_id>
+        $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] client_default: Indicator that this is the default location.
-        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
-        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
-        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
-        :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']] endpoints: Endpoints assigned to this location.
-        :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[bool] client_default: True if the location is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+        :param pulumi.Input[bool] ecs_support: True if the location needs to resolve EDNS queries.
+        :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']] endpoints: The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+        :param pulumi.Input[str] name: The name of the location.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         ...
     @overload
@@ -431,34 +429,51 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  args: ZeroTrustDnsLocationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Location resource. Teams Locations are
-        referenced when creating secure web gateway policies.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustDnsLocation("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="office",
-            client_default=True,
+        example_zero_trust_dns_location = cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location",
+            account_id="699d98642c564d2e855e9661899b7252",
+            name="Austin Office Location",
+            client_default=False,
+            dns_destination_ips_id="0e4a32c6-6fb8-4858-9296-98f51631e8e6",
             ecs_support=False,
-            networks=[
-                {
-                    "network": "203.0.113.1/32",
+            endpoints={
+                "doh": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
+                    "require_token": True,
                 },
-                {
-                    "network": "203.0.113.2/32",
+                "dot": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
                 },
-            ])
+                "ipv4": {
+                    "enabled": True,
+                },
+                "ipv6": {
+                    "enabled": True,
+                    "networks": [{
+                        "network": "2001:85a3::/64",
+                    }],
+                },
+            },
+            networks=[{
+                "network": "192.0.2.1/32",
+            }])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example <account_id>/<teams_location_id>
+        $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -479,7 +494,6 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
                  dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
-                 dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
                  ecs_support: Optional[pulumi.Input[bool]] = None,
                  endpoints: Optional[pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -498,18 +512,19 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
             __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
-            __props__.__dict__["dns_destination_ipv6_block_id"] = dns_destination_ipv6_block_id
             __props__.__dict__["ecs_support"] = ecs_support
             __props__.__dict__["endpoints"] = endpoints
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
-            __props__.__dict__["anonymized_logs_enabled"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["dns_destination_ipv6_block_id"] = None
             __props__.__dict__["doh_subdomain"] = None
             __props__.__dict__["ip"] = None
             __props__.__dict__["ipv4_destination"] = None
             __props__.__dict__["ipv4_destination_backup"] = None
+            __props__.__dict__["updated_at"] = None
         super(ZeroTrustDnsLocation, __self__).__init__(
             'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation',
             resource_name,
@@ -521,8 +536,8 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
             client_default: Optional[pulumi.Input[bool]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             dns_destination_ips_id: Optional[pulumi.Input[str]] = None,
             dns_destination_ipv6_block_id: Optional[pulumi.Input[str]] = None,
             doh_subdomain: Optional[pulumi.Input[str]] = None,
@@ -532,7 +547,8 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             ipv4_destination: Optional[pulumi.Input[str]] = None,
             ipv4_destination_backup: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None) -> 'ZeroTrustDnsLocation':
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDnsLocation':
         """
         Get an existing ZeroTrustDnsLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -540,27 +556,25 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
-        :param pulumi.Input[bool] client_default: Indicator that this is the default location.
-        :param pulumi.Input[str] dns_destination_ips_id: IPv4 binding assigned to this location.
-        :param pulumi.Input[str] dns_destination_ipv6_block_id: IPv6 block binding assigned to this location.
-        :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
-        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
-        :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']] endpoints: Endpoints assigned to this location.
-        :param pulumi.Input[str] ip: Client IP address.
-        :param pulumi.Input[str] ipv4_destination: IPv4 to direct all IPv4 DNS queries to.
-        :param pulumi.Input[str] ipv4_destination_backup: Backup IPv4 to direct all IPv4 DNS queries to.
-        :param pulumi.Input[str] name: Name of the teams location.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: The networks CIDRs that comprise the location.
+        :param pulumi.Input[bool] client_default: True if the location is the default location.
+        :param pulumi.Input[str] dns_destination_ips_id: The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+        :param pulumi.Input[str] dns_destination_ipv6_block_id: The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+        :param pulumi.Input[str] doh_subdomain: The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
+        :param pulumi.Input[bool] ecs_support: True if the location needs to resolve EDNS queries.
+        :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']] endpoints: The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+        :param pulumi.Input[str] ip: IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
+        :param pulumi.Input[str] ipv4_destination: The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
+        :param pulumi.Input[str] ipv4_destination_backup: The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
+        :param pulumi.Input[str] name: The name of the location.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustDnsLocationState.__new__(_ZeroTrustDnsLocationState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["anonymized_logs_enabled"] = anonymized_logs_enabled
         __props__.__dict__["client_default"] = client_default
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
         __props__.__dict__["dns_destination_ipv6_block_id"] = dns_destination_ipv6_block_id
         __props__.__dict__["doh_subdomain"] = doh_subdomain
@@ -571,37 +585,32 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         __props__.__dict__["ipv4_destination_backup"] = ipv4_destination_backup
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
+        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustDnsLocation(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter(name="anonymizedLogsEnabled")
-    def anonymized_logs_enabled(self) -> pulumi.Output[bool]:
-        """
-        Indicator that anonymized logs are enabled.
-        """
-        return pulumi.get(self, "anonymized_logs_enabled")
 
     @property
     @pulumi.getter(name="clientDefault")
     def client_default(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicator that this is the default location.
+        True if the location is the default location.
         """
         return pulumi.get(self, "client_default")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter(name="dnsDestinationIpsId")
-    def dns_destination_ips_id(self) -> pulumi.Output[str]:
+    def dns_destination_ips_id(self) -> pulumi.Output[Optional[str]]:
         """
-        IPv4 binding assigned to this location.
+        The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         """
         return pulumi.get(self, "dns_destination_ips_id")
 
@@ -609,7 +618,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="dnsDestinationIpv6BlockId")
     def dns_destination_ipv6_block_id(self) -> pulumi.Output[str]:
         """
-        IPv6 block binding assigned to this location.
+        The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
         """
         return pulumi.get(self, "dns_destination_ipv6_block_id")
 
@@ -617,7 +626,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="dohSubdomain")
     def doh_subdomain(self) -> pulumi.Output[str]:
         """
-        The FQDN that DoH clients should be pointed at.
+        The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
         """
         return pulumi.get(self, "doh_subdomain")
 
@@ -625,15 +634,15 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="ecsSupport")
     def ecs_support(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicator that this location needs to resolve EDNS queries.
+        True if the location needs to resolve EDNS queries.
         """
         return pulumi.get(self, "ecs_support")
 
     @property
     @pulumi.getter
-    def endpoints(self) -> pulumi.Output[Optional['outputs.ZeroTrustDnsLocationEndpoints']]:
+    def endpoints(self) -> pulumi.Output['outputs.ZeroTrustDnsLocationEndpoints']:
         """
-        Endpoints assigned to this location.
+        The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         """
         return pulumi.get(self, "endpoints")
 
@@ -641,7 +650,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        Client IP address.
+        IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
         """
         return pulumi.get(self, "ip")
 
@@ -649,7 +658,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> pulumi.Output[str]:
         """
-        IPv4 to direct all IPv4 DNS queries to.
+        The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         """
         return pulumi.get(self, "ipv4_destination")
 
@@ -657,7 +666,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter(name="ipv4DestinationBackup")
     def ipv4_destination_backup(self) -> pulumi.Output[str]:
         """
-        Backup IPv4 to direct all IPv4 DNS queries to.
+        The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         """
         return pulumi.get(self, "ipv4_destination_backup")
 
@@ -665,15 +674,20 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the teams location.
+        The name of the location.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDnsLocationNetwork']]]:
+    def networks(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDnsLocationNetwork']]:
         """
-        The networks CIDRs that comprise the location.
+        A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

@@ -3,17 +3,28 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireAnyValidServiceToken;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireAuthContext;
-import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireAzure;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireAuthMethod;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireAzureAd;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireCertificate;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireCommonName;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireDevicePosture;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireEmail;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireEmailDomain;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireEmailList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireEveryone;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireExternalEvaluation;
-import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGithub;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGeo;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGithubOrganization;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGsuite;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIp;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIpList;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireSaml;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireServiceToken;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,274 +32,106 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessGroupRequire {
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    private @Nullable Boolean anyValidServiceToken;
-    private @Nullable List<ZeroTrustAccessGroupRequireAuthContext> authContexts;
+    private @Nullable ZeroTrustAccessGroupRequireAnyValidServiceToken anyValidServiceToken;
+    private @Nullable ZeroTrustAccessGroupRequireAuthContext authContext;
+    private @Nullable ZeroTrustAccessGroupRequireAuthMethod authMethod;
+    private @Nullable ZeroTrustAccessGroupRequireAzureAd azureAd;
+    private @Nullable ZeroTrustAccessGroupRequireCertificate certificate;
+    private @Nullable ZeroTrustAccessGroupRequireCommonName commonName;
+    private @Nullable ZeroTrustAccessGroupRequireDevicePosture devicePosture;
+    private @Nullable ZeroTrustAccessGroupRequireEmail email;
+    private @Nullable ZeroTrustAccessGroupRequireEmailDomain emailDomain;
+    private @Nullable ZeroTrustAccessGroupRequireEmailList emailList;
     /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+     * @return An empty object which matches on all users.
      * 
      */
-    private @Nullable String authMethod;
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireAzure> azures;
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    private @Nullable Boolean certificate;
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    private @Nullable String commonName;
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    private @Nullable List<String> commonNames;
-    /**
-     * @return The ID of a device posture integration.
-     * 
-     */
-    private @Nullable List<String> devicePostures;
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    private @Nullable List<String> emailDomains;
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    private @Nullable List<String> emailLists;
-    /**
-     * @return The email of the user.
-     * 
-     */
-    private @Nullable List<String> emails;
-    /**
-     * @return Matches everyone.
-     * 
-     */
-    private @Nullable Boolean everyone;
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireExternalEvaluation> externalEvaluations;
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    private @Nullable List<String> geos;
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireGithub> githubs;
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    private @Nullable List<String> groups;
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireGsuite> gsuites;
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    private @Nullable List<String> ipLists;
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    private @Nullable List<String> ips;
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    private @Nullable List<String> loginMethods;
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireOkta> oktas;
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    private @Nullable List<ZeroTrustAccessGroupRequireSaml> samls;
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    private @Nullable List<String> serviceTokens;
+    private @Nullable ZeroTrustAccessGroupRequireEveryone everyone;
+    private @Nullable ZeroTrustAccessGroupRequireExternalEvaluation externalEvaluation;
+    private @Nullable ZeroTrustAccessGroupRequireGeo geo;
+    private @Nullable ZeroTrustAccessGroupRequireGithubOrganization githubOrganization;
+    private @Nullable ZeroTrustAccessGroupRequireGroup group;
+    private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
+    private @Nullable ZeroTrustAccessGroupRequireIp ip;
+    private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+    private @Nullable ZeroTrustAccessGroupRequireOkta okta;
+    private @Nullable ZeroTrustAccessGroupRequireSaml saml;
+    private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
 
     private ZeroTrustAccessGroupRequire() {}
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    public Optional<Boolean> anyValidServiceToken() {
+    public Optional<ZeroTrustAccessGroupRequireAnyValidServiceToken> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
     }
-    public List<ZeroTrustAccessGroupRequireAuthContext> authContexts() {
-        return this.authContexts == null ? List.of() : this.authContexts;
+    public Optional<ZeroTrustAccessGroupRequireAuthContext> authContext() {
+        return Optional.ofNullable(this.authContext);
     }
-    /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
-    public Optional<String> authMethod() {
+    public Optional<ZeroTrustAccessGroupRequireAuthMethod> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireAzure> azures() {
-        return this.azures == null ? List.of() : this.azures;
+    public Optional<ZeroTrustAccessGroupRequireAzureAd> azureAd() {
+        return Optional.ofNullable(this.azureAd);
     }
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    public Optional<Boolean> certificate() {
+    public Optional<ZeroTrustAccessGroupRequireCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
     }
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    public Optional<String> commonName() {
+    public Optional<ZeroTrustAccessGroupRequireCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
     }
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    public List<String> commonNames() {
-        return this.commonNames == null ? List.of() : this.commonNames;
+    public Optional<ZeroTrustAccessGroupRequireDevicePosture> devicePosture() {
+        return Optional.ofNullable(this.devicePosture);
+    }
+    public Optional<ZeroTrustAccessGroupRequireEmail> email() {
+        return Optional.ofNullable(this.email);
+    }
+    public Optional<ZeroTrustAccessGroupRequireEmailDomain> emailDomain() {
+        return Optional.ofNullable(this.emailDomain);
+    }
+    public Optional<ZeroTrustAccessGroupRequireEmailList> emailList() {
+        return Optional.ofNullable(this.emailList);
     }
     /**
-     * @return The ID of a device posture integration.
+     * @return An empty object which matches on all users.
      * 
      */
-    public List<String> devicePostures() {
-        return this.devicePostures == null ? List.of() : this.devicePostures;
-    }
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    public List<String> emailDomains() {
-        return this.emailDomains == null ? List.of() : this.emailDomains;
-    }
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    public List<String> emailLists() {
-        return this.emailLists == null ? List.of() : this.emailLists;
-    }
-    /**
-     * @return The email of the user.
-     * 
-     */
-    public List<String> emails() {
-        return this.emails == null ? List.of() : this.emails;
-    }
-    /**
-     * @return Matches everyone.
-     * 
-     */
-    public Optional<Boolean> everyone() {
+    public Optional<ZeroTrustAccessGroupRequireEveryone> everyone() {
         return Optional.ofNullable(this.everyone);
     }
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireExternalEvaluation> externalEvaluations() {
-        return this.externalEvaluations == null ? List.of() : this.externalEvaluations;
+    public Optional<ZeroTrustAccessGroupRequireExternalEvaluation> externalEvaluation() {
+        return Optional.ofNullable(this.externalEvaluation);
     }
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    public List<String> geos() {
-        return this.geos == null ? List.of() : this.geos;
+    public Optional<ZeroTrustAccessGroupRequireGeo> geo() {
+        return Optional.ofNullable(this.geo);
     }
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireGithub> githubs() {
-        return this.githubs == null ? List.of() : this.githubs;
+    public Optional<ZeroTrustAccessGroupRequireGithubOrganization> githubOrganization() {
+        return Optional.ofNullable(this.githubOrganization);
     }
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    public List<String> groups() {
-        return this.groups == null ? List.of() : this.groups;
+    public Optional<ZeroTrustAccessGroupRequireGroup> group() {
+        return Optional.ofNullable(this.group);
     }
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireGsuite> gsuites() {
-        return this.gsuites == null ? List.of() : this.gsuites;
+    public Optional<ZeroTrustAccessGroupRequireGsuite> gsuite() {
+        return Optional.ofNullable(this.gsuite);
     }
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    public List<String> ipLists() {
-        return this.ipLists == null ? List.of() : this.ipLists;
+    public Optional<ZeroTrustAccessGroupRequireIp> ip() {
+        return Optional.ofNullable(this.ip);
     }
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    public List<String> ips() {
-        return this.ips == null ? List.of() : this.ips;
+    public Optional<ZeroTrustAccessGroupRequireIpList> ipList() {
+        return Optional.ofNullable(this.ipList);
     }
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    public List<String> loginMethods() {
-        return this.loginMethods == null ? List.of() : this.loginMethods;
+    public Optional<ZeroTrustAccessGroupRequireOkta> okta() {
+        return Optional.ofNullable(this.okta);
     }
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireOkta> oktas() {
-        return this.oktas == null ? List.of() : this.oktas;
+    public Optional<ZeroTrustAccessGroupRequireSaml> saml() {
+        return Optional.ofNullable(this.saml);
     }
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    public List<ZeroTrustAccessGroupRequireSaml> samls() {
-        return this.samls == null ? List.of() : this.samls;
-    }
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    public List<String> serviceTokens() {
-        return this.serviceTokens == null ? List.of() : this.serviceTokens;
+    public Optional<ZeroTrustAccessGroupRequireServiceToken> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     public static Builder builder() {
@@ -300,274 +143,202 @@ public final class ZeroTrustAccessGroupRequire {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean anyValidServiceToken;
-        private @Nullable List<ZeroTrustAccessGroupRequireAuthContext> authContexts;
-        private @Nullable String authMethod;
-        private @Nullable List<ZeroTrustAccessGroupRequireAzure> azures;
-        private @Nullable Boolean certificate;
-        private @Nullable String commonName;
-        private @Nullable List<String> commonNames;
-        private @Nullable List<String> devicePostures;
-        private @Nullable List<String> emailDomains;
-        private @Nullable List<String> emailLists;
-        private @Nullable List<String> emails;
-        private @Nullable Boolean everyone;
-        private @Nullable List<ZeroTrustAccessGroupRequireExternalEvaluation> externalEvaluations;
-        private @Nullable List<String> geos;
-        private @Nullable List<ZeroTrustAccessGroupRequireGithub> githubs;
-        private @Nullable List<String> groups;
-        private @Nullable List<ZeroTrustAccessGroupRequireGsuite> gsuites;
-        private @Nullable List<String> ipLists;
-        private @Nullable List<String> ips;
-        private @Nullable List<String> loginMethods;
-        private @Nullable List<ZeroTrustAccessGroupRequireOkta> oktas;
-        private @Nullable List<ZeroTrustAccessGroupRequireSaml> samls;
-        private @Nullable List<String> serviceTokens;
+        private @Nullable ZeroTrustAccessGroupRequireAnyValidServiceToken anyValidServiceToken;
+        private @Nullable ZeroTrustAccessGroupRequireAuthContext authContext;
+        private @Nullable ZeroTrustAccessGroupRequireAuthMethod authMethod;
+        private @Nullable ZeroTrustAccessGroupRequireAzureAd azureAd;
+        private @Nullable ZeroTrustAccessGroupRequireCertificate certificate;
+        private @Nullable ZeroTrustAccessGroupRequireCommonName commonName;
+        private @Nullable ZeroTrustAccessGroupRequireDevicePosture devicePosture;
+        private @Nullable ZeroTrustAccessGroupRequireEmail email;
+        private @Nullable ZeroTrustAccessGroupRequireEmailDomain emailDomain;
+        private @Nullable ZeroTrustAccessGroupRequireEmailList emailList;
+        private @Nullable ZeroTrustAccessGroupRequireEveryone everyone;
+        private @Nullable ZeroTrustAccessGroupRequireExternalEvaluation externalEvaluation;
+        private @Nullable ZeroTrustAccessGroupRequireGeo geo;
+        private @Nullable ZeroTrustAccessGroupRequireGithubOrganization githubOrganization;
+        private @Nullable ZeroTrustAccessGroupRequireGroup group;
+        private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
+        private @Nullable ZeroTrustAccessGroupRequireIp ip;
+        private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+        private @Nullable ZeroTrustAccessGroupRequireOkta okta;
+        private @Nullable ZeroTrustAccessGroupRequireSaml saml;
+        private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
         public Builder() {}
         public Builder(ZeroTrustAccessGroupRequire defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anyValidServiceToken = defaults.anyValidServiceToken;
-    	      this.authContexts = defaults.authContexts;
+    	      this.authContext = defaults.authContext;
     	      this.authMethod = defaults.authMethod;
-    	      this.azures = defaults.azures;
+    	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
     	      this.commonName = defaults.commonName;
-    	      this.commonNames = defaults.commonNames;
-    	      this.devicePostures = defaults.devicePostures;
-    	      this.emailDomains = defaults.emailDomains;
-    	      this.emailLists = defaults.emailLists;
-    	      this.emails = defaults.emails;
+    	      this.devicePosture = defaults.devicePosture;
+    	      this.email = defaults.email;
+    	      this.emailDomain = defaults.emailDomain;
+    	      this.emailList = defaults.emailList;
     	      this.everyone = defaults.everyone;
-    	      this.externalEvaluations = defaults.externalEvaluations;
-    	      this.geos = defaults.geos;
-    	      this.githubs = defaults.githubs;
-    	      this.groups = defaults.groups;
-    	      this.gsuites = defaults.gsuites;
-    	      this.ipLists = defaults.ipLists;
-    	      this.ips = defaults.ips;
-    	      this.loginMethods = defaults.loginMethods;
-    	      this.oktas = defaults.oktas;
-    	      this.samls = defaults.samls;
-    	      this.serviceTokens = defaults.serviceTokens;
+    	      this.externalEvaluation = defaults.externalEvaluation;
+    	      this.geo = defaults.geo;
+    	      this.githubOrganization = defaults.githubOrganization;
+    	      this.group = defaults.group;
+    	      this.gsuite = defaults.gsuite;
+    	      this.ip = defaults.ip;
+    	      this.ipList = defaults.ipList;
+    	      this.okta = defaults.okta;
+    	      this.saml = defaults.saml;
+    	      this.serviceToken = defaults.serviceToken;
         }
 
         @CustomType.Setter
-        public Builder anyValidServiceToken(@Nullable Boolean anyValidServiceToken) {
+        public Builder anyValidServiceToken(@Nullable ZeroTrustAccessGroupRequireAnyValidServiceToken anyValidServiceToken) {
 
             this.anyValidServiceToken = anyValidServiceToken;
             return this;
         }
         @CustomType.Setter
-        public Builder authContexts(@Nullable List<ZeroTrustAccessGroupRequireAuthContext> authContexts) {
+        public Builder authContext(@Nullable ZeroTrustAccessGroupRequireAuthContext authContext) {
 
-            this.authContexts = authContexts;
+            this.authContext = authContext;
             return this;
         }
-        public Builder authContexts(ZeroTrustAccessGroupRequireAuthContext... authContexts) {
-            return authContexts(List.of(authContexts));
-        }
         @CustomType.Setter
-        public Builder authMethod(@Nullable String authMethod) {
+        public Builder authMethod(@Nullable ZeroTrustAccessGroupRequireAuthMethod authMethod) {
 
             this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
-        public Builder azures(@Nullable List<ZeroTrustAccessGroupRequireAzure> azures) {
+        public Builder azureAd(@Nullable ZeroTrustAccessGroupRequireAzureAd azureAd) {
 
-            this.azures = azures;
+            this.azureAd = azureAd;
             return this;
         }
-        public Builder azures(ZeroTrustAccessGroupRequireAzure... azures) {
-            return azures(List.of(azures));
-        }
         @CustomType.Setter
-        public Builder certificate(@Nullable Boolean certificate) {
+        public Builder certificate(@Nullable ZeroTrustAccessGroupRequireCertificate certificate) {
 
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
-        public Builder commonName(@Nullable String commonName) {
+        public Builder commonName(@Nullable ZeroTrustAccessGroupRequireCommonName commonName) {
 
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
-        public Builder commonNames(@Nullable List<String> commonNames) {
+        public Builder devicePosture(@Nullable ZeroTrustAccessGroupRequireDevicePosture devicePosture) {
 
-            this.commonNames = commonNames;
+            this.devicePosture = devicePosture;
             return this;
         }
-        public Builder commonNames(String... commonNames) {
-            return commonNames(List.of(commonNames));
-        }
         @CustomType.Setter
-        public Builder devicePostures(@Nullable List<String> devicePostures) {
+        public Builder email(@Nullable ZeroTrustAccessGroupRequireEmail email) {
 
-            this.devicePostures = devicePostures;
+            this.email = email;
             return this;
         }
-        public Builder devicePostures(String... devicePostures) {
-            return devicePostures(List.of(devicePostures));
-        }
         @CustomType.Setter
-        public Builder emailDomains(@Nullable List<String> emailDomains) {
+        public Builder emailDomain(@Nullable ZeroTrustAccessGroupRequireEmailDomain emailDomain) {
 
-            this.emailDomains = emailDomains;
+            this.emailDomain = emailDomain;
             return this;
         }
-        public Builder emailDomains(String... emailDomains) {
-            return emailDomains(List.of(emailDomains));
-        }
         @CustomType.Setter
-        public Builder emailLists(@Nullable List<String> emailLists) {
+        public Builder emailList(@Nullable ZeroTrustAccessGroupRequireEmailList emailList) {
 
-            this.emailLists = emailLists;
+            this.emailList = emailList;
             return this;
         }
-        public Builder emailLists(String... emailLists) {
-            return emailLists(List.of(emailLists));
-        }
         @CustomType.Setter
-        public Builder emails(@Nullable List<String> emails) {
-
-            this.emails = emails;
-            return this;
-        }
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
-        }
-        @CustomType.Setter
-        public Builder everyone(@Nullable Boolean everyone) {
+        public Builder everyone(@Nullable ZeroTrustAccessGroupRequireEveryone everyone) {
 
             this.everyone = everyone;
             return this;
         }
         @CustomType.Setter
-        public Builder externalEvaluations(@Nullable List<ZeroTrustAccessGroupRequireExternalEvaluation> externalEvaluations) {
+        public Builder externalEvaluation(@Nullable ZeroTrustAccessGroupRequireExternalEvaluation externalEvaluation) {
 
-            this.externalEvaluations = externalEvaluations;
+            this.externalEvaluation = externalEvaluation;
             return this;
-        }
-        public Builder externalEvaluations(ZeroTrustAccessGroupRequireExternalEvaluation... externalEvaluations) {
-            return externalEvaluations(List.of(externalEvaluations));
         }
         @CustomType.Setter
-        public Builder geos(@Nullable List<String> geos) {
+        public Builder geo(@Nullable ZeroTrustAccessGroupRequireGeo geo) {
 
-            this.geos = geos;
+            this.geo = geo;
             return this;
-        }
-        public Builder geos(String... geos) {
-            return geos(List.of(geos));
         }
         @CustomType.Setter
-        public Builder githubs(@Nullable List<ZeroTrustAccessGroupRequireGithub> githubs) {
+        public Builder githubOrganization(@Nullable ZeroTrustAccessGroupRequireGithubOrganization githubOrganization) {
 
-            this.githubs = githubs;
+            this.githubOrganization = githubOrganization;
             return this;
-        }
-        public Builder githubs(ZeroTrustAccessGroupRequireGithub... githubs) {
-            return githubs(List.of(githubs));
         }
         @CustomType.Setter
-        public Builder groups(@Nullable List<String> groups) {
+        public Builder group(@Nullable ZeroTrustAccessGroupRequireGroup group) {
 
-            this.groups = groups;
+            this.group = group;
             return this;
-        }
-        public Builder groups(String... groups) {
-            return groups(List.of(groups));
         }
         @CustomType.Setter
-        public Builder gsuites(@Nullable List<ZeroTrustAccessGroupRequireGsuite> gsuites) {
+        public Builder gsuite(@Nullable ZeroTrustAccessGroupRequireGsuite gsuite) {
 
-            this.gsuites = gsuites;
+            this.gsuite = gsuite;
             return this;
-        }
-        public Builder gsuites(ZeroTrustAccessGroupRequireGsuite... gsuites) {
-            return gsuites(List.of(gsuites));
         }
         @CustomType.Setter
-        public Builder ipLists(@Nullable List<String> ipLists) {
+        public Builder ip(@Nullable ZeroTrustAccessGroupRequireIp ip) {
 
-            this.ipLists = ipLists;
+            this.ip = ip;
             return this;
-        }
-        public Builder ipLists(String... ipLists) {
-            return ipLists(List.of(ipLists));
         }
         @CustomType.Setter
-        public Builder ips(@Nullable List<String> ips) {
+        public Builder ipList(@Nullable ZeroTrustAccessGroupRequireIpList ipList) {
 
-            this.ips = ips;
+            this.ipList = ipList;
             return this;
-        }
-        public Builder ips(String... ips) {
-            return ips(List.of(ips));
         }
         @CustomType.Setter
-        public Builder loginMethods(@Nullable List<String> loginMethods) {
+        public Builder okta(@Nullable ZeroTrustAccessGroupRequireOkta okta) {
 
-            this.loginMethods = loginMethods;
+            this.okta = okta;
             return this;
-        }
-        public Builder loginMethods(String... loginMethods) {
-            return loginMethods(List.of(loginMethods));
         }
         @CustomType.Setter
-        public Builder oktas(@Nullable List<ZeroTrustAccessGroupRequireOkta> oktas) {
+        public Builder saml(@Nullable ZeroTrustAccessGroupRequireSaml saml) {
 
-            this.oktas = oktas;
+            this.saml = saml;
             return this;
-        }
-        public Builder oktas(ZeroTrustAccessGroupRequireOkta... oktas) {
-            return oktas(List.of(oktas));
         }
         @CustomType.Setter
-        public Builder samls(@Nullable List<ZeroTrustAccessGroupRequireSaml> samls) {
+        public Builder serviceToken(@Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken) {
 
-            this.samls = samls;
+            this.serviceToken = serviceToken;
             return this;
-        }
-        public Builder samls(ZeroTrustAccessGroupRequireSaml... samls) {
-            return samls(List.of(samls));
-        }
-        @CustomType.Setter
-        public Builder serviceTokens(@Nullable List<String> serviceTokens) {
-
-            this.serviceTokens = serviceTokens;
-            return this;
-        }
-        public Builder serviceTokens(String... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
         }
         public ZeroTrustAccessGroupRequire build() {
             final var _resultValue = new ZeroTrustAccessGroupRequire();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
-            _resultValue.authContexts = authContexts;
+            _resultValue.authContext = authContext;
             _resultValue.authMethod = authMethod;
-            _resultValue.azures = azures;
+            _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
             _resultValue.commonName = commonName;
-            _resultValue.commonNames = commonNames;
-            _resultValue.devicePostures = devicePostures;
-            _resultValue.emailDomains = emailDomains;
-            _resultValue.emailLists = emailLists;
-            _resultValue.emails = emails;
+            _resultValue.devicePosture = devicePosture;
+            _resultValue.email = email;
+            _resultValue.emailDomain = emailDomain;
+            _resultValue.emailList = emailList;
             _resultValue.everyone = everyone;
-            _resultValue.externalEvaluations = externalEvaluations;
-            _resultValue.geos = geos;
-            _resultValue.githubs = githubs;
-            _resultValue.groups = groups;
-            _resultValue.gsuites = gsuites;
-            _resultValue.ipLists = ipLists;
-            _resultValue.ips = ips;
-            _resultValue.loginMethods = loginMethods;
-            _resultValue.oktas = oktas;
-            _resultValue.samls = samls;
-            _resultValue.serviceTokens = serviceTokens;
+            _resultValue.externalEvaluation = externalEvaluation;
+            _resultValue.geo = geo;
+            _resultValue.githubOrganization = githubOrganization;
+            _resultValue.group = group;
+            _resultValue.gsuite = gsuite;
+            _resultValue.ip = ip;
+            _resultValue.ipList = ipList;
+            _resultValue.okta = okta;
+            _resultValue.saml = saml;
+            _resultValue.serviceToken = serviceToken;
             return _resultValue;
         }
     }

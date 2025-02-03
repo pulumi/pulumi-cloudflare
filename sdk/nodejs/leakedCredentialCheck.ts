@@ -5,25 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Enable the Leaked Credentials Check detection
- * const example = new cloudflare.LeakedCredentialCheck("example", {
- *     zoneId: "399c6f4950c01a5a141b99ff7fbcbd8b",
+ * const exampleLeakedCredentialCheck = new cloudflare.LeakedCredentialCheck("example_leaked_credential_check", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     enabled: true,
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example <zone_id>
  * ```
  */
 export class LeakedCredentialCheck extends pulumi.CustomResource {
@@ -55,11 +46,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
     }
 
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -80,9 +71,6 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LeakedCredentialCheckArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -99,11 +87,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
  */
 export interface LeakedCredentialCheckState {
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -113,11 +101,11 @@ export interface LeakedCredentialCheckState {
  */
 export interface LeakedCredentialCheckArgs {
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -8,17 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+// ## Example Usage
 type CloudConnectorRules struct {
 	pulumi.CustomResourceState
 
-	// List of Cloud Connector Rules
+	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayOutput `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -29,6 +29,9 @@ func NewCloudConnectorRules(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -55,16 +58,16 @@ func GetCloudConnectorRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudConnectorRules resources.
 type cloudConnectorRulesState struct {
-	// List of Cloud Connector Rules
+	// List of Cloud Connector rules
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CloudConnectorRulesState struct {
-	// List of Cloud Connector Rules
+	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -73,17 +76,17 @@ func (CloudConnectorRulesState) ElementType() reflect.Type {
 }
 
 type cloudConnectorRulesArgs struct {
-	// List of Cloud Connector Rules
+	// List of Cloud Connector rules
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CloudConnectorRules resource.
 type CloudConnectorRulesArgs struct {
-	// List of Cloud Connector Rules
+	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -174,12 +177,12 @@ func (o CloudConnectorRulesOutput) ToCloudConnectorRulesOutputWithContext(ctx co
 	return o
 }
 
-// List of Cloud Connector Rules
+// List of Cloud Connector rules
 func (o CloudConnectorRulesOutput) Rules() CloudConnectorRulesRuleArrayOutput {
 	return o.ApplyT(func(v *CloudConnectorRules) CloudConnectorRulesRuleArrayOutput { return v.Rules }).(CloudConnectorRulesRuleArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o CloudConnectorRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDevicePostureRuleInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of active threats from SentinelOne.
+        /// The Number of active threats.
         /// </summary>
         [Input("activeThreats")]
-        public Input<int>? ActiveThreats { get; set; }
+        public Input<double>? ActiveThreats { get; set; }
 
         /// <summary>
-        /// The UUID of a Cloudflare managed certificate.
+        /// UUID of Cloudflare managed certificate.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _checkDisks;
 
         /// <summary>
-        /// Specific volume(s) to check for encryption.
+        /// List of volume names to be checked for encryption.
         /// </summary>
         public InputList<string> CheckDisks
         {
@@ -37,55 +37,55 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Confirm the certificate was not imported from another device.
+        /// Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
         /// </summary>
         [Input("checkPrivateKey")]
         public Input<bool>? CheckPrivateKey { get; set; }
 
         /// <summary>
-        /// The common name for a certificate.
+        /// Common Name that is protected by the certificate
         /// </summary>
         [Input("cn")]
         public Input<string>? Cn { get; set; }
 
         /// <summary>
-        /// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        /// Compliance Status
         /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
 
         /// <summary>
-        /// The workspace one or intune connection id.
+        /// Posture Integration ID.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// Count Operator
         /// </summary>
         [Input("countOperator")]
         public Input<string>? CountOperator { get; set; }
 
         /// <summary>
-        /// The domain that the client must join.
+        /// Domain
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// For more details on eid last seen, refer to the Tanium documentation.
         /// </summary>
         [Input("eidLastSeen")]
         public Input<string>? EidLastSeen { get; set; }
 
         /// <summary>
-        /// True if the firewall must be enabled.
+        /// Enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Checks if the file should exist.
+        /// Whether or not file exists
         /// </summary>
         [Input("exists")]
         public Input<bool>? Exists { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        /// List of values indicating purposes for which the certificate public key can be used
         /// </summary>
         public InputList<string> ExtendedKeyUsages
         {
@@ -103,163 +103,160 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        /// List ID.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// True if SentinelOne device is infected.
+        /// Whether device is infected.
         /// </summary>
         [Input("infected")]
         public Input<bool>? Infected { get; set; }
 
         /// <summary>
-        /// True if SentinelOne device is active.
+        /// Whether device is active.
         /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
         /// <summary>
-        /// The number of issues for kolide.
+        /// The Number of Issues.
         /// </summary>
         [Input("issueCount")]
         public Input<string>? IssueCount { get; set; }
 
         /// <summary>
-        /// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// For more details on last seen, please refer to the Crowdstrike documentation.
         /// </summary>
         [Input("lastSeen")]
         public Input<string>? LastSeen { get; set; }
 
         [Input("locations")]
-        private InputList<Inputs.ZeroTrustDevicePostureRuleInputLocationArgs>? _locations;
+        public Input<Inputs.ZeroTrustDevicePostureRuleInputLocationsArgs>? Locations { get; set; }
 
         /// <summary>
-        /// List of operating system locations to check for a client certificate..
-        /// </summary>
-        public InputList<Inputs.ZeroTrustDevicePostureRuleInputLocationArgs> Locations
-        {
-            get => _locations ?? (_locations = new InputList<Inputs.ZeroTrustDevicePostureRuleInputLocationArgs>());
-            set => _locations = value;
-        }
-
-        /// <summary>
-        /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        /// Network status of device.
         /// </summary>
         [Input("networkStatus")]
         public Input<string>? NetworkStatus { get; set; }
 
         /// <summary>
-        /// The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        /// Operating system
+        /// </summary>
+        [Input("operatingSystem")]
+        public Input<string>? OperatingSystem { get; set; }
+
+        /// <summary>
+        /// Agent operational state.
         /// </summary>
         [Input("operationalState")]
         public Input<string>? OperationalState { get; set; }
 
         /// <summary>
-        /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// operator
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// OS signal score from Crowdstrike. Value must be between 1 and 100.
+        /// Os Version
         /// </summary>
         [Input("os")]
         public Input<string>? Os { get; set; }
 
         /// <summary>
-        /// The operating system excluding version information.
+        /// Operating System Distribution Name (linux only)
         /// </summary>
         [Input("osDistroName")]
         public Input<string>? OsDistroName { get; set; }
 
         /// <summary>
-        /// The operating system version excluding OS name information or release name.
+        /// Version of OS Distribution (linux only)
         /// </summary>
         [Input("osDistroRevision")]
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
-        /// Extra version value following the operating system semantic version.
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
         /// </summary>
         [Input("osVersionExtra")]
         public Input<string>? OsVersionExtra { get; set; }
 
         /// <summary>
-        /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        /// overall
         /// </summary>
         [Input("overall")]
         public Input<string>? Overall { get; set; }
 
         /// <summary>
-        /// The path to the file.
+        /// File path.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// True if all drives must be encrypted.
+        /// Whether to check all disks for encryption.
         /// </summary>
         [Input("requireAll")]
         public Input<bool>? RequireAll { get; set; }
 
         /// <summary>
-        /// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        /// For more details on risk level, refer to the Tanium documentation.
         /// </summary>
         [Input("riskLevel")]
         public Input<string>? RiskLevel { get; set; }
 
         /// <summary>
-        /// Checks if the application should be running.
-        /// </summary>
-        [Input("running")]
-        public Input<bool>? Running { get; set; }
-
-        /// <summary>
-        /// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        /// A value between 0-100 assigned to devices set by the 3rd party posture provider.
         /// </summary>
         [Input("score")]
-        public Input<int>? Score { get; set; }
+        public Input<double>? Score { get; set; }
 
         /// <summary>
-        /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        /// Score Operator
+        /// </summary>
+        [Input("scoreOperator")]
+        public Input<string>? ScoreOperator { get; set; }
+
+        /// <summary>
+        /// SensorConfig
         /// </summary>
         [Input("sensorConfig")]
         public Input<string>? SensorConfig { get; set; }
 
         /// <summary>
-        /// The sha256 hash of the file.
+        /// SHA-256.
         /// </summary>
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
 
         /// <summary>
-        /// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        /// For more details on state, please refer to the Crowdstrike documentation.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The thumbprint of the file certificate.
+        /// Signing certificate thumbprint.
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
 
         /// <summary>
-        /// The total score from Tanium.
+        /// For more details on total score, refer to the Tanium documentation.
         /// </summary>
         [Input("totalScore")]
-        public Input<int>? TotalScore { get; set; }
+        public Input<double>? TotalScore { get; set; }
 
         /// <summary>
-        /// The operating system semantic version.
+        /// Version of OS
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// Version Operator
         /// </summary>
         [Input("versionOperator")]
         public Input<string>? VersionOperator { get; set; }

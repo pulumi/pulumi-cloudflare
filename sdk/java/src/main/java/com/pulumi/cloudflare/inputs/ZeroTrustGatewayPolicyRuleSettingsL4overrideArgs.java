@@ -5,10 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +17,33 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs extends com.
     public static final ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs();
 
     /**
-     * Override IP to forward traffic to.
+     * IPv4 or IPv6 address.
      * 
      */
-    @Import(name="ip", required=true)
-    private Output<String> ip;
+    @Import(name="ip")
+    private @Nullable Output<String> ip;
 
     /**
-     * @return Override IP to forward traffic to.
+     * @return IPv4 or IPv6 address.
      * 
      */
-    public Output<String> ip() {
-        return this.ip;
+    public Optional<Output<String>> ip() {
+        return Optional.ofNullable(this.ip);
     }
 
     /**
-     * Override Port to forward traffic to.
+     * A port number to use for TCP/UDP overrides.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
-     * @return Override Port to forward traffic to.
+     * @return A port number to use for TCP/UDP overrides.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     private ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs() {}
@@ -71,18 +72,18 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs extends com.
         }
 
         /**
-         * @param ip Override IP to forward traffic to.
+         * @param ip IPv4 or IPv6 address.
          * 
          * @return builder
          * 
          */
-        public Builder ip(Output<String> ip) {
+        public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
         /**
-         * @param ip Override IP to forward traffic to.
+         * @param ip IPv4 or IPv6 address.
          * 
          * @return builder
          * 
@@ -92,18 +93,18 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs extends com.
         }
 
         /**
-         * @param port Override Port to forward traffic to.
+         * @param port A port number to use for TCP/UDP overrides.
          * 
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port Override Port to forward traffic to.
+         * @param port A port number to use for TCP/UDP overrides.
          * 
          * @return builder
          * 
@@ -113,12 +114,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs extends com.
         }
 
         public ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs build() {
-            if ($.ip == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs", "ip");
-            }
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs", "port");
-            }
             return $;
         }
     }

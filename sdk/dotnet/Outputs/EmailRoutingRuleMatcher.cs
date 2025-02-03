@@ -14,25 +14,25 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingRuleMatcher
     {
         /// <summary>
-        /// Field to match on. Required for `type` of `literal`.
+        /// Field for type matcher.
         /// </summary>
-        public readonly string? Field;
+        public readonly string Field;
         /// <summary>
-        /// Type of matcher. Available values: `literal`, `all`
+        /// Type of matcher.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Value to match on. Required for `type` of `literal`.
+        /// Value for matcher.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private EmailRoutingRuleMatcher(
-            string? field,
+            string field,
 
             string type,
 
-            string? value)
+            string value)
         {
             Field = field;
             Type = type;

@@ -4,25 +4,51 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SpectrumApplicationOriginDns {
     /**
-     * @return Fully qualified domain name of the origin.
+     * @return The name of the DNS record associated with the origin.
      * 
      */
-    private String name;
+    private @Nullable String name;
+    /**
+     * @return The TTL of our resolution of your DNS record in seconds.
+     * 
+     */
+    private @Nullable Integer ttl;
+    /**
+     * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * 
+     */
+    private @Nullable String type;
 
     private SpectrumApplicationOriginDns() {}
     /**
-     * @return Fully qualified domain name of the origin.
+     * @return The name of the DNS record associated with the origin.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return The TTL of our resolution of your DNS record in seconds.
+     * 
+     */
+    public Optional<Integer> ttl() {
+        return Optional.ofNullable(this.ttl);
+    }
+    /**
+     * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -34,24 +60,40 @@ public final class SpectrumApplicationOriginDns {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
+        private @Nullable String name;
+        private @Nullable Integer ttl;
+        private @Nullable String type;
         public Builder() {}
         public Builder(SpectrumApplicationOriginDns defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.ttl = defaults.ttl;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("SpectrumApplicationOriginDns", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ttl(@Nullable Integer ttl) {
+
+            this.ttl = ttl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
             return this;
         }
         public SpectrumApplicationOriginDns build() {
             final var _resultValue = new SpectrumApplicationOriginDns();
             _resultValue.name = name;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

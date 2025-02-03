@@ -19,33 +19,33 @@ __all__ = ['TieredCacheArgs', 'TieredCache']
 @pulumi.input_type
 class TieredCacheArgs:
     def __init__(__self__, *,
-                 cache_type: pulumi.Input[str],
+                 value: pulumi.Input[str],
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a TieredCache resource.
-        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: Enable or disable the Smart Tiered Cache
+        :param pulumi.Input[str] zone_id: Identifier
         """
-        pulumi.set(__self__, "cache_type", cache_type)
+        pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="cacheType")
-    def cache_type(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
         """
-        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        Enable or disable the Smart Tiered Cache
         """
-        return pulumi.get(self, "cache_type")
+        return pulumi.get(self, "value")
 
-    @cache_type.setter
-    def cache_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cache_type", value)
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -57,35 +57,67 @@ class TieredCacheArgs:
 @pulumi.input_type
 class _TieredCacheState:
     def __init__(__self__, *,
-                 cache_type: Optional[pulumi.Input[str]] = None,
+                 editable: Optional[pulumi.Input[bool]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TieredCache resources.
-        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] editable: Whether the setting is editable
+        :param pulumi.Input[str] modified_on: Last time this setting was modified.
+        :param pulumi.Input[str] value: Enable or disable the Smart Tiered Cache
+        :param pulumi.Input[str] zone_id: Identifier
         """
-        if cache_type is not None:
-            pulumi.set(__self__, "cache_type", cache_type)
+        if editable is not None:
+            pulumi.set(__self__, "editable", editable)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="cacheType")
-    def cache_type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def editable(self) -> Optional[pulumi.Input[bool]]:
         """
-        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        Whether the setting is editable
         """
-        return pulumi.get(self, "cache_type")
+        return pulumi.get(self, "editable")
 
-    @cache_type.setter
-    def cache_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cache_type", value)
+    @editable.setter
+    def editable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "editable", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable or disable the Smart Tiered Cache
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -99,28 +131,31 @@ class TieredCache(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages Cloudflare Tiered Cache settings.
-        This allows you to adjust topologies for your zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TieredCache("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            cache_type="smart")
+        example_tiered_cache = cloudflare.TieredCache("example_tiered_cache",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value="on")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: Enable or disable the Smart Tiered Cache
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -129,18 +164,21 @@ class TieredCache(pulumi.CustomResource):
                  args: TieredCacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages Cloudflare Tiered Cache settings.
-        This allows you to adjust topologies for your zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TieredCache("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            cache_type="smart")
+        example_tiered_cache = cloudflare.TieredCache("example_tiered_cache",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            value="on")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -158,7 +196,7 @@ class TieredCache(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -169,12 +207,14 @@ class TieredCache(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TieredCacheArgs.__new__(TieredCacheArgs)
 
-            if cache_type is None and not opts.urn:
-                raise TypeError("Missing required property 'cache_type'")
-            __props__.__dict__["cache_type"] = cache_type
+            if value is None and not opts.urn:
+                raise TypeError("Missing required property 'value'")
+            __props__.__dict__["value"] = value
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["editable"] = None
+            __props__.__dict__["modified_on"] = None
         super(TieredCache, __self__).__init__(
             'cloudflare:index/tieredCache:TieredCache',
             resource_name,
@@ -185,7 +225,9 @@ class TieredCache(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cache_type: Optional[pulumi.Input[str]] = None,
+            editable: Optional[pulumi.Input[bool]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'TieredCache':
         """
         Get an existing TieredCache resource's state with the given name, id, and optional extra
@@ -194,30 +236,50 @@ class TieredCache(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] editable: Whether the setting is editable
+        :param pulumi.Input[str] modified_on: Last time this setting was modified.
+        :param pulumi.Input[str] value: Enable or disable the Smart Tiered Cache
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TieredCacheState.__new__(_TieredCacheState)
 
-        __props__.__dict__["cache_type"] = cache_type
+        __props__.__dict__["editable"] = editable
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["value"] = value
         __props__.__dict__["zone_id"] = zone_id
         return TieredCache(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="cacheType")
-    def cache_type(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def editable(self) -> pulumi.Output[bool]:
         """
-        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        Whether the setting is editable
         """
-        return pulumi.get(self, "cache_type")
+        return pulumi.get(self, "editable")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Output[str]:
+        """
+        Enable or disable the Smart Tiered Cache
+        """
+        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

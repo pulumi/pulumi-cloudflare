@@ -14,29 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitMatchResponse
     {
         /// <summary>
-        /// List of HTTP headers maps to match the origin response on.
-        /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> Headers;
-        /// <summary>
-        /// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+        /// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+        /// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
         /// </summary>
         public readonly bool? OriginTraffic;
-        /// <summary>
-        /// HTTP Status codes, can be one, many or indicate all by not providing this value.
-        /// </summary>
-        public readonly ImmutableArray<int> Statuses;
 
         [OutputConstructor]
-        private RateLimitMatchResponse(
-            ImmutableArray<ImmutableDictionary<string, string>> headers,
-
-            bool? originTraffic,
-
-            ImmutableArray<int> statuses)
+        private RateLimitMatchResponse(bool? originTraffic)
         {
-            Headers = headers;
             OriginTraffic = originTraffic;
-            Statuses = statuses;
         }
     }
 }

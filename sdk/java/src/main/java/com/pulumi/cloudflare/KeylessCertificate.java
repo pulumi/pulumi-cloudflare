@@ -6,19 +6,19 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.KeylessCertificateArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.KeylessCertificateState;
+import com.pulumi.cloudflare.outputs.KeylessCertificateTunnel;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Keyless certificates.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.KeylessCertificate;
  * import com.pulumi.cloudflare.KeylessCertificateArgs;
+ * import com.pulumi.cloudflare.inputs.KeylessCertificateTunnelArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,14 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new KeylessCertificate("example", KeylessCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .bundleMethod("ubiquitous")
- *             .name("example.com Keyless SSL")
+ *         var exampleKeylessCertificate = new KeylessCertificate("exampleKeylessCertificate", KeylessCertificateArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .certificate("-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV BAYTAlVTMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX aWRnaXRzIFB0eSBMdGQwHhcNMTQwMzExMTkyMTU5WhcNMTQwNDEwMTkyMTU5WjBF MQswCQYDVQQGEwJVUzETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50 ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAvq3sKsHpeduJHimOK+fvQdKsI8z8A05MZyyLp2/R/GE8FjNv+hkVY1WQ LIyTNNQH7CJecE1nbTfo8Y56S7x/rhxC6/DJ8MIulapFPnorq46KU6yRxiM0MQ3N nTJHlHA2ozZta6YBBfVfhHWl1F0IfNbXCLKvGwWWMbCx43OfW6KTkbRnE6gFWKuO fSO5h2u5TaWVuSIzBvYs7Vza6m+gtYAvKAJV2nSZ+eSEFPDo29corOy8+huEOUL8 5FAw4BFPsr1TlrlGPFitduQUHGrSL7skk1ESGza0to3bOtrodKei2s9bk5MXm7lZ qI+WZJX4Zu9+mzZhc9pCVi8r/qlXuQIDAQABo4GnMIGkMB0GA1UdDgQWBBRvavf+ sWM4IwKiH9X9w1vl6nUVRDB1BgNVHSMEbjBsgBRvavf+sWM4IwKiH9X9w1vl6nUV RKFJpEcwRTELMAkGA1UEBhMCVVMxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAM15n7fdxhRtMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQEFBQADggEBABY2ZzBaW0dMsAAT7tPJzrVWVzQx6KU4 UEBLudIlWPlkAwTnINCWR/8eNjCCmGA4heUdHmazdpPa8RzwOmc0NT1NQqzSyktt vTqb4iHD7+8f9MqJ9/FssCfTtqr/Qst/hGH4Wmdf1EJ/6FqYAAb5iRlPgshFZxU8 uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8 /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----")
  *             .host("example.com")
  *             .port(24008)
- *             .enabled(true)
- *             .certificate("-----INSERT CERTIFICATE-----")
+ *             .bundleMethod("ubiquitous")
+ *             .name("example.com Keyless SSL")
+ *             .tunnel(KeylessCertificateTunnelArgs.builder()
+ *                 .private_ip("10.0.0.1")
+ *                 .vnet_id("7365377a-85a4-4390-9480-531ef7dc7a3c")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -63,119 +67,175 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
+ * $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &#39;&lt;zone_id&gt;/&lt;keyless_certificate_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/keylessCertificate:KeylessCertificate")
 public class KeylessCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * 
      */
     @Export(name="bundleMethod", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bundleMethod;
+    private Output<String> bundleMethod;
 
     /**
-     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * 
      */
-    public Output<Optional<String>> bundleMethod() {
-        return Codegen.optional(this.bundleMethod);
+    public Output<String> bundleMethod() {
+        return this.bundleMethod;
     }
     /**
-     * The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
     /**
-     * Whether the KeyLess SSL is on.
+     * When the Keyless SSL was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the Keyless SSL was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * Whether or not the Keyless SSL is on or off.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether the KeyLess SSL is on.
+     * @return Whether or not the Keyless SSL is on or off.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The KeyLess SSL host.
+     * The keyless SSL name.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
-     * @return The KeyLess SSL host.
+     * @return The keyless SSL name.
      * 
      */
     public Output<String> host() {
         return this.host;
     }
     /**
-     * The KeyLess SSL name.
+     * When the Keyless SSL was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the Keyless SSL was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * The keyless SSL name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
-     * @return The KeyLess SSL name.
+     * @return The keyless SSL name.
      * 
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
     }
     /**
-     * The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+     * Available permissions for the Keyless SSL for the current user requesting the item.
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> port;
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> permissions;
 
     /**
-     * @return The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+     * @return Available permissions for the Keyless SSL for the current user requesting the item.
      * 
      */
-    public Output<Optional<Integer>> port() {
-        return Codegen.optional(this.port);
+    public Output<List<String>> permissions() {
+        return this.permissions;
     }
     /**
-     * Status of the KeyLess SSL.
+     * The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
+     * 
+     */
+    @Export(name="port", refs={Double.class}, tree="[0]")
+    private Output<Double> port;
+
+    /**
+     * @return The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
+     * 
+     */
+    public Output<Double> port() {
+        return this.port;
+    }
+    /**
+     * Status of the Keyless SSL.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the KeyLess SSL.
+     * @return Status of the Keyless SSL.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * 
+     */
+    @Export(name="tunnel", refs={KeylessCertificateTunnel.class}, tree="[0]")
+    private Output<KeylessCertificateTunnel> tunnel;
+
+    /**
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * 
+     */
+    public Output<KeylessCertificateTunnel> tunnel() {
+        return this.tunnel;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

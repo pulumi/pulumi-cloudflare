@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredConnection;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,90 +17,178 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustTunnelCloudflaredResult {
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     private String accountId;
     /**
-     * @return ID of the tunnel.
+     * @return Cloudflare account ID
+     * 
+     */
+    private String accountTag;
+    /**
+     * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
+     * 
+     */
+    private List<GetZeroTrustTunnelCloudflaredConnection> connections;
+    /**
+     * @return Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
+     * 
+     */
+    private String connsActiveAt;
+    /**
+     * @return Timestamp of when the tunnel became inactive (no connections to Cloudflare&#39;s edge). If `null`, the tunnel is active.
+     * 
+     */
+    private String connsInactiveAt;
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    private String createdAt;
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    private String deletedAt;
+    private @Nullable GetZeroTrustTunnelCloudflaredFilter filter;
+    /**
+     * @return UUID of the tunnel.
      * 
      */
     private String id;
     /**
-     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * @return Metadata associated with the tunnel.
      * 
      */
-    private @Nullable Boolean isDeleted;
+    private String metadata;
     /**
-     * @return Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+     * @return A user-friendly name for a tunnel.
      * 
      */
     private String name;
     /**
-     * @return Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      */
     private Boolean remoteConfig;
     /**
-     * @return The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+     * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * 
      */
     private String status;
     /**
-     * @return The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`.
+     * @return The type of tunnel.
      * 
      */
-    private String tunnelType;
+    private String tunType;
+    /**
+     * @return UUID of the tunnel.
+     * 
+     */
+    private @Nullable String tunnelId;
 
     private GetZeroTrustTunnelCloudflaredResult() {}
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return ID of the tunnel.
+     * @return Cloudflare account ID
+     * 
+     */
+    public String accountTag() {
+        return this.accountTag;
+    }
+    /**
+     * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
+     * 
+     */
+    public List<GetZeroTrustTunnelCloudflaredConnection> connections() {
+        return this.connections;
+    }
+    /**
+     * @return Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
+     * 
+     */
+    public String connsActiveAt() {
+        return this.connsActiveAt;
+    }
+    /**
+     * @return Timestamp of when the tunnel became inactive (no connections to Cloudflare&#39;s edge). If `null`, the tunnel is active.
+     * 
+     */
+    public String connsInactiveAt() {
+        return this.connsInactiveAt;
+    }
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public String createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public String deletedAt() {
+        return this.deletedAt;
+    }
+    public Optional<GetZeroTrustTunnelCloudflaredFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
+     * @return UUID of the tunnel.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * @return Metadata associated with the tunnel.
      * 
      */
-    public Optional<Boolean> isDeleted() {
-        return Optional.ofNullable(this.isDeleted);
+    public String metadata() {
+        return this.metadata;
     }
     /**
-     * @return Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+     * @return A user-friendly name for a tunnel.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      */
     public Boolean remoteConfig() {
         return this.remoteConfig;
     }
     /**
-     * @return The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+     * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`.
+     * @return The type of tunnel.
      * 
      */
-    public String tunnelType() {
-        return this.tunnelType;
+    public String tunType() {
+        return this.tunType;
+    }
+    /**
+     * @return UUID of the tunnel.
+     * 
+     */
+    public Optional<String> tunnelId() {
+        return Optional.ofNullable(this.tunnelId);
     }
 
     public static Builder builder() {
@@ -110,22 +201,38 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String accountTag;
+        private List<GetZeroTrustTunnelCloudflaredConnection> connections;
+        private String connsActiveAt;
+        private String connsInactiveAt;
+        private String createdAt;
+        private String deletedAt;
+        private @Nullable GetZeroTrustTunnelCloudflaredFilter filter;
         private String id;
-        private @Nullable Boolean isDeleted;
+        private String metadata;
         private String name;
         private Boolean remoteConfig;
         private String status;
-        private String tunnelType;
+        private String tunType;
+        private @Nullable String tunnelId;
         public Builder() {}
         public Builder(GetZeroTrustTunnelCloudflaredResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.accountTag = defaults.accountTag;
+    	      this.connections = defaults.connections;
+    	      this.connsActiveAt = defaults.connsActiveAt;
+    	      this.connsInactiveAt = defaults.connsInactiveAt;
+    	      this.createdAt = defaults.createdAt;
+    	      this.deletedAt = defaults.deletedAt;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
-    	      this.isDeleted = defaults.isDeleted;
+    	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.remoteConfig = defaults.remoteConfig;
     	      this.status = defaults.status;
-    	      this.tunnelType = defaults.tunnelType;
+    	      this.tunType = defaults.tunType;
+    	      this.tunnelId = defaults.tunnelId;
         }
 
         @CustomType.Setter
@@ -137,6 +244,63 @@ public final class GetZeroTrustTunnelCloudflaredResult {
             return this;
         }
         @CustomType.Setter
+        public Builder accountTag(String accountTag) {
+            if (accountTag == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "accountTag");
+            }
+            this.accountTag = accountTag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connections(List<GetZeroTrustTunnelCloudflaredConnection> connections) {
+            if (connections == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "connections");
+            }
+            this.connections = connections;
+            return this;
+        }
+        public Builder connections(GetZeroTrustTunnelCloudflaredConnection... connections) {
+            return connections(List.of(connections));
+        }
+        @CustomType.Setter
+        public Builder connsActiveAt(String connsActiveAt) {
+            if (connsActiveAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "connsActiveAt");
+            }
+            this.connsActiveAt = connsActiveAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connsInactiveAt(String connsInactiveAt) {
+            if (connsInactiveAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "connsInactiveAt");
+            }
+            this.connsInactiveAt = connsInactiveAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdAt(String createdAt) {
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "createdAt");
+            }
+            this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletedAt(String deletedAt) {
+            if (deletedAt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "deletedAt");
+            }
+            this.deletedAt = deletedAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustTunnelCloudflaredFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "id");
@@ -145,9 +309,11 @@ public final class GetZeroTrustTunnelCloudflaredResult {
             return this;
         }
         @CustomType.Setter
-        public Builder isDeleted(@Nullable Boolean isDeleted) {
-
-            this.isDeleted = isDeleted;
+        public Builder metadata(String metadata) {
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
@@ -175,22 +341,36 @@ public final class GetZeroTrustTunnelCloudflaredResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tunnelType(String tunnelType) {
-            if (tunnelType == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "tunnelType");
+        public Builder tunType(String tunType) {
+            if (tunType == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "tunType");
             }
-            this.tunnelType = tunnelType;
+            this.tunType = tunType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tunnelId(@Nullable String tunnelId) {
+
+            this.tunnelId = tunnelId;
             return this;
         }
         public GetZeroTrustTunnelCloudflaredResult build() {
             final var _resultValue = new GetZeroTrustTunnelCloudflaredResult();
             _resultValue.accountId = accountId;
+            _resultValue.accountTag = accountTag;
+            _resultValue.connections = connections;
+            _resultValue.connsActiveAt = connsActiveAt;
+            _resultValue.connsInactiveAt = connsInactiveAt;
+            _resultValue.createdAt = createdAt;
+            _resultValue.deletedAt = deletedAt;
+            _resultValue.filter = filter;
             _resultValue.id = id;
-            _resultValue.isDeleted = isDeleted;
+            _resultValue.metadata = metadata;
             _resultValue.name = name;
             _resultValue.remoteConfig = remoteConfig;
             _resultValue.status = status;
-            _resultValue.tunnelType = tunnelType;
+            _resultValue.tunType = tunType;
+            _resultValue.tunnelId = tunnelId;
             return _resultValue;
         }
     }

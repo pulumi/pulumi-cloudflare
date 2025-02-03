@@ -17,14 +17,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
     public static final ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs();
 
     /**
-     * Enable notification settings.
+     * Set notification on
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable notification settings.
+     * @return Set notification on
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,29 +32,29 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
     }
 
     /**
-     * Notification content.
+     * Customize the message shown in the notification.
      * 
      */
-    @Import(name="message")
-    private @Nullable Output<String> message;
+    @Import(name="msg")
+    private @Nullable Output<String> msg;
 
     /**
-     * @return Notification content.
+     * @return Customize the message shown in the notification.
      * 
      */
-    public Optional<Output<String>> message() {
-        return Optional.ofNullable(this.message);
+    public Optional<Output<String>> msg() {
+        return Optional.ofNullable(this.msg);
     }
 
     /**
-     * Support URL to show in the notification.
+     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      * 
      */
     @Import(name="supportUrl")
     private @Nullable Output<String> supportUrl;
 
     /**
-     * @return Support URL to show in the notification.
+     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
      * 
      */
     public Optional<Output<String>> supportUrl() {
@@ -65,7 +65,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
 
     private ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs $) {
         this.enabled = $.enabled;
-        this.message = $.message;
+        this.msg = $.msg;
         this.supportUrl = $.supportUrl;
     }
 
@@ -88,7 +88,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Set notification on
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Set notification on
          * 
          * @return builder
          * 
@@ -109,28 +109,28 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
         }
 
         /**
-         * @param message Notification content.
+         * @param msg Customize the message shown in the notification.
          * 
          * @return builder
          * 
          */
-        public Builder message(@Nullable Output<String> message) {
-            $.message = message;
+        public Builder msg(@Nullable Output<String> msg) {
+            $.msg = msg;
             return this;
         }
 
         /**
-         * @param message Notification content.
+         * @param msg Customize the message shown in the notification.
          * 
          * @return builder
          * 
          */
-        public Builder message(String message) {
-            return message(Output.of(message));
+        public Builder msg(String msg) {
+            return msg(Output.of(msg));
         }
 
         /**
-         * @param supportUrl Support URL to show in the notification.
+         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs ex
         }
 
         /**
-         * @param supportUrl Support URL to show in the notification.
+         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
          * 
          * @return builder
          * 

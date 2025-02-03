@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetAccountRoles
     {
         /// <summary>
-        /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,21 +22,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountRoles = Cloudflare.GetAccountRoles.Invoke(new()
+        ///     var exampleAccountRoles = Cloudflare.GetAccountRoles.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        ///     var rolesByName = ;
-        /// 
-        ///     var member = new Cloudflare.AccountMember("member", new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         EmailAddress = "user@example.com",
-        ///         RoleIds = new[]
-        ///         {
-        ///             rolesByName.Apply(rolesByName =&gt; rolesByName.Administrator.Id),
-        ///         },
+        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
         ///     });
         /// 
         /// });
@@ -48,8 +34,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,21 +44,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountRoles = Cloudflare.GetAccountRoles.Invoke(new()
+        ///     var exampleAccountRoles = Cloudflare.GetAccountRoles.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        ///     var rolesByName = ;
-        /// 
-        ///     var member = new Cloudflare.AccountMember("member", new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         EmailAddress = "user@example.com",
-        ///         RoleIds = new[]
-        ///         {
-        ///             rolesByName.Apply(rolesByName =&gt; rolesByName.Administrator.Id),
-        ///         },
+        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
         ///     });
         /// 
         /// });
@@ -84,8 +56,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,21 +66,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountRoles = Cloudflare.GetAccountRoles.Invoke(new()
+        ///     var exampleAccountRoles = Cloudflare.GetAccountRoles.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        ///     var rolesByName = ;
-        /// 
-        ///     var member = new Cloudflare.AccountMember("member", new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         EmailAddress = "user@example.com",
-        ///         RoleIds = new[]
-        ///         {
-        ///             rolesByName.Apply(rolesByName =&gt; rolesByName.Administrator.Id),
-        ///         },
+        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
         ///     });
         /// 
         /// });
@@ -124,10 +82,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
 
         public GetAccountRolesArgs()
         {
@@ -138,10 +102,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
 
         public GetAccountRolesInvokeArgs()
         {
@@ -154,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesResult
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -162,9 +132,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of roles object.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAccountRolesRoleResult> Roles;
+        public readonly int? MaxItems;
+        /// <summary>
+        /// The items returned by the data source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAccountRolesResultResult> Results;
 
         [OutputConstructor]
         private GetAccountRolesResult(
@@ -172,11 +146,14 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            ImmutableArray<Outputs.GetAccountRolesRoleResult> roles)
+            int? maxItems,
+
+            ImmutableArray<Outputs.GetAccountRolesResultResult> results)
         {
             AccountId = accountId;
             Id = id;
-            Roles = roles;
+            MaxItems = maxItems;
+            Results = results;
         }
     }
 }

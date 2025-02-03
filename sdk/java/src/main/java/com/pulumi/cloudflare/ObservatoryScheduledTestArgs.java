@@ -15,44 +15,14 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
     public static final ObservatoryScheduledTestArgs Empty = new ObservatoryScheduledTestArgs();
 
     /**
-     * The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="frequency", required=true)
-    private Output<String> frequency;
-
-    /**
-     * @return The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> frequency() {
-        return this.frequency;
-    }
-
-    /**
-     * The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="region", required=true)
-    private Output<String> region;
-
-    /**
-     * @return The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> region() {
-        return this.region;
-    }
-
-    /**
-     * The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * A URL.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * @return A URL.
      * 
      */
     public Output<String> url() {
@@ -60,14 +30,14 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -77,8 +47,6 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
     private ObservatoryScheduledTestArgs() {}
 
     private ObservatoryScheduledTestArgs(ObservatoryScheduledTestArgs $) {
-        this.frequency = $.frequency;
-        this.region = $.region;
         this.url = $.url;
         this.zoneId = $.zoneId;
     }
@@ -102,49 +70,7 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param frequency The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder frequency(Output<String> frequency) {
-            $.frequency = frequency;
-            return this;
-        }
-
-        /**
-         * @param frequency The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder frequency(String frequency) {
-            return frequency(Output.of(frequency));
-        }
-
-        /**
-         * @param region The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder region(Output<String> region) {
-            $.region = region;
-            return this;
-        }
-
-        /**
-         * @param region The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder region(String region) {
-            return region(Output.of(region));
-        }
-
-        /**
-         * @param url The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+         * @param url A URL.
          * 
          * @return builder
          * 
@@ -155,7 +81,7 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param url The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+         * @param url A URL.
          * 
          * @return builder
          * 
@@ -165,7 +91,7 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -176,7 +102,7 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -186,12 +112,6 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         public ObservatoryScheduledTestArgs build() {
-            if ($.frequency == null) {
-                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "frequency");
-            }
-            if ($.region == null) {
-                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "region");
-            }
             if ($.url == null) {
                 throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "url");
             }

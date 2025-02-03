@@ -6,8 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,59 +18,59 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
     public static final HostnameTlsSettingArgs Empty = new HostnameTlsSettingArgs();
 
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      * 
      */
-    @Import(name="hostname", required=true)
-    private Output<String> hostname;
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname for which the tls settings are set.
      * 
      */
-    public Output<String> hostname() {
-        return this.hostname;
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      * 
      */
-    @Import(name="setting", required=true)
-    private Output<String> setting;
+    @Import(name="settingId", required=true)
+    private Output<String> settingId;
 
     /**
-     * @return TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * @return The TLS Setting name.
      * 
      */
-    public Output<String> setting() {
-        return this.setting;
+    public Output<String> settingId() {
+        return this.settingId;
     }
 
     /**
-     * TLS setting value.
+     * The tls setting value.
      * 
      */
     @Import(name="value", required=true)
-    private Output<String> value;
+    private Output<Double> value;
 
     /**
-     * @return TLS setting value.
+     * @return The tls setting value.
      * 
      */
-    public Output<String> value() {
+    public Output<Double> value() {
         return this.value;
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -78,7 +81,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
 
     private HostnameTlsSettingArgs(HostnameTlsSettingArgs $) {
         this.hostname = $.hostname;
-        this.setting = $.setting;
+        this.settingId = $.settingId;
         this.value = $.value;
         this.zoneId = $.zoneId;
     }
@@ -102,18 +105,18 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hostname Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The hostname for which the tls settings are set.
          * 
          * @return builder
          * 
          */
-        public Builder hostname(Output<String> hostname) {
+        public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
 
         /**
-         * @param hostname Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The hostname for which the tls settings are set.
          * 
          * @return builder
          * 
@@ -123,49 +126,49 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param setting TLS setting name. **Modifying this attribute will force creation of a new resource.**
+         * @param settingId The TLS Setting name.
          * 
          * @return builder
          * 
          */
-        public Builder setting(Output<String> setting) {
-            $.setting = setting;
+        public Builder settingId(Output<String> settingId) {
+            $.settingId = settingId;
             return this;
         }
 
         /**
-         * @param setting TLS setting name. **Modifying this attribute will force creation of a new resource.**
+         * @param settingId The TLS Setting name.
          * 
          * @return builder
          * 
          */
-        public Builder setting(String setting) {
-            return setting(Output.of(setting));
+        public Builder settingId(String settingId) {
+            return settingId(Output.of(settingId));
         }
 
         /**
-         * @param value TLS setting value.
+         * @param value The tls setting value.
          * 
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(Output<Double> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value TLS setting value.
+         * @param value The tls setting value.
          * 
          * @return builder
          * 
          */
-        public Builder value(String value) {
+        public Builder value(Double value) {
             return value(Output.of(value));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -176,7 +179,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -186,11 +189,8 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         public HostnameTlsSettingArgs build() {
-            if ($.hostname == null) {
-                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "hostname");
-            }
-            if ($.setting == null) {
-                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "setting");
+            if ($.settingId == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "settingId");
             }
             if ($.value == null) {
                 throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "value");

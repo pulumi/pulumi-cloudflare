@@ -5,30 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Waiting Room Event resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Waiting Room Event
- * const example = new cloudflare.WaitingRoomEvent("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
- *     name: "foo",
- *     eventStartTime: "2006-01-02T15:04:05Z",
- *     eventEndTime: "2006-01-02T20:04:05Z",
+ * const exampleWaitingRoomEvent = new cloudflare.WaitingRoomEvent("example_waiting_room_event", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
+ *     eventEndTime: "2021-09-28T17:00:00.000Z",
+ *     eventStartTime: "2021-09-28T15:30:00.000Z",
+ *     name: "production_webinar_event",
+ *     customPageHtml: "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+ *     description: "Production event - DO NOT MODIFY",
+ *     disableSessionRenewal: true,
+ *     newUsersPerMinute: 200,
+ *     prequeueStartTime: "2021-09-28T15:00:00.000Z",
+ *     queueingMethod: "random",
+ *     sessionDuration: 1,
+ *     shuffleAtEventStart: true,
+ *     suspended: true,
+ *     totalActiveUsers: 200,
  * });
  * ```
  *
  * ## Import
  *
- * Use the Zone ID, Waiting Room ID, and Event ID to import.
- *
  * ```sh
- * $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+ * $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
  * ```
  */
 export class WaitingRoomEvent extends pulumi.CustomResource {
@@ -59,72 +64,63 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoomEvent.__pulumiType;
     }
 
-    /**
-     * Creation time.
-     */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * This is a templated html file that will be rendered at the edge.
+     * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
-     * A description to let users add more details about the event.
+     * A note that you can use to add more details about the event.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
-     * Disables automatic renewal of session cookies.
+     * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
-     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the end of the event.
      */
     public readonly eventEndTime!: pulumi.Output<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
     public readonly eventStartTime!: pulumi.Output<string>;
-    /**
-     * Last modified time.
-     */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The number of new users that will be let into the route every minute.
+     * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
     public readonly newUsersPerMinute!: pulumi.Output<number | undefined>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
     public readonly prequeueStartTime!: pulumi.Output<string | undefined>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
+     * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
-    public readonly shuffleAtEventStart!: pulumi.Output<boolean | undefined>;
+    public readonly shuffleAtEventStart!: pulumi.Output<boolean>;
     /**
-     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
-    public readonly suspended!: pulumi.Output<boolean | undefined>;
+    public readonly suspended!: pulumi.Output<boolean>;
     /**
-     * The total number of active user sessions on the route at a point in time.
+     * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     public readonly totalActiveUsers!: pulumi.Output<number | undefined>;
-    /**
-     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -202,72 +198,63 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoomEvent resources.
  */
 export interface WaitingRoomEventState {
-    /**
-     * Creation time.
-     */
     createdOn?: pulumi.Input<string>;
     /**
-     * This is a templated html file that will be rendered at the edge.
+     * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * A description to let users add more details about the event.
+     * A note that you can use to add more details about the event.
      */
     description?: pulumi.Input<string>;
     /**
-     * Disables automatic renewal of session cookies.
+     * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the end of the event.
      */
     eventEndTime?: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
     eventStartTime?: pulumi.Input<string>;
-    /**
-     * Last modified time.
-     */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of new users that will be let into the route every minute.
+     * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
+     * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**
-     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
     suspended?: pulumi.Input<boolean>;
     /**
-     * The total number of active user sessions on the route at a point in time.
+     * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     totalActiveUsers?: pulumi.Input<number>;
-    /**
-     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -277,63 +264,60 @@ export interface WaitingRoomEventState {
  */
 export interface WaitingRoomEventArgs {
     /**
-     * This is a templated html file that will be rendered at the edge.
+     * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * A description to let users add more details about the event.
+     * A note that you can use to add more details about the event.
      */
     description?: pulumi.Input<string>;
     /**
-     * Disables automatic renewal of session cookies.
+     * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the end of the event.
      */
     eventEndTime: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
     eventStartTime: pulumi.Input<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      */
     name: pulumi.Input<string>;
     /**
-     * The number of new users that will be let into the route every minute.
+     * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
+     * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**
-     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
     suspended?: pulumi.Input<boolean>;
     /**
-     * The total number of active user sessions on the route at a point in time.
+     * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     totalActiveUsers?: pulumi.Input<number>;
-    /**
-     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
     waitingRoomId: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -5,7 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages Web3 hostnames for IPFS and Ethereum gateways.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWeb3Hostname = new cloudflare.Web3Hostname("example_web3_hostname", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "gateway.example.com",
+ *     target: "ethereum",
+ *     description: "This is my IPFS gateway.",
+ *     dnslink: "/ipns/onboarding.ipfs.cloudflare.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
+ * ```
  */
 export class Web3Hostname extends pulumi.CustomResource {
     /**
@@ -35,9 +54,6 @@ export class Web3Hostname extends pulumi.CustomResource {
         return obj['__pulumiType'] === Web3Hostname.__pulumiType;
     }
 
-    /**
-     * Creation time.
-     */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * An optional description of the hostname.
@@ -47,9 +63,6 @@ export class Web3Hostname extends pulumi.CustomResource {
      * DNSLink value used if the target is ipfs.
      */
     public readonly dnslink!: pulumi.Output<string | undefined>;
-    /**
-     * Last modification time.
-     */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The hostname that will point to the target gateway via CNAME.
@@ -64,7 +77,7 @@ export class Web3Hostname extends pulumi.CustomResource {
      */
     public readonly target!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -118,9 +131,6 @@ export class Web3Hostname extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Web3Hostname resources.
  */
 export interface Web3HostnameState {
-    /**
-     * Creation time.
-     */
     createdOn?: pulumi.Input<string>;
     /**
      * An optional description of the hostname.
@@ -130,9 +140,6 @@ export interface Web3HostnameState {
      * DNSLink value used if the target is ipfs.
      */
     dnslink?: pulumi.Input<string>;
-    /**
-     * Last modification time.
-     */
     modifiedOn?: pulumi.Input<string>;
     /**
      * The hostname that will point to the target gateway via CNAME.
@@ -147,7 +154,7 @@ export interface Web3HostnameState {
      */
     target?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -173,7 +180,7 @@ export interface Web3HostnameArgs {
      */
     target: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

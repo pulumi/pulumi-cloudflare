@@ -21,27 +21,26 @@ class NotificationPolicyWebhooksArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 secret: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 url: pulumi.Input[str],
+                 secret: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NotificationPolicyWebhooks resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
-        :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account id
+        :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
+        :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
+        :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        The account id
         """
         return pulumi.get(self, "account_id")
 
@@ -53,7 +52,7 @@ class NotificationPolicyWebhooksArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the webhook destination.
+        The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         """
         return pulumi.get(self, "name")
 
@@ -63,27 +62,27 @@ class NotificationPolicyWebhooksArgs:
 
     @property
     @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The POST endpoint to call when dispatching a notification.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+        Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
     def secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
@@ -99,13 +98,14 @@ class _NotificationPolicyWebhooksState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NotificationPolicyWebhooks resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] created_at: Timestamp of when the notification webhook was created.
-        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last failed.
-        :param pulumi.Input[str] last_success: Timestamp of when the notification webhook was last successful.
-        :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
-        :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account id
+        :param pulumi.Input[str] created_at: Timestamp of when the webhook destination was created.
+        :param pulumi.Input[str] last_failure: Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
+        :param pulumi.Input[str] last_success: Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
+        :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
+        :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
+        :param pulumi.Input[str] type: Type of webhook endpoint.
+        :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -128,7 +128,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        The account id
         """
         return pulumi.get(self, "account_id")
 
@@ -140,7 +140,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp of when the notification webhook was created.
+        Timestamp of when the webhook destination was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -152,7 +152,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter(name="lastFailure")
     def last_failure(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp of when the notification webhook last failed.
+        Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
         """
         return pulumi.get(self, "last_failure")
 
@@ -164,7 +164,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter(name="lastSuccess")
     def last_success(self) -> Optional[pulumi.Input[str]]:
         """
-        Timestamp of when the notification webhook was last successful.
+        Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
         """
         return pulumi.get(self, "last_success")
 
@@ -176,7 +176,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the webhook destination.
+        The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         """
         return pulumi.get(self, "name")
 
@@ -188,7 +188,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+        Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         """
         return pulumi.get(self, "secret")
 
@@ -199,6 +199,9 @@ class _NotificationPolicyWebhooksState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of webhook endpoint.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -209,7 +212,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        The POST endpoint to call when dispatching a notification.
         """
         return pulumi.get(self, "url")
 
@@ -229,33 +232,31 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.NotificationPolicyWebhooks("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Webhooks destination",
-            url="https://example.com",
-            secret="my-secret")
+        example_notification_policy_webhooks = cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="Slack Webhook",
+            url="https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+            secret="secret")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
+        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
-        :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account id
+        :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
+        :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
+        :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
         """
         ...
     @overload
@@ -264,25 +265,23 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                  args: NotificationPolicyWebhooksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.NotificationPolicyWebhooks("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Webhooks destination",
-            url="https://example.com",
-            secret="my-secret")
+        example_notification_policy_webhooks = cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="Slack Webhook",
+            url="https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+            secret="secret")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
+        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,6 +319,8 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["secret"] = secret
+            if url is None and not opts.urn:
+                raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_failure"] = None
@@ -350,13 +351,14 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] created_at: Timestamp of when the notification webhook was created.
-        :param pulumi.Input[str] last_failure: Timestamp of when the notification webhook last failed.
-        :param pulumi.Input[str] last_success: Timestamp of when the notification webhook was last successful.
-        :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
-        :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account id
+        :param pulumi.Input[str] created_at: Timestamp of when the webhook destination was created.
+        :param pulumi.Input[str] last_failure: Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
+        :param pulumi.Input[str] last_success: Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
+        :param pulumi.Input[str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
+        :param pulumi.Input[str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
+        :param pulumi.Input[str] type: Type of webhook endpoint.
+        :param pulumi.Input[str] url: The POST endpoint to call when dispatching a notification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -376,7 +378,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        The account id
         """
         return pulumi.get(self, "account_id")
 
@@ -384,7 +386,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Timestamp of when the notification webhook was created.
+        Timestamp of when the webhook destination was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -392,7 +394,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter(name="lastFailure")
     def last_failure(self) -> pulumi.Output[str]:
         """
-        Timestamp of when the notification webhook last failed.
+        Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
         """
         return pulumi.get(self, "last_failure")
 
@@ -400,7 +402,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter(name="lastSuccess")
     def last_success(self) -> pulumi.Output[str]:
         """
-        Timestamp of when the notification webhook was last successful.
+        Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
         """
         return pulumi.get(self, "last_success")
 
@@ -408,7 +410,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the webhook destination.
+        The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         """
         return pulumi.get(self, "name")
 
@@ -416,20 +418,23 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+        Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Type of webhook endpoint.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def url(self) -> pulumi.Output[Optional[str]]:
+    def url(self) -> pulumi.Output[str]:
         """
-        The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+        The POST endpoint to call when dispatching a notification.
         """
         return pulumi.get(self, "url")
 

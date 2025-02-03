@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancerPools
     {
         /// <summary>
-        /// A datasource to find Load Balancer Pools.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,13 +22,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLoadBalancerPools.Invoke(new()
+        ///     var exampleLoadBalancerPools = Cloudflare.GetLoadBalancerPools.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Filter = new Cloudflare.Inputs.GetLoadBalancerPoolsFilterInputArgs
-        ///         {
-        ///             Name = "example-lb-pool",
-        ///         },
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Monitor = "monitor",
         ///     });
         /// 
         /// });
@@ -40,8 +35,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// A datasource to find Load Balancer Pools.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,13 +45,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLoadBalancerPools.Invoke(new()
+        ///     var exampleLoadBalancerPools = Cloudflare.GetLoadBalancerPools.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Filter = new Cloudflare.Inputs.GetLoadBalancerPoolsFilterInputArgs
-        ///         {
-        ///             Name = "example-lb-pool",
-        ///         },
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Monitor = "monitor",
         ///     });
         /// 
         /// });
@@ -68,8 +58,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// A datasource to find Load Balancer Pools.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -80,13 +68,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLoadBalancerPools.Invoke(new()
+        ///     var exampleLoadBalancerPools = Cloudflare.GetLoadBalancerPools.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Filter = new Cloudflare.Inputs.GetLoadBalancerPoolsFilterInputArgs
-        ///         {
-        ///             Name = "example-lb-pool",
-        ///         },
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Monitor = "monitor",
         ///     });
         /// 
         /// });
@@ -100,28 +85,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the datasource lookups.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        [Input("filter")]
-        public Inputs.GetLoadBalancerPoolsFilterArgs? Filter { get; set; }
-
-        [Input("pools")]
-        private List<Inputs.GetLoadBalancerPoolsPoolArgs>? _pools;
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
 
         /// <summary>
-        /// A list of Load Balancer Pools details.
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
         /// </summary>
-        public List<Inputs.GetLoadBalancerPoolsPoolArgs> Pools
-        {
-            get => _pools ?? (_pools = new List<Inputs.GetLoadBalancerPoolsPoolArgs>());
-            set => _pools = value;
-        }
+        [Input("monitor")]
+        public string? Monitor { get; set; }
 
         public GetLoadBalancerPoolsArgs()
         {
@@ -132,28 +111,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the datasource lookups.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        [Input("filter")]
-        public Input<Inputs.GetLoadBalancerPoolsFilterInputArgs>? Filter { get; set; }
-
-        [Input("pools")]
-        private InputList<Inputs.GetLoadBalancerPoolsPoolInputArgs>? _pools;
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// A list of Load Balancer Pools details.
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
         /// </summary>
-        public InputList<Inputs.GetLoadBalancerPoolsPoolInputArgs> Pools
-        {
-            get => _pools ?? (_pools = new InputList<Inputs.GetLoadBalancerPoolsPoolInputArgs>());
-            set => _pools = value;
-        }
+        [Input("monitor")]
+        public Input<string>? Monitor { get; set; }
 
         public GetLoadBalancerPoolsInvokeArgs()
         {
@@ -166,36 +139,43 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsResult
     {
         /// <summary>
-        /// The account identifier to target for the datasource lookups.
+        /// Identifier
         /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-        /// </summary>
-        public readonly Outputs.GetLoadBalancerPoolsFilterResult? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of Load Balancer Pools details.
+        /// Max items to fetch, default: 1000
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetLoadBalancerPoolsPoolResult> Pools;
+        public readonly int? MaxItems;
+        /// <summary>
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
+        /// </summary>
+        public readonly string? Monitor;
+        /// <summary>
+        /// The items returned by the data source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetLoadBalancerPoolsResultResult> Results;
 
         [OutputConstructor]
         private GetLoadBalancerPoolsResult(
             string accountId,
 
-            Outputs.GetLoadBalancerPoolsFilterResult? filter,
-
             string id,
 
-            ImmutableArray<Outputs.GetLoadBalancerPoolsPoolResult> pools)
+            int? maxItems,
+
+            string? monitor,
+
+            ImmutableArray<Outputs.GetLoadBalancerPoolsResultResult> results)
         {
             AccountId = accountId;
-            Filter = filter;
             Id = id;
-            Pools = pools;
+            MaxItems = maxItems;
+            Monitor = monitor;
+            Results = results;
         }
     }
 }

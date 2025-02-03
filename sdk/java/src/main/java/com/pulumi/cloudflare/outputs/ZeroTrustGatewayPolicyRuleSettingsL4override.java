@@ -4,38 +4,39 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsL4override {
     /**
-     * @return Override IP to forward traffic to.
+     * @return IPv4 or IPv6 address.
      * 
      */
-    private String ip;
+    private @Nullable String ip;
     /**
-     * @return Override Port to forward traffic to.
+     * @return A port number to use for TCP/UDP overrides.
      * 
      */
-    private Integer port;
+    private @Nullable Integer port;
 
     private ZeroTrustGatewayPolicyRuleSettingsL4override() {}
     /**
-     * @return Override IP to forward traffic to.
+     * @return IPv4 or IPv6 address.
      * 
      */
-    public String ip() {
-        return this.ip;
+    public Optional<String> ip() {
+        return Optional.ofNullable(this.ip);
     }
     /**
-     * @return Override Port to forward traffic to.
+     * @return A port number to use for TCP/UDP overrides.
      * 
      */
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
     public static Builder builder() {
@@ -47,8 +48,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4override {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ip;
-        private Integer port;
+        private @Nullable String ip;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(ZeroTrustGatewayPolicyRuleSettingsL4override defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,18 +58,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsL4override {
         }
 
         @CustomType.Setter
-        public Builder ip(String ip) {
-            if (ip == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsL4override", "ip");
-            }
+        public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyRuleSettingsL4override", "port");
-            }
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

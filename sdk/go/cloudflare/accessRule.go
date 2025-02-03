@@ -8,46 +8,68 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare IP Firewall Access Rule resource. Access
-// control can be applied on basis of IP addresses, IP ranges, AS
-// numbers or countries.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessRule(ctx, "example_access_rule", &cloudflare.AccessRuleArgs{
+//				Configuration: &cloudflare.AccessRuleConfigurationArgs{
+//					Target: pulumi.String("ip"),
+//					Value:  pulumi.String("198.51.100.4"),
+//				},
+//				Mode:   pulumi.String("block"),
+//				ZoneId: pulumi.String("zone_id"),
+//				Notes:  pulumi.String("This rule is enabled because of an event that occurred on date X."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// User level access rule import.
-//
 // ```sh
-// $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
-// ```
-//
-// Zone level access rule import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
-// ```
-//
-// Account level access rule import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+// $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The available actions that a rule can apply to a matched request.
+	AllowedModes pulumi.StringArrayOutput `pulumi:"allowedModes"`
+	// The rule configuration.
 	Configuration AccessRuleConfigurationOutput `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+	// The timestamp of when the rule was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// The action to apply to a matched request.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+	// The timestamp of when the rule was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// All zones owned by the user will have the rule applied.
+	Scope AccessRuleScopeOutput `pulumi:"scope"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessRule registers a new resource with the given unique name, arguments, and options.
@@ -86,28 +108,44 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+	// The available actions that a rule can apply to a matched request.
+	AllowedModes []string `pulumi:"allowedModes"`
+	// The rule configuration.
 	Configuration *AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+	// The timestamp of when the rule was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// The action to apply to a matched request.
 	Mode *string `pulumi:"mode"`
-	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+	// The timestamp of when the rule was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes *string `pulumi:"notes"`
-	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// All zones owned by the user will have the rule applied.
+	Scope *AccessRuleScope `pulumi:"scope"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessRuleState struct {
-	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+	// The available actions that a rule can apply to a matched request.
+	AllowedModes pulumi.StringArrayInput
+	// The rule configuration.
 	Configuration AccessRuleConfigurationPtrInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+	// The timestamp of when the rule was created.
+	CreatedOn pulumi.StringPtrInput
+	// The action to apply to a matched request.
 	Mode pulumi.StringPtrInput
-	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+	// The timestamp of when the rule was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// All zones owned by the user will have the rule applied.
+	Scope AccessRuleScopePtrInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -116,29 +154,29 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+	// The rule configuration.
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode string `pulumi:"mode"`
-	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes *string `pulumi:"notes"`
-	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+	// The rule configuration.
 	Configuration AccessRuleConfigurationInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode pulumi.StringInput
-	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -229,29 +267,49 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessRuleOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o AccessRuleOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+// The available actions that a rule can apply to a matched request.
+func (o AccessRuleOutput) AllowedModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringArrayOutput { return v.AllowedModes }).(pulumi.StringArrayOutput)
+}
+
+// The rule configuration.
 func (o AccessRuleOutput) Configuration() AccessRuleConfigurationOutput {
 	return o.ApplyT(func(v *AccessRule) AccessRuleConfigurationOutput { return v.Configuration }).(AccessRuleConfigurationOutput)
 }
 
-// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
+// The timestamp of when the rule was created.
+func (o AccessRuleOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The action to apply to a matched request.
 func (o AccessRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+// The timestamp of when the rule was last modified.
+func (o AccessRuleOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// An informative summary of the rule, typically used as a reminder or explanation.
 func (o AccessRuleOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
-func (o AccessRuleOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+// All zones owned by the user will have the rule applied.
+func (o AccessRuleOutput) Scope() AccessRuleScopeOutput {
+	return o.ApplyT(func(v *AccessRule) AccessRuleScopeOutput { return v.Scope }).(AccessRuleScopeOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o AccessRuleOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }

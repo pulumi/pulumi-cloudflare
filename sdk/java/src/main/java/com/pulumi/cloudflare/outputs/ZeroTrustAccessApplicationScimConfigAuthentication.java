@@ -28,6 +28,10 @@ public final class ZeroTrustAccessApplicationScimConfigAuthentication {
      * 
      */
     private @Nullable String clientSecret;
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     private @Nullable String password;
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
@@ -77,6 +81,10 @@ public final class ZeroTrustAccessApplicationScimConfigAuthentication {
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }

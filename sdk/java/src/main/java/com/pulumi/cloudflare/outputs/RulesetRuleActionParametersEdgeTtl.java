@@ -16,38 +16,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
     /**
-     * @return Default edge TTL.
+     * @return The TTL (in seconds) if you choose override_origin mode.
      * 
      */
     private @Nullable Integer default_;
     /**
-     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+     * @return edge ttl options
      * 
      */
     private String mode;
     /**
-     * @return Edge TTL for the status codes.
+     * @return List of single status codes, or status code ranges to apply the selected mode
      * 
      */
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
 
     private RulesetRuleActionParametersEdgeTtl() {}
     /**
-     * @return Default edge TTL.
+     * @return The TTL (in seconds) if you choose override_origin mode.
      * 
      */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+     * @return edge ttl options
      * 
      */
     public String mode() {
         return this.mode;
     }
     /**
-     * @return Edge TTL for the status codes.
+     * @return List of single status codes, or status code ranges to apply the selected mode
      * 
      */
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls() {

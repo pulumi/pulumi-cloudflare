@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsAuditSsh
     {
         /// <summary>
-        /// Log all SSH commands.
+        /// Enable to turn on SSH command logging.
         /// </summary>
-        public readonly bool CommandLogging;
+        public readonly bool? CommandLogging;
 
         [OutputConstructor]
-        private ZeroTrustGatewayPolicyRuleSettingsAuditSsh(bool commandLogging)
+        private ZeroTrustGatewayPolicyRuleSettingsAuditSsh(bool? commandLogging)
         {
             CommandLogging = commandLogging;
         }

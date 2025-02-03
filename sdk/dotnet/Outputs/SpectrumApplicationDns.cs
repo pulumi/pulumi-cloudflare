@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The name of the DNS record associated with the application.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// The type of DNS record associated with the application.
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private SpectrumApplicationDns(
-            string name,
+            string? name,
 
-            string type)
+            string? type)
         {
             Name = name;
             Type = type;

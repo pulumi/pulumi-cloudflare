@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,14 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
     public static final AuthenticatedOriginPullsCertificateArgs Empty = new AuthenticatedOriginPullsCertificateArgs();
 
     /**
-     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s leaf certificate.
      * 
      */
     @Import(name="certificate", required=true)
     private Output<String> certificate;
 
     /**
-     * @return The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s leaf certificate.
      * 
      */
     public Output<String> certificate() {
@@ -30,14 +32,29 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
     }
 
     /**
-     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     * 
+     */
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+
+    /**
+     * The zone&#39;s private key.
      * 
      */
     @Import(name="privateKey", required=true)
     private Output<String> privateKey;
 
     /**
-     * @return The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s private key.
      * 
      */
     public Output<String> privateKey() {
@@ -45,29 +62,14 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
     }
 
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="type", required=true)
-    private Output<String> type;
-
-    /**
-     * @return The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> type() {
-        return this.type;
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -78,8 +80,8 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
 
     private AuthenticatedOriginPullsCertificateArgs(AuthenticatedOriginPullsCertificateArgs $) {
         this.certificate = $.certificate;
+        this.certificateId = $.certificateId;
         this.privateKey = $.privateKey;
-        this.type = $.type;
         this.zoneId = $.zoneId;
     }
 
@@ -102,7 +104,7 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s leaf certificate.
          * 
          * @return builder
          * 
@@ -113,7 +115,7 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s leaf certificate.
          * 
          * @return builder
          * 
@@ -123,7 +125,28 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
+            return this;
+        }
+
+        /**
+         * @param certificateId Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
+        }
+
+        /**
+         * @param privateKey The zone&#39;s private key.
          * 
          * @return builder
          * 
@@ -134,7 +157,7 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The zone&#39;s private key.
          * 
          * @return builder
          * 
@@ -144,28 +167,7 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(String type) {
-            return type(Output.of(type));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -176,7 +178,7 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -191,9 +193,6 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
             }
             if ($.privateKey == null) {
                 throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "privateKey");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "type");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "zoneId");

@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
- *
  * !> When a D1 Database is replaced all the data is lost. Please ensure you have a
  *    backup of your data before replacing a D1 Database.
  *
@@ -16,16 +14,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.D1Database("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "terraform-database",
+ * const exampleD1Database = new cloudflare.D1Database("example_d1_database", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "my-database",
+ *     primaryLocationHint: "wnam",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+ * $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
  * ```
  */
 export class D1Database extends pulumi.CustomResource {
@@ -57,16 +56,24 @@ export class D1Database extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The name of the D1 Database.
+     * Specifies the timestamp the resource was created as an ISO8601 string.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The backend version of the database.
+     * The D1 database's size, in bytes.
      */
+    public /*out*/ readonly fileSize!: pulumi.Output<number>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly numTables!: pulumi.Output<number>;
+    /**
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     */
+    public readonly primaryLocationHint!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
     public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
@@ -83,7 +90,12 @@ export class D1Database extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as D1DatabaseState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["numTables"] = state ? state.numTables : undefined;
+            resourceInputs["primaryLocationHint"] = state ? state.primaryLocationHint : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as D1DatabaseArgs | undefined;
@@ -95,6 +107,11 @@ export class D1Database extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["primaryLocationHint"] = args ? args.primaryLocationHint : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["fileSize"] = undefined /*out*/;
+            resourceInputs["numTables"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -107,16 +124,24 @@ export class D1Database extends pulumi.CustomResource {
  */
 export interface D1DatabaseState {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The name of the D1 Database.
+     * Specifies the timestamp the resource was created as an ISO8601 string.
      */
-    name?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * The backend version of the database.
+     * The D1 database's size, in bytes.
      */
+    fileSize?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    numTables?: pulumi.Input<number>;
+    /**
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     */
+    primaryLocationHint?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
 }
 
@@ -125,11 +150,12 @@ export interface D1DatabaseState {
  */
 export interface D1DatabaseArgs {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * The name of the D1 Database.
-     */
     name: pulumi.Input<string>;
+    /**
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     */
+    primaryLocationHint?: pulumi.Input<string>;
 }

@@ -26,40 +26,18 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, email=None, id=None, username=None):
-        if email and not isinstance(email, str):
-            raise TypeError("Expected argument 'email' to be a str")
-        pulumi.set(__self__, "email", email)
+    def __init__(__self__, id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if username and not isinstance(username, str):
-            raise TypeError("Expected argument 'username' to be a str")
-        pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def email(self) -> str:
-        """
-        The user's email address.
-        """
-        return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The user's unique identifier.
+        The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        """
-        The user's username.
-        """
-        return pulumi.get(self, "username")
 
 
 class AwaitableGetUserResult(GetUserResult):
@@ -68,31 +46,18 @@ class AwaitableGetUserResult(GetUserResult):
         if False:
             yield self
         return GetUserResult(
-            email=self.email,
-            id=self.id,
-            username=self.username)
+            id=self.id)
 
 
 def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to retrieve information about the currently authenticated user.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    me = cloudflare.get_user()
-    all = cloudflare.get_api_token_permission_groups()
-    example = cloudflare.ApiToken("example",
-        name="Terraform Cloud (Terraform)",
-        policies=[{
-            "permission_groups": [all.user["User Details Read"]],
-            "resources": {
-                f"com.cloudflare.api.user.{me.id}": "*",
-            },
-        }])
+    example_user = cloudflare.get_user()
     ```
     """
     __args__ = dict()
@@ -100,35 +65,20 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        email=pulumi.get(__ret__, 'email'),
-        id=pulumi.get(__ret__, 'id'),
-        username=pulumi.get(__ret__, 'username'))
+        id=pulumi.get(__ret__, 'id'))
 def get_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
-    Use this data source to retrieve information about the currently authenticated user.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    me = cloudflare.get_user()
-    all = cloudflare.get_api_token_permission_groups()
-    example = cloudflare.ApiToken("example",
-        name="Terraform Cloud (Terraform)",
-        policies=[{
-            "permission_groups": [all.user["User Details Read"]],
-            "resources": {
-                f"com.cloudflare.api.user.{me.id}": "*",
-            },
-        }])
+    example_user = cloudflare.get_user()
     ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
-        email=pulumi.get(__response__, 'email'),
-        id=pulumi.get(__response__, 'id'),
-        username=pulumi.get(__response__, 'username')))
+        id=pulumi.get(__response__, 'id')))

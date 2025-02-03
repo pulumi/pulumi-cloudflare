@@ -18,14 +18,14 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
     public static final ZeroTrustAccessMtlsCertificateArgs Empty = new ZeroTrustAccessMtlsCertificateArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
     }
 
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      * 
      */
     @Import(name="associatedHostnames")
     private @Nullable Output<List<String>> associatedHostnames;
 
     /**
-     * @return The hostnames that will be prompted for this certificate.
+     * @return The hostnames of the applications that will use this certificate.
      * 
      */
     public Optional<Output<List<String>>> associatedHostnames() {
@@ -48,18 +48,18 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
     }
 
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      * 
      */
-    @Import(name="certificate")
-    private @Nullable Output<String> certificate;
+    @Import(name="certificate", required=true)
+    private Output<String> certificate;
 
     /**
-     * @return The Root CA for your certificates.
+     * @return The certificate content.
      * 
      */
-    public Optional<Output<String>> certificate() {
-        return Optional.ofNullable(this.certificate);
+    public Output<String> certificate() {
+        return this.certificate;
     }
 
     /**
@@ -78,14 +78,14 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -121,7 +121,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -173,18 +173,18 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param certificate The Root CA for your certificates.
+         * @param certificate The certificate content.
          * 
          * @return builder
          * 
          */
-        public Builder certificate(@Nullable Output<String> certificate) {
+        public Builder certificate(Output<String> certificate) {
             $.certificate = certificate;
             return this;
         }
 
         /**
-         * @param certificate The Root CA for your certificates.
+         * @param certificate The certificate content.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -236,6 +236,9 @@ public final class ZeroTrustAccessMtlsCertificateArgs extends com.pulumi.resourc
         }
 
         public ZeroTrustAccessMtlsCertificateArgs build() {
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessMtlsCertificateArgs", "certificate");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessMtlsCertificateArgs", "name");
             }

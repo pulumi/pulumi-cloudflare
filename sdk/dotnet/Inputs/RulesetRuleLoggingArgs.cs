@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleLoggingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Override the default logging behavior when a rule is matched.
+        /// Whether to generate a log when the rule matches.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public RulesetRuleLoggingArgs()
         {

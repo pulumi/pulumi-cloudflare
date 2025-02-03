@@ -17,14 +17,14 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
     public static final PagesProjectDeploymentConfigsArgs Empty = new PagesProjectDeploymentConfigsArgs();
 
     /**
-     * Configuration for preview deploys.
+     * Configs for preview deploys.
      * 
      */
     @Import(name="preview")
     private @Nullable Output<PagesProjectDeploymentConfigsPreviewArgs> preview;
 
     /**
-     * @return Configuration for preview deploys.
+     * @return Configs for preview deploys.
      * 
      */
     public Optional<Output<PagesProjectDeploymentConfigsPreviewArgs>> preview() {
@@ -32,14 +32,14 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
     }
 
     /**
-     * Configuration for production deploys.
+     * Configs for production deploys.
      * 
      */
     @Import(name="production")
     private @Nullable Output<PagesProjectDeploymentConfigsProductionArgs> production;
 
     /**
-     * @return Configuration for production deploys.
+     * @return Configs for production deploys.
      * 
      */
     public Optional<Output<PagesProjectDeploymentConfigsProductionArgs>> production() {
@@ -72,7 +72,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param preview Configuration for preview deploys.
+         * @param preview Configs for preview deploys.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param preview Configuration for preview deploys.
+         * @param preview Configs for preview deploys.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param production Configuration for production deploys.
+         * @param production Configs for production deploys.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param production Configuration for production deploys.
+         * @param production Configs for production deploys.
          * 
          * @return builder
          * 

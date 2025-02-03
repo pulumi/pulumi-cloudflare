@@ -17,14 +17,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     public static final NotificationPolicyFiltersArgs Empty = new NotificationPolicyFiltersArgs();
 
     /**
-     * Targeted actions for alert.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<String>> actions;
 
     /**
-     * @return Targeted actions for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> actions() {
@@ -32,14 +32,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * Used for configuring radar_notification
+     * 
+     */
+    @Import(name="affectedAsns")
+    private @Nullable Output<List<String>> affectedAsns;
+
+    /**
+     * @return Used for configuring radar_notification
+     * 
+     */
+    public Optional<Output<List<String>>> affectedAsns() {
+        return Optional.ofNullable(this.affectedAsns);
+    }
+
+    /**
+     * Used for configuring incident_alert
      * 
      */
     @Import(name="affectedComponents")
     private @Nullable Output<List<String>> affectedComponents;
 
     /**
-     * @return Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * @return Used for configuring incident_alert
      * 
      */
     public Optional<Output<List<String>>> affectedComponents() {
@@ -47,14 +62,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Filter on Points of Presence.
+     * Used for configuring radar_notification
+     * 
+     */
+    @Import(name="affectedLocations")
+    private @Nullable Output<List<String>> affectedLocations;
+
+    /**
+     * @return Used for configuring radar_notification
+     * 
+     */
+    public Optional<Output<List<String>>> affectedLocations() {
+        return Optional.ofNullable(this.affectedLocations);
+    }
+
+    /**
+     * Used for configuring maintenance*event*notification
      * 
      */
     @Import(name="airportCodes")
     private @Nullable Output<List<String>> airportCodes;
 
     /**
-     * @return Filter on Points of Presence.
+     * @return Used for configuring maintenance*event*notification
      * 
      */
     public Optional<Output<List<String>>> airportCodes() {
@@ -62,14 +92,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Alert trigger preferences. Example: `slo`.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="alertTriggerPreferences")
     private @Nullable Output<List<String>> alertTriggerPreferences;
 
     /**
-     * @return Alert trigger preferences. Example: `slo`.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> alertTriggerPreferences() {
@@ -77,14 +107,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * State of the pool to alert on.
+     * Usage depends on specific alert type
+     * 
+     */
+    @Import(name="alertTriggerPreferencesValues")
+    private @Nullable Output<List<String>> alertTriggerPreferencesValues;
+
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public Optional<Output<List<String>>> alertTriggerPreferencesValues() {
+        return Optional.ofNullable(this.alertTriggerPreferencesValues);
+    }
+
+    /**
+     * Used for configuring load*balancing*pool*enablement*alert
      * 
      */
     @Import(name="enableds")
     private @Nullable Output<List<String>> enableds;
 
     /**
-     * @return State of the pool to alert on.
+     * @return Used for configuring load*balancing*pool*enablement*alert
      * 
      */
     public Optional<Output<List<String>>> enableds() {
@@ -92,14 +137,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * Used for configuring pages*event*alert
      * 
      */
     @Import(name="environments")
     private @Nullable Output<List<String>> environments;
 
     /**
-     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public Optional<Output<List<String>>> environments() {
@@ -107,14 +152,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Source configuration to alert on for pool or origin.
+     * Used for configuring load*balancing*health_alert
      * 
      */
     @Import(name="eventSources")
     private @Nullable Output<List<String>> eventSources;
 
     /**
-     * @return Source configuration to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     public Optional<Output<List<String>>> eventSources() {
@@ -122,14 +167,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Stream event type to alert on.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="eventTypes")
     private @Nullable Output<List<String>> eventTypes;
 
     /**
-     * @return Stream event type to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> eventTypes() {
@@ -137,14 +182,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * Used for configuring pages*event*alert
      * 
      */
     @Import(name="events")
     private @Nullable Output<List<String>> events;
 
     /**
-     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public Optional<Output<List<String>>> events() {
@@ -152,14 +197,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Alert grouping.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<String>> groupBies;
 
     /**
-     * @return Alert grouping.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> groupBies() {
@@ -167,14 +212,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier health check. Required when using `filters.0.status`.
+     * Used for configuring health*check*status_notification
      * 
      */
     @Import(name="healthCheckIds")
     private @Nullable Output<List<String>> healthCheckIds;
 
     /**
-     * @return Identifier health check. Required when using `filters.0.status`.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     public Optional<Output<List<String>>> healthCheckIds() {
@@ -182,14 +227,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * Used for configuring incident_alert
      * 
      */
     @Import(name="incidentImpacts")
     private @Nullable Output<List<String>> incidentImpacts;
 
     /**
-     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * @return Used for configuring incident_alert
      * 
      */
     public Optional<Output<List<String>>> incidentImpacts() {
@@ -197,14 +242,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Stream input id to alert on.
+     * Used for configuring stream*live*notifications
      * 
      */
     @Import(name="inputIds")
     private @Nullable Output<List<String>> inputIds;
 
     /**
-     * @return Stream input id to alert on.
+     * @return Used for configuring stream*live*notifications
      * 
      */
     public Optional<Output<List<String>>> inputIds() {
@@ -212,14 +257,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A numerical limit. Example: `100`.
+     * Used for configuring security*insights*alert
+     * 
+     */
+    @Import(name="insightClasses")
+    private @Nullable Output<List<String>> insightClasses;
+
+    /**
+     * @return Used for configuring security*insights*alert
+     * 
+     */
+    public Optional<Output<List<String>>> insightClasses() {
+        return Optional.ofNullable(this.insightClasses);
+    }
+
+    /**
+     * Used for configuring billing*usage*alert
      * 
      */
     @Import(name="limits")
     private @Nullable Output<List<String>> limits;
 
     /**
-     * @return A numerical limit. Example: `100`.
+     * @return Used for configuring billing*usage*alert
      * 
      */
     public Optional<Output<List<String>>> limits() {
@@ -227,14 +287,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Megabits per second threshold for dos alert.
+     * Used for configuring logo*match*alert
+     * 
+     */
+    @Import(name="logoTags")
+    private @Nullable Output<List<String>> logoTags;
+
+    /**
+     * @return Used for configuring logo*match*alert
+     * 
+     */
+    public Optional<Output<List<String>>> logoTags() {
+        return Optional.ofNullable(this.logoTags);
+    }
+
+    /**
+     * Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     @Import(name="megabitsPerSeconds")
     private @Nullable Output<List<String>> megabitsPerSeconds;
 
     /**
-     * @return Megabits per second threshold for dos alert.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public Optional<Output<List<String>>> megabitsPerSeconds() {
@@ -242,14 +317,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Health status to alert on for pool or origin.
+     * Used for configuring load*balancing*health_alert
      * 
      */
     @Import(name="newHealths")
     private @Nullable Output<List<String>> newHealths;
 
     /**
-     * @return Health status to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     public Optional<Output<List<String>>> newHealths() {
@@ -257,14 +332,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Tunnel health status to alert on.
+     * Used for configuring tunnel*health*event
      * 
      */
     @Import(name="newStatuses")
     private @Nullable Output<List<String>> newStatuses;
 
     /**
-     * @return Tunnel health status to alert on.
+     * @return Used for configuring tunnel*health*event
      * 
      */
     public Optional<Output<List<String>>> newStatuses() {
@@ -272,14 +347,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Packets per second threshold for dos alert.
+     * Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     @Import(name="packetsPerSeconds")
     private @Nullable Output<List<String>> packetsPerSeconds;
 
     /**
-     * @return Packets per second threshold for dos alert.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public Optional<Output<List<String>>> packetsPerSeconds() {
@@ -287,14 +362,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Load balancer pool identifier.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="poolIds")
     private @Nullable Output<List<String>> poolIds;
 
     /**
-     * @return Load balancer pool identifier.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> poolIds() {
@@ -302,14 +377,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+     * Usage depends on specific alert type
+     * 
+     */
+    @Import(name="popNames")
+    private @Nullable Output<List<String>> popNames;
+
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public Optional<Output<List<String>>> popNames() {
+        return Optional.ofNullable(this.popNames);
+    }
+
+    /**
+     * Used for configuring billing*usage*alert
      * 
      */
     @Import(name="products")
     private @Nullable Output<List<String>> products;
 
     /**
-     * @return Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+     * @return Used for configuring billing*usage*alert
      * 
      */
     public Optional<Output<List<String>>> products() {
@@ -317,14 +407,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier of pages project.
+     * Used for configuring pages*event*alert
      * 
      */
     @Import(name="projectIds")
     private @Nullable Output<List<String>> projectIds;
 
     /**
-     * @return Identifier of pages project.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public Optional<Output<List<String>>> projectIds() {
@@ -332,14 +422,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Protocol to alert on for dos.
+     * Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return Protocol to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public Optional<Output<List<String>>> protocols() {
@@ -347,14 +437,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Requests per second threshold for dos alert.
+     * Usage depends on specific alert type
+     * 
+     */
+    @Import(name="queryTags")
+    private @Nullable Output<List<String>> queryTags;
+
+    /**
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public Optional<Output<List<String>>> queryTags() {
+        return Optional.ofNullable(this.queryTags);
+    }
+
+    /**
+     * Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     @Import(name="requestsPerSeconds")
     private @Nullable Output<List<String>> requestsPerSeconds;
 
     /**
-     * @return Requests per second threshold for dos alert.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public Optional<Output<List<String>>> requestsPerSeconds() {
@@ -362,36 +467,44 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Selectors for alert. Valid options depend on the alert type.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="selectors")
     private @Nullable Output<List<String>> selectors;
 
     /**
-     * @return Selectors for alert. Valid options depend on the alert type.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> selectors() {
         return Optional.ofNullable(this.selectors);
     }
 
+    /**
+     * Used for configuring clickhouse*alert*fw*ent*anomaly
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
+    /**
+     * @return Used for configuring clickhouse*alert*fw*ent*anomaly
+     * 
+     */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
 
     /**
-     * A numerical limit. Example: `99.9`.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="slos")
     private @Nullable Output<List<String>> slos;
 
     /**
-     * @return A numerical limit. Example: `99.9`.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> slos() {
@@ -399,14 +512,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Status to alert on.
+     * Used for configuring health*check*status_notification
      * 
      */
     @Import(name="statuses")
     private @Nullable Output<List<String>> statuses;
 
     /**
-     * @return Status to alert on.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     public Optional<Output<List<String>>> statuses() {
@@ -414,14 +527,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Target host to alert on for dos.
+     * Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     @Import(name="targetHostnames")
     private @Nullable Output<List<String>> targetHostnames;
 
     /**
-     * @return Target host to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public Optional<Output<List<String>>> targetHostnames() {
@@ -429,14 +542,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Target ip to alert on for dos in CIDR notation.
+     * Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     @Import(name="targetIps")
     private @Nullable Output<List<String>> targetIps;
 
     /**
-     * @return Target ip to alert on for dos in CIDR notation.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public Optional<Output<List<String>>> targetIps() {
@@ -444,14 +557,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Target domain to alert on.
+     * Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     @Import(name="targetZoneNames")
     private @Nullable Output<List<String>> targetZoneNames;
 
     /**
-     * @return Target domain to alert on.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public Optional<Output<List<String>>> targetZoneNames() {
@@ -459,14 +572,29 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Tunnel IDs to alert on.
+     * Used for configuring traffic*anomalies*alert
+     * 
+     */
+    @Import(name="trafficExclusions")
+    private @Nullable Output<List<String>> trafficExclusions;
+
+    /**
+     * @return Used for configuring traffic*anomalies*alert
+     * 
+     */
+    public Optional<Output<List<String>>> trafficExclusions() {
+        return Optional.ofNullable(this.trafficExclusions);
+    }
+
+    /**
+     * Used for configuring tunnel*health*event
      * 
      */
     @Import(name="tunnelIds")
     private @Nullable Output<List<String>> tunnelIds;
 
     /**
-     * @return Tunnel IDs to alert on.
+     * @return Used for configuring tunnel*health*event
      * 
      */
     public Optional<Output<List<String>>> tunnelIds() {
@@ -474,14 +602,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Tunnel Names to alert on.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="tunnelNames")
     private @Nullable Output<List<String>> tunnelNames;
 
     /**
-     * @return Tunnel Names to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> tunnelNames() {
@@ -489,14 +617,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Filter for alert.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="wheres")
     private @Nullable Output<List<String>> wheres;
 
     /**
-     * @return Filter for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> wheres() {
@@ -504,14 +632,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A list of zone identifiers.
+     * Usage depends on specific alert type
      * 
      */
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
     /**
-     * @return A list of zone identifiers.
+     * @return Usage depends on specific alert type
      * 
      */
     public Optional<Output<List<String>>> zones() {
@@ -522,9 +650,12 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
 
     private NotificationPolicyFiltersArgs(NotificationPolicyFiltersArgs $) {
         this.actions = $.actions;
+        this.affectedAsns = $.affectedAsns;
         this.affectedComponents = $.affectedComponents;
+        this.affectedLocations = $.affectedLocations;
         this.airportCodes = $.airportCodes;
         this.alertTriggerPreferences = $.alertTriggerPreferences;
+        this.alertTriggerPreferencesValues = $.alertTriggerPreferencesValues;
         this.enableds = $.enableds;
         this.environments = $.environments;
         this.eventSources = $.eventSources;
@@ -534,15 +665,19 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.healthCheckIds = $.healthCheckIds;
         this.incidentImpacts = $.incidentImpacts;
         this.inputIds = $.inputIds;
+        this.insightClasses = $.insightClasses;
         this.limits = $.limits;
+        this.logoTags = $.logoTags;
         this.megabitsPerSeconds = $.megabitsPerSeconds;
         this.newHealths = $.newHealths;
         this.newStatuses = $.newStatuses;
         this.packetsPerSeconds = $.packetsPerSeconds;
         this.poolIds = $.poolIds;
+        this.popNames = $.popNames;
         this.products = $.products;
         this.projectIds = $.projectIds;
         this.protocols = $.protocols;
+        this.queryTags = $.queryTags;
         this.requestsPerSeconds = $.requestsPerSeconds;
         this.selectors = $.selectors;
         this.services = $.services;
@@ -551,6 +686,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.targetHostnames = $.targetHostnames;
         this.targetIps = $.targetIps;
         this.targetZoneNames = $.targetZoneNames;
+        this.trafficExclusions = $.trafficExclusions;
         this.tunnelIds = $.tunnelIds;
         this.tunnelNames = $.tunnelNames;
         this.wheres = $.wheres;
@@ -576,7 +712,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param actions Targeted actions for alert.
+         * @param actions Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -587,7 +723,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param actions Targeted actions for alert.
+         * @param actions Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -597,7 +733,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param actions Targeted actions for alert.
+         * @param actions Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -607,7 +743,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param affectedComponents Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+         * @param affectedAsns Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedAsns(@Nullable Output<List<String>> affectedAsns) {
+            $.affectedAsns = affectedAsns;
+            return this;
+        }
+
+        /**
+         * @param affectedAsns Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedAsns(List<String> affectedAsns) {
+            return affectedAsns(Output.of(affectedAsns));
+        }
+
+        /**
+         * @param affectedAsns Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedAsns(String... affectedAsns) {
+            return affectedAsns(List.of(affectedAsns));
+        }
+
+        /**
+         * @param affectedComponents Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -618,7 +785,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param affectedComponents Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+         * @param affectedComponents Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -628,7 +795,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param affectedComponents Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+         * @param affectedComponents Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -638,7 +805,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param airportCodes Filter on Points of Presence.
+         * @param affectedLocations Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedLocations(@Nullable Output<List<String>> affectedLocations) {
+            $.affectedLocations = affectedLocations;
+            return this;
+        }
+
+        /**
+         * @param affectedLocations Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedLocations(List<String> affectedLocations) {
+            return affectedLocations(Output.of(affectedLocations));
+        }
+
+        /**
+         * @param affectedLocations Used for configuring radar_notification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder affectedLocations(String... affectedLocations) {
+            return affectedLocations(List.of(affectedLocations));
+        }
+
+        /**
+         * @param airportCodes Used for configuring maintenance*event*notification
          * 
          * @return builder
          * 
@@ -649,7 +847,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param airportCodes Filter on Points of Presence.
+         * @param airportCodes Used for configuring maintenance*event*notification
          * 
          * @return builder
          * 
@@ -659,7 +857,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param airportCodes Filter on Points of Presence.
+         * @param airportCodes Used for configuring maintenance*event*notification
          * 
          * @return builder
          * 
@@ -669,7 +867,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * @param alertTriggerPreferences Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -680,7 +878,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * @param alertTriggerPreferences Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -690,7 +888,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * @param alertTriggerPreferences Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -700,7 +898,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableds State of the pool to alert on.
+         * @param alertTriggerPreferencesValues Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferencesValues(@Nullable Output<List<String>> alertTriggerPreferencesValues) {
+            $.alertTriggerPreferencesValues = alertTriggerPreferencesValues;
+            return this;
+        }
+
+        /**
+         * @param alertTriggerPreferencesValues Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferencesValues(List<String> alertTriggerPreferencesValues) {
+            return alertTriggerPreferencesValues(Output.of(alertTriggerPreferencesValues));
+        }
+
+        /**
+         * @param alertTriggerPreferencesValues Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferencesValues(String... alertTriggerPreferencesValues) {
+            return alertTriggerPreferencesValues(List.of(alertTriggerPreferencesValues));
+        }
+
+        /**
+         * @param enableds Used for configuring load*balancing*pool*enablement*alert
          * 
          * @return builder
          * 
@@ -711,7 +940,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableds State of the pool to alert on.
+         * @param enableds Used for configuring load*balancing*pool*enablement*alert
          * 
          * @return builder
          * 
@@ -721,7 +950,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableds State of the pool to alert on.
+         * @param enableds Used for configuring load*balancing*pool*enablement*alert
          * 
          * @return builder
          * 
@@ -731,7 +960,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * @param environments Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -742,7 +971,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * @param environments Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -752,7 +981,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * @param environments Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -762,7 +991,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventSources Source configuration to alert on for pool or origin.
+         * @param eventSources Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -773,7 +1002,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventSources Source configuration to alert on for pool or origin.
+         * @param eventSources Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -783,7 +1012,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventSources Source configuration to alert on for pool or origin.
+         * @param eventSources Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -793,7 +1022,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventTypes Stream event type to alert on.
+         * @param eventTypes Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -804,7 +1033,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventTypes Stream event type to alert on.
+         * @param eventTypes Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -814,7 +1043,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eventTypes Stream event type to alert on.
+         * @param eventTypes Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -824,7 +1053,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * @param events Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -835,7 +1064,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * @param events Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -845,7 +1074,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * @param events Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -855,7 +1084,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupBies Alert grouping.
+         * @param groupBies Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -866,7 +1095,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupBies Alert grouping.
+         * @param groupBies Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -876,7 +1105,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupBies Alert grouping.
+         * @param groupBies Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -886,7 +1115,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
+         * @param healthCheckIds Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -897,7 +1126,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
+         * @param healthCheckIds Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -907,7 +1136,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
+         * @param healthCheckIds Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -917,7 +1146,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * @param incidentImpacts Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -928,7 +1157,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * @param incidentImpacts Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -938,7 +1167,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * @param incidentImpacts Used for configuring incident_alert
          * 
          * @return builder
          * 
@@ -948,7 +1177,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputIds Stream input id to alert on.
+         * @param inputIds Used for configuring stream*live*notifications
          * 
          * @return builder
          * 
@@ -959,7 +1188,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputIds Stream input id to alert on.
+         * @param inputIds Used for configuring stream*live*notifications
          * 
          * @return builder
          * 
@@ -969,7 +1198,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputIds Stream input id to alert on.
+         * @param inputIds Used for configuring stream*live*notifications
          * 
          * @return builder
          * 
@@ -979,7 +1208,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param limits A numerical limit. Example: `100`.
+         * @param insightClasses Used for configuring security*insights*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insightClasses(@Nullable Output<List<String>> insightClasses) {
+            $.insightClasses = insightClasses;
+            return this;
+        }
+
+        /**
+         * @param insightClasses Used for configuring security*insights*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insightClasses(List<String> insightClasses) {
+            return insightClasses(Output.of(insightClasses));
+        }
+
+        /**
+         * @param insightClasses Used for configuring security*insights*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insightClasses(String... insightClasses) {
+            return insightClasses(List.of(insightClasses));
+        }
+
+        /**
+         * @param limits Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -990,7 +1250,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param limits A numerical limit. Example: `100`.
+         * @param limits Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -1000,7 +1260,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param limits A numerical limit. Example: `100`.
+         * @param limits Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -1010,7 +1270,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * @param logoTags Used for configuring logo*match*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoTags(@Nullable Output<List<String>> logoTags) {
+            $.logoTags = logoTags;
+            return this;
+        }
+
+        /**
+         * @param logoTags Used for configuring logo*match*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoTags(List<String> logoTags) {
+            return logoTags(Output.of(logoTags));
+        }
+
+        /**
+         * @param logoTags Used for configuring logo*match*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoTags(String... logoTags) {
+            return logoTags(List.of(logoTags));
+        }
+
+        /**
+         * @param megabitsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1021,7 +1312,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * @param megabitsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1031,7 +1322,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * @param megabitsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1041,7 +1332,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newHealths Health status to alert on for pool or origin.
+         * @param newHealths Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -1052,7 +1343,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newHealths Health status to alert on for pool or origin.
+         * @param newHealths Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -1062,7 +1353,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newHealths Health status to alert on for pool or origin.
+         * @param newHealths Used for configuring load*balancing*health_alert
          * 
          * @return builder
          * 
@@ -1072,7 +1363,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newStatuses Tunnel health status to alert on.
+         * @param newStatuses Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1083,7 +1374,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newStatuses Tunnel health status to alert on.
+         * @param newStatuses Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1093,7 +1384,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param newStatuses Tunnel health status to alert on.
+         * @param newStatuses Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1103,7 +1394,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param packetsPerSeconds Packets per second threshold for dos alert.
+         * @param packetsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1114,7 +1405,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param packetsPerSeconds Packets per second threshold for dos alert.
+         * @param packetsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1124,7 +1415,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param packetsPerSeconds Packets per second threshold for dos alert.
+         * @param packetsPerSeconds Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1134,7 +1425,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param poolIds Load balancer pool identifier.
+         * @param poolIds Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1145,7 +1436,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param poolIds Load balancer pool identifier.
+         * @param poolIds Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1155,7 +1446,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param poolIds Load balancer pool identifier.
+         * @param poolIds Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1165,7 +1456,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param products Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+         * @param popNames Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popNames(@Nullable Output<List<String>> popNames) {
+            $.popNames = popNames;
+            return this;
+        }
+
+        /**
+         * @param popNames Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popNames(List<String> popNames) {
+            return popNames(Output.of(popNames));
+        }
+
+        /**
+         * @param popNames Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popNames(String... popNames) {
+            return popNames(List.of(popNames));
+        }
+
+        /**
+         * @param products Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -1176,7 +1498,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param products Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+         * @param products Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -1186,7 +1508,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param products Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+         * @param products Used for configuring billing*usage*alert
          * 
          * @return builder
          * 
@@ -1196,7 +1518,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param projectIds Identifier of pages project.
+         * @param projectIds Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -1207,7 +1529,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param projectIds Identifier of pages project.
+         * @param projectIds Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -1217,7 +1539,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param projectIds Identifier of pages project.
+         * @param projectIds Used for configuring pages*event*alert
          * 
          * @return builder
          * 
@@ -1227,7 +1549,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protocols Protocol to alert on for dos.
+         * @param protocols Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1238,7 +1560,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protocols Protocol to alert on for dos.
+         * @param protocols Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1248,7 +1570,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protocols Protocol to alert on for dos.
+         * @param protocols Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1258,7 +1580,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param requestsPerSeconds Requests per second threshold for dos alert.
+         * @param queryTags Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryTags(@Nullable Output<List<String>> queryTags) {
+            $.queryTags = queryTags;
+            return this;
+        }
+
+        /**
+         * @param queryTags Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryTags(List<String> queryTags) {
+            return queryTags(Output.of(queryTags));
+        }
+
+        /**
+         * @param queryTags Usage depends on specific alert type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryTags(String... queryTags) {
+            return queryTags(List.of(queryTags));
+        }
+
+        /**
+         * @param requestsPerSeconds Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1269,7 +1622,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param requestsPerSeconds Requests per second threshold for dos alert.
+         * @param requestsPerSeconds Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1279,7 +1632,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param requestsPerSeconds Requests per second threshold for dos alert.
+         * @param requestsPerSeconds Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1289,7 +1642,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * @param selectors Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1300,7 +1653,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * @param selectors Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1310,7 +1663,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * @param selectors Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1319,21 +1672,39 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
             return selectors(List.of(selectors));
         }
 
+        /**
+         * @param services Used for configuring clickhouse*alert*fw*ent*anomaly
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Used for configuring clickhouse*alert*fw*ent*anomaly
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param services Used for configuring clickhouse*alert*fw*ent*anomaly
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(String... services) {
             return services(List.of(services));
         }
 
         /**
-         * @param slos A numerical limit. Example: `99.9`.
+         * @param slos Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1344,7 +1715,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slos A numerical limit. Example: `99.9`.
+         * @param slos Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1354,7 +1725,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slos A numerical limit. Example: `99.9`.
+         * @param slos Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1364,7 +1735,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param statuses Status to alert on.
+         * @param statuses Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -1375,7 +1746,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param statuses Status to alert on.
+         * @param statuses Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -1385,7 +1756,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param statuses Status to alert on.
+         * @param statuses Used for configuring health*check*status_notification
          * 
          * @return builder
          * 
@@ -1395,7 +1766,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetHostnames Target host to alert on for dos.
+         * @param targetHostnames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1406,7 +1777,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetHostnames Target host to alert on for dos.
+         * @param targetHostnames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1416,7 +1787,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetHostnames Target host to alert on for dos.
+         * @param targetHostnames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1426,7 +1797,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * @param targetIps Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1437,7 +1808,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * @param targetIps Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1447,7 +1818,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * @param targetIps Used for configuring advanced*ddos*attack*l4*alert
          * 
          * @return builder
          * 
@@ -1457,7 +1828,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetZoneNames Target domain to alert on.
+         * @param targetZoneNames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1468,7 +1839,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetZoneNames Target domain to alert on.
+         * @param targetZoneNames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1478,7 +1849,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetZoneNames Target domain to alert on.
+         * @param targetZoneNames Used for configuring advanced*ddos*attack*l7*alert
          * 
          * @return builder
          * 
@@ -1488,7 +1859,38 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelIds Tunnel IDs to alert on.
+         * @param trafficExclusions Used for configuring traffic*anomalies*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficExclusions(@Nullable Output<List<String>> trafficExclusions) {
+            $.trafficExclusions = trafficExclusions;
+            return this;
+        }
+
+        /**
+         * @param trafficExclusions Used for configuring traffic*anomalies*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficExclusions(List<String> trafficExclusions) {
+            return trafficExclusions(Output.of(trafficExclusions));
+        }
+
+        /**
+         * @param trafficExclusions Used for configuring traffic*anomalies*alert
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficExclusions(String... trafficExclusions) {
+            return trafficExclusions(List.of(trafficExclusions));
+        }
+
+        /**
+         * @param tunnelIds Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1499,7 +1901,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelIds Tunnel IDs to alert on.
+         * @param tunnelIds Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1509,7 +1911,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelIds Tunnel IDs to alert on.
+         * @param tunnelIds Used for configuring tunnel*health*event
          * 
          * @return builder
          * 
@@ -1519,7 +1921,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelNames Tunnel Names to alert on.
+         * @param tunnelNames Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1530,7 +1932,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelNames Tunnel Names to alert on.
+         * @param tunnelNames Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1540,7 +1942,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tunnelNames Tunnel Names to alert on.
+         * @param tunnelNames Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1550,7 +1952,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param wheres Filter for alert.
+         * @param wheres Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1561,7 +1963,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param wheres Filter for alert.
+         * @param wheres Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1571,7 +1973,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param wheres Filter for alert.
+         * @param wheres Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1581,7 +1983,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zones A list of zone identifiers.
+         * @param zones Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1592,7 +1994,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zones A list of zone identifiers.
+         * @param zones Usage depends on specific alert type
          * 
          * @return builder
          * 
@@ -1602,7 +2004,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zones A list of zone identifiers.
+         * @param zones Usage depends on specific alert type
          * 
          * @return builder
          * 

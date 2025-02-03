@@ -7,38 +7,22 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Waiting Room Rules resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WaitingRoomRules("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
- *     rules: [
- *         {
- *             description: "bypass ip list",
- *             expression: "src.ip in {192.0.2.0 192.0.2.1}",
- *             action: "bypass_waiting_room",
- *             status: "enabled",
- *         },
- *         {
- *             description: "bypass query string",
- *             expression: "http.request.uri.query contains \"bypass=true\"",
- *             action: "bypass_waiting_room",
- *             status: "enabled",
- *         },
- *     ],
+ * const exampleWaitingRoomRules = new cloudflare.WaitingRoomRules("example_waiting_room_rules", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
+ *     rules: [{
+ *         action: "bypass_waiting_room",
+ *         expression: "ip.src in {10.20.30.40}",
+ *         description: "allow all traffic from 10.20.30.40",
+ *         enabled: true,
+ *     }],
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default <zone_id>/<waiting_room_id>
  * ```
  */
 export class WaitingRoomRules extends pulumi.CustomResource {
@@ -70,15 +54,13 @@ export class WaitingRoomRules extends pulumi.CustomResource {
     }
 
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      */
-    public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[] | undefined>;
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
+    public readonly ruleId!: pulumi.Output<string | undefined>;
+    public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -95,17 +77,22 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomRulesState | undefined;
+            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WaitingRoomRulesArgs | undefined;
+            if ((!args || args.rules === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
+            }
             if ((!args || args.waitingRoomId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -120,15 +107,13 @@ export class WaitingRoomRules extends pulumi.CustomResource {
  */
 export interface WaitingRoomRulesState {
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      */
+    ruleId?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -138,15 +123,13 @@ export interface WaitingRoomRulesState {
  */
 export interface WaitingRoomRulesArgs {
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     */
+    ruleId?: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,48 +17,55 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
     public static final ApiShieldSchemaArgs Empty = new ApiShieldSchemaArgs();
 
     /**
-     * Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+     * Schema file bytes
      * 
      */
-    @Import(name="kind")
-    private @Nullable Output<String> kind;
+    @Import(name="file", required=true)
+    private Output<String> file;
 
     /**
-     * @return Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+     * @return Schema file bytes
      * 
      */
-    public Optional<Output<String>> kind() {
-        return Optional.ofNullable(this.kind);
+    public Output<String> file() {
+        return this.file;
     }
 
     /**
-     * Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * Kind of schema
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="kind", required=true)
+    private Output<String> kind;
 
     /**
-     * @return Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * @return Kind of schema
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<String> kind() {
+        return this.kind;
     }
 
     /**
-     * Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * Name of the schema
      * 
      */
-    @Import(name="source", required=true)
-    private Output<String> source;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the schema
      * 
      */
-    public Output<String> source() {
-        return this.source;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="schemaId")
+    private @Nullable Output<String> schemaId;
+
+    public Optional<Output<String>> schemaId() {
+        return Optional.ofNullable(this.schemaId);
     }
 
     /**
@@ -67,25 +73,25 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="validationEnabled")
-    private @Nullable Output<Boolean> validationEnabled;
+    private @Nullable Output<String> validationEnabled;
 
     /**
      * @return Flag whether schema is enabled for validation.
      * 
      */
-    public Optional<Output<Boolean>> validationEnabled() {
+    public Optional<Output<String>> validationEnabled() {
         return Optional.ofNullable(this.validationEnabled);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -95,9 +101,10 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
     private ApiShieldSchemaArgs() {}
 
     private ApiShieldSchemaArgs(ApiShieldSchemaArgs $) {
+        this.file = $.file;
         this.kind = $.kind;
         this.name = $.name;
-        this.source = $.source;
+        this.schemaId = $.schemaId;
         this.validationEnabled = $.validationEnabled;
         this.zoneId = $.zoneId;
     }
@@ -121,18 +128,39 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kind Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+         * @param file Schema file bytes
          * 
          * @return builder
          * 
          */
-        public Builder kind(@Nullable Output<String> kind) {
+        public Builder file(Output<String> file) {
+            $.file = file;
+            return this;
+        }
+
+        /**
+         * @param file Schema file bytes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder file(String file) {
+            return file(Output.of(file));
+        }
+
+        /**
+         * @param kind Kind of schema
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kind(Output<String> kind) {
             $.kind = kind;
             return this;
         }
 
         /**
-         * @param kind Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
+         * @param kind Kind of schema
          * 
          * @return builder
          * 
@@ -142,18 +170,18 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Name of the schema. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the schema
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the schema. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the schema
          * 
          * @return builder
          * 
@@ -162,25 +190,13 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
-        /**
-         * @param source Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder source(Output<String> source) {
-            $.source = source;
+        public Builder schemaId(@Nullable Output<String> schemaId) {
+            $.schemaId = schemaId;
             return this;
         }
 
-        /**
-         * @param source Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder source(String source) {
-            return source(Output.of(source));
+        public Builder schemaId(String schemaId) {
+            return schemaId(Output.of(schemaId));
         }
 
         /**
@@ -189,7 +205,7 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder validationEnabled(@Nullable Output<Boolean> validationEnabled) {
+        public Builder validationEnabled(@Nullable Output<String> validationEnabled) {
             $.validationEnabled = validationEnabled;
             return this;
         }
@@ -200,12 +216,12 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder validationEnabled(Boolean validationEnabled) {
+        public Builder validationEnabled(String validationEnabled) {
             return validationEnabled(Output.of(validationEnabled));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -216,7 +232,7 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -226,11 +242,11 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ApiShieldSchemaArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "name");
+            if ($.file == null) {
+                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "file");
             }
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "source");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "kind");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "zoneId");

@@ -7,14 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages a notification policy for
- * Cloudflare's products. The delivery mechanisms supported are email,
- * webhooks, and PagerDuty.
+ * ## Example Usage
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+ * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '<account_id>/<policy_id>'
  * ```
  */
 export class NotificationPolicy extends pulumi.CustomResource {
@@ -46,49 +44,39 @@ export class NotificationPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `imageNotification`, `imageResizingNotification`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * Optional specification of how often to re-alert from the same incident, not support on all alert types.
+     */
+    public readonly alertInterval!: pulumi.Output<string | undefined>;
+    /**
+     * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
      */
     public readonly alertType!: pulumi.Output<string>;
-    /**
-     * When the notification policy was created.
-     */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * Description of the notification policy.
+     * Optional description for the Notification policy.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The email ID to which the notification should be dispatched.
-     */
-    public readonly emailIntegrations!: pulumi.Output<outputs.NotificationPolicyEmailIntegration[] | undefined>;
-    /**
-     * The status of the notification policy.
+     * Whether or not the Notification policy is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+     * Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
      */
-    public readonly filters!: pulumi.Output<outputs.NotificationPolicyFilters | undefined>;
+    public readonly filters!: pulumi.Output<outputs.NotificationPolicyFilters>;
     /**
-     * When the notification policy was last modified.
+     * List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
      */
+    public readonly mechanisms!: pulumi.Output<outputs.NotificationPolicyMechanisms>;
     public /*out*/ readonly modified!: pulumi.Output<string>;
     /**
-     * The name of the notification policy.
+     * Name of the policy.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-     */
-    public readonly pagerdutyIntegrations!: pulumi.Output<outputs.NotificationPolicyPagerdutyIntegration[] | undefined>;
-    /**
-     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-     */
-    public readonly webhooksIntegrations!: pulumi.Output<outputs.NotificationPolicyWebhooksIntegration[] | undefined>;
 
     /**
      * Create a NotificationPolicy resource with the given unique name, arguments, and options.
@@ -104,16 +92,15 @@ export class NotificationPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NotificationPolicyState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["alertInterval"] = state ? state.alertInterval : undefined;
             resourceInputs["alertType"] = state ? state.alertType : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailIntegrations"] = state ? state.emailIntegrations : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["mechanisms"] = state ? state.mechanisms : undefined;
             resourceInputs["modified"] = state ? state.modified : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pagerdutyIntegrations"] = state ? state.pagerdutyIntegrations : undefined;
-            resourceInputs["webhooksIntegrations"] = state ? state.webhooksIntegrations : undefined;
         } else {
             const args = argsOrState as NotificationPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -122,21 +109,20 @@ export class NotificationPolicy extends pulumi.CustomResource {
             if ((!args || args.alertType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alertType'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
+            if ((!args || args.mechanisms === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mechanisms'");
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["alertInterval"] = args ? args.alertInterval : undefined;
             resourceInputs["alertType"] = args ? args.alertType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailIntegrations"] = args ? args.emailIntegrations : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["mechanisms"] = args ? args.mechanisms : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pagerdutyIntegrations"] = args ? args.pagerdutyIntegrations : undefined;
-            resourceInputs["webhooksIntegrations"] = args ? args.webhooksIntegrations : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
         }
@@ -150,49 +136,39 @@ export class NotificationPolicy extends pulumi.CustomResource {
  */
 export interface NotificationPolicyState {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `imageNotification`, `imageResizingNotification`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * Optional specification of how often to re-alert from the same incident, not support on all alert types.
+     */
+    alertInterval?: pulumi.Input<string>;
+    /**
+     * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
      */
     alertType?: pulumi.Input<string>;
-    /**
-     * When the notification policy was created.
-     */
     created?: pulumi.Input<string>;
     /**
-     * Description of the notification policy.
+     * Optional description for the Notification policy.
      */
     description?: pulumi.Input<string>;
     /**
-     * The email ID to which the notification should be dispatched.
-     */
-    emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
-    /**
-     * The status of the notification policy.
+     * Whether or not the Notification policy is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+     * Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
      */
     filters?: pulumi.Input<inputs.NotificationPolicyFilters>;
     /**
-     * When the notification policy was last modified.
+     * List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
      */
+    mechanisms?: pulumi.Input<inputs.NotificationPolicyMechanisms>;
     modified?: pulumi.Input<string>;
     /**
-     * The name of the notification policy.
+     * Name of the policy.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-     */
-    pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
-    /**
-     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-     */
-    webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }
 
 /**
@@ -200,39 +176,35 @@ export interface NotificationPolicyState {
  */
 export interface NotificationPolicyArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      */
     accountId: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `imageNotification`, `imageResizingNotification`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * Optional specification of how often to re-alert from the same incident, not support on all alert types.
+     */
+    alertInterval?: pulumi.Input<string>;
+    /**
+     * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
      */
     alertType: pulumi.Input<string>;
     /**
-     * Description of the notification policy.
+     * Optional description for the Notification policy.
      */
     description?: pulumi.Input<string>;
     /**
-     * The email ID to which the notification should be dispatched.
+     * Whether or not the Notification policy is enabled.
      */
-    emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
+    enabled?: pulumi.Input<boolean>;
     /**
-     * The status of the notification policy.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+     * Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
      */
     filters?: pulumi.Input<inputs.NotificationPolicyFilters>;
     /**
-     * The name of the notification policy.
+     * List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+     */
+    mechanisms: pulumi.Input<inputs.NotificationPolicyMechanisms>;
+    /**
+     * Name of the policy.
      */
     name: pulumi.Input<string>;
-    /**
-     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-     */
-    pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
-    /**
-     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-     */
-    webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }

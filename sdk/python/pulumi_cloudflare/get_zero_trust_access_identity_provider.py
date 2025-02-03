@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustAccessIdentityProviderResult',
@@ -26,16 +28,28 @@ class GetZeroTrustAccessIdentityProviderResult:
     """
     A collection of values returned by getZeroTrustAccessIdentityProvider.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, type=None, zone_id=None):
+    def __init__(__self__, account_id=None, config=None, filter=None, id=None, identity_provider_id=None, name=None, scim_config=None, type=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if config and not isinstance(config, dict):
+            raise TypeError("Expected argument 'config' to be a dict")
+        pulumi.set(__self__, "config", config)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if identity_provider_id and not isinstance(identity_provider_id, str):
+            raise TypeError("Expected argument 'identity_provider_id' to be a str")
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if scim_config and not isinstance(scim_config, dict):
+            raise TypeError("Expected argument 'scim_config' to be a dict")
+        pulumi.set(__self__, "scim_config", scim_config)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -47,31 +61,60 @@ class GetZeroTrustAccessIdentityProviderResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[str]:
         """
-        The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
+    def config(self) -> 'outputs.GetZeroTrustAccessIdentityProviderConfigResult':
+        """
+        The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustAccessIdentityProviderFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        UUID
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> Optional[str]:
+        """
+        UUID
+        """
+        return pulumi.get(self, "identity_provider_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        Access Identity Provider name to search for.
+        The name of the identity provider, shown to users on the login page.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="scimConfig")
+    def scim_config(self) -> 'outputs.GetZeroTrustAccessIdentityProviderScimConfigResult':
+        """
+        The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+        """
+        return pulumi.get(self, "scim_config")
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Access Identity Provider Type.
+        The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         """
         return pulumi.get(self, "type")
 
@@ -79,7 +122,7 @@ class GetZeroTrustAccessIdentityProviderResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
-        The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -91,58 +134,92 @@ class AwaitableGetZeroTrustAccessIdentityProviderResult(GetZeroTrustAccessIdenti
             yield self
         return GetZeroTrustAccessIdentityProviderResult(
             account_id=self.account_id,
+            config=self.config,
+            filter=self.filter,
             id=self.id,
+            identity_provider_id=self.identity_provider_id,
             name=self.name,
+            scim_config=self.scim_config,
             type=self.type,
             zone_id=self.zone_id)
 
 
 def get_zero_trust_access_identity_provider(account_id: Optional[str] = None,
-                                            name: Optional[str] = None,
+                                            filter: Optional[Union['GetZeroTrustAccessIdentityProviderFilterArgs', 'GetZeroTrustAccessIdentityProviderFilterArgsDict']] = None,
+                                            identity_provider_id: Optional[str] = None,
                                             zone_id: Optional[str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessIdentityProviderResult:
     """
-    Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_access_identity_provider = cloudflare.get_zero_trust_access_identity_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        account_id="account_id",
+        zone_id="zone_id")
+    ```
 
 
-    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
-    :param str name: Access Identity Provider name to search for.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param str identity_provider_id: UUID
+    :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['filter'] = filter
+    __args__['identityProviderId'] = identity_provider_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider', __args__, opts=opts, typ=GetZeroTrustAccessIdentityProviderResult).value
 
     return AwaitableGetZeroTrustAccessIdentityProviderResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        config=pulumi.get(__ret__, 'config'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        identity_provider_id=pulumi.get(__ret__, 'identity_provider_id'),
         name=pulumi.get(__ret__, 'name'),
+        scim_config=pulumi.get(__ret__, 'scim_config'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_identity_provider_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                                   name: Optional[pulumi.Input[str]] = None,
+                                                   filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessIdentityProviderFilterArgs', 'GetZeroTrustAccessIdentityProviderFilterArgsDict']]]] = None,
+                                                   identity_provider_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                    zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessIdentityProviderResult]:
     """
-    Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_access_identity_provider = cloudflare.get_zero_trust_access_identity_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        account_id="account_id",
+        zone_id="zone_id")
+    ```
 
 
-    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
-    :param str name: Access Identity Provider name to search for.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param str identity_provider_id: UUID
+    :param str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['filter'] = filter
+    __args__['identityProviderId'] = identity_provider_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider', __args__, opts=opts, typ=GetZeroTrustAccessIdentityProviderResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessIdentityProviderResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        config=pulumi.get(__response__, 'config'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        identity_provider_id=pulumi.get(__response__, 'identity_provider_id'),
         name=pulumi.get(__response__, 'name'),
+        scim_config=pulumi.get(__response__, 'scim_config'),
         type=pulumi.get(__response__, 'type'),
         zone_id=pulumi.get(__response__, 'zone_id')))

@@ -10,85 +10,85 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Keyless certificates.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.KeylessCertificate("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         BundleMethod = "ubiquitous",
-    ///         Name = "example.com Keyless SSL",
-    ///         Host = "example.com",
-    ///         Port = 24008,
-    ///         Enabled = true,
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
+    /// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '&lt;zone_id&gt;/&lt;keyless_certificate_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/keylessCertificate:KeylessCertificate")]
     public partial class KeylessCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         /// </summary>
         [Output("bundleMethod")]
-        public Output<string?> BundleMethod { get; private set; } = null!;
+        public Output<string> BundleMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+        /// The zone's SSL certificate or SSL certificate and intermediate(s).
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the KeyLess SSL is on.
+        /// When the Keyless SSL was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not the Keyless SSL is on or off.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The KeyLess SSL host.
+        /// The keyless SSL name.
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The KeyLess SSL name.
+        /// When the Keyless SSL was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The keyless SSL name.
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
+        /// Available permissions for the Keyless SSL for the current user requesting the item.
         /// </summary>
-        [Output("port")]
-        public Output<int?> Port { get; private set; } = null!;
+        [Output("permissions")]
+        public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the KeyLess SSL.
+        /// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+        /// </summary>
+        [Output("port")]
+        public Output<double> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the Keyless SSL.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Configuration for using Keyless SSL through a Cloudflare Tunnel
+        /// </summary>
+        [Output("tunnel")]
+        public Output<Outputs.KeylessCertificateTunnel> Tunnel { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -140,43 +140,49 @@ namespace Pulumi.Cloudflare
     public sealed class KeylessCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
 
         /// <summary>
-        /// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+        /// The zone's SSL certificate or SSL certificate and intermediate(s).
         /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
-        /// Whether the KeyLess SSL is on.
+        /// Whether or not the Keyless SSL is on or off.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The KeyLess SSL host.
+        /// The keyless SSL name.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// The KeyLess SSL name.
+        /// The keyless SSL name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
+        /// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         /// </summary>
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<double>? Port { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Configuration for using Keyless SSL through a Cloudflare Tunnel
+        /// </summary>
+        [Input("tunnel")]
+        public Input<Inputs.KeylessCertificateTunnelArgs>? Tunnel { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -190,49 +196,79 @@ namespace Pulumi.Cloudflare
     public sealed class KeylessCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
 
         /// <summary>
-        /// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+        /// The zone's SSL certificate or SSL certificate and intermediate(s).
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// Whether the KeyLess SSL is on.
+        /// When the Keyless SSL was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Whether or not the Keyless SSL is on or off.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The KeyLess SSL host.
+        /// The keyless SSL name.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The KeyLess SSL name.
+        /// When the Keyless SSL was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// The keyless SSL name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("permissions")]
+        private InputList<string>? _permissions;
 
         /// <summary>
-        /// Status of the KeyLess SSL.
+        /// Available permissions for the Keyless SSL for the current user requesting the item.
+        /// </summary>
+        public InputList<string> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<string>());
+            set => _permissions = value;
+        }
+
+        /// <summary>
+        /// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+        /// </summary>
+        [Input("port")]
+        public Input<double>? Port { get; set; }
+
+        /// <summary>
+        /// Status of the Keyless SSL.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Configuration for using Keyless SSL through a Cloudflare Tunnel
+        /// </summary>
+        [Input("tunnel")]
+        public Input<Inputs.KeylessCertificateTunnelGetArgs>? Tunnel { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

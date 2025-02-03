@@ -10,11 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Filter expressions that can be referenced across multiple features,
-    /// e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-    /// for more details and available fields and operators.
-    /// 
-    /// &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
+    /// &gt; `cloudflare.Filter` is in a deprecation phase until January 15th, 2025.
     ///   During this time period, this resource is still fully
     ///   supported but you are strongly advised to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -30,51 +26,50 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wordpress = new Cloudflare.Filter("wordpress", new()
+    ///     var exampleFilter = new Cloudflare.Filter("example_filter", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Description = "Wordpress break-in attempts that are outside of the office",
-    ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/filter:Filter example &lt;zone_id&gt;/&lt;filter_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
     public partial class Filter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A note that you can use to describe the purpose of the filter.
+        /// An informative summary of the filter.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The filter expression to be used.
+        /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this filter is currently paused.
+        /// The unique identifier of the filter.
+        /// </summary>
+        [Output("filterId")]
+        public Output<string?> FilterId { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, indicates that the filter is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool?> Paused { get; private set; } = null!;
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// Short reference tag to quickly select related rules.
+        /// A short reference tag. Allows you to select related filters.
         /// </summary>
         [Output("ref")]
-        public Output<string?> Ref { get; private set; } = null!;
+        public Output<string> Ref { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -126,31 +121,19 @@ namespace Pulumi.Cloudflare
     public sealed class FilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A note that you can use to describe the purpose of the filter.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The filter expression to be used.
+        /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// Whether this filter is currently paused.
+        /// The unique identifier of the filter.
         /// </summary>
-        [Input("paused")]
-        public Input<bool>? Paused { get; set; }
+        [Input("filterId")]
+        public Input<string>? FilterId { get; set; }
 
         /// <summary>
-        /// Short reference tag to quickly select related rules.
-        /// </summary>
-        [Input("ref")]
-        public Input<string>? Ref { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -164,31 +147,37 @@ namespace Pulumi.Cloudflare
     public sealed class FilterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A note that you can use to describe the purpose of the filter.
+        /// An informative summary of the filter.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The filter expression to be used.
+        /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Whether this filter is currently paused.
+        /// The unique identifier of the filter.
+        /// </summary>
+        [Input("filterId")]
+        public Input<string>? FilterId { get; set; }
+
+        /// <summary>
+        /// When true, indicates that the filter is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// Short reference tag to quickly select related rules.
+        /// A short reference tag. Allows you to select related filters.
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

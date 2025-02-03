@@ -13,19 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustDnsLocationEndpointsIpv6
     {
-        public readonly bool? AuthenticationEnabled;
-        public readonly bool Enabled;
+        /// <summary>
+        /// True if the endpoint is enabled for this location.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
+        /// A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustDnsLocationEndpointsIpv6Network> Networks;
 
         [OutputConstructor]
         private ZeroTrustDnsLocationEndpointsIpv6(
-            bool? authenticationEnabled,
-
-            bool enabled,
+            bool? enabled,
 
             ImmutableArray<Outputs.ZeroTrustDnsLocationEndpointsIpv6Network> networks)
         {
-            AuthenticationEnabled = authenticationEnabled;
             Enabled = enabled;
             Networks = networks;
         }

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Web Analytics Rule resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,76 +20,57 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WebAnalyticsSite("example", new()
+    ///     var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule("example_web_analytics_rule", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ZoneTag = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         AutoInstall = true,
-    ///     });
-    /// 
-    ///     var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         RulesetId = example.RulesetId,
-    ///         Host = "*",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         RulesetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         Host = "example.com",
+    ///         Inclusive = true,
+    ///         IsPaused = false,
     ///         Paths = new[]
     ///         {
-    ///             "/excluded",
-    ///         },
-    ///         Inclusive = false,
-    ///         IsPaused = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             example,
+    ///             "*",
     ///         },
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example &lt;account_id&gt;/&lt;ruleset_id&gt;/&lt;rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/webAnalyticsRule:WebAnalyticsRule")]
     public partial class WebAnalyticsRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The host to apply the rule to.
-        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
         [Output("host")]
-        public Output<string> Host { get; private set; } = null!;
+        public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+        /// Whether the rule includes or excludes traffic from being measured.
         /// </summary>
         [Output("inclusive")]
-        public Output<bool> Inclusive { get; private set; } = null!;
+        public Output<bool?> Inclusive { get; private set; } = null!;
 
         /// <summary>
         /// Whether the rule is paused or not.
         /// </summary>
         [Output("isPaused")]
-        public Output<bool> IsPaused { get; private set; } = null!;
+        public Output<bool?> IsPaused { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of paths to apply the rule to.
-        /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<string>> Paths { get; private set; } = null!;
 
+        [Output("priority")]
+        public Output<double> Priority { get; private set; } = null!;
+
         /// <summary>
-        /// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+        /// The Web Analytics ruleset identifier.
         /// </summary>
         [Output("rulesetId")]
         public Output<string> RulesetId { get; private set; } = null!;
@@ -143,35 +122,28 @@ namespace Pulumi.Cloudflare
     public sealed class WebAnalyticsRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The host to apply the rule to.
-        /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+        /// Whether the rule includes or excludes traffic from being measured.
         /// </summary>
-        [Input("inclusive", required: true)]
-        public Input<bool> Inclusive { get; set; } = null!;
+        [Input("inclusive")]
+        public Input<bool>? Inclusive { get; set; }
 
         /// <summary>
         /// Whether the rule is paused or not.
         /// </summary>
-        [Input("isPaused", required: true)]
-        public Input<bool> IsPaused { get; set; } = null!;
+        [Input("isPaused")]
+        public Input<bool>? IsPaused { get; set; }
 
-        [Input("paths", required: true)]
+        [Input("paths")]
         private InputList<string>? _paths;
-
-        /// <summary>
-        /// A list of paths to apply the rule to.
-        /// </summary>
         public InputList<string> Paths
         {
             get => _paths ?? (_paths = new InputList<string>());
@@ -179,7 +151,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+        /// The Web Analytics ruleset identifier.
         /// </summary>
         [Input("rulesetId", required: true)]
         public Input<string> RulesetId { get; set; } = null!;
@@ -193,19 +165,19 @@ namespace Pulumi.Cloudflare
     public sealed class WebAnalyticsRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The host to apply the rule to.
-        /// </summary>
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+        /// Whether the rule includes or excludes traffic from being measured.
         /// </summary>
         [Input("inclusive")]
         public Input<bool>? Inclusive { get; set; }
@@ -218,18 +190,17 @@ namespace Pulumi.Cloudflare
 
         [Input("paths")]
         private InputList<string>? _paths;
-
-        /// <summary>
-        /// A list of paths to apply the rule to.
-        /// </summary>
         public InputList<string> Paths
         {
             get => _paths ?? (_paths = new InputList<string>());
             set => _paths = value;
         }
 
+        [Input("priority")]
+        public Input<double>? Priority { get; set; }
+
         /// <summary>
-        /// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+        /// The Web Analytics ruleset identifier.
         /// </summary>
         [Input("rulesetId")]
         public Input<string>? RulesetId { get; set; }

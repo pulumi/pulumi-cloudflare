@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerRuleFixedResponseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of the HTTP context-type header for this fixed response.
+        /// The http 'Content-Type' header to include in the response.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The value of the HTTP location header for this fixed response.
+        /// The http 'Location' header to include in the response.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The text used as the html body for this fixed response.
+        /// Text to include as the http body.
         /// </summary>
         [Input("messageBody")]
         public Input<string>? MessageBody { get; set; }
 
         /// <summary>
-        /// The HTTP status code used for this fixed response.
+        /// The http status code to respond with.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }

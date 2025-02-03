@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * @return Enable notification settings.
+     * @return Set notification on
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Notification content.
+     * @return Customize the message shown in the notification.
      * 
      */
-    private @Nullable String message;
+    private @Nullable String msg;
     /**
-     * @return Support URL to show in the notification.
+     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
      * 
      */
     private @Nullable String supportUrl;
 
     private ZeroTrustGatewayPolicyRuleSettingsNotificationSettings() {}
     /**
-     * @return Enable notification settings.
+     * @return Set notification on
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Notification content.
+     * @return Customize the message shown in the notification.
      * 
      */
-    public Optional<String> message() {
-        return Optional.ofNullable(this.message);
+    public Optional<String> msg() {
+        return Optional.ofNullable(this.msg);
     }
     /**
-     * @return Support URL to show in the notification.
+     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
      * 
      */
     public Optional<String> supportUrl() {
@@ -61,13 +61,13 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private @Nullable String message;
+        private @Nullable String msg;
         private @Nullable String supportUrl;
         public Builder() {}
         public Builder(ZeroTrustGatewayPolicyRuleSettingsNotificationSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.message = defaults.message;
+    	      this.msg = defaults.msg;
     	      this.supportUrl = defaults.supportUrl;
         }
 
@@ -78,9 +78,9 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder message(@Nullable String message) {
+        public Builder msg(@Nullable String msg) {
 
-            this.message = message;
+            this.msg = msg;
             return this;
         }
         @CustomType.Setter
@@ -92,7 +92,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
         public ZeroTrustGatewayPolicyRuleSettingsNotificationSettings build() {
             final var _resultValue = new ZeroTrustGatewayPolicyRuleSettingsNotificationSettings();
             _resultValue.enabled = enabled;
-            _resultValue.message = message;
+            _resultValue.msg = msg;
             _resultValue.supportUrl = supportUrl;
             return _resultValue;
         }

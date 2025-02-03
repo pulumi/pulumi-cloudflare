@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersOverridesArgs Empty = new RulesetRuleActionParametersOverridesArgs();
 
     /**
-     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * An action to override all rules with. This option has lower precedence than rule and category overrides.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return An action to override all rules with. This option has lower precedence than rule and category overrides.
      * 
      */
     public Optional<Output<String>> action() {
@@ -35,14 +35,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * List of tag-based overrides.
+     * A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
      * 
      */
     @Import(name="categories")
     private @Nullable Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories;
 
     /**
-     * @return List of tag-based overrides.
+     * @return A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersOverridesCategoryArgs>>> categories() {
@@ -50,14 +50,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * Defines if the current ruleset-level override enables or disables the ruleset.
+     * Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Defines if the current ruleset-level override enables or disables the ruleset.
+     * @return Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -65,14 +65,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * List of rule-based overrides.
+     * A list of rule-level overrides. This option has the highest precedence.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules;
 
     /**
-     * @return List of rule-based overrides.
+     * @return A list of rule-level overrides. This option has the highest precedence.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersOverridesRuleArgs>>> rules() {
@@ -80,14 +80,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+     * A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
      * 
      */
     @Import(name="sensitivityLevel")
     private @Nullable Output<String> sensitivityLevel;
 
     /**
-     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+     * @return A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
      * 
      */
     public Optional<Output<String>> sensitivityLevel() {
@@ -123,7 +123,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action An action to override all rules with. This option has lower precedence than rule and category overrides.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action An action to override all rules with. This option has lower precedence than rule and category overrides.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param categories List of tag-based overrides.
+         * @param categories A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param categories List of tag-based overrides.
+         * @param categories A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param categories List of tag-based overrides.
+         * @param categories A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Defines if the current ruleset-level override enables or disables the ruleset.
+         * @param enabled Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Defines if the current ruleset-level override enables or disables the ruleset.
+         * @param enabled Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules A list of rule-level overrides. This option has the highest precedence.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules A list of rule-level overrides. This option has the highest precedence.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules A list of rule-level overrides. This option has the highest precedence.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+         * @param sensitivityLevel A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+         * @param sensitivityLevel A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
          * 
          * @return builder
          * 

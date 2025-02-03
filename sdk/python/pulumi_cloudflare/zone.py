@@ -13,107 +13,60 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ZoneArgs', 'Zone']
 
 @pulumi.input_type
 class ZoneArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
-                 zone: pulumi.Input[str],
-                 jump_start: Optional[pulumi.Input[bool]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
+                 account: pulumi.Input['ZoneAccountArgs'],
+                 name: pulumi.Input[str],
                  type: Optional[pulumi.Input[str]] = None,
                  vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
-        :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
+        :param pulumi.Input[str] name: The domain name
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+               typically a partner-hosted zone or a CNAME setup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
+               available for Business and Enterprise plans.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "zone", zone)
-        if jump_start is not None:
-            pulumi.set(__self__, "jump_start", jump_start)
-        if paused is not None:
-            pulumi.set(__self__, "paused", paused)
-        if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vanity_name_servers is not None:
             pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account ID to manage the zone resource in.
-        """
-        return pulumi.get(self, "account_id")
+    @pulumi.getter
+    def account(self) -> pulumi.Input['ZoneAccountArgs']:
+        return pulumi.get(self, "account")
 
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
+    @account.setter
+    def account(self, value: pulumi.Input['ZoneAccountArgs']):
+        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
+    def name(self) -> pulumi.Input[str]:
         """
-        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
+        The domain name
         """
-        return pulumi.get(self, "zone")
+        return pulumi.get(self, "name")
 
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
-
-    @property
-    @pulumi.getter(name="jumpStart")
-    def jump_start(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to scan for DNS records on creation. Ignored after zone is created.
-        """
-        return pulumi.get(self, "jump_start")
-
-    @jump_start.setter
-    def jump_start(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "jump_start", value)
-
-    @property
-    @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        """
-        return pulumi.get(self, "paused")
-
-    @paused.setter
-    def paused(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "paused", value)
-
-    @property
-    @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "plan", value)
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        typically a partner-hosted zone or a CNAME setup.
         """
         return pulumi.get(self, "type")
 
@@ -125,7 +78,8 @@ class ZoneArgs:
     @pulumi.getter(name="vanityNameServers")
     def vanity_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of Vanity Nameservers (if set).
+        An array of domains used for custom name servers. This is only
+        available for Business and Enterprise plans.
         """
         return pulumi.get(self, "vanity_name_servers")
 
@@ -137,91 +91,169 @@ class ZoneArgs:
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[str]] = None,
-                 jump_start: Optional[pulumi.Input[bool]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
+                 account: Optional[pulumi.Input['ZoneAccountArgs']] = None,
+                 activated_on: Optional[pulumi.Input[str]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 development_mode: Optional[pulumi.Input[float]] = None,
+                 meta: Optional[pulumi.Input['ZoneMetaArgs']] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 original_dnshost: Optional[pulumi.Input[str]] = None,
+                 original_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 original_registrar: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input['ZoneOwnerArgs']] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 verification_key: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
+                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
-        :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
-        :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        :param pulumi.Input[str] status: Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
-        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
-        :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] activated_on: The last time proof of ownership was detected and the zone was made
+               active
+        :param pulumi.Input[str] created_on: When the zone was created
+        :param pulumi.Input[float] development_mode: The interval (in seconds) from when development mode expires
+               (positive integer) or last expired (negative integer) for the
+               domain. If development mode has never been enabled, this value is 0.
+        :param pulumi.Input['ZoneMetaArgs'] meta: Metadata about the zone
+        :param pulumi.Input[str] modified_on: When the zone was last modified
+        :param pulumi.Input[str] name: The domain name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: The name servers Cloudflare assigns to a zone
+        :param pulumi.Input[str] original_dnshost: DNS host at the time of switching to Cloudflare
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] original_name_servers: Original name servers before moving to Cloudflare
+        :param pulumi.Input[str] original_registrar: Registrar for the domain at the time of switching to Cloudflare
+        :param pulumi.Input['ZoneOwnerArgs'] owner: The owner of the zone
+        :param pulumi.Input[bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
+               true value means the zone will not receive security or performance
+               benefits.
+        :param pulumi.Input[str] status: The zone status on Cloudflare.
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+               typically a partner-hosted zone or a CNAME setup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
+               available for Business and Enterprise plans.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if jump_start is not None:
-            pulumi.set(__self__, "jump_start", jump_start)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+        if activated_on is not None:
+            pulumi.set(__self__, "activated_on", activated_on)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if development_mode is not None:
+            pulumi.set(__self__, "development_mode", development_mode)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if name_servers is not None:
             pulumi.set(__self__, "name_servers", name_servers)
+        if original_dnshost is not None:
+            pulumi.set(__self__, "original_dnshost", original_dnshost)
+        if original_name_servers is not None:
+            pulumi.set(__self__, "original_name_servers", original_name_servers)
+        if original_registrar is not None:
+            pulumi.set(__self__, "original_registrar", original_registrar)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
-        if plan is not None:
-            pulumi.set(__self__, "plan", plan)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vanity_name_servers is not None:
             pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
-        if verification_key is not None:
-            pulumi.set(__self__, "verification_key", verification_key)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account ID to manage the zone resource in.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="jumpStart")
-    def jump_start(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to scan for DNS records on creation. Ignored after zone is created.
-        """
-        return pulumi.get(self, "jump_start")
-
-    @jump_start.setter
-    def jump_start(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "jump_start", value)
 
     @property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
+    def account(self) -> Optional[pulumi.Input['ZoneAccountArgs']]:
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: Optional[pulumi.Input['ZoneAccountArgs']]):
+        pulumi.set(self, "account", value)
+
+    @property
+    @pulumi.getter(name="activatedOn")
+    def activated_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last time proof of ownership was detected and the zone was made
+        active
+        """
+        return pulumi.get(self, "activated_on")
+
+    @activated_on.setter
+    def activated_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "activated_on", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the zone was created
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> Optional[pulumi.Input[float]]:
+        """
+        The interval (in seconds) from when development mode expires
+        (positive integer) or last expired (negative integer) for the
+        domain. If development mode has never been enabled, this value is 0.
+        """
+        return pulumi.get(self, "development_mode")
+
+    @development_mode.setter
+    def development_mode(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "development_mode", value)
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[pulumi.Input['ZoneMetaArgs']]:
+        """
+        Metadata about the zone
+        """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]):
+    def meta(self, value: Optional[pulumi.Input['ZoneMetaArgs']]):
         pulumi.set(self, "meta", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the zone was last modified
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        The name servers Cloudflare assigns to a zone
         """
         return pulumi.get(self, "name_servers")
 
@@ -230,10 +262,60 @@ class _ZoneState:
         pulumi.set(self, "name_servers", value)
 
     @property
+    @pulumi.getter(name="originalDnshost")
+    def original_dnshost(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS host at the time of switching to Cloudflare
+        """
+        return pulumi.get(self, "original_dnshost")
+
+    @original_dnshost.setter
+    def original_dnshost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "original_dnshost", value)
+
+    @property
+    @pulumi.getter(name="originalNameServers")
+    def original_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Original name servers before moving to Cloudflare
+        """
+        return pulumi.get(self, "original_name_servers")
+
+    @original_name_servers.setter
+    def original_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "original_name_servers", value)
+
+    @property
+    @pulumi.getter(name="originalRegistrar")
+    def original_registrar(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registrar for the domain at the time of switching to Cloudflare
+        """
+        return pulumi.get(self, "original_registrar")
+
+    @original_registrar.setter
+    def original_registrar(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "original_registrar", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input['ZoneOwnerArgs']]:
+        """
+        The owner of the zone
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input['ZoneOwnerArgs']]):
+        pulumi.set(self, "owner", value)
+
+    @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+        Indicates whether the zone is only using Cloudflare DNS services. A
+        true value means the zone will not receive security or performance
+        benefits.
         """
         return pulumi.get(self, "paused")
 
@@ -243,21 +325,9 @@ class _ZoneState:
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        """
-        return pulumi.get(self, "plan")
-
-    @plan.setter
-    def plan(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "plan", value)
-
-    @property
-    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        The zone status on Cloudflare.
         """
         return pulumi.get(self, "status")
 
@@ -269,7 +339,8 @@ class _ZoneState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        typically a partner-hosted zone or a CNAME setup.
         """
         return pulumi.get(self, "type")
 
@@ -281,7 +352,8 @@ class _ZoneState:
     @pulumi.getter(name="vanityNameServers")
     def vanity_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of Vanity Nameservers (if set).
+        An array of domains used for custom name servers. This is only
+        available for Business and Enterprise plans.
         """
         return pulumi.get(self, "vanity_name_servers")
 
@@ -289,49 +361,18 @@ class _ZoneState:
     def vanity_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vanity_name_servers", value)
 
-    @property
-    @pulumi.getter(name="verificationKey")
-    def verification_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        """
-        return pulumi.get(self, "verification_key")
-
-    @verification_key.setter
-    def verification_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "verification_key", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
-
 
 class Zone(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[str]] = None,
-                 jump_start: Optional[pulumi.Input[bool]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
+                 account: Optional[pulumi.Input[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Zone resource. Zone is the basic resource for
-        working with Cloudflare and is roughly equivalent to a domain name
-        that the user purchases.
-
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
 
         ## Example Usage
@@ -340,26 +381,27 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Zone("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone="example.com")
+        example_zone = cloudflare.Zone("example_zone",
+            account={
+                "id": "023e105f4ecef8ad9ca31a8372d0c353",
+            },
+            name="example.com",
+            type="full")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zone:Zone example <zone_id>
+        $ pulumi import cloudflare:index/zone:Zone example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
-        :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
-        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: The domain name
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+               typically a partner-hosted zone or a CNAME setup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
+               available for Business and Enterprise plans.
         """
         ...
     @overload
@@ -368,10 +410,6 @@ class Zone(pulumi.CustomResource):
                  args: ZoneArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Zone resource. Zone is the basic resource for
-        working with Cloudflare and is roughly equivalent to a domain name
-        that the user purchases.
-
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
 
         ## Example Usage
@@ -380,15 +418,18 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Zone("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone="example.com")
+        example_zone = cloudflare.Zone("example_zone",
+            account={
+                "id": "023e105f4ecef8ad9ca31a8372d0c353",
+            },
+            name="example.com",
+            type="full")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zone:Zone example <zone_id>
+        $ pulumi import cloudflare:index/zone:Zone example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,13 +447,10 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[str]] = None,
-                 jump_start: Optional[pulumi.Input[bool]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None,
-                 plan: Optional[pulumi.Input[str]] = None,
+                 account: Optional[pulumi.Input[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,21 +460,26 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["jump_start"] = jump_start
-            __props__.__dict__["paused"] = paused
-            __props__.__dict__["plan"] = plan
+            if account is None and not opts.urn:
+                raise TypeError("Missing required property 'account'")
+            __props__.__dict__["account"] = account
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
+            __props__.__dict__["name"] = name
             __props__.__dict__["type"] = type
             __props__.__dict__["vanity_name_servers"] = vanity_name_servers
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
-            __props__.__dict__["zone"] = zone
+            __props__.__dict__["activated_on"] = None
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["development_mode"] = None
             __props__.__dict__["meta"] = None
+            __props__.__dict__["modified_on"] = None
             __props__.__dict__["name_servers"] = None
+            __props__.__dict__["original_dnshost"] = None
+            __props__.__dict__["original_name_servers"] = None
+            __props__.__dict__["original_registrar"] = None
+            __props__.__dict__["owner"] = None
+            __props__.__dict__["paused"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["verification_key"] = None
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',
             resource_name,
@@ -447,17 +490,22 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[str]] = None,
-            jump_start: Optional[pulumi.Input[bool]] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
+            account: Optional[pulumi.Input[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+            activated_on: Optional[pulumi.Input[str]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
+            development_mode: Optional[pulumi.Input[float]] = None,
+            meta: Optional[pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            original_dnshost: Optional[pulumi.Input[str]] = None,
+            original_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            original_registrar: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
-            plan: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            verification_key: Optional[pulumi.Input[str]] = None,
-            zone: Optional[pulumi.Input[str]] = None) -> 'Zone':
+            vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -465,116 +513,180 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
-        :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
-        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        :param pulumi.Input[str] status: Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
-        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
-        :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] activated_on: The last time proof of ownership was detected and the zone was made
+               active
+        :param pulumi.Input[str] created_on: When the zone was created
+        :param pulumi.Input[float] development_mode: The interval (in seconds) from when development mode expires
+               (positive integer) or last expired (negative integer) for the
+               domain. If development mode has never been enabled, this value is 0.
+        :param pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']] meta: Metadata about the zone
+        :param pulumi.Input[str] modified_on: When the zone was last modified
+        :param pulumi.Input[str] name: The domain name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: The name servers Cloudflare assigns to a zone
+        :param pulumi.Input[str] original_dnshost: DNS host at the time of switching to Cloudflare
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] original_name_servers: Original name servers before moving to Cloudflare
+        :param pulumi.Input[str] original_registrar: Registrar for the domain at the time of switching to Cloudflare
+        :param pulumi.Input[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict']] owner: The owner of the zone
+        :param pulumi.Input[bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
+               true value means the zone will not receive security or performance
+               benefits.
+        :param pulumi.Input[str] status: The zone status on Cloudflare.
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+               typically a partner-hosted zone or a CNAME setup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
+               available for Business and Enterprise plans.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZoneState.__new__(_ZoneState)
 
-        __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["jump_start"] = jump_start
+        __props__.__dict__["account"] = account
+        __props__.__dict__["activated_on"] = activated_on
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["development_mode"] = development_mode
         __props__.__dict__["meta"] = meta
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["name"] = name
         __props__.__dict__["name_servers"] = name_servers
+        __props__.__dict__["original_dnshost"] = original_dnshost
+        __props__.__dict__["original_name_servers"] = original_name_servers
+        __props__.__dict__["original_registrar"] = original_registrar
+        __props__.__dict__["owner"] = owner
         __props__.__dict__["paused"] = paused
-        __props__.__dict__["plan"] = plan
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         __props__.__dict__["vanity_name_servers"] = vanity_name_servers
-        __props__.__dict__["verification_key"] = verification_key
-        __props__.__dict__["zone"] = zone
         return Zone(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
-        """
-        Account ID to manage the zone resource in.
-        """
-        return pulumi.get(self, "account_id")
+    @pulumi.getter
+    def account(self) -> pulumi.Output['outputs.ZoneAccount']:
+        return pulumi.get(self, "account")
 
     @property
-    @pulumi.getter(name="jumpStart")
-    def jump_start(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="activatedOn")
+    def activated_on(self) -> pulumi.Output[str]:
         """
-        Whether to scan for DNS records on creation. Ignored after zone is created.
+        The last time proof of ownership was detected and the zone was made
+        active
         """
-        return pulumi.get(self, "jump_start")
+        return pulumi.get(self, "activated_on")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
+        """
+        When the zone was created
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> pulumi.Output[float]:
+        """
+        The interval (in seconds) from when development mode expires
+        (positive integer) or last expired (negative integer) for the
+        domain. If development mode has never been enabled, this value is 0.
+        """
+        return pulumi.get(self, "development_mode")
 
     @property
     @pulumi.getter
-    def meta(self) -> pulumi.Output[Mapping[str, bool]]:
+    def meta(self) -> pulumi.Output['outputs.ZoneMeta']:
+        """
+        Metadata about the zone
+        """
         return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        When the zone was last modified
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The domain name
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
-        Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        The name servers Cloudflare assigns to a zone
         """
         return pulumi.get(self, "name_servers")
 
     @property
-    @pulumi.getter
-    def paused(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="originalDnshost")
+    def original_dnshost(self) -> pulumi.Output[str]:
         """
-        Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+        DNS host at the time of switching to Cloudflare
+        """
+        return pulumi.get(self, "original_dnshost")
+
+    @property
+    @pulumi.getter(name="originalNameServers")
+    def original_name_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Original name servers before moving to Cloudflare
+        """
+        return pulumi.get(self, "original_name_servers")
+
+    @property
+    @pulumi.getter(name="originalRegistrar")
+    def original_registrar(self) -> pulumi.Output[str]:
+        """
+        Registrar for the domain at the time of switching to Cloudflare
+        """
+        return pulumi.get(self, "original_registrar")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output['outputs.ZoneOwner']:
+        """
+        The owner of the zone
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the zone is only using Cloudflare DNS services. A
+        true value means the zone will not receive security or performance
+        benefits.
         """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
-    def plan(self) -> pulumi.Output[str]:
-        """
-        The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-        """
-        return pulumi.get(self, "plan")
-
-    @property
-    @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        The zone status on Cloudflare.
         """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[str]]:
+    def type(self) -> pulumi.Output[str]:
         """
-        A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+        typically a partner-hosted zone or a CNAME setup.
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vanityNameServers")
-    def vanity_name_servers(self) -> pulumi.Output[Sequence[str]]:
+    def vanity_name_servers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of Vanity Nameservers (if set).
+        An array of domains used for custom name servers. This is only
+        available for Business and Enterprise plans.
         """
         return pulumi.get(self, "vanity_name_servers")
-
-    @property
-    @pulumi.getter(name="verificationKey")
-    def verification_key(self) -> pulumi.Output[str]:
-        """
-        Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        """
-        return pulumi.get(self, "verification_key")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Output[str]:
-        """
-        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone")
 

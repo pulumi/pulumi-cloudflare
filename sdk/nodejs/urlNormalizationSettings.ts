@@ -5,19 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage URL Normalization Settings.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.UrlNormalizationSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     type: "cloudflare",
+ * const exampleUrlNormalizationSettings = new cloudflare.UrlNormalizationSettings("example_url_normalization_settings", {
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  *     scope: "incoming",
+ *     type: "cloudflare",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings example '<zone_id>'
  * ```
  */
 export class UrlNormalizationSettings extends pulumi.CustomResource {
@@ -57,7 +61,7 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -110,7 +114,7 @@ export interface UrlNormalizationSettingsState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -128,7 +132,7 @@ export interface UrlNormalizationSettingsArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

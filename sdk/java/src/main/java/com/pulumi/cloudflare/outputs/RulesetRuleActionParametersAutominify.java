@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersAutominify {
     /**
-     * @return CSS minification.
+     * @return Minify CSS files.
      * 
      */
     private @Nullable Boolean css;
     /**
-     * @return HTML minification.
+     * @return Minify HTML files.
      * 
      */
     private @Nullable Boolean html;
     /**
-     * @return JS minification.
+     * @return Minify JS files.
      * 
      */
     private @Nullable Boolean js;
 
     private RulesetRuleActionParametersAutominify() {}
     /**
-     * @return CSS minification.
+     * @return Minify CSS files.
      * 
      */
     public Optional<Boolean> css() {
         return Optional.ofNullable(this.css);
     }
     /**
-     * @return HTML minification.
+     * @return Minify HTML files.
      * 
      */
     public Optional<Boolean> html() {
         return Optional.ofNullable(this.html);
     }
     /**
-     * @return JS minification.
+     * @return Minify JS files.
      * 
      */
     public Optional<Boolean> js() {

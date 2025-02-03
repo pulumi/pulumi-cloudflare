@@ -18,8 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -32,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDevicePostureRule;
  * import com.pulumi.cloudflare.ZeroTrustDevicePostureRuleArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleMatchArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleMatchArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,24 +45,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eaxmple = new ZeroTrustDevicePostureRule("eaxmple", ZeroTrustDevicePostureRuleArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Corporate devices posture rule")
- *             .type("os_version")
- *             .description("Device posture rule for corporate devices.")
- *             .schedule("24h")
- *             .expiration("24h")
+ *         var exampleZeroTrustDevicePostureRule = new ZeroTrustDevicePostureRule("exampleZeroTrustDevicePostureRule", ZeroTrustDevicePostureRuleArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .name("Admin Serial Numbers")
+ *             .type("file")
+ *             .description("The rule for admin serial numbers")
+ *             .expiration("1h")
+ *             .input(ZeroTrustDevicePostureRuleInputArgs.builder()
+ *                 .operating_system("windows")
+ *                 .path("/bin/cat")
+ *                 .exists(true)
+ *                 .sha256("https://api.us-2.crowdstrike.com")
+ *                 .thumbprint("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e")
+ *                 .build())
  *             .matches(ZeroTrustDevicePostureRuleMatchArgs.builder()
- *                 .platform("linux")
+ *                 .platform("windows")
  *                 .build())
- *             .inputs(ZeroTrustDevicePostureRuleInputArgs.builder()
- *                 .id(corporateDevices.id())
- *                 .version("1.0.0")
- *                 .operator("<")
- *                 .osDistroName("ubuntu")
- *                 .osDistroRevision("1.0.0")
- *                 .osVersionExtra("(a)")
- *                 .build())
+ *             .schedule("1h")
  *             .build());
  * 
  *     }
@@ -76,111 +73,111 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule")
 public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * The description of the device posture rule.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the device posture rule.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     @Export(name="expiration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiration;
 
     /**
-     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     public Output<Optional<String>> expiration() {
         return Codegen.optional(this.expiration);
     }
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      * 
      */
-    @Export(name="inputs", refs={List.class,ZeroTrustDevicePostureRuleInput.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDevicePostureRuleInput>> inputs;
+    @Export(name="input", refs={ZeroTrustDevicePostureRuleInput.class}, tree="[0]")
+    private Output<ZeroTrustDevicePostureRuleInput> input;
 
     /**
-     * @return Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * @return The value to be checked against.
      * 
      */
-    public Output<List<ZeroTrustDevicePostureRuleInput>> inputs() {
-        return this.inputs;
+    public Output<ZeroTrustDevicePostureRuleInput> input() {
+        return this.input;
     }
     /**
      * The conditions that the client must match to run the rule.
      * 
      */
     @Export(name="matches", refs={List.class,ZeroTrustDevicePostureRuleMatch.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDevicePostureRuleMatch>> matches;
+    private Output<List<ZeroTrustDevicePostureRuleMatch>> matches;
 
     /**
      * @return The conditions that the client must match to run the rule.
      * 
      */
-    public Output<Optional<List<ZeroTrustDevicePostureRuleMatch>>> matches() {
-        return Codegen.optional(this.matches);
+    public Output<List<ZeroTrustDevicePostureRuleMatch>> matches() {
+        return this.matches;
     }
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
-     * @return Name of the device posture rule.
+     * @return The name of the device posture rule.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
-     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
     }
     /**
-     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * The type of device posture rule.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * @return The type of device posture rule.
      * 
      */
     public Output<String> type() {

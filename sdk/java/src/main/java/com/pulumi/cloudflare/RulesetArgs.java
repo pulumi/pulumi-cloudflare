@@ -19,14 +19,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesetArgs Empty = new RulesetArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,14 +34,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset and its intended use.
+     * @return An informative description of the ruleset.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,14 +49,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * @return The kind of the ruleset.
      * 
      */
     public Output<String> kind() {
@@ -64,14 +64,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return The human-readable name of the ruleset.
      * 
      */
     public Output<String> name() {
@@ -79,14 +79,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * The phase of the ruleset.
      * 
      */
     @Import(name="phase", required=true)
     private Output<String> phase;
 
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * @return The phase of the ruleset.
      * 
      */
     public Output<String> phase() {
@@ -94,29 +94,29 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      * 
      */
-    @Import(name="rules")
-    private @Nullable Output<List<RulesetRuleArgs>> rules;
+    @Import(name="rules", required=true)
+    private Output<List<RulesetRuleArgs>> rules;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The list of rules in the ruleset.
      * 
      */
-    public Optional<Output<List<RulesetRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Output<List<RulesetRuleArgs>> rules() {
+        return this.rules;
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -154,7 +154,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset and its intended use.
+         * @param description An informative description of the ruleset.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset and its intended use.
+         * @param description An informative description of the ruleset.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+         * @param kind The kind of the ruleset.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+         * @param kind The kind of the ruleset.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name The human-readable name of the ruleset.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name The human-readable name of the ruleset.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+         * @param phase The phase of the ruleset.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+         * @param phase The phase of the ruleset.
          * 
          * @return builder
          * 
@@ -259,18 +259,18 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules The list of rules in the ruleset.
          * 
          * @return builder
          * 
          */
-        public Builder rules(@Nullable Output<List<RulesetRuleArgs>> rules) {
+        public Builder rules(Output<List<RulesetRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules The list of rules in the ruleset.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules The list of rules in the ruleset.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -319,6 +319,9 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.phase == null) {
                 throw new MissingRequiredPropertyException("RulesetArgs", "phase");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("RulesetArgs", "rules");
             }
             return $;
         }

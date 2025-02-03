@@ -16,14 +16,14 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
     public static final WorkersKvState Empty = new WorkersKvState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,29 +31,44 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
-    @Import(name="key")
-    private @Nullable Output<String> key;
+    @Import(name="keyName")
+    private @Nullable Output<String> keyName;
 
     /**
-     * @return Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * @return A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      * 
      */
-    public Optional<Output<String>> key() {
-        return Optional.ofNullable(this.key);
+    public Optional<Output<String>> keyName() {
+        return Optional.ofNullable(this.keyName);
     }
 
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * Arbitrary JSON to be associated with a key/value pair.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<String> metadata;
+
+    /**
+     * @return Arbitrary JSON to be associated with a key/value pair.
+     * 
+     */
+    public Optional<Output<String>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
+     * Namespace identifier tag.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
 
     /**
-     * @return The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * @return Namespace identifier tag.
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -61,14 +76,14 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value of the KV pair.
+     * A byte sequence to be stored, up to 25 MiB in length.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Value of the KV pair.
+     * @return A byte sequence to be stored, up to 25 MiB in length.
      * 
      */
     public Optional<Output<String>> value() {
@@ -79,7 +94,8 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
 
     private WorkersKvState(WorkersKvState $) {
         this.accountId = $.accountId;
-        this.key = $.key;
+        this.keyName = $.keyName;
+        this.metadata = $.metadata;
         this.namespaceId = $.namespaceId;
         this.value = $.value;
     }
@@ -103,7 +119,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -114,7 +130,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -124,28 +140,49 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+         * @param keyName A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
          * 
          * @return builder
          * 
          */
-        public Builder key(@Nullable Output<String> key) {
-            $.key = key;
+        public Builder keyName(@Nullable Output<String> keyName) {
+            $.keyName = keyName;
             return this;
         }
 
         /**
-         * @param key Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+         * @param keyName A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
          * 
          * @return builder
          * 
          */
-        public Builder key(String key) {
-            return key(Output.of(key));
+        public Builder keyName(String keyName) {
+            return keyName(Output.of(keyName));
         }
 
         /**
-         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+         * @param metadata Arbitrary JSON to be associated with a key/value pair.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<String> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Arbitrary JSON to be associated with a key/value pair.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(String metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
+         * @param namespaceId Namespace identifier tag.
          * 
          * @return builder
          * 
@@ -156,7 +193,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+         * @param namespaceId Namespace identifier tag.
          * 
          * @return builder
          * 
@@ -166,7 +203,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the KV pair.
+         * @param value A byte sequence to be stored, up to 25 MiB in length.
          * 
          * @return builder
          * 
@@ -177,7 +214,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the KV pair.
+         * @param value A byte sequence to be stored, up to 25 MiB in length.
          * 
          * @return builder
          * 

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,44 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
     public static final CustomHostnameFallbackOriginState Empty = new CustomHostnameFallbackOriginState();
 
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * This is the time the fallback origin was created.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return This is the time the fallback origin was created.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * These are errors that were encountered while trying to activate a fallback origin.
+     * 
+     */
+    @Import(name="errors")
+    private @Nullable Output<List<String>> errors;
+
+    /**
+     * @return These are errors that were encountered while trying to activate a fallback origin.
+     * 
+     */
+    public Optional<Output<List<String>>> errors() {
+        return Optional.ofNullable(this.errors);
+    }
+
+    /**
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     @Import(name="origin")
     private @Nullable Output<String> origin;
 
     /**
-     * @return Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * @return Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     public Optional<Output<String>> origin() {
@@ -46,14 +77,29 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * This is the time the fallback origin was updated.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    /**
+     * @return This is the time the fallback origin was updated.
+     * 
+     */
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -63,8 +109,11 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
     private CustomHostnameFallbackOriginState() {}
 
     private CustomHostnameFallbackOriginState(CustomHostnameFallbackOriginState $) {
+        this.createdAt = $.createdAt;
+        this.errors = $.errors;
         this.origin = $.origin;
         this.status = $.status;
+        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -87,7 +136,59 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param origin Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+         * @param createdAt This is the time the fallback origin was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt This is the time the fallback origin was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param errors These are errors that were encountered while trying to activate a fallback origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(@Nullable Output<List<String>> errors) {
+            $.errors = errors;
+            return this;
+        }
+
+        /**
+         * @param errors These are errors that were encountered while trying to activate a fallback origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(List<String> errors) {
+            return errors(Output.of(errors));
+        }
+
+        /**
+         * @param errors These are errors that were encountered while trying to activate a fallback origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(String... errors) {
+            return errors(List.of(errors));
+        }
+
+        /**
+         * @param origin Your origin hostname that requests to your custom hostnames will be sent to.
          * 
          * @return builder
          * 
@@ -98,7 +199,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param origin Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+         * @param origin Your origin hostname that requests to your custom hostnames will be sent to.
          * 
          * @return builder
          * 
@@ -129,7 +230,28 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param updatedAt This is the time the fallback origin was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt This is the time the fallback origin was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -140,7 +262,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

@@ -13,11 +13,10 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -43,12 +42,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TurnstileWidget("example", TurnstileWidgetArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example widget")
+ *         var exampleTurnstileWidget = new TurnstileWidget("exampleTurnstileWidget", TurnstileWidgetArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .domains(            
+ *                 "203.0.113.1",
+ *                 "cloudflare.com",
+ *                 "blog.example.com")
+ *             .mode("non-interactive")
+ *             .name("blog.cloudflare.com login form")
  *             .botFightMode(false)
- *             .domains("example.com")
- *             .mode("invisible")
+ *             .clearanceLevel("no_clearance")
+ *             .ephemeralId(false)
+ *             .offlabel(false)
  *             .region("world")
  *             .build());
  * 
@@ -61,91 +66,147 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+ * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &#39;&lt;account_id&gt;/&lt;sitekey&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/turnstileWidget:TurnstileWidget")
 public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     @Export(name="botFightMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> botFightMode;
 
     /**
-     * @return If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * @return If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     public Output<Boolean> botFightMode() {
         return this.botFightMode;
     }
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
      * 
      */
+    @Export(name="clearanceLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clearanceLevel;
+
+    /**
+     * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * 
+     */
+    public Output<Optional<String>> clearanceLevel() {
+        return Codegen.optional(this.clearanceLevel);
+    }
+    /**
+     * When the widget was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the widget was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
     @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
-    /**
-     * @return Domains where the widget is deployed
-     * 
-     */
     public Output<List<String>> domains() {
         return this.domains;
     }
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    @Export(name="ephemeralId", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ephemeralId;
+
+    /**
+     * @return Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    public Output<Optional<Boolean>> ephemeralId() {
+        return Codegen.optional(this.ephemeralId);
+    }
+    /**
+     * Widget Mode
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * @return Widget Mode
      * 
      */
     public Output<String> mode() {
         return this.mode;
     }
     /**
-     * Human readable widget name.
+     * When the widget was modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the widget was modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Human readable widget name.
+     * @return Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     @Export(name="offlabel", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> offlabel;
 
     /**
-     * @return Do not show any Cloudflare branding on the widget (Enterprise only).
+     * @return Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     public Output<Boolean> offlabel() {
@@ -178,6 +239,20 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      */
     public Output<String> secret() {
         return this.secret;
+    }
+    /**
+     * Widget item identifier tag.
+     * 
+     */
+    @Export(name="sitekey", refs={String.class}, tree="[0]")
+    private Output<String> sitekey;
+
+    /**
+     * @return Widget item identifier tag.
+     * 
+     */
+    public Output<String> sitekey() {
+        return this.sitekey;
     }
 
     /**
@@ -219,9 +294,6 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "secret"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

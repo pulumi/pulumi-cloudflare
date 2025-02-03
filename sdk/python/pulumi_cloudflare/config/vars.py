@@ -21,30 +21,6 @@ __config__ = pulumi.Config('cloudflare')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def api_base_path(self) -> Optional[str]:
-        """
-        Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-        environment variable.
-        """
-        return __config__.get('apiBasePath')
-
-    @property
-    def api_client_logging(self) -> bool:
-        """
-        Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-        the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-        """
-        return __config__.get_bool('apiClientLogging') or (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
-
-    @property
-    def api_hostname(self) -> Optional[str]:
-        """
-        Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-        environment variable.
-        """
-        return __config__.get('apiHostname')
-
-    @property
     def api_key(self) -> Optional[str]:
         """
         The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
@@ -72,44 +48,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('apiUserServiceKey')
 
     @property
+    def base_url(self) -> Optional[str]:
+        """
+        Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
+        variable.
+        """
+        return __config__.get('baseUrl')
+
+    @property
     def email(self) -> Optional[str]:
         """
         A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
         variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return __config__.get('email')
-
-    @property
-    def max_backoff(self) -> int:
-        """
-        Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-        `CLOUDFLARE_MAX_BACKOFF` environment variable.
-        """
-        return __config__.get_int('maxBackoff') or (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
-
-    @property
-    def min_backoff(self) -> int:
-        """
-        Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-        `CLOUDFLARE_MIN_BACKOFF` environment variable.
-        """
-        return __config__.get_int('minBackoff') or (_utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
-
-    @property
-    def retries(self) -> int:
-        """
-        Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-        `CLOUDFLARE_RETRIES` environment variable.
-        """
-        return __config__.get_int('retries') or (_utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
-
-    @property
-    def rps(self) -> int:
-        """
-        RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-        variable.
-        """
-        return __config__.get_int('rps') or (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
 
     @property
     def user_agent_operator_suffix(self) -> Optional[str]:

@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetAccounts
     {
         /// <summary>
-        /// Data source for looking up Cloudflare Accounts.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,9 +22,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetAccounts.Invoke(new()
+        ///     var exampleAccounts = Cloudflare.GetAccounts.Invoke(new()
         ///     {
-        ///         Name = "example account",
+        ///         Direction = "asc",
+        ///         Name = "example.com",
         ///     });
         /// 
         /// });
@@ -36,8 +35,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for looking up Cloudflare Accounts.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -48,9 +45,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetAccounts.Invoke(new()
+        ///     var exampleAccounts = Cloudflare.GetAccounts.Invoke(new()
         ///     {
-        ///         Name = "example account",
+        ///         Direction = "asc",
+        ///         Name = "example.com",
         ///     });
         /// 
         /// });
@@ -60,8 +58,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for looking up Cloudflare Accounts.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,9 +68,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetAccounts.Invoke(new()
+        ///     var exampleAccounts = Cloudflare.GetAccounts.Invoke(new()
         ///     {
-        ///         Name = "example account",
+        ///         Direction = "asc",
+        ///         Name = "example.com",
         ///     });
         /// 
         /// });
@@ -88,7 +85,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account name to target for the resource.
+        /// Direction to order results.
+        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Name of the account.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -102,7 +111,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account name to target for the resource.
+        /// Direction to order results.
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Name of the account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -117,27 +138,44 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAccountsResult
     {
-        public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
+        /// <summary>
+        /// Direction to order results.
+        /// </summary>
+        public readonly string? Direction;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The account name to target for the resource.
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        public readonly int? MaxItems;
+        /// <summary>
+        /// Name of the account.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The items returned by the data source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAccountsResultResult> Results;
 
         [OutputConstructor]
         private GetAccountsResult(
-            ImmutableArray<Outputs.GetAccountsAccountResult> accounts,
+            string? direction,
 
             string id,
 
-            string? name)
+            int? maxItems,
+
+            string? name,
+
+            ImmutableArray<Outputs.GetAccountsResultResult> results)
         {
-            Accounts = accounts;
+            Direction = direction;
             Id = id;
+            MaxItems = maxItems;
             Name = name;
+            Results = results;
         }
     }
 }

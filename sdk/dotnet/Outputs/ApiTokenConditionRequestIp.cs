@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ApiTokenConditionRequestIp
     {
         /// <summary>
-        /// List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+        /// List of IPv4/IPv6 CIDR addresses.
         /// </summary>
         public readonly ImmutableArray<string> Ins;
         /// <summary>
-        /// List of IP addresses or CIDR notation where the token should not be used from.
+        /// List of IPv4/IPv6 CIDR addresses.
         /// </summary>
         public readonly ImmutableArray<string> NotIns;
 

@@ -16,14 +16,14 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
     public static final ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs Empty = new ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs();
 
     /**
-     * If true, the authorization endpoint will return an access token.
+     * If an Access Token should be returned from the OIDC Authorization endpoint
      * 
      */
     @Import(name="returnAccessTokenFromAuthorizationEndpoint")
     private @Nullable Output<Boolean> returnAccessTokenFromAuthorizationEndpoint;
 
     /**
-     * @return If true, the authorization endpoint will return an access token.
+     * @return If an Access Token should be returned from the OIDC Authorization endpoint
      * 
      */
     public Optional<Output<Boolean>> returnAccessTokenFromAuthorizationEndpoint() {
@@ -31,14 +31,14 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
     }
 
     /**
-     * If true, the authorization endpoint will return an id token.
+     * If an ID Token should be returned from the OIDC Authorization endpoint
      * 
      */
     @Import(name="returnIdTokenFromAuthorizationEndpoint")
     private @Nullable Output<Boolean> returnIdTokenFromAuthorizationEndpoint;
 
     /**
-     * @return If true, the authorization endpoint will return an id token.
+     * @return If an ID Token should be returned from the OIDC Authorization endpoint
      * 
      */
     public Optional<Output<Boolean>> returnIdTokenFromAuthorizationEndpoint() {
@@ -71,7 +71,7 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
         }
 
         /**
-         * @param returnAccessTokenFromAuthorizationEndpoint If true, the authorization endpoint will return an access token.
+         * @param returnAccessTokenFromAuthorizationEndpoint If an Access Token should be returned from the OIDC Authorization endpoint
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
         }
 
         /**
-         * @param returnAccessTokenFromAuthorizationEndpoint If true, the authorization endpoint will return an access token.
+         * @param returnAccessTokenFromAuthorizationEndpoint If an Access Token should be returned from the OIDC Authorization endpoint
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
         }
 
         /**
-         * @param returnIdTokenFromAuthorizationEndpoint If true, the authorization endpoint will return an id token.
+         * @param returnIdTokenFromAuthorizationEndpoint If an ID Token should be returned from the OIDC Authorization endpoint
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs
         }
 
         /**
-         * @param returnIdTokenFromAuthorizationEndpoint If true, the authorization endpoint will return an id token.
+         * @param returnIdTokenFromAuthorizationEndpoint If an ID Token should be returned from the OIDC Authorization endpoint
          * 
          * @return builder
          * 

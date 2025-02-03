@@ -7,11 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetDcvDelegation(ctx, &cloudflare.GetDcvDelegationArgs{
+//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDcvDelegation(ctx *pulumi.Context, args *GetDcvDelegationArgs, opts ...pulumi.InvokeOption) (*GetDcvDelegationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcvDelegationResult
@@ -24,17 +48,17 @@ func GetDcvDelegation(ctx *pulumi.Context, args *GetDcvDelegationArgs, opts ...p
 
 // A collection of arguments for invoking getDcvDelegation.
 type GetDcvDelegationArgs struct {
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getDcvDelegation.
 type GetDcvDelegationResult struct {
-	// The DCV Delegation hostname
-	Hostname string `pulumi:"hostname"`
-	// The DCV Delegation unique identifier
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The zone identifier to target for the resource.
+	// The DCV Delegation unique identifier.
+	Uuid string `pulumi:"uuid"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -49,7 +73,7 @@ func GetDcvDelegationOutput(ctx *pulumi.Context, args GetDcvDelegationOutputArgs
 
 // A collection of arguments for invoking getDcvDelegation.
 type GetDcvDelegationOutputArgs struct {
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -72,17 +96,17 @@ func (o GetDcvDelegationResultOutput) ToGetDcvDelegationResultOutputWithContext(
 	return o
 }
 
-// The DCV Delegation hostname
-func (o GetDcvDelegationResultOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
-// The DCV Delegation unique identifier
+// The provider-assigned unique ID for this managed resource.
 func (o GetDcvDelegationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// The DCV Delegation unique identifier.
+func (o GetDcvDelegationResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o GetDcvDelegationResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

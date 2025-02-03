@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the claim.
      * 
      */
     private @Nullable String name;
     /**
-     * @return True if the attribute must be always present.
+     * @return If the claim is required when building an OIDC token.
      * 
      */
     private @Nullable Boolean required;
@@ -29,18 +28,18 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
      * 
      */
     private @Nullable String scope;
-    private ZeroTrustAccessApplicationSaasAppCustomClaimSource source;
+    private @Nullable ZeroTrustAccessApplicationSaasAppCustomClaimSource source;
 
     private ZeroTrustAccessApplicationSaasAppCustomClaim() {}
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the claim.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return True if the attribute must be always present.
+     * @return If the claim is required when building an OIDC token.
      * 
      */
     public Optional<Boolean> required() {
@@ -53,8 +52,8 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
     public Optional<String> scope() {
         return Optional.ofNullable(this.scope);
     }
-    public ZeroTrustAccessApplicationSaasAppCustomClaimSource source() {
-        return this.source;
+    public Optional<ZeroTrustAccessApplicationSaasAppCustomClaimSource> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -69,7 +68,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
         private @Nullable String name;
         private @Nullable Boolean required;
         private @Nullable String scope;
-        private ZeroTrustAccessApplicationSaasAppCustomClaimSource source;
+        private @Nullable ZeroTrustAccessApplicationSaasAppCustomClaimSource source;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasAppCustomClaim defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,10 +97,8 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaim {
             return this;
         }
         @CustomType.Setter
-        public Builder source(ZeroTrustAccessApplicationSaasAppCustomClaimSource source) {
-            if (source == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomClaim", "source");
-            }
+        public Builder source(@Nullable ZeroTrustAccessApplicationSaasAppCustomClaimSource source) {
+
             this.source = source;
             return this;
         }

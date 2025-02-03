@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AddressMapArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AddressMapState;
-import com.pulumi.cloudflare.outputs.AddressMapIp;
 import com.pulumi.cloudflare.outputs.AddressMapMembership;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -19,9 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to manage IP addresses that can be used by DNS records when
- * they are proxied through Cloudflare.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -34,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.AddressMap;
  * import com.pulumi.cloudflare.AddressMapArgs;
- * import com.pulumi.cloudflare.inputs.AddressMapIpArgs;
  * import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -49,27 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AddressMap("example", AddressMapArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .description("My address map")
- *             .defaultSni("*.example.com")
+ *         var exampleAddressMap = new AddressMap("exampleAddressMap", AddressMapArgs.builder()
+ *             .accountId("258def64c72dae45f3e4c8516e2111f2")
+ *             .description("My Ecommerce zones")
  *             .enabled(true)
- *             .ips(            
- *                 AddressMapIpArgs.builder()
- *                     .ip("192.0.2.1")
- *                     .build(),
- *                 AddressMapIpArgs.builder()
- *                     .ip("203.0.113.1")
- *                     .build())
- *             .memberships(            
- *                 AddressMapMembershipArgs.builder()
- *                     .identifier("92f17202ed8bd63d69a66b86a49a8f6b")
- *                     .kind("account")
- *                     .build(),
- *                 AddressMapMembershipArgs.builder()
- *                     .identifier("023e105f4ecef8ad9ca31a8372d0c353")
- *                     .kind("zone")
- *                     .build())
+ *             .ips("192.0.2.1")
+ *             .memberships(AddressMapMembershipArgs.builder()
+ *                 .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+ *                 .kind("zone")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -81,21 +64,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/addressMap:AddressMap example &lt;account_id&gt;/&lt;address_map_id&gt;
+ * $ pulumi import cloudflare:index/addressMap:AddressMap example &#39;&lt;account_id&gt;/&lt;address_map_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/addressMap:AddressMap")
 public class AddressMap extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Output<String> accountId() {
@@ -129,75 +112,79 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
     public Output<Boolean> canModifyIps() {
         return this.canModifyIps;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     @Export(name="defaultSni", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultSni;
 
     /**
-     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     public Output<Optional<String>> defaultSni() {
         return Codegen.optional(this.defaultSni);
     }
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the address map.
+     * @return An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the Address Map is enabled or not.
+     * @return Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
-    /**
-     * The set of IPs on the Address Map.
-     * 
-     */
-    @Export(name="ips", refs={List.class,AddressMapIp.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AddressMapIp>> ips;
+    @Export(name="ips", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ips;
 
-    /**
-     * @return The set of IPs on the Address Map.
-     * 
-     */
-    public Output<Optional<List<AddressMapIp>>> ips() {
+    public Output<Optional<List<String>>> ips() {
         return Codegen.optional(this.ips);
     }
     /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
     @Export(name="memberships", refs={List.class,AddressMapMembership.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AddressMapMembership>> memberships;
+    private Output<List<AddressMapMembership>> memberships;
 
     /**
-     * @return Zones and Accounts which will be assigned IPs on this Address Map.
+     * @return Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
-    public Output<Optional<List<AddressMapMembership>>> memberships() {
-        return Codegen.optional(this.memberships);
+    public Output<List<AddressMapMembership>> memberships() {
+        return this.memberships;
+    }
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> modifiedAt;
+
+    public Output<String> modifiedAt() {
+        return this.modifiedAt;
     }
 
     /**

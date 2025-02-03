@@ -12,11 +12,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,9 +41,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new LogpullRetention("example", LogpullRetentionArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .enabled("true")
+ *         var exampleLogpullRetention = new LogpullRetention("exampleLogpullRetention", LogpullRetentionArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .flag(true)
  *             .build());
  * 
  *     }
@@ -53,38 +52,32 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/logpullRetention:LogpullRetention")
 public class LogpullRetention extends com.pulumi.resources.CustomResource {
     /**
-     * Whether you wish to retain logs or not.
+     * The log retention flag for Logpull API.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
+    @Export(name="flag", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> flag;
 
     /**
-     * @return Whether you wish to retain logs or not.
+     * @return The log retention flag for Logpull API.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Output<Optional<Boolean>> flag() {
+        return Codegen.optional(this.flag);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

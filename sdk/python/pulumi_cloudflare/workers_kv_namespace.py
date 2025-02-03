@@ -23,8 +23,8 @@ class WorkersKvNamespaceArgs:
                  title: pulumi.Input[str]):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] title: A human-readable string name for a Namespace.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "title", title)
@@ -33,7 +33,7 @@ class WorkersKvNamespaceArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -45,7 +45,7 @@ class WorkersKvNamespaceArgs:
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
         """
-        Title value of the Worker KV Namespace.
+        A human-readable string name for a Namespace.
         """
         return pulumi.get(self, "title")
 
@@ -58,14 +58,18 @@ class WorkersKvNamespaceArgs:
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 supports_url_encoding: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        :param pulumi.Input[str] title: A human-readable string name for a Namespace.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if supports_url_encoding is not None:
+            pulumi.set(__self__, "supports_url_encoding", supports_url_encoding)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -73,7 +77,7 @@ class _WorkersKvNamespaceState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -82,10 +86,22 @@ class _WorkersKvNamespaceState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="supportsUrlEncoding")
+    def supports_url_encoding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        """
+        return pulumi.get(self, "supports_url_encoding")
+
+    @supports_url_encoding.setter
+    def supports_url_encoding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "supports_url_encoding", value)
+
+    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
-        Title value of the Worker KV Namespace.
+        A human-readable string name for a Namespace.
         """
         return pulumi.get(self, "title")
 
@@ -103,29 +119,27 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides the ability to manage Cloudflare Workers KV Namespace features.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkersKvNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
+        example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            title="My Own Namespace")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
+        $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] title: A human-readable string name for a Namespace.
         """
         ...
     @overload
@@ -134,23 +148,21 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  args: WorkersKvNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides the ability to manage Cloudflare Workers KV Namespace features.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkersKvNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
+        example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            title="My Own Namespace")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
+        $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -185,6 +197,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            __props__.__dict__["supports_url_encoding"] = None
         super(WorkersKvNamespace, __self__).__init__(
             'cloudflare:index/workersKvNamespace:WorkersKvNamespace',
             resource_name,
@@ -196,6 +209,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            supports_url_encoding: Optional[pulumi.Input[bool]] = None,
             title: Optional[pulumi.Input[str]] = None) -> 'WorkersKvNamespace':
         """
         Get an existing WorkersKvNamespace resource's state with the given name, id, and optional extra
@@ -204,14 +218,16 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        :param pulumi.Input[str] title: A human-readable string name for a Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersKvNamespaceState.__new__(_WorkersKvNamespaceState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["supports_url_encoding"] = supports_url_encoding
         __props__.__dict__["title"] = title
         return WorkersKvNamespace(resource_name, opts=opts, __props__=__props__)
 
@@ -219,15 +235,23 @@ class WorkersKvNamespace(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="supportsUrlEncoding")
+    def supports_url_encoding(self) -> pulumi.Output[bool]:
+        """
+        True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+        """
+        return pulumi.get(self, "supports_url_encoding")
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Title value of the Worker KV Namespace.
+        A human-readable string name for a Namespace.
         """
         return pulumi.get(self, "title")
 

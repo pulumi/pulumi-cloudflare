@@ -5,17 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare data source to look up Cache Reserve
- * status for a given zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getZoneCacheReserve({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleZoneCacheReserve = cloudflare.getZoneCacheReserve({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -31,7 +28,7 @@ export function getZoneCacheReserve(args: GetZoneCacheReserveArgs, opts?: pulumi
  */
 export interface GetZoneCacheReserveArgs {
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: string;
 }
@@ -41,30 +38,39 @@ export interface GetZoneCacheReserveArgs {
  */
 export interface GetZoneCacheReserveResult {
     /**
-     * The status of Cache Reserve support.
+     * Whether the setting is editable
      */
-    readonly enabled: boolean;
+    readonly editable: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The zone identifier to target for the resource.
+     * Last time this setting was modified.
+     */
+    readonly modifiedOn: string;
+    /**
+     * The value of the feature
+     */
+    readonly value: string;
+    /**
+     * Identifier
      */
     readonly zoneId: string;
+    /**
+     * ID of the zone setting.
+     */
+    readonly zoneSettingId: string;
 }
 /**
- * Provides a Cloudflare data source to look up Cache Reserve
- * status for a given zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getZoneCacheReserve({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleZoneCacheReserve = cloudflare.getZoneCacheReserve({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -80,7 +86,7 @@ export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, o
  */
 export interface GetZoneCacheReserveOutputArgs {
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -7,29 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const managedNetworks = new cloudflare.ZeroTrustDeviceManagedNetworks("managed_networks", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "managed-network-1",
- *     type: "tls",
- *     config: {
- *         tlsSockaddr: "foobar:1234",
- *         sha256: "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example <account_id>/<device_managed_networks_id>
+ * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
  * ```
  */
 export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
@@ -60,20 +43,18 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceManagedNetworks.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     */
     public readonly config!: pulumi.Output<outputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * API UUID.
+     */
+    public /*out*/ readonly networkId!: pulumi.Output<string>;
+    /**
+     * The type of device managed network.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -93,6 +74,7 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ZeroTrustDeviceManagedNetworksArgs | undefined;
@@ -112,6 +94,7 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["networkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDeviceManagedNetworks.__pulumiType, name, resourceInputs, opts);
@@ -122,20 +105,18 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
  */
 export interface ZeroTrustDeviceManagedNetworksState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     */
     config?: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * API UUID.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * The type of device managed network.
      */
     type?: pulumi.Input<string>;
 }
@@ -144,20 +125,14 @@ export interface ZeroTrustDeviceManagedNetworksState {
  * The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
  */
 export interface ZeroTrustDeviceManagedNetworksArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     */
     config: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      */
     name: pulumi.Input<string>;
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * The type of device managed network.
      */
     type: pulumi.Input<string>;
 }

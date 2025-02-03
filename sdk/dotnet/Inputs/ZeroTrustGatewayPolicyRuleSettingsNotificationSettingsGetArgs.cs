@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable notification settings.
+        /// Set notification on
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Notification content.
+        /// Customize the message shown in the notification.
         /// </summary>
-        [Input("message")]
-        public Input<string>? Message { get; set; }
+        [Input("msg")]
+        public Input<string>? Msg { get; set; }
 
         /// <summary>
-        /// Support URL to show in the notification.
+        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }

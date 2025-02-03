@@ -13,21 +13,19 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RateLimitMatch
     {
-        /// <summary>
-        /// Matches HTTP requests (from the client to Cloudflare).
-        /// </summary>
+        public readonly ImmutableArray<Outputs.RateLimitMatchHeader> Headers;
         public readonly Outputs.RateLimitMatchRequest? Request;
-        /// <summary>
-        /// Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-        /// </summary>
         public readonly Outputs.RateLimitMatchResponse? Response;
 
         [OutputConstructor]
         private RateLimitMatch(
+            ImmutableArray<Outputs.RateLimitMatchHeader> headers,
+
             Outputs.RateLimitMatchRequest? request,
 
             Outputs.RateLimitMatchResponse? response)
         {
+            Headers = headers;
             Request = request;
             Response = response;
         }

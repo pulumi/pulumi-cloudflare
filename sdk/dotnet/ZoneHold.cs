@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Zone Hold resource that prevents adding
-    /// the hostname to another account for use.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,10 +20,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ZoneHold("example", new()
+    ///     var exampleZoneHold = new Cloudflare.ZoneHold("example_zone_hold", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Hold = true,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
@@ -35,32 +31,36 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zoneHold:ZoneHold example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/zoneHold:ZoneHold example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneHold:ZoneHold")]
     public partial class ZoneHold : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Enablement status of the zone hold.
-        /// </summary>
         [Output("hold")]
         public Output<bool> Hold { get; private set; } = null!;
 
         /// <summary>
-        /// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        /// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        /// then automatically re-enabled by the system at the time specified
+        /// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        /// no effect on an existing, enabled hold. Providing an empty string will set its value
+        /// to the current time.
         /// </summary>
         [Output("holdAfter")]
         public Output<string> HoldAfter { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to extend to block any subdomain of the given zone.
+        /// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        /// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        /// 'example.com' and include_subdomains=true will block 'example.com',
+        /// 'staging.example.com', 'api.staging.example.com', etc.
         /// </summary>
         [Output("includeSubdomains")]
-        public Output<bool?> IncludeSubdomains { get; private set; } = null!;
+        public Output<bool> IncludeSubdomains { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -112,25 +112,26 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneHoldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enablement status of the zone hold.
-        /// </summary>
-        [Input("hold", required: true)]
-        public Input<bool> Hold { get; set; } = null!;
-
-        /// <summary>
-        /// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        /// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        /// then automatically re-enabled by the system at the time specified
+        /// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        /// no effect on an existing, enabled hold. Providing an empty string will set its value
+        /// to the current time.
         /// </summary>
         [Input("holdAfter")]
         public Input<string>? HoldAfter { get; set; }
 
         /// <summary>
-        /// Whether to extend to block any subdomain of the given zone.
+        /// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        /// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        /// 'example.com' and include_subdomains=true will block 'example.com',
+        /// 'staging.example.com', 'api.staging.example.com', etc.
         /// </summary>
         [Input("includeSubdomains")]
         public Input<bool>? IncludeSubdomains { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -143,26 +144,30 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneHoldState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enablement status of the zone hold.
-        /// </summary>
         [Input("hold")]
         public Input<bool>? Hold { get; set; }
 
         /// <summary>
-        /// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        /// If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        /// then automatically re-enabled by the system at the time specified
+        /// in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        /// no effect on an existing, enabled hold. Providing an empty string will set its value
+        /// to the current time.
         /// </summary>
         [Input("holdAfter")]
         public Input<string>? HoldAfter { get; set; }
 
         /// <summary>
-        /// Whether to extend to block any subdomain of the given zone.
+        /// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        /// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        /// 'example.com' and include_subdomains=true will block 'example.com',
+        /// 'staging.example.com', 'api.staging.example.com', etc.
         /// </summary>
         [Input("includeSubdomains")]
         public Input<bool>? IncludeSubdomains { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

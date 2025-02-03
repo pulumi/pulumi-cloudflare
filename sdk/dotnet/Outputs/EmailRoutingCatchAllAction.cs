@@ -14,12 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingCatchAllAction
     {
         /// <summary>
-        /// Type of supported action. Available values: `drop`, `forward`, `worker`.
+        /// Type of action for catch-all rule.
         /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// A list with items in the following form.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

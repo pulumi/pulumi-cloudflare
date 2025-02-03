@@ -12,11 +12,41 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsPreviewGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aiBindings")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAiBindingsGetArgs>? _aiBindings;
+
         /// <summary>
-        /// Use latest compatibility date for Pages Functions. Defaults to `false`.
+        /// Constellation bindings used for Pages Functions.
         /// </summary>
-        [Input("alwaysUseLatestCompatibilityDate")]
-        public Input<bool>? AlwaysUseLatestCompatibilityDate { get; set; }
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAiBindingsGetArgs> AiBindings
+        {
+            get => _aiBindings ?? (_aiBindings = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAiBindingsGetArgs>());
+            set => _aiBindings = value;
+        }
+
+        [Input("analyticsEngineDatasets")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsGetArgs>? _analyticsEngineDatasets;
+
+        /// <summary>
+        /// Analytics Engine bindings used for Pages Functions.
+        /// </summary>
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsGetArgs> AnalyticsEngineDatasets
+        {
+            get => _analyticsEngineDatasets ?? (_analyticsEngineDatasets = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsGetArgs>());
+            set => _analyticsEngineDatasets = value;
+        }
+
+        [Input("browsers")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewBrowsersGetArgs>? _browsers;
+
+        /// <summary>
+        /// Browser bindings used for Pages Functions.
+        /// </summary>
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewBrowsersGetArgs> Browsers
+        {
+            get => _browsers ?? (_browsers = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewBrowsersGetArgs>());
+            set => _browsers = value;
+        }
 
         /// <summary>
         /// Compatibility date used for Pages Functions.
@@ -37,110 +67,130 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         [Input("d1Databases")]
-        private InputMap<string>? _d1Databases;
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesGetArgs>? _d1Databases;
 
         /// <summary>
-        /// D1 Databases used for Pages Functions. Defaults to `map[]`.
+        /// D1 databases used for Pages Functions.
         /// </summary>
-        public InputMap<string> D1Databases
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesGetArgs> D1Databases
         {
-            get => _d1Databases ?? (_d1Databases = new InputMap<string>());
+            get => _d1Databases ?? (_d1Databases = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesGetArgs>());
             set => _d1Databases = value;
         }
 
         [Input("durableObjectNamespaces")]
-        private InputMap<string>? _durableObjectNamespaces;
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesGetArgs>? _durableObjectNamespaces;
 
         /// <summary>
-        /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        /// Durabble Object namespaces used for Pages Functions.
         /// </summary>
-        public InputMap<string> DurableObjectNamespaces
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesGetArgs> DurableObjectNamespaces
         {
-            get => _durableObjectNamespaces ?? (_durableObjectNamespaces = new InputMap<string>());
+            get => _durableObjectNamespaces ?? (_durableObjectNamespaces = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesGetArgs>());
             set => _durableObjectNamespaces = value;
         }
 
-        [Input("environmentVariables")]
-        private InputMap<string>? _environmentVariables;
+        [Input("envVars")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewEnvVarsGetArgs>? _envVars;
 
         /// <summary>
-        /// Environment variables for Pages Functions. Defaults to `map[]`.
+        /// Environment variables for build configs.
         /// </summary>
-        public InputMap<string> EnvironmentVariables
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewEnvVarsGetArgs> EnvVars
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
-            set => _environmentVariables = value;
+            get => _envVars ?? (_envVars = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewEnvVarsGetArgs>());
+            set => _envVars = value;
         }
 
+        [Input("hyperdriveBindings")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsGetArgs>? _hyperdriveBindings;
+
         /// <summary>
-        /// Fail open used for Pages Functions. Defaults to `false`.
+        /// Hyperdrive bindings used for Pages Functions.
         /// </summary>
-        [Input("failOpen")]
-        public Input<bool>? FailOpen { get; set; }
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsGetArgs> HyperdriveBindings
+        {
+            get => _hyperdriveBindings ?? (_hyperdriveBindings = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsGetArgs>());
+            set => _hyperdriveBindings = value;
+        }
 
         [Input("kvNamespaces")]
-        private InputMap<string>? _kvNamespaces;
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesGetArgs>? _kvNamespaces;
 
         /// <summary>
-        /// KV namespaces used for Pages Functions. Defaults to `map[]`.
+        /// KV namespaces used for Pages Functions.
         /// </summary>
-        public InputMap<string> KvNamespaces
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesGetArgs> KvNamespaces
         {
-            get => _kvNamespaces ?? (_kvNamespaces = new InputMap<string>());
+            get => _kvNamespaces ?? (_kvNamespaces = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesGetArgs>());
             set => _kvNamespaces = value;
         }
 
+        [Input("mtlsCertificates")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesGetArgs>? _mtlsCertificates;
+
         /// <summary>
-        /// Configuration for placement in the Cloudflare Pages project.
+        /// mTLS bindings used for Pages Functions.
+        /// </summary>
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesGetArgs> MtlsCertificates
+        {
+            get => _mtlsCertificates ?? (_mtlsCertificates = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesGetArgs>());
+            set => _mtlsCertificates = value;
+        }
+
+        /// <summary>
+        /// Placement setting used for Pages Functions.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.PagesProjectDeploymentConfigsPreviewPlacementGetArgs>? Placement { get; set; }
 
-        [Input("r2Buckets")]
-        private InputMap<string>? _r2Buckets;
+        [Input("queueProducers")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewQueueProducersGetArgs>? _queueProducers;
 
         /// <summary>
-        /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        /// Queue Producer bindings used for Pages Functions.
         /// </summary>
-        public InputMap<string> R2Buckets
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewQueueProducersGetArgs> QueueProducers
         {
-            get => _r2Buckets ?? (_r2Buckets = new InputMap<string>());
+            get => _queueProducers ?? (_queueProducers = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewQueueProducersGetArgs>());
+            set => _queueProducers = value;
+        }
+
+        [Input("r2Buckets")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsGetArgs>? _r2Buckets;
+
+        /// <summary>
+        /// R2 buckets used for Pages Functions.
+        /// </summary>
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsGetArgs> R2Buckets
+        {
+            get => _r2Buckets ?? (_r2Buckets = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsGetArgs>());
             set => _r2Buckets = value;
         }
 
-        [Input("secrets")]
-        private InputMap<string>? _secrets;
-
-        /// <summary>
-        /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
-        /// </summary>
-        public InputMap<string> Secrets
-        {
-            get => _secrets ?? (_secrets = new InputMap<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
-                _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
-        }
-
-        [Input("serviceBindings")]
-        private InputList<Inputs.PagesProjectDeploymentConfigsPreviewServiceBindingGetArgs>? _serviceBindings;
+        [Input("services")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewServicesGetArgs>? _services;
 
         /// <summary>
         /// Services used for Pages Functions.
         /// </summary>
-        public InputList<Inputs.PagesProjectDeploymentConfigsPreviewServiceBindingGetArgs> ServiceBindings
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewServicesGetArgs> Services
         {
-            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.PagesProjectDeploymentConfigsPreviewServiceBindingGetArgs>());
-            set => _serviceBindings = value;
+            get => _services ?? (_services = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewServicesGetArgs>());
+            set => _services = value;
         }
 
+        [Input("vectorizeBindings")]
+        private InputMap<Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsGetArgs>? _vectorizeBindings;
+
         /// <summary>
-        /// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+        /// Vectorize bindings used for Pages Functions.
         /// </summary>
-        [Input("usageModel")]
-        public Input<string>? UsageModel { get; set; }
+        public InputMap<Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsGetArgs> VectorizeBindings
+        {
+            get => _vectorizeBindings ?? (_vectorizeBindings = new InputMap<Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsGetArgs>());
+            set => _vectorizeBindings = value;
+        }
 
         public PagesProjectDeploymentConfigsPreviewGetArgs()
         {

@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tunnel exposes applications running on your local web server on any
-// network with an internet connection without manually adding DNS
-// records or configuring a firewall or router.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,17 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("my-tunnel"),
-//				Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
+//			_, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example_zero_trust_tunnel_cloudflared", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
+//				AccountId:    pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:         pulumi.String("blog"),
+//				ConfigSrc:    pulumi.String("local"),
+//				TunnelSecret: pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
 //			})
 //			if err != nil {
 //				return err
@@ -47,23 +44,39 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example <account_id>/<tunnel_id>
+// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '<account_id>/<tunnel_id>'
 // ```
 type ZeroTrustTunnelCloudflared struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Usable CNAME for accessing the Tunnel.
-	Cname pulumi.StringOutput `pulumi:"cname"`
-	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
-	ConfigSrc pulumi.StringPtrOutput `pulumi:"configSrc"`
-	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
+	AccountTag pulumi.StringOutput `pulumi:"accountTag"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+	ConfigSrc pulumi.StringOutput `pulumi:"configSrc"`
+	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	Connections ZeroTrustTunnelCloudflaredConnectionArrayOutput `pulumi:"connections"`
+	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+	ConnsActiveAt pulumi.StringOutput `pulumi:"connsActiveAt"`
+	// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+	ConnsInactiveAt pulumi.StringOutput `pulumi:"connsInactiveAt"`
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
+	// Metadata associated with the tunnel.
+	Metadata pulumi.StringOutput `pulumi:"metadata"`
+	// A user-friendly name for a tunnel.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-	Secret pulumi.StringOutput `pulumi:"secret"`
-	// Token used by a connector to authenticate and run the tunnel.
-	TunnelToken pulumi.StringOutput `pulumi:"tunnelToken"`
+	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	RemoteConfig pulumi.BoolOutput `pulumi:"remoteConfig"`
+	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The type of tunnel.
+	TunType pulumi.StringOutput `pulumi:"tunType"`
+	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+	TunnelSecret pulumi.StringPtrOutput `pulumi:"tunnelSecret"`
 }
 
 // NewZeroTrustTunnelCloudflared registers a new resource with the given unique name, arguments, and options.
@@ -79,17 +92,6 @@ func NewZeroTrustTunnelCloudflared(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.Secret == nil {
-		return nil, errors.New("invalid value for required argument 'Secret'")
-	}
-	if args.Secret != nil {
-		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"secret",
-		"tunnelToken",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustTunnelCloudflared
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared", name, args, &resource, opts...)
@@ -113,33 +115,65 @@ func GetZeroTrustTunnelCloudflared(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustTunnelCloudflared resources.
 type zeroTrustTunnelCloudflaredState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId *string `pulumi:"accountId"`
-	// Usable CNAME for accessing the Tunnel.
-	Cname *string `pulumi:"cname"`
-	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
+	AccountTag *string `pulumi:"accountTag"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	ConfigSrc *string `pulumi:"configSrc"`
-	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	Connections []ZeroTrustTunnelCloudflaredConnection `pulumi:"connections"`
+	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+	ConnsActiveAt *string `pulumi:"connsActiveAt"`
+	// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+	ConnsInactiveAt *string `pulumi:"connsInactiveAt"`
+	// Timestamp of when the resource was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt *string `pulumi:"deletedAt"`
+	// Metadata associated with the tunnel.
+	Metadata *string `pulumi:"metadata"`
+	// A user-friendly name for a tunnel.
 	Name *string `pulumi:"name"`
-	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-	Secret *string `pulumi:"secret"`
-	// Token used by a connector to authenticate and run the tunnel.
-	TunnelToken *string `pulumi:"tunnelToken"`
+	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	RemoteConfig *bool `pulumi:"remoteConfig"`
+	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	Status *string `pulumi:"status"`
+	// The type of tunnel.
+	TunType *string `pulumi:"tunType"`
+	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+	TunnelSecret *string `pulumi:"tunnelSecret"`
 }
 
 type ZeroTrustTunnelCloudflaredState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringPtrInput
-	// Usable CNAME for accessing the Tunnel.
-	Cname pulumi.StringPtrInput
-	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
+	AccountTag pulumi.StringPtrInput
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	ConfigSrc pulumi.StringPtrInput
-	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	Connections ZeroTrustTunnelCloudflaredConnectionArrayInput
+	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+	ConnsActiveAt pulumi.StringPtrInput
+	// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+	ConnsInactiveAt pulumi.StringPtrInput
+	// Timestamp of when the resource was created.
+	CreatedAt pulumi.StringPtrInput
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt pulumi.StringPtrInput
+	// Metadata associated with the tunnel.
+	Metadata pulumi.StringPtrInput
+	// A user-friendly name for a tunnel.
 	Name pulumi.StringPtrInput
-	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-	Secret pulumi.StringPtrInput
-	// Token used by a connector to authenticate and run the tunnel.
-	TunnelToken pulumi.StringPtrInput
+	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	RemoteConfig pulumi.BoolPtrInput
+	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	Status pulumi.StringPtrInput
+	// The type of tunnel.
+	TunType pulumi.StringPtrInput
+	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+	TunnelSecret pulumi.StringPtrInput
 }
 
 func (ZeroTrustTunnelCloudflaredState) ElementType() reflect.Type {
@@ -147,26 +181,26 @@ func (ZeroTrustTunnelCloudflaredState) ElementType() reflect.Type {
 }
 
 type zeroTrustTunnelCloudflaredArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`
-	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	ConfigSrc *string `pulumi:"configSrc"`
-	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+	// A user-friendly name for a tunnel.
 	Name string `pulumi:"name"`
-	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-	Secret string `pulumi:"secret"`
+	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+	TunnelSecret *string `pulumi:"tunnelSecret"`
 }
 
 // The set of arguments for constructing a ZeroTrustTunnelCloudflared resource.
 type ZeroTrustTunnelCloudflaredArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId pulumi.StringInput
-	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	ConfigSrc pulumi.StringPtrInput
-	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+	// A user-friendly name for a tunnel.
 	Name pulumi.StringInput
-	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-	Secret pulumi.StringInput
+	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+	TunnelSecret pulumi.StringPtrInput
 }
 
 func (ZeroTrustTunnelCloudflaredArgs) ElementType() reflect.Type {
@@ -256,34 +290,76 @@ func (o ZeroTrustTunnelCloudflaredOutput) ToZeroTrustTunnelCloudflaredOutputWith
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Cloudflare account ID
 func (o ZeroTrustTunnelCloudflaredOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Usable CNAME for accessing the Tunnel.
-func (o ZeroTrustTunnelCloudflaredOutput) Cname() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+// Cloudflare account ID
+func (o ZeroTrustTunnelCloudflaredOutput) AccountTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.AccountTag }).(pulumi.StringOutput)
 }
 
-// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
-func (o ZeroTrustTunnelCloudflaredOutput) ConfigSrc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringPtrOutput { return v.ConfigSrc }).(pulumi.StringPtrOutput)
+// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+func (o ZeroTrustTunnelCloudflaredOutput) ConfigSrc() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.ConfigSrc }).(pulumi.StringOutput)
 }
 
-// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+func (o ZeroTrustTunnelCloudflaredOutput) Connections() ZeroTrustTunnelCloudflaredConnectionArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) ZeroTrustTunnelCloudflaredConnectionArrayOutput {
+		return v.Connections
+	}).(ZeroTrustTunnelCloudflaredConnectionArrayOutput)
+}
+
+// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+func (o ZeroTrustTunnelCloudflaredOutput) ConnsActiveAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.ConnsActiveAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+func (o ZeroTrustTunnelCloudflaredOutput) ConnsInactiveAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.ConnsInactiveAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was created.
+func (o ZeroTrustTunnelCloudflaredOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+func (o ZeroTrustTunnelCloudflaredOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Metadata associated with the tunnel.
+func (o ZeroTrustTunnelCloudflaredOutput) Metadata() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.Metadata }).(pulumi.StringOutput)
+}
+
+// A user-friendly name for a tunnel.
 func (o ZeroTrustTunnelCloudflaredOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
-func (o ZeroTrustTunnelCloudflaredOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+func (o ZeroTrustTunnelCloudflaredOutput) RemoteConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.BoolOutput { return v.RemoteConfig }).(pulumi.BoolOutput)
 }
 
-// Token used by a connector to authenticate and run the tunnel.
-func (o ZeroTrustTunnelCloudflaredOutput) TunnelToken() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.TunnelToken }).(pulumi.StringOutput)
+// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+func (o ZeroTrustTunnelCloudflaredOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of tunnel.
+func (o ZeroTrustTunnelCloudflaredOutput) TunType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.TunType }).(pulumi.StringOutput)
+}
+
+// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+func (o ZeroTrustTunnelCloudflaredOutput) TunnelSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringPtrOutput { return v.TunnelSecret }).(pulumi.StringPtrOutput)
 }
 
 type ZeroTrustTunnelCloudflaredArrayOutput struct{ *pulumi.OutputState }

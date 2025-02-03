@@ -10,13 +10,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
- * This can help improve performance for smart and custom tiered cache topologies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,8 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new RegionalTieredCache("example", RegionalTieredCacheArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleRegionalTieredCache = new RegionalTieredCache("exampleRegionalTieredCache", RegionalTieredCacheArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .value("on")
  *             .build());
  * 
@@ -56,12 +54,40 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/regionalTieredCache:RegionalTieredCache")
 public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether the setting is editable
+     * 
+     */
+    @Export(name="editable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> editable;
+
+    /**
+     * @return Whether the setting is editable
+     * 
+     */
+    public Output<Boolean> editable() {
+        return this.editable;
+    }
+    /**
+     * Last time this setting was modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
     /**
      * Value of the Regional Tiered Cache zone setting.
      * 
@@ -77,14 +103,14 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

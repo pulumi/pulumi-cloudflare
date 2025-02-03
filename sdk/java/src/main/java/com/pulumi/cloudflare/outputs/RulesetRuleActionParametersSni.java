@@ -4,26 +4,25 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersSni {
     /**
-     * @return Value to define for SNI.
+     * @return The SNI override.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private RulesetRuleActionParametersSni() {}
     /**
-     * @return Value to define for SNI.
+     * @return The SNI override.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class RulesetRuleActionParametersSni {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String value;
+        private String value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersSni defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class RulesetRuleActionParametersSni {
         }
 
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersSni", "value");
+            }
             this.value = value;
             return this;
         }

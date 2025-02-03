@@ -15,14 +15,14 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
     public static final EmailRoutingCatchAllMatcherArgs Empty = new EmailRoutingCatchAllMatcherArgs();
 
     /**
-     * Type of matcher. Available values: `all`.
+     * Type of matcher. Default is &#39;all&#39;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of matcher. Available values: `all`.
+     * @return Type of matcher. Default is &#39;all&#39;.
      * 
      */
     public Output<String> type() {
@@ -54,7 +54,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Type of matcher. Available values: `all`.
+         * @param type Type of matcher. Default is &#39;all&#39;.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class EmailRoutingCatchAllMatcherArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Type of matcher. Available values: `all`.
+         * @param type Type of matcher. Default is &#39;all&#39;.
          * 
          * @return builder
          * 

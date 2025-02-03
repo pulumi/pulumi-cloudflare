@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,41 +20,41 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
      * The ruleset expression to use in matching the password in a request
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The ruleset expression to use in matching the password in a request
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      * 
      */
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
 
     /**
-     * @return The ruleset expression to use in matching the username in a request.
+     * @return The ruleset expression to use in matching the username in a request
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -91,7 +93,7 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -107,18 +109,18 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request.
+         * @param username The ruleset expression to use in matching the username in a request
          * 
          * @return builder
          * 
          */
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request.
+         * @param username The ruleset expression to use in matching the username in a request
          * 
          * @return builder
          * 
@@ -128,7 +130,7 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -139,7 +141,7 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -149,12 +151,6 @@ public final class LeakedCredentialCheckRuleArgs extends com.pulumi.resources.Re
         }
 
         public LeakedCredentialCheckRuleArgs build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("LeakedCredentialCheckRuleArgs", "password");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("LeakedCredentialCheckRuleArgs", "username");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("LeakedCredentialCheckRuleArgs", "zoneId");
             }

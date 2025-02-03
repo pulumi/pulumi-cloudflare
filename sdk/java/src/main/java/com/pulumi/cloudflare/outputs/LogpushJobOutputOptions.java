@@ -25,22 +25,22 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable String batchSuffix;
     /**
-     * @return Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+     * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
     private @Nullable Boolean cve20214428;
     /**
-     * @return String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+     * @return String to join fields. This field be ignored when `record_template` is set.
      * 
      */
     private @Nullable String fieldDelimiter;
     /**
-     * @return List of field names to be included in the Logpush output.
+     * @return List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
      * 
      */
     private @Nullable List<String> fieldNames;
     /**
-     * @return Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+     * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
      * 
      */
     private @Nullable String outputType;
@@ -50,28 +50,27 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable String recordDelimiter;
     /**
-     * @return String to be prepended before each record. Defaults to `{`.
+     * @return String to be prepended before each record.
      * 
      */
     private @Nullable String recordPrefix;
     /**
-     * @return String to be appended after each record. Defaults to `}
-     * `.
+     * @return String to be appended after each record.
      * 
      */
     private @Nullable String recordSuffix;
     /**
-     * @return String to use as template for each record instead of the default comma-separated list.
+     * @return String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     private @Nullable String recordTemplate;
     /**
-     * @return Specifies the sampling rate. Defaults to `1`.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
      * 
      */
     private @Nullable Double sampleRate;
     /**
-     * @return Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
      * 
      */
     private @Nullable String timestampFormat;
@@ -92,28 +91,28 @@ public final class LogpushJobOutputOptions {
         return Optional.ofNullable(this.batchSuffix);
     }
     /**
-     * @return Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+     * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
     public Optional<Boolean> cve20214428() {
         return Optional.ofNullable(this.cve20214428);
     }
     /**
-     * @return String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+     * @return String to join fields. This field be ignored when `record_template` is set.
      * 
      */
     public Optional<String> fieldDelimiter() {
         return Optional.ofNullable(this.fieldDelimiter);
     }
     /**
-     * @return List of field names to be included in the Logpush output.
+     * @return List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
      * 
      */
     public List<String> fieldNames() {
         return this.fieldNames == null ? List.of() : this.fieldNames;
     }
     /**
-     * @return Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+     * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
      * 
      */
     public Optional<String> outputType() {
@@ -127,36 +126,35 @@ public final class LogpushJobOutputOptions {
         return Optional.ofNullable(this.recordDelimiter);
     }
     /**
-     * @return String to be prepended before each record. Defaults to `{`.
+     * @return String to be prepended before each record.
      * 
      */
     public Optional<String> recordPrefix() {
         return Optional.ofNullable(this.recordPrefix);
     }
     /**
-     * @return String to be appended after each record. Defaults to `}
-     * `.
+     * @return String to be appended after each record.
      * 
      */
     public Optional<String> recordSuffix() {
         return Optional.ofNullable(this.recordSuffix);
     }
     /**
-     * @return String to use as template for each record instead of the default comma-separated list.
+     * @return String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     public Optional<String> recordTemplate() {
         return Optional.ofNullable(this.recordTemplate);
     }
     /**
-     * @return Specifies the sampling rate. Defaults to `1`.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
      * 
      */
     public Optional<Double> sampleRate() {
         return Optional.ofNullable(this.sampleRate);
     }
     /**
-     * @return Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
      * 
      */
     public Optional<String> timestampFormat() {

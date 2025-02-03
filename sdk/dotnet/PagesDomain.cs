@@ -10,10 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource for managing Cloudflare Pages domains.
-    /// 
     /// &gt; A DNS record for the domain is not automatically created. You need to create
-    ///    a `cloudflare.Record` resource for the domain you want to use.
+    ///    a `cloudflare_record` resource for the domain you want to use.
     /// 
     /// ## Example Usage
     /// 
@@ -25,11 +23,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_domain = new Cloudflare.PagesDomain("my-domain", new()
+    ///     var examplePagesDomain = new Cloudflare.PagesDomain("example_pages_domain", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ProjectName = "my-example-project",
-    ///         Domain = "example.com",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ProjectName = "this-is-my-project-01",
+    ///         Name = "example.com",
     ///     });
     /// 
     /// });
@@ -38,35 +36,47 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
+    /// $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '&lt;account_id&gt;/&lt;project_name&gt;/&lt;domain_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pagesDomain:PagesDomain")]
     public partial class PagesDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Output("domain")]
-        public Output<string> Domain { get; private set; } = null!;
+        [Output("certificateAuthority")]
+        public Output<string> CertificateAuthority { get; private set; } = null!;
+
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        [Output("domainId")]
+        public Output<string> DomainId { get; private set; } = null!;
+
+        [Output("name")]
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
-        /// <summary>
-        /// Status of the custom domain.
-        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        [Output("validationData")]
+        public Output<Outputs.PagesDomainValidationData> ValidationData { get; private set; } = null!;
+
+        [Output("verificationData")]
+        public Output<Outputs.PagesDomainVerificationData> VerificationData { get; private set; } = null!;
+
+        [Output("zoneTag")]
+        public Output<string> ZoneTag { get; private set; } = null!;
 
 
         /// <summary>
@@ -115,19 +125,16 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("domain", required: true)]
-        public Input<string> Domain { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -141,28 +148,40 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        [Input("certificateAuthority")]
+        public Input<string>? CertificateAuthority { get; set; }
+
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
-        /// <summary>
-        /// Status of the custom domain.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("validationData")]
+        public Input<Inputs.PagesDomainValidationDataGetArgs>? ValidationData { get; set; }
+
+        [Input("verificationData")]
+        public Input<Inputs.PagesDomainVerificationDataGetArgs>? VerificationData { get; set; }
+
+        [Input("zoneTag")]
+        public Input<string>? ZoneTag { get; set; }
 
         public PagesDomainState()
         {

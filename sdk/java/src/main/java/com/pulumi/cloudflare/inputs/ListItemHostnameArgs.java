@@ -14,17 +14,9 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
 
     public static final ListItemHostnameArgs Empty = new ListItemHostnameArgs();
 
-    /**
-     * The FQDN to match on.
-     * 
-     */
     @Import(name="urlHostname", required=true)
     private Output<String> urlHostname;
 
-    /**
-     * @return The FQDN to match on.
-     * 
-     */
     public Output<String> urlHostname() {
         return this.urlHostname;
     }
@@ -53,23 +45,11 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
             $ = new ListItemHostnameArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param urlHostname The FQDN to match on.
-         * 
-         * @return builder
-         * 
-         */
         public Builder urlHostname(Output<String> urlHostname) {
             $.urlHostname = urlHostname;
             return this;
         }
 
-        /**
-         * @param urlHostname The FQDN to match on.
-         * 
-         * @return builder
-         * 
-         */
         public Builder urlHostname(String urlHostname) {
             return urlHostname(Output.of(urlHostname));
         }

@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersFromValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Preserve query string for redirect URL.
+        /// Keep the query string of the original request.
         /// </summary>
         [Input("preserveQueryString")]
         public Input<bool>? PreserveQueryString { get; set; }
 
         /// <summary>
-        /// Status code for redirect.
+        /// The status code to be used for the redirect.
         /// </summary>
         [Input("statusCode")]
-        public Input<int>? StatusCode { get; set; }
+        public Input<double>? StatusCode { get; set; }
 
         /// <summary>
-        /// Target URL for redirect.
+        /// The URL to redirect the request to.
         /// </summary>
         [Input("targetUrl")]
         public Input<Inputs.RulesetRuleActionParametersFromValueTargetUrlArgs>? TargetUrl { get; set; }

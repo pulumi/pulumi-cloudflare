@@ -7,11 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupZeroTrustAccessApplication(ctx, &cloudflare.LookupZeroTrustAccessApplicationArgs{
+//				AppId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: pulumi.StringRef("account_id"),
+//				ZoneId:    pulumi.StringRef("zone_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustAccessApplication(ctx *pulumi.Context, args *LookupZeroTrustAccessApplicationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessApplicationResult
@@ -24,29 +50,93 @@ func LookupZeroTrustAccessApplication(ctx *pulumi.Context, args *LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustAccessApplication.
 type LookupZeroTrustAccessApplicationArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
-	Domain *string `pulumi:"domain"`
-	// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-	Name *string `pulumi:"name"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// Identifier
+	AppId  *string                              `pulumi:"appId"`
+	Filter *GetZeroTrustAccessApplicationFilter `pulumi:"filter"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZeroTrustAccessApplication.
 type LookupZeroTrustAccessApplicationResult struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Application Audience (AUD) Tag of the application.
+	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+	AllowAuthenticateViaWarp bool `pulumi:"allowAuthenticateViaWarp"`
+	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+	AllowedIdps []string `pulumi:"allowedIdps"`
+	// Identifier
+	AppId *string `pulumi:"appId"`
+	// The image URL of the logo shown in the App Launcher header.
+	AppLauncherLogoUrl string `pulumi:"appLauncherLogoUrl"`
+	// Displays the application in the App Launcher.
+	AppLauncherVisible bool `pulumi:"appLauncherVisible"`
+	// Audience tag.
 	Aud string `pulumi:"aud"`
-	// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+	AutoRedirectToIdentity bool `pulumi:"autoRedirectToIdentity"`
+	// The background color of the App Launcher page.
+	BgColor     string                                   `pulumi:"bgColor"`
+	CorsHeaders GetZeroTrustAccessApplicationCorsHeaders `pulumi:"corsHeaders"`
+	CreatedAt   string                                   `pulumi:"createdAt"`
+	// The custom error message shown to a user when they are denied access to the application.
+	CustomDenyMessage string `pulumi:"customDenyMessage"`
+	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+	CustomDenyUrl string `pulumi:"customDenyUrl"`
+	// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+	CustomNonIdentityDenyUrl string `pulumi:"customNonIdentityDenyUrl"`
+	// The custom pages that will be displayed when applicable for this application
+	CustomPages []string `pulumi:"customPages"`
+	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	Destinations []GetZeroTrustAccessApplicationDestination `pulumi:"destinations"`
+	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 	Domain string `pulumi:"domain"`
-	// The provider-assigned unique ID for this managed resource.
+	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+	EnableBindingCookie bool                                 `pulumi:"enableBindingCookie"`
+	Filter              *GetZeroTrustAccessApplicationFilter `pulumi:"filter"`
+	// The links in the App Launcher footer.
+	FooterLinks []GetZeroTrustAccessApplicationFooterLink `pulumi:"footerLinks"`
+	// The background color of the App Launcher header.
+	HeaderBgColor string `pulumi:"headerBgColor"`
+	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+	HttpOnlyCookieAttribute bool `pulumi:"httpOnlyCookieAttribute"`
+	// Identifier
 	Id string `pulumi:"id"`
-	// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
+	// The design of the App Launcher landing page shown to users when they log in.
+	LandingPageDesign GetZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
+	// The image URL for the logo shown in the App Launcher dashboard.
+	LogoUrl string `pulumi:"logoUrl"`
+	// The name of the application.
 	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
+	OptionsPreflightBypass bool `pulumi:"optionsPreflightBypass"`
+	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+	PathCookieAttribute bool                                  `pulumi:"pathCookieAttribute"`
+	Policies            []GetZeroTrustAccessApplicationPolicy `pulumi:"policies"`
+	SaasApp             GetZeroTrustAccessApplicationSaasApp  `pulumi:"saasApp"`
+	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
+	SameSiteCookieAttribute string `pulumi:"sameSiteCookieAttribute"`
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+	ScimConfig GetZeroTrustAccessApplicationScimConfig `pulumi:"scimConfig"`
+	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
+	// Returns a 401 status code when the request is blocked by a Service Auth policy.
+	ServiceAuth401Redirect bool `pulumi:"serviceAuth401Redirect"`
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	SessionDuration string `pulumi:"sessionDuration"`
+	// Determines when to skip the App Launcher landing page.
+	SkipAppLauncherLoginPage bool `pulumi:"skipAppLauncherLoginPage"`
+	// Enables automatic authentication through cloudflared.
+	SkipInterstitial bool `pulumi:"skipInterstitial"`
+	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+	Tags            []string                                      `pulumi:"tags"`
+	TargetCriterias []GetZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
+	// The application type.
+	Type      string `pulumi:"type"`
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -61,13 +151,12 @@ func LookupZeroTrustAccessApplicationOutput(ctx *pulumi.Context, args LookupZero
 
 // A collection of arguments for invoking getZeroTrustAccessApplication.
 type LookupZeroTrustAccessApplicationOutputArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// Identifier
+	AppId  pulumi.StringPtrInput                       `pulumi:"appId"`
+	Filter GetZeroTrustAccessApplicationFilterPtrInput `pulumi:"filter"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -90,32 +179,219 @@ func (o LookupZeroTrustAccessApplicationResultOutput) ToLookupZeroTrustAccessApp
 	return o
 }
 
-// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupZeroTrustAccessApplicationResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Application Audience (AUD) Tag of the application.
+// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+func (o LookupZeroTrustAccessApplicationResultOutput) AllowAuthenticateViaWarp() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
+}
+
+// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+func (o LookupZeroTrustAccessApplicationResultOutput) AllowedIdps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.AllowedIdps }).(pulumi.StringArrayOutput)
+}
+
+// Identifier
+func (o LookupZeroTrustAccessApplicationResultOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// The image URL of the logo shown in the App Launcher header.
+func (o LookupZeroTrustAccessApplicationResultOutput) AppLauncherLogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.AppLauncherLogoUrl }).(pulumi.StringOutput)
+}
+
+// Displays the application in the App Launcher.
+func (o LookupZeroTrustAccessApplicationResultOutput) AppLauncherVisible() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.AppLauncherVisible }).(pulumi.BoolOutput)
+}
+
+// Audience tag.
 func (o LookupZeroTrustAccessApplicationResultOutput) Aud() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Aud }).(pulumi.StringOutput)
 }
 
-// The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+func (o LookupZeroTrustAccessApplicationResultOutput) AutoRedirectToIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.AutoRedirectToIdentity }).(pulumi.BoolOutput)
+}
+
+// The background color of the App Launcher page.
+func (o LookupZeroTrustAccessApplicationResultOutput) BgColor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.BgColor }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) CorsHeaders() GetZeroTrustAccessApplicationCorsHeadersOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationCorsHeaders {
+		return v.CorsHeaders
+	}).(GetZeroTrustAccessApplicationCorsHeadersOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The custom error message shown to a user when they are denied access to the application.
+func (o LookupZeroTrustAccessApplicationResultOutput) CustomDenyMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.CustomDenyMessage }).(pulumi.StringOutput)
+}
+
+// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+func (o LookupZeroTrustAccessApplicationResultOutput) CustomDenyUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.CustomDenyUrl }).(pulumi.StringOutput)
+}
+
+// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+func (o LookupZeroTrustAccessApplicationResultOutput) CustomNonIdentityDenyUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.CustomNonIdentityDenyUrl }).(pulumi.StringOutput)
+}
+
+// The custom pages that will be displayed when applicable for this application
+func (o LookupZeroTrustAccessApplicationResultOutput) CustomPages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.CustomPages }).(pulumi.StringArrayOutput)
+}
+
+// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
+func (o LookupZeroTrustAccessApplicationResultOutput) Destinations() GetZeroTrustAccessApplicationDestinationArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []GetZeroTrustAccessApplicationDestination {
+		return v.Destinations
+	}).(GetZeroTrustAccessApplicationDestinationArrayOutput)
+}
+
+// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
 func (o LookupZeroTrustAccessApplicationResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+func (o LookupZeroTrustAccessApplicationResultOutput) EnableBindingCookie() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.EnableBindingCookie }).(pulumi.BoolOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) Filter() GetZeroTrustAccessApplicationFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) *GetZeroTrustAccessApplicationFilter { return v.Filter }).(GetZeroTrustAccessApplicationFilterPtrOutput)
+}
+
+// The links in the App Launcher footer.
+func (o LookupZeroTrustAccessApplicationResultOutput) FooterLinks() GetZeroTrustAccessApplicationFooterLinkArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []GetZeroTrustAccessApplicationFooterLink {
+		return v.FooterLinks
+	}).(GetZeroTrustAccessApplicationFooterLinkArrayOutput)
+}
+
+// The background color of the App Launcher header.
+func (o LookupZeroTrustAccessApplicationResultOutput) HeaderBgColor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.HeaderBgColor }).(pulumi.StringOutput)
+}
+
+// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+func (o LookupZeroTrustAccessApplicationResultOutput) HttpOnlyCookieAttribute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
+}
+
+// Identifier
 func (o LookupZeroTrustAccessApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Friendly name of the Access Application. Must provide only one of `name`, `domain`.
+// The design of the App Launcher landing page shown to users when they log in.
+func (o LookupZeroTrustAccessApplicationResultOutput) LandingPageDesign() GetZeroTrustAccessApplicationLandingPageDesignOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationLandingPageDesign {
+		return v.LandingPageDesign
+	}).(GetZeroTrustAccessApplicationLandingPageDesignOutput)
+}
+
+// The image URL for the logo shown in the App Launcher dashboard.
+func (o LookupZeroTrustAccessApplicationResultOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// The name of the application.
 func (o LookupZeroTrustAccessApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
+func (o LookupZeroTrustAccessApplicationResultOutput) OptionsPreflightBypass() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.OptionsPreflightBypass }).(pulumi.BoolOutput)
+}
+
+// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+func (o LookupZeroTrustAccessApplicationResultOutput) PathCookieAttribute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.PathCookieAttribute }).(pulumi.BoolOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) Policies() GetZeroTrustAccessApplicationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []GetZeroTrustAccessApplicationPolicy {
+		return v.Policies
+	}).(GetZeroTrustAccessApplicationPolicyArrayOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) SaasApp() GetZeroTrustAccessApplicationSaasAppOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationSaasApp { return v.SaasApp }).(GetZeroTrustAccessApplicationSaasAppOutput)
+}
+
+// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
+func (o LookupZeroTrustAccessApplicationResultOutput) SameSiteCookieAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.SameSiteCookieAttribute }).(pulumi.StringOutput)
+}
+
+// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+func (o LookupZeroTrustAccessApplicationResultOutput) ScimConfig() GetZeroTrustAccessApplicationScimConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationScimConfig {
+		return v.ScimConfig
+	}).(GetZeroTrustAccessApplicationScimConfigOutput)
+}
+
+// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+func (o LookupZeroTrustAccessApplicationResultOutput) SelfHostedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
+}
+
+// Returns a 401 status code when the request is blocked by a Service Auth policy.
+func (o LookupZeroTrustAccessApplicationResultOutput) ServiceAuth401Redirect() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.ServiceAuth401Redirect }).(pulumi.BoolOutput)
+}
+
+// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+func (o LookupZeroTrustAccessApplicationResultOutput) SessionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.SessionDuration }).(pulumi.StringOutput)
+}
+
+// Determines when to skip the App Launcher landing page.
+func (o LookupZeroTrustAccessApplicationResultOutput) SkipAppLauncherLoginPage() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.SkipAppLauncherLoginPage }).(pulumi.BoolOutput)
+}
+
+// Enables automatic authentication through cloudflared.
+func (o LookupZeroTrustAccessApplicationResultOutput) SkipInterstitial() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.SkipInterstitial }).(pulumi.BoolOutput)
+}
+
+// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+func (o LookupZeroTrustAccessApplicationResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) TargetCriterias() GetZeroTrustAccessApplicationTargetCriteriaArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []GetZeroTrustAccessApplicationTargetCriteria {
+		return v.TargetCriterias
+	}).(GetZeroTrustAccessApplicationTargetCriteriaArrayOutput)
+}
+
+// The application type.
+func (o LookupZeroTrustAccessApplicationResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustAccessApplicationResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o LookupZeroTrustAccessApplicationResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

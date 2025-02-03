@@ -14,166 +14,98 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessPolicyRequire
     {
         /// <summary>
-        /// Matches any valid Access service token.
+        /// An empty object which matches on all service tokens.
         /// </summary>
-        public readonly bool? AnyValidServiceToken;
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireAuthContext> AuthContexts;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireAnyValidServiceToken? AnyValidServiceToken;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireAuthContext? AuthContext;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireAuthMethod? AuthMethod;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireAzureAd? AzureAd;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireCertificate? Certificate;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireCommonName? CommonName;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireDevicePosture? DevicePosture;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireEmail? Email;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireEmailDomain? EmailDomain;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireEmailList? EmailList;
         /// <summary>
-        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
+        /// An empty object which matches on all users.
         /// </summary>
-        public readonly string? AuthMethod;
-        /// <summary>
-        /// Matches an Azure group. Requires an Azure identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireAzure> Azures;
-        /// <summary>
-        /// Matches any valid client certificate.
-        /// </summary>
-        public readonly bool? Certificate;
-        /// <summary>
-        /// Matches a valid client certificate common name.
-        /// </summary>
-        public readonly string? CommonName;
-        /// <summary>
-        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        /// </summary>
-        public readonly ImmutableArray<string> CommonNames;
-        /// <summary>
-        /// The ID of a device posture integration.
-        /// </summary>
-        public readonly ImmutableArray<string> DevicePostures;
-        /// <summary>
-        /// The email domain to match.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailDomains;
-        /// <summary>
-        /// The ID of a previously created email list.
-        /// </summary>
-        public readonly ImmutableArray<string> EmailLists;
-        /// <summary>
-        /// The email of the user.
-        /// </summary>
-        public readonly ImmutableArray<string> Emails;
-        /// <summary>
-        /// Matches everyone.
-        /// </summary>
-        public readonly bool? Everyone;
-        /// <summary>
-        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireExternalEvaluation> ExternalEvaluations;
-        /// <summary>
-        /// Matches a specific country.
-        /// </summary>
-        public readonly ImmutableArray<string> Geos;
-        /// <summary>
-        /// Matches a Github organization. Requires a Github identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireGithub> Githubs;
-        /// <summary>
-        /// The ID of a previously created Access group.
-        /// </summary>
-        public readonly ImmutableArray<string> Groups;
-        /// <summary>
-        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireGsuite> Gsuites;
-        /// <summary>
-        /// The ID of a previously created IP list.
-        /// </summary>
-        public readonly ImmutableArray<string> IpLists;
-        /// <summary>
-        /// An IPv4 or IPv6 CIDR block.
-        /// </summary>
-        public readonly ImmutableArray<string> Ips;
-        /// <summary>
-        /// The ID of a configured identity provider.
-        /// </summary>
-        public readonly ImmutableArray<string> LoginMethods;
-        /// <summary>
-        /// Matches an Okta group. Requires an Okta identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireOkta> Oktas;
-        /// <summary>
-        /// Matches a SAML group. Requires a SAML identity provider.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireSaml> Samls;
-        /// <summary>
-        /// The ID of an Access service token.
-        /// </summary>
-        public readonly ImmutableArray<string> ServiceTokens;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireEveryone? Everyone;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireExternalEvaluation? ExternalEvaluation;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireGeo? Geo;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireGithubOrganization? GithubOrganization;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireGroup? Group;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireGsuite? Gsuite;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireIp? Ip;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireIpList? IpList;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireOkta? Okta;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireSaml? Saml;
+        public readonly Outputs.ZeroTrustAccessPolicyRequireServiceToken? ServiceToken;
 
         [OutputConstructor]
         private ZeroTrustAccessPolicyRequire(
-            bool? anyValidServiceToken,
+            Outputs.ZeroTrustAccessPolicyRequireAnyValidServiceToken? anyValidServiceToken,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireAuthContext> authContexts,
+            Outputs.ZeroTrustAccessPolicyRequireAuthContext? authContext,
 
-            string? authMethod,
+            Outputs.ZeroTrustAccessPolicyRequireAuthMethod? authMethod,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireAzure> azures,
+            Outputs.ZeroTrustAccessPolicyRequireAzureAd? azureAd,
 
-            bool? certificate,
+            Outputs.ZeroTrustAccessPolicyRequireCertificate? certificate,
 
-            string? commonName,
+            Outputs.ZeroTrustAccessPolicyRequireCommonName? commonName,
 
-            ImmutableArray<string> commonNames,
+            Outputs.ZeroTrustAccessPolicyRequireDevicePosture? devicePosture,
 
-            ImmutableArray<string> devicePostures,
+            Outputs.ZeroTrustAccessPolicyRequireEmail? email,
 
-            ImmutableArray<string> emailDomains,
+            Outputs.ZeroTrustAccessPolicyRequireEmailDomain? emailDomain,
 
-            ImmutableArray<string> emailLists,
+            Outputs.ZeroTrustAccessPolicyRequireEmailList? emailList,
 
-            ImmutableArray<string> emails,
+            Outputs.ZeroTrustAccessPolicyRequireEveryone? everyone,
 
-            bool? everyone,
+            Outputs.ZeroTrustAccessPolicyRequireExternalEvaluation? externalEvaluation,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireExternalEvaluation> externalEvaluations,
+            Outputs.ZeroTrustAccessPolicyRequireGeo? geo,
 
-            ImmutableArray<string> geos,
+            Outputs.ZeroTrustAccessPolicyRequireGithubOrganization? githubOrganization,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireGithub> githubs,
+            Outputs.ZeroTrustAccessPolicyRequireGroup? group,
 
-            ImmutableArray<string> groups,
+            Outputs.ZeroTrustAccessPolicyRequireGsuite? gsuite,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireGsuite> gsuites,
+            Outputs.ZeroTrustAccessPolicyRequireIp? ip,
 
-            ImmutableArray<string> ipLists,
+            Outputs.ZeroTrustAccessPolicyRequireIpList? ipList,
 
-            ImmutableArray<string> ips,
+            Outputs.ZeroTrustAccessPolicyRequireOkta? okta,
 
-            ImmutableArray<string> loginMethods,
+            Outputs.ZeroTrustAccessPolicyRequireSaml? saml,
 
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireOkta> oktas,
-
-            ImmutableArray<Outputs.ZeroTrustAccessPolicyRequireSaml> samls,
-
-            ImmutableArray<string> serviceTokens)
+            Outputs.ZeroTrustAccessPolicyRequireServiceToken? serviceToken)
         {
             AnyValidServiceToken = anyValidServiceToken;
-            AuthContexts = authContexts;
+            AuthContext = authContext;
             AuthMethod = authMethod;
-            Azures = azures;
+            AzureAd = azureAd;
             Certificate = certificate;
             CommonName = commonName;
-            CommonNames = commonNames;
-            DevicePostures = devicePostures;
-            EmailDomains = emailDomains;
-            EmailLists = emailLists;
-            Emails = emails;
+            DevicePosture = devicePosture;
+            Email = email;
+            EmailDomain = emailDomain;
+            EmailList = emailList;
             Everyone = everyone;
-            ExternalEvaluations = externalEvaluations;
-            Geos = geos;
-            Githubs = githubs;
-            Groups = groups;
-            Gsuites = gsuites;
-            IpLists = ipLists;
-            Ips = ips;
-            LoginMethods = loginMethods;
-            Oktas = oktas;
-            Samls = samls;
-            ServiceTokens = serviceTokens;
+            ExternalEvaluation = externalEvaluation;
+            Geo = geo;
+            GithubOrganization = githubOrganization;
+            Group = group;
+            Gsuite = gsuite;
+            Ip = ip;
+            IpList = ipList;
+            Okta = okta;
+            Saml = saml;
+            ServiceToken = serviceToken;
         }
     }
 }

@@ -16,14 +16,20 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
     public static final ApiShieldOperationSchemaValidationSettingsState Empty = new ApiShieldOperationSchemaValidationSettingsState();
 
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied
      * 
      */
     @Import(name="mitigationAction")
     private @Nullable Output<String> mitigationAction;
 
     /**
-     * @return The mitigation action to apply to this operation.
+     * @return When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied
      * 
      */
     public Optional<Output<String>> mitigationAction() {
@@ -31,14 +37,14 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
     }
 
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      * 
      */
     @Import(name="operationId")
     private @Nullable Output<String> operationId;
 
     /**
-     * @return Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID
      * 
      */
     public Optional<Output<String>> operationId() {
@@ -46,14 +52,14 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -87,7 +93,10 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param mitigationAction The mitigation action to apply to this operation.
+         * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+         * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+         * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+         * Level Schema Validation Settings for mitigation action that will be applied
          * 
          * @return builder
          * 
@@ -98,7 +107,10 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param mitigationAction The mitigation action to apply to this operation.
+         * @param mitigationAction When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+         * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+         * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+         * Level Schema Validation Settings for mitigation action that will be applied
          * 
          * @return builder
          * 
@@ -108,7 +120,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param operationId Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+         * @param operationId UUID
          * 
          * @return builder
          * 
@@ -119,7 +131,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param operationId Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+         * @param operationId UUID
          * 
          * @return builder
          * 
@@ -129,7 +141,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -140,7 +152,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

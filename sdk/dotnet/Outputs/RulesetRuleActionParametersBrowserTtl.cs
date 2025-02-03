@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersBrowserTtl
     {
         /// <summary>
-        /// Default browser TTL. This value is required when override_origin is set
+        /// The TTL (in seconds) if you choose override_origin mode.
         /// </summary>
         public readonly int? Default;
         /// <summary>
-        /// Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        /// Determines which browser ttl mode to use.
         /// </summary>
         public readonly string Mode;
 

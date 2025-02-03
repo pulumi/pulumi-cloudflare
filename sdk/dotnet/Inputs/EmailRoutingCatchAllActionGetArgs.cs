@@ -13,17 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class EmailRoutingCatchAllActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of supported action. Available values: `drop`, `forward`, `worker`.
+        /// Type of action for catch-all rule.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        [Input("values", required: true)]
+        [Input("values")]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// A list with items in the following form.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

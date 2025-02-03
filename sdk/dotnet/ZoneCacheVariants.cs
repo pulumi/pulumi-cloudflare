@@ -10,152 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which customizes Cloudflare zone cache variants.
-    /// 
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
+    /// ## Import
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ZoneCacheVariants("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Avifs = new[]
-    ///         {
-    ///             "image/avif",
-    ///             "image/webp",
-    ///         },
-    ///         Bmps = new[]
-    ///         {
-    ///             "image/bmp",
-    ///             "image/webp",
-    ///         },
-    ///         Gifs = new[]
-    ///         {
-    ///             "image/gif",
-    ///             "image/webp",
-    ///         },
-    ///         Jpegs = new[]
-    ///         {
-    ///             "image/jpeg",
-    ///             "image/webp",
-    ///         },
-    ///         Jpgs = new[]
-    ///         {
-    ///             "image/jpg",
-    ///             "image/webp",
-    ///         },
-    ///         Jpg2s = new[]
-    ///         {
-    ///             "image/jpg2",
-    ///             "image/webp",
-    ///         },
-    ///         Jp2s = new[]
-    ///         {
-    ///             "image/jp2",
-    ///             "image/webp",
-    ///         },
-    ///         Pngs = new[]
-    ///         {
-    ///             "image/png",
-    ///             "image/webp",
-    ///         },
-    ///         Tiffs = new[]
-    ///         {
-    ///             "image/tiff",
-    ///             "image/webp",
-    ///         },
-    ///         Tifs = new[]
-    ///         {
-    ///             "image/tif",
-    ///             "image/webp",
-    ///         },
-    ///         Webps = new[]
-    ///         {
-    ///             "image/jpeg",
-    ///             "image/webp",
-    ///         },
-    ///     });
-    /// 
-    /// });
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneCacheVariants:ZoneCacheVariants")]
     public partial class ZoneCacheVariants : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif.
+        /// Whether the setting is editable
         /// </summary>
-        [Output("avifs")]
-        public Output<ImmutableArray<string>> Avifs { get; private set; } = null!;
+        [Output("editable")]
+        public Output<bool> Editable { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp.
+        /// Last time this setting was modified.
         /// </summary>
-        [Output("bmps")]
-        public Output<ImmutableArray<string>> Bmps { get; private set; } = null!;
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif.
+        /// Value of the zone setting.
         /// </summary>
-        [Output("gifs")]
-        public Output<ImmutableArray<string>> Gifs { get; private set; } = null!;
+        [Output("value")]
+        public Output<Outputs.ZoneCacheVariantsValue> Value { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2.
-        /// </summary>
-        [Output("jp2s")]
-        public Output<ImmutableArray<string>> Jp2s { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg.
-        /// </summary>
-        [Output("jpegs")]
-        public Output<ImmutableArray<string>> Jpegs { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2.
-        /// </summary>
-        [Output("jpg2s")]
-        public Output<ImmutableArray<string>> Jpg2s { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg.
-        /// </summary>
-        [Output("jpgs")]
-        public Output<ImmutableArray<string>> Jpgs { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png.
-        /// </summary>
-        [Output("pngs")]
-        public Output<ImmutableArray<string>> Pngs { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff.
-        /// </summary>
-        [Output("tiffs")]
-        public Output<ImmutableArray<string>> Tiffs { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif.
-        /// </summary>
-        [Output("tifs")]
-        public Output<ImmutableArray<string>> Tifs { get; private set; } = null!;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp.
-        /// </summary>
-        [Output("webps")]
-        public Output<ImmutableArray<string>> Webps { get; private set; } = null!;
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -206,140 +91,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneCacheVariantsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("avifs")]
-        private InputList<string>? _avifs;
-
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif.
+        /// Value of the zone setting.
         /// </summary>
-        public InputList<string> Avifs
-        {
-            get => _avifs ?? (_avifs = new InputList<string>());
-            set => _avifs = value;
-        }
-
-        [Input("bmps")]
-        private InputList<string>? _bmps;
+        [Input("value", required: true)]
+        public Input<Inputs.ZoneCacheVariantsValueArgs> Value { get; set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp.
-        /// </summary>
-        public InputList<string> Bmps
-        {
-            get => _bmps ?? (_bmps = new InputList<string>());
-            set => _bmps = value;
-        }
-
-        [Input("gifs")]
-        private InputList<string>? _gifs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif.
-        /// </summary>
-        public InputList<string> Gifs
-        {
-            get => _gifs ?? (_gifs = new InputList<string>());
-            set => _gifs = value;
-        }
-
-        [Input("jp2s")]
-        private InputList<string>? _jp2s;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2.
-        /// </summary>
-        public InputList<string> Jp2s
-        {
-            get => _jp2s ?? (_jp2s = new InputList<string>());
-            set => _jp2s = value;
-        }
-
-        [Input("jpegs")]
-        private InputList<string>? _jpegs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg.
-        /// </summary>
-        public InputList<string> Jpegs
-        {
-            get => _jpegs ?? (_jpegs = new InputList<string>());
-            set => _jpegs = value;
-        }
-
-        [Input("jpg2s")]
-        private InputList<string>? _jpg2s;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2.
-        /// </summary>
-        public InputList<string> Jpg2s
-        {
-            get => _jpg2s ?? (_jpg2s = new InputList<string>());
-            set => _jpg2s = value;
-        }
-
-        [Input("jpgs")]
-        private InputList<string>? _jpgs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg.
-        /// </summary>
-        public InputList<string> Jpgs
-        {
-            get => _jpgs ?? (_jpgs = new InputList<string>());
-            set => _jpgs = value;
-        }
-
-        [Input("pngs")]
-        private InputList<string>? _pngs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png.
-        /// </summary>
-        public InputList<string> Pngs
-        {
-            get => _pngs ?? (_pngs = new InputList<string>());
-            set => _pngs = value;
-        }
-
-        [Input("tiffs")]
-        private InputList<string>? _tiffs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff.
-        /// </summary>
-        public InputList<string> Tiffs
-        {
-            get => _tiffs ?? (_tiffs = new InputList<string>());
-            set => _tiffs = value;
-        }
-
-        [Input("tifs")]
-        private InputList<string>? _tifs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif.
-        /// </summary>
-        public InputList<string> Tifs
-        {
-            get => _tifs ?? (_tifs = new InputList<string>());
-            set => _tifs = value;
-        }
-
-        [Input("webps")]
-        private InputList<string>? _webps;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp.
-        /// </summary>
-        public InputList<string> Webps
-        {
-            get => _webps ?? (_webps = new InputList<string>());
-            set => _webps = value;
-        }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -352,140 +111,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneCacheVariantsState : global::Pulumi.ResourceArgs
     {
-        [Input("avifs")]
-        private InputList<string>? _avifs;
-
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif.
+        /// Whether the setting is editable
         /// </summary>
-        public InputList<string> Avifs
-        {
-            get => _avifs ?? (_avifs = new InputList<string>());
-            set => _avifs = value;
-        }
-
-        [Input("bmps")]
-        private InputList<string>? _bmps;
+        [Input("editable")]
+        public Input<bool>? Editable { get; set; }
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp.
+        /// Last time this setting was modified.
         /// </summary>
-        public InputList<string> Bmps
-        {
-            get => _bmps ?? (_bmps = new InputList<string>());
-            set => _bmps = value;
-        }
-
-        [Input("gifs")]
-        private InputList<string>? _gifs;
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif.
+        /// Value of the zone setting.
         /// </summary>
-        public InputList<string> Gifs
-        {
-            get => _gifs ?? (_gifs = new InputList<string>());
-            set => _gifs = value;
-        }
-
-        [Input("jp2s")]
-        private InputList<string>? _jp2s;
+        [Input("value")]
+        public Input<Inputs.ZoneCacheVariantsValueGetArgs>? Value { get; set; }
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2.
-        /// </summary>
-        public InputList<string> Jp2s
-        {
-            get => _jp2s ?? (_jp2s = new InputList<string>());
-            set => _jp2s = value;
-        }
-
-        [Input("jpegs")]
-        private InputList<string>? _jpegs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg.
-        /// </summary>
-        public InputList<string> Jpegs
-        {
-            get => _jpegs ?? (_jpegs = new InputList<string>());
-            set => _jpegs = value;
-        }
-
-        [Input("jpg2s")]
-        private InputList<string>? _jpg2s;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2.
-        /// </summary>
-        public InputList<string> Jpg2s
-        {
-            get => _jpg2s ?? (_jpg2s = new InputList<string>());
-            set => _jpg2s = value;
-        }
-
-        [Input("jpgs")]
-        private InputList<string>? _jpgs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg.
-        /// </summary>
-        public InputList<string> Jpgs
-        {
-            get => _jpgs ?? (_jpgs = new InputList<string>());
-            set => _jpgs = value;
-        }
-
-        [Input("pngs")]
-        private InputList<string>? _pngs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png.
-        /// </summary>
-        public InputList<string> Pngs
-        {
-            get => _pngs ?? (_pngs = new InputList<string>());
-            set => _pngs = value;
-        }
-
-        [Input("tiffs")]
-        private InputList<string>? _tiffs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff.
-        /// </summary>
-        public InputList<string> Tiffs
-        {
-            get => _tiffs ?? (_tiffs = new InputList<string>());
-            set => _tiffs = value;
-        }
-
-        [Input("tifs")]
-        private InputList<string>? _tifs;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif.
-        /// </summary>
-        public InputList<string> Tifs
-        {
-            get => _tifs ?? (_tifs = new InputList<string>());
-            set => _tifs = value;
-        }
-
-        [Input("webps")]
-        private InputList<string>? _webps;
-
-        /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp.
-        /// </summary>
-        public InputList<string> Webps
-        {
-            get => _webps ?? (_webps = new InputList<string>());
-            set => _webps = value;
-        }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

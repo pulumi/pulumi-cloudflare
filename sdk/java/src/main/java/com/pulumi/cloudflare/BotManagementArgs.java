@@ -33,14 +33,14 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     @Import(name="autoUpdateModel")
     private @Nullable Output<Boolean> autoUpdateModel;
 
     /**
-     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     public Optional<Output<Boolean>> autoUpdateModel() {
@@ -123,14 +123,18 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     @Import(name="sbfmStaticResourceProtection")
     private @Nullable Output<Boolean> sbfmStaticResourceProtection;
 
     /**
-     * @return Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * @return Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     public Optional<Output<Boolean>> sbfmStaticResourceProtection() {
@@ -168,14 +172,14 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -238,7 +242,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
          * 
          * @return builder
          * 
@@ -249,7 +253,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
          * 
          * @return builder
          * 
@@ -364,7 +368,9 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection.
+         * Enable if static resources on your application need bot protection.
+         * Note: Static resource protection can also result in legitimate traffic being blocked.
          * 
          * @return builder
          * 
@@ -375,7 +381,9 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection.
+         * Enable if static resources on your application need bot protection.
+         * Note: Static resource protection can also result in legitimate traffic being blocked.
          * 
          * @return builder
          * 
@@ -427,7 +435,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -438,7 +446,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

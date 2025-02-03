@@ -24,38 +24,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:cloudflare")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-     * environment variable.
-     * 
-     */
-    @Export(name="apiBasePath", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> apiBasePath;
-
-    /**
-     * @return Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-     * environment variable.
-     * 
-     */
-    public Output<Optional<String>> apiBasePath() {
-        return Codegen.optional(this.apiBasePath);
-    }
-    /**
-     * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-     * environment variable.
-     * 
-     */
-    @Export(name="apiHostname", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> apiHostname;
-
-    /**
-     * @return Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-     * environment variable.
-     * 
-     */
-    public Output<Optional<String>> apiHostname() {
-        return Codegen.optional(this.apiHostname);
-    }
-    /**
      * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
      * keys are [now considered legacy by
      * Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -108,6 +76,22 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> apiUserServiceKey() {
         return Codegen.optional(this.apiUserServiceKey);
+    }
+    /**
+     * Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
+     * variable.
+     * 
+     */
+    @Export(name="baseUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> baseUrl;
+
+    /**
+     * @return Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
+     * variable.
+     * 
+     */
+    public Output<Optional<String>> baseUrl() {
+        return Codegen.optional(this.baseUrl);
     }
     /**
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment

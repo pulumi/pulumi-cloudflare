@@ -8,18 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to configure Bot Management.
-//
-// Specifically, this resource can be used to manage:
-//
-// - **Bot Fight Mode**
-// - **Super Bot Fight Mode**
-// - **Bot Management for Enterprise**
-//
 // ## Example Usage
 //
 // ```go
@@ -27,21 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewBotManagement(ctx, "example", &cloudflare.BotManagementArgs{
-//				ZoneId:                       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				EnableJs:                     pulumi.Bool(true),
-//				SbfmDefinitelyAutomated:      pulumi.String("block"),
-//				SbfmLikelyAutomated:          pulumi.String("managed_challenge"),
-//				SbfmVerifiedBots:             pulumi.String("allow"),
-//				SbfmStaticResourceProtection: pulumi.Bool(false),
-//				OptimizeWordpress:            pulumi.Bool(true),
+//			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
+//				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiBotsProtection: pulumi.String("block"),
+//				EnableJs:         pulumi.Bool(true),
+//				FightMode:        pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -55,14 +44,14 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/botManagement:BotManagement example <zone_id>
+// $ pulumi import cloudflare:index/botManagement:BotManagement example '<zone_id>'
 // ```
 type BotManagement struct {
 	pulumi.CustomResourceState
 
 	// Enable rule to block AI Scrapers and Crawlers.
-	AiBotsProtection pulumi.StringOutput `pulumi:"aiBotsProtection"`
-	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+	AiBotsProtection pulumi.StringPtrOutput `pulumi:"aiBotsProtection"`
+	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrOutput `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrOutput `pulumi:"enableJs"`
@@ -74,15 +63,19 @@ type BotManagement struct {
 	SbfmDefinitelyAutomated pulumi.StringPtrOutput `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
 	SbfmLikelyAutomated pulumi.StringPtrOutput `pulumi:"sbfmLikelyAutomated"`
-	// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+	// Super Bot Fight Mode (SBFM) to enable static resource protection.
+	// Enable if static resources on your application need bot protection.
+	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrOutput `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
 	SbfmVerifiedBots pulumi.StringPtrOutput `pulumi:"sbfmVerifiedBots"`
+	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+	StaleZoneConfiguration BotManagementStaleZoneConfigurationOutput `pulumi:"staleZoneConfiguration"`
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
-	SuppressSessionScore pulumi.BoolPtrOutput `pulumi:"suppressSessionScore"`
+	SuppressSessionScore pulumi.BoolOutput `pulumi:"suppressSessionScore"`
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel pulumi.BoolOutput `pulumi:"usingLatestModel"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -121,7 +114,7 @@ func GetBotManagement(ctx *pulumi.Context,
 type botManagementState struct {
 	// Enable rule to block AI Scrapers and Crawlers.
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
-	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs *bool `pulumi:"enableJs"`
@@ -133,22 +126,26 @@ type botManagementState struct {
 	SbfmDefinitelyAutomated *string `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
 	SbfmLikelyAutomated *string `pulumi:"sbfmLikelyAutomated"`
-	// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+	// Super Bot Fight Mode (SBFM) to enable static resource protection.
+	// Enable if static resources on your application need bot protection.
+	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection *bool `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
 	SbfmVerifiedBots *string `pulumi:"sbfmVerifiedBots"`
+	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+	StaleZoneConfiguration *BotManagementStaleZoneConfiguration `pulumi:"staleZoneConfiguration"`
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore *bool `pulumi:"suppressSessionScore"`
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel *bool `pulumi:"usingLatestModel"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type BotManagementState struct {
 	// Enable rule to block AI Scrapers and Crawlers.
 	AiBotsProtection pulumi.StringPtrInput
-	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrInput
@@ -160,15 +157,19 @@ type BotManagementState struct {
 	SbfmDefinitelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
 	SbfmLikelyAutomated pulumi.StringPtrInput
-	// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+	// Super Bot Fight Mode (SBFM) to enable static resource protection.
+	// Enable if static resources on your application need bot protection.
+	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
 	SbfmVerifiedBots pulumi.StringPtrInput
+	// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+	StaleZoneConfiguration BotManagementStaleZoneConfigurationPtrInput
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore pulumi.BoolPtrInput
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -179,7 +180,7 @@ func (BotManagementState) ElementType() reflect.Type {
 type botManagementArgs struct {
 	// Enable rule to block AI Scrapers and Crawlers.
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
-	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs *bool `pulumi:"enableJs"`
@@ -191,13 +192,15 @@ type botManagementArgs struct {
 	SbfmDefinitelyAutomated *string `pulumi:"sbfmDefinitelyAutomated"`
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
 	SbfmLikelyAutomated *string `pulumi:"sbfmLikelyAutomated"`
-	// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+	// Super Bot Fight Mode (SBFM) to enable static resource protection.
+	// Enable if static resources on your application need bot protection.
+	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection *bool `pulumi:"sbfmStaticResourceProtection"`
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
 	SbfmVerifiedBots *string `pulumi:"sbfmVerifiedBots"`
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore *bool `pulumi:"suppressSessionScore"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -205,7 +208,7 @@ type botManagementArgs struct {
 type BotManagementArgs struct {
 	// Enable rule to block AI Scrapers and Crawlers.
 	AiBotsProtection pulumi.StringPtrInput
-	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
 	EnableJs pulumi.BoolPtrInput
@@ -217,13 +220,15 @@ type BotManagementArgs struct {
 	SbfmDefinitelyAutomated pulumi.StringPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
 	SbfmLikelyAutomated pulumi.StringPtrInput
-	// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+	// Super Bot Fight Mode (SBFM) to enable static resource protection.
+	// Enable if static resources on your application need bot protection.
+	// Note: Static resource protection can also result in legitimate traffic being blocked.
 	SbfmStaticResourceProtection pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
 	SbfmVerifiedBots pulumi.StringPtrInput
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -315,11 +320,11 @@ func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Contex
 }
 
 // Enable rule to block AI Scrapers and Crawlers.
-func (o BotManagementOutput) AiBotsProtection() pulumi.StringOutput {
-	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.AiBotsProtection }).(pulumi.StringOutput)
+func (o BotManagementOutput) AiBotsProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.AiBotsProtection }).(pulumi.StringPtrOutput)
 }
 
-// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 func (o BotManagementOutput) AutoUpdateModel() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolPtrOutput { return v.AutoUpdateModel }).(pulumi.BoolPtrOutput)
 }
@@ -349,7 +354,9 @@ func (o BotManagementOutput) SbfmLikelyAutomated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.SbfmLikelyAutomated }).(pulumi.StringPtrOutput)
 }
 
-// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+// Super Bot Fight Mode (SBFM) to enable static resource protection.
+// Enable if static resources on your application need bot protection.
+// Note: Static resource protection can also result in legitimate traffic being blocked.
 func (o BotManagementOutput) SbfmStaticResourceProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolPtrOutput { return v.SbfmStaticResourceProtection }).(pulumi.BoolPtrOutput)
 }
@@ -359,9 +366,14 @@ func (o BotManagementOutput) SbfmVerifiedBots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringPtrOutput { return v.SbfmVerifiedBots }).(pulumi.StringPtrOutput)
 }
 
+// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+func (o BotManagementOutput) StaleZoneConfiguration() BotManagementStaleZoneConfigurationOutput {
+	return o.ApplyT(func(v *BotManagement) BotManagementStaleZoneConfigurationOutput { return v.StaleZoneConfiguration }).(BotManagementStaleZoneConfigurationOutput)
+}
+
 // Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
-func (o BotManagementOutput) SuppressSessionScore() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BotManagement) pulumi.BoolPtrOutput { return v.SuppressSessionScore }).(pulumi.BoolPtrOutput)
+func (o BotManagementOutput) SuppressSessionScore() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.SuppressSessionScore }).(pulumi.BoolOutput)
 }
 
 // A read-only field that indicates whether the zone currently is running the latest ML model.
@@ -369,7 +381,7 @@ func (o BotManagementOutput) UsingLatestModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.UsingLatestModel }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o BotManagementOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

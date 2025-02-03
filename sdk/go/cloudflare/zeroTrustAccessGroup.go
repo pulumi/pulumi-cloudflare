@@ -8,37 +8,83 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Group resource. Access Groups are used
-// in conjunction with Access Policies to restrict access to a
-// particular resource based on group membership.
+// ## Example Usage
 //
-// > It's required that an `accountId` or `zoneId` is provided and in
+// ```go
+// package main
 //
-//	most cases using either is fine. However, if you're using a scoped
-//	access token, you must provide the argument that matches the token's
-//	scope. For example, an access token that is scoped to the "example.com"
-//	zone needs to use the `zoneId` argument.
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessGroup(ctx, "example_zero_trust_access_group", &cloudflare.ZeroTrustAccessGroupArgs{
+//				Includes: cloudflare.ZeroTrustAccessGroupIncludeArray{
+//					&cloudflare.ZeroTrustAccessGroupIncludeArgs{
+//						Group: &cloudflare.ZeroTrustAccessGroupIncludeGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//				Name:   pulumi.String("Allow devs"),
+//				ZoneId: pulumi.String("zone_id"),
+//				Excludes: cloudflare.ZeroTrustAccessGroupExcludeArray{
+//					&cloudflare.ZeroTrustAccessGroupExcludeArgs{
+//						Group: &cloudflare.ZeroTrustAccessGroupExcludeGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//				IsDefault: pulumi.Bool(true),
+//				Requires: cloudflare.ZeroTrustAccessGroupRequireArray{
+//					&cloudflare.ZeroTrustAccessGroupRequireArgs{
+//						Group: &cloudflare.ZeroTrustAccessGroupRequireGroupArgs{
+//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example <account_id>/<group_id>
+// $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
 // ```
 type ZeroTrustAccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrOutput                 `pulumi:"accountId"`
-	Excludes  ZeroTrustAccessGroupExcludeArrayOutput `pulumi:"excludes"`
-	Includes  ZeroTrustAccessGroupIncludeArrayOutput `pulumi:"includes"`
-	Name      pulumi.StringOutput                    `pulumi:"name"`
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+	Excludes ZeroTrustAccessGroupExcludeArrayOutput `pulumi:"excludes"`
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+	Includes ZeroTrustAccessGroupIncludeArrayOutput `pulumi:"includes"`
+	// Whether this is the default group
+	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	// The name of the Access group.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 	Requires  ZeroTrustAccessGroupRequireArrayOutput `pulumi:"requires"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	UpdatedAt pulumi.StringOutput                    `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewZeroTrustAccessGroup registers a new resource with the given unique name, arguments, and options.
@@ -77,24 +123,40 @@ func GetZeroTrustAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessGroup resources.
 type zeroTrustAccessGroupState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string                       `pulumi:"accountId"`
-	Excludes  []ZeroTrustAccessGroupExclude `pulumi:"excludes"`
-	Includes  []ZeroTrustAccessGroupInclude `pulumi:"includes"`
-	Name      *string                       `pulumi:"name"`
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+	Excludes []ZeroTrustAccessGroupExclude `pulumi:"excludes"`
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+	Includes []ZeroTrustAccessGroupInclude `pulumi:"includes"`
+	// Whether this is the default group
+	IsDefault *bool `pulumi:"isDefault"`
+	// The name of the Access group.
+	Name *string `pulumi:"name"`
+	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 	Requires  []ZeroTrustAccessGroupRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	UpdatedAt *string                       `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZeroTrustAccessGroupState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	Excludes  ZeroTrustAccessGroupExcludeArrayInput
-	Includes  ZeroTrustAccessGroupIncludeArrayInput
-	Name      pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+	Excludes ZeroTrustAccessGroupExcludeArrayInput
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+	Includes ZeroTrustAccessGroupIncludeArrayInput
+	// Whether this is the default group
+	IsDefault pulumi.BoolPtrInput
+	// The name of the Access group.
+	Name pulumi.StringPtrInput
+	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 	Requires  ZeroTrustAccessGroupRequireArrayInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	UpdatedAt pulumi.StringPtrInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -103,25 +165,37 @@ func (ZeroTrustAccessGroupState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessGroupArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string                       `pulumi:"accountId"`
-	Excludes  []ZeroTrustAccessGroupExclude `pulumi:"excludes"`
-	Includes  []ZeroTrustAccessGroupInclude `pulumi:"includes"`
-	Name      string                        `pulumi:"name"`
-	Requires  []ZeroTrustAccessGroupRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
+	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+	Excludes []ZeroTrustAccessGroupExclude `pulumi:"excludes"`
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+	Includes []ZeroTrustAccessGroupInclude `pulumi:"includes"`
+	// Whether this is the default group
+	IsDefault *bool `pulumi:"isDefault"`
+	// The name of the Access group.
+	Name string `pulumi:"name"`
+	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+	Requires []ZeroTrustAccessGroupRequire `pulumi:"requires"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessGroup resource.
 type ZeroTrustAccessGroupArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	Excludes  ZeroTrustAccessGroupExcludeArrayInput
-	Includes  ZeroTrustAccessGroupIncludeArrayInput
-	Name      pulumi.StringInput
-	Requires  ZeroTrustAccessGroupRequireArrayInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+	Excludes ZeroTrustAccessGroupExcludeArrayInput
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+	Includes ZeroTrustAccessGroupIncludeArrayInput
+	// Whether this is the default group
+	IsDefault pulumi.BoolPtrInput
+	// The name of the Access group.
+	Name pulumi.StringInput
+	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+	Requires ZeroTrustAccessGroupRequireArrayInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -212,30 +286,47 @@ func (o ZeroTrustAccessGroupOutput) ToZeroTrustAccessGroupOutputWithContext(ctx 
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o ZeroTrustAccessGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+func (o ZeroTrustAccessGroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 func (o ZeroTrustAccessGroupOutput) Excludes() ZeroTrustAccessGroupExcludeArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessGroup) ZeroTrustAccessGroupExcludeArrayOutput { return v.Excludes }).(ZeroTrustAccessGroupExcludeArrayOutput)
 }
 
+// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 func (o ZeroTrustAccessGroupOutput) Includes() ZeroTrustAccessGroupIncludeArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessGroup) ZeroTrustAccessGroupIncludeArrayOutput { return v.Includes }).(ZeroTrustAccessGroupIncludeArrayOutput)
 }
 
+// Whether this is the default group
+func (o ZeroTrustAccessGroupOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Access group.
 func (o ZeroTrustAccessGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 func (o ZeroTrustAccessGroupOutput) Requires() ZeroTrustAccessGroupRequireArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessGroup) ZeroTrustAccessGroupRequireArrayOutput { return v.Requires }).(ZeroTrustAccessGroupRequireArrayOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
-func (o ZeroTrustAccessGroupOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessGroupOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o ZeroTrustAccessGroupOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroup) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ZeroTrustAccessGroupArrayOutput struct{ *pulumi.OutputState }

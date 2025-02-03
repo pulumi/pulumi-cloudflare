@@ -4,14 +4,12 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFields;
-import com.pulumi.cloudflare.outputs.PageRuleActionsCacheTtlByStatus;
 import com.pulumi.cloudflare.outputs.PageRuleActionsForwardingUrl;
-import com.pulumi.cloudflare.outputs.PageRuleActionsMinify;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,7 +30,7 @@ public final class PageRuleActions {
      * @return The Time To Live for the browser cache. `0` means &#39;Respect Existing Headers&#39;
      * 
      */
-    private @Nullable String browserCacheTtl;
+    private @Nullable Integer browserCacheTtl;
     /**
      * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
      * 
@@ -72,7 +70,7 @@ public final class PageRuleActions {
      * @return Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
      * 
      */
-    private @Nullable List<PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses;
+    private @Nullable Object cacheTtlByStatus;
     /**
      * @return Boolean of whether this action is enabled. Default: false.
      * 
@@ -83,11 +81,6 @@ public final class PageRuleActions {
      * 
      */
     private @Nullable Boolean disablePerformance;
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
-    private @Nullable Boolean disableRailgun;
     /**
      * @return Boolean of whether this action is enabled. Default: false.
      * 
@@ -128,11 +121,6 @@ public final class PageRuleActions {
      * 
      */
     private @Nullable String ipGeolocation;
-    /**
-     * @return The configuration for HTML, CSS and JS minification. See below for full list of options.
-     * 
-     */
-    private @Nullable List<PageRuleActionsMinify> minifies;
     /**
      * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
      * 
@@ -182,11 +170,6 @@ public final class PageRuleActions {
      * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
      * 
      */
-    private @Nullable String serverSideExclude;
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     private @Nullable String sortQueryStringForCache;
     /**
      * @return Whether to set the SSL mode to `&#34;off&#34;`, `&#34;flexible&#34;`, `&#34;full&#34;`, `&#34;strict&#34;`, or `&#34;origin_pull&#34;`.
@@ -223,7 +206,7 @@ public final class PageRuleActions {
      * @return The Time To Live for the browser cache. `0` means &#39;Respect Existing Headers&#39;
      * 
      */
-    public Optional<String> browserCacheTtl() {
+    public Optional<Integer> browserCacheTtl() {
         return Optional.ofNullable(this.browserCacheTtl);
     }
     /**
@@ -279,8 +262,8 @@ public final class PageRuleActions {
      * @return Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
      * 
      */
-    public List<PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses() {
-        return this.cacheTtlByStatuses == null ? List.of() : this.cacheTtlByStatuses;
+    public Optional<Object> cacheTtlByStatus() {
+        return Optional.ofNullable(this.cacheTtlByStatus);
     }
     /**
      * @return Boolean of whether this action is enabled. Default: false.
@@ -295,13 +278,6 @@ public final class PageRuleActions {
      */
     public Optional<Boolean> disablePerformance() {
         return Optional.ofNullable(this.disablePerformance);
-    }
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
-    public Optional<Boolean> disableRailgun() {
-        return Optional.ofNullable(this.disableRailgun);
     }
     /**
      * @return Boolean of whether this action is enabled. Default: false.
@@ -358,13 +334,6 @@ public final class PageRuleActions {
      */
     public Optional<String> ipGeolocation() {
         return Optional.ofNullable(this.ipGeolocation);
-    }
-    /**
-     * @return The configuration for HTML, CSS and JS minification. See below for full list of options.
-     * 
-     */
-    public List<PageRuleActionsMinify> minifies() {
-        return this.minifies == null ? List.of() : this.minifies;
     }
     /**
      * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
@@ -433,13 +402,6 @@ public final class PageRuleActions {
      * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
      * 
      */
-    public Optional<String> serverSideExclude() {
-        return Optional.ofNullable(this.serverSideExclude);
-    }
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     public Optional<String> sortQueryStringForCache() {
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
@@ -476,7 +438,7 @@ public final class PageRuleActions {
     public static final class Builder {
         private @Nullable Boolean alwaysUseHttps;
         private @Nullable String automaticHttpsRewrites;
-        private @Nullable String browserCacheTtl;
+        private @Nullable Integer browserCacheTtl;
         private @Nullable String browserCheck;
         private @Nullable String bypassCacheOnCookie;
         private @Nullable String cacheByDeviceType;
@@ -484,10 +446,9 @@ public final class PageRuleActions {
         private @Nullable PageRuleActionsCacheKeyFields cacheKeyFields;
         private @Nullable String cacheLevel;
         private @Nullable String cacheOnCookie;
-        private @Nullable List<PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses;
+        private @Nullable Object cacheTtlByStatus;
         private @Nullable Boolean disableApps;
         private @Nullable Boolean disablePerformance;
-        private @Nullable Boolean disableRailgun;
         private @Nullable Boolean disableSecurity;
         private @Nullable Boolean disableZaraz;
         private @Nullable Integer edgeCacheTtl;
@@ -496,7 +457,6 @@ public final class PageRuleActions {
         private @Nullable PageRuleActionsForwardingUrl forwardingUrl;
         private @Nullable String hostHeaderOverride;
         private @Nullable String ipGeolocation;
-        private @Nullable List<PageRuleActionsMinify> minifies;
         private @Nullable String mirage;
         private @Nullable String opportunisticEncryption;
         private @Nullable String originErrorPagePassThru;
@@ -506,7 +466,6 @@ public final class PageRuleActions {
         private @Nullable String responseBuffering;
         private @Nullable String rocketLoader;
         private @Nullable String securityLevel;
-        private @Nullable String serverSideExclude;
         private @Nullable String sortQueryStringForCache;
         private @Nullable String ssl;
         private @Nullable String trueClientIpHeader;
@@ -524,10 +483,9 @@ public final class PageRuleActions {
     	      this.cacheKeyFields = defaults.cacheKeyFields;
     	      this.cacheLevel = defaults.cacheLevel;
     	      this.cacheOnCookie = defaults.cacheOnCookie;
-    	      this.cacheTtlByStatuses = defaults.cacheTtlByStatuses;
+    	      this.cacheTtlByStatus = defaults.cacheTtlByStatus;
     	      this.disableApps = defaults.disableApps;
     	      this.disablePerformance = defaults.disablePerformance;
-    	      this.disableRailgun = defaults.disableRailgun;
     	      this.disableSecurity = defaults.disableSecurity;
     	      this.disableZaraz = defaults.disableZaraz;
     	      this.edgeCacheTtl = defaults.edgeCacheTtl;
@@ -536,7 +494,6 @@ public final class PageRuleActions {
     	      this.forwardingUrl = defaults.forwardingUrl;
     	      this.hostHeaderOverride = defaults.hostHeaderOverride;
     	      this.ipGeolocation = defaults.ipGeolocation;
-    	      this.minifies = defaults.minifies;
     	      this.mirage = defaults.mirage;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
     	      this.originErrorPagePassThru = defaults.originErrorPagePassThru;
@@ -546,7 +503,6 @@ public final class PageRuleActions {
     	      this.responseBuffering = defaults.responseBuffering;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.securityLevel = defaults.securityLevel;
-    	      this.serverSideExclude = defaults.serverSideExclude;
     	      this.sortQueryStringForCache = defaults.sortQueryStringForCache;
     	      this.ssl = defaults.ssl;
     	      this.trueClientIpHeader = defaults.trueClientIpHeader;
@@ -566,7 +522,7 @@ public final class PageRuleActions {
             return this;
         }
         @CustomType.Setter
-        public Builder browserCacheTtl(@Nullable String browserCacheTtl) {
+        public Builder browserCacheTtl(@Nullable Integer browserCacheTtl) {
 
             this.browserCacheTtl = browserCacheTtl;
             return this;
@@ -614,13 +570,10 @@ public final class PageRuleActions {
             return this;
         }
         @CustomType.Setter
-        public Builder cacheTtlByStatuses(@Nullable List<PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses) {
+        public Builder cacheTtlByStatus(@Nullable Object cacheTtlByStatus) {
 
-            this.cacheTtlByStatuses = cacheTtlByStatuses;
+            this.cacheTtlByStatus = cacheTtlByStatus;
             return this;
-        }
-        public Builder cacheTtlByStatuses(PageRuleActionsCacheTtlByStatus... cacheTtlByStatuses) {
-            return cacheTtlByStatuses(List.of(cacheTtlByStatuses));
         }
         @CustomType.Setter
         public Builder disableApps(@Nullable Boolean disableApps) {
@@ -632,12 +585,6 @@ public final class PageRuleActions {
         public Builder disablePerformance(@Nullable Boolean disablePerformance) {
 
             this.disablePerformance = disablePerformance;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder disableRailgun(@Nullable Boolean disableRailgun) {
-
-            this.disableRailgun = disableRailgun;
             return this;
         }
         @CustomType.Setter
@@ -687,15 +634,6 @@ public final class PageRuleActions {
 
             this.ipGeolocation = ipGeolocation;
             return this;
-        }
-        @CustomType.Setter
-        public Builder minifies(@Nullable List<PageRuleActionsMinify> minifies) {
-
-            this.minifies = minifies;
-            return this;
-        }
-        public Builder minifies(PageRuleActionsMinify... minifies) {
-            return minifies(List.of(minifies));
         }
         @CustomType.Setter
         public Builder mirage(@Nullable String mirage) {
@@ -752,12 +690,6 @@ public final class PageRuleActions {
             return this;
         }
         @CustomType.Setter
-        public Builder serverSideExclude(@Nullable String serverSideExclude) {
-
-            this.serverSideExclude = serverSideExclude;
-            return this;
-        }
-        @CustomType.Setter
         public Builder sortQueryStringForCache(@Nullable String sortQueryStringForCache) {
 
             this.sortQueryStringForCache = sortQueryStringForCache;
@@ -793,10 +725,9 @@ public final class PageRuleActions {
             _resultValue.cacheKeyFields = cacheKeyFields;
             _resultValue.cacheLevel = cacheLevel;
             _resultValue.cacheOnCookie = cacheOnCookie;
-            _resultValue.cacheTtlByStatuses = cacheTtlByStatuses;
+            _resultValue.cacheTtlByStatus = cacheTtlByStatus;
             _resultValue.disableApps = disableApps;
             _resultValue.disablePerformance = disablePerformance;
-            _resultValue.disableRailgun = disableRailgun;
             _resultValue.disableSecurity = disableSecurity;
             _resultValue.disableZaraz = disableZaraz;
             _resultValue.edgeCacheTtl = edgeCacheTtl;
@@ -805,7 +736,6 @@ public final class PageRuleActions {
             _resultValue.forwardingUrl = forwardingUrl;
             _resultValue.hostHeaderOverride = hostHeaderOverride;
             _resultValue.ipGeolocation = ipGeolocation;
-            _resultValue.minifies = minifies;
             _resultValue.mirage = mirage;
             _resultValue.opportunisticEncryption = opportunisticEncryption;
             _resultValue.originErrorPagePassThru = originErrorPagePassThru;
@@ -815,7 +745,6 @@ public final class PageRuleActions {
             _resultValue.responseBuffering = responseBuffering;
             _resultValue.rocketLoader = rocketLoader;
             _resultValue.securityLevel = securityLevel;
-            _resultValue.serverSideExclude = serverSideExclude;
             _resultValue.sortQueryStringForCache = sortQueryStringForCache;
             _resultValue.ssl = ssl;
             _resultValue.trueClientIpHeader = trueClientIpHeader;

@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Configure how fresh the session needs to be to be considered valid.
         /// </summary>
-        [Input("duration", required: true)]
-        public Input<string> Duration { get; set; } = null!;
+        [Input("duration")]
+        public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Enable session enforcement for this rule.
+        /// Set to true to enable session enforcement.
         /// </summary>
-        [Input("enforce", required: true)]
-        public Input<bool> Enforce { get; set; } = null!;
+        [Input("enforce")]
+        public Input<bool>? Enforce { get; set; }
 
         public ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs()
         {

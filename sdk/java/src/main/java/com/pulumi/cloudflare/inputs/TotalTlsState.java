@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     public static final TotalTlsState Empty = new TotalTlsState();
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * @return The Certificate Authority that Total TLS certificates will be issued through.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -32,14 +33,14 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable Total TLS for the zone.
+     * @return If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +48,29 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The validity period in days for the certificates ordered via Total TLS.
+     * 
+     */
+    @Import(name="validityPeriod")
+    private @Nullable Output<Integer> validityPeriod;
+
+    /**
+     * @return The validity period in days for the certificates ordered via Total TLS.
+     * 
+     */
+    public Optional<Output<Integer>> validityPeriod() {
+        return Optional.ofNullable(this.validityPeriod);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -66,6 +82,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
     private TotalTlsState(TotalTlsState $) {
         this.certificateAuthority = $.certificateAuthority;
         this.enabled = $.enabled;
+        this.validityPeriod = $.validityPeriod;
         this.zoneId = $.zoneId;
     }
 
@@ -88,7 +105,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
          * 
          * @return builder
          * 
@@ -99,7 +116,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
          * 
          * @return builder
          * 
@@ -109,7 +126,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable Total TLS for the zone.
+         * @param enabled If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
          * 
          * @return builder
          * 
@@ -120,7 +137,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable Total TLS for the zone.
+         * @param enabled If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
          * 
          * @return builder
          * 
@@ -130,7 +147,28 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validityPeriod(@Nullable Output<Integer> validityPeriod) {
+            $.validityPeriod = validityPeriod;
+            return this;
+        }
+
+        /**
+         * @param validityPeriod The validity period in days for the certificates ordered via Total TLS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validityPeriod(Integer validityPeriod) {
+            return validityPeriod(Output.of(validityPeriod));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -141,7 +179,7 @@ public final class TotalTlsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

@@ -5,30 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Data Localization Suite Regional Hostname.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Regionalized hostname record resources are managed independently from the
- * // Regionalized Hostname resources.
- * const example = new cloudflare.Record("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "example.com",
- *     content: "192.0.2.1",
- *     type: "A",
- *     ttl: 3600,
+ * const exampleRegionalHostname = new cloudflare.RegionalHostname("example_regional_hostname", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     hostname: "foo.example.com",
+ *     regionKey: "ca",
  * });
- * // The cloudflare_regional_hostname resource may exist with or without its
- * // corresponding record resource.
- * const exampleRegionalHostname = new cloudflare.RegionalHostname("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     hostname: "example.com",
- *     regionKey: "eu",
- * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
  * ```
  */
 export class RegionalHostname extends pulumi.CustomResource {
@@ -60,19 +53,19 @@ export class RegionalHostname extends pulumi.CustomResource {
     }
 
     /**
-     * The RFC3339 timestamp of when the hostname was created.
+     * When the regional hostname was created
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      */
     public readonly regionKey!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -119,19 +112,19 @@ export class RegionalHostname extends pulumi.CustomResource {
  */
 export interface RegionalHostnameState {
     /**
-     * The RFC3339 timestamp of when the hostname was created.
+     * When the regional hostname was created
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      */
     regionKey?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -141,15 +134,15 @@ export interface RegionalHostnameState {
  */
 export interface RegionalHostnameArgs {
     /**
-     * The hostname to regionalize.
+     * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
     hostname: pulumi.Input<string>;
     /**
-     * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+     * Identifying key for the region
      */
     regionKey: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

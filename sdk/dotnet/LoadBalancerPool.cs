@@ -10,179 +10,112 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Load Balancer pool resource. This provides a
-    /// pool of origins that can be used by a Cloudflare Load Balancer.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.LoadBalancerPool("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example-pool",
-    ///         Origins = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
-    ///             {
-    ///                 Name = "example-1",
-    ///                 Address = "192.0.2.1",
-    ///                 Enabled = false,
-    ///                 Headers = new[]
-    ///                 {
-    ///                     new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
-    ///                     {
-    ///                         Header = "Host",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "example-1",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
-    ///             {
-    ///                 Name = "example-2",
-    ///                 Address = "192.0.2.2",
-    ///                 Headers = new[]
-    ///                 {
-    ///                     new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
-    ///                     {
-    ///                         Header = "Host",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "example-2",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Latitude = 55,
-    ///         Longitude = -12,
-    ///         Description = "example load balancer pool",
-    ///         Enabled = false,
-    ///         MinimumOrigins = 1,
-    ///         NotificationEmail = "someone@example.com",
-    ///         LoadSheddings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
-    ///             {
-    ///                 DefaultPercent = 55,
-    ///                 DefaultPolicy = "random",
-    ///                 SessionPercent = 12,
-    ///                 SessionPolicy = "hash",
-    ///             },
-    ///         },
-    ///         OriginSteerings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
-    ///             {
-    ///                 Policy = "random",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_pool_id&gt;
+    /// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example '&lt;account_id&gt;/&lt;pool_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerPool:LoadBalancerPool")]
     public partial class LoadBalancerPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+        /// A list of regions from which to run health checks. Null means every Cloudflare data center.
         /// </summary>
         [Output("checkRegions")]
         public Output<ImmutableArray<string>> CheckRegions { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was created.
-        /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Free text description.
+        /// A human-readable description of the pool.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+        /// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
         /// </summary>
-        [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        [Output("disabledAt")]
+        public Output<string> DisabledAt { get; private set; } = null!;
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering.
+        /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         /// </summary>
         [Output("latitude")]
         public Output<double?> Latitude { get; private set; } = null!;
 
         /// <summary>
-        /// Setting for controlling load shedding for this pool.
+        /// Configures load shedding policies and percentages for the pool.
         /// </summary>
-        [Output("loadSheddings")]
-        public Output<ImmutableArray<Outputs.LoadBalancerPoolLoadShedding>> LoadSheddings { get; private set; } = null!;
+        [Output("loadShedding")]
+        public Output<Outputs.LoadBalancerPoolLoadShedding> LoadShedding { get; private set; } = null!;
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering.
+        /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
         /// </summary>
         [Output("longitude")]
         public Output<double?> Longitude { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
         /// </summary>
         [Output("minimumOrigins")]
-        public Output<int?> MinimumOrigins { get; private set; } = null!;
+        public Output<int> MinimumOrigins { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was last modified.
-        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Monitor to use for health checking origins within this pool.
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
         /// </summary>
         [Output("monitor")]
         public Output<string?> Monitor { get; private set; } = null!;
 
         /// <summary>
-        /// A short name (tag) for the pool.
+        /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        /// List of networks where Load Balancer or Pool is enabled.
+        /// </summary>
+        [Output("networks")]
+        public Output<ImmutableArray<string>> Networks { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Output("notificationEmail")]
         public Output<string?> NotificationEmail { get; private set; } = null!;
 
         /// <summary>
-        /// Set an origin steering policy to control origin selection within a pool.
+        /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
         /// </summary>
-        [Output("originSteerings")]
-        public Output<ImmutableArray<Outputs.LoadBalancerPoolOriginSteering>> OriginSteerings { get; private set; } = null!;
+        [Output("notificationFilter")]
+        public Output<Outputs.LoadBalancerPoolNotificationFilter> NotificationFilter { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+        /// </summary>
+        [Output("originSteering")]
+        public Output<Outputs.LoadBalancerPoolOriginSteering> OriginSteering { get; private set; } = null!;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -237,7 +170,7 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -246,7 +179,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+        /// A list of regions from which to run health checks. Null means every Cloudflare data center.
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -255,76 +188,70 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Free text description.
+        /// A human-readable description of the pool.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+        /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering.
+        /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         /// </summary>
         [Input("latitude")]
         public Input<double>? Latitude { get; set; }
 
-        [Input("loadSheddings")]
-        private InputList<Inputs.LoadBalancerPoolLoadSheddingArgs>? _loadSheddings;
-
         /// <summary>
-        /// Setting for controlling load shedding for this pool.
+        /// Configures load shedding policies and percentages for the pool.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolLoadSheddingArgs> LoadSheddings
-        {
-            get => _loadSheddings ?? (_loadSheddings = new InputList<Inputs.LoadBalancerPoolLoadSheddingArgs>());
-            set => _loadSheddings = value;
-        }
+        [Input("loadShedding")]
+        public Input<Inputs.LoadBalancerPoolLoadSheddingArgs>? LoadShedding { get; set; }
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering.
+        /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
         /// </summary>
         [Input("longitude")]
         public Input<double>? Longitude { get; set; }
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
         /// </summary>
         [Input("minimumOrigins")]
         public Input<int>? MinimumOrigins { get; set; }
 
         /// <summary>
-        /// The ID of the Monitor to use for health checking origins within this pool.
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
         /// </summary>
         [Input("monitor")]
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A short name (tag) for the pool.
+        /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        /// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }
 
-        [Input("originSteerings")]
-        private InputList<Inputs.LoadBalancerPoolOriginSteeringArgs>? _originSteerings;
+        /// <summary>
+        /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+        /// </summary>
+        [Input("notificationFilter")]
+        public Input<Inputs.LoadBalancerPoolNotificationFilterArgs>? NotificationFilter { get; set; }
 
         /// <summary>
-        /// Set an origin steering policy to control origin selection within a pool.
+        /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolOriginSteeringArgs> OriginSteerings
-        {
-            get => _originSteerings ?? (_originSteerings = new InputList<Inputs.LoadBalancerPoolOriginSteeringArgs>());
-            set => _originSteerings = value;
-        }
+        [Input("originSteering")]
+        public Input<Inputs.LoadBalancerPoolOriginSteeringArgs>? OriginSteering { get; set; }
 
         [Input("origins", required: true)]
         private InputList<Inputs.LoadBalancerPoolOriginArgs>? _origins;
@@ -347,7 +274,7 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -356,7 +283,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+        /// A list of regions from which to run health checks. Null means every Cloudflare data center.
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -364,89 +291,95 @@ namespace Pulumi.Cloudflare
             set => _checkRegions = value;
         }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was created.
-        /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Free text description.
+        /// A human-readable description of the pool.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+        /// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+        /// </summary>
+        [Input("disabledAt")]
+        public Input<string>? DisabledAt { get; set; }
+
+        /// <summary>
+        /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering.
+        /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         /// </summary>
         [Input("latitude")]
         public Input<double>? Latitude { get; set; }
 
-        [Input("loadSheddings")]
-        private InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs>? _loadSheddings;
-
         /// <summary>
-        /// Setting for controlling load shedding for this pool.
+        /// Configures load shedding policies and percentages for the pool.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs> LoadSheddings
-        {
-            get => _loadSheddings ?? (_loadSheddings = new InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs>());
-            set => _loadSheddings = value;
-        }
+        [Input("loadShedding")]
+        public Input<Inputs.LoadBalancerPoolLoadSheddingGetArgs>? LoadShedding { get; set; }
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering.
+        /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
         /// </summary>
         [Input("longitude")]
         public Input<double>? Longitude { get; set; }
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
         /// </summary>
         [Input("minimumOrigins")]
         public Input<int>? MinimumOrigins { get; set; }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was last modified.
-        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The ID of the Monitor to use for health checking origins within this pool.
+        /// The ID of the Monitor to use for checking the health of origins within this pool.
         /// </summary>
         [Input("monitor")]
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A short name (tag) for the pool.
+        /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networks")]
+        private InputList<string>? _networks;
+
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        /// List of networks where Load Balancer or Pool is enabled.
+        /// </summary>
+        public InputList<string> Networks
+        {
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
+        /// <summary>
+        /// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }
 
-        [Input("originSteerings")]
-        private InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs>? _originSteerings;
+        /// <summary>
+        /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+        /// </summary>
+        [Input("notificationFilter")]
+        public Input<Inputs.LoadBalancerPoolNotificationFilterGetArgs>? NotificationFilter { get; set; }
 
         /// <summary>
-        /// Set an origin steering policy to control origin selection within a pool.
+        /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs> OriginSteerings
-        {
-            get => _originSteerings ?? (_originSteerings = new InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs>());
-            set => _originSteerings = value;
-        }
+        [Input("originSteering")]
+        public Input<Inputs.LoadBalancerPoolOriginSteeringGetArgs>? OriginSteering { get; set; }
 
         [Input("origins")]
         private InputList<Inputs.LoadBalancerPoolOriginGetArgs>? _origins;

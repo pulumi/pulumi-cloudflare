@@ -13,43 +13,40 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+        /// The CIDR range of the destination. Single IPs will be computed as /32.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
         /// <summary>
-        /// The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+        /// The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        /// The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
         /// </summary>
         [Input("l4Protocol")]
         public Input<string>? L4Protocol { get; set; }
 
         /// <summary>
-        /// The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+        /// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
 
-        /// <summary>
-        /// The destination type. Available values: `public`, `private`. Defaults to `public`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+        /// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 
         /// <summary>
-        /// The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+        /// The VNET ID to match the destination. When omitted, all VNETs will match.
         /// </summary>
         [Input("vnetId")]
         public Input<string>? VnetId { get; set; }

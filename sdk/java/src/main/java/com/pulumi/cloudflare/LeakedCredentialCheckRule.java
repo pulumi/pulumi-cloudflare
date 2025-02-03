@@ -11,11 +11,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -26,8 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LeakedCredentialCheck;
- * import com.pulumi.cloudflare.LeakedCredentialCheckArgs;
  * import com.pulumi.cloudflare.LeakedCredentialCheckRule;
  * import com.pulumi.cloudflare.LeakedCredentialCheckRuleArgs;
  * import java.util.List;
@@ -43,17 +40,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Enable the Leaked Credentials Check detection before trying
- *         // to add detections.
- *         var example = new LeakedCredentialCheck("example", LeakedCredentialCheckArgs.builder()
- *             .zoneId("399c6f4950c01a5a141b99ff7fbcbd8b")
- *             .enabled(true)
- *             .build());
- * 
  *         var exampleLeakedCredentialCheckRule = new LeakedCredentialCheckRule("exampleLeakedCredentialCheckRule", LeakedCredentialCheckRuleArgs.builder()
- *             .zoneId(example.zoneId())
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .password("lookup_json_string(http.request.body.raw, \"secret\")")
  *             .username("lookup_json_string(http.request.body.raw, \"user\")")
- *             .password("lookup_json_string(http.request.body.raw, \"pass\")")
  *             .build());
  * 
  *     }
@@ -61,12 +51,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example &lt;zone_id&gt;/&lt;resource_id&gt;
- * ```
  * 
  */
 @ResourceType(type="cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
@@ -76,38 +60,38 @@ public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
     /**
      * @return The ruleset expression to use in matching the password in a request
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output<String> username;
+    private Output</* @Nullable */ String> username;
 
     /**
-     * @return The ruleset expression to use in matching the username in a request.
+     * @return The ruleset expression to use in matching the username in a request
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Output<Optional<String>> username() {
+        return Codegen.optional(this.username);
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

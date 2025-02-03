@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage settings in API Shield Schema Validation 2.0.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,33 +20,41 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ApiShieldSchemaValidationSettings("example", new()
+    ///     var exampleApiShieldSchemaValidationSettings = new Cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         ValidationDefaultMitigationAction = "log",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ValidationDefaultMitigationAction = "none",
     ///         ValidationOverrideMitigationAction = "none",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")]
     public partial class ApiShieldSchemaValidationSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The default mitigation action used when there is no mitigation action defined on the operation.
+        /// The default mitigation action used when there is no mitigation action defined on the operation
         /// </summary>
         [Output("validationDefaultMitigationAction")]
         public Output<string> ValidationDefaultMitigationAction { get; private set; } = null!;
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+        /// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+        /// special value `disable_override` or `null`
         /// </summary>
         [Output("validationOverrideMitigationAction")]
         public Output<string?> ValidationOverrideMitigationAction { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -100,19 +106,21 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldSchemaValidationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default mitigation action used when there is no mitigation action defined on the operation.
+        /// The default mitigation action used when there is no mitigation action defined on the operation
         /// </summary>
         [Input("validationDefaultMitigationAction", required: true)]
         public Input<string> ValidationDefaultMitigationAction { get; set; } = null!;
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+        /// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+        /// special value `disable_override` or `null`
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -126,19 +134,21 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldSchemaValidationSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default mitigation action used when there is no mitigation action defined on the operation.
+        /// The default mitigation action used when there is no mitigation action defined on the operation
         /// </summary>
         [Input("validationDefaultMitigationAction")]
         public Input<string>? ValidationDefaultMitigationAction { get; set; }
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+        /// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+        /// special value `disable_override` or `null`
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

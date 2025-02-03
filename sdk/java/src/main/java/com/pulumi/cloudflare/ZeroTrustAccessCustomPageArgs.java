@@ -18,29 +18,29 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
     public static final ZeroTrustAccessCustomPageArgs Empty = new ZeroTrustAccessCustomPageArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      * 
      */
     @Import(name="appCount")
     private @Nullable Output<Integer> appCount;
 
     /**
-     * @return Number of apps to display on the custom page.
+     * @return Number of apps the custom page is assigned to.
      * 
      */
     public Optional<Output<Integer>> appCount() {
@@ -48,29 +48,29 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      * 
      */
-    @Import(name="customHtml")
-    private @Nullable Output<String> customHtml;
+    @Import(name="customHtml", required=true)
+    private Output<String> customHtml;
 
     /**
-     * @return Custom HTML to display on the custom page.
+     * @return Custom page HTML.
      * 
      */
-    public Optional<Output<String>> customHtml() {
-        return Optional.ofNullable(this.customHtml);
+    public Output<String> customHtml() {
+        return this.customHtml;
     }
 
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Custom Page configuration.
+     * @return Custom page name.
      * 
      */
     public Output<String> name() {
@@ -78,33 +78,18 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * Custom page type.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * @return Custom page type.
      * 
      */
     public Output<String> type() {
         return this.type;
-    }
-
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
-
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
     }
 
     private ZeroTrustAccessCustomPageArgs() {}
@@ -115,7 +100,6 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
-        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -137,18 +121,18 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -158,7 +142,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param appCount Number of apps to display on the custom page.
+         * @param appCount Number of apps the custom page is assigned to.
          * 
          * @return builder
          * 
@@ -169,7 +153,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param appCount Number of apps to display on the custom page.
+         * @param appCount Number of apps the custom page is assigned to.
          * 
          * @return builder
          * 
@@ -179,18 +163,18 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customHtml Custom HTML to display on the custom page.
+         * @param customHtml Custom page HTML.
          * 
          * @return builder
          * 
          */
-        public Builder customHtml(@Nullable Output<String> customHtml) {
+        public Builder customHtml(Output<String> customHtml) {
             $.customHtml = customHtml;
             return this;
         }
 
         /**
-         * @param customHtml Custom HTML to display on the custom page.
+         * @param customHtml Custom page HTML.
          * 
          * @return builder
          * 
@@ -200,7 +184,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Friendly name of the Access Custom Page configuration.
+         * @param name Custom page name.
          * 
          * @return builder
          * 
@@ -211,7 +195,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Friendly name of the Access Custom Page configuration.
+         * @param name Custom page name.
          * 
          * @return builder
          * 
@@ -221,7 +205,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+         * @param type Custom page type.
          * 
          * @return builder
          * 
@@ -232,7 +216,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+         * @param type Custom page type.
          * 
          * @return builder
          * 
@@ -241,28 +225,13 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
             return type(Output.of(type));
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
-        }
-
         public ZeroTrustAccessCustomPageArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessCustomPageArgs", "accountId");
+            }
+            if ($.customHtml == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessCustomPageArgs", "customHtml");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessCustomPageArgs", "name");
             }

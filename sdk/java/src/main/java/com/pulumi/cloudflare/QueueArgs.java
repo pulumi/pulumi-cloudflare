@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.QueueSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,40 +18,40 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     public static final QueueArgs Empty = new QueueArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return A Resource identifier.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The name of the queue.
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="queueName", required=true)
+    private Output<String> queueName;
 
-    /**
-     * @return The name of the queue.
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
+    public Output<String> queueName() {
+        return this.queueName;
+    }
+
+    @Import(name="settings")
+    private @Nullable Output<QueueSettingsArgs> settings;
+
+    public Optional<Output<QueueSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
     }
 
     private QueueArgs() {}
 
     private QueueArgs(QueueArgs $) {
         this.accountId = $.accountId;
-        this.name = $.name;
+        this.queueName = $.queueName;
+        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -70,7 +73,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId A Resource identifier.
          * 
          * @return builder
          * 
@@ -81,7 +84,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId A Resource identifier.
          * 
          * @return builder
          * 
@@ -90,33 +93,30 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param name The name of the queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
-            $.name = name;
+        public Builder queueName(Output<String> queueName) {
+            $.queueName = queueName;
             return this;
         }
 
-        /**
-         * @param name The name of the queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder queueName(String queueName) {
+            return queueName(Output.of(queueName));
+        }
+
+        public Builder settings(@Nullable Output<QueueSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        public Builder settings(QueueSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
         public QueueArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("QueueArgs", "accountId");
             }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("QueueArgs", "name");
+            if ($.queueName == null) {
+                throw new MissingRequiredPropertyException("QueueArgs", "queueName");
             }
             return $;
         }

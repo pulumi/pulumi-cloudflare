@@ -16,30 +16,30 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneHoldState Empty = new ZoneHoldState();
 
-    /**
-     * Enablement status of the zone hold.
-     * 
-     */
     @Import(name="hold")
     private @Nullable Output<Boolean> hold;
 
-    /**
-     * @return Enablement status of the zone hold.
-     * 
-     */
     public Optional<Output<Boolean>> hold() {
         return Optional.ofNullable(this.hold);
     }
 
     /**
-     * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      * 
      */
     @Import(name="holdAfter")
     private @Nullable Output<String> holdAfter;
 
     /**
-     * @return The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * @return If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      * 
      */
     public Optional<Output<String>> holdAfter() {
@@ -47,14 +47,20 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to extend to block any subdomain of the given zone.
+     * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+     * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
      * 
      */
     @Import(name="includeSubdomains")
     private @Nullable Output<Boolean> includeSubdomains;
 
     /**
-     * @return Whether to extend to block any subdomain of the given zone.
+     * @return If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+     * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
      * 
      */
     public Optional<Output<Boolean>> includeSubdomains() {
@@ -62,14 +68,14 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -103,29 +109,21 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
             $ = new ZoneHoldState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param hold Enablement status of the zone hold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hold(@Nullable Output<Boolean> hold) {
             $.hold = hold;
             return this;
         }
 
-        /**
-         * @param hold Enablement status of the zone hold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hold(Boolean hold) {
             return hold(Output.of(hold));
         }
 
         /**
-         * @param holdAfter The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+         * @param holdAfter If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+         * then automatically re-enabled by the system at the time specified
+         * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+         * no effect on an existing, enabled hold. Providing an empty string will set its value
+         * to the current time.
          * 
          * @return builder
          * 
@@ -136,7 +134,11 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param holdAfter The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+         * @param holdAfter If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+         * then automatically re-enabled by the system at the time specified
+         * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+         * no effect on an existing, enabled hold. Providing an empty string will set its value
+         * to the current time.
          * 
          * @return builder
          * 
@@ -146,7 +148,10 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeSubdomains Whether to extend to block any subdomain of the given zone.
+         * @param includeSubdomains If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+         * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+         * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+         * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
          * 
          * @return builder
          * 
@@ -157,7 +162,10 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeSubdomains Whether to extend to block any subdomain of the given zone.
+         * @param includeSubdomains If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+         * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+         * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+         * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
          * 
          * @return builder
          * 
@@ -167,7 +175,7 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -178,7 +186,7 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

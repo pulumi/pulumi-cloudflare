@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.BotManagementArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.BotManagementState;
+import com.pulumi.cloudflare.outputs.BotManagementStaleZoneConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,14 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to configure Bot Management.
- * 
- * Specifically, this resource can be used to manage:
- * 
- * - **Bot Fight Mode**
- * - **Super Bot Fight Mode**
- * - **Bot Management for Enterprise**
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -49,14 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new BotManagement("example", BotManagementArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .aiBotsProtection("block")
  *             .enableJs(true)
- *             .sbfmDefinitelyAutomated("block")
- *             .sbfmLikelyAutomated("managed_challenge")
- *             .sbfmVerifiedBots("allow")
- *             .sbfmStaticResourceProtection(false)
- *             .optimizeWordpress(true)
+ *             .fightMode(true)
  *             .build());
  * 
  *     }
@@ -68,7 +58,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/botManagement:BotManagement example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/botManagement:BotManagement example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
@@ -79,24 +69,24 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="aiBotsProtection", refs={String.class}, tree="[0]")
-    private Output<String> aiBotsProtection;
+    private Output</* @Nullable */ String> aiBotsProtection;
 
     /**
      * @return Enable rule to block AI Scrapers and Crawlers.
      * 
      */
-    public Output<String> aiBotsProtection() {
-        return this.aiBotsProtection;
+    public Output<Optional<String>> aiBotsProtection() {
+        return Codegen.optional(this.aiBotsProtection);
     }
     /**
-     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     @Export(name="autoUpdateModel", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoUpdateModel;
 
     /**
-     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     public Output<Optional<Boolean>> autoUpdateModel() {
@@ -173,14 +163,18 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sbfmLikelyAutomated);
     }
     /**
-     * Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     @Export(name="sbfmStaticResourceProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sbfmStaticResourceProtection;
 
     /**
-     * @return Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * @return Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     public Output<Optional<Boolean>> sbfmStaticResourceProtection() {
@@ -201,18 +195,32 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sbfmVerifiedBots);
     }
     /**
+     * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+     * 
+     */
+    @Export(name="staleZoneConfiguration", refs={BotManagementStaleZoneConfiguration.class}, tree="[0]")
+    private Output<BotManagementStaleZoneConfiguration> staleZoneConfiguration;
+
+    /**
+     * @return A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+     * 
+     */
+    public Output<BotManagementStaleZoneConfiguration> staleZoneConfiguration() {
+        return this.staleZoneConfiguration;
+    }
+    /**
      * Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      * 
      */
     @Export(name="suppressSessionScore", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> suppressSessionScore;
+    private Output<Boolean> suppressSessionScore;
 
     /**
      * @return Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      * 
      */
-    public Output<Optional<Boolean>> suppressSessionScore() {
-        return Codegen.optional(this.suppressSessionScore);
+    public Output<Boolean> suppressSessionScore() {
+        return this.suppressSessionScore;
     }
     /**
      * A read-only field that indicates whether the zone currently is running the latest ML model.
@@ -229,14 +237,14 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
         return this.usingLatestModel;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

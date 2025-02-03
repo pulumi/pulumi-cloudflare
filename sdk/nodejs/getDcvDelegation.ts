@@ -5,7 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDcvDelegation = cloudflare.getDcvDelegation({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getDcvDelegation(args: GetDcvDelegationArgs, opts?: pulumi.InvokeOptions): Promise<GetDcvDelegationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +28,7 @@ export function getDcvDelegation(args: GetDcvDelegationArgs, opts?: pulumi.Invok
  */
 export interface GetDcvDelegationArgs {
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: string;
 }
@@ -29,20 +38,29 @@ export interface GetDcvDelegationArgs {
  */
 export interface GetDcvDelegationResult {
     /**
-     * The DCV Delegation hostname
-     */
-    readonly hostname: string;
-    /**
-     * The DCV Delegation unique identifier
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The zone identifier to target for the resource.
+     * The DCV Delegation unique identifier.
+     */
+    readonly uuid: string;
+    /**
+     * Identifier
      */
     readonly zoneId: string;
 }
 /**
- * Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDcvDelegation = cloudflare.getDcvDelegation({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcvDelegationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +74,7 @@ export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: 
  */
 export interface GetDcvDelegationOutputArgs {
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

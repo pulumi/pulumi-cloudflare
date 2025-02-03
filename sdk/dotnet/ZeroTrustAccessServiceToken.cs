@@ -10,67 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Access Service Tokens are used for service-to-service communication
-    /// when an application is behind Cloudflare Access.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
+    ///     {
+    ///         Name = "CI/CD token",
+    ///         ZoneId = "zone_id",
+    ///         Duration = "60m",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// If you are importing an Access Service Token you will not have the
-    /// 
-    /// client_secret available in the state for use. The client_secret is only
-    /// 
-    /// available once, at creation. In most cases, it is better to just create a new
-    /// 
-    /// resource should you need to reference it in other resources.
-    /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example &lt;account_id&gt;/&lt;service_token_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;service_token_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken")]
     public partial class ZeroTrustAccessServiceToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        /// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        /// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Output("duration")]
         public Output<string> Duration { get; private set; } = null!;
 
-        /// <summary>
-        /// Date when the token expires.
-        /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
 
-        [Output("minDaysForRenewal")]
-        public Output<int?> MinDaysForRenewal { get; private set; } = null!;
+        [Output("lastSeenAt")]
+        public Output<string> LastSeenAt { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the token's intent.
+        /// The name of the service token.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -98,10 +110,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "clientSecret",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -126,28 +134,25 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessServiceTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
-        [Input("minDaysForRenewal")]
-        public Input<int>? MinDaysForRenewal { get; set; }
-
         /// <summary>
-        /// Friendly name of the token's intent.
+        /// The name of the service token.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -161,56 +166,49 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessServiceTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        /// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        [Input("clientSecret")]
-        private Input<string>? _clientSecret;
-
         /// <summary>
-        /// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        /// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         /// </summary>
-        public Input<string>? ClientSecret
-        {
-            get => _clientSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
-        /// <summary>
-        /// Date when the token expires.
-        /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
-        [Input("minDaysForRenewal")]
-        public Input<int>? MinDaysForRenewal { get; set; }
+        [Input("lastSeenAt")]
+        public Input<string>? LastSeenAt { get; set; }
 
         /// <summary>
-        /// Friendly name of the token's intent.
+        /// The name of the service token.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

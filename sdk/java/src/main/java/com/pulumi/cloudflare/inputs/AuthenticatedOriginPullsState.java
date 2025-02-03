@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,29 +19,111 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     public static final AuthenticatedOriginPullsState Empty = new AuthenticatedOriginPullsState();
 
     /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * Identifier
      * 
      */
-    @Import(name="authenticatedOriginPullsCertificate")
-    private @Nullable Output<String> authenticatedOriginPullsCertificate;
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
 
     /**
-     * @return The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> authenticatedOriginPullsCertificate() {
-        return Optional.ofNullable(this.authenticatedOriginPullsCertificate);
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
     }
 
     /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Status of the certificate or the association.
+     * 
+     */
+    @Import(name="certStatus")
+    private @Nullable Output<String> certStatus;
+
+    /**
+     * @return Status of the certificate or the association.
+     * 
+     */
+    public Optional<Output<String>> certStatus() {
+        return Optional.ofNullable(this.certStatus);
+    }
+
+    /**
+     * The time when the certificate was updated.
+     * 
+     */
+    @Import(name="certUpdatedAt")
+    private @Nullable Output<String> certUpdatedAt;
+
+    /**
+     * @return The time when the certificate was updated.
+     * 
+     */
+    public Optional<Output<String>> certUpdatedAt() {
+        return Optional.ofNullable(this.certUpdatedAt);
+    }
+
+    /**
+     * The time when the certificate was uploaded.
+     * 
+     */
+    @Import(name="certUploadedOn")
+    private @Nullable Output<String> certUploadedOn;
+
+    /**
+     * @return The time when the certificate was uploaded.
+     * 
+     */
+    public Optional<Output<String>> certUploadedOn() {
+        return Optional.ofNullable(this.certUploadedOn);
+    }
+
+    /**
+     * The hostname certificate.
+     * 
+     */
+    @Import(name="certificate")
+    private @Nullable Output<String> certificate;
+
+    /**
+     * @return The hostname certificate.
+     * 
+     */
+    public Optional<Output<String>> certificate() {
+        return Optional.ofNullable(this.certificate);
+    }
+
+    @Import(name="configs")
+    private @Nullable Output<List<AuthenticatedOriginPullsConfigArgs>> configs;
+
+    public Optional<Output<List<AuthenticatedOriginPullsConfigArgs>>> configs() {
+        return Optional.ofNullable(this.configs);
+    }
+
+    /**
+     * The time when the certificate was created.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return The time when the certificate was created.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * @return Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +131,29 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The date when the certificate expires.
+     * 
+     */
+    @Import(name="expiresOn")
+    private @Nullable Output<String> expiresOn;
+
+    /**
+     * @return The date when the certificate expires.
+     * 
+     */
+    public Optional<Output<String>> expiresOn() {
+        return Optional.ofNullable(this.expiresOn);
+    }
+
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * @return The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -62,14 +161,89 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
+     * 
+     */
+    @Import(name="issuer")
+    private @Nullable Output<String> issuer;
+
+    /**
+     * @return The certificate authority that issued the certificate.
+     * 
+     */
+    public Optional<Output<String>> issuer() {
+        return Optional.ofNullable(this.issuer);
+    }
+
+    /**
+     * The serial number on the uploaded certificate.
+     * 
+     */
+    @Import(name="serialNumber")
+    private @Nullable Output<String> serialNumber;
+
+    /**
+     * @return The serial number on the uploaded certificate.
+     * 
+     */
+    public Optional<Output<String>> serialNumber() {
+        return Optional.ofNullable(this.serialNumber);
+    }
+
+    /**
+     * The type of hash used for the certificate.
+     * 
+     */
+    @Import(name="signature")
+    private @Nullable Output<String> signature;
+
+    /**
+     * @return The type of hash used for the certificate.
+     * 
+     */
+    public Optional<Output<String>> signature() {
+        return Optional.ofNullable(this.signature);
+    }
+
+    /**
+     * Status of the certificate or the association.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the certificate or the association.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The time when the certificate was updated.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    /**
+     * @return The time when the certificate was updated.
+     * 
+     */
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -79,9 +253,21 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     private AuthenticatedOriginPullsState() {}
 
     private AuthenticatedOriginPullsState(AuthenticatedOriginPullsState $) {
-        this.authenticatedOriginPullsCertificate = $.authenticatedOriginPullsCertificate;
+        this.certId = $.certId;
+        this.certStatus = $.certStatus;
+        this.certUpdatedAt = $.certUpdatedAt;
+        this.certUploadedOn = $.certUploadedOn;
+        this.certificate = $.certificate;
+        this.configs = $.configs;
+        this.createdAt = $.createdAt;
         this.enabled = $.enabled;
+        this.expiresOn = $.expiresOn;
         this.hostname = $.hostname;
+        this.issuer = $.issuer;
+        this.serialNumber = $.serialNumber;
+        this.signature = $.signature;
+        this.status = $.status;
+        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -104,28 +290,146 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+         * @param certId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder authenticatedOriginPullsCertificate(@Nullable Output<String> authenticatedOriginPullsCertificate) {
-            $.authenticatedOriginPullsCertificate = authenticatedOriginPullsCertificate;
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
             return this;
         }
 
         /**
-         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+         * @param certId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder authenticatedOriginPullsCertificate(String authenticatedOriginPullsCertificate) {
-            return authenticatedOriginPullsCertificate(Output.of(authenticatedOriginPullsCertificate));
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
         }
 
         /**
-         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+         * @param certStatus Status of the certificate or the association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certStatus(@Nullable Output<String> certStatus) {
+            $.certStatus = certStatus;
+            return this;
+        }
+
+        /**
+         * @param certStatus Status of the certificate or the association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certStatus(String certStatus) {
+            return certStatus(Output.of(certStatus));
+        }
+
+        /**
+         * @param certUpdatedAt The time when the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certUpdatedAt(@Nullable Output<String> certUpdatedAt) {
+            $.certUpdatedAt = certUpdatedAt;
+            return this;
+        }
+
+        /**
+         * @param certUpdatedAt The time when the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certUpdatedAt(String certUpdatedAt) {
+            return certUpdatedAt(Output.of(certUpdatedAt));
+        }
+
+        /**
+         * @param certUploadedOn The time when the certificate was uploaded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certUploadedOn(@Nullable Output<String> certUploadedOn) {
+            $.certUploadedOn = certUploadedOn;
+            return this;
+        }
+
+        /**
+         * @param certUploadedOn The time when the certificate was uploaded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certUploadedOn(String certUploadedOn) {
+            return certUploadedOn(Output.of(certUploadedOn));
+        }
+
+        /**
+         * @param certificate The hostname certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(@Nullable Output<String> certificate) {
+            $.certificate = certificate;
+            return this;
+        }
+
+        /**
+         * @param certificate The hostname certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(String certificate) {
+            return certificate(Output.of(certificate));
+        }
+
+        public Builder configs(@Nullable Output<List<AuthenticatedOriginPullsConfigArgs>> configs) {
+            $.configs = configs;
+            return this;
+        }
+
+        public Builder configs(List<AuthenticatedOriginPullsConfigArgs> configs) {
+            return configs(Output.of(configs));
+        }
+
+        public Builder configs(AuthenticatedOriginPullsConfigArgs... configs) {
+            return configs(List.of(configs));
+        }
+
+        /**
+         * @param createdAt The time when the certificate was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt The time when the certificate was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param enabled Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
          * 
          * @return builder
          * 
@@ -136,7 +440,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+         * @param enabled Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
          * 
          * @return builder
          * 
@@ -146,7 +450,28 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostname Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+         * @param expiresOn The date when the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresOn(@Nullable Output<String> expiresOn) {
+            $.expiresOn = expiresOn;
+            return this;
+        }
+
+        /**
+         * @param expiresOn The date when the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresOn(String expiresOn) {
+            return expiresOn(Output.of(expiresOn));
+        }
+
+        /**
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
          * 
          * @return builder
          * 
@@ -157,7 +482,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param hostname Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
          * 
          * @return builder
          * 
@@ -167,7 +492,112 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param issuer The certificate authority that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuer(@Nullable Output<String> issuer) {
+            $.issuer = issuer;
+            return this;
+        }
+
+        /**
+         * @param issuer The certificate authority that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuer(String issuer) {
+            return issuer(Output.of(issuer));
+        }
+
+        /**
+         * @param serialNumber The serial number on the uploaded certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serialNumber(@Nullable Output<String> serialNumber) {
+            $.serialNumber = serialNumber;
+            return this;
+        }
+
+        /**
+         * @param serialNumber The serial number on the uploaded certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serialNumber(String serialNumber) {
+            return serialNumber(Output.of(serialNumber));
+        }
+
+        /**
+         * @param signature The type of hash used for the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signature(@Nullable Output<String> signature) {
+            $.signature = signature;
+            return this;
+        }
+
+        /**
+         * @param signature The type of hash used for the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signature(String signature) {
+            return signature(Output.of(signature));
+        }
+
+        /**
+         * @param status Status of the certificate or the association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the certificate or the association.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param updatedAt The time when the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt The time when the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -178,7 +608,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

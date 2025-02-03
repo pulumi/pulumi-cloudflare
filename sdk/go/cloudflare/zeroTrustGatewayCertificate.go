@@ -8,32 +8,65 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Gateway Certificate resource. A Teams Certificate can
-// be specified for Gateway TLS interception and block pages.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustGatewayCertificate(ctx, "example_zero_trust_gateway_certificate", &cloudflare.ZeroTrustGatewayCertificateArgs{
+//				AccountId:          pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				ValidityPeriodDays: pulumi.Int(1826),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
+// ```
 type ZeroTrustGatewayCertificate struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-	Activate pulumi.BoolPtrOutput `pulumi:"activate"`
-	// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
 	BindingStatus pulumi.StringOutput `pulumi:"bindingStatus"`
-	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	Custom    pulumi.BoolPtrOutput `pulumi:"custom"`
-	ExpiresOn pulumi.StringOutput  `pulumi:"expiresOn"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	GatewayManaged pulumi.BoolPtrOutput `pulumi:"gatewayManaged"`
-	// Whether the certificate is in use by Gateway for TLS interception and the block page.
-	InUse      pulumi.BoolOutput   `pulumi:"inUse"`
-	QsPackId   pulumi.StringOutput `pulumi:"qsPackId"`
+	// The CA certificate
+	Certificate pulumi.StringOutput `pulumi:"certificate"`
+	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	ExpiresOn   pulumi.StringOutput `pulumi:"expiresOn"`
+	// The SHA256 fingerprint of the certificate.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// Use this certificate for Gateway TLS interception
+	InUse pulumi.BoolOutput `pulumi:"inUse"`
+	// The organization that issued the certificate.
+	IssuerOrg pulumi.StringOutput `pulumi:"issuerOrg"`
+	// The entire issuer field of the certificate.
+	IssuerRaw pulumi.StringOutput `pulumi:"issuerRaw"`
+	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	Type       pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt  pulumi.StringOutput `pulumi:"updatedAt"`
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 	ValidityPeriodDays pulumi.IntPtrOutput `pulumi:"validityPeriodDays"`
 }
 
@@ -70,44 +103,50 @@ func GetZeroTrustGatewayCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
 type zeroTrustGatewayCertificateState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-	Activate *bool `pulumi:"activate"`
-	// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
 	BindingStatus *string `pulumi:"bindingStatus"`
-	CreatedAt     *string `pulumi:"createdAt"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	Custom    *bool   `pulumi:"custom"`
-	ExpiresOn *string `pulumi:"expiresOn"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	GatewayManaged *bool `pulumi:"gatewayManaged"`
-	// Whether the certificate is in use by Gateway for TLS interception and the block page.
-	InUse      *bool   `pulumi:"inUse"`
-	QsPackId   *string `pulumi:"qsPackId"`
+	// The CA certificate
+	Certificate *string `pulumi:"certificate"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	ExpiresOn   *string `pulumi:"expiresOn"`
+	// The SHA256 fingerprint of the certificate.
+	Fingerprint *string `pulumi:"fingerprint"`
+	// Use this certificate for Gateway TLS interception
+	InUse *bool `pulumi:"inUse"`
+	// The organization that issued the certificate.
+	IssuerOrg *string `pulumi:"issuerOrg"`
+	// The entire issuer field of the certificate.
+	IssuerRaw *string `pulumi:"issuerRaw"`
+	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	Type       *string `pulumi:"type"`
+	UpdatedAt  *string `pulumi:"updatedAt"`
 	UploadedOn *string `pulumi:"uploadedOn"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
 }
 
 type ZeroTrustGatewayCertificateState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-	Activate pulumi.BoolPtrInput
-	// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
 	BindingStatus pulumi.StringPtrInput
-	CreatedAt     pulumi.StringPtrInput
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	Custom    pulumi.BoolPtrInput
-	ExpiresOn pulumi.StringPtrInput
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	GatewayManaged pulumi.BoolPtrInput
-	// Whether the certificate is in use by Gateway for TLS interception and the block page.
-	InUse      pulumi.BoolPtrInput
-	QsPackId   pulumi.StringPtrInput
+	// The CA certificate
+	Certificate pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	ExpiresOn   pulumi.StringPtrInput
+	// The SHA256 fingerprint of the certificate.
+	Fingerprint pulumi.StringPtrInput
+	// Use this certificate for Gateway TLS interception
+	InUse pulumi.BoolPtrInput
+	// The organization that issued the certificate.
+	IssuerOrg pulumi.StringPtrInput
+	// The entire issuer field of the certificate.
+	IssuerRaw pulumi.StringPtrInput
+	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+	Type       pulumi.StringPtrInput
+	UpdatedAt  pulumi.StringPtrInput
 	UploadedOn pulumi.StringPtrInput
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -116,29 +155,15 @@ func (ZeroTrustGatewayCertificateState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayCertificateArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-	Activate *bool `pulumi:"activate"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	Custom *bool `pulumi:"custom"`
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	GatewayManaged *bool `pulumi:"gatewayManaged"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
 type ZeroTrustGatewayCertificateArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-	Activate pulumi.BoolPtrInput
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	Custom pulumi.BoolPtrInput
-	// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-	GatewayManaged pulumi.BoolPtrInput
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -229,53 +254,62 @@ func (o ZeroTrustGatewayCertificateOutput) ToZeroTrustGatewayCertificateOutputWi
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustGatewayCertificateOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-func (o ZeroTrustGatewayCertificateOutput) Activate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolPtrOutput { return v.Activate }).(pulumi.BoolPtrOutput)
-}
-
-// The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
 func (o ZeroTrustGatewayCertificateOutput) BindingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.BindingStatus }).(pulumi.StringOutput)
+}
+
+// The CA certificate
+func (o ZeroTrustGatewayCertificateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustGatewayCertificateOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-func (o ZeroTrustGatewayCertificateOutput) Custom() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolPtrOutput { return v.Custom }).(pulumi.BoolPtrOutput)
-}
-
 func (o ZeroTrustGatewayCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-func (o ZeroTrustGatewayCertificateOutput) GatewayManaged() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolPtrOutput { return v.GatewayManaged }).(pulumi.BoolPtrOutput)
+// The SHA256 fingerprint of the certificate.
+func (o ZeroTrustGatewayCertificateOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Whether the certificate is in use by Gateway for TLS interception and the block page.
+// Use this certificate for Gateway TLS interception
 func (o ZeroTrustGatewayCertificateOutput) InUse() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolOutput { return v.InUse }).(pulumi.BoolOutput)
 }
 
-func (o ZeroTrustGatewayCertificateOutput) QsPackId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.QsPackId }).(pulumi.StringOutput)
+// The organization that issued the certificate.
+func (o ZeroTrustGatewayCertificateOutput) IssuerOrg() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.IssuerOrg }).(pulumi.StringOutput)
+}
+
+// The entire issuer field of the certificate.
+func (o ZeroTrustGatewayCertificateOutput) IssuerRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.IssuerRaw }).(pulumi.StringOutput)
+}
+
+// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+func (o ZeroTrustGatewayCertificateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustGatewayCertificateOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustGatewayCertificateOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 func (o ZeroTrustGatewayCertificateOutput) ValidityPeriodDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.IntPtrOutput { return v.ValidityPeriodDays }).(pulumi.IntPtrOutput)
 }

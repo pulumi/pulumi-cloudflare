@@ -7,19 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this datasource to lookup Rulesets in an account or zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getRulesets({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     filter: {
- *         name: ".*OWASP.*",
- *     },
+ * const exampleRulesets = cloudflare.getRulesets({
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -28,8 +24,7 @@ export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRulesets:getRulesets", {
         "accountId": args.accountId,
-        "filter": args.filter,
-        "includeRules": args.includeRules,
+        "maxItems": args.maxItems,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -39,16 +34,15 @@ export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetRulesetsArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: string;
-    filter?: inputs.GetRulesetsFilter;
     /**
-     * Include rule data in response.
+     * Max items to fetch, default: 1000
      */
-    includeRules?: boolean;
+    maxItems?: number;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: string;
 }
@@ -58,38 +52,36 @@ export interface GetRulesetsArgs {
  */
 export interface GetRulesetsResult {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     readonly accountId?: string;
-    readonly filter?: outputs.GetRulesetsFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Include rule data in response.
+     * Max items to fetch, default: 1000
      */
-    readonly includeRules?: boolean;
-    readonly rulesets: outputs.GetRulesetsRuleset[];
+    readonly maxItems?: number;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetRulesetsResult[];
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     readonly zoneId?: string;
 }
 /**
- * Use this datasource to lookup Rulesets in an account or zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getRulesets({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     filter: {
- *         name: ".*OWASP.*",
- *     },
+ * const exampleRulesets = cloudflare.getRulesets({
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -98,8 +90,7 @@ export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRulesets:getRulesets", {
         "accountId": args.accountId,
-        "filter": args.filter,
-        "includeRules": args.includeRules,
+        "maxItems": args.maxItems,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -109,16 +100,15 @@ export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.In
  */
 export interface GetRulesetsOutputArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetRulesetsFilterArgs>;
     /**
-     * Include rule data in response.
+     * Max items to fetch, default: 1000
      */
-    includeRules?: pulumi.Input<boolean>;
+    maxItems?: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
     public static final RulesetRuleExposedCredentialCheckArgs Empty = new RulesetRuleExposedCredentialCheckArgs();
 
     /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * Expression that selects the password used in the credentials check.
      * 
      */
-    @Import(name="passwordExpression")
-    private @Nullable Output<String> passwordExpression;
+    @Import(name="passwordExpression", required=true)
+    private Output<String> passwordExpression;
 
     /**
-     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * @return Expression that selects the password used in the credentials check.
      * 
      */
-    public Optional<Output<String>> passwordExpression() {
-        return Optional.ofNullable(this.passwordExpression);
+    public Output<String> passwordExpression() {
+        return this.passwordExpression;
     }
 
     /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * Expression that selects the user ID used in the credentials check.
      * 
      */
-    @Import(name="usernameExpression")
-    private @Nullable Output<String> usernameExpression;
+    @Import(name="usernameExpression", required=true)
+    private Output<String> usernameExpression;
 
     /**
-     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * @return Expression that selects the user ID used in the credentials check.
      * 
      */
-    public Optional<Output<String>> usernameExpression() {
-        return Optional.ofNullable(this.usernameExpression);
+    public Output<String> usernameExpression() {
+        return this.usernameExpression;
     }
 
     private RulesetRuleExposedCredentialCheckArgs() {}
@@ -71,18 +70,18 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param passwordExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * @param passwordExpression Expression that selects the password used in the credentials check.
          * 
          * @return builder
          * 
          */
-        public Builder passwordExpression(@Nullable Output<String> passwordExpression) {
+        public Builder passwordExpression(Output<String> passwordExpression) {
             $.passwordExpression = passwordExpression;
             return this;
         }
 
         /**
-         * @param passwordExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * @param passwordExpression Expression that selects the password used in the credentials check.
          * 
          * @return builder
          * 
@@ -92,18 +91,18 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param usernameExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * @param usernameExpression Expression that selects the user ID used in the credentials check.
          * 
          * @return builder
          * 
          */
-        public Builder usernameExpression(@Nullable Output<String> usernameExpression) {
+        public Builder usernameExpression(Output<String> usernameExpression) {
             $.usernameExpression = usernameExpression;
             return this;
         }
 
         /**
-         * @param usernameExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * @param usernameExpression Expression that selects the user ID used in the credentials check.
          * 
          * @return builder
          * 
@@ -113,6 +112,12 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         public RulesetRuleExposedCredentialCheckArgs build() {
+            if ($.passwordExpression == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleExposedCredentialCheckArgs", "passwordExpression");
+            }
+            if ($.usernameExpression == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleExposedCredentialCheckArgs", "usernameExpression");
+            }
             return $;
         }
     }

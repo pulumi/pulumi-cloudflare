@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerRuleFixedResponse {
     /**
-     * @return The value of the HTTP context-type header for this fixed response.
+     * @return The http &#39;Content-Type&#39; header to include in the response.
      * 
      */
     private @Nullable String contentType;
     /**
-     * @return The value of the HTTP location header for this fixed response.
+     * @return The http &#39;Location&#39; header to include in the response.
      * 
      */
     private @Nullable String location;
     /**
-     * @return The text used as the html body for this fixed response.
+     * @return Text to include as the http body.
      * 
      */
     private @Nullable String messageBody;
     /**
-     * @return The HTTP status code used for this fixed response.
+     * @return The http status code to respond with.
      * 
      */
     private @Nullable Integer statusCode;
 
     private LoadBalancerRuleFixedResponse() {}
     /**
-     * @return The value of the HTTP context-type header for this fixed response.
+     * @return The http &#39;Content-Type&#39; header to include in the response.
      * 
      */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return The value of the HTTP location header for this fixed response.
+     * @return The http &#39;Location&#39; header to include in the response.
      * 
      */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return The text used as the html body for this fixed response.
+     * @return Text to include as the http body.
      * 
      */
     public Optional<String> messageBody() {
         return Optional.ofNullable(this.messageBody);
     }
     /**
-     * @return The HTTP status code used for this fixed response.
+     * @return The http status code to respond with.
      * 
      */
     public Optional<Integer> statusCode() {

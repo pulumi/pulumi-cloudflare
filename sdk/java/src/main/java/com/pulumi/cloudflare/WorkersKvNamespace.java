@@ -10,12 +10,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to manage Cloudflare Workers KV Namespace features.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,9 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkersKvNamespace("example", WorkersKvNamespaceArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .title("test-namespace")
+ *         var exampleWorkersKvNamespace = new WorkersKvNamespace("exampleWorkersKvNamespace", WorkersKvNamespaceArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .title("My Own Namespace")
  *             .build());
  * 
  *     }
@@ -55,35 +54,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
+ * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &#39;&lt;account_id&gt;/&lt;namespace_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Title value of the Worker KV Namespace.
+     * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+     * 
+     */
+    @Export(name="supportsUrlEncoding", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> supportsUrlEncoding;
+
+    /**
+     * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+     * 
+     */
+    public Output<Boolean> supportsUrlEncoding() {
+        return this.supportsUrlEncoding;
+    }
+    /**
+     * A human-readable string name for a Namespace.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return Title value of the Worker KV Namespace.
+     * @return A human-readable string name for a Namespace.
      * 
      */
     public Output<String> title() {

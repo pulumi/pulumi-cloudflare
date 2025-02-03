@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Waiting Room Event resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,13 +42,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Waiting Room Event
- *         var example = new WaitingRoomEvent("example", WaitingRoomEventArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .waitingRoomId("d41d8cd98f00b204e9800998ecf8427e")
- *             .name("foo")
- *             .eventStartTime("2006-01-02T15:04:05Z")
- *             .eventEndTime("2006-01-02T20:04:05Z")
+ *         var exampleWaitingRoomEvent = new WaitingRoomEvent("exampleWaitingRoomEvent", WaitingRoomEventArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .waitingRoomId("699d98642c564d2e855e9661899b7252")
+ *             .eventEndTime("2021-09-28T17:00:00.000Z")
+ *             .eventStartTime("2021-09-28T15:30:00.000Z")
+ *             .name("production_webinar_event")
+ *             .customPageHtml("{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}")
+ *             .description("Production event - DO NOT MODIFY")
+ *             .disableSessionRenewal(true)
+ *             .newUsersPerMinute(200)
+ *             .prequeueStartTime("2021-09-28T15:00:00.000Z")
+ *             .queueingMethod("random")
+ *             .sessionDuration(1)
+ *             .shuffleAtEventStart(true)
+ *             .suspended(true)
+ *             .totalActiveUsers(200)
  *             .build());
  * 
  *     }
@@ -61,248 +68,222 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Use the Zone ID, Waiting Room ID, and Event ID to import.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default &lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;waiting_room_event_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;event_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/waitingRoomEvent:WaitingRoomEvent")
 public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
-    /**
-     * Creation time.
-     * 
-     */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
-    /**
-     * @return Creation time.
-     * 
-     */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * This is a templated html file that will be rendered at the edge.
+     * If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="customPageHtml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
-     * @return This is a templated html file that will be rendered at the edge.
+     * @return If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<String>> customPageHtml() {
         return Codegen.optional(this.customPageHtml);
     }
     /**
-     * A description to let users add more details about the event.
+     * A note that you can use to add more details about the event.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return A description to let users add more details about the event.
+     * @return A note that you can use to add more details about the event.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * Disables automatic renewal of session cookies.
+     * If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="disableSessionRenewal", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSessionRenewal;
 
     /**
-     * @return Disables automatic renewal of session cookies.
+     * @return If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<Boolean>> disableSessionRenewal() {
         return Codegen.optional(this.disableSessionRenewal);
     }
     /**
-     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the end of the event.
      * 
      */
     @Export(name="eventEndTime", refs={String.class}, tree="[0]")
     private Output<String> eventEndTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+     * @return An ISO 8601 timestamp that marks the end of the event.
      * 
      */
     public Output<String> eventEndTime() {
         return this.eventEndTime;
     }
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
      * 
      */
     @Export(name="eventStartTime", refs={String.class}, tree="[0]")
     private Output<String> eventStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+     * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
      * 
      */
     public Output<String> eventStartTime() {
         return this.eventStartTime;
     }
-    /**
-     * Last modified time.
-     * 
-     */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
-    /**
-     * @return Last modified time.
-     * 
-     */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+     * @return A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The number of new users that will be let into the route every minute.
+     * If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
      * 
      */
     @Export(name="newUsersPerMinute", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> newUsersPerMinute;
 
     /**
-     * @return The number of new users that will be let into the route every minute.
+     * @return If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
      * 
      */
     public Output<Optional<Integer>> newUsersPerMinute() {
         return Codegen.optional(this.newUsersPerMinute);
     }
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
      * 
      */
     @Export(name="prequeueStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prequeueStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+     * @return An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
      * 
      */
     public Output<Optional<String>> prequeueStartTime() {
         return Codegen.optional(this.prequeueStartTime);
     }
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="queueingMethod", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueingMethod;
 
     /**
-     * @return The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+     * @return If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<String>> queueingMethod() {
         return Codegen.optional(this.queueingMethod);
     }
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionDuration;
 
     /**
-     * @return Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * @return If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<Integer>> sessionDuration() {
         return Codegen.optional(this.sessionDuration);
     }
     /**
-     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+     * If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
     @Export(name="shuffleAtEventStart", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> shuffleAtEventStart;
+    private Output<Boolean> shuffleAtEventStart;
 
     /**
-     * @return Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+     * @return If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
-    public Output<Optional<Boolean>> shuffleAtEventStart() {
-        return Codegen.optional(this.shuffleAtEventStart);
+    public Output<Boolean> shuffleAtEventStart() {
+        return this.shuffleAtEventStart;
     }
     /**
-     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      * 
      */
     @Export(name="suspended", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> suspended;
+    private Output<Boolean> suspended;
 
     /**
-     * @return If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+     * @return Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      * 
      */
-    public Output<Optional<Boolean>> suspended() {
-        return Codegen.optional(this.suspended);
+    public Output<Boolean> suspended() {
+        return this.suspended;
     }
     /**
-     * The total number of active user sessions on the route at a point in time.
+     * If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
      * 
      */
     @Export(name="totalActiveUsers", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> totalActiveUsers;
 
     /**
-     * @return The total number of active user sessions on the route at a point in time.
+     * @return If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
      * 
      */
     public Output<Optional<Integer>> totalActiveUsers() {
         return Codegen.optional(this.totalActiveUsers);
     }
-    /**
-     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

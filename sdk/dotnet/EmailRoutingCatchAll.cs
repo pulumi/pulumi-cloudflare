@@ -10,51 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource for managing Email Routing Addresses catch all behaviour.
-    /// 
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
+    /// ## Import
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.EmailRoutingCatchAll("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "example catch all",
-    ///         Enabled = true,
-    ///         Matchers = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllMatcherArgs
-    ///             {
-    ///                 Type = "all",
-    ///             },
-    ///         },
-    ///         Actions = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllActionArgs
-    ///             {
-    ///                 Type = "forward",
-    ///                 Values = new[]
-    ///                 {
-    ///                     "destinationaddress@example.net",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
+    /// ```sh
+    /// $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll")]
     public partial class EmailRoutingCatchAll : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List actions patterns.
+        /// List actions for the catch-all routing rule.
         /// </summary>
         [Output("actions")]
         public Output<ImmutableArray<Outputs.EmailRoutingCatchAllAction>> Actions { get; private set; } = null!;
@@ -63,10 +31,10 @@ namespace Pulumi.Cloudflare
         /// Routing rule status.
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Matching patterns to forward to your actions.
+        /// List of matchers for the catch-all routing rule.
         /// </summary>
         [Output("matchers")]
         public Output<ImmutableArray<Outputs.EmailRoutingCatchAllMatcher>> Matchers { get; private set; } = null!;
@@ -75,16 +43,16 @@ namespace Pulumi.Cloudflare
         /// Routing rule name.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Routing rule identifier.
+        /// Routing rule tag. (Deprecated, replaced by routing rule identifier)
         /// </summary>
         [Output("tag")]
         public Output<string> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -139,7 +107,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.EmailRoutingCatchAllActionArgs>? _actions;
 
         /// <summary>
-        /// List actions patterns.
+        /// List actions for the catch-all routing rule.
         /// </summary>
         public InputList<Inputs.EmailRoutingCatchAllActionArgs> Actions
         {
@@ -157,7 +125,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.EmailRoutingCatchAllMatcherArgs>? _matchers;
 
         /// <summary>
-        /// Matching patterns to forward to your actions.
+        /// List of matchers for the catch-all routing rule.
         /// </summary>
         public InputList<Inputs.EmailRoutingCatchAllMatcherArgs> Matchers
         {
@@ -168,11 +136,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Routing rule name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -189,7 +157,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.EmailRoutingCatchAllActionGetArgs>? _actions;
 
         /// <summary>
-        /// List actions patterns.
+        /// List actions for the catch-all routing rule.
         /// </summary>
         public InputList<Inputs.EmailRoutingCatchAllActionGetArgs> Actions
         {
@@ -207,7 +175,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.EmailRoutingCatchAllMatcherGetArgs>? _matchers;
 
         /// <summary>
-        /// Matching patterns to forward to your actions.
+        /// List of matchers for the catch-all routing rule.
         /// </summary>
         public InputList<Inputs.EmailRoutingCatchAllMatcherGetArgs> Matchers
         {
@@ -222,13 +190,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Routing rule identifier.
+        /// Routing rule tag. (Deprecated, replaced by routing rule identifier)
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

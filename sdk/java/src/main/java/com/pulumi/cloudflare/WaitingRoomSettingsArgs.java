@@ -18,14 +18,18 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
     public static final WaitingRoomSettingsArgs Empty = new WaitingRoomSettingsArgs();
 
     /**
-     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      * 
      */
     @Import(name="searchEngineCrawlerBypass")
     private @Nullable Output<Boolean> searchEngineCrawlerBypass;
 
     /**
-     * @return Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * @return Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      * 
      */
     public Optional<Output<Boolean>> searchEngineCrawlerBypass() {
@@ -33,14 +37,14 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -73,7 +77,9 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchEngineCrawlerBypass Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+         * @param searchEngineCrawlerBypass Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+         * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+         * and will not appear in waiting room analytics.
          * 
          * @return builder
          * 
@@ -84,7 +90,9 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param searchEngineCrawlerBypass Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+         * @param searchEngineCrawlerBypass Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+         * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+         * and will not appear in waiting room analytics.
          * 
          * @return builder
          * 
@@ -94,7 +102,7 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -105,7 +113,7 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

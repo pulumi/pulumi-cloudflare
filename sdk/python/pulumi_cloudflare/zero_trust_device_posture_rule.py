@@ -22,44 +22,40 @@ __all__ = ['ZeroTrustDevicePostureRuleArgs', 'ZeroTrustDevicePostureRule']
 class ZeroTrustDevicePostureRuleArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]] = None,
+                 input: Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleMatchArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[str] name: The name of the device posture rule.
+        :param pulumi.Input[str] type: The type of device posture rule.
+        :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
+        :param pulumi.Input['ZeroTrustDevicePostureRuleInputArgs'] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
-        :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expiration is not None:
             pulumi.set(__self__, "expiration", expiration)
-        if inputs is not None:
-            pulumi.set(__self__, "inputs", inputs)
+        if input is not None:
+            pulumi.set(__self__, "input", input)
         if matches is not None:
             pulumi.set(__self__, "matches", matches)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -68,9 +64,21 @@ class ZeroTrustDevicePostureRuleArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the device posture rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        The type of device posture rule.
         """
         return pulumi.get(self, "type")
 
@@ -81,6 +89,9 @@ class ZeroTrustDevicePostureRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the device posture rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -91,7 +102,7 @@ class ZeroTrustDevicePostureRuleArgs:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         """
         return pulumi.get(self, "expiration")
 
@@ -101,15 +112,15 @@ class ZeroTrustDevicePostureRuleArgs:
 
     @property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]]:
+    def input(self) -> Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]:
         """
-        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        The value to be checked against.
         """
-        return pulumi.get(self, "inputs")
+        return pulumi.get(self, "input")
 
-    @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]]):
-        pulumi.set(self, "inputs", value)
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]):
+        pulumi.set(self, "input", value)
 
     @property
     @pulumi.getter
@@ -125,21 +136,9 @@ class ZeroTrustDevicePostureRuleArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the device posture rule.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -154,20 +153,20 @@ class _ZeroTrustDevicePostureRuleState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]] = None,
+                 input: Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleMatchArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDevicePostureRule resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
+        :param pulumi.Input['ZeroTrustDevicePostureRuleInputArgs'] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
-        :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        :param pulumi.Input[str] name: The name of the device posture rule.
+        :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
+        :param pulumi.Input[str] type: The type of device posture rule.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -175,8 +174,8 @@ class _ZeroTrustDevicePostureRuleState:
             pulumi.set(__self__, "description", description)
         if expiration is not None:
             pulumi.set(__self__, "expiration", expiration)
-        if inputs is not None:
-            pulumi.set(__self__, "inputs", inputs)
+        if input is not None:
+            pulumi.set(__self__, "input", input)
         if matches is not None:
             pulumi.set(__self__, "matches", matches)
         if name is not None:
@@ -189,9 +188,6 @@ class _ZeroTrustDevicePostureRuleState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -201,6 +197,9 @@ class _ZeroTrustDevicePostureRuleState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the device posture rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -211,7 +210,7 @@ class _ZeroTrustDevicePostureRuleState:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         """
         return pulumi.get(self, "expiration")
 
@@ -221,15 +220,15 @@ class _ZeroTrustDevicePostureRuleState:
 
     @property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]]:
+    def input(self) -> Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]:
         """
-        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        The value to be checked against.
         """
-        return pulumi.get(self, "inputs")
+        return pulumi.get(self, "input")
 
-    @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]]]):
-        pulumi.set(self, "inputs", value)
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['ZeroTrustDevicePostureRuleInputArgs']]):
+        pulumi.set(self, "input", value)
 
     @property
     @pulumi.getter
@@ -247,7 +246,7 @@ class _ZeroTrustDevicePostureRuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the device posture rule.
+        The name of the device posture rule.
         """
         return pulumi.get(self, "name")
 
@@ -259,7 +258,7 @@ class _ZeroTrustDevicePostureRuleState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -271,7 +270,7 @@ class _ZeroTrustDevicePostureRuleState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        The type of device posture rule.
         """
         return pulumi.get(self, "type")
 
@@ -288,56 +287,30 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]]]] = None,
+                 input: Optional[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        eaxmple = cloudflare.ZeroTrustDevicePostureRule("eaxmple",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Corporate devices posture rule",
-            type="os_version",
-            description="Device posture rule for corporate devices.",
-            schedule="24h",
-            expiration="24h",
-            matches=[{
-                "platform": "linux",
-            }],
-            inputs=[{
-                "id": corporate_devices["id"],
-                "version": "1.0.0",
-                "operator": "<",
-                "os_distro_name": "ubuntu",
-                "os_distro_revision": "1.0.0",
-                "os_version_extra": "(a)",
-            }])
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example <account_id>/<device_posture_rule_id>
+        $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '<account_id>/<rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
+        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
-        :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        :param pulumi.Input[str] name: The name of the device posture rule.
+        :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
+        :param pulumi.Input[str] type: The type of device posture rule.
         """
         ...
     @overload
@@ -346,38 +319,12 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
                  args: ZeroTrustDevicePostureRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        eaxmple = cloudflare.ZeroTrustDevicePostureRule("eaxmple",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Corporate devices posture rule",
-            type="os_version",
-            description="Device posture rule for corporate devices.",
-            schedule="24h",
-            expiration="24h",
-            matches=[{
-                "platform": "linux",
-            }],
-            inputs=[{
-                "id": corporate_devices["id"],
-                "version": "1.0.0",
-                "operator": "<",
-                "os_distro_name": "ubuntu",
-                "os_distro_revision": "1.0.0",
-                "os_version_extra": "(a)",
-            }])
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example <account_id>/<device_posture_rule_id>
+        $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '<account_id>/<rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -398,7 +345,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]]]] = None,
+                 input: Optional[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -417,8 +364,10 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["expiration"] = expiration
-            __props__.__dict__["inputs"] = inputs
+            __props__.__dict__["input"] = input
             __props__.__dict__["matches"] = matches
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["schedule"] = schedule
             if type is None and not opts.urn:
@@ -437,7 +386,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expiration: Optional[pulumi.Input[str]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]]]] = None,
+            input: Optional[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
             matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
@@ -449,13 +398,13 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
+        :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
+        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
-        :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        :param pulumi.Input[str] name: The name of the device posture rule.
+        :param pulumi.Input[str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
+        :param pulumi.Input[str] type: The type of device posture rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,7 +413,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["description"] = description
         __props__.__dict__["expiration"] = expiration
-        __props__.__dict__["inputs"] = inputs
+        __props__.__dict__["input"] = input
         __props__.__dict__["matches"] = matches
         __props__.__dict__["name"] = name
         __props__.__dict__["schedule"] = schedule
@@ -474,35 +423,35 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the device posture rule.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def expiration(self) -> pulumi.Output[Optional[str]]:
         """
-        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
-    def inputs(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDevicePostureRuleInput']]:
+    def input(self) -> pulumi.Output['outputs.ZeroTrustDevicePostureRuleInput']:
         """
-        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        The value to be checked against.
         """
-        return pulumi.get(self, "inputs")
+        return pulumi.get(self, "input")
 
     @property
     @pulumi.getter
-    def matches(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDevicePostureRuleMatch']]]:
+    def matches(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDevicePostureRuleMatch']]:
         """
         The conditions that the client must match to run the rule.
         """
@@ -510,9 +459,9 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
-        Name of the device posture rule.
+        The name of the device posture rule.
         """
         return pulumi.get(self, "name")
 
@@ -520,7 +469,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional[str]]:
         """
-        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -528,7 +477,7 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        The type of device posture rule.
         """
         return pulumi.get(self, "type")
 

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Cloudflare Pages projects.
-    /// 
     /// &gt; If you are using a `source` block configuration, you must first have a
     ///    connected GitHub or GitLab account connected to Cloudflare. See the
     ///    [Getting Started with Pages] documentation on how to link your accounts.
@@ -21,23 +19,29 @@ namespace Pulumi.Cloudflare
     /// !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
+    /// $ pulumi import cloudflare:index/pagesProject:PagesProject example '&lt;account_id&gt;/&lt;project_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pagesProject:PagesProject")]
     public partial class PagesProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+        /// Configs for the project build process.
         /// </summary>
         [Output("buildConfig")]
-        public Output<Outputs.PagesProjectBuildConfig?> BuildConfig { get; private set; } = null!;
+        public Output<Outputs.PagesProjectBuildConfig> BuildConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Most recent deployment to the repo.
+        /// </summary>
+        [Output("canonicalDeployment")]
+        public Output<Outputs.PagesProjectCanonicalDeployment> CanonicalDeployment { get; private set; } = null!;
 
         /// <summary>
         /// When the project was created.
@@ -46,7 +50,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for deployments in a project.
+        /// Configs for deployments in a project.
         /// </summary>
         [Output("deploymentConfigs")]
         public Output<Outputs.PagesProjectDeploymentConfigs> DeploymentConfigs { get; private set; } = null!;
@@ -58,22 +62,25 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
+        /// Most recent deployment to the repo.
+        /// </summary>
+        [Output("latestDeployment")]
+        public Output<Outputs.PagesProjectLatestDeployment> LatestDeployment { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Production branch of the project. Used to identify production deployments.
         /// </summary>
         [Output("productionBranch")]
-        public Output<string> ProductionBranch { get; private set; } = null!;
+        public Output<string?> ProductionBranch { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-        /// </summary>
         [Output("source")]
-        public Output<Outputs.PagesProjectSource?> Source { get; private set; } = null!;
+        public Output<Outputs.PagesProjectSource> Source { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare subdomain associated with the project.
@@ -128,19 +135,19 @@ namespace Pulumi.Cloudflare
     public sealed class PagesProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+        /// Configs for the project build process.
         /// </summary>
         [Input("buildConfig")]
         public Input<Inputs.PagesProjectBuildConfigArgs>? BuildConfig { get; set; }
 
         /// <summary>
-        /// Configuration for deployments in a project.
+        /// Configs for deployments in a project.
         /// </summary>
         [Input("deploymentConfigs")]
         public Input<Inputs.PagesProjectDeploymentConfigsArgs>? DeploymentConfigs { get; set; }
@@ -152,16 +159,10 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Production branch of the project. Used to identify production deployments.
         /// </summary>
-        [Input("productionBranch", required: true)]
-        public Input<string> ProductionBranch { get; set; } = null!;
-
-        /// <summary>
-        /// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-        /// </summary>
-        [Input("source")]
-        public Input<Inputs.PagesProjectSourceArgs>? Source { get; set; }
+        [Input("productionBranch")]
+        public Input<string>? ProductionBranch { get; set; }
 
         public PagesProjectArgs()
         {
@@ -172,16 +173,22 @@ namespace Pulumi.Cloudflare
     public sealed class PagesProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+        /// Configs for the project build process.
         /// </summary>
         [Input("buildConfig")]
         public Input<Inputs.PagesProjectBuildConfigGetArgs>? BuildConfig { get; set; }
+
+        /// <summary>
+        /// Most recent deployment to the repo.
+        /// </summary>
+        [Input("canonicalDeployment")]
+        public Input<Inputs.PagesProjectCanonicalDeploymentGetArgs>? CanonicalDeployment { get; set; }
 
         /// <summary>
         /// When the project was created.
@@ -190,7 +197,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Configuration for deployments in a project.
+        /// Configs for deployments in a project.
         /// </summary>
         [Input("deploymentConfigs")]
         public Input<Inputs.PagesProjectDeploymentConfigsGetArgs>? DeploymentConfigs { get; set; }
@@ -208,20 +215,23 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Most recent deployment to the repo.
+        /// </summary>
+        [Input("latestDeployment")]
+        public Input<Inputs.PagesProjectLatestDeploymentGetArgs>? LatestDeployment { get; set; }
+
+        /// <summary>
         /// Name of the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Production branch of the project. Used to identify production deployments.
         /// </summary>
         [Input("productionBranch")]
         public Input<string>? ProductionBranch { get; set; }
 
-        /// <summary>
-        /// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-        /// </summary>
         [Input("source")]
         public Input<Inputs.PagesProjectSourceGetArgs>? Source { get; set; }
 

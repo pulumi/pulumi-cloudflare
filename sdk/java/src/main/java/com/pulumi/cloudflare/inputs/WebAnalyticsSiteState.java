@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WebAnalyticsSiteRuleArgs;
+import com.pulumi.cloudflare.inputs.WebAnalyticsSiteRulesetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +20,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     public static final WebAnalyticsSiteState Empty = new WebAnalyticsSiteState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,29 +35,36 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
     @Import(name="autoInstall")
     private @Nullable Output<Boolean> autoInstall;
 
     /**
-     * @return Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * @return If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
     public Optional<Output<Boolean>> autoInstall() {
         return Optional.ofNullable(this.autoInstall);
     }
 
+    @Import(name="created")
+    private @Nullable Output<String> created;
+
+    public Optional<Output<String>> created() {
+        return Optional.ofNullable(this.created);
+    }
+
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * The hostname to use for gray-clouded sites.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname to use for gray-clouded sites.
      * 
      */
     public Optional<Output<String>> host() {
@@ -62,29 +72,36 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID for the ruleset associated to this Web Analytics Site.
+     * A list of rules.
      * 
      */
-    @Import(name="rulesetId")
-    private @Nullable Output<String> rulesetId;
+    @Import(name="rules")
+    private @Nullable Output<List<WebAnalyticsSiteRuleArgs>> rules;
 
     /**
-     * @return The ID for the ruleset associated to this Web Analytics Site.
+     * @return A list of rules.
      * 
      */
-    public Optional<Output<String>> rulesetId() {
-        return Optional.ofNullable(this.rulesetId);
+    public Optional<Output<List<WebAnalyticsSiteRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
+    }
+
+    @Import(name="ruleset")
+    private @Nullable Output<WebAnalyticsSiteRulesetArgs> ruleset;
+
+    public Optional<Output<WebAnalyticsSiteRulesetArgs>> ruleset() {
+        return Optional.ofNullable(this.ruleset);
     }
 
     /**
-     * The Web Analytics site tag.
+     * The Web Analytics site identifier.
      * 
      */
     @Import(name="siteTag")
     private @Nullable Output<String> siteTag;
 
     /**
-     * @return The Web Analytics site tag.
+     * @return The Web Analytics site identifier.
      * 
      */
     public Optional<Output<String>> siteTag() {
@@ -92,14 +109,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The token for the Web Analytics site.
+     * The Web Analytics site token.
      * 
      */
     @Import(name="siteToken")
     private @Nullable Output<String> siteToken;
 
     /**
-     * @return The token for the Web Analytics site.
+     * @return The Web Analytics site token.
      * 
      */
     public Optional<Output<String>> siteToken() {
@@ -107,14 +124,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+     * Encoded JavaScript snippet.
      * 
      */
     @Import(name="snippet")
     private @Nullable Output<String> snippet;
 
     /**
-     * @return The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+     * @return Encoded JavaScript snippet.
      * 
      */
     public Optional<Output<String>> snippet() {
@@ -122,14 +139,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      * 
      */
     @Import(name="zoneTag")
     private @Nullable Output<String> zoneTag;
 
     /**
-     * @return The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier.
      * 
      */
     public Optional<Output<String>> zoneTag() {
@@ -141,8 +158,10 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     private WebAnalyticsSiteState(WebAnalyticsSiteState $) {
         this.accountId = $.accountId;
         this.autoInstall = $.autoInstall;
+        this.created = $.created;
         this.host = $.host;
-        this.rulesetId = $.rulesetId;
+        this.rules = $.rules;
+        this.ruleset = $.ruleset;
         this.siteTag = $.siteTag;
         this.siteToken = $.siteToken;
         this.snippet = $.snippet;
@@ -168,7 +187,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -179,7 +198,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -189,7 +208,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoInstall Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+         * @param autoInstall If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
          * 
          * @return builder
          * 
@@ -200,7 +219,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoInstall Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+         * @param autoInstall If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
          * 
          * @return builder
          * 
@@ -209,8 +228,17 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
             return autoInstall(Output.of(autoInstall));
         }
 
+        public Builder created(@Nullable Output<String> created) {
+            $.created = created;
+            return this;
+        }
+
+        public Builder created(String created) {
+            return created(Output.of(created));
+        }
+
         /**
-         * @param host The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+         * @param host The hostname to use for gray-clouded sites.
          * 
          * @return builder
          * 
@@ -221,7 +249,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param host The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+         * @param host The hostname to use for gray-clouded sites.
          * 
          * @return builder
          * 
@@ -231,28 +259,47 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rulesetId The ID for the ruleset associated to this Web Analytics Site.
+         * @param rules A list of rules.
          * 
          * @return builder
          * 
          */
-        public Builder rulesetId(@Nullable Output<String> rulesetId) {
-            $.rulesetId = rulesetId;
+        public Builder rules(@Nullable Output<List<WebAnalyticsSiteRuleArgs>> rules) {
+            $.rules = rules;
             return this;
         }
 
         /**
-         * @param rulesetId The ID for the ruleset associated to this Web Analytics Site.
+         * @param rules A list of rules.
          * 
          * @return builder
          * 
          */
-        public Builder rulesetId(String rulesetId) {
-            return rulesetId(Output.of(rulesetId));
+        public Builder rules(List<WebAnalyticsSiteRuleArgs> rules) {
+            return rules(Output.of(rules));
         }
 
         /**
-         * @param siteTag The Web Analytics site tag.
+         * @param rules A list of rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(WebAnalyticsSiteRuleArgs... rules) {
+            return rules(List.of(rules));
+        }
+
+        public Builder ruleset(@Nullable Output<WebAnalyticsSiteRulesetArgs> ruleset) {
+            $.ruleset = ruleset;
+            return this;
+        }
+
+        public Builder ruleset(WebAnalyticsSiteRulesetArgs ruleset) {
+            return ruleset(Output.of(ruleset));
+        }
+
+        /**
+         * @param siteTag The Web Analytics site identifier.
          * 
          * @return builder
          * 
@@ -263,7 +310,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param siteTag The Web Analytics site tag.
+         * @param siteTag The Web Analytics site identifier.
          * 
          * @return builder
          * 
@@ -273,7 +320,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param siteToken The token for the Web Analytics site.
+         * @param siteToken The Web Analytics site token.
          * 
          * @return builder
          * 
@@ -284,7 +331,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param siteToken The token for the Web Analytics site.
+         * @param siteToken The Web Analytics site token.
          * 
          * @return builder
          * 
@@ -294,7 +341,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param snippet The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+         * @param snippet Encoded JavaScript snippet.
          * 
          * @return builder
          * 
@@ -305,7 +352,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param snippet The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+         * @param snippet Encoded JavaScript snippet.
          * 
          * @return builder
          * 
@@ -315,7 +362,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneTag The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneTag The zone identifier.
          * 
          * @return builder
          * 
@@ -326,7 +373,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneTag The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneTag The zone identifier.
          * 
          * @return builder
          * 

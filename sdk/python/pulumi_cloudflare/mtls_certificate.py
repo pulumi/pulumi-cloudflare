@@ -26,11 +26,11 @@ class MtlsCertificateArgs:
                  private_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MtlsCertificate resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] ca: Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] certificates: Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] ca: Indicates whether the certificate is a CA or leaf certificate.
+        :param pulumi.Input[str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[str] name: Optional unique name for the certificate. Only used for human readability.
+        :param pulumi.Input[str] private_key: The private key for the certificate
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ca", ca)
@@ -44,7 +44,7 @@ class MtlsCertificateArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -56,7 +56,7 @@ class MtlsCertificateArgs:
     @pulumi.getter
     def ca(self) -> pulumi.Input[bool]:
         """
-        Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+        Indicates whether the certificate is a CA or leaf certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -68,7 +68,7 @@ class MtlsCertificateArgs:
     @pulumi.getter
     def certificates(self) -> pulumi.Input[str]:
         """
-        Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+        The uploaded root CA certificate.
         """
         return pulumi.get(self, "certificates")
 
@@ -80,7 +80,7 @@ class MtlsCertificateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+        Optional unique name for the certificate. Only used for human readability.
         """
         return pulumi.get(self, "name")
 
@@ -92,7 +92,7 @@ class MtlsCertificateArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+        The private key for the certificate
         """
         return pulumi.get(self, "private_key")
 
@@ -113,19 +113,21 @@ class _MtlsCertificateState:
                  private_key: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  signature: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  uploaded_on: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MtlsCertificate resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] ca: Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] certificates: Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] expires_on: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] issuer: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] serial_number: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] ca: Indicates whether the certificate is a CA or leaf certificate.
+        :param pulumi.Input[str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[str] expires_on: When the certificate expires.
+        :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[str] name: Optional unique name for the certificate. Only used for human readability.
+        :param pulumi.Input[str] private_key: The private key for the certificate
+        :param pulumi.Input[str] serial_number: The certificate serial number.
+        :param pulumi.Input[str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[str] updated_at: This is the time the certificate was updated.
+        :param pulumi.Input[str] uploaded_on: This is the time the certificate was uploaded.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -145,6 +147,8 @@ class _MtlsCertificateState:
             pulumi.set(__self__, "serial_number", serial_number)
         if signature is not None:
             pulumi.set(__self__, "signature", signature)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if uploaded_on is not None:
             pulumi.set(__self__, "uploaded_on", uploaded_on)
 
@@ -152,7 +156,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -164,7 +168,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def ca(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+        Indicates whether the certificate is a CA or leaf certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -176,7 +180,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def certificates(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+        The uploaded root CA certificate.
         """
         return pulumi.get(self, "certificates")
 
@@ -188,7 +192,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> Optional[pulumi.Input[str]]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        When the certificate expires.
         """
         return pulumi.get(self, "expires_on")
 
@@ -200,7 +204,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The certificate authority that issued the certificate.
         """
         return pulumi.get(self, "issuer")
 
@@ -212,7 +216,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+        Optional unique name for the certificate. Only used for human readability.
         """
         return pulumi.get(self, "name")
 
@@ -224,7 +228,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+        The private key for the certificate
         """
         return pulumi.get(self, "private_key")
 
@@ -236,7 +240,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[str]]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The certificate serial number.
         """
         return pulumi.get(self, "serial_number")
 
@@ -248,7 +252,7 @@ class _MtlsCertificateState:
     @pulumi.getter
     def signature(self) -> Optional[pulumi.Input[str]]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The type of hash used for the certificate.
         """
         return pulumi.get(self, "signature")
 
@@ -257,10 +261,22 @@ class _MtlsCertificateState:
         pulumi.set(self, "signature", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the time the certificate was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> Optional[pulumi.Input[str]]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        This is the time the certificate was uploaded.
         """
         return pulumi.get(self, "uploaded_on")
 
@@ -281,39 +297,39 @@ class MtlsCertificate(pulumi.CustomResource):
                  private_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.MtlsCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example",
-            certificates=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----\"\"\",
-            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----\"\"\",
-            ca=True)
+        example_mtls_certificate = cloudflare.MtlsCertificate("example_mtls_certificate",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ca=True,
+            certificates=\"\"\"  -----BEGIN CERTIFICATE-----
+          MIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE
+          -----END CERTIFICATE-----
+        \"\"\",
+            name="example_ca_cert",
+            private_key=\"\"\"  -----BEGIN PRIVATE KEY-----
+          MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=
+          -----END PRIVATE KEY-----
+        \"\"\")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
+        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] ca: Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] certificates: Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] ca: Indicates whether the certificate is a CA or leaf certificate.
+        :param pulumi.Input[str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[str] name: Optional unique name for the certificate. Only used for human readability.
+        :param pulumi.Input[str] private_key: The private key for the certificate
         """
         ...
     @overload
@@ -322,30 +338,30 @@ class MtlsCertificate(pulumi.CustomResource):
                  args: MtlsCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.MtlsCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example",
-            certificates=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----\"\"\",
-            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----\"\"\",
-            ca=True)
+        example_mtls_certificate = cloudflare.MtlsCertificate("example_mtls_certificate",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ca=True,
+            certificates=\"\"\"  -----BEGIN CERTIFICATE-----
+          MIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE
+          -----END CERTIFICATE-----
+        \"\"\",
+            name="example_ca_cert",
+            private_key=\"\"\"  -----BEGIN PRIVATE KEY-----
+          MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=
+          -----END PRIVATE KEY-----
+        \"\"\")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
+        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -392,6 +408,7 @@ class MtlsCertificate(pulumi.CustomResource):
             __props__.__dict__["issuer"] = None
             __props__.__dict__["serial_number"] = None
             __props__.__dict__["signature"] = None
+            __props__.__dict__["updated_at"] = None
             __props__.__dict__["uploaded_on"] = None
         super(MtlsCertificate, __self__).__init__(
             'cloudflare:index/mtlsCertificate:MtlsCertificate',
@@ -412,6 +429,7 @@ class MtlsCertificate(pulumi.CustomResource):
             private_key: Optional[pulumi.Input[str]] = None,
             serial_number: Optional[pulumi.Input[str]] = None,
             signature: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
             uploaded_on: Optional[pulumi.Input[str]] = None) -> 'MtlsCertificate':
         """
         Get an existing MtlsCertificate resource's state with the given name, id, and optional extra
@@ -420,16 +438,17 @@ class MtlsCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] ca: Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] certificates: Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] expires_on: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] issuer: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] serial_number: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] ca: Indicates whether the certificate is a CA or leaf certificate.
+        :param pulumi.Input[str] certificates: The uploaded root CA certificate.
+        :param pulumi.Input[str] expires_on: When the certificate expires.
+        :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[str] name: Optional unique name for the certificate. Only used for human readability.
+        :param pulumi.Input[str] private_key: The private key for the certificate
+        :param pulumi.Input[str] serial_number: The certificate serial number.
+        :param pulumi.Input[str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[str] updated_at: This is the time the certificate was updated.
+        :param pulumi.Input[str] uploaded_on: This is the time the certificate was uploaded.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -444,6 +463,7 @@ class MtlsCertificate(pulumi.CustomResource):
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["signature"] = signature
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["uploaded_on"] = uploaded_on
         return MtlsCertificate(resource_name, opts=opts, __props__=__props__)
 
@@ -451,7 +471,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -459,7 +479,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def ca(self) -> pulumi.Output[bool]:
         """
-        Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+        Indicates whether the certificate is a CA or leaf certificate.
         """
         return pulumi.get(self, "ca")
 
@@ -467,7 +487,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificates(self) -> pulumi.Output[str]:
         """
-        Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+        The uploaded root CA certificate.
         """
         return pulumi.get(self, "certificates")
 
@@ -475,7 +495,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Output[str]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        When the certificate expires.
         """
         return pulumi.get(self, "expires_on")
 
@@ -483,7 +503,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def issuer(self) -> pulumi.Output[str]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The certificate authority that issued the certificate.
         """
         return pulumi.get(self, "issuer")
 
@@ -491,7 +511,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+        Optional unique name for the certificate. Only used for human readability.
         """
         return pulumi.get(self, "name")
 
@@ -499,7 +519,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The certificate's private key. **Modifying this attribute will force creation of a new resource.**
+        The private key for the certificate
         """
         return pulumi.get(self, "private_key")
 
@@ -507,7 +527,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> pulumi.Output[str]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The certificate serial number.
         """
         return pulumi.get(self, "serial_number")
 
@@ -515,15 +535,23 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def signature(self) -> pulumi.Output[str]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        The type of hash used for the certificate.
         """
         return pulumi.get(self, "signature")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        """
+        This is the time the certificate was updated.
+        """
+        return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> pulumi.Output[str]:
         """
-        **Modifying this attribute will force creation of a new resource.**
+        This is the time the certificate was uploaded.
         """
         return pulumi.get(self, "uploaded_on")
 

@@ -3,20 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsAntivirusArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBlockPageArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBodyScanningArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsCertificateArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsCustomCertificateArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsFipsArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsPayloadLogArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsProxyArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSshSessionLogArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,281 +16,49 @@ public final class ZeroTrustGatewaySettingsState extends com.pulumi.resources.Re
 
     public static final ZeroTrustGatewaySettingsState Empty = new ZeroTrustGatewaySettingsState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Whether to enable the activity log.
-     * 
-     */
-    @Import(name="activityLogEnabled")
-    private @Nullable Output<Boolean> activityLogEnabled;
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
 
-    /**
-     * @return Whether to enable the activity log.
-     * 
-     */
-    public Optional<Output<Boolean>> activityLogEnabled() {
-        return Optional.ofNullable(this.activityLogEnabled);
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
     }
 
     /**
-     * Configuration block for antivirus traffic scanning.
+     * Account settings
      * 
      */
-    @Import(name="antivirus")
-    private @Nullable Output<ZeroTrustGatewaySettingsAntivirusArgs> antivirus;
+    @Import(name="settings")
+    private @Nullable Output<ZeroTrustGatewaySettingsSettingsArgs> settings;
 
     /**
-     * @return Configuration block for antivirus traffic scanning.
+     * @return Account settings
      * 
      */
-    public Optional<Output<ZeroTrustGatewaySettingsAntivirusArgs>> antivirus() {
-        return Optional.ofNullable(this.antivirus);
+    public Optional<Output<ZeroTrustGatewaySettingsSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
     }
 
-    /**
-     * Configuration for a custom block page.
-     * 
-     */
-    @Import(name="blockPage")
-    private @Nullable Output<ZeroTrustGatewaySettingsBlockPageArgs> blockPage;
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
 
-    /**
-     * @return Configuration for a custom block page.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsBlockPageArgs>> blockPage() {
-        return Optional.ofNullable(this.blockPage);
-    }
-
-    /**
-     * Configuration for body scanning.
-     * 
-     */
-    @Import(name="bodyScanning")
-    private @Nullable Output<ZeroTrustGatewaySettingsBodyScanningArgs> bodyScanning;
-
-    /**
-     * @return Configuration for body scanning.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsBodyScanningArgs>> bodyScanning() {
-        return Optional.ofNullable(this.bodyScanning);
-    }
-
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    @Import(name="certificate")
-    private @Nullable Output<ZeroTrustGatewaySettingsCertificateArgs> certificate;
-
-    /**
-     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsCertificateArgs>> certificate() {
-        return Optional.ofNullable(this.certificate);
-    }
-
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    @Import(name="customCertificate")
-    private @Nullable Output<ZeroTrustGatewaySettingsCustomCertificateArgs> customCertificate;
-
-    /**
-     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    public Optional<Output<ZeroTrustGatewaySettingsCustomCertificateArgs>> customCertificate() {
-        return Optional.ofNullable(this.customCertificate);
-    }
-
-    /**
-     * Configuration for extended e-mail matching.
-     * 
-     */
-    @Import(name="extendedEmailMatching")
-    private @Nullable Output<ZeroTrustGatewaySettingsExtendedEmailMatchingArgs> extendedEmailMatching;
-
-    /**
-     * @return Configuration for extended e-mail matching.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsExtendedEmailMatchingArgs>> extendedEmailMatching() {
-        return Optional.ofNullable(this.extendedEmailMatching);
-    }
-
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    @Import(name="fips")
-    private @Nullable Output<ZeroTrustGatewaySettingsFipsArgs> fips;
-
-    /**
-     * @return Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsFipsArgs>> fips() {
-        return Optional.ofNullable(this.fips);
-    }
-
-    @Import(name="logging")
-    private @Nullable Output<ZeroTrustGatewaySettingsLoggingArgs> logging;
-
-    public Optional<Output<ZeroTrustGatewaySettingsLoggingArgs>> logging() {
-        return Optional.ofNullable(this.logging);
-    }
-
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    @Import(name="nonIdentityBrowserIsolationEnabled")
-    private @Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled;
-
-    /**
-     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> nonIdentityBrowserIsolationEnabled() {
-        return Optional.ofNullable(this.nonIdentityBrowserIsolationEnabled);
-    }
-
-    /**
-     * Configuration for DLP Payload Logging.
-     * 
-     */
-    @Import(name="payloadLog")
-    private @Nullable Output<ZeroTrustGatewaySettingsPayloadLogArgs> payloadLog;
-
-    /**
-     * @return Configuration for DLP Payload Logging.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsPayloadLogArgs>> payloadLog() {
-        return Optional.ofNullable(this.payloadLog);
-    }
-
-    /**
-     * Indicator that protocol detection is enabled.
-     * 
-     */
-    @Import(name="protocolDetectionEnabled")
-    private @Nullable Output<Boolean> protocolDetectionEnabled;
-
-    /**
-     * @return Indicator that protocol detection is enabled.
-     * 
-     */
-    public Optional<Output<Boolean>> protocolDetectionEnabled() {
-        return Optional.ofNullable(this.protocolDetectionEnabled);
-    }
-
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    @Import(name="proxy")
-    private @Nullable Output<ZeroTrustGatewaySettingsProxyArgs> proxy;
-
-    /**
-     * @return Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsProxyArgs>> proxy() {
-        return Optional.ofNullable(this.proxy);
-    }
-
-    /**
-     * Configuration for SSH Session Logging.
-     * 
-     */
-    @Import(name="sshSessionLog")
-    private @Nullable Output<ZeroTrustGatewaySettingsSshSessionLogArgs> sshSessionLog;
-
-    /**
-     * @return Configuration for SSH Session Logging.
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsSshSessionLogArgs>> sshSessionLog() {
-        return Optional.ofNullable(this.sshSessionLog);
-    }
-
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    @Import(name="tlsDecryptEnabled")
-    private @Nullable Output<Boolean> tlsDecryptEnabled;
-
-    /**
-     * @return Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    public Optional<Output<Boolean>> tlsDecryptEnabled() {
-        return Optional.ofNullable(this.tlsDecryptEnabled);
-    }
-
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    @Import(name="urlBrowserIsolationEnabled")
-    private @Nullable Output<Boolean> urlBrowserIsolationEnabled;
-
-    /**
-     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> urlBrowserIsolationEnabled() {
-        return Optional.ofNullable(this.urlBrowserIsolationEnabled);
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     private ZeroTrustGatewaySettingsState() {}
 
     private ZeroTrustGatewaySettingsState(ZeroTrustGatewaySettingsState $) {
         this.accountId = $.accountId;
-        this.activityLogEnabled = $.activityLogEnabled;
-        this.antivirus = $.antivirus;
-        this.blockPage = $.blockPage;
-        this.bodyScanning = $.bodyScanning;
-        this.certificate = $.certificate;
-        this.customCertificate = $.customCertificate;
-        this.extendedEmailMatching = $.extendedEmailMatching;
-        this.fips = $.fips;
-        this.logging = $.logging;
-        this.nonIdentityBrowserIsolationEnabled = $.nonIdentityBrowserIsolationEnabled;
-        this.payloadLog = $.payloadLog;
-        this.protocolDetectionEnabled = $.protocolDetectionEnabled;
-        this.proxy = $.proxy;
-        this.sshSessionLog = $.sshSessionLog;
-        this.tlsDecryptEnabled = $.tlsDecryptEnabled;
-        this.urlBrowserIsolationEnabled = $.urlBrowserIsolationEnabled;
+        this.createdAt = $.createdAt;
+        this.settings = $.settings;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -322,357 +79,52 @@ public final class ZeroTrustGatewaySettingsState extends com.pulumi.resources.Re
             $ = new ZeroTrustGatewaySettingsState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param activityLogEnabled Whether to enable the activity log.
+         * @param settings Account settings
          * 
          * @return builder
          * 
          */
-        public Builder activityLogEnabled(@Nullable Output<Boolean> activityLogEnabled) {
-            $.activityLogEnabled = activityLogEnabled;
+        public Builder settings(@Nullable Output<ZeroTrustGatewaySettingsSettingsArgs> settings) {
+            $.settings = settings;
             return this;
         }
 
         /**
-         * @param activityLogEnabled Whether to enable the activity log.
+         * @param settings Account settings
          * 
          * @return builder
          * 
          */
-        public Builder activityLogEnabled(Boolean activityLogEnabled) {
-            return activityLogEnabled(Output.of(activityLogEnabled));
+        public Builder settings(ZeroTrustGatewaySettingsSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
-        /**
-         * @param antivirus Configuration block for antivirus traffic scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antivirus(@Nullable Output<ZeroTrustGatewaySettingsAntivirusArgs> antivirus) {
-            $.antivirus = antivirus;
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
             return this;
         }
 
-        /**
-         * @param antivirus Configuration block for antivirus traffic scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antivirus(ZeroTrustGatewaySettingsAntivirusArgs antivirus) {
-            return antivirus(Output.of(antivirus));
-        }
-
-        /**
-         * @param blockPage Configuration for a custom block page.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder blockPage(@Nullable Output<ZeroTrustGatewaySettingsBlockPageArgs> blockPage) {
-            $.blockPage = blockPage;
-            return this;
-        }
-
-        /**
-         * @param blockPage Configuration for a custom block page.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder blockPage(ZeroTrustGatewaySettingsBlockPageArgs blockPage) {
-            return blockPage(Output.of(blockPage));
-        }
-
-        /**
-         * @param bodyScanning Configuration for body scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bodyScanning(@Nullable Output<ZeroTrustGatewaySettingsBodyScanningArgs> bodyScanning) {
-            $.bodyScanning = bodyScanning;
-            return this;
-        }
-
-        /**
-         * @param bodyScanning Configuration for body scanning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bodyScanning(ZeroTrustGatewaySettingsBodyScanningArgs bodyScanning) {
-            return bodyScanning(Output.of(bodyScanning));
-        }
-
-        /**
-         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(@Nullable Output<ZeroTrustGatewaySettingsCertificateArgs> certificate) {
-            $.certificate = certificate;
-            return this;
-        }
-
-        /**
-         * @param certificate Configuration for TLS interception certificate. This will be required starting Feb 2025.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(ZeroTrustGatewaySettingsCertificateArgs certificate) {
-            return certificate(Output.of(certificate));
-        }
-
-        /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-         * 
-         */
-        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-        public Builder customCertificate(@Nullable Output<ZeroTrustGatewaySettingsCustomCertificateArgs> customCertificate) {
-            $.customCertificate = customCertificate;
-            return this;
-        }
-
-        /**
-         * @param customCertificate Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-         * 
-         */
-        @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-        public Builder customCertificate(ZeroTrustGatewaySettingsCustomCertificateArgs customCertificate) {
-            return customCertificate(Output.of(customCertificate));
-        }
-
-        /**
-         * @param extendedEmailMatching Configuration for extended e-mail matching.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder extendedEmailMatching(@Nullable Output<ZeroTrustGatewaySettingsExtendedEmailMatchingArgs> extendedEmailMatching) {
-            $.extendedEmailMatching = extendedEmailMatching;
-            return this;
-        }
-
-        /**
-         * @param extendedEmailMatching Configuration for extended e-mail matching.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder extendedEmailMatching(ZeroTrustGatewaySettingsExtendedEmailMatchingArgs extendedEmailMatching) {
-            return extendedEmailMatching(Output.of(extendedEmailMatching));
-        }
-
-        /**
-         * @param fips Configure compliance with Federal Information Processing Standards.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder fips(@Nullable Output<ZeroTrustGatewaySettingsFipsArgs> fips) {
-            $.fips = fips;
-            return this;
-        }
-
-        /**
-         * @param fips Configure compliance with Federal Information Processing Standards.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder fips(ZeroTrustGatewaySettingsFipsArgs fips) {
-            return fips(Output.of(fips));
-        }
-
-        public Builder logging(@Nullable Output<ZeroTrustGatewaySettingsLoggingArgs> logging) {
-            $.logging = logging;
-            return this;
-        }
-
-        public Builder logging(ZeroTrustGatewaySettingsLoggingArgs logging) {
-            return logging(Output.of(logging));
-        }
-
-        /**
-         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nonIdentityBrowserIsolationEnabled(@Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled) {
-            $.nonIdentityBrowserIsolationEnabled = nonIdentityBrowserIsolationEnabled;
-            return this;
-        }
-
-        /**
-         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nonIdentityBrowserIsolationEnabled(Boolean nonIdentityBrowserIsolationEnabled) {
-            return nonIdentityBrowserIsolationEnabled(Output.of(nonIdentityBrowserIsolationEnabled));
-        }
-
-        /**
-         * @param payloadLog Configuration for DLP Payload Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payloadLog(@Nullable Output<ZeroTrustGatewaySettingsPayloadLogArgs> payloadLog) {
-            $.payloadLog = payloadLog;
-            return this;
-        }
-
-        /**
-         * @param payloadLog Configuration for DLP Payload Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payloadLog(ZeroTrustGatewaySettingsPayloadLogArgs payloadLog) {
-            return payloadLog(Output.of(payloadLog));
-        }
-
-        /**
-         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder protocolDetectionEnabled(@Nullable Output<Boolean> protocolDetectionEnabled) {
-            $.protocolDetectionEnabled = protocolDetectionEnabled;
-            return this;
-        }
-
-        /**
-         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder protocolDetectionEnabled(Boolean protocolDetectionEnabled) {
-            return protocolDetectionEnabled(Output.of(protocolDetectionEnabled));
-        }
-
-        /**
-         * @param proxy Configuration block for specifying which protocols are proxied.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxy(@Nullable Output<ZeroTrustGatewaySettingsProxyArgs> proxy) {
-            $.proxy = proxy;
-            return this;
-        }
-
-        /**
-         * @param proxy Configuration block for specifying which protocols are proxied.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder proxy(ZeroTrustGatewaySettingsProxyArgs proxy) {
-            return proxy(Output.of(proxy));
-        }
-
-        /**
-         * @param sshSessionLog Configuration for SSH Session Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshSessionLog(@Nullable Output<ZeroTrustGatewaySettingsSshSessionLogArgs> sshSessionLog) {
-            $.sshSessionLog = sshSessionLog;
-            return this;
-        }
-
-        /**
-         * @param sshSessionLog Configuration for SSH Session Logging.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshSessionLog(ZeroTrustGatewaySettingsSshSessionLogArgs sshSessionLog) {
-            return sshSessionLog(Output.of(sshSessionLog));
-        }
-
-        /**
-         * @param tlsDecryptEnabled Indicator that decryption of TLS traffic is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tlsDecryptEnabled(@Nullable Output<Boolean> tlsDecryptEnabled) {
-            $.tlsDecryptEnabled = tlsDecryptEnabled;
-            return this;
-        }
-
-        /**
-         * @param tlsDecryptEnabled Indicator that decryption of TLS traffic is enabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tlsDecryptEnabled(Boolean tlsDecryptEnabled) {
-            return tlsDecryptEnabled(Output.of(tlsDecryptEnabled));
-        }
-
-        /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urlBrowserIsolationEnabled(@Nullable Output<Boolean> urlBrowserIsolationEnabled) {
-            $.urlBrowserIsolationEnabled = urlBrowserIsolationEnabled;
-            return this;
-        }
-
-        /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder urlBrowserIsolationEnabled(Boolean urlBrowserIsolationEnabled) {
-            return urlBrowserIsolationEnabled(Output.of(urlBrowserIsolationEnabled));
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public ZeroTrustGatewaySettingsState build() {

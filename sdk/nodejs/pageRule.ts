@@ -9,29 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare page rule resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Add a page rule to the domain
- * const foobar = new cloudflare.PageRule("foobar", {
- *     zoneId: cloudflareZoneId,
- *     target: `sub.${cloudflareZone}/page`,
- *     priority: 1,
- *     actions: {
- *         ssl: "flexible",
- *         emailObfuscation: "on",
- *         minifies: [{
- *             html: "off",
- *             css: "on",
- *             js: "on",
- *         }],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
@@ -73,13 +50,21 @@ export class PageRule extends pulumi.CustomResource {
      */
     public readonly actions!: pulumi.Output<outputs.PageRuleActions>;
     /**
+     * The timestamp of when the Page Rule was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number>;
     /**
      * Whether the page rule is active or disabled.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * The URL pattern to target with the page rule.
      */
@@ -103,6 +88,8 @@ export class PageRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PageRuleState | undefined;
             resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
@@ -123,6 +110,8 @@ export class PageRule extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PageRule.__pulumiType, name, resourceInputs, opts);
@@ -137,6 +126,14 @@ export interface PageRuleState {
      * The actions taken by the page rule, options given below.
      */
     actions?: pulumi.Input<inputs.PageRuleActions>;
+    /**
+     * The timestamp of when the Page Rule was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
     /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      */

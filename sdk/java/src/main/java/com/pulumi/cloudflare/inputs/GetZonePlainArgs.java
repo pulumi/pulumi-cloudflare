@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZoneFilter;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
@@ -14,47 +15,16 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonePlainArgs Empty = new GetZonePlainArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="filter")
+    private @Nullable GetZoneFilter filter;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Optional<GetZoneFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * The name of the zone. Must provide only one of `zone_id`, `name`.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable String name;
-
-    /**
-     * @return The name of the zone. Must provide only one of `zone_id`, `name`.
-     * 
-     */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-     * 
-     */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
-    /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-     * 
-     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -62,8 +32,7 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetZonePlainArgs() {}
 
     private GetZonePlainArgs(GetZonePlainArgs $) {
-        this.accountId = $.accountId;
-        this.name = $.name;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -85,34 +54,11 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable String accountId) {
-            $.accountId = accountId;
+        public Builder filter(@Nullable GetZoneFilter filter) {
+            $.filter = filter;
             return this;
         }
 
-        /**
-         * @param name The name of the zone. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable String name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;

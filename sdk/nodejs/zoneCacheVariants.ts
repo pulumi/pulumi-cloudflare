@@ -2,64 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which customizes Cloudflare zone cache variants.
- *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
+ * ## Import
  *
- * const example = new cloudflare.ZoneCacheVariants("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     avifs: [
- *         "image/avif",
- *         "image/webp",
- *     ],
- *     bmps: [
- *         "image/bmp",
- *         "image/webp",
- *     ],
- *     gifs: [
- *         "image/gif",
- *         "image/webp",
- *     ],
- *     jpegs: [
- *         "image/jpeg",
- *         "image/webp",
- *     ],
- *     jpgs: [
- *         "image/jpg",
- *         "image/webp",
- *     ],
- *     jpg2s: [
- *         "image/jpg2",
- *         "image/webp",
- *     ],
- *     jp2s: [
- *         "image/jp2",
- *         "image/webp",
- *     ],
- *     pngs: [
- *         "image/png",
- *         "image/webp",
- *     ],
- *     tiffs: [
- *         "image/tiff",
- *         "image/webp",
- *     ],
- *     tifs: [
- *         "image/tif",
- *         "image/webp",
- *     ],
- *     webps: [
- *         "image/jpeg",
- *         "image/webp",
- *     ],
- * });
+ * ```sh
+ * $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '<zone_id>'
  * ```
  */
 export class ZoneCacheVariants extends pulumi.CustomResource {
@@ -91,51 +44,19 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif.
+     * Whether the setting is editable
      */
-    public readonly avifs!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp.
+     * Last time this setting was modified.
      */
-    public readonly bmps!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for gif.
+     * Value of the zone setting.
      */
-    public readonly gifs!: pulumi.Output<string[] | undefined>;
+    public readonly value!: pulumi.Output<outputs.ZoneCacheVariantsValue>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for jp2.
-     */
-    public readonly jp2s!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg.
-     */
-    public readonly jpegs!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2.
-     */
-    public readonly jpg2s!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg.
-     */
-    public readonly jpgs!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for png.
-     */
-    public readonly pngs!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tiff.
-     */
-    public readonly tiffs!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tif.
-     */
-    public readonly tifs!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for webp.
-     */
-    public readonly webps!: pulumi.Output<string[] | undefined>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -152,35 +73,22 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneCacheVariantsState | undefined;
-            resourceInputs["avifs"] = state ? state.avifs : undefined;
-            resourceInputs["bmps"] = state ? state.bmps : undefined;
-            resourceInputs["gifs"] = state ? state.gifs : undefined;
-            resourceInputs["jp2s"] = state ? state.jp2s : undefined;
-            resourceInputs["jpegs"] = state ? state.jpegs : undefined;
-            resourceInputs["jpg2s"] = state ? state.jpg2s : undefined;
-            resourceInputs["jpgs"] = state ? state.jpgs : undefined;
-            resourceInputs["pngs"] = state ? state.pngs : undefined;
-            resourceInputs["tiffs"] = state ? state.tiffs : undefined;
-            resourceInputs["tifs"] = state ? state.tifs : undefined;
-            resourceInputs["webps"] = state ? state.webps : undefined;
+            resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneCacheVariantsArgs | undefined;
+            if ((!args || args.value === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'value'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["avifs"] = args ? args.avifs : undefined;
-            resourceInputs["bmps"] = args ? args.bmps : undefined;
-            resourceInputs["gifs"] = args ? args.gifs : undefined;
-            resourceInputs["jp2s"] = args ? args.jp2s : undefined;
-            resourceInputs["jpegs"] = args ? args.jpegs : undefined;
-            resourceInputs["jpg2s"] = args ? args.jpg2s : undefined;
-            resourceInputs["jpgs"] = args ? args.jpgs : undefined;
-            resourceInputs["pngs"] = args ? args.pngs : undefined;
-            resourceInputs["tiffs"] = args ? args.tiffs : undefined;
-            resourceInputs["tifs"] = args ? args.tifs : undefined;
-            resourceInputs["webps"] = args ? args.webps : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["editable"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneCacheVariants.__pulumiType, name, resourceInputs, opts);
@@ -192,51 +100,19 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
  */
 export interface ZoneCacheVariantsState {
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif.
+     * Whether the setting is editable
      */
-    avifs?: pulumi.Input<pulumi.Input<string>[]>;
+    editable?: pulumi.Input<boolean>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp.
+     * Last time this setting was modified.
      */
-    bmps?: pulumi.Input<pulumi.Input<string>[]>;
+    modifiedOn?: pulumi.Input<string>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for gif.
+     * Value of the zone setting.
      */
-    gifs?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<inputs.ZoneCacheVariantsValue>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for jp2.
-     */
-    jp2s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg.
-     */
-    jpegs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2.
-     */
-    jpg2s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg.
-     */
-    jpgs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for png.
-     */
-    pngs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tiff.
-     */
-    tiffs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tif.
-     */
-    tifs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for webp.
-     */
-    webps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -246,51 +122,11 @@ export interface ZoneCacheVariantsState {
  */
 export interface ZoneCacheVariantsArgs {
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif.
+     * Value of the zone setting.
      */
-    avifs?: pulumi.Input<pulumi.Input<string>[]>;
+    value: pulumi.Input<inputs.ZoneCacheVariantsValue>;
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp.
-     */
-    bmps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for gif.
-     */
-    gifs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jp2.
-     */
-    jp2s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg.
-     */
-    jpegs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2.
-     */
-    jpg2s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for jpg.
-     */
-    jpgs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for png.
-     */
-    pngs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tiff.
-     */
-    tiffs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for tif.
-     */
-    tifs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of strings with the MIME types of all the variants that should be served for webp.
-     */
-    webps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

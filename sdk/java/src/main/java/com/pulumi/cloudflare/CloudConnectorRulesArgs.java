@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class CloudConnectorRulesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,29 +17,29 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
     public static final CloudConnectorRulesArgs Empty = new CloudConnectorRulesArgs();
 
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      * 
      */
-    @Import(name="rules")
-    private @Nullable Output<List<CloudConnectorRulesRuleArgs>> rules;
+    @Import(name="rules", required=true)
+    private Output<List<CloudConnectorRulesRuleArgs>> rules;
 
     /**
-     * @return List of Cloud Connector Rules
+     * @return List of Cloud Connector rules
      * 
      */
-    public Optional<Output<List<CloudConnectorRulesRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Output<List<CloudConnectorRulesRuleArgs>> rules() {
+        return this.rules;
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -74,18 +72,18 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
          */
-        public Builder rules(@Nullable Output<List<CloudConnectorRulesRuleArgs>> rules) {
+        public Builder rules(Output<List<CloudConnectorRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
@@ -95,7 +93,7 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
@@ -105,7 +103,7 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -116,7 +114,7 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -126,6 +124,9 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         public CloudConnectorRulesArgs build() {
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("CloudConnectorRulesArgs", "rules");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("CloudConnectorRulesArgs", "zoneId");
             }

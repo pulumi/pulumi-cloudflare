@@ -15,14 +15,14 @@ public final class GetZoneCacheReserveArgs extends com.pulumi.resources.InvokeAr
     public static final GetZoneCacheReserveArgs Empty = new GetZoneCacheReserveArgs();
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +54,7 @@ public final class GetZoneCacheReserveArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetZoneCacheReserveArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

@@ -17,49 +17,41 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     public static final ZeroTrustGatewayCertificateState Empty = new ZeroTrustGatewayCertificateState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     * 
-     */
-    @Import(name="activate")
-    private @Nullable Output<Boolean> activate;
-
-    /**
-     * @return Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> activate() {
-        return Optional.ofNullable(this.activate);
-    }
-
-    /**
-     * The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * 
      */
     @Import(name="bindingStatus")
     private @Nullable Output<String> bindingStatus;
 
     /**
-     * @return The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * 
      */
     public Optional<Output<String>> bindingStatus() {
         return Optional.ofNullable(this.bindingStatus);
+    }
+
+    /**
+     * The CA certificate
+     * 
+     */
+    @Import(name="certificate")
+    private @Nullable Output<String> certificate;
+
+    /**
+     * @return The CA certificate
+     * 
+     */
+    public Optional<Output<String>> certificate() {
+        return Optional.ofNullable(this.certificate);
     }
 
     @Import(name="createdAt")
@@ -67,21 +59,6 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
-    }
-
-    /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-     * 
-     */
-    @Import(name="custom")
-    private @Nullable Output<Boolean> custom;
-
-    /**
-     * @return The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-     * 
-     */
-    public Optional<Output<Boolean>> custom() {
-        return Optional.ofNullable(this.custom);
     }
 
     @Import(name="expiresOn")
@@ -92,40 +69,85 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+     * The SHA256 fingerprint of the certificate.
      * 
      */
-    @Import(name="gatewayManaged")
-    private @Nullable Output<Boolean> gatewayManaged;
+    @Import(name="fingerprint")
+    private @Nullable Output<String> fingerprint;
 
     /**
-     * @return The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+     * @return The SHA256 fingerprint of the certificate.
      * 
      */
-    public Optional<Output<Boolean>> gatewayManaged() {
-        return Optional.ofNullable(this.gatewayManaged);
+    public Optional<Output<String>> fingerprint() {
+        return Optional.ofNullable(this.fingerprint);
     }
 
     /**
-     * Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * Use this certificate for Gateway TLS interception
      * 
      */
     @Import(name="inUse")
     private @Nullable Output<Boolean> inUse;
 
     /**
-     * @return Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * @return Use this certificate for Gateway TLS interception
      * 
      */
     public Optional<Output<Boolean>> inUse() {
         return Optional.ofNullable(this.inUse);
     }
 
-    @Import(name="qsPackId")
-    private @Nullable Output<String> qsPackId;
+    /**
+     * The organization that issued the certificate.
+     * 
+     */
+    @Import(name="issuerOrg")
+    private @Nullable Output<String> issuerOrg;
 
-    public Optional<Output<String>> qsPackId() {
-        return Optional.ofNullable(this.qsPackId);
+    /**
+     * @return The organization that issued the certificate.
+     * 
+     */
+    public Optional<Output<String>> issuerOrg() {
+        return Optional.ofNullable(this.issuerOrg);
+    }
+
+    /**
+     * The entire issuer field of the certificate.
+     * 
+     */
+    @Import(name="issuerRaw")
+    private @Nullable Output<String> issuerRaw;
+
+    /**
+     * @return The entire issuer field of the certificate.
+     * 
+     */
+    public Optional<Output<String>> issuerRaw() {
+        return Optional.ofNullable(this.issuerRaw);
+    }
+
+    /**
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     @Import(name="uploadedOn")
@@ -136,14 +158,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      * 
      */
     @Import(name="validityPeriodDays")
     private @Nullable Output<Integer> validityPeriodDays;
 
     /**
-     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      * 
      */
     public Optional<Output<Integer>> validityPeriodDays() {
@@ -154,14 +176,16 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     private ZeroTrustGatewayCertificateState(ZeroTrustGatewayCertificateState $) {
         this.accountId = $.accountId;
-        this.activate = $.activate;
         this.bindingStatus = $.bindingStatus;
+        this.certificate = $.certificate;
         this.createdAt = $.createdAt;
-        this.custom = $.custom;
         this.expiresOn = $.expiresOn;
-        this.gatewayManaged = $.gatewayManaged;
+        this.fingerprint = $.fingerprint;
         this.inUse = $.inUse;
-        this.qsPackId = $.qsPackId;
+        this.issuerOrg = $.issuerOrg;
+        this.issuerRaw = $.issuerRaw;
+        this.type = $.type;
+        this.updatedAt = $.updatedAt;
         this.uploadedOn = $.uploadedOn;
         this.validityPeriodDays = $.validityPeriodDays;
     }
@@ -184,50 +208,17 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
             $ = new ZeroTrustGatewayCertificateState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param activate Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder activate(@Nullable Output<Boolean> activate) {
-            $.activate = activate;
-            return this;
-        }
-
-        /**
-         * @param activate Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder activate(Boolean activate) {
-            return activate(Output.of(activate));
-        }
-
-        /**
-         * @param bindingStatus The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
          * 
          * @return builder
          * 
@@ -238,13 +229,34 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param bindingStatus The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+         * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
          * 
          * @return builder
          * 
          */
         public Builder bindingStatus(String bindingStatus) {
             return bindingStatus(Output.of(bindingStatus));
+        }
+
+        /**
+         * @param certificate The CA certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(@Nullable Output<String> certificate) {
+            $.certificate = certificate;
+            return this;
+        }
+
+        /**
+         * @param certificate The CA certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(String certificate) {
+            return certificate(Output.of(certificate));
         }
 
         public Builder createdAt(@Nullable Output<String> createdAt) {
@@ -254,27 +266,6 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
-        }
-
-        /**
-         * @param custom The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder custom(@Nullable Output<Boolean> custom) {
-            $.custom = custom;
-            return this;
-        }
-
-        /**
-         * @param custom The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder custom(Boolean custom) {
-            return custom(Output.of(custom));
         }
 
         public Builder expiresOn(@Nullable Output<String> expiresOn) {
@@ -287,28 +278,28 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param gatewayManaged The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+         * @param fingerprint The SHA256 fingerprint of the certificate.
          * 
          * @return builder
          * 
          */
-        public Builder gatewayManaged(@Nullable Output<Boolean> gatewayManaged) {
-            $.gatewayManaged = gatewayManaged;
+        public Builder fingerprint(@Nullable Output<String> fingerprint) {
+            $.fingerprint = fingerprint;
             return this;
         }
 
         /**
-         * @param gatewayManaged The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+         * @param fingerprint The SHA256 fingerprint of the certificate.
          * 
          * @return builder
          * 
          */
-        public Builder gatewayManaged(Boolean gatewayManaged) {
-            return gatewayManaged(Output.of(gatewayManaged));
+        public Builder fingerprint(String fingerprint) {
+            return fingerprint(Output.of(fingerprint));
         }
 
         /**
-         * @param inUse Whether the certificate is in use by Gateway for TLS interception and the block page.
+         * @param inUse Use this certificate for Gateway TLS interception
          * 
          * @return builder
          * 
@@ -319,7 +310,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param inUse Whether the certificate is in use by Gateway for TLS interception and the block page.
+         * @param inUse Use this certificate for Gateway TLS interception
          * 
          * @return builder
          * 
@@ -328,13 +319,76 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
             return inUse(Output.of(inUse));
         }
 
-        public Builder qsPackId(@Nullable Output<String> qsPackId) {
-            $.qsPackId = qsPackId;
+        /**
+         * @param issuerOrg The organization that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuerOrg(@Nullable Output<String> issuerOrg) {
+            $.issuerOrg = issuerOrg;
             return this;
         }
 
-        public Builder qsPackId(String qsPackId) {
-            return qsPackId(Output.of(qsPackId));
+        /**
+         * @param issuerOrg The organization that issued the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuerOrg(String issuerOrg) {
+            return issuerOrg(Output.of(issuerOrg));
+        }
+
+        /**
+         * @param issuerRaw The entire issuer field of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuerRaw(@Nullable Output<String> issuerRaw) {
+            $.issuerRaw = issuerRaw;
+            return this;
+        }
+
+        /**
+         * @param issuerRaw The entire issuer field of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuerRaw(String issuerRaw) {
+            return issuerRaw(Output.of(issuerRaw));
+        }
+
+        /**
+         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public Builder uploadedOn(@Nullable Output<String> uploadedOn) {
@@ -347,7 +401,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
          * 
          * @return builder
          * 
@@ -358,7 +412,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
          * 
          * @return builder
          * 

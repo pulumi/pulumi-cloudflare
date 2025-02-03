@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare static routes for Magic
-    /// Transit or Magic WAN. Static routes are used to route traffic
-    /// through GRE tunnels.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,80 +20,73 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.MagicWanStaticRoute("example", new()
+    ///     var exampleMagicWanStaticRoute = new Cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Description = "New route for new prefix 192.0.2.0/24",
-    ///         Prefix = "192.0.2.0/24",
-    ///         Nexthop = "10.0.0.0",
-    ///         Priority = 100,
-    ///         Weight = 10,
-    ///         ColoNames = new[]
-    ///         {
-    ///             "den01",
-    ///         },
-    ///         ColoRegions = new[]
-    ///         {
-    ///             "APAC",
-    ///         },
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example &lt;account_id&gt;/&lt;static_route_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")]
     public partial class MagicWanStaticRoute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// List of Cloudflare colocation regions for this static route.
-        /// </summary>
-        [Output("coloNames")]
-        public Output<ImmutableArray<string>> ColoNames { get; private set; } = null!;
-
-        /// <summary>
-        /// List of Cloudflare colocation names for this static route.
-        /// </summary>
-        [Output("coloRegions")]
-        public Output<ImmutableArray<string>> ColoRegions { get; private set; } = null!;
-
-        /// <summary>
-        /// Description of the static route.
+        /// An optional human provided description of the static route.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("modified")]
+        public Output<bool> Modified { get; private set; } = null!;
+
+        [Output("modifiedRoute")]
+        public Output<Outputs.MagicWanStaticRouteModifiedRoute> ModifiedRoute { get; private set; } = null!;
+
         /// <summary>
-        /// The nexthop IP address where traffic will be routed to.
+        /// The next-hop IP Address for the static route.
         /// </summary>
         [Output("nexthop")]
-        public Output<string> Nexthop { get; private set; } = null!;
+        public Output<string?> Nexthop { get; private set; } = null!;
 
         /// <summary>
-        /// Your network prefix using CIDR notation.
+        /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
         [Output("prefix")]
-        public Output<string> Prefix { get; private set; } = null!;
+        public Output<string?> Prefix { get; private set; } = null!;
 
         /// <summary>
-        /// The priority for the static route.
+        /// Priority of the static route.
         /// </summary>
         [Output("priority")]
-        public Output<int> Priority { get; private set; } = null!;
+        public Output<int?> Priority { get; private set; } = null!;
+
+        [Output("route")]
+        public Output<Outputs.MagicWanStaticRouteRoute> Route { get; private set; } = null!;
 
         /// <summary>
-        /// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
+        /// </summary>
+        [Output("routeId")]
+        public Output<string?> RouteId { get; private set; } = null!;
+
+        [Output("routes")]
+        public Output<ImmutableArray<Outputs.MagicWanStaticRouteRoute>> Routes { get; private set; } = null!;
+
+        /// <summary>
+        /// Used only for ECMP routes.
+        /// </summary>
+        [Output("scope")]
+        public Output<Outputs.MagicWanStaticRouteScope> Scope { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional weight of the ECMP scope - if provided.
         /// </summary>
         [Output("weight")]
         public Output<int?> Weight { get; private set; } = null!;
@@ -149,61 +138,49 @@ namespace Pulumi.Cloudflare
     public sealed class MagicWanStaticRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        [Input("coloNames")]
-        private InputList<string>? _coloNames;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// List of Cloudflare colocation regions for this static route.
-        /// </summary>
-        public InputList<string> ColoNames
-        {
-            get => _coloNames ?? (_coloNames = new InputList<string>());
-            set => _coloNames = value;
-        }
-
-        [Input("coloRegions")]
-        private InputList<string>? _coloRegions;
-
-        /// <summary>
-        /// List of Cloudflare colocation names for this static route.
-        /// </summary>
-        public InputList<string> ColoRegions
-        {
-            get => _coloRegions ?? (_coloRegions = new InputList<string>());
-            set => _coloRegions = value;
-        }
-
-        /// <summary>
-        /// Description of the static route.
+        /// An optional human provided description of the static route.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The nexthop IP address where traffic will be routed to.
+        /// The next-hop IP Address for the static route.
         /// </summary>
-        [Input("nexthop", required: true)]
-        public Input<string> Nexthop { get; set; } = null!;
+        [Input("nexthop")]
+        public Input<string>? Nexthop { get; set; }
 
         /// <summary>
-        /// Your network prefix using CIDR notation.
+        /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// The priority for the static route.
+        /// Priority of the static route.
         /// </summary>
-        [Input("priority", required: true)]
-        public Input<int> Priority { get; set; } = null!;
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
+        /// </summary>
+        [Input("routeId")]
+        public Input<string>? RouteId { get; set; }
+
+        /// <summary>
+        /// Used only for ECMP routes.
+        /// </summary>
+        [Input("scope")]
+        public Input<Inputs.MagicWanStaticRouteScopeArgs>? Scope { get; set; }
+
+        /// <summary>
+        /// Optional weight of the ECMP scope - if provided.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -217,61 +194,66 @@ namespace Pulumi.Cloudflare
     public sealed class MagicWanStaticRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("coloNames")]
-        private InputList<string>? _coloNames;
-
         /// <summary>
-        /// List of Cloudflare colocation regions for this static route.
-        /// </summary>
-        public InputList<string> ColoNames
-        {
-            get => _coloNames ?? (_coloNames = new InputList<string>());
-            set => _coloNames = value;
-        }
-
-        [Input("coloRegions")]
-        private InputList<string>? _coloRegions;
-
-        /// <summary>
-        /// List of Cloudflare colocation names for this static route.
-        /// </summary>
-        public InputList<string> ColoRegions
-        {
-            get => _coloRegions ?? (_coloRegions = new InputList<string>());
-            set => _coloRegions = value;
-        }
-
-        /// <summary>
-        /// Description of the static route.
+        /// An optional human provided description of the static route.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("modified")]
+        public Input<bool>? Modified { get; set; }
+
+        [Input("modifiedRoute")]
+        public Input<Inputs.MagicWanStaticRouteModifiedRouteGetArgs>? ModifiedRoute { get; set; }
+
         /// <summary>
-        /// The nexthop IP address where traffic will be routed to.
+        /// The next-hop IP Address for the static route.
         /// </summary>
         [Input("nexthop")]
         public Input<string>? Nexthop { get; set; }
 
         /// <summary>
-        /// Your network prefix using CIDR notation.
+        /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// The priority for the static route.
+        /// Priority of the static route.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        [Input("route")]
+        public Input<Inputs.MagicWanStaticRouteRouteGetArgs>? Route { get; set; }
+
         /// <summary>
-        /// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
+        /// </summary>
+        [Input("routeId")]
+        public Input<string>? RouteId { get; set; }
+
+        [Input("routes")]
+        private InputList<Inputs.MagicWanStaticRouteRouteGetArgs>? _routes;
+        public InputList<Inputs.MagicWanStaticRouteRouteGetArgs> Routes
+        {
+            get => _routes ?? (_routes = new InputList<Inputs.MagicWanStaticRouteRouteGetArgs>());
+            set => _routes = value;
+        }
+
+        /// <summary>
+        /// Used only for ECMP routes.
+        /// </summary>
+        [Input("scope")]
+        public Input<Inputs.MagicWanStaticRouteScopeGetArgs>? Scope { get; set; }
+
+        /// <summary>
+        /// Optional weight of the ECMP scope - if provided.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
