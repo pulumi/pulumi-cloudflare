@@ -114,38 +114,7 @@ func Provider() info.Provider {
 		},
 
 		Resources: map[string]*info.Resource{
-			"cloudflare_access_keys_configuration": {
-				// This resource has no upstream docs:
-				Docs: &info.Doc{AllowMissing: true},
-			},
-			"cloudflare_content_scanning": {ComputeID: delegateID("zoneId")},
-			"cloudflare_zone": {
-				Fields: map[string]*info.Schema{
-					"zone": {CSharpName: "ZoneName"},
-				},
-			},
-
-			// Cloudflare's DNS records are all structural, where `name` field uniquely identifies
-			// the resource.
-			//
-			// If `type` or `zoneId` is changed, then the resource will replace but the new
-			// resource will conflict with the old one. To avoid this, we set
-			// `DeleteBeforeReplace: true`.
-			"cloudflare_record": {
-				DeleteBeforeReplace: true,
-				Fields: map[string]*info.Schema{
-					"value": {
-						DeprecationMessage: "`value` is deprecated in favour of `content` " +
-							"and will be removed in the next major release. " +
-							"Due to reports of inconsistent behavior on the `value` field, " +
-							"we strongly recommend migrating to `content`.",
-					},
-				},
-			},
-
-			"cloudflare_risk_behavior":                            {ComputeID: delegateID("accountId")},
 			"cloudflare_zero_trust_access_mtls_hostname_settings": {ComputeID: delegateID("accountId")},
-			"cloudflare_zero_trust_risk_behavior":                 {ComputeID: delegateID("accountId")},
 			// We cannot use TF's ID field as Pulumi's ID field automatically,
 			// since it can (theoretically) be set by the user.
 			//
@@ -154,62 +123,12 @@ func Provider() info.Provider {
 			// Set our ID as site Key, which is what it represents upstream:
 			// <https://developers.cloudflare.com/turnstile/get-started/terraform/#create-a-turnstile-widget>.
 			"cloudflare_turnstile_widget": {ComputeID: delegateID("id")},
-			"cloudflare_hyperdrive_config": {
-				ComputeID: delegateID("accountId"),
-				Fields: map[string]*info.Schema{
-					"id": {
-						Name: "resourceId",
-					},
-				},
-			},
-			"cloudflare_cloud_connector_rules": {ComputeID: delegateID("zoneId")},
-			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
-			"cloudflare_access_mutual_tls_hostname_settings": {
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					account, hasAccount := state["accountId"]
-					zone, hasZone := state["zoneId"]
-					switch {
-					case hasAccount && hasZone:
-						return resource.ID(account.StringValue() + "__" + zone.StringValue()), nil
-					case hasAccount:
-						return resource.ID(account.StringValue()), nil
-					case hasZone:
-						return resource.ID(zone.StringValue()), nil
-					default:
-						return "id", nil
-					}
-				},
-			},
-
-			"cloudflare_ruleset": {Fields: map[string]*info.Schema{
-				"rules": {Elem: &info.Schema{Fields: map[string]*info.Schema{
-					"action_parameters": {Elem: &info.Schema{Fields: map[string]*info.Schema{
-						"cache": {XAlwaysIncludeInImport: true},
-					}}},
-				}}},
-			}},
-
-			"cloudflare_zero_trust_risk_score_integration": {
-				Docs: &info.Doc{AllowMissing: true},
-			},
-
 			"cloudflare_leaked_credential_check": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
 					return resource.ID(state["enabled"].String() + "_" + state["zoneId"].String()), nil
 				},
 			},
-			"cloudflare_snippet": {
-				Docs: &info.Doc{AllowMissing: true},
-				ComputeID: func(context.Context, resource.PropertyMap) (resource.ID, error) {
-					return resource.ID("missing ID"), nil
-				},
-			},
-			"cloudflare_snippet_rules": {
-				Docs: &info.Doc{AllowMissing: true},
-				ComputeID: func(context.Context, resource.PropertyMap) (resource.ID, error) {
-					return resource.ID("missing ID"), nil
-				},
-			},
+			"cloudflare_snippet_rules": {Docs: &info.Doc{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
@@ -251,6 +170,29 @@ func Provider() info.Provider {
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
+
+	for _, r := range prov.Resources {
+		if idField, ok := r.Fields["id"]; !ok {
+			r.ComputeID = func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+				account, hasAccount := state["accountId"]
+				zone, hasZone := state["zoneId"]
+				switch {
+				case hasAccount && hasZone:
+					return resource.ID(account.StringValue() + "__" + zone.StringValue()), nil
+				case hasAccount:
+					return resource.ID(account.StringValue()), nil
+				case hasZone:
+					return resource.ID(zone.StringValue()), nil
+				default:
+					return "id", nil
+				}
+			}
+		} else {
+			if idField.Type != "String" {
+				// TODO.
+			}
+		}
+	}
 
 	prov.MustApplyAutoAliases()
 
