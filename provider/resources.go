@@ -172,7 +172,7 @@ func Provider() info.Provider {
 		tfbridgetokens.MakeStandard(mainPkg)))
 
 	for _, r := range prov.Resources {
-		if idField, ok := r.Fields["id"]; !ok {
+		if _, ok := r.Fields["id"]; !ok {
 			r.ComputeID = func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
 				account, hasAccount := state["accountId"]
 				zone, hasZone := state["zoneId"]
@@ -186,10 +186,6 @@ func Provider() info.Provider {
 				default:
 					return "id", nil
 				}
-			}
-		} else {
-			if idField.Type != "String" {
-				// TODO.
 			}
 		}
 	}
