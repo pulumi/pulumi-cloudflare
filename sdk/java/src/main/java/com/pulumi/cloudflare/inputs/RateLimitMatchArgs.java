@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.RateLimitMatchHeaderArgs;
 import com.pulumi.cloudflare.inputs.RateLimitMatchRequestArgs;
 import com.pulumi.cloudflare.inputs.RateLimitMatchResponseArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,32 +18,23 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final RateLimitMatchArgs Empty = new RateLimitMatchArgs();
 
-    /**
-     * Matches HTTP requests (from the client to Cloudflare).
-     * 
-     */
+    @Import(name="headers")
+    private @Nullable Output<List<RateLimitMatchHeaderArgs>> headers;
+
+    public Optional<Output<List<RateLimitMatchHeaderArgs>>> headers() {
+        return Optional.ofNullable(this.headers);
+    }
+
     @Import(name="request")
     private @Nullable Output<RateLimitMatchRequestArgs> request;
 
-    /**
-     * @return Matches HTTP requests (from the client to Cloudflare).
-     * 
-     */
     public Optional<Output<RateLimitMatchRequestArgs>> request() {
         return Optional.ofNullable(this.request);
     }
 
-    /**
-     * Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-     * 
-     */
     @Import(name="response")
     private @Nullable Output<RateLimitMatchResponseArgs> response;
 
-    /**
-     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-     * 
-     */
     public Optional<Output<RateLimitMatchResponseArgs>> response() {
         return Optional.ofNullable(this.response);
     }
@@ -49,6 +42,7 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
     private RateLimitMatchArgs() {}
 
     private RateLimitMatchArgs(RateLimitMatchArgs $) {
+        this.headers = $.headers;
         this.request = $.request;
         this.response = $.response;
     }
@@ -71,44 +65,33 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
             $ = new RateLimitMatchArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param request Matches HTTP requests (from the client to Cloudflare).
-         * 
-         * @return builder
-         * 
-         */
+        public Builder headers(@Nullable Output<List<RateLimitMatchHeaderArgs>> headers) {
+            $.headers = headers;
+            return this;
+        }
+
+        public Builder headers(List<RateLimitMatchHeaderArgs> headers) {
+            return headers(Output.of(headers));
+        }
+
+        public Builder headers(RateLimitMatchHeaderArgs... headers) {
+            return headers(List.of(headers));
+        }
+
         public Builder request(@Nullable Output<RateLimitMatchRequestArgs> request) {
             $.request = request;
             return this;
         }
 
-        /**
-         * @param request Matches HTTP requests (from the client to Cloudflare).
-         * 
-         * @return builder
-         * 
-         */
         public Builder request(RateLimitMatchRequestArgs request) {
             return request(Output.of(request));
         }
 
-        /**
-         * @param response Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder response(@Nullable Output<RateLimitMatchResponseArgs> response) {
             $.response = response;
             return this;
         }
 
-        /**
-         * @param response Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder response(RateLimitMatchResponseArgs response) {
             return response(Output.of(response));
         }

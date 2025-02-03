@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersSni
     {
         /// <summary>
-        /// Value to define for SNI.
+        /// The SNI override.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersSni(string? value)
+        private RulesetRuleActionParametersSni(string value)
         {
             Value = value;
         }

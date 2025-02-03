@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Cloudflare account members.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,15 +20,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.AccountMember("example", new()
+    ///     var exampleAccountMember = new Cloudflare.AccountMember("example_account_member", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         EmailAddress = "user@example.com",
-    ///         RoleIds = new[]
+    ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
+    ///         Email = "user@example.com",
+    ///         Roles = new[]
     ///         {
-    ///             "68b329da9893e34099c7d8ad5cb9c940",
-    ///             "d784fa8b6d98d27699781bd9a7cf19f0",
+    ///             "3536bcfad5faccb999b47003c79917fb",
     ///         },
+    ///         Status = "accepted",
     ///     });
     /// 
     /// });
@@ -39,35 +37,44 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/accountMember:AccountMember example &lt;account_id&gt;/&lt;member_id&gt;
+    /// $ pulumi import cloudflare:index/accountMember:AccountMember example '&lt;account_id&gt;/&lt;member_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountMember:AccountMember")]
     public partial class AccountMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID to create the account member in.
+        /// Account identifier tag.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+        /// The contact email address of the user.
         /// </summary>
-        [Output("emailAddress")]
-        public Output<string> EmailAddress { get; private set; } = null!;
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// List of account role IDs that you want to assign to a member.
+        /// Array of policies associated with this member.
         /// </summary>
-        [Output("roleIds")]
-        public Output<ImmutableArray<string>> RoleIds { get; private set; } = null!;
+        [Output("policies")]
+        public Output<ImmutableArray<Outputs.AccountMemberPolicy>> Policies { get; private set; } = null!;
 
         /// <summary>
-        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// Array of roles associated with this member.
         /// </summary>
+        [Output("roles")]
+        public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
+
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of the user associated to the membership.
+        /// </summary>
+        [Output("user")]
+        public Output<Outputs.AccountMemberUser> User { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,32 +123,41 @@ namespace Pulumi.Cloudflare
     public sealed class AccountMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID to create the account member in.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+        /// The contact email address of the user.
         /// </summary>
-        [Input("emailAddress", required: true)]
-        public Input<string> EmailAddress { get; set; } = null!;
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
 
-        [Input("roleIds", required: true)]
-        private InputList<string>? _roleIds;
+        [Input("policies")]
+        private InputList<Inputs.AccountMemberPolicyArgs>? _policies;
 
         /// <summary>
-        /// List of account role IDs that you want to assign to a member.
+        /// Array of policies associated with this member.
         /// </summary>
-        public InputList<string> RoleIds
+        public InputList<Inputs.AccountMemberPolicyArgs> Policies
         {
-            get => _roleIds ?? (_roleIds = new InputList<string>());
-            set => _roleIds = value;
+            get => _policies ?? (_policies = new InputList<Inputs.AccountMemberPolicyArgs>());
+            set => _policies = value;
         }
 
+        [Input("roles")]
+        private InputList<string>? _roles;
+
         /// <summary>
-        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// Array of roles associated with this member.
         /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
+        }
+
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -154,34 +170,49 @@ namespace Pulumi.Cloudflare
     public sealed class AccountMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID to create the account member in.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+        /// The contact email address of the user.
         /// </summary>
-        [Input("emailAddress")]
-        public Input<string>? EmailAddress { get; set; }
+        [Input("email")]
+        public Input<string>? Email { get; set; }
 
-        [Input("roleIds")]
-        private InputList<string>? _roleIds;
+        [Input("policies")]
+        private InputList<Inputs.AccountMemberPolicyGetArgs>? _policies;
 
         /// <summary>
-        /// List of account role IDs that you want to assign to a member.
+        /// Array of policies associated with this member.
         /// </summary>
-        public InputList<string> RoleIds
+        public InputList<Inputs.AccountMemberPolicyGetArgs> Policies
         {
-            get => _roleIds ?? (_roleIds = new InputList<string>());
-            set => _roleIds = value;
+            get => _policies ?? (_policies = new InputList<Inputs.AccountMemberPolicyGetArgs>());
+            set => _policies = value;
         }
 
+        [Input("roles")]
+        private InputList<string>? _roles;
+
         /// <summary>
-        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// Array of roles associated with this member.
         /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
+        }
+
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Details of the user associated to the membership.
+        /// </summary>
+        [Input("user")]
+        public Input<Inputs.AccountMemberUserGetArgs>? User { get; set; }
 
         public AccountMemberState()
         {

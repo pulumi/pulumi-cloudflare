@@ -13,118 +13,88 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access rules for the ingress service.
+        /// For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
         /// </summary>
         [Input("access")]
         public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessGetArgs>? Access { get; set; }
 
         /// <summary>
-        /// Runs as jump host.
-        /// </summary>
-        [Input("bastionMode")]
-        public Input<bool>? BastionMode { get; set; }
-
-        /// <summary>
-        /// Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. Defaults to `""`.
+        /// Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
         /// </summary>
         [Input("caPool")]
         public Input<string>? CaPool { get; set; }
 
         /// <summary>
-        /// Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by `tlsTimeout`. Defaults to `30s`.
+        /// Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
         /// </summary>
         [Input("connectTimeout")]
-        public Input<string>? ConnectTimeout { get; set; }
+        public Input<int>? ConnectTimeout { get; set; }
 
         /// <summary>
-        /// Disables chunked transfer encoding. Useful if you are running a Web Server Gateway Interface (WSGI) server. Defaults to `false`.
+        /// Disables chunked transfer encoding. Useful if you are running a WSGI server.
         /// </summary>
         [Input("disableChunkedEncoding")]
         public Input<bool>? DisableChunkedEncoding { get; set; }
 
         /// <summary>
-        /// Enables HTTP/2 support for the origin connection. Defaults to `false`.
+        /// Attempt to connect to origin using HTTP2. Origin must be configured as https.
         /// </summary>
         [Input("http2Origin")]
         public Input<bool>? Http2Origin { get; set; }
 
         /// <summary>
-        /// Sets the HTTP Host header on requests sent to the local service. Defaults to `""`.
+        /// Sets the HTTP Host header on requests sent to the local service.
         /// </summary>
         [Input("httpHostHeader")]
         public Input<string>? HttpHostHeader { get; set; }
 
-        [Input("ipRules")]
-        private InputList<Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleGetArgs>? _ipRules;
-
         /// <summary>
-        /// IP rules for the proxy service.
-        /// </summary>
-        public InputList<Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleGetArgs> IpRules
-        {
-            get => _ipRules ?? (_ipRules = new InputList<Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleGetArgs>());
-            set => _ipRules = value;
-        }
-
-        /// <summary>
-        /// Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. Defaults to `100`.
+        /// Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
         /// </summary>
         [Input("keepAliveConnections")]
         public Input<int>? KeepAliveConnections { get; set; }
 
         /// <summary>
-        /// Timeout after which an idle keepalive connection can be discarded. Defaults to `1m30s`.
+        /// Timeout after which an idle keepalive connection can be discarded.
         /// </summary>
         [Input("keepAliveTimeout")]
-        public Input<string>? KeepAliveTimeout { get; set; }
+        public Input<int>? KeepAliveTimeout { get; set; }
 
         /// <summary>
-        /// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. Defaults to `false`.
+        /// Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
         /// </summary>
         [Input("noHappyEyeballs")]
         public Input<bool>? NoHappyEyeballs { get; set; }
 
         /// <summary>
-        /// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. Defaults to `false`.
+        /// Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
         /// </summary>
         [Input("noTlsVerify")]
         public Input<bool>? NoTlsVerify { get; set; }
 
         /// <summary>
-        /// Hostname that cloudflared should expect from your origin server certificate. Defaults to `""`.
+        /// Hostname that cloudflared should expect from your origin server certificate.
         /// </summary>
         [Input("originServerName")]
         public Input<string>? OriginServerName { get; set; }
 
         /// <summary>
-        /// cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen address for that proxy. Defaults to `127.0.0.1`.
-        /// </summary>
-        [Input("proxyAddress")]
-        public Input<string>? ProxyAddress { get; set; }
-
-        /// <summary>
-        /// cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures the listen port for that proxy. If set to zero, an unused port will randomly be chosen. Defaults to `0`.
-        /// </summary>
-        [Input("proxyPort")]
-        public Input<int>? ProxyPort { get; set; }
-
-        /// <summary>
-        /// cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Available values: `""`, `socks`. Defaults to `""`.
+        /// cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
         /// </summary>
         [Input("proxyType")]
         public Input<string>? ProxyType { get; set; }
 
         /// <summary>
-        /// The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. Defaults to `30s`.
+        /// The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
         /// </summary>
         [Input("tcpKeepAlive")]
-        public Input<string>? TcpKeepAlive { get; set; }
+        public Input<int>? TcpKeepAlive { get; set; }
 
         /// <summary>
-        /// Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. Defaults to `10s`.
+        /// Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
         /// </summary>
         [Input("tlsTimeout")]
-        public Input<string>? TlsTimeout { get; set; }
+        public Input<int>? TlsTimeout { get; set; }
 
         public ZeroTrustTunnelCloudflaredConfigConfigOriginRequestGetArgs()
         {

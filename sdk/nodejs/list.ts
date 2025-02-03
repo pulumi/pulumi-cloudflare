@@ -2,17 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleList = new cloudflare.List("example_list", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     kind: "ip",
+ *     name: "list1",
+ *     description: "This is a note",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+ * $ pulumi import cloudflare:index/list:List example '<account_id>/<list_id>'
  * ```
  */
 export class List extends pulumi.CustomResource {
@@ -44,25 +54,37 @@ export class List extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * An optional description of the list.
+     * The RFC 3339 timestamp of when the list was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * An informative summary of the list.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The items in the list.
-     */
-    public readonly items!: pulumi.Output<outputs.ListItem[] | undefined>;
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The name of the list.
+     * The RFC 3339 timestamp of when the list was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * An informative name for the list. Use this name in filter and rule expressions.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The number of items in the list.
+     */
+    public /*out*/ readonly numItems!: pulumi.Output<number>;
+    /**
+     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     */
+    public /*out*/ readonly numReferencingFilters!: pulumi.Output<number>;
 
     /**
      * Create a List resource with the given unique name, arguments, and options.
@@ -78,10 +100,13 @@ export class List extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ListState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["items"] = state ? state.items : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["numItems"] = state ? state.numItems : undefined;
+            resourceInputs["numReferencingFilters"] = state ? state.numReferencingFilters : undefined;
         } else {
             const args = argsOrState as ListArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -95,9 +120,12 @@ export class List extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["items"] = args ? args.items : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["numItems"] = undefined /*out*/;
+            resourceInputs["numReferencingFilters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(List.__pulumiType, name, resourceInputs, opts);
@@ -109,25 +137,37 @@ export class List extends pulumi.CustomResource {
  */
 export interface ListState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * An optional description of the list.
+     * The RFC 3339 timestamp of when the list was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * An informative summary of the list.
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
-     */
-    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      */
     kind?: pulumi.Input<string>;
     /**
-     * The name of the list.
+     * The RFC 3339 timestamp of when the list was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * An informative name for the list. Use this name in filter and rule expressions.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The number of items in the list.
+     */
+    numItems?: pulumi.Input<number>;
+    /**
+     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     */
+    numReferencingFilters?: pulumi.Input<number>;
 }
 
 /**
@@ -135,23 +175,19 @@ export interface ListState {
  */
 export interface ListArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * An optional description of the list.
+     * An informative summary of the list.
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
-     */
-    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      */
     kind: pulumi.Input<string>;
     /**
-     * The name of the list.
+     * An informative name for the list. Use this name in filter and rule expressions.
      */
     name: pulumi.Input<string>;
 }

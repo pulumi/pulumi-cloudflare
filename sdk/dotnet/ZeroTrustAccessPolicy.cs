@@ -10,116 +10,106 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Policy resource. Access Policies are
-    /// used in conjunction with Access Applications to restrict access to
-    /// a particular resource.
-    /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
-    ///    However, if you're using a scoped access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
-    ///    If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-    ///    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
+    /// &gt; If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+    ///    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
     ///    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-    ///    lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.
+    ///    lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example '&lt;account_id&gt;/&lt;policy_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy")]
     public partial class ZeroTrustAccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        /// Number of access applications currently using this policy.
         /// </summary>
-        [Output("applicationId")]
-        public Output<string?> ApplicationId { get; private set; } = null!;
+        [Output("appCount")]
+        public Output<int> AppCount { get; private set; } = null!;
 
+        /// <summary>
+        /// Administrators who can approve a temporary authentication request.
+        /// </summary>
         [Output("approvalGroups")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessPolicyApprovalGroup>> ApprovalGroups { get; private set; } = null!;
 
-        [Output("approvalRequired")]
-        public Output<bool?> ApprovalRequired { get; private set; } = null!;
-
         /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
+        /// Requires the user to request access from an administrator at the start of each session.
         /// </summary>
-        [Output("connectionRules")]
-        public Output<Outputs.ZeroTrustAccessPolicyConnectionRules?> ConnectionRules { get; private set; } = null!;
+        [Output("approvalRequired")]
+        public Output<bool> ApprovalRequired { get; private set; } = null!;
+
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessPolicyExclude>> Excludes { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessPolicyInclude>> Includes { get; private set; } = null!;
 
         /// <summary>
-        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         /// </summary>
         [Output("isolationRequired")]
-        public Output<bool?> IsolationRequired { get; private set; } = null!;
+        public Output<bool> IsolationRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Policy.
+        /// The name of the Access policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Required when using `application_id`.
-        /// </summary>
-        [Output("precedence")]
-        public Output<int?> Precedence { get; private set; } = null!;
-
-        /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        /// A custom message that will appear on the purpose justification screen.
         /// </summary>
         [Output("purposeJustificationPrompt")]
         public Output<string?> PurposeJustificationPrompt { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to prompt the user for a justification for accessing the resource.
+        /// Require users to enter a justification when they log in to the application.
         /// </summary>
         [Output("purposeJustificationRequired")]
-        public Output<bool?> PurposeJustificationRequired { get; private set; } = null!;
+        public Output<bool> PurposeJustificationRequired { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessPolicyRequire>> Requires { get; private set; } = null!;
 
-        /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        /// </summary>
-        [Output("sessionDuration")]
-        public Output<string?> SessionDuration { get; private set; } = null!;
+        [Output("reusable")]
+        public Output<bool> Reusable { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
-        [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        [Output("sessionDuration")]
+        public Output<string> SessionDuration { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -168,36 +158,31 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("approvalGroups")]
         private InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupArgs>? _approvalGroups;
+
+        /// <summary>
+        /// Administrators who can approve a temporary authentication request.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupArgs> ApprovalGroups
         {
             get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupArgs>());
             set => _approvalGroups = value;
         }
 
+        /// <summary>
+        /// Requires the user to request access from an administrator at the start of each session.
+        /// </summary>
         [Input("approvalRequired")]
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        /// </summary>
-        [Input("connectionRules")]
-        public Input<Inputs.ZeroTrustAccessPolicyConnectionRulesArgs>? ConnectionRules { get; set; }
-
-        /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -206,7 +191,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyExcludeArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyExcludeArgs> Excludes
         {
@@ -218,7 +203,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyIncludeArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyIncludeArgs> Includes
         {
@@ -227,31 +212,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         /// </summary>
         [Input("isolationRequired")]
         public Input<bool>? IsolationRequired { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Policy.
+        /// The name of the Access policy.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Required when using `application_id`.
-        /// </summary>
-        [Input("precedence")]
-        public Input<int>? Precedence { get; set; }
-
-        /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        /// A custom message that will appear on the purpose justification screen.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }
 
         /// <summary>
-        /// Whether to prompt the user for a justification for accessing the resource.
+        /// Require users to enter a justification when they log in to the application.
         /// </summary>
         [Input("purposeJustificationRequired")]
         public Input<bool>? PurposeJustificationRequired { get; set; }
@@ -260,7 +239,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyRequireArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyRequireArgs> Requires
         {
@@ -269,16 +248,10 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
 
         public ZeroTrustAccessPolicyArgs()
         {
@@ -289,36 +262,40 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        /// Number of access applications currently using this policy.
         /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
+        [Input("appCount")]
+        public Input<int>? AppCount { get; set; }
 
         [Input("approvalGroups")]
         private InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupGetArgs>? _approvalGroups;
+
+        /// <summary>
+        /// Administrators who can approve a temporary authentication request.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupGetArgs> ApprovalGroups
         {
             get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupGetArgs>());
             set => _approvalGroups = value;
         }
 
+        /// <summary>
+        /// Requires the user to request access from an administrator at the start of each session.
+        /// </summary>
         [Input("approvalRequired")]
         public Input<bool>? ApprovalRequired { get; set; }
 
-        /// <summary>
-        /// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        /// </summary>
-        [Input("connectionRules")]
-        public Input<Inputs.ZeroTrustAccessPolicyConnectionRulesGetArgs>? ConnectionRules { get; set; }
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }
@@ -327,7 +304,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyExcludeGetArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyExcludeGetArgs> Excludes
         {
@@ -339,7 +316,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyIncludeGetArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyIncludeGetArgs> Includes
         {
@@ -348,31 +325,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         /// </summary>
         [Input("isolationRequired")]
         public Input<bool>? IsolationRequired { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Policy.
+        /// The name of the Access policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Required when using `application_id`.
-        /// </summary>
-        [Input("precedence")]
-        public Input<int>? Precedence { get; set; }
-
-        /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        /// A custom message that will appear on the purpose justification screen.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }
 
         /// <summary>
-        /// Whether to prompt the user for a justification for accessing the resource.
+        /// Require users to enter a justification when they log in to the application.
         /// </summary>
         [Input("purposeJustificationRequired")]
         public Input<bool>? PurposeJustificationRequired { get; set; }
@@ -381,7 +352,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustAccessPolicyRequireGetArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see Access Groups.
+        /// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         /// </summary>
         public InputList<Inputs.ZeroTrustAccessPolicyRequireGetArgs> Requires
         {
@@ -389,17 +360,17 @@ namespace Pulumi.Cloudflare
             set => _requires = value;
         }
 
+        [Input("reusable")]
+        public Input<bool>? Reusable { get; set; }
+
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessPolicyState()
         {

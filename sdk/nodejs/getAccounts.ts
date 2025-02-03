@@ -7,16 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source for looking up Cloudflare Accounts.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getAccounts({
- *     name: "example account",
+ * const exampleAccounts = cloudflare.getAccounts({
+ *     direction: "asc",
+ *     name: "example.com",
  * });
  * ```
  */
@@ -24,6 +23,8 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccounts:getAccounts", {
+        "direction": args.direction,
+        "maxItems": args.maxItems,
         "name": args.name,
     }, opts);
 }
@@ -33,7 +34,15 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetAccountsArgs {
     /**
-     * The account name to target for the resource.
+     * Direction to order results.
+     */
+    direction?: string;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: number;
+    /**
+     * Name of the account.
      */
     name?: string;
 }
@@ -42,27 +51,37 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
-    readonly accounts: outputs.GetAccountsAccount[];
+    /**
+     * Direction to order results.
+     */
+    readonly direction?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The account name to target for the resource.
+     * Max items to fetch, default: 1000
+     */
+    readonly maxItems?: number;
+    /**
+     * Name of the account.
      */
     readonly name?: string;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetAccountsResult[];
 }
 /**
- * Data source for looking up Cloudflare Accounts.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getAccounts({
- *     name: "example account",
+ * const exampleAccounts = cloudflare.getAccounts({
+ *     direction: "asc",
+ *     name: "example.com",
  * });
  * ```
  */
@@ -70,6 +89,8 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccounts:getAccounts", {
+        "direction": args.direction,
+        "maxItems": args.maxItems,
         "name": args.name,
     }, opts);
 }
@@ -79,7 +100,15 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
  */
 export interface GetAccountsOutputArgs {
     /**
-     * The account name to target for the resource.
+     * Direction to order results.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: pulumi.Input<number>;
+    /**
+     * Name of the account.
      */
     name?: pulumi.Input<string>;
 }

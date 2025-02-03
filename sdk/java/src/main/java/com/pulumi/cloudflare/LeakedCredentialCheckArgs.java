@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LeakedCredentialCheckArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,29 +18,29 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
     public static final LeakedCredentialCheckArgs Empty = new LeakedCredentialCheckArgs();
 
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of the Leaked Credential Check detection
+     * @return Whether or not Leaked Credential Checks are enabled
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -71,18 +73,18 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled State of the Leaked Credential Check detection
+         * @param enabled Whether or not Leaked Credential Checks are enabled
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled State of the Leaked Credential Check detection
+         * @param enabled Whether or not Leaked Credential Checks are enabled
          * 
          * @return builder
          * 
@@ -92,7 +94,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +105,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -113,9 +115,6 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         public LeakedCredentialCheckArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("LeakedCredentialCheckArgs", "enabled");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("LeakedCredentialCheckArgs", "zoneId");
             }

@@ -28,14 +28,13 @@ class ZeroTrustAccessApplicationArgs:
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]] = None,
+                 cors_headers: Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -44,7 +43,8 @@ class ZeroTrustAccessApplicationArgs:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 path_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
                  saas_app: Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs']] = None,
@@ -59,42 +59,39 @@ class ZeroTrustAccessApplicationArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessApplication resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
-        :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
-        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
-        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
-        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
-        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+        :param pulumi.Input[str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
+        :param pulumi.Input[bool] app_launcher_visible: Displays the application in the App Launcher.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        :param pulumi.Input[str] bg_color: The background color of the App Launcher page.
+        :param pulumi.Input[str] custom_deny_message: The custom error message shown to a user when they are denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages that will be displayed when applicable for this application
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+        :param pulumi.Input[bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[str] header_bg_color: The background color of the App Launcher header.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+        :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[str] name: The name of the application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        :param pulumi.Input[bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaArgs']]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
+        :param pulumi.Input[str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
+        :param pulumi.Input[bool] skip_interstitial: Enables automatic authentication through cloudflared.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[str] type: The application type.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -124,8 +121,6 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "destinations", destinations)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
-        if domain_type is not None:
-            pulumi.set(__self__, "domain_type", domain_type)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if footer_links is not None:
@@ -142,6 +137,8 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "name", name)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
+        if path_cookie_attribute is not None:
+            pulumi.set(__self__, "path_cookie_attribute", path_cookie_attribute)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if saas_app is not None:
@@ -150,9 +147,6 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
-        if self_hosted_domains is not None:
-            warnings.warn("""Use `destinations` instead""", DeprecationWarning)
-            pulumi.log.warn("""self_hosted_domains is deprecated: Use `destinations` instead""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -176,7 +170,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -188,7 +182,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -200,7 +194,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="allowedIdps")
     def allowed_idps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The identity providers selected for the application.
+        The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         """
         return pulumi.get(self, "allowed_idps")
 
@@ -212,7 +206,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="appLauncherLogoUrl")
     def app_launcher_logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The logo URL of the app launcher.
+        The image URL of the logo shown in the App Launcher header.
         """
         return pulumi.get(self, "app_launcher_logo_url")
 
@@ -224,7 +218,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Displays the application in the App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -236,7 +230,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="autoRedirectToIdentity")
     def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -248,7 +242,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="bgColor")
     def bg_color(self) -> Optional[pulumi.Input[str]]:
         """
-        The background color of the app launcher.
+        The background color of the App Launcher page.
         """
         return pulumi.get(self, "bg_color")
 
@@ -258,21 +252,18 @@ class ZeroTrustAccessApplicationArgs:
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]]:
-        """
-        CORS configuration for the Access Application. See below for reference structure.
-        """
+    def cors_headers(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']]:
         return pulumi.get(self, "cors_headers")
 
     @cors_headers.setter
-    def cors_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]]):
+    def cors_headers(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']]):
         pulumi.set(self, "cors_headers", value)
 
     @property
     @pulumi.getter(name="customDenyMessage")
     def custom_deny_message(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that returns a custom error message when a user is denied access to the application.
+        The custom error message shown to a user when they are denied access to the application.
         """
         return pulumi.get(self, "custom_deny_message")
 
@@ -284,7 +275,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         """
         return pulumi.get(self, "custom_deny_url")
 
@@ -296,7 +287,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="customNonIdentityDenyUrl")
     def custom_non_identity_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         """
         return pulumi.get(self, "custom_non_identity_deny_url")
 
@@ -308,7 +299,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="customPages")
     def custom_pages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The custom pages selected for the application.
+        The custom pages that will be displayed when applicable for this application
         """
         return pulumi.get(self, "custom_pages")
 
@@ -320,7 +311,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter
     def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]:
         """
-        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "destinations")
 
@@ -332,7 +323,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         """
         return pulumi.get(self, "domain")
 
@@ -341,22 +332,10 @@ class ZeroTrustAccessApplicationArgs:
         pulumi.set(self, "domain", value)
 
     @property
-    @pulumi.getter(name="domainType")
-    def domain_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the primary domain. Available values: `public`, `private`.
-        """
-        return pulumi.get(self, "domain_type")
-
-    @domain_type.setter
-    def domain_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_type", value)
-
-    @property
     @pulumi.getter(name="enableBindingCookie")
     def enable_binding_cookie(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
@@ -368,7 +347,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="footerLinks")
     def footer_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]]:
         """
-        The footer links of the app launcher.
+        The links in the App Launcher footer.
         """
         return pulumi.get(self, "footer_links")
 
@@ -380,7 +359,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="headerBgColor")
     def header_bg_color(self) -> Optional[pulumi.Input[str]]:
         """
-        The background color of the header bar in the app launcher.
+        The background color of the App Launcher header.
         """
         return pulumi.get(self, "header_bg_color")
 
@@ -392,7 +371,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -404,7 +383,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="landingPageDesign")
     def landing_page_design(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs']]:
         """
-        The landing page design of the app launcher.
+        The design of the App Launcher landing page shown to users when they log in.
         """
         return pulumi.get(self, "landing_page_design")
 
@@ -416,7 +395,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Image URL for the logo shown in the app launcher dashboard.
+        The image URL for the logo shown in the App Launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
@@ -428,7 +407,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Friendly name of the Access Application.
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -440,7 +419,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="optionsPreflightBypass")
     def options_preflight_bypass(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         """
         return pulumi.get(self, "options_preflight_bypass")
 
@@ -449,23 +428,32 @@ class ZeroTrustAccessApplicationArgs:
         pulumi.set(self, "options_preflight_bypass", value)
 
     @property
-    @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="pathCookieAttribute")
+    def path_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
+        Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        """
+        return pulumi.get(self, "path_cookie_attribute")
+
+    @path_cookie_attribute.setter
+    def path_cookie_attribute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "path_cookie_attribute", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]]:
+        """
+        The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']]:
-        """
-        SaaS configuration for the Access Application.
-        """
         return pulumi.get(self, "saas_app")
 
     @saas_app.setter
@@ -476,7 +464,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
@@ -498,10 +486,9 @@ class ZeroTrustAccessApplicationArgs:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
-    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -513,7 +500,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        Returns a 401 status code when the request is blocked by a Service Auth policy.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
@@ -525,7 +512,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
@@ -537,7 +524,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="skipAppLauncherLoginPage")
     def skip_app_launcher_login_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the App Launcher landing page. Defaults to `false`.
+        Determines when to skip the App Launcher landing page.
         """
         return pulumi.get(self, "skip_app_launcher_login_page")
 
@@ -549,7 +536,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        Enables automatic authentication through cloudflared.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -561,7 +548,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The itags associated with the application.
+        The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         """
         return pulumi.get(self, "tags")
 
@@ -572,9 +559,6 @@ class ZeroTrustAccessApplicationArgs:
     @property
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaArgs']]]]:
-        """
-        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
         return pulumi.get(self, "target_criterias")
 
     @target_criterias.setter
@@ -585,7 +569,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        The application type.
         """
         return pulumi.get(self, "type")
 
@@ -597,7 +581,7 @@ class ZeroTrustAccessApplicationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -617,14 +601,14 @@ class _ZeroTrustAccessApplicationState:
                  aud: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]] = None,
+                 cors_headers: Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -633,7 +617,8 @@ class _ZeroTrustAccessApplicationState:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 path_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
                  saas_app: Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs']] = None,
@@ -645,46 +630,44 @@ class _ZeroTrustAccessApplicationState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessApplication resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
-        :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
-        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
-        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
-        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
-        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+        :param pulumi.Input[str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
+        :param pulumi.Input[bool] app_launcher_visible: Displays the application in the App Launcher.
+        :param pulumi.Input[str] aud: Audience tag.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        :param pulumi.Input[str] bg_color: The background color of the App Launcher page.
+        :param pulumi.Input[str] custom_deny_message: The custom error message shown to a user when they are denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages that will be displayed when applicable for this application
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+        :param pulumi.Input[bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[str] header_bg_color: The background color of the App Launcher header.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+        :param pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[str] name: The name of the application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        :param pulumi.Input[bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaArgs']]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
+        :param pulumi.Input[str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
+        :param pulumi.Input[bool] skip_interstitial: Enables automatic authentication through cloudflared.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[str] type: The application type.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -704,6 +687,8 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "bg_color", bg_color)
         if cors_headers is not None:
             pulumi.set(__self__, "cors_headers", cors_headers)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if custom_deny_message is not None:
             pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
@@ -716,8 +701,6 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "destinations", destinations)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
-        if domain_type is not None:
-            pulumi.set(__self__, "domain_type", domain_type)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if footer_links is not None:
@@ -734,6 +717,8 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "name", name)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
+        if path_cookie_attribute is not None:
+            pulumi.set(__self__, "path_cookie_attribute", path_cookie_attribute)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if saas_app is not None:
@@ -742,9 +727,6 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
-        if self_hosted_domains is not None:
-            warnings.warn("""Use `destinations` instead""", DeprecationWarning)
-            pulumi.log.warn("""self_hosted_domains is deprecated: Use `destinations` instead""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -761,6 +743,8 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "target_criterias", target_criterias)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -768,7 +752,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -780,7 +764,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -792,7 +776,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="allowedIdps")
     def allowed_idps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The identity providers selected for the application.
+        The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         """
         return pulumi.get(self, "allowed_idps")
 
@@ -804,7 +788,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="appLauncherLogoUrl")
     def app_launcher_logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The logo URL of the app launcher.
+        The image URL of the logo shown in the App Launcher header.
         """
         return pulumi.get(self, "app_launcher_logo_url")
 
@@ -816,7 +800,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Displays the application in the App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -828,7 +812,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def aud(self) -> Optional[pulumi.Input[str]]:
         """
-        Application Audience (AUD) Tag of the application.
+        Audience tag.
         """
         return pulumi.get(self, "aud")
 
@@ -840,7 +824,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="autoRedirectToIdentity")
     def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -852,7 +836,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="bgColor")
     def bg_color(self) -> Optional[pulumi.Input[str]]:
         """
-        The background color of the app launcher.
+        The background color of the App Launcher page.
         """
         return pulumi.get(self, "bg_color")
 
@@ -862,21 +846,27 @@ class _ZeroTrustAccessApplicationState:
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]]:
-        """
-        CORS configuration for the Access Application. See below for reference structure.
-        """
+    def cors_headers(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']]:
         return pulumi.get(self, "cors_headers")
 
     @cors_headers.setter
-    def cors_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationCorsHeaderArgs']]]]):
+    def cors_headers(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationCorsHeadersArgs']]):
         pulumi.set(self, "cors_headers", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter(name="customDenyMessage")
     def custom_deny_message(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that returns a custom error message when a user is denied access to the application.
+        The custom error message shown to a user when they are denied access to the application.
         """
         return pulumi.get(self, "custom_deny_message")
 
@@ -888,7 +878,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         """
         return pulumi.get(self, "custom_deny_url")
 
@@ -900,7 +890,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="customNonIdentityDenyUrl")
     def custom_non_identity_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         """
         return pulumi.get(self, "custom_non_identity_deny_url")
 
@@ -912,7 +902,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="customPages")
     def custom_pages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The custom pages selected for the application.
+        The custom pages that will be displayed when applicable for this application
         """
         return pulumi.get(self, "custom_pages")
 
@@ -924,7 +914,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationDestinationArgs']]]]:
         """
-        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "destinations")
 
@@ -936,7 +926,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         """
         return pulumi.get(self, "domain")
 
@@ -945,22 +935,10 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "domain", value)
 
     @property
-    @pulumi.getter(name="domainType")
-    def domain_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the primary domain. Available values: `public`, `private`.
-        """
-        return pulumi.get(self, "domain_type")
-
-    @domain_type.setter
-    def domain_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_type", value)
-
-    @property
     @pulumi.getter(name="enableBindingCookie")
     def enable_binding_cookie(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
@@ -972,7 +950,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="footerLinks")
     def footer_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationFooterLinkArgs']]]]:
         """
-        The footer links of the app launcher.
+        The links in the App Launcher footer.
         """
         return pulumi.get(self, "footer_links")
 
@@ -984,7 +962,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="headerBgColor")
     def header_bg_color(self) -> Optional[pulumi.Input[str]]:
         """
-        The background color of the header bar in the app launcher.
+        The background color of the App Launcher header.
         """
         return pulumi.get(self, "header_bg_color")
 
@@ -996,7 +974,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -1008,7 +986,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="landingPageDesign")
     def landing_page_design(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationLandingPageDesignArgs']]:
         """
-        The landing page design of the app launcher.
+        The design of the App Launcher landing page shown to users when they log in.
         """
         return pulumi.get(self, "landing_page_design")
 
@@ -1020,7 +998,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Image URL for the logo shown in the app launcher dashboard.
+        The image URL for the logo shown in the App Launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
@@ -1032,7 +1010,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Friendly name of the Access Application.
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -1044,7 +1022,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="optionsPreflightBypass")
     def options_preflight_bypass(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         """
         return pulumi.get(self, "options_preflight_bypass")
 
@@ -1053,23 +1031,32 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "options_preflight_bypass", value)
 
     @property
-    @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="pathCookieAttribute")
+    def path_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
+        Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        """
+        return pulumi.get(self, "path_cookie_attribute")
+
+    @path_cookie_attribute.setter
+    def path_cookie_attribute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "path_cookie_attribute", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]]:
+        """
+        The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']]:
-        """
-        SaaS configuration for the Access Application.
-        """
         return pulumi.get(self, "saas_app")
 
     @saas_app.setter
@@ -1080,7 +1067,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
@@ -1102,10 +1089,9 @@ class _ZeroTrustAccessApplicationState:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
-    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -1117,7 +1103,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        Returns a 401 status code when the request is blocked by a Service Auth policy.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
@@ -1129,7 +1115,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
@@ -1141,7 +1127,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="skipAppLauncherLoginPage")
     def skip_app_launcher_login_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the App Launcher landing page. Defaults to `false`.
+        Determines when to skip the App Launcher landing page.
         """
         return pulumi.get(self, "skip_app_launcher_login_page")
 
@@ -1153,7 +1139,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        Enables automatic authentication through cloudflared.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -1165,7 +1151,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The itags associated with the application.
+        The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         """
         return pulumi.get(self, "tags")
 
@@ -1176,9 +1162,6 @@ class _ZeroTrustAccessApplicationState:
     @property
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaArgs']]]]:
-        """
-        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
         return pulumi.get(self, "target_criterias")
 
     @target_criterias.setter
@@ -1189,7 +1172,7 @@ class _ZeroTrustAccessApplicationState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        The application type.
         """
         return pulumi.get(self, "type")
 
@@ -1198,10 +1181,19 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1222,14 +1214,13 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeaderArgs', 'ZeroTrustAccessApplicationCorsHeaderArgsDict']]]]] = None,
+                 cors_headers: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeadersArgs', 'ZeroTrustAccessApplicationCorsHeadersArgsDict']]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1238,7 +1229,8 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 path_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
                  saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1253,60 +1245,49 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Application resource. Access
-        Applications are used to restrict access to a whole application using an
-        authorisation gateway managed by Cloudflare.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        ## Example Usage
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example <account_id>/<application_id>
+        $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
-        :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeaderArgs', 'ZeroTrustAccessApplicationCorsHeaderArgsDict']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
-        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
-        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
-        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
-        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The landing page design of the app launcher.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+        :param pulumi.Input[str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
+        :param pulumi.Input[bool] app_launcher_visible: Displays the application in the App Launcher.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        :param pulumi.Input[str] bg_color: The background color of the App Launcher page.
+        :param pulumi.Input[str] custom_deny_message: The custom error message shown to a user when they are denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages that will be displayed when applicable for this application
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+        :param pulumi.Input[bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[str] header_bg_color: The background color of the App Launcher header.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[str] name: The name of the application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        :param pulumi.Input[bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationTargetCriteriaArgs', 'ZeroTrustAccessApplicationTargetCriteriaArgsDict']]]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
+        :param pulumi.Input[str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
+        :param pulumi.Input[bool] skip_interstitial: Enables automatic authentication through cloudflared.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[str] type: The application type.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -1315,20 +1296,12 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  args: Optional[ZeroTrustAccessApplicationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Application resource. Access
-        Applications are used to restrict access to a whole application using an
-        authorisation gateway managed by Cloudflare.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        ## Example Usage
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example <account_id>/<application_id>
+        $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -1353,14 +1326,13 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeaderArgs', 'ZeroTrustAccessApplicationCorsHeaderArgsDict']]]]] = None,
+                 cors_headers: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeadersArgs', 'ZeroTrustAccessApplicationCorsHeadersArgsDict']]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 domain_type: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1369,7 +1341,8 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 path_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
                  saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1405,7 +1378,6 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["destinations"] = destinations
             __props__.__dict__["domain"] = domain
-            __props__.__dict__["domain_type"] = domain_type
             __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
             __props__.__dict__["footer_links"] = footer_links
             __props__.__dict__["header_bg_color"] = header_bg_color
@@ -1414,6 +1386,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["logo_url"] = logo_url
             __props__.__dict__["name"] = name
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
+            __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
             __props__.__dict__["policies"] = policies
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
@@ -1428,6 +1401,8 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["updated_at"] = None
         super(ZeroTrustAccessApplication, __self__).__init__(
             'cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication',
             resource_name,
@@ -1446,14 +1421,14 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             bg_color: Optional[pulumi.Input[str]] = None,
-            cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeaderArgs', 'ZeroTrustAccessApplicationCorsHeaderArgsDict']]]]] = None,
+            cors_headers: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeadersArgs', 'ZeroTrustAccessApplicationCorsHeadersArgsDict']]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             custom_deny_message: Optional[pulumi.Input[str]] = None,
             custom_deny_url: Optional[pulumi.Input[str]] = None,
             custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
-            domain_type: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
             footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]]] = None,
             header_bg_color: Optional[pulumi.Input[str]] = None,
@@ -1462,7 +1437,8 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            path_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
             saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
             scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1474,6 +1450,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationTargetCriteriaArgs', 'ZeroTrustAccessApplicationTargetCriteriaArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustAccessApplication':
         """
         Get an existing ZeroTrustAccessApplication resource's state with the given name, id, and optional extra
@@ -1482,43 +1459,40 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
-        :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationCorsHeaderArgs', 'ZeroTrustAccessApplicationCorsHeaderArgsDict']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
-        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
-        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
-        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
-        :param pulumi.Input[str] domain_type: The type of the primary domain. Available values: `public`, `private`.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
-        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The landing page design of the app launcher.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
+        :param pulumi.Input[str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
+        :param pulumi.Input[bool] app_launcher_visible: Displays the application in the App Launcher.
+        :param pulumi.Input[str] aud: Audience tag.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        :param pulumi.Input[str] bg_color: The background color of the App Launcher page.
+        :param pulumi.Input[str] custom_deny_message: The custom error message shown to a user when they are denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages that will be displayed when applicable for this application
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationDestinationArgs', 'ZeroTrustAccessApplicationDestinationArgsDict']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
+        :param pulumi.Input[bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationFooterLinkArgs', 'ZeroTrustAccessApplicationFooterLinkArgsDict']]]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[str] header_bg_color: The background color of the App Launcher header.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
+        :param pulumi.Input[Union['ZeroTrustAccessApplicationLandingPageDesignArgs', 'ZeroTrustAccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[str] name: The name of the application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        :param pulumi.Input[bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_app_launcher_login_page: Option to skip the App Launcher landing page. Defaults to `false`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationTargetCriteriaArgs', 'ZeroTrustAccessApplicationTargetCriteriaArgsDict']]]] target_criterias: The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
+        :param pulumi.Input[str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
+        :param pulumi.Input[bool] skip_interstitial: Enables automatic authentication through cloudflared.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[str] type: The application type.
+        :param pulumi.Input[str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1533,13 +1507,13 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["bg_color"] = bg_color
         __props__.__dict__["cors_headers"] = cors_headers
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["custom_deny_message"] = custom_deny_message
         __props__.__dict__["custom_deny_url"] = custom_deny_url
         __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
         __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["destinations"] = destinations
         __props__.__dict__["domain"] = domain
-        __props__.__dict__["domain_type"] = domain_type
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
         __props__.__dict__["footer_links"] = footer_links
         __props__.__dict__["header_bg_color"] = header_bg_color
@@ -1548,6 +1522,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
+        __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
         __props__.__dict__["policies"] = policies
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
@@ -1560,14 +1535,15 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_criterias"] = target_criterias
         __props__.__dict__["type"] = type
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessApplication(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -1575,7 +1551,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> pulumi.Output[Optional[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -1583,7 +1559,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="allowedIdps")
     def allowed_idps(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The identity providers selected for the application.
+        The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         """
         return pulumi.get(self, "allowed_idps")
 
@@ -1591,15 +1567,15 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="appLauncherLogoUrl")
     def app_launcher_logo_url(self) -> pulumi.Output[Optional[str]]:
         """
-        The logo URL of the app launcher.
+        The image URL of the logo shown in the App Launcher header.
         """
         return pulumi.get(self, "app_launcher_logo_url")
 
     @property
     @pulumi.getter(name="appLauncherVisible")
-    def app_launcher_visible(self) -> pulumi.Output[Optional[bool]]:
+    def app_launcher_visible(self) -> pulumi.Output[bool]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Displays the application in the App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -1607,15 +1583,15 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def aud(self) -> pulumi.Output[str]:
         """
-        Application Audience (AUD) Tag of the application.
+        Audience tag.
         """
         return pulumi.get(self, "aud")
 
     @property
     @pulumi.getter(name="autoRedirectToIdentity")
-    def auto_redirect_to_identity(self) -> pulumi.Output[Optional[bool]]:
+    def auto_redirect_to_identity(self) -> pulumi.Output[bool]:
         """
-        Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -1623,23 +1599,25 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="bgColor")
     def bg_color(self) -> pulumi.Output[Optional[str]]:
         """
-        The background color of the app launcher.
+        The background color of the App Launcher page.
         """
         return pulumi.get(self, "bg_color")
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationCorsHeader']]]:
-        """
-        CORS configuration for the Access Application. See below for reference structure.
-        """
+    def cors_headers(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationCorsHeaders']:
         return pulumi.get(self, "cors_headers")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="customDenyMessage")
     def custom_deny_message(self) -> pulumi.Output[Optional[str]]:
         """
-        Option that returns a custom error message when a user is denied access to the application.
+        The custom error message shown to a user when they are denied access to the application.
         """
         return pulumi.get(self, "custom_deny_message")
 
@@ -1647,7 +1625,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         """
         return pulumi.get(self, "custom_deny_url")
 
@@ -1655,7 +1633,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="customNonIdentityDenyUrl")
     def custom_non_identity_deny_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         """
         return pulumi.get(self, "custom_non_identity_deny_url")
 
@@ -1663,47 +1641,39 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="customPages")
     def custom_pages(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The custom pages selected for the application.
+        The custom pages that will be displayed when applicable for this application
         """
         return pulumi.get(self, "custom_pages")
 
     @property
     @pulumi.getter
-    def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationDestination']]]:
+    def destinations(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationDestination']]:
         """
-        A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "destinations")
 
     @property
     @pulumi.getter
-    def domain(self) -> pulumi.Output[str]:
+    def domain(self) -> pulumi.Output[Optional[str]]:
         """
-        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         """
         return pulumi.get(self, "domain")
 
     @property
-    @pulumi.getter(name="domainType")
-    def domain_type(self) -> pulumi.Output[str]:
-        """
-        The type of the primary domain. Available values: `public`, `private`.
-        """
-        return pulumi.get(self, "domain_type")
-
-    @property
     @pulumi.getter(name="enableBindingCookie")
-    def enable_binding_cookie(self) -> pulumi.Output[Optional[bool]]:
+    def enable_binding_cookie(self) -> pulumi.Output[bool]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
     @property
     @pulumi.getter(name="footerLinks")
-    def footer_links(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationFooterLink']]]:
+    def footer_links(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationFooterLink']]:
         """
-        The footer links of the app launcher.
+        The links in the App Launcher footer.
         """
         return pulumi.get(self, "footer_links")
 
@@ -1711,23 +1681,23 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="headerBgColor")
     def header_bg_color(self) -> pulumi.Output[Optional[str]]:
         """
-        The background color of the header bar in the app launcher.
+        The background color of the App Launcher header.
         """
         return pulumi.get(self, "header_bg_color")
 
     @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
-    def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
+    def http_only_cookie_attribute(self) -> pulumi.Output[bool]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
     @property
     @pulumi.getter(name="landingPageDesign")
-    def landing_page_design(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationLandingPageDesign']]:
+    def landing_page_design(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationLandingPageDesign']:
         """
-        The landing page design of the app launcher.
+        The design of the App Launcher landing page shown to users when they log in.
         """
         return pulumi.get(self, "landing_page_design")
 
@@ -1735,15 +1705,15 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Image URL for the logo shown in the app launcher dashboard.
+        The image URL for the logo shown in the App Launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    def name(self) -> pulumi.Output[Optional[str]]:
         """
-        Friendly name of the Access Application.
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -1751,37 +1721,42 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="optionsPreflightBypass")
     def options_preflight_bypass(self) -> pulumi.Output[Optional[bool]]:
         """
-        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         """
         return pulumi.get(self, "options_preflight_bypass")
 
     @property
-    @pulumi.getter
-    def policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    @pulumi.getter(name="pathCookieAttribute")
+    def path_cookie_attribute(self) -> pulumi.Output[bool]:
         """
-        The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
+        Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        """
+        return pulumi.get(self, "path_cookie_attribute")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationPolicy']]:
+        """
+        The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
         return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter(name="saasApp")
-    def saas_app(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationSaasApp']]:
-        """
-        SaaS configuration for the Access Application.
-        """
+    def saas_app(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationSaasApp']:
         return pulumi.get(self, "saas_app")
 
     @property
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> pulumi.Output[Optional[str]]:
         """
-        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
     @property
     @pulumi.getter(name="scimConfig")
-    def scim_config(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationScimConfig']]:
+    def scim_config(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationScimConfig']:
         """
         Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         """
@@ -1789,10 +1764,9 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfHostedDomains")
-    @_utilities.deprecated("""Use `destinations` instead""")
     def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -1800,23 +1774,23 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        Returns a 401 status code when the request is blocked by a Service Auth policy.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
     @property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> pulumi.Output[Optional[str]]:
+    def session_duration(self) -> pulumi.Output[str]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
     @property
     @pulumi.getter(name="skipAppLauncherLoginPage")
-    def skip_app_launcher_login_page(self) -> pulumi.Output[Optional[bool]]:
+    def skip_app_launcher_login_page(self) -> pulumi.Output[bool]:
         """
-        Option to skip the App Launcher landing page. Defaults to `false`.
+        Determines when to skip the App Launcher landing page.
         """
         return pulumi.get(self, "skip_app_launcher_login_page")
 
@@ -1824,7 +1798,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        Enables automatic authentication through cloudflared.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -1832,31 +1806,33 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The itags associated with the application.
+        The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetCriterias")
-    def target_criterias(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationTargetCriteria']]]:
-        """
-        The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
+    def target_criterias(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationTargetCriteria']]:
         return pulumi.get(self, "target_criterias")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        The application type.
         """
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
+
+    @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

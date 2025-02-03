@@ -12,15 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RateLimitMatchGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Matches HTTP requests (from the client to Cloudflare).
-        /// </summary>
+        [Input("headers")]
+        private InputList<Inputs.RateLimitMatchHeaderGetArgs>? _headers;
+        public InputList<Inputs.RateLimitMatchHeaderGetArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.RateLimitMatchHeaderGetArgs>());
+            set => _headers = value;
+        }
+
         [Input("request")]
         public Input<Inputs.RateLimitMatchRequestGetArgs>? Request { get; set; }
 
-        /// <summary>
-        /// Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
-        /// </summary>
         [Input("response")]
         public Input<Inputs.RateLimitMatchResponseGetArgs>? Response { get; set; }
 

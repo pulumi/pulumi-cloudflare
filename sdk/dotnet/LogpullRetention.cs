@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,32 +20,26 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.LogpullRetention("example", new()
+    ///     var exampleLogpullRetention = new Cloudflare.LogpullRetention("example_logpull_retention", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Enabled = true,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Flag = true,
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpullRetention:LogpullRetention")]
     public partial class LogpullRetention : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether you wish to retain logs or not.
+        /// The log retention flag for Logpull API.
         /// </summary>
-        [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
+        [Output("flag")]
+        public Output<bool?> Flag { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -99,13 +91,13 @@ namespace Pulumi.Cloudflare
     public sealed class LogpullRetentionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether you wish to retain logs or not.
+        /// The log retention flag for Logpull API.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("flag")]
+        public Input<bool>? Flag { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -119,13 +111,13 @@ namespace Pulumi.Cloudflare
     public sealed class LogpullRetentionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether you wish to retain logs or not.
+        /// The log retention flag for Logpull API.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("flag")]
+        public Input<bool>? Flag { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

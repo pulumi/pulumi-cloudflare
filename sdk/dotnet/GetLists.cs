@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetLists
     {
         /// <summary>
-        /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,9 +22,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLists.Invoke(new()
+        ///     var exampleLists = Cloudflare.GetLists.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -36,8 +34,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -48,9 +44,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLists.Invoke(new()
+        ///     var exampleLists = Cloudflare.GetLists.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -60,8 +56,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,9 +66,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetLists.Invoke(new()
+        ///     var exampleLists = Cloudflare.GetLists.Invoke(new()
         ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -88,10 +82,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetListsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
 
         public GetListsArgs()
         {
@@ -102,10 +102,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetListsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
 
         public GetListsInvokeArgs()
         {
@@ -118,14 +124,21 @@ namespace Pulumi.Cloudflare
     public sealed class GetListsResult
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableArray<Outputs.GetListsListResult> Lists;
+        /// <summary>
+        /// Max items to fetch, default: 1000
+        /// </summary>
+        public readonly int? MaxItems;
+        /// <summary>
+        /// The items returned by the data source
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetListsResultResult> Results;
 
         [OutputConstructor]
         private GetListsResult(
@@ -133,11 +146,14 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            ImmutableArray<Outputs.GetListsListResult> lists)
+            int? maxItems,
+
+            ImmutableArray<Outputs.GetListsResultResult> results)
         {
             AccountId = accountId;
             Id = id;
-            Lists = lists;
+            MaxItems = maxItems;
+            Results = results;
         }
     }
 }

@@ -14,14 +14,29 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SpectrumApplicationOriginDns
     {
         /// <summary>
-        /// Fully qualified domain name of the origin.
+        /// The name of the DNS record associated with the origin.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
+        /// <summary>
+        /// The TTL of our resolution of your DNS record in seconds.
+        /// </summary>
+        public readonly int? Ttl;
+        /// <summary>
+        /// The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
-        private SpectrumApplicationOriginDns(string name)
+        private SpectrumApplicationOriginDns(
+            string? name,
+
+            int? ttl,
+
+            string? type)
         {
             Name = name;
+            Ttl = ttl;
+            Type = type;
         }
     }
 }

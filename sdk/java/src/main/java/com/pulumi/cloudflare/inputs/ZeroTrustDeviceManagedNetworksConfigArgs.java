@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDeviceManagedNetworksConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,15 @@ public final class ZeroTrustDeviceManagedNetworksConfigArgs extends com.pulumi.r
      * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
      * 
      */
-    @Import(name="sha256", required=true)
-    private Output<String> sha256;
+    @Import(name="sha256")
+    private @Nullable Output<String> sha256;
 
     /**
      * @return The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
      * 
      */
-    public Output<String> sha256() {
-        return this.sha256;
+    public Optional<Output<String>> sha256() {
+        return Optional.ofNullable(this.sha256);
     }
 
     /**
@@ -75,7 +77,7 @@ public final class ZeroTrustDeviceManagedNetworksConfigArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder sha256(Output<String> sha256) {
+        public Builder sha256(@Nullable Output<String> sha256) {
             $.sha256 = sha256;
             return this;
         }
@@ -112,9 +114,6 @@ public final class ZeroTrustDeviceManagedNetworksConfigArgs extends com.pulumi.r
         }
 
         public ZeroTrustDeviceManagedNetworksConfigArgs build() {
-            if ($.sha256 == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceManagedNetworksConfigArgs", "sha256");
-            }
             if ($.tlsSockaddr == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceManagedNetworksConfigArgs", "tlsSockaddr");
             }

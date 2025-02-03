@@ -12,98 +12,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDevicePostureIntegrationConfig {
     /**
-     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
      * 
      */
     private @Nullable String accessClientId;
     /**
-     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
      * 
      */
     private @Nullable String accessClientSecret;
     /**
-     * @return The third-party API&#39;s URL.
+     * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
      * 
      */
     private @Nullable String apiUrl;
     /**
-     * @return The third-party authorization API URL.
+     * @return The Workspace One Authorization URL depending on your region.
      * 
      */
     private @Nullable String authUrl;
     /**
-     * @return The client identifier for authenticating API calls.
+     * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return The client key for authenticating API calls.
+     * @return The Uptycs client secret.
      * 
      */
     private @Nullable String clientKey;
     /**
-     * @return The client secret for authenticating API calls.
+     * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
      */
     private @Nullable String clientSecret;
     /**
-     * @return The customer identifier for authenticating API calls.
+     * @return The Crowdstrike customer ID.
      * 
      */
     private @Nullable String customerId;
 
     private ZeroTrustDevicePostureIntegrationConfig() {}
     /**
-     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
      * 
      */
     public Optional<String> accessClientId() {
         return Optional.ofNullable(this.accessClientId);
     }
     /**
-     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
      * 
      */
     public Optional<String> accessClientSecret() {
         return Optional.ofNullable(this.accessClientSecret);
     }
     /**
-     * @return The third-party API&#39;s URL.
+     * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<String> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }
     /**
-     * @return The third-party authorization API URL.
+     * @return The Workspace One Authorization URL depending on your region.
      * 
      */
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
     /**
-     * @return The client identifier for authenticating API calls.
+     * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return The client key for authenticating API calls.
+     * @return The Uptycs client secret.
      * 
      */
     public Optional<String> clientKey() {
         return Optional.ofNullable(this.clientKey);
     }
     /**
-     * @return The client secret for authenticating API calls.
+     * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
-     * @return The customer identifier for authenticating API calls.
+     * @return The Crowdstrike customer ID.
      * 
      */
     public Optional<String> customerId() {

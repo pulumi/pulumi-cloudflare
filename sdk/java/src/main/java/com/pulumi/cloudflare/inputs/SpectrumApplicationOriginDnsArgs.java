@@ -5,9 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,24 +17,56 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
     public static final SpectrumApplicationOriginDnsArgs Empty = new SpectrumApplicationOriginDnsArgs();
 
     /**
-     * Fully qualified domain name of the origin.
+     * The name of the DNS record associated with the origin.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Fully qualified domain name of the origin.
+     * @return The name of the DNS record associated with the origin.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The TTL of our resolution of your DNS record in seconds.
+     * 
+     */
+    @Import(name="ttl")
+    private @Nullable Output<Integer> ttl;
+
+    /**
+     * @return The TTL of our resolution of your DNS record in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> ttl() {
+        return Optional.ofNullable(this.ttl);
+    }
+
+    /**
+     * The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SpectrumApplicationOriginDnsArgs() {}
 
     private SpectrumApplicationOriginDnsArgs(SpectrumApplicationOriginDnsArgs $) {
         this.name = $.name;
+        this.ttl = $.ttl;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -54,18 +88,18 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Fully qualified domain name of the origin.
+         * @param name The name of the DNS record associated with the origin.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Fully qualified domain name of the origin.
+         * @param name The name of the DNS record associated with the origin.
          * 
          * @return builder
          * 
@@ -74,10 +108,49 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
             return name(Output.of(name));
         }
 
+        /**
+         * @param ttl The TTL of our resolution of your DNS record in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(@Nullable Output<Integer> ttl) {
+            $.ttl = ttl;
+            return this;
+        }
+
+        /**
+         * @param ttl The TTL of our resolution of your DNS record in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(Integer ttl) {
+            return ttl(Output.of(ttl));
+        }
+
+        /**
+         * @param type The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of DNS record associated with the origin. &#34;&#34; is used to specify a combination of A/AAAA records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public SpectrumApplicationOriginDnsArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("SpectrumApplicationOriginDnsArgs", "name");
-            }
             return $;
         }
     }

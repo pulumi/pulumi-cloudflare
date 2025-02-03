@@ -25,8 +25,8 @@ class SnippetRulesArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]] = None):
         """
         The set of arguments for constructing a SnippetRules resource.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of Snippet Rules
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of snippet rules
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if rules is not None:
@@ -36,7 +36,7 @@ class SnippetRulesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -48,7 +48,7 @@ class SnippetRulesArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]]:
         """
-        List of Snippet Rules
+        List of snippet rules
         """
         return pulumi.get(self, "rules")
 
@@ -64,8 +64,8 @@ class _SnippetRulesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SnippetRules resources.
-        :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of Snippet Rules
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: List of snippet rules
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
@@ -76,7 +76,7 @@ class _SnippetRulesState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]]:
         """
-        List of Snippet Rules
+        List of snippet rules
         """
         return pulumi.get(self, "rules")
 
@@ -88,7 +88,7 @@ class _SnippetRulesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -106,12 +106,12 @@ class SnippetRules(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of Snippet Rules
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of snippet rules
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -120,7 +120,7 @@ class SnippetRules(pulumi.CustomResource):
                  args: SnippetRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param SnippetRulesArgs args: The arguments to use to populate this resource's properties.
@@ -171,8 +171,8 @@ class SnippetRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of Snippet Rules
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: List of snippet rules
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -184,9 +184,9 @@ class SnippetRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.SnippetRulesRule']]]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.SnippetRulesRule']]:
         """
-        List of Snippet Rules
+        List of snippet rules
         """
         return pulumi.get(self, "rules")
 
@@ -194,7 +194,7 @@ class SnippetRules(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

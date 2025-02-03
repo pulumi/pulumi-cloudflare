@@ -13,12 +13,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -32,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.CloudConnectorRules;
  * import com.pulumi.cloudflare.CloudConnectorRulesArgs;
  * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleArgs;
+ * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleParametersArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,16 +43,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CloudConnectorRules("example", CloudConnectorRulesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleCloudConnectorRules = new CloudConnectorRules("exampleCloudConnectorRules", CloudConnectorRulesArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .rules(CloudConnectorRulesRuleArgs.builder()
- *                 .description("connect aws bucket")
+ *                 .id("95c365e17e1b46599cd99e5b231fac4e")
+ *                 .description("Rule description")
  *                 .enabled(true)
- *                 .expression("http.uri")
- *                 .provider("aws_s3")
+ *                 .expression("http.cookie eq \"a=b\"")
  *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
- *                     .host("mystorage.s3.ams.amazonaws.com")
+ *                     .host("examplebucket.s3.eu-north-1.amazonaws.com")
  *                     .build())
+ *                 .cloud_provider("aws_s3")
  *                 .build())
  *             .build());
  * 
@@ -68,28 +67,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      * 
      */
     @Export(name="rules", refs={List.class,CloudConnectorRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CloudConnectorRulesRule>> rules;
+    private Output<List<CloudConnectorRulesRule>> rules;
 
     /**
-     * @return List of Cloud Connector Rules
+     * @return List of Cloud Connector rules
      * 
      */
-    public Output<Optional<List<CloudConnectorRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<CloudConnectorRulesRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

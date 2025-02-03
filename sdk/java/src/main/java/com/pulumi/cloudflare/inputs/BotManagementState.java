@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.BotManagementStaleZoneConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -32,14 +33,14 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     @Import(name="autoUpdateModel")
     private @Nullable Output<Boolean> autoUpdateModel;
 
     /**
-     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+     * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     public Optional<Output<Boolean>> autoUpdateModel() {
@@ -122,14 +123,18 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     @Import(name="sbfmStaticResourceProtection")
     private @Nullable Output<Boolean> sbfmStaticResourceProtection;
 
     /**
-     * @return Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+     * @return Super Bot Fight Mode (SBFM) to enable static resource protection.
+     * Enable if static resources on your application need bot protection.
+     * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
     public Optional<Output<Boolean>> sbfmStaticResourceProtection() {
@@ -149,6 +154,21 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> sbfmVerifiedBots() {
         return Optional.ofNullable(this.sbfmVerifiedBots);
+    }
+
+    /**
+     * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+     * 
+     */
+    @Import(name="staleZoneConfiguration")
+    private @Nullable Output<BotManagementStaleZoneConfigurationArgs> staleZoneConfiguration;
+
+    /**
+     * @return A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+     * 
+     */
+    public Optional<Output<BotManagementStaleZoneConfigurationArgs>> staleZoneConfiguration() {
+        return Optional.ofNullable(this.staleZoneConfiguration);
     }
 
     /**
@@ -182,14 +202,14 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -208,6 +228,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         this.sbfmLikelyAutomated = $.sbfmLikelyAutomated;
         this.sbfmStaticResourceProtection = $.sbfmStaticResourceProtection;
         this.sbfmVerifiedBots = $.sbfmVerifiedBots;
+        this.staleZoneConfiguration = $.staleZoneConfiguration;
         this.suppressSessionScore = $.suppressSessionScore;
         this.usingLatestModel = $.usingLatestModel;
         this.zoneId = $.zoneId;
@@ -253,7 +274,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
          * 
          * @return builder
          * 
@@ -264,7 +285,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+         * @param autoUpdateModel Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
          * 
          * @return builder
          * 
@@ -379,7 +400,9 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection.
+         * Enable if static resources on your application need bot protection.
+         * Note: Static resource protection can also result in legitimate traffic being blocked.
          * 
          * @return builder
          * 
@@ -390,7 +413,9 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+         * @param sbfmStaticResourceProtection Super Bot Fight Mode (SBFM) to enable static resource protection.
+         * Enable if static resources on your application need bot protection.
+         * Note: Static resource protection can also result in legitimate traffic being blocked.
          * 
          * @return builder
          * 
@@ -418,6 +443,27 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder sbfmVerifiedBots(String sbfmVerifiedBots) {
             return sbfmVerifiedBots(Output.of(sbfmVerifiedBots));
+        }
+
+        /**
+         * @param staleZoneConfiguration A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleZoneConfiguration(@Nullable Output<BotManagementStaleZoneConfigurationArgs> staleZoneConfiguration) {
+            $.staleZoneConfiguration = staleZoneConfiguration;
+            return this;
+        }
+
+        /**
+         * @param staleZoneConfiguration A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staleZoneConfiguration(BotManagementStaleZoneConfigurationArgs staleZoneConfiguration) {
+            return staleZoneConfiguration(Output.of(staleZoneConfiguration));
         }
 
         /**
@@ -463,7 +509,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -474,7 +520,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

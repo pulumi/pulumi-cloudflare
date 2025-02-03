@@ -24,15 +24,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Controls which Host header goes into Cache Key:
         /// </summary>
-        public readonly Outputs.PageRuleActionsCacheKeyFieldsHost Host;
+        public readonly Outputs.PageRuleActionsCacheKeyFieldsHost? Host;
         /// <summary>
         /// Controls which URL query string parameters go into the Cache Key.
         /// </summary>
-        public readonly Outputs.PageRuleActionsCacheKeyFieldsQueryString QueryString;
+        public readonly Outputs.PageRuleActionsCacheKeyFieldsQueryString? QueryString;
         /// <summary>
         /// Controls which end user-related features go into the Cache Key.
         /// </summary>
-        public readonly Outputs.PageRuleActionsCacheKeyFieldsUser User;
+        public readonly Outputs.PageRuleActionsCacheKeyFieldsUser? User;
 
         [OutputConstructor]
         private PageRuleActionsCacheKeyFields(
@@ -40,11 +40,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.PageRuleActionsCacheKeyFieldsHeader? header,
 
-            Outputs.PageRuleActionsCacheKeyFieldsHost host,
+            Outputs.PageRuleActionsCacheKeyFieldsHost? host,
 
-            Outputs.PageRuleActionsCacheKeyFieldsQueryString queryString,
+            Outputs.PageRuleActionsCacheKeyFieldsQueryString? queryString,
 
-            Outputs.PageRuleActionsCacheKeyFieldsUser user)
+            Outputs.PageRuleActionsCacheKeyFieldsUser? user)
         {
             Cookie = cookie;
             Header = header;

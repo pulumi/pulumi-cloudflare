@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ApiTokenConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Request IP related conditions.
+        /// Client IP restrictions.
         /// </summary>
         [Input("requestIp")]
         public Input<Inputs.ApiTokenConditionRequestIpGetArgs>? RequestIp { get; set; }

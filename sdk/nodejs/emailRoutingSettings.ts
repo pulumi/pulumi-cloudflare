@@ -5,18 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource for managing Email Routing settings.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myZone = new cloudflare.EmailRoutingSettings("my_zone", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     enabled: true,
- * });
+ * const exampleEmailRoutingSettings = new cloudflare.EmailRoutingSettings("example_email_routing_settings", {zoneId: "023e105f4ecef8ad9ca31a8372d0c353"});
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example '<zone_id>'
  * ```
  */
 export class EmailRoutingSettings extends pulumi.CustomResource {
@@ -52,9 +53,9 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * State of the zone settings for Email Routing.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
      * The date and time the settings have been modified.
      */
@@ -66,17 +67,17 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
-    public readonly skipWizard!: pulumi.Output<boolean>;
+    public /*out*/ readonly skipWizard!: pulumi.Output<boolean>;
     /**
      * Show the state of your account, and the type or configuration error.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Email Routing settings identifier.
+     * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -103,18 +104,15 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as EmailRoutingSettingsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["skipWizard"] = args ? args.skipWizard : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["skipWizard"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tag"] = undefined /*out*/;
         }
@@ -132,7 +130,7 @@ export interface EmailRoutingSettingsState {
      */
     created?: pulumi.Input<string>;
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * State of the zone settings for Email Routing.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -152,11 +150,11 @@ export interface EmailRoutingSettingsState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Email Routing settings identifier.
+     * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      */
     tag?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -166,15 +164,7 @@ export interface EmailRoutingSettingsState {
  */
 export interface EmailRoutingSettingsArgs {
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Flag to check if the user skipped the configuration wizard.
-     */
-    skipWizard?: pulumi.Input<boolean>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

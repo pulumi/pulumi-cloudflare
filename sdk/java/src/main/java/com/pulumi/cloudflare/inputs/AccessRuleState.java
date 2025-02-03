@@ -4,9 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AccessRuleConfigurationArgs;
+import com.pulumi.cloudflare.inputs.AccessRuleScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +19,14 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     public static final AccessRuleState Empty = new AccessRuleState();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +34,29 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The available actions that a rule can apply to a matched request.
+     * 
+     */
+    @Import(name="allowedModes")
+    private @Nullable Output<List<String>> allowedModes;
+
+    /**
+     * @return The available actions that a rule can apply to a matched request.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedModes() {
+        return Optional.ofNullable(this.allowedModes);
+    }
+
+    /**
+     * The rule configuration.
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<AccessRuleConfigurationArgs> configuration;
 
     /**
-     * @return Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * @return The rule configuration.
      * 
      */
     public Optional<Output<AccessRuleConfigurationArgs>> configuration() {
@@ -47,14 +64,29 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * The timestamp of when the rule was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the rule was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * The action to apply to a matched request.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -62,14 +94,29 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
     /**
-     * @return A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * @return An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     public Optional<Output<String>> notes() {
@@ -77,14 +124,29 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * All zones owned by the user will have the rule applied.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable Output<AccessRuleScopeArgs> scope;
+
+    /**
+     * @return All zones owned by the user will have the rule applied.
+     * 
+     */
+    public Optional<Output<AccessRuleScopeArgs>> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -95,9 +157,13 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
 
     private AccessRuleState(AccessRuleState $) {
         this.accountId = $.accountId;
+        this.allowedModes = $.allowedModes;
         this.configuration = $.configuration;
+        this.createdOn = $.createdOn;
         this.mode = $.mode;
+        this.modifiedOn = $.modifiedOn;
         this.notes = $.notes;
+        this.scope = $.scope;
         this.zoneId = $.zoneId;
     }
 
@@ -120,7 +186,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -131,7 +197,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -141,7 +207,38 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+         * @param allowedModes The available actions that a rule can apply to a matched request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedModes(@Nullable Output<List<String>> allowedModes) {
+            $.allowedModes = allowedModes;
+            return this;
+        }
+
+        /**
+         * @param allowedModes The available actions that a rule can apply to a matched request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedModes(List<String> allowedModes) {
+            return allowedModes(Output.of(allowedModes));
+        }
+
+        /**
+         * @param allowedModes The available actions that a rule can apply to a matched request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedModes(String... allowedModes) {
+            return allowedModes(List.of(allowedModes));
+        }
+
+        /**
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -152,7 +249,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -162,7 +259,28 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+         * @param createdOn The timestamp of when the rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The timestamp of when the rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -173,7 +291,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -183,7 +301,28 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes A personal note about the rule. Typically used as a reminder or explanation for the rule.
+         * @param modifiedOn The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param notes An informative summary of the rule, typically used as a reminder or explanation.
          * 
          * @return builder
          * 
@@ -194,7 +333,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes A personal note about the rule. Typically used as a reminder or explanation for the rule.
+         * @param notes An informative summary of the rule, typically used as a reminder or explanation.
          * 
          * @return builder
          * 
@@ -204,7 +343,28 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param scope All zones owned by the user will have the rule applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable Output<AccessRuleScopeArgs> scope) {
+            $.scope = scope;
+            return this;
+        }
+
+        /**
+         * @param scope All zones owned by the user will have the rule applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(AccessRuleScopeArgs scope) {
+            return scope(Output.of(scope));
+        }
+
+        /**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -215,7 +375,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

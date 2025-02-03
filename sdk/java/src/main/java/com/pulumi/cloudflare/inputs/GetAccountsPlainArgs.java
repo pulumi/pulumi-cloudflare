@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,14 +16,44 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetAccountsPlainArgs Empty = new GetAccountsPlainArgs();
 
     /**
-     * The account name to target for the resource.
+     * Direction to order results.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    /**
+     * @return Direction to order results.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Max items to fetch, default: 1000
+     * 
+     */
+    @Import(name="maxItems")
+    private @Nullable Integer maxItems;
+
+    /**
+     * @return Max items to fetch, default: 1000
+     * 
+     */
+    public Optional<Integer> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Name of the account.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The account name to target for the resource.
+     * @return Name of the account.
      * 
      */
     public Optional<String> name() {
@@ -32,6 +63,8 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetAccountsPlainArgs() {}
 
     private GetAccountsPlainArgs(GetAccountsPlainArgs $) {
+        this.direction = $.direction;
+        this.maxItems = $.maxItems;
         this.name = $.name;
     }
 
@@ -54,7 +87,29 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param name The account name to target for the resource.
+         * @param direction Direction to order results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param maxItems Max items to fetch, default: 1000
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(@Nullable Integer maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param name Name of the account.
          * 
          * @return builder
          * 

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.UserAgentBlockingRuleConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +17,14 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
     public static final UserAgentBlockingRuleState Empty = new UserAgentBlockingRuleState();
 
     /**
-     * The configuration object for the current rule.
+     * The rule configuration.
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<UserAgentBlockingRuleConfigurationArgs> configuration;
 
     /**
-     * @return The configuration object for the current rule.
+     * @return The rule configuration.
      * 
      */
     public Optional<Output<UserAgentBlockingRuleConfigurationArgs>> configuration() {
@@ -33,29 +32,14 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
     }
 
     /**
-     * An informative summary of the rule.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return An informative summary of the rule.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * The action to apply to a matched request.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -63,29 +47,29 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
     }
 
     /**
-     * When true, indicates that the rule is currently paused.
+     * The unique identifier of the User Agent Blocking rule.
      * 
      */
-    @Import(name="paused")
-    private @Nullable Output<Boolean> paused;
+    @Import(name="uaRuleId")
+    private @Nullable Output<String> uaRuleId;
 
     /**
-     * @return When true, indicates that the rule is currently paused.
+     * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    public Optional<Output<Boolean>> paused() {
-        return Optional.ofNullable(this.paused);
+    public Optional<Output<String>> uaRuleId() {
+        return Optional.ofNullable(this.uaRuleId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -96,9 +80,8 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
     private UserAgentBlockingRuleState(UserAgentBlockingRuleState $) {
         this.configuration = $.configuration;
-        this.description = $.description;
         this.mode = $.mode;
-        this.paused = $.paused;
+        this.uaRuleId = $.uaRuleId;
         this.zoneId = $.zoneId;
     }
 
@@ -121,7 +104,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param configuration The configuration object for the current rule.
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -132,7 +115,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param configuration The configuration object for the current rule.
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -142,28 +125,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description An informative summary of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description An informative summary of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -174,7 +136,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -184,28 +146,28 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param paused When true, indicates that the rule is currently paused.
+         * @param uaRuleId The unique identifier of the User Agent Blocking rule.
          * 
          * @return builder
          * 
          */
-        public Builder paused(@Nullable Output<Boolean> paused) {
-            $.paused = paused;
+        public Builder uaRuleId(@Nullable Output<String> uaRuleId) {
+            $.uaRuleId = uaRuleId;
             return this;
         }
 
         /**
-         * @param paused When true, indicates that the rule is currently paused.
+         * @param uaRuleId The unique identifier of the User Agent Blocking rule.
          * 
          * @return builder
          * 
          */
-        public Builder paused(Boolean paused) {
-            return paused(Output.of(paused));
+        public Builder uaRuleId(String uaRuleId) {
+            return uaRuleId(Output.of(uaRuleId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -216,7 +178,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Web Analytics Site resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,11 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WebAnalyticsSite("example", new()
+    ///     var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite("example_web_analytics_site", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ZoneTag = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AutoInstall = true,
+    ///         Host = "example.com",
+    ///         ZoneTag = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
@@ -35,56 +34,62 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
+    /// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '&lt;account_id&gt;/&lt;site_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/webAnalyticsSite:WebAnalyticsSite")]
     public partial class WebAnalyticsSite : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         /// </summary>
         [Output("autoInstall")]
-        public Output<bool> AutoInstall { get; private set; } = null!;
+        public Output<bool?> AutoInstall { get; private set; } = null!;
+
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The ID for the ruleset associated to this Web Analytics Site.
+        /// A list of rules.
         /// </summary>
-        [Output("rulesetId")]
-        public Output<string> RulesetId { get; private set; } = null!;
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.WebAnalyticsSiteRule>> Rules { get; private set; } = null!;
+
+        [Output("ruleset")]
+        public Output<Outputs.WebAnalyticsSiteRuleset> Ruleset { get; private set; } = null!;
 
         /// <summary>
-        /// The Web Analytics site tag.
+        /// The Web Analytics site identifier.
         /// </summary>
         [Output("siteTag")]
         public Output<string> SiteTag { get; private set; } = null!;
 
         /// <summary>
-        /// The token for the Web Analytics site.
+        /// The Web Analytics site token.
         /// </summary>
         [Output("siteToken")]
         public Output<string> SiteToken { get; private set; } = null!;
 
         /// <summary>
-        /// The encoded JS snippet to add to your site's HTML page if auto_install is false.
+        /// Encoded JavaScript snippet.
         /// </summary>
         [Output("snippet")]
         public Output<string> Snippet { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        /// The zone identifier.
         /// </summary>
         [Output("zoneTag")]
         public Output<string?> ZoneTag { get; private set; } = null!;
@@ -112,11 +117,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "siteToken",
-                    "snippet",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -141,25 +141,25 @@ namespace Pulumi.Cloudflare
     public sealed class WebAnalyticsSiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         /// </summary>
-        [Input("autoInstall", required: true)]
-        public Input<bool> AutoInstall { get; set; } = null!;
+        [Input("autoInstall")]
+        public Input<bool>? AutoInstall { get; set; }
 
         /// <summary>
-        /// The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        /// The zone identifier.
         /// </summary>
         [Input("zoneTag")]
         public Input<string>? ZoneTag { get; set; }
@@ -173,69 +173,61 @@ namespace Pulumi.Cloudflare
     public sealed class WebAnalyticsSiteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+        /// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         /// </summary>
         [Input("autoInstall")]
         public Input<bool>? AutoInstall { get; set; }
 
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
         /// <summary>
-        /// The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+        /// The hostname to use for gray-clouded sites.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        /// <summary>
-        /// The ID for the ruleset associated to this Web Analytics Site.
-        /// </summary>
-        [Input("rulesetId")]
-        public Input<string>? RulesetId { get; set; }
+        [Input("rules")]
+        private InputList<Inputs.WebAnalyticsSiteRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The Web Analytics site tag.
+        /// A list of rules.
+        /// </summary>
+        public InputList<Inputs.WebAnalyticsSiteRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.WebAnalyticsSiteRuleGetArgs>());
+            set => _rules = value;
+        }
+
+        [Input("ruleset")]
+        public Input<Inputs.WebAnalyticsSiteRulesetGetArgs>? Ruleset { get; set; }
+
+        /// <summary>
+        /// The Web Analytics site identifier.
         /// </summary>
         [Input("siteTag")]
         public Input<string>? SiteTag { get; set; }
 
+        /// <summary>
+        /// The Web Analytics site token.
+        /// </summary>
         [Input("siteToken")]
-        private Input<string>? _siteToken;
+        public Input<string>? SiteToken { get; set; }
 
         /// <summary>
-        /// The token for the Web Analytics site.
+        /// Encoded JavaScript snippet.
         /// </summary>
-        public Input<string>? SiteToken
-        {
-            get => _siteToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _siteToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
         [Input("snippet")]
-        private Input<string>? _snippet;
+        public Input<string>? Snippet { get; set; }
 
         /// <summary>
-        /// The encoded JS snippet to add to your site's HTML page if auto_install is false.
-        /// </summary>
-        public Input<string>? Snippet
-        {
-            get => _snippet;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _snippet = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+        /// The zone identifier.
         /// </summary>
         [Input("zoneTag")]
         public Input<string>? ZoneTag { get; set; }

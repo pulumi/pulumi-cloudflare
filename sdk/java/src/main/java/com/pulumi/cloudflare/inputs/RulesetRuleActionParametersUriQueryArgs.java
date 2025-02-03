@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersUriQueryArgs Empty = new RulesetRuleActionParametersUriQueryArgs();
 
     /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Expression to evaluate for the replacement value.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return Expression to evaluate for the replacement value.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
     }
 
     /**
-     * Static string value of the updated URI path or query string component.
+     * Predefined replacement value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Static string value of the updated URI path or query string component.
+     * @return Predefined replacement value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param expression Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression Expression to evaluate for the replacement value.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param expression Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * @param expression Expression to evaluate for the replacement value.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param value Static string value of the updated URI path or query string component.
+         * @param value Predefined replacement value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param value Static string value of the updated URI path or query string component.
+         * @param value Predefined replacement value.
          * 
          * @return builder
          * 

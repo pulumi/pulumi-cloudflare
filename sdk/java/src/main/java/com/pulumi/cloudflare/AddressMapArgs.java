@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.AddressMapIpArgs;
 import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -21,14 +20,14 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
     public static final AddressMapArgs Empty = new AddressMapArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Output<String> accountId() {
@@ -36,14 +35,14 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     @Import(name="defaultSni")
     private @Nullable Output<String> defaultSni;
 
     /**
-     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     public Optional<Output<String>> defaultSni() {
@@ -51,14 +50,14 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the address map.
+     * @return An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     public Optional<Output<String>> description() {
@@ -66,44 +65,36 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the Address Map is enabled or not.
+     * @return Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * The set of IPs on the Address Map.
-     * 
-     */
     @Import(name="ips")
-    private @Nullable Output<List<AddressMapIpArgs>> ips;
+    private @Nullable Output<List<String>> ips;
 
-    /**
-     * @return The set of IPs on the Address Map.
-     * 
-     */
-    public Optional<Output<List<AddressMapIpArgs>>> ips() {
+    public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
     }
 
     /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
     @Import(name="memberships")
     private @Nullable Output<List<AddressMapMembershipArgs>> memberships;
 
     /**
-     * @return Zones and Accounts which will be assigned IPs on this Address Map.
+     * @return Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
     public Optional<Output<List<AddressMapMembershipArgs>>> memberships() {
@@ -140,7 +131,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -151,7 +142,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -161,7 +152,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
          * 
          * @return builder
          * 
@@ -172,7 +163,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
          * 
          * @return builder
          * 
@@ -182,7 +173,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the address map.
+         * @param description An optional description field which may be used to describe the types of IPs or zones on the map.
          * 
          * @return builder
          * 
@@ -193,7 +184,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the address map.
+         * @param description An optional description field which may be used to describe the types of IPs or zones on the map.
          * 
          * @return builder
          * 
@@ -203,18 +194,18 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the Address Map is enabled or not.
+         * @param enabled Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Whether the Address Map is enabled or not.
+         * @param enabled Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
          * 
          * @return builder
          * 
@@ -223,39 +214,21 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(@Nullable Output<List<AddressMapIpArgs>> ips) {
+        public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(List<AddressMapIpArgs> ips) {
+        public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(AddressMapIpArgs... ips) {
+        public Builder ips(String... ips) {
             return ips(List.of(ips));
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
@@ -266,7 +239,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
@@ -276,7 +249,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
@@ -288,9 +261,6 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         public AddressMapArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("AddressMapArgs", "accountId");
-            }
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("AddressMapArgs", "enabled");
             }
             return $;
         }

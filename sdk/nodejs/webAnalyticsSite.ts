@@ -2,28 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Web Analytics Site resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WebAnalyticsSite("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleWebAnalyticsSite = new cloudflare.WebAnalyticsSite("example_web_analytics_site", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     autoInstall: true,
+ *     host: "example.com",
+ *     zoneTag: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+ * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
  * ```
  */
 export class WebAnalyticsSite extends pulumi.CustomResource {
@@ -55,35 +56,37 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
-    public readonly autoInstall!: pulumi.Output<boolean>;
+    public readonly autoInstall!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+     * The hostname to use for gray-clouded sites.
      */
     public readonly host!: pulumi.Output<string | undefined>;
     /**
-     * The ID for the ruleset associated to this Web Analytics Site.
+     * A list of rules.
      */
-    public /*out*/ readonly rulesetId!: pulumi.Output<string>;
+    public /*out*/ readonly rules!: pulumi.Output<outputs.WebAnalyticsSiteRule[]>;
+    public /*out*/ readonly ruleset!: pulumi.Output<outputs.WebAnalyticsSiteRuleset>;
     /**
-     * The Web Analytics site tag.
+     * The Web Analytics site identifier.
      */
     public /*out*/ readonly siteTag!: pulumi.Output<string>;
     /**
-     * The token for the Web Analytics site.
+     * The Web Analytics site token.
      */
     public /*out*/ readonly siteToken!: pulumi.Output<string>;
     /**
-     * The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+     * Encoded JavaScript snippet.
      */
     public /*out*/ readonly snippet!: pulumi.Output<string>;
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      */
     public readonly zoneTag!: pulumi.Output<string | undefined>;
 
@@ -102,8 +105,10 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
             const state = argsOrState as WebAnalyticsSiteState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["autoInstall"] = state ? state.autoInstall : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["rulesetId"] = state ? state.rulesetId : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["ruleset"] = state ? state.ruleset : undefined;
             resourceInputs["siteTag"] = state ? state.siteTag : undefined;
             resourceInputs["siteToken"] = state ? state.siteToken : undefined;
             resourceInputs["snippet"] = state ? state.snippet : undefined;
@@ -113,21 +118,18 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.autoInstall === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'autoInstall'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["autoInstall"] = args ? args.autoInstall : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["zoneTag"] = args ? args.zoneTag : undefined;
-            resourceInputs["rulesetId"] = undefined /*out*/;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["ruleset"] = undefined /*out*/;
             resourceInputs["siteTag"] = undefined /*out*/;
             resourceInputs["siteToken"] = undefined /*out*/;
             resourceInputs["snippet"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["siteToken", "snippet"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WebAnalyticsSite.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -137,35 +139,37 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
  */
 export interface WebAnalyticsSiteState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
     autoInstall?: pulumi.Input<boolean>;
+    created?: pulumi.Input<string>;
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+     * The hostname to use for gray-clouded sites.
      */
     host?: pulumi.Input<string>;
     /**
-     * The ID for the ruleset associated to this Web Analytics Site.
+     * A list of rules.
      */
-    rulesetId?: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<inputs.WebAnalyticsSiteRule>[]>;
+    ruleset?: pulumi.Input<inputs.WebAnalyticsSiteRuleset>;
     /**
-     * The Web Analytics site tag.
+     * The Web Analytics site identifier.
      */
     siteTag?: pulumi.Input<string>;
     /**
-     * The token for the Web Analytics site.
+     * The Web Analytics site token.
      */
     siteToken?: pulumi.Input<string>;
     /**
-     * The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+     * Encoded JavaScript snippet.
      */
     snippet?: pulumi.Input<string>;
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      */
     zoneTag?: pulumi.Input<string>;
 }
@@ -175,19 +179,19 @@ export interface WebAnalyticsSiteState {
  */
 export interface WebAnalyticsSiteArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
-    autoInstall: pulumi.Input<boolean>;
+    autoInstall?: pulumi.Input<boolean>;
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+     * The hostname to use for gray-clouded sites.
      */
     host?: pulumi.Input<string>;
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      */
     zoneTag?: pulumi.Input<string>;
 }

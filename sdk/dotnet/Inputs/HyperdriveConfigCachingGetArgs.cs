@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class HyperdriveConfigCachingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Disable caching for this Hyperdrive configuration.
+        /// When set to true, disables the caching of SQL responses. (Default: false)
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Configure the `max_age` value of this Hyperdrive configuration.
+        /// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
         /// </summary>
         [Input("maxAge")]
         public Input<int>? MaxAge { get; set; }
 
         /// <summary>
-        /// Disable caching for this Hyperdrive configuration.
+        /// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
         /// </summary>
         [Input("staleWhileRevalidate")]
         public Input<int>? StaleWhileRevalidate { get; set; }

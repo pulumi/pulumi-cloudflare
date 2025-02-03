@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
         /// </summary>
         [Input("browserCacheTtl")]
-        public Input<string>? BrowserCacheTtl { get; set; }
+        public Input<int>? BrowserCacheTtl { get; set; }
 
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.
@@ -72,17 +72,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cacheOnCookie")]
         public Input<string>? CacheOnCookie { get; set; }
 
-        [Input("cacheTtlByStatuses")]
-        private InputList<Inputs.PageRuleActionsCacheTtlByStatusGetArgs>? _cacheTtlByStatuses;
-
         /// <summary>
         /// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         /// </summary>
-        public InputList<Inputs.PageRuleActionsCacheTtlByStatusGetArgs> CacheTtlByStatuses
-        {
-            get => _cacheTtlByStatuses ?? (_cacheTtlByStatuses = new InputList<Inputs.PageRuleActionsCacheTtlByStatusGetArgs>());
-            set => _cacheTtlByStatuses = value;
-        }
+        [Input("cacheTtlByStatus")]
+        public Input<object>? CacheTtlByStatus { get; set; }
 
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
@@ -95,12 +89,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("disablePerformance")]
         public Input<bool>? DisablePerformance { get; set; }
-
-        /// <summary>
-        /// Boolean of whether this action is enabled. Default: false.
-        /// </summary>
-        [Input("disableRailgun")]
-        public Input<bool>? DisableRailgun { get; set; }
 
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
@@ -149,18 +137,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("ipGeolocation")]
         public Input<string>? IpGeolocation { get; set; }
-
-        [Input("minifies")]
-        private InputList<Inputs.PageRuleActionsMinifyGetArgs>? _minifies;
-
-        /// <summary>
-        /// The configuration for HTML, CSS and JS minification. See below for full list of options.
-        /// </summary>
-        public InputList<Inputs.PageRuleActionsMinifyGetArgs> Minifies
-        {
-            get => _minifies ?? (_minifies = new InputList<Inputs.PageRuleActionsMinifyGetArgs>());
-            set => _minifies = value;
-        }
 
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.
@@ -215,12 +191,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
-
-        /// <summary>
-        /// Whether this action is `"on"` or `"off"`.
-        /// </summary>
-        [Input("serverSideExclude")]
-        public Input<string>? ServerSideExclude { get; set; }
 
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.

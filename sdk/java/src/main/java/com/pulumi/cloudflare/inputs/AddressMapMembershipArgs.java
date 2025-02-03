@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -32,40 +31,48 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.canDelete);
     }
 
-    /**
-     * Identifier of the account or zone.
-     * 
-     */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
 
     /**
-     * @return Identifier of the account or zone.
+     * The identifier for the membership (eg. a zone or account tag).
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
+
+    /**
+     * @return The identifier for the membership (eg. a zone or account tag).
+     * 
+     */
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
      * The type of the membership.
      * 
      */
-    @Import(name="kind", required=true)
-    private Output<String> kind;
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
 
     /**
      * @return The type of the membership.
      * 
      */
-    public Output<String> kind() {
-        return this.kind;
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     private AddressMapMembershipArgs() {}
 
     private AddressMapMembershipArgs(AddressMapMembershipArgs $) {
         this.canDelete = $.canDelete;
+        this.createdAt = $.createdAt;
         this.identifier = $.identifier;
         this.kind = $.kind;
     }
@@ -109,19 +116,28 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
             return canDelete(Output.of(canDelete));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param identifier Identifier of the account or zone.
+         * @param identifier The identifier for the membership (eg. a zone or account tag).
          * 
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param identifier Identifier of the account or zone.
+         * @param identifier The identifier for the membership (eg. a zone or account tag).
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder kind(Output<String> kind) {
+        public Builder kind(@Nullable Output<String> kind) {
             $.kind = kind;
             return this;
         }
@@ -152,12 +168,6 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
         }
 
         public AddressMapMembershipArgs build() {
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("AddressMapMembershipArgs", "identifier");
-            }
-            if ($.kind == null) {
-                throw new MissingRequiredPropertyException("AddressMapMembershipArgs", "kind");
-            }
             return $;
         }
     }

@@ -7,12 +7,35 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to look up Zone results for use in other resources.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZones = cloudflare.getZones({
+ *     account: {
+ *         id: "id",
+ *         name: "name",
+ *     },
+ *     direction: "asc",
+ *     name: "name",
+ *     order: "name",
+ *     status: "initializing",
+ * });
+ * ```
  */
-export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
-        "filter": args.filter,
+        "account": args.account,
+        "direction": args.direction,
+        "match": args.match,
+        "maxItems": args.maxItems,
+        "name": args.name,
+        "order": args.order,
+        "status": args.status,
     }, opts);
 }
 
@@ -20,36 +43,62 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    /**
-     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     */
-    filter: inputs.GetZonesFilter;
+    account?: inputs.GetZonesAccount;
+    direction?: string;
+    match?: string;
+    maxItems?: number;
+    name?: string;
+    order?: string;
+    status?: string;
 }
 
 /**
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
-    /**
-     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     */
-    readonly filter: outputs.GetZonesFilter;
+    readonly account?: outputs.GetZonesAccount;
+    readonly direction?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of zone objects.
-     */
-    readonly zones: outputs.GetZonesZone[];
+    readonly match: string;
+    readonly maxItems?: number;
+    readonly name?: string;
+    readonly order?: string;
+    readonly results: outputs.GetZonesResult[];
+    readonly status?: string;
 }
 /**
- * Use this data source to look up Zone results for use in other resources.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZones = cloudflare.getZones({
+ *     account: {
+ *         id: "id",
+ *         name: "name",
+ *     },
+ *     direction: "asc",
+ *     name: "name",
+ *     order: "name",
+ *     status: "initializing",
+ * });
+ * ```
  */
-export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZones:getZones", {
-        "filter": args.filter,
+        "account": args.account,
+        "direction": args.direction,
+        "match": args.match,
+        "maxItems": args.maxItems,
+        "name": args.name,
+        "order": args.order,
+        "status": args.status,
     }, opts);
 }
 
@@ -57,8 +106,11 @@ export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOut
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesOutputArgs {
-    /**
-     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     */
-    filter: pulumi.Input<inputs.GetZonesFilterArgs>;
+    account?: pulumi.Input<inputs.GetZonesAccountArgs>;
+    direction?: pulumi.Input<string>;
+    match?: pulumi.Input<string>;
+    maxItems?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    order?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

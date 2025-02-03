@@ -8,58 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHostnameTlsSetting(ctx, "example", &cloudflare.HostnameTlsSettingArgs{
-//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Hostname: pulumi.String("sub.example.com"),
-//				Setting:  pulumi.String("min_tls_version"),
-//				Value:    pulumi.String("1.2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example <zone_id>/<hostname>/<setting_name>
+// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
 // ```
 type HostnameTlsSetting struct {
 	pulumi.CustomResourceState
 
+	// This is the time the tls setting was originally created for this hostname.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
-	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-	Setting   pulumi.StringOutput `pulumi:"setting"`
+	// The hostname for which the tls settings are set.
+	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// The TLS Setting name.
+	SettingId pulumi.StringOutput `pulumi:"settingId"`
+	// Deployment status for the given tls setting.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// TLS setting value.
-	Value pulumi.StringOutput `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The tls setting value.
+	Value pulumi.Float64Output `pulumi:"value"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -70,11 +45,8 @@ func NewHostnameTlsSetting(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Hostname == nil {
-		return nil, errors.New("invalid value for required argument 'Hostname'")
-	}
-	if args.Setting == nil {
-		return nil, errors.New("invalid value for required argument 'Setting'")
+	if args.SettingId == nil {
+		return nil, errors.New("invalid value for required argument 'SettingId'")
 	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
@@ -105,28 +77,36 @@ func GetHostnameTlsSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HostnameTlsSetting resources.
 type hostnameTlsSettingState struct {
+	// This is the time the tls setting was originally created for this hostname.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+	// The hostname for which the tls settings are set.
 	Hostname *string `pulumi:"hostname"`
-	// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-	Setting   *string `pulumi:"setting"`
+	// The TLS Setting name.
+	SettingId *string `pulumi:"settingId"`
+	// Deployment status for the given tls setting.
+	Status *string `pulumi:"status"`
+	// This is the time the tls setting was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// TLS setting value.
-	Value *string `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The tls setting value.
+	Value *float64 `pulumi:"value"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type HostnameTlsSettingState struct {
+	// This is the time the tls setting was originally created for this hostname.
 	CreatedAt pulumi.StringPtrInput
-	// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+	// The hostname for which the tls settings are set.
 	Hostname pulumi.StringPtrInput
-	// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-	Setting   pulumi.StringPtrInput
+	// The TLS Setting name.
+	SettingId pulumi.StringPtrInput
+	// Deployment status for the given tls setting.
+	Status pulumi.StringPtrInput
+	// This is the time the tls setting was updated.
 	UpdatedAt pulumi.StringPtrInput
-	// TLS setting value.
-	Value pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The tls setting value.
+	Value pulumi.Float64PtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -135,25 +115,25 @@ func (HostnameTlsSettingState) ElementType() reflect.Type {
 }
 
 type hostnameTlsSettingArgs struct {
-	// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
-	Hostname string `pulumi:"hostname"`
-	// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-	Setting string `pulumi:"setting"`
-	// TLS setting value.
-	Value string `pulumi:"value"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The hostname for which the tls settings are set.
+	Hostname *string `pulumi:"hostname"`
+	// The TLS Setting name.
+	SettingId string `pulumi:"settingId"`
+	// The tls setting value.
+	Value float64 `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a HostnameTlsSetting resource.
 type HostnameTlsSettingArgs struct {
-	// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
-	Hostname pulumi.StringInput
-	// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-	Setting pulumi.StringInput
-	// TLS setting value.
-	Value pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The hostname for which the tls settings are set.
+	Hostname pulumi.StringPtrInput
+	// The TLS Setting name.
+	SettingId pulumi.StringInput
+	// The tls setting value.
+	Value pulumi.Float64Input
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -244,30 +224,37 @@ func (o HostnameTlsSettingOutput) ToHostnameTlsSettingOutputWithContext(ctx cont
 	return o
 }
 
+// This is the time the tls setting was originally created for this hostname.
 func (o HostnameTlsSettingOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
-func (o HostnameTlsSettingOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+// The hostname for which the tls settings are set.
+func (o HostnameTlsSettingOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// TLS setting name. **Modifying this attribute will force creation of a new resource.**
-func (o HostnameTlsSettingOutput) Setting() pulumi.StringOutput {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.Setting }).(pulumi.StringOutput)
+// The TLS Setting name.
+func (o HostnameTlsSettingOutput) SettingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.SettingId }).(pulumi.StringOutput)
 }
 
+// Deployment status for the given tls setting.
+func (o HostnameTlsSettingOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// This is the time the tls setting was updated.
 func (o HostnameTlsSettingOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// TLS setting value.
-func (o HostnameTlsSettingOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+// The tls setting value.
+func (o HostnameTlsSettingOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.Float64Output { return v.Value }).(pulumi.Float64Output)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o HostnameTlsSettingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

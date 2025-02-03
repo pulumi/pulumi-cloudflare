@@ -12,402 +12,506 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotificationPolicyFilters {
     /**
-     * @return Targeted actions for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> actions;
     /**
-     * @return Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * @return Used for configuring radar_notification
+     * 
+     */
+    private @Nullable List<String> affectedAsns;
+    /**
+     * @return Used for configuring incident_alert
      * 
      */
     private @Nullable List<String> affectedComponents;
     /**
-     * @return Filter on Points of Presence.
+     * @return Used for configuring radar_notification
+     * 
+     */
+    private @Nullable List<String> affectedLocations;
+    /**
+     * @return Used for configuring maintenance*event*notification
      * 
      */
     private @Nullable List<String> airportCodes;
     /**
-     * @return Alert trigger preferences. Example: `slo`.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> alertTriggerPreferences;
     /**
-     * @return State of the pool to alert on.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    private @Nullable List<String> alertTriggerPreferencesValues;
+    /**
+     * @return Used for configuring load*balancing*pool*enablement*alert
      * 
      */
     private @Nullable List<String> enableds;
     /**
-     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     private @Nullable List<String> environments;
     /**
-     * @return Source configuration to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     private @Nullable List<String> eventSources;
     /**
-     * @return Stream event type to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> eventTypes;
     /**
-     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     private @Nullable List<String> events;
     /**
-     * @return Alert grouping.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> groupBies;
     /**
-     * @return Identifier health check. Required when using `filters.0.status`.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     private @Nullable List<String> healthCheckIds;
     /**
-     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * @return Used for configuring incident_alert
      * 
      */
     private @Nullable List<String> incidentImpacts;
     /**
-     * @return Stream input id to alert on.
+     * @return Used for configuring stream*live*notifications
      * 
      */
     private @Nullable List<String> inputIds;
     /**
-     * @return A numerical limit. Example: `100`.
+     * @return Used for configuring security*insights*alert
+     * 
+     */
+    private @Nullable List<String> insightClasses;
+    /**
+     * @return Used for configuring billing*usage*alert
      * 
      */
     private @Nullable List<String> limits;
     /**
-     * @return Megabits per second threshold for dos alert.
+     * @return Used for configuring logo*match*alert
+     * 
+     */
+    private @Nullable List<String> logoTags;
+    /**
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     private @Nullable List<String> megabitsPerSeconds;
     /**
-     * @return Health status to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     private @Nullable List<String> newHealths;
     /**
-     * @return Tunnel health status to alert on.
+     * @return Used for configuring tunnel*health*event
      * 
      */
     private @Nullable List<String> newStatuses;
     /**
-     * @return Packets per second threshold for dos alert.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     private @Nullable List<String> packetsPerSeconds;
     /**
-     * @return Load balancer pool identifier.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> poolIds;
     /**
-     * @return Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    private @Nullable List<String> popNames;
+    /**
+     * @return Used for configuring billing*usage*alert
      * 
      */
     private @Nullable List<String> products;
     /**
-     * @return Identifier of pages project.
+     * @return Used for configuring pages*event*alert
      * 
      */
     private @Nullable List<String> projectIds;
     /**
-     * @return Protocol to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     private @Nullable List<String> protocols;
     /**
-     * @return Requests per second threshold for dos alert.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    private @Nullable List<String> queryTags;
+    /**
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     private @Nullable List<String> requestsPerSeconds;
     /**
-     * @return Selectors for alert. Valid options depend on the alert type.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> selectors;
+    /**
+     * @return Used for configuring clickhouse*alert*fw*ent*anomaly
+     * 
+     */
     private @Nullable List<String> services;
     /**
-     * @return A numerical limit. Example: `99.9`.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> slos;
     /**
-     * @return Status to alert on.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     private @Nullable List<String> statuses;
     /**
-     * @return Target host to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     private @Nullable List<String> targetHostnames;
     /**
-     * @return Target ip to alert on for dos in CIDR notation.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     private @Nullable List<String> targetIps;
     /**
-     * @return Target domain to alert on.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     private @Nullable List<String> targetZoneNames;
     /**
-     * @return Tunnel IDs to alert on.
+     * @return Used for configuring traffic*anomalies*alert
+     * 
+     */
+    private @Nullable List<String> trafficExclusions;
+    /**
+     * @return Used for configuring tunnel*health*event
      * 
      */
     private @Nullable List<String> tunnelIds;
     /**
-     * @return Tunnel Names to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> tunnelNames;
     /**
-     * @return Filter for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> wheres;
     /**
-     * @return A list of zone identifiers.
+     * @return Usage depends on specific alert type
      * 
      */
     private @Nullable List<String> zones;
 
     private NotificationPolicyFilters() {}
     /**
-     * @return Targeted actions for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
     /**
-     * @return Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * @return Used for configuring radar_notification
+     * 
+     */
+    public List<String> affectedAsns() {
+        return this.affectedAsns == null ? List.of() : this.affectedAsns;
+    }
+    /**
+     * @return Used for configuring incident_alert
      * 
      */
     public List<String> affectedComponents() {
         return this.affectedComponents == null ? List.of() : this.affectedComponents;
     }
     /**
-     * @return Filter on Points of Presence.
+     * @return Used for configuring radar_notification
+     * 
+     */
+    public List<String> affectedLocations() {
+        return this.affectedLocations == null ? List.of() : this.affectedLocations;
+    }
+    /**
+     * @return Used for configuring maintenance*event*notification
      * 
      */
     public List<String> airportCodes() {
         return this.airportCodes == null ? List.of() : this.airportCodes;
     }
     /**
-     * @return Alert trigger preferences. Example: `slo`.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> alertTriggerPreferences() {
         return this.alertTriggerPreferences == null ? List.of() : this.alertTriggerPreferences;
     }
     /**
-     * @return State of the pool to alert on.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public List<String> alertTriggerPreferencesValues() {
+        return this.alertTriggerPreferencesValues == null ? List.of() : this.alertTriggerPreferencesValues;
+    }
+    /**
+     * @return Used for configuring load*balancing*pool*enablement*alert
      * 
      */
     public List<String> enableds() {
         return this.enableds == null ? List.of() : this.enableds;
     }
     /**
-     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public List<String> environments() {
         return this.environments == null ? List.of() : this.environments;
     }
     /**
-     * @return Source configuration to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     public List<String> eventSources() {
         return this.eventSources == null ? List.of() : this.eventSources;
     }
     /**
-     * @return Stream event type to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> eventTypes() {
         return this.eventTypes == null ? List.of() : this.eventTypes;
     }
     /**
-     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public List<String> events() {
         return this.events == null ? List.of() : this.events;
     }
     /**
-     * @return Alert grouping.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> groupBies() {
         return this.groupBies == null ? List.of() : this.groupBies;
     }
     /**
-     * @return Identifier health check. Required when using `filters.0.status`.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     public List<String> healthCheckIds() {
         return this.healthCheckIds == null ? List.of() : this.healthCheckIds;
     }
     /**
-     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * @return Used for configuring incident_alert
      * 
      */
     public List<String> incidentImpacts() {
         return this.incidentImpacts == null ? List.of() : this.incidentImpacts;
     }
     /**
-     * @return Stream input id to alert on.
+     * @return Used for configuring stream*live*notifications
      * 
      */
     public List<String> inputIds() {
         return this.inputIds == null ? List.of() : this.inputIds;
     }
     /**
-     * @return A numerical limit. Example: `100`.
+     * @return Used for configuring security*insights*alert
+     * 
+     */
+    public List<String> insightClasses() {
+        return this.insightClasses == null ? List.of() : this.insightClasses;
+    }
+    /**
+     * @return Used for configuring billing*usage*alert
      * 
      */
     public List<String> limits() {
         return this.limits == null ? List.of() : this.limits;
     }
     /**
-     * @return Megabits per second threshold for dos alert.
+     * @return Used for configuring logo*match*alert
+     * 
+     */
+    public List<String> logoTags() {
+        return this.logoTags == null ? List.of() : this.logoTags;
+    }
+    /**
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public List<String> megabitsPerSeconds() {
         return this.megabitsPerSeconds == null ? List.of() : this.megabitsPerSeconds;
     }
     /**
-     * @return Health status to alert on for pool or origin.
+     * @return Used for configuring load*balancing*health_alert
      * 
      */
     public List<String> newHealths() {
         return this.newHealths == null ? List.of() : this.newHealths;
     }
     /**
-     * @return Tunnel health status to alert on.
+     * @return Used for configuring tunnel*health*event
      * 
      */
     public List<String> newStatuses() {
         return this.newStatuses == null ? List.of() : this.newStatuses;
     }
     /**
-     * @return Packets per second threshold for dos alert.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public List<String> packetsPerSeconds() {
         return this.packetsPerSeconds == null ? List.of() : this.packetsPerSeconds;
     }
     /**
-     * @return Load balancer pool identifier.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> poolIds() {
         return this.poolIds == null ? List.of() : this.poolIds;
     }
     /**
-     * @return Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public List<String> popNames() {
+        return this.popNames == null ? List.of() : this.popNames;
+    }
+    /**
+     * @return Used for configuring billing*usage*alert
      * 
      */
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
     }
     /**
-     * @return Identifier of pages project.
+     * @return Used for configuring pages*event*alert
      * 
      */
     public List<String> projectIds() {
         return this.projectIds == null ? List.of() : this.projectIds;
     }
     /**
-     * @return Protocol to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public List<String> protocols() {
         return this.protocols == null ? List.of() : this.protocols;
     }
     /**
-     * @return Requests per second threshold for dos alert.
+     * @return Usage depends on specific alert type
+     * 
+     */
+    public List<String> queryTags() {
+        return this.queryTags == null ? List.of() : this.queryTags;
+    }
+    /**
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public List<String> requestsPerSeconds() {
         return this.requestsPerSeconds == null ? List.of() : this.requestsPerSeconds;
     }
     /**
-     * @return Selectors for alert. Valid options depend on the alert type.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> selectors() {
         return this.selectors == null ? List.of() : this.selectors;
     }
+    /**
+     * @return Used for configuring clickhouse*alert*fw*ent*anomaly
+     * 
+     */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }
     /**
-     * @return A numerical limit. Example: `99.9`.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> slos() {
         return this.slos == null ? List.of() : this.slos;
     }
     /**
-     * @return Status to alert on.
+     * @return Used for configuring health*check*status_notification
      * 
      */
     public List<String> statuses() {
         return this.statuses == null ? List.of() : this.statuses;
     }
     /**
-     * @return Target host to alert on for dos.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public List<String> targetHostnames() {
         return this.targetHostnames == null ? List.of() : this.targetHostnames;
     }
     /**
-     * @return Target ip to alert on for dos in CIDR notation.
+     * @return Used for configuring advanced*ddos*attack*l4*alert
      * 
      */
     public List<String> targetIps() {
         return this.targetIps == null ? List.of() : this.targetIps;
     }
     /**
-     * @return Target domain to alert on.
+     * @return Used for configuring advanced*ddos*attack*l7*alert
      * 
      */
     public List<String> targetZoneNames() {
         return this.targetZoneNames == null ? List.of() : this.targetZoneNames;
     }
     /**
-     * @return Tunnel IDs to alert on.
+     * @return Used for configuring traffic*anomalies*alert
+     * 
+     */
+    public List<String> trafficExclusions() {
+        return this.trafficExclusions == null ? List.of() : this.trafficExclusions;
+    }
+    /**
+     * @return Used for configuring tunnel*health*event
      * 
      */
     public List<String> tunnelIds() {
         return this.tunnelIds == null ? List.of() : this.tunnelIds;
     }
     /**
-     * @return Tunnel Names to alert on.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> tunnelNames() {
         return this.tunnelNames == null ? List.of() : this.tunnelNames;
     }
     /**
-     * @return Filter for alert.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> wheres() {
         return this.wheres == null ? List.of() : this.wheres;
     }
     /**
-     * @return A list of zone identifiers.
+     * @return Usage depends on specific alert type
      * 
      */
     public List<String> zones() {
@@ -424,9 +528,12 @@ public final class NotificationPolicyFilters {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> actions;
+        private @Nullable List<String> affectedAsns;
         private @Nullable List<String> affectedComponents;
+        private @Nullable List<String> affectedLocations;
         private @Nullable List<String> airportCodes;
         private @Nullable List<String> alertTriggerPreferences;
+        private @Nullable List<String> alertTriggerPreferencesValues;
         private @Nullable List<String> enableds;
         private @Nullable List<String> environments;
         private @Nullable List<String> eventSources;
@@ -436,15 +543,19 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> healthCheckIds;
         private @Nullable List<String> incidentImpacts;
         private @Nullable List<String> inputIds;
+        private @Nullable List<String> insightClasses;
         private @Nullable List<String> limits;
+        private @Nullable List<String> logoTags;
         private @Nullable List<String> megabitsPerSeconds;
         private @Nullable List<String> newHealths;
         private @Nullable List<String> newStatuses;
         private @Nullable List<String> packetsPerSeconds;
         private @Nullable List<String> poolIds;
+        private @Nullable List<String> popNames;
         private @Nullable List<String> products;
         private @Nullable List<String> projectIds;
         private @Nullable List<String> protocols;
+        private @Nullable List<String> queryTags;
         private @Nullable List<String> requestsPerSeconds;
         private @Nullable List<String> selectors;
         private @Nullable List<String> services;
@@ -453,6 +564,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> targetHostnames;
         private @Nullable List<String> targetIps;
         private @Nullable List<String> targetZoneNames;
+        private @Nullable List<String> trafficExclusions;
         private @Nullable List<String> tunnelIds;
         private @Nullable List<String> tunnelNames;
         private @Nullable List<String> wheres;
@@ -461,9 +573,12 @@ public final class NotificationPolicyFilters {
         public Builder(NotificationPolicyFilters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.affectedAsns = defaults.affectedAsns;
     	      this.affectedComponents = defaults.affectedComponents;
+    	      this.affectedLocations = defaults.affectedLocations;
     	      this.airportCodes = defaults.airportCodes;
     	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
+    	      this.alertTriggerPreferencesValues = defaults.alertTriggerPreferencesValues;
     	      this.enableds = defaults.enableds;
     	      this.environments = defaults.environments;
     	      this.eventSources = defaults.eventSources;
@@ -473,15 +588,19 @@ public final class NotificationPolicyFilters {
     	      this.healthCheckIds = defaults.healthCheckIds;
     	      this.incidentImpacts = defaults.incidentImpacts;
     	      this.inputIds = defaults.inputIds;
+    	      this.insightClasses = defaults.insightClasses;
     	      this.limits = defaults.limits;
+    	      this.logoTags = defaults.logoTags;
     	      this.megabitsPerSeconds = defaults.megabitsPerSeconds;
     	      this.newHealths = defaults.newHealths;
     	      this.newStatuses = defaults.newStatuses;
     	      this.packetsPerSeconds = defaults.packetsPerSeconds;
     	      this.poolIds = defaults.poolIds;
+    	      this.popNames = defaults.popNames;
     	      this.products = defaults.products;
     	      this.projectIds = defaults.projectIds;
     	      this.protocols = defaults.protocols;
+    	      this.queryTags = defaults.queryTags;
     	      this.requestsPerSeconds = defaults.requestsPerSeconds;
     	      this.selectors = defaults.selectors;
     	      this.services = defaults.services;
@@ -490,6 +609,7 @@ public final class NotificationPolicyFilters {
     	      this.targetHostnames = defaults.targetHostnames;
     	      this.targetIps = defaults.targetIps;
     	      this.targetZoneNames = defaults.targetZoneNames;
+    	      this.trafficExclusions = defaults.trafficExclusions;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.tunnelNames = defaults.tunnelNames;
     	      this.wheres = defaults.wheres;
@@ -506,6 +626,15 @@ public final class NotificationPolicyFilters {
             return actions(List.of(actions));
         }
         @CustomType.Setter
+        public Builder affectedAsns(@Nullable List<String> affectedAsns) {
+
+            this.affectedAsns = affectedAsns;
+            return this;
+        }
+        public Builder affectedAsns(String... affectedAsns) {
+            return affectedAsns(List.of(affectedAsns));
+        }
+        @CustomType.Setter
         public Builder affectedComponents(@Nullable List<String> affectedComponents) {
 
             this.affectedComponents = affectedComponents;
@@ -513,6 +642,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder affectedComponents(String... affectedComponents) {
             return affectedComponents(List.of(affectedComponents));
+        }
+        @CustomType.Setter
+        public Builder affectedLocations(@Nullable List<String> affectedLocations) {
+
+            this.affectedLocations = affectedLocations;
+            return this;
+        }
+        public Builder affectedLocations(String... affectedLocations) {
+            return affectedLocations(List.of(affectedLocations));
         }
         @CustomType.Setter
         public Builder airportCodes(@Nullable List<String> airportCodes) {
@@ -531,6 +669,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder alertTriggerPreferences(String... alertTriggerPreferences) {
             return alertTriggerPreferences(List.of(alertTriggerPreferences));
+        }
+        @CustomType.Setter
+        public Builder alertTriggerPreferencesValues(@Nullable List<String> alertTriggerPreferencesValues) {
+
+            this.alertTriggerPreferencesValues = alertTriggerPreferencesValues;
+            return this;
+        }
+        public Builder alertTriggerPreferencesValues(String... alertTriggerPreferencesValues) {
+            return alertTriggerPreferencesValues(List.of(alertTriggerPreferencesValues));
         }
         @CustomType.Setter
         public Builder enableds(@Nullable List<String> enableds) {
@@ -614,6 +761,15 @@ public final class NotificationPolicyFilters {
             return inputIds(List.of(inputIds));
         }
         @CustomType.Setter
+        public Builder insightClasses(@Nullable List<String> insightClasses) {
+
+            this.insightClasses = insightClasses;
+            return this;
+        }
+        public Builder insightClasses(String... insightClasses) {
+            return insightClasses(List.of(insightClasses));
+        }
+        @CustomType.Setter
         public Builder limits(@Nullable List<String> limits) {
 
             this.limits = limits;
@@ -621,6 +777,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder limits(String... limits) {
             return limits(List.of(limits));
+        }
+        @CustomType.Setter
+        public Builder logoTags(@Nullable List<String> logoTags) {
+
+            this.logoTags = logoTags;
+            return this;
+        }
+        public Builder logoTags(String... logoTags) {
+            return logoTags(List.of(logoTags));
         }
         @CustomType.Setter
         public Builder megabitsPerSeconds(@Nullable List<String> megabitsPerSeconds) {
@@ -668,6 +833,15 @@ public final class NotificationPolicyFilters {
             return poolIds(List.of(poolIds));
         }
         @CustomType.Setter
+        public Builder popNames(@Nullable List<String> popNames) {
+
+            this.popNames = popNames;
+            return this;
+        }
+        public Builder popNames(String... popNames) {
+            return popNames(List.of(popNames));
+        }
+        @CustomType.Setter
         public Builder products(@Nullable List<String> products) {
 
             this.products = products;
@@ -693,6 +867,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
+        }
+        @CustomType.Setter
+        public Builder queryTags(@Nullable List<String> queryTags) {
+
+            this.queryTags = queryTags;
+            return this;
+        }
+        public Builder queryTags(String... queryTags) {
+            return queryTags(List.of(queryTags));
         }
         @CustomType.Setter
         public Builder requestsPerSeconds(@Nullable List<String> requestsPerSeconds) {
@@ -767,6 +950,15 @@ public final class NotificationPolicyFilters {
             return targetZoneNames(List.of(targetZoneNames));
         }
         @CustomType.Setter
+        public Builder trafficExclusions(@Nullable List<String> trafficExclusions) {
+
+            this.trafficExclusions = trafficExclusions;
+            return this;
+        }
+        public Builder trafficExclusions(String... trafficExclusions) {
+            return trafficExclusions(List.of(trafficExclusions));
+        }
+        @CustomType.Setter
         public Builder tunnelIds(@Nullable List<String> tunnelIds) {
 
             this.tunnelIds = tunnelIds;
@@ -805,9 +997,12 @@ public final class NotificationPolicyFilters {
         public NotificationPolicyFilters build() {
             final var _resultValue = new NotificationPolicyFilters();
             _resultValue.actions = actions;
+            _resultValue.affectedAsns = affectedAsns;
             _resultValue.affectedComponents = affectedComponents;
+            _resultValue.affectedLocations = affectedLocations;
             _resultValue.airportCodes = airportCodes;
             _resultValue.alertTriggerPreferences = alertTriggerPreferences;
+            _resultValue.alertTriggerPreferencesValues = alertTriggerPreferencesValues;
             _resultValue.enableds = enableds;
             _resultValue.environments = environments;
             _resultValue.eventSources = eventSources;
@@ -817,15 +1012,19 @@ public final class NotificationPolicyFilters {
             _resultValue.healthCheckIds = healthCheckIds;
             _resultValue.incidentImpacts = incidentImpacts;
             _resultValue.inputIds = inputIds;
+            _resultValue.insightClasses = insightClasses;
             _resultValue.limits = limits;
+            _resultValue.logoTags = logoTags;
             _resultValue.megabitsPerSeconds = megabitsPerSeconds;
             _resultValue.newHealths = newHealths;
             _resultValue.newStatuses = newStatuses;
             _resultValue.packetsPerSeconds = packetsPerSeconds;
             _resultValue.poolIds = poolIds;
+            _resultValue.popNames = popNames;
             _resultValue.products = products;
             _resultValue.projectIds = projectIds;
             _resultValue.protocols = protocols;
+            _resultValue.queryTags = queryTags;
             _resultValue.requestsPerSeconds = requestsPerSeconds;
             _resultValue.selectors = selectors;
             _resultValue.services = services;
@@ -834,6 +1033,7 @@ public final class NotificationPolicyFilters {
             _resultValue.targetHostnames = targetHostnames;
             _resultValue.targetIps = targetIps;
             _resultValue.targetZoneNames = targetZoneNames;
+            _resultValue.trafficExclusions = trafficExclusions;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.tunnelNames = tunnelNames;
             _resultValue.wheres = wheres;

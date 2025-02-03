@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
@@ -12,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,73 +23,59 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     public static final ZeroTrustAccessPolicyArgs Empty = new ZeroTrustAccessPolicyArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * Identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Administrators who can approve a temporary authentication request.
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
-
-    /**
-     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
     @Import(name="approvalGroups")
     private @Nullable Output<List<ZeroTrustAccessPolicyApprovalGroupArgs>> approvalGroups;
 
+    /**
+     * @return Administrators who can approve a temporary authentication request.
+     * 
+     */
     public Optional<Output<List<ZeroTrustAccessPolicyApprovalGroupArgs>>> approvalGroups() {
         return Optional.ofNullable(this.approvalGroups);
     }
 
+    /**
+     * Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     @Import(name="approvalRequired")
     private @Nullable Output<Boolean> approvalRequired;
 
+    /**
+     * @return Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
     }
 
     /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    @Import(name="connectionRules")
-    private @Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules;
-
-    /**
-     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    public Optional<Output<ZeroTrustAccessPolicyConnectionRulesArgs>> connectionRules() {
-        return Optional.ofNullable(this.connectionRules);
-    }
-
-    /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * 
      */
     @Import(name="decision", required=true)
     private Output<String> decision;
 
     /**
-     * @return Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * 
      */
     public Output<String> decision() {
@@ -99,14 +83,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<ZeroTrustAccessPolicyExcludeArgs>> excludes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     public Optional<Output<List<ZeroTrustAccessPolicyExcludeArgs>>> excludes() {
@@ -114,14 +98,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     @Import(name="includes", required=true)
     private Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     public Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes() {
@@ -129,14 +113,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     @Import(name="isolationRequired")
     private @Nullable Output<Boolean> isolationRequired;
 
     /**
-     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * @return Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     public Optional<Output<Boolean>> isolationRequired() {
@@ -144,14 +128,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Policy.
+     * @return The name of the Access policy.
      * 
      */
     public Output<String> name() {
@@ -159,29 +143,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    @Import(name="precedence")
-    private @Nullable Output<Integer> precedence;
-
-    /**
-     * @return The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    public Optional<Output<Integer>> precedence() {
-        return Optional.ofNullable(this.precedence);
-    }
-
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * A custom message that will appear on the purpose justification screen.
      * 
      */
     @Import(name="purposeJustificationPrompt")
     private @Nullable Output<String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * @return A custom message that will appear on the purpose justification screen.
      * 
      */
     public Optional<Output<String>> purposeJustificationPrompt() {
@@ -189,14 +158,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      * 
      */
     @Import(name="purposeJustificationRequired")
     private @Nullable Output<Boolean> purposeJustificationRequired;
 
     /**
-     * @return Whether to prompt the user for a justification for accessing the resource.
+     * @return Require users to enter a justification when they log in to the application.
      * 
      */
     public Optional<Output<Boolean>> purposeJustificationRequired() {
@@ -204,14 +173,14 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     @Import(name="requires")
     private @Nullable Output<List<ZeroTrustAccessPolicyRequireArgs>> requires;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     public Optional<Output<List<ZeroTrustAccessPolicyRequireArgs>>> requires() {
@@ -219,54 +188,35 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
         return Optional.ofNullable(this.sessionDuration);
     }
 
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
-
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
-    }
-
     private ZeroTrustAccessPolicyArgs() {}
 
     private ZeroTrustAccessPolicyArgs(ZeroTrustAccessPolicyArgs $) {
         this.accountId = $.accountId;
-        this.applicationId = $.applicationId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
-        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
         this.isolationRequired = $.isolationRequired;
         this.name = $.name;
-        this.precedence = $.precedence;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
         this.requires = $.requires;
         this.sessionDuration = $.sessionDuration;
-        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -288,18 +238,18 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -309,71 +259,59 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
-            $.applicationId = applicationId;
-            return this;
-        }
-
-        /**
-         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
-        }
-
         public Builder approvalGroups(@Nullable Output<List<ZeroTrustAccessPolicyApprovalGroupArgs>> approvalGroups) {
             $.approvalGroups = approvalGroups;
             return this;
         }
 
+        /**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalGroups(List<ZeroTrustAccessPolicyApprovalGroupArgs> approvalGroups) {
             return approvalGroups(Output.of(approvalGroups));
         }
 
+        /**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalGroups(ZeroTrustAccessPolicyApprovalGroupArgs... approvalGroups) {
             return approvalGroups(List.of(approvalGroups));
         }
 
+        /**
+         * @param approvalRequired Requires the user to request access from an administrator at the start of each session.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalRequired(@Nullable Output<Boolean> approvalRequired) {
             $.approvalRequired = approvalRequired;
             return this;
         }
 
+        /**
+         * @param approvalRequired Requires the user to request access from an administrator at the start of each session.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
         }
 
         /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionRules(@Nullable Output<ZeroTrustAccessPolicyConnectionRulesArgs> connectionRules) {
-            $.connectionRules = connectionRules;
-            return this;
-        }
-
-        /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs connectionRules) {
-            return connectionRules(Output.of(connectionRules));
-        }
-
-        /**
-         * @param decision Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+         * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
          * 
          * @return builder
          * 
@@ -384,7 +322,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param decision Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+         * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
          * 
          * @return builder
          * 
@@ -394,7 +332,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -405,7 +343,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -415,7 +353,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -425,7 +363,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -436,7 +374,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -446,7 +384,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -456,7 +394,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
          * 
          * @return builder
          * 
@@ -467,7 +405,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
          * 
          * @return builder
          * 
@@ -477,7 +415,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Friendly name of the Access Policy.
+         * @param name The name of the Access policy.
          * 
          * @return builder
          * 
@@ -488,7 +426,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Friendly name of the Access Policy.
+         * @param name The name of the Access policy.
          * 
          * @return builder
          * 
@@ -498,28 +436,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder precedence(@Nullable Output<Integer> precedence) {
-            $.precedence = precedence;
-            return this;
-        }
-
-        /**
-         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder precedence(Integer precedence) {
-            return precedence(Output.of(precedence));
-        }
-
-        /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+         * @param purposeJustificationPrompt A custom message that will appear on the purpose justification screen.
          * 
          * @return builder
          * 
@@ -530,7 +447,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+         * @param purposeJustificationPrompt A custom message that will appear on the purpose justification screen.
          * 
          * @return builder
          * 
@@ -540,7 +457,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param purposeJustificationRequired Whether to prompt the user for a justification for accessing the resource.
+         * @param purposeJustificationRequired Require users to enter a justification when they log in to the application.
          * 
          * @return builder
          * 
@@ -551,7 +468,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param purposeJustificationRequired Whether to prompt the user for a justification for accessing the resource.
+         * @param purposeJustificationRequired Require users to enter a justification when they log in to the application.
          * 
          * @return builder
          * 
@@ -561,7 +478,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -572,7 +489,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -582,7 +499,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -592,7 +509,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -603,7 +520,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -612,28 +529,10 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
             return sessionDuration(Output.of(sessionDuration));
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
-        }
-
         public ZeroTrustAccessPolicyArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "accountId");
+            }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "decision");
             }

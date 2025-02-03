@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
      * The name of the DNS record associated with the application.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the DNS record associated with the application.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
      * The type of DNS record associated with the application.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return The type of DNS record associated with the application.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SpectrumApplicationDnsArgs() {}
@@ -75,7 +76,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -96,7 +97,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -112,12 +113,6 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
         }
 
         public SpectrumApplicationDnsArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("SpectrumApplicationDnsArgs", "name");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("SpectrumApplicationDnsArgs", "type");
-            }
             return $;
         }
     }

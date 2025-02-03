@@ -18,79 +18,138 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare API tokens.
+ * ## Example Usage
  * 
- * Read more about permission groups and their applicable scopes in the
- * [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ApiToken;
+ * import com.pulumi.cloudflare.ApiTokenArgs;
+ * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ApiTokenConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleApiToken = new ApiToken("exampleApiToken", ApiTokenArgs.builder()
+ *             .name("readonly token")
+ *             .policies(ApiTokenPolicyArgs.builder()
+ *                 .effect("allow")
+ *                 .permission_groups(                
+ *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                     %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .resources(Map.ofEntries(
+ *                     Map.entry("com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43", "*"),
+ *                     Map.entry("com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4", "*")
+ *                 ))
+ *                 .build())
+ *             .condition(ApiTokenConditionArgs.builder()
+ *                 .request_ip(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .build())
+ *             .expiresOn("2020-01-01T00:00:00Z")
+ *             .notBefore("2018-07-01T05:20:00Z")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiToken:ApiToken example &#39;&lt;token_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/apiToken:ApiToken")
 public class ApiToken extends com.pulumi.resources.CustomResource {
-    /**
-     * Conditions under which the token should be considered valid.
-     * 
-     */
     @Export(name="condition", refs={ApiTokenCondition.class}, tree="[0]")
-    private Output</* @Nullable */ ApiTokenCondition> condition;
+    private Output<ApiTokenCondition> condition;
 
-    /**
-     * @return Conditions under which the token should be considered valid.
-     * 
-     */
-    public Output<Optional<ApiTokenCondition>> condition() {
-        return Codegen.optional(this.condition);
+    public Output<ApiTokenCondition> condition() {
+        return this.condition;
     }
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiresOn;
 
     /**
-     * @return The expiration time on or after which the token MUST NOT be accepted for processing.
+     * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     public Output<Optional<String>> expiresOn() {
         return Codegen.optional(this.expiresOn);
     }
     /**
-     * Timestamp of when the token was issued.
+     * The time on which the token was created.
      * 
      */
     @Export(name="issuedOn", refs={String.class}, tree="[0]")
     private Output<String> issuedOn;
 
     /**
-     * @return Timestamp of when the token was issued.
+     * @return The time on which the token was created.
      * 
      */
     public Output<String> issuedOn() {
         return this.issuedOn;
     }
     /**
-     * Timestamp of when the token was last modified.
+     * Last time the token was used.
+     * 
+     */
+    @Export(name="lastUsedOn", refs={String.class}, tree="[0]")
+    private Output<String> lastUsedOn;
+
+    /**
+     * @return Last time the token was used.
+     * 
+     */
+    public Output<String> lastUsedOn() {
+        return this.lastUsedOn;
+    }
+    /**
+     * Last time the token was modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return Timestamp of when the token was last modified.
+     * @return Last time the token was modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * Name of the API Token.
+     * Token name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the API Token.
+     * @return Token name.
      * 
      */
     public Output<String> name() {
@@ -111,34 +170,42 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notBefore);
     }
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      * 
      */
     @Export(name="policies", refs={List.class,ApiTokenPolicy.class}, tree="[0,1]")
     private Output<List<ApiTokenPolicy>> policies;
 
     /**
-     * @return Permissions policy. Multiple policy blocks can be defined.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Output<List<ApiTokenPolicy>> policies() {
         return this.policies;
     }
+    /**
+     * Status of the token.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output<String> status;
+    private Output</* @Nullable */ String> status;
 
-    public Output<String> status() {
-        return this.status;
+    /**
+     * @return Status of the token.
+     * 
+     */
+    public Output<Optional<String>> status() {
+        return Codegen.optional(this.status);
     }
     /**
-     * The value of the API Token.
+     * The token value.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The value of the API Token.
+     * @return The token value.
      * 
      */
     public Output<String> value() {
@@ -184,9 +251,6 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "value"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyCookie {
     /**
-     * @return List of cookies to check for presence in the custom key.
+     * @return Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
      * 
      */
     private @Nullable List<String> checkPresences;
     /**
-     * @return List of cookies to include in the custom key.
+     * @return Include these cookies&#39; names and their values.
      * 
      */
     private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyCookie() {}
     /**
-     * @return List of cookies to check for presence in the custom key.
+     * @return Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
      * 
      */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
     /**
-     * @return List of cookies to include in the custom key.
+     * @return Include these cookies&#39; names and their values.
      * 
      */
     public List<String> includes() {

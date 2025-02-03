@@ -15,17 +15,9 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs extends
 
     public static final ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs Empty = new ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs();
 
-    /**
-     * Whether WARP routing is enabled.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Whether WARP routing is enabled.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -54,23 +46,11 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs extends
             $ = new ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Whether WARP routing is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Whether WARP routing is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

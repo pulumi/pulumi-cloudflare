@@ -7,11 +7,37 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupZeroTrustAccessIdentityProvider(ctx, &cloudflare.LookupZeroTrustAccessIdentityProviderArgs{
+//				IdentityProviderId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				AccountId:          pulumi.StringRef("account_id"),
+//				ZoneId:             pulumi.StringRef("zone_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustAccessIdentityProvider(ctx *pulumi.Context, args *LookupZeroTrustAccessIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessIdentityProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessIdentityProviderResult
@@ -24,25 +50,33 @@ func LookupZeroTrustAccessIdentityProvider(ctx *pulumi.Context, args *LookupZero
 
 // A collection of arguments for invoking getZeroTrustAccessIdentityProvider.
 type LookupZeroTrustAccessIdentityProviderArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-	AccountId *string `pulumi:"accountId"`
-	// Access Identity Provider name to search for.
-	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string                                   `pulumi:"accountId"`
+	Filter    *GetZeroTrustAccessIdentityProviderFilter `pulumi:"filter"`
+	// UUID
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZeroTrustAccessIdentityProvider.
 type LookupZeroTrustAccessIdentityProviderResult struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+	Config GetZeroTrustAccessIdentityProviderConfig  `pulumi:"config"`
+	Filter *GetZeroTrustAccessIdentityProviderFilter `pulumi:"filter"`
+	// UUID
 	Id string `pulumi:"id"`
-	// Access Identity Provider name to search for.
+	// UUID
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The name of the identity provider, shown to users on the login page.
 	Name string `pulumi:"name"`
-	// Access Identity Provider Type.
+	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+	ScimConfig GetZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfig"`
+	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -57,11 +91,12 @@ func LookupZeroTrustAccessIdentityProviderOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getZeroTrustAccessIdentityProvider.
 type LookupZeroTrustAccessIdentityProviderOutputArgs struct {
-	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Access Identity Provider name to search for.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrInput                            `pulumi:"accountId"`
+	Filter    GetZeroTrustAccessIdentityProviderFilterPtrInput `pulumi:"filter"`
+	// UUID
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -84,27 +119,52 @@ func (o LookupZeroTrustAccessIdentityProviderResultOutput) ToLookupZeroTrustAcce
 	return o
 }
 
-// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) Config() GetZeroTrustAccessIdentityProviderConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) GetZeroTrustAccessIdentityProviderConfig {
+		return v.Config
+	}).(GetZeroTrustAccessIdentityProviderConfigOutput)
+}
+
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) Filter() GetZeroTrustAccessIdentityProviderFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) *GetZeroTrustAccessIdentityProviderFilter {
+		return v.Filter
+	}).(GetZeroTrustAccessIdentityProviderFilterPtrOutput)
+}
+
+// UUID
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Access Identity Provider name to search for.
+// UUID
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the identity provider, shown to users on the login page.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Access Identity Provider Type.
+// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) ScimConfig() GetZeroTrustAccessIdentityProviderScimConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) GetZeroTrustAccessIdentityProviderScimConfig {
+		return v.ScimConfig
+	}).(GetZeroTrustAccessIdentityProviderScimConfigOutput)
+}
+
+// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

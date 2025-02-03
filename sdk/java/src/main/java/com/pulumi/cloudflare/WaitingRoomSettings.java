@@ -12,12 +12,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Configure zone-wide settings for Cloudflare waiting rooms.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -43,8 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WaitingRoomSettings("example", WaitingRoomSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleWaitingRoomSettings = new WaitingRoomSettings("exampleWaitingRoomSettings", WaitingRoomSettingsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .searchEngineCrawlerBypass(true)
  *             .build());
  * 
@@ -57,35 +54,39 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/waitingRoomSettings:WaitingRoomSettings")
 public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      * 
      */
     @Export(name="searchEngineCrawlerBypass", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> searchEngineCrawlerBypass;
+    private Output<Boolean> searchEngineCrawlerBypass;
 
     /**
-     * @return Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * @return Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      * 
      */
-    public Output<Optional<Boolean>> searchEngineCrawlerBypass() {
-        return Codegen.optional(this.searchEngineCrawlerBypass);
+    public Output<Boolean> searchEngineCrawlerBypass() {
+        return this.searchEngineCrawlerBypass;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

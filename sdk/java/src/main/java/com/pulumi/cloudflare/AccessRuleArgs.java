@@ -18,14 +18,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessRuleArgs Empty = new AccessRuleArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * The rule configuration.
      * 
      */
     @Import(name="configuration", required=true)
     private Output<AccessRuleConfigurationArgs> configuration;
 
     /**
-     * @return Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+     * @return The rule configuration.
      * 
      */
     public Output<AccessRuleConfigurationArgs> configuration() {
@@ -48,14 +48,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * The action to apply to a matched request.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
      * 
      */
     public Output<String> mode() {
@@ -63,14 +63,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
     /**
-     * @return A personal note about the rule. Typically used as a reminder or explanation for the rule.
+     * @return An informative summary of the rule, typically used as a reminder or explanation.
      * 
      */
     public Optional<Output<String>> notes() {
@@ -78,14 +78,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -121,7 +121,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes A personal note about the rule. Typically used as a reminder or explanation for the rule.
+         * @param notes An informative summary of the rule, typically used as a reminder or explanation.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes A personal note about the rule. Typically used as a reminder or explanation for the rule.
+         * @param notes An informative summary of the rule, typically used as a reminder or explanation.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

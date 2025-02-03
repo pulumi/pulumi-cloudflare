@@ -7,19 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * A datasource to find Load Balancer Pools.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getLoadBalancerPools({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     filter: {
- *         name: "example-lb-pool",
- *     },
+ * const exampleLoadBalancerPools = cloudflare.getLoadBalancerPools({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     monitor: "monitor",
  * });
  * ```
  */
@@ -27,8 +23,8 @@ export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,
-        "filter": args.filter,
-        "pools": args.pools,
+        "maxItems": args.maxItems,
+        "monitor": args.monitor,
     }, opts);
 }
 
@@ -37,17 +33,17 @@ export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulu
  */
 export interface GetLoadBalancerPoolsArgs {
     /**
-     * The account identifier to target for the datasource lookups.
+     * Identifier
      */
     accountId: string;
     /**
-     * One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+     * Max items to fetch, default: 1000
      */
-    filter?: inputs.GetLoadBalancerPoolsFilter;
+    maxItems?: number;
     /**
-     * A list of Load Balancer Pools details.
+     * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    pools?: inputs.GetLoadBalancerPoolsPool[];
+    monitor?: string;
 }
 
 /**
@@ -55,36 +51,36 @@ export interface GetLoadBalancerPoolsArgs {
  */
 export interface GetLoadBalancerPoolsResult {
     /**
-     * The account identifier to target for the datasource lookups.
+     * Identifier
      */
     readonly accountId: string;
-    /**
-     * One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-     */
-    readonly filter?: outputs.GetLoadBalancerPoolsFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A list of Load Balancer Pools details.
+     * Max items to fetch, default: 1000
      */
-    readonly pools: outputs.GetLoadBalancerPoolsPool[];
+    readonly maxItems?: number;
+    /**
+     * The ID of the Monitor to use for checking the health of origins within this pool.
+     */
+    readonly monitor?: string;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetLoadBalancerPoolsResult[];
 }
 /**
- * A datasource to find Load Balancer Pools.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getLoadBalancerPools({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     filter: {
- *         name: "example-lb-pool",
- *     },
+ * const exampleLoadBalancerPools = cloudflare.getLoadBalancerPools({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     monitor: "monitor",
  * });
  * ```
  */
@@ -92,8 +88,8 @@ export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", {
         "accountId": args.accountId,
-        "filter": args.filter,
-        "pools": args.pools,
+        "maxItems": args.maxItems,
+        "monitor": args.monitor,
     }, opts);
 }
 
@@ -102,15 +98,15 @@ export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs,
  */
 export interface GetLoadBalancerPoolsOutputArgs {
     /**
-     * The account identifier to target for the datasource lookups.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
+     * Max items to fetch, default: 1000
      */
-    filter?: pulumi.Input<inputs.GetLoadBalancerPoolsFilterArgs>;
+    maxItems?: pulumi.Input<number>;
     /**
-     * A list of Load Balancer Pools details.
+     * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    pools?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerPoolsPoolArgs>[]>;
+    monitor?: pulumi.Input<string>;
 }

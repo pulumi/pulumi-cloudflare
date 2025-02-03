@@ -15,20 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The ID of your Okta identity provider.
         /// </summary>
-        [Input("identityProviderId")]
-        public Input<string>? IdentityProviderId { get; set; }
-
-        [Input("names")]
-        private InputList<string>? _names;
+        [Input("identityProviderId", required: true)]
+        public Input<string> IdentityProviderId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Okta Group.
+        /// The name of the Okta group.
         /// </summary>
-        public InputList<string> Names
-        {
-            get => _names ?? (_names = new InputList<string>());
-            set => _names = value;
-        }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public ZeroTrustAccessPolicyExcludeOktaArgs()
         {

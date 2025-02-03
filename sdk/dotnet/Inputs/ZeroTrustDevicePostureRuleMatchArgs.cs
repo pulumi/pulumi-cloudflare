@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDevicePostureRuleMatchArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-        /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 

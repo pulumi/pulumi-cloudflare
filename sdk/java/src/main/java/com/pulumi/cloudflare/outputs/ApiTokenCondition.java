@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiTokenCondition {
     /**
-     * @return Request IP related conditions.
+     * @return Client IP restrictions.
      * 
      */
     private @Nullable ApiTokenConditionRequestIp requestIp;
 
     private ApiTokenCondition() {}
     /**
-     * @return Request IP related conditions.
+     * @return Client IP restrictions.
      * 
      */
     public Optional<ApiTokenConditionRequestIp> requestIp() {

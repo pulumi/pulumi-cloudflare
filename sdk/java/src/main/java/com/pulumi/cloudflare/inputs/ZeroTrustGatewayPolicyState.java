@@ -3,7 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -19,45 +21,59 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
 
     public static final ZeroTrustGatewayPolicyState Empty = new ZeroTrustGatewayPolicyState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * The description of the teams rule.
+     * Date of deletion, if any.
+     * 
+     */
+    @Import(name="deletedAt")
+    private @Nullable Output<String> deletedAt;
+
+    /**
+     * @return Date of deletion, if any.
+     * 
+     */
+    public Optional<Output<String>> deletedAt() {
+        return Optional.ofNullable(this.deletedAt);
+    }
+
+    /**
+     * The description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the teams rule.
+     * @return The description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -65,14 +81,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The wirefilter expression to be used for device_posture check matching.
+     * The wirefilter expression used for device posture check matching.
      * 
      */
     @Import(name="devicePosture")
     private @Nullable Output<String> devicePosture;
 
     /**
-     * @return The wirefilter expression to be used for device_posture check matching.
+     * @return The wirefilter expression used for device posture check matching.
      * 
      */
     public Optional<Output<String>> devicePosture() {
@@ -80,14 +96,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Indicator of rule enablement.
+     * True if the rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Indicator of rule enablement.
+     * @return True if the rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -95,14 +111,31 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    @Import(name="expiration")
+    private @Nullable Output<ZeroTrustGatewayPolicyExpirationArgs> expiration;
+
+    /**
+     * @return The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyExpirationArgs>> expiration() {
+        return Optional.ofNullable(this.expiration);
+    }
+
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic and identity expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -110,14 +143,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      * 
      */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
     /**
-     * @return The wirefilter expression to be used for identity matching.
+     * @return The wirefilter expression used for identity matching.
      * 
      */
     public Optional<Output<String>> identity() {
@@ -125,14 +158,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the teams rule.
+     * @return The name of the rule.
      * 
      */
     public Optional<Output<String>> name() {
@@ -140,14 +173,16 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
     @Import(name="precedence")
     private @Nullable Output<Integer> precedence;
 
     /**
-     * @return The evaluation precedence of the teams rule.
+     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
     public Optional<Output<Integer>> precedence() {
@@ -155,14 +190,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule&#39;s action.
      * 
      */
     @Import(name="ruleSettings")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsArgs> ruleSettings;
 
     /**
-     * @return Additional rule settings.
+     * @return Additional settings that modify the rule&#39;s action.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsArgs>> ruleSettings() {
@@ -170,23 +205,53 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    @Import(name="schedule")
+    private @Nullable Output<ZeroTrustGatewayPolicyScheduleArgs> schedule;
+
+    /**
+     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyScheduleArgs>> schedule() {
+        return Optional.ofNullable(this.schedule);
+    }
+
+    /**
+     * The wirefilter expression used for traffic matching.
      * 
      */
     @Import(name="traffic")
     private @Nullable Output<String> traffic;
 
     /**
-     * @return The wirefilter expression to be used for traffic matching.
+     * @return The wirefilter expression used for traffic matching.
      * 
      */
     public Optional<Output<String>> traffic() {
         return Optional.ofNullable(this.traffic);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * version number of the rule
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
+    /**
+     * @return version number of the rule
+     * 
+     */
     public Optional<Output<Integer>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -196,15 +261,20 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     private ZeroTrustGatewayPolicyState(ZeroTrustGatewayPolicyState $) {
         this.accountId = $.accountId;
         this.action = $.action;
+        this.createdAt = $.createdAt;
+        this.deletedAt = $.deletedAt;
         this.description = $.description;
         this.devicePosture = $.devicePosture;
         this.enabled = $.enabled;
+        this.expiration = $.expiration;
         this.filters = $.filters;
         this.identity = $.identity;
         this.name = $.name;
         this.precedence = $.precedence;
         this.ruleSettings = $.ruleSettings;
+        this.schedule = $.schedule;
         this.traffic = $.traffic;
+        this.updatedAt = $.updatedAt;
         this.version = $.version;
     }
 
@@ -226,29 +296,17 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
             $ = new ZeroTrustGatewayPolicyState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * 
          * @return builder
          * 
@@ -259,7 +317,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * 
          * @return builder
          * 
@@ -268,8 +326,38 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
             return action(Output.of(action));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param description The description of the teams rule.
+         * @param deletedAt Date of deletion, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(@Nullable Output<String> deletedAt) {
+            $.deletedAt = deletedAt;
+            return this;
+        }
+
+        /**
+         * @param deletedAt Date of deletion, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(String deletedAt) {
+            return deletedAt(Output.of(deletedAt));
+        }
+
+        /**
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -280,7 +368,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description The description of the teams rule.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -290,7 +378,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param devicePosture The wirefilter expression to be used for device_posture check matching.
+         * @param devicePosture The wirefilter expression used for device posture check matching.
          * 
          * @return builder
          * 
@@ -301,7 +389,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param devicePosture The wirefilter expression to be used for device_posture check matching.
+         * @param devicePosture The wirefilter expression used for device posture check matching.
          * 
          * @return builder
          * 
@@ -311,7 +399,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled True if the rule is enabled.
          * 
          * @return builder
          * 
@@ -322,7 +410,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled True if the rule is enabled.
          * 
          * @return builder
          * 
@@ -332,7 +420,30 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
+         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(@Nullable Output<ZeroTrustGatewayPolicyExpirationArgs> expiration) {
+            $.expiration = expiration;
+            return this;
+        }
+
+        /**
+         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
+         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(ZeroTrustGatewayPolicyExpirationArgs expiration) {
+            return expiration(Output.of(expiration));
+        }
+
+        /**
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -343,7 +454,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -353,7 +464,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -363,7 +474,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identity The wirefilter expression to be used for identity matching.
+         * @param identity The wirefilter expression used for identity matching.
          * 
          * @return builder
          * 
@@ -374,7 +485,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param identity The wirefilter expression to be used for identity matching.
+         * @param identity The wirefilter expression used for identity matching.
          * 
          * @return builder
          * 
@@ -384,7 +495,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the teams rule.
+         * @param name The name of the rule.
          * 
          * @return builder
          * 
@@ -395,7 +506,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the teams rule.
+         * @param name The name of the rule.
          * 
          * @return builder
          * 
@@ -405,7 +516,8 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param precedence The evaluation precedence of the teams rule.
+         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+         * rules are evaluated in ascending order of this value.
          * 
          * @return builder
          * 
@@ -416,7 +528,8 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param precedence The evaluation precedence of the teams rule.
+         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+         * rules are evaluated in ascending order of this value.
          * 
          * @return builder
          * 
@@ -426,7 +539,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ruleSettings Additional rule settings.
+         * @param ruleSettings Additional settings that modify the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -437,7 +550,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ruleSettings Additional rule settings.
+         * @param ruleSettings Additional settings that modify the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -447,7 +560,28 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param traffic The wirefilter expression to be used for traffic matching.
+         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(@Nullable Output<ZeroTrustGatewayPolicyScheduleArgs> schedule) {
+            $.schedule = schedule;
+            return this;
+        }
+
+        /**
+         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(ZeroTrustGatewayPolicyScheduleArgs schedule) {
+            return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param traffic The wirefilter expression used for traffic matching.
          * 
          * @return builder
          * 
@@ -458,7 +592,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param traffic The wirefilter expression to be used for traffic matching.
+         * @param traffic The wirefilter expression used for traffic matching.
          * 
          * @return builder
          * 
@@ -467,11 +601,32 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
             return traffic(Output.of(traffic));
         }
 
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param version version number of the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<Integer> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version version number of the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(Integer version) {
             return version(Output.of(version));
         }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,22 +16,30 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
 
     public static final HostnameTlsSettingState Empty = new HostnameTlsSettingState();
 
+    /**
+     * This is the time the tls setting was originally created for this hostname.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
+    /**
+     * @return This is the time the tls setting was originally created for this hostname.
+     * 
+     */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname for which the tls settings are set.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -38,51 +47,74 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      * 
      */
-    @Import(name="setting")
-    private @Nullable Output<String> setting;
+    @Import(name="settingId")
+    private @Nullable Output<String> settingId;
 
     /**
-     * @return TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * @return The TLS Setting name.
      * 
      */
-    public Optional<Output<String>> setting() {
-        return Optional.ofNullable(this.setting);
+    public Optional<Output<String>> settingId() {
+        return Optional.ofNullable(this.settingId);
     }
 
+    /**
+     * Deployment status for the given tls setting.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Deployment status for the given tls setting.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * This is the time the tls setting was updated.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
+    /**
+     * @return This is the time the tls setting was updated.
+     * 
+     */
     public Optional<Output<String>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
     /**
-     * TLS setting value.
+     * The tls setting value.
      * 
      */
     @Import(name="value")
-    private @Nullable Output<String> value;
+    private @Nullable Output<Double> value;
 
     /**
-     * @return TLS setting value.
+     * @return The tls setting value.
      * 
      */
-    public Optional<Output<String>> value() {
+    public Optional<Output<Double>> value() {
         return Optional.ofNullable(this.value);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -94,7 +126,8 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
     private HostnameTlsSettingState(HostnameTlsSettingState $) {
         this.createdAt = $.createdAt;
         this.hostname = $.hostname;
-        this.setting = $.setting;
+        this.settingId = $.settingId;
+        this.status = $.status;
         this.updatedAt = $.updatedAt;
         this.value = $.value;
         this.zoneId = $.zoneId;
@@ -118,17 +151,29 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
             $ = new HostnameTlsSettingState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createdAt This is the time the tls setting was originally created for this hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<String> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt This is the time the tls setting was originally created for this hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
         /**
-         * @param hostname Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The hostname for which the tls settings are set.
          * 
          * @return builder
          * 
@@ -139,7 +184,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostname Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname The hostname for which the tls settings are set.
          * 
          * @return builder
          * 
@@ -149,58 +194,91 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param setting TLS setting name. **Modifying this attribute will force creation of a new resource.**
+         * @param settingId The TLS Setting name.
          * 
          * @return builder
          * 
          */
-        public Builder setting(@Nullable Output<String> setting) {
-            $.setting = setting;
+        public Builder settingId(@Nullable Output<String> settingId) {
+            $.settingId = settingId;
             return this;
         }
 
         /**
-         * @param setting TLS setting name. **Modifying this attribute will force creation of a new resource.**
+         * @param settingId The TLS Setting name.
          * 
          * @return builder
          * 
          */
-        public Builder setting(String setting) {
-            return setting(Output.of(setting));
+        public Builder settingId(String settingId) {
+            return settingId(Output.of(settingId));
         }
 
+        /**
+         * @param status Deployment status for the given tls setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Deployment status for the given tls setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param updatedAt This is the time the tls setting was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<String> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt This is the time the tls setting was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
         /**
-         * @param value TLS setting value.
+         * @param value The tls setting value.
          * 
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<String> value) {
+        public Builder value(@Nullable Output<Double> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value TLS setting value.
+         * @param value The tls setting value.
          * 
          * @return builder
          * 
          */
-        public Builder value(String value) {
+        public Builder value(Double value) {
             return value(Output.of(value));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -211,7 +289,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

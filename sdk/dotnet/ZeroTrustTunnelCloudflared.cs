@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Tunnel exposes applications running on your local web server on any
-    /// network with an internet connection without manually adding DNS
-    /// records or configuring a firewall or router.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,11 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ZeroTrustTunnelCloudflared("example", new()
+    ///     var exampleZeroTrustTunnelCloudflared = new Cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "my-tunnel",
-    ///         Secret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Name = "blog",
+    ///         ConfigSrc = "local",
+    ///         TunnelSecret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
     ///     });
     /// 
     /// });
@@ -37,47 +34,95 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example &lt;account_id&gt;/&lt;tunnel_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '&lt;account_id&gt;/&lt;tunnel_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")]
     public partial class ZeroTrustTunnelCloudflared : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Usable CNAME for accessing the Tunnel.
+        /// Cloudflare account ID
         /// </summary>
-        [Output("cname")]
-        public Output<string> Cname { get; private set; } = null!;
+        [Output("accountTag")]
+        public Output<string> AccountTag { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// </summary>
         [Output("configSrc")]
-        public Output<string?> ConfigSrc { get; private set; } = null!;
+        public Output<string> ConfigSrc { get; private set; } = null!;
 
         /// <summary>
-        /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+        /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+        /// </summary>
+        [Output("connections")]
+        public Output<ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConnection>> Connections { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// </summary>
+        [Output("connsActiveAt")]
+        public Output<string> ConnsActiveAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// </summary>
+        [Output("connsInactiveAt")]
+        public Output<string> ConnsInactiveAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Output("deletedAt")]
+        public Output<string> DeletedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata associated with the tunnel.
+        /// </summary>
+        [Output("metadata")]
+        public Output<string> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-friendly name for a tunnel.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
         /// </summary>
-        [Output("secret")]
-        public Output<string> Secret { get; private set; } = null!;
+        [Output("remoteConfig")]
+        public Output<bool> RemoteConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Token used by a connector to authenticate and run the tunnel.
+        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// </summary>
-        [Output("tunnelToken")]
-        public Output<string> TunnelToken { get; private set; } = null!;
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of tunnel.
+        /// </summary>
+        [Output("tunType")]
+        public Output<string> TunType { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+        /// </summary>
+        [Output("tunnelSecret")]
+        public Output<string?> TunnelSecret { get; private set; } = null!;
 
 
         /// <summary>
@@ -102,11 +147,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "secret",
-                    "tunnelToken",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -131,38 +171,28 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustTunnelCloudflaredArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// </summary>
         [Input("configSrc")]
         public Input<string>? ConfigSrc { get; set; }
 
         /// <summary>
-        /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+        /// A user-friendly name for a tunnel.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("secret", required: true)]
-        private Input<string>? _secret;
-
         /// <summary>
-        /// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+        /// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         /// </summary>
-        public Input<string>? Secret
-        {
-            get => _secret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("tunnelSecret")]
+        public Input<string>? TunnelSecret { get; set; }
 
         public ZeroTrustTunnelCloudflaredArgs()
         {
@@ -173,60 +203,94 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustTunnelCloudflaredState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Usable CNAME for accessing the Tunnel.
+        /// Cloudflare account ID
         /// </summary>
-        [Input("cname")]
-        public Input<string>? Cname { get; set; }
+        [Input("accountTag")]
+        public Input<string>? AccountTag { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// </summary>
         [Input("configSrc")]
         public Input<string>? ConfigSrc { get; set; }
 
+        [Input("connections")]
+        private InputList<Inputs.ZeroTrustTunnelCloudflaredConnectionGetArgs>? _connections;
+
         /// <summary>
-        /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+        /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustTunnelCloudflaredConnectionGetArgs> Connections
+        {
+            get => _connections ?? (_connections = new InputList<Inputs.ZeroTrustTunnelCloudflaredConnectionGetArgs>());
+            set => _connections = value;
+        }
+
+        /// <summary>
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// </summary>
+        [Input("connsActiveAt")]
+        public Input<string>? ConnsActiveAt { get; set; }
+
+        /// <summary>
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// </summary>
+        [Input("connsInactiveAt")]
+        public Input<string>? ConnsInactiveAt { get; set; }
+
+        /// <summary>
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Input("deletedAt")]
+        public Input<string>? DeletedAt { get; set; }
+
+        /// <summary>
+        /// Metadata associated with the tunnel.
+        /// </summary>
+        [Input("metadata")]
+        public Input<string>? Metadata { get; set; }
+
+        /// <summary>
+        /// A user-friendly name for a tunnel.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("secret")]
-        private Input<string>? _secret;
+        /// <summary>
+        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+        /// </summary>
+        [Input("remoteConfig")]
+        public Input<bool>? RemoteConfig { get; set; }
 
         /// <summary>
-        /// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// </summary>
-        public Input<string>? Secret
-        {
-            get => _secret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("tunnelToken")]
-        private Input<string>? _tunnelToken;
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Token used by a connector to authenticate and run the tunnel.
+        /// The type of tunnel.
         /// </summary>
-        public Input<string>? TunnelToken
-        {
-            get => _tunnelToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _tunnelToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("tunType")]
+        public Input<string>? TunType { get; set; }
+
+        /// <summary>
+        /// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+        /// </summary>
+        [Input("tunnelSecret")]
+        public Input<string>? TunnelSecret { get; set; }
 
         public ZeroTrustTunnelCloudflaredState()
         {

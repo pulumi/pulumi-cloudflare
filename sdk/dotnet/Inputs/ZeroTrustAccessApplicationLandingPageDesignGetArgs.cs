@@ -13,31 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationLandingPageDesignGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The button color of the landing page.
+        /// The background color of the log in button on the landing page.
         /// </summary>
         [Input("buttonColor")]
         public Input<string>? ButtonColor { get; set; }
 
         /// <summary>
-        /// The button text color of the landing page.
+        /// The color of the text in the log in button on the landing page.
         /// </summary>
         [Input("buttonTextColor")]
         public Input<string>? ButtonTextColor { get; set; }
 
         /// <summary>
-        /// The URL of the image to be displayed in the landing page.
+        /// The URL of the image shown on the landing page.
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
 
         /// <summary>
-        /// The message of the landing page.
+        /// The message shown on the landing page.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// The title of the landing page.
+        /// The title shown on the landing page.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

@@ -7,35 +7,26 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
- * you to define one or more URLs (with wildcard matching on the domain
- * or path) that will only permit access if the request originates
- * from an IP address that matches a safelist of one or more IP
- * addresses and/or IP ranges.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Restrict access to these endpoints to requests from a known IP address range.
- * const example = new cloudflare.ZoneLockdown("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     paused: false,
- *     description: "Restrict access to these endpoints to requests from a known IP address range",
- *     urls: ["api.mysite.com/some/endpoint*"],
+ * const exampleZoneLockdown = new cloudflare.ZoneLockdown("example_zone_lockdown", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configurations: [{
- *         target: "ip_range",
- *         value: "192.0.2.0/24",
+ *         target: "ip",
+ *         value: "198.51.100.4",
  *     }],
+ *     urls: ["shop.example.com/*"],
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
+ * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
  * ```
  */
 export class ZoneLockdown extends pulumi.CustomResource {
@@ -67,24 +58,31 @@ export class ZoneLockdown extends pulumi.CustomResource {
     }
 
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      */
     public readonly configurations!: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
     /**
-     * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * The timestamp of when the rule was created.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * An informative summary of the rule.
      */
-    public readonly paused!: pulumi.Output<boolean | undefined>;
-    public readonly priority!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
     /**
-     * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * The timestamp of when the rule was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * When true, indicates that the rule is currently paused.
+     */
+    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    /**
+     * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
     public readonly urls!: pulumi.Output<string[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -102,9 +100,10 @@ export class ZoneLockdown extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZoneLockdownState | undefined;
             resourceInputs["configurations"] = state ? state.configurations : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["urls"] = state ? state.urls : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -119,11 +118,12 @@ export class ZoneLockdown extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configurations"] = args ? args.configurations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["urls"] = args ? args.urls : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["paused"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneLockdown.__pulumiType, name, resourceInputs, opts);
@@ -135,24 +135,31 @@ export class ZoneLockdown extends pulumi.CustomResource {
  */
 export interface ZoneLockdownState {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      */
     configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
-     * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+     * The timestamp of when the rule was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * An informative summary of the rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+     * The timestamp of when the rule was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * When true, indicates that the rule is currently paused.
      */
     paused?: pulumi.Input<boolean>;
-    priority?: pulumi.Input<number>;
     /**
-     * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
     urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -162,24 +169,15 @@ export interface ZoneLockdownState {
  */
 export interface ZoneLockdownArgs {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      */
     configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
-     * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-     */
-    paused?: pulumi.Input<boolean>;
-    priority?: pulumi.Input<number>;
-    /**
-     * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+     * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
     urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

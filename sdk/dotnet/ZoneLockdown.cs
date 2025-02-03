@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
-    /// you to define one or more URLs (with wildcard matching on the domain
-    /// or path) that will only permit access if the request originates
-    /// from an IP address that matches a safelist of one or more IP
-    /// addresses and/or IP ranges.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,23 +20,20 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Restrict access to these endpoints to requests from a known IP address range.
-    ///     var example = new Cloudflare.ZoneLockdown("example", new()
+    ///     var exampleZoneLockdown = new Cloudflare.ZoneLockdown("example_zone_lockdown", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Paused = false,
-    ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
-    ///         Urls = new[]
-    ///         {
-    ///             "api.mysite.com/some/endpoint*",
-    ///         },
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configurations = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
     ///             {
-    ///                 Target = "ip_range",
-    ///                 Value = "192.0.2.0/24",
+    ///                 Target = "ip",
+    ///                 Value = "198.51.100.4",
     ///             },
+    ///         },
+    ///         Urls = new[]
+    ///         {
+    ///             "shop.example.com/*",
     ///         },
     ///     });
     /// 
@@ -52,41 +43,50 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
+    /// $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '&lt;zone_id&gt;/&lt;lock_downs_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneLockdown:ZoneLockdown")]
     public partial class ZoneLockdown : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         /// </summary>
         [Output("configurations")]
         public Output<ImmutableArray<Outputs.ZoneLockdownConfiguration>> Configurations { get; private set; } = null!;
 
         /// <summary>
-        /// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        /// The timestamp of when the rule was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// An informative summary of the rule.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+        /// The timestamp of when the rule was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, indicates that the rule is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool?> Paused { get; private set; } = null!;
-
-        [Output("priority")]
-        public Output<int?> Priority { get; private set; } = null!;
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        /// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationArgs> Configurations
         {
@@ -149,26 +149,11 @@ namespace Pulumi.Cloudflare
             set => _configurations = value;
         }
 
-        /// <summary>
-        /// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-        /// </summary>
-        [Input("paused")]
-        public Input<bool>? Paused { get; set; }
-
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
-
         [Input("urls", required: true)]
         private InputList<string>? _urls;
 
         /// <summary>
-        /// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        /// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         /// </summary>
         public InputList<string> Urls
         {
@@ -177,7 +162,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -194,7 +179,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationGetArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationGetArgs> Configurations
         {
@@ -203,25 +188,34 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        /// The timestamp of when the rule was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// An informative summary of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
+        /// The timestamp of when the rule was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// When true, indicates that the rule is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
-
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
 
         [Input("urls")]
         private InputList<string>? _urls;
 
         /// <summary>
-        /// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        /// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         /// </summary>
         public InputList<string> Urls
         {
@@ -230,7 +224,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

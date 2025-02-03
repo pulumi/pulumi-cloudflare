@@ -5,10 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,40 +17,24 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
     public static final LoadBalancerPoolOriginHeaderArgs Empty = new LoadBalancerPoolOriginHeaderArgs();
 
     /**
-     * HTTP Header name.
+     * The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
      * 
      */
-    @Import(name="header", required=true)
-    private Output<String> header;
+    @Import(name="hosts")
+    private @Nullable Output<List<String>> hosts;
 
     /**
-     * @return HTTP Header name.
+     * @return The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
      * 
      */
-    public Output<String> header() {
-        return this.header;
-    }
-
-    /**
-     * Values for the HTTP headers.
-     * 
-     */
-    @Import(name="values", required=true)
-    private Output<List<String>> values;
-
-    /**
-     * @return Values for the HTTP headers.
-     * 
-     */
-    public Output<List<String>> values() {
-        return this.values;
+    public Optional<Output<List<String>>> hosts() {
+        return Optional.ofNullable(this.hosts);
     }
 
     private LoadBalancerPoolOriginHeaderArgs() {}
 
     private LoadBalancerPoolOriginHeaderArgs(LoadBalancerPoolOriginHeaderArgs $) {
-        this.header = $.header;
-        this.values = $.values;
+        this.hosts = $.hosts;
     }
 
     public static Builder builder() {
@@ -71,64 +56,37 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
         }
 
         /**
-         * @param header HTTP Header name.
+         * @param hosts The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
          * 
          * @return builder
          * 
          */
-        public Builder header(Output<String> header) {
-            $.header = header;
+        public Builder hosts(@Nullable Output<List<String>> hosts) {
+            $.hosts = hosts;
             return this;
         }
 
         /**
-         * @param header HTTP Header name.
+         * @param hosts The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
          * 
          * @return builder
          * 
          */
-        public Builder header(String header) {
-            return header(Output.of(header));
+        public Builder hosts(List<String> hosts) {
+            return hosts(Output.of(hosts));
         }
 
         /**
-         * @param values Values for the HTTP headers.
+         * @param hosts The &#39;Host&#39; header allows to override the hostname set in the HTTP request. Current support is 1 &#39;Host&#39; header override per origin.
          * 
          * @return builder
          * 
          */
-        public Builder values(Output<List<String>> values) {
-            $.values = values;
-            return this;
-        }
-
-        /**
-         * @param values Values for the HTTP headers.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(List<String> values) {
-            return values(Output.of(values));
-        }
-
-        /**
-         * @param values Values for the HTTP headers.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(String... values) {
-            return values(List.of(values));
+        public Builder hosts(String... hosts) {
+            return hosts(List.of(hosts));
         }
 
         public LoadBalancerPoolOriginHeaderArgs build() {
-            if ($.header == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerPoolOriginHeaderArgs", "header");
-            }
-            if ($.values == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerPoolOriginHeaderArgs", "values");
-            }
             return $;
         }
     }

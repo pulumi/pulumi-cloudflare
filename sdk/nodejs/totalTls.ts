@@ -5,25 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which manages Total TLS for a zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.TotalTls("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleTotalTls = new cloudflare.TotalTls("example_total_tls", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     enabled: true,
- *     certificateAuthority: "lets_encrypt",
+ *     certificateAuthority: "google",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+ * $ pulumi import cloudflare:index/totalTls:TotalTls example '<zone_id>'
  * ```
  */
 export class TotalTls extends pulumi.CustomResource {
@@ -55,15 +53,19 @@ export class TotalTls extends pulumi.CustomResource {
     }
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `letsEncrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
      */
     public readonly certificateAuthority!: pulumi.Output<string | undefined>;
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The validity period in days for the certificates ordered via Total TLS.
+     */
+    public /*out*/ readonly validityPeriod!: pulumi.Output<number>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -82,6 +84,7 @@ export class TotalTls extends pulumi.CustomResource {
             const state = argsOrState as TotalTlsState | undefined;
             resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["validityPeriod"] = state ? state.validityPeriod : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as TotalTlsArgs | undefined;
@@ -94,6 +97,7 @@ export class TotalTls extends pulumi.CustomResource {
             resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["validityPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TotalTls.__pulumiType, name, resourceInputs, opts);
@@ -105,15 +109,19 @@ export class TotalTls extends pulumi.CustomResource {
  */
 export interface TotalTlsState {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `letsEncrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The validity period in days for the certificates ordered via Total TLS.
+     */
+    validityPeriod?: pulumi.Input<number>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -123,15 +131,15 @@ export interface TotalTlsState {
  */
 export interface TotalTlsArgs {
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `letsEncrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

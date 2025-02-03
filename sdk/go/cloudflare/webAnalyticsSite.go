@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Web Analytics Site resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,17 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWebAnalyticsSite(ctx, "example", &cloudflare.WebAnalyticsSiteArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ZoneTag:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewWebAnalyticsSite(ctx, "example_web_analytics_site", &cloudflare.WebAnalyticsSiteArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AutoInstall: pulumi.Bool(true),
+//				Host:        pulumi.String("example.com"),
+//				ZoneTag:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,26 +44,28 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
 // ```
 type WebAnalyticsSite struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-	AutoInstall pulumi.BoolOutput `pulumi:"autoInstall"`
-	// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+	AutoInstall pulumi.BoolPtrOutput `pulumi:"autoInstall"`
+	Created     pulumi.StringOutput  `pulumi:"created"`
+	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrOutput `pulumi:"host"`
-	// The ID for the ruleset associated to this Web Analytics Site.
-	RulesetId pulumi.StringOutput `pulumi:"rulesetId"`
-	// The Web Analytics site tag.
+	// A list of rules.
+	Rules   WebAnalyticsSiteRuleArrayOutput `pulumi:"rules"`
+	Ruleset WebAnalyticsSiteRulesetOutput   `pulumi:"ruleset"`
+	// The Web Analytics site identifier.
 	SiteTag pulumi.StringOutput `pulumi:"siteTag"`
-	// The token for the Web Analytics site.
+	// The Web Analytics site token.
 	SiteToken pulumi.StringOutput `pulumi:"siteToken"`
-	// The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+	// Encoded JavaScript snippet.
 	Snippet pulumi.StringOutput `pulumi:"snippet"`
-	// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier.
 	ZoneTag pulumi.StringPtrOutput `pulumi:"zoneTag"`
 }
 
@@ -78,14 +79,6 @@ func NewWebAnalyticsSite(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.AutoInstall == nil {
-		return nil, errors.New("invalid value for required argument 'AutoInstall'")
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"siteToken",
-		"snippet",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WebAnalyticsSite
 	err := ctx.RegisterResource("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, args, &resource, opts...)
@@ -109,40 +102,44 @@ func GetWebAnalyticsSite(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebAnalyticsSite resources.
 type webAnalyticsSiteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-	AutoInstall *bool `pulumi:"autoInstall"`
-	// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+	AutoInstall *bool   `pulumi:"autoInstall"`
+	Created     *string `pulumi:"created"`
+	// The hostname to use for gray-clouded sites.
 	Host *string `pulumi:"host"`
-	// The ID for the ruleset associated to this Web Analytics Site.
-	RulesetId *string `pulumi:"rulesetId"`
-	// The Web Analytics site tag.
+	// A list of rules.
+	Rules   []WebAnalyticsSiteRule   `pulumi:"rules"`
+	Ruleset *WebAnalyticsSiteRuleset `pulumi:"ruleset"`
+	// The Web Analytics site identifier.
 	SiteTag *string `pulumi:"siteTag"`
-	// The token for the Web Analytics site.
+	// The Web Analytics site token.
 	SiteToken *string `pulumi:"siteToken"`
-	// The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+	// Encoded JavaScript snippet.
 	Snippet *string `pulumi:"snippet"`
-	// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier.
 	ZoneTag *string `pulumi:"zoneTag"`
 }
 
 type WebAnalyticsSiteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
-	// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+	Created     pulumi.StringPtrInput
+	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrInput
-	// The ID for the ruleset associated to this Web Analytics Site.
-	RulesetId pulumi.StringPtrInput
-	// The Web Analytics site tag.
+	// A list of rules.
+	Rules   WebAnalyticsSiteRuleArrayInput
+	Ruleset WebAnalyticsSiteRulesetPtrInput
+	// The Web Analytics site identifier.
 	SiteTag pulumi.StringPtrInput
-	// The token for the Web Analytics site.
+	// The Web Analytics site token.
 	SiteToken pulumi.StringPtrInput
-	// The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+	// Encoded JavaScript snippet.
 	Snippet pulumi.StringPtrInput
-	// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier.
 	ZoneTag pulumi.StringPtrInput
 }
 
@@ -151,25 +148,25 @@ func (WebAnalyticsSiteState) ElementType() reflect.Type {
 }
 
 type webAnalyticsSiteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-	AutoInstall bool `pulumi:"autoInstall"`
-	// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+	AutoInstall *bool `pulumi:"autoInstall"`
+	// The hostname to use for gray-clouded sites.
 	Host *string `pulumi:"host"`
-	// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier.
 	ZoneTag *string `pulumi:"zoneTag"`
 }
 
 // The set of arguments for constructing a WebAnalyticsSite resource.
 type WebAnalyticsSiteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringInput
-	// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-	AutoInstall pulumi.BoolInput
-	// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+	AutoInstall pulumi.BoolPtrInput
+	// The hostname to use for gray-clouded sites.
 	Host pulumi.StringPtrInput
-	// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier.
 	ZoneTag pulumi.StringPtrInput
 }
 
@@ -260,42 +257,50 @@ func (o WebAnalyticsSiteOutput) ToWebAnalyticsSiteOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o WebAnalyticsSiteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
-func (o WebAnalyticsSiteOutput) AutoInstall() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.BoolOutput { return v.AutoInstall }).(pulumi.BoolOutput)
+// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
+func (o WebAnalyticsSiteOutput) AutoInstall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.BoolPtrOutput { return v.AutoInstall }).(pulumi.BoolPtrOutput)
 }
 
-// The hostname to use for gray-clouded sites. Must provide only one of `zoneTag`. **Modifying this attribute will force creation of a new resource.**
+func (o WebAnalyticsSiteOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// The hostname to use for gray-clouded sites.
 func (o WebAnalyticsSiteOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The ID for the ruleset associated to this Web Analytics Site.
-func (o WebAnalyticsSiteOutput) RulesetId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.RulesetId }).(pulumi.StringOutput)
+// A list of rules.
+func (o WebAnalyticsSiteOutput) Rules() WebAnalyticsSiteRuleArrayOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) WebAnalyticsSiteRuleArrayOutput { return v.Rules }).(WebAnalyticsSiteRuleArrayOutput)
 }
 
-// The Web Analytics site tag.
+func (o WebAnalyticsSiteOutput) Ruleset() WebAnalyticsSiteRulesetOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) WebAnalyticsSiteRulesetOutput { return v.Ruleset }).(WebAnalyticsSiteRulesetOutput)
+}
+
+// The Web Analytics site identifier.
 func (o WebAnalyticsSiteOutput) SiteTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.SiteTag }).(pulumi.StringOutput)
 }
 
-// The token for the Web Analytics site.
+// The Web Analytics site token.
 func (o WebAnalyticsSiteOutput) SiteToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.SiteToken }).(pulumi.StringOutput)
 }
 
-// The encoded JS snippet to add to your site's HTML page if autoInstall is false.
+// Encoded JavaScript snippet.
 func (o WebAnalyticsSiteOutput) Snippet() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.Snippet }).(pulumi.StringOutput)
 }
 
-// The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+// The zone identifier.
 func (o WebAnalyticsSiteOutput) ZoneTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringPtrOutput { return v.ZoneTag }).(pulumi.StringPtrOutput)
 }

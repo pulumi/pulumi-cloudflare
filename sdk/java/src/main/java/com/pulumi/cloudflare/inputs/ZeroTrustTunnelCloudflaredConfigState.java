@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
     public static final ZeroTrustTunnelCloudflaredConfigState Empty = new ZeroTrustTunnelCloudflaredConfigState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,33 +33,70 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
     }
 
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      * 
      */
     @Import(name="config")
     private @Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config;
 
     /**
-     * @return Configuration block for Tunnel Configuration.
+     * @return The tunnel configuration and ingress rules.
      * 
      */
     public Optional<Output<ZeroTrustTunnelCloudflaredConfigConfigArgs>> config() {
         return Optional.ofNullable(this.config);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
+    /**
+     * UUID of the tunnel.
      * 
      */
     @Import(name="tunnelId")
     private @Nullable Output<String> tunnelId;
 
     /**
-     * @return Identifier of the Tunnel to target for this configuration.
+     * @return UUID of the tunnel.
      * 
      */
     public Optional<Output<String>> tunnelId() {
         return Optional.ofNullable(this.tunnelId);
+    }
+
+    /**
+     * The version of the Tunnel Configuration.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<Integer> version;
+
+    /**
+     * @return The version of the Tunnel Configuration.
+     * 
+     */
+    public Optional<Output<Integer>> version() {
+        return Optional.ofNullable(this.version);
     }
 
     private ZeroTrustTunnelCloudflaredConfigState() {}
@@ -66,7 +104,10 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
     private ZeroTrustTunnelCloudflaredConfigState(ZeroTrustTunnelCloudflaredConfigState $) {
         this.accountId = $.accountId;
         this.config = $.config;
+        this.createdAt = $.createdAt;
+        this.source = $.source;
         this.tunnelId = $.tunnelId;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -88,7 +129,7 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -99,7 +140,7 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -109,7 +150,7 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param config Configuration block for Tunnel Configuration.
+         * @param config The tunnel configuration and ingress rules.
          * 
          * @return builder
          * 
@@ -120,7 +161,7 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param config Configuration block for Tunnel Configuration.
+         * @param config The tunnel configuration and ingress rules.
          * 
          * @return builder
          * 
@@ -129,8 +170,38 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
             return config(Output.of(config));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param tunnelId Identifier of the Tunnel to target for this configuration.
+         * @param source Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
+        }
+
+        /**
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
@@ -141,13 +212,34 @@ public final class ZeroTrustTunnelCloudflaredConfigState extends com.pulumi.reso
         }
 
         /**
-         * @param tunnelId Identifier of the Tunnel to target for this configuration.
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
          */
         public Builder tunnelId(String tunnelId) {
             return tunnelId(Output.of(tunnelId));
+        }
+
+        /**
+         * @param version The version of the Tunnel Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<Integer> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The version of the Tunnel Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(Integer version) {
+            return version(Output.of(version));
         }
 
         public ZeroTrustTunnelCloudflaredConfigState build() {

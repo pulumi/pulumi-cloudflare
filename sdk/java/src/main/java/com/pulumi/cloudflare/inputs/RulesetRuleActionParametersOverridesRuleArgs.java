@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,14 +19,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     public static final RulesetRuleActionParametersOverridesRuleArgs Empty = new RulesetRuleActionParametersOverridesRuleArgs();
 
     /**
-     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * The action to override the rule with.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override the rule with.
      * 
      */
     public Optional<Output<String>> action() {
@@ -33,14 +34,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * Whether to enable execution of the rule.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Defines if the current rule-level override enables or disables the rule.
+     * @return Whether to enable execution of the rule.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,29 +49,29 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * Rule ID to apply the override to.
+     * The ID of the rule to override.
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
     /**
-     * @return Rule ID to apply the override to.
+     * @return The ID of the rule to override.
      * 
      */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
     /**
-     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * The score threshold to use for the rule.
      * 
      */
     @Import(name="scoreThreshold")
     private @Nullable Output<Integer> scoreThreshold;
 
     /**
-     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * @return The score threshold to use for the rule.
      * 
      */
     public Optional<Output<Integer>> scoreThreshold() {
@@ -78,14 +79,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * Sensitivity level for a ruleset rule override.
+     * The sensitivity level to use for the rule.
      * 
      */
     @Import(name="sensitivityLevel")
     private @Nullable Output<String> sensitivityLevel;
 
     /**
-     * @return Sensitivity level for a ruleset rule override.
+     * @return The sensitivity level to use for the rule.
      * 
      */
     public Optional<Output<String>> sensitivityLevel() {
@@ -121,7 +122,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to override the rule with.
          * 
          * @return builder
          * 
@@ -132,7 +133,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to override the rule with.
          * 
          * @return builder
          * 
@@ -142,7 +143,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param enabled Defines if the current rule-level override enables or disables the rule.
+         * @param enabled Whether to enable execution of the rule.
          * 
          * @return builder
          * 
@@ -153,7 +154,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param enabled Defines if the current rule-level override enables or disables the rule.
+         * @param enabled Whether to enable execution of the rule.
          * 
          * @return builder
          * 
@@ -163,18 +164,18 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param id Rule ID to apply the override to.
+         * @param id The ID of the rule to override.
          * 
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
         /**
-         * @param id Rule ID to apply the override to.
+         * @param id The ID of the rule to override.
          * 
          * @return builder
          * 
@@ -184,7 +185,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param scoreThreshold Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+         * @param scoreThreshold The score threshold to use for the rule.
          * 
          * @return builder
          * 
@@ -195,7 +196,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param scoreThreshold Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+         * @param scoreThreshold The score threshold to use for the rule.
          * 
          * @return builder
          * 
@@ -205,7 +206,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * @param sensitivityLevel The sensitivity level to use for the rule.
          * 
          * @return builder
          * 
@@ -216,7 +217,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * @param sensitivityLevel The sensitivity level to use for the rule.
          * 
          * @return builder
          * 
@@ -226,6 +227,9 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         public RulesetRuleActionParametersOverridesRuleArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersOverridesRuleArgs", "id");
+            }
             return $;
         }
     }

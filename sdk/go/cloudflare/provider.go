@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,12 +18,6 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-	// environment variable.
-	ApiBasePath pulumi.StringPtrOutput `pulumi:"apiBasePath"`
-	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-	// environment variable.
-	ApiHostname pulumi.StringPtrOutput `pulumi:"apiHostname"`
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by
 	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -36,6 +30,9 @@ type Provider struct {
 	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
 	// `apiUserServiceKey`.
 	ApiUserServiceKey pulumi.StringPtrOutput `pulumi:"apiUserServiceKey"`
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+	// variable.
+	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
 	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
 	Email                   pulumi.StringPtrOutput `pulumi:"email"`
@@ -49,31 +46,6 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if args.ApiClientLogging == nil {
-		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
-			args.ApiClientLogging = pulumi.BoolPtr(d.(bool))
-		}
-	}
-	if args.MaxBackoff == nil {
-		if d := internal.GetEnvOrDefault(30, internal.ParseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
-			args.MaxBackoff = pulumi.IntPtr(d.(int))
-		}
-	}
-	if args.MinBackoff == nil {
-		if d := internal.GetEnvOrDefault(1, internal.ParseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
-			args.MinBackoff = pulumi.IntPtr(d.(int))
-		}
-	}
-	if args.Retries == nil {
-		if d := internal.GetEnvOrDefault(3, internal.ParseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
-			args.Retries = pulumi.IntPtr(d.(int))
-		}
-	}
-	if args.Rps == nil {
-		if d := internal.GetEnvOrDefault(4, internal.ParseEnvInt, "CLOUDFLARE_RPS"); d != nil {
-			args.Rps = pulumi.IntPtr(d.(int))
-		}
-	}
 	if args.ApiKey != nil {
 		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringPtrInput)
 	}
@@ -99,15 +71,6 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-	// environment variable.
-	ApiBasePath *string `pulumi:"apiBasePath"`
-	// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-	// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-	ApiClientLogging *bool `pulumi:"apiClientLogging"`
-	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-	// environment variable.
-	ApiHostname *string `pulumi:"apiHostname"`
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by
 	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -120,35 +83,17 @@ type providerArgs struct {
 	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
 	// `apiUserServiceKey`.
 	ApiUserServiceKey *string `pulumi:"apiUserServiceKey"`
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+	// variable.
+	BaseUrl *string `pulumi:"baseUrl"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
 	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
-	Email *string `pulumi:"email"`
-	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
-	MaxBackoff *int `pulumi:"maxBackoff"`
-	// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-	// `CLOUDFLARE_MIN_BACKOFF` environment variable.
-	MinBackoff *int `pulumi:"minBackoff"`
-	// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-	// `CLOUDFLARE_RETRIES` environment variable.
-	Retries *int `pulumi:"retries"`
-	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-	// variable.
-	Rps                     *int    `pulumi:"rps"`
+	Email                   *string `pulumi:"email"`
 	UserAgentOperatorSuffix *string `pulumi:"userAgentOperatorSuffix"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-	// environment variable.
-	ApiBasePath pulumi.StringPtrInput
-	// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-	// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-	ApiClientLogging pulumi.BoolPtrInput
-	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-	// environment variable.
-	ApiHostname pulumi.StringPtrInput
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by
 	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -161,21 +106,12 @@ type ProviderArgs struct {
 	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
 	// `apiUserServiceKey`.
 	ApiUserServiceKey pulumi.StringPtrInput
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+	// variable.
+	BaseUrl pulumi.StringPtrInput
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
 	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
-	Email pulumi.StringPtrInput
-	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
-	MaxBackoff pulumi.IntPtrInput
-	// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-	// `CLOUDFLARE_MIN_BACKOFF` environment variable.
-	MinBackoff pulumi.IntPtrInput
-	// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-	// `CLOUDFLARE_RETRIES` environment variable.
-	Retries pulumi.IntPtrInput
-	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-	// variable.
-	Rps                     pulumi.IntPtrInput
+	Email                   pulumi.StringPtrInput
 	UserAgentOperatorSuffix pulumi.StringPtrInput
 }
 
@@ -216,18 +152,6 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-// environment variable.
-func (o ProviderOutput) ApiBasePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiBasePath }).(pulumi.StringPtrOutput)
-}
-
-// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-// environment variable.
-func (o ProviderOutput) ApiHostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiHostname }).(pulumi.StringPtrOutput)
-}
-
 // The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 // keys are [now considered legacy by
 // Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -247,6 +171,12 @@ func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 // `apiUserServiceKey`.
 func (o ProviderOutput) ApiUserServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUserServiceKey }).(pulumi.StringPtrOutput)
+}
+
+// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+// variable.
+func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
 // A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment

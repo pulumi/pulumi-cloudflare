@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CloudConnectorRulesRuleParameters
     {
         /// <summary>
-        /// Host parameter for cloud connector rule
+        /// Host to perform Cloud Connection to
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
 
         [OutputConstructor]
-        private CloudConnectorRulesRuleParameters(string host)
+        private CloudConnectorRulesRuleParameters(string? host)
         {
             Host = host;
         }

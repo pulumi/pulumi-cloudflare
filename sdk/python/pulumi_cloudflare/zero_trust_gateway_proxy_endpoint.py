@@ -24,9 +24,8 @@ class ZeroTrustGatewayProxyEndpointArgs:
                  name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
-        :param pulumi.Input[str] name: Name of the teams proxy endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: A list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[str] name: The name of the proxy endpoint.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ips", ips)
@@ -35,9 +34,6 @@ class ZeroTrustGatewayProxyEndpointArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -48,7 +44,7 @@ class ZeroTrustGatewayProxyEndpointArgs:
     @pulumi.getter
     def ips(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The networks CIDRs that will be allowed to initiate proxy connections.
+        A list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -60,7 +56,7 @@ class ZeroTrustGatewayProxyEndpointArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the teams proxy endpoint.
+        The name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -73,31 +69,33 @@ class ZeroTrustGatewayProxyEndpointArgs:
 class _ZeroTrustGatewayProxyEndpointState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 subdomain: Optional[pulumi.Input[str]] = None):
+                 subdomain: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
-        :param pulumi.Input[str] name: Name of the teams proxy endpoint.
-        :param pulumi.Input[str] subdomain: The FQDN that proxy clients should be pointed at.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: A list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[str] name: The name of the proxy endpoint.
+        :param pulumi.Input[str] subdomain: The subdomain to be used as the destination in the proxy client.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -105,10 +103,19 @@ class _ZeroTrustGatewayProxyEndpointState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The networks CIDRs that will be allowed to initiate proxy connections.
+        A list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -120,7 +127,7 @@ class _ZeroTrustGatewayProxyEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the teams proxy endpoint.
+        The name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -132,13 +139,22 @@ class _ZeroTrustGatewayProxyEndpointState:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
-        The FQDN that proxy clients should be pointed at.
+        The subdomain to be used as the destination in the proxy client.
         """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
     def subdomain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
@@ -151,33 +167,28 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
-        Endpoints are used for pointing proxy clients at Cloudflare Secure
-        Gateway.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustGatewayProxyEndpoint("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="office",
-            ips=["192.0.2.0/24"])
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+            account_id="699d98642c564d2e855e9661899b7252",
+            ips=["192.0.2.1/32"],
+            name="Devops team")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example <account_id>/<proxy_endpoint_id>
+        $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
-        :param pulumi.Input[str] name: Name of the teams proxy endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: A list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[str] name: The name of the proxy endpoint.
         """
         ...
     @overload
@@ -186,26 +197,22 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
                  args: ZeroTrustGatewayProxyEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
-        Endpoints are used for pointing proxy clients at Cloudflare Secure
-        Gateway.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZeroTrustGatewayProxyEndpoint("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="office",
-            ips=["192.0.2.0/24"])
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+            account_id="699d98642c564d2e855e9661899b7252",
+            ips=["192.0.2.1/32"],
+            name="Devops team")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example <account_id>/<proxy_endpoint_id>
+        $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -244,7 +251,9 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["created_at"] = None
             __props__.__dict__["subdomain"] = None
+            __props__.__dict__["updated_at"] = None
         super(ZeroTrustGatewayProxyEndpoint, __self__).__init__(
             'cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint',
             resource_name,
@@ -256,9 +265,11 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            subdomain: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustGatewayProxyEndpoint':
+            subdomain: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustGatewayProxyEndpoint':
         """
         Get an existing ZeroTrustGatewayProxyEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -266,34 +277,37 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
-        :param pulumi.Input[str] name: Name of the teams proxy endpoint.
-        :param pulumi.Input[str] subdomain: The FQDN that proxy clients should be pointed at.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: A list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[str] name: The name of the proxy endpoint.
+        :param pulumi.Input[str] subdomain: The subdomain to be used as the destination in the proxy client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustGatewayProxyEndpointState.__new__(_ZeroTrustGatewayProxyEndpointState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["ips"] = ips
         __props__.__dict__["name"] = name
         __props__.__dict__["subdomain"] = subdomain
+        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustGatewayProxyEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def ips(self) -> pulumi.Output[Sequence[str]]:
         """
-        The networks CIDRs that will be allowed to initiate proxy connections.
+        A list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -301,7 +315,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the teams proxy endpoint.
+        The name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -309,7 +323,12 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[str]:
         """
-        The FQDN that proxy clients should be pointed at.
+        The subdomain to be used as the destination in the proxy client.
         """
         return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

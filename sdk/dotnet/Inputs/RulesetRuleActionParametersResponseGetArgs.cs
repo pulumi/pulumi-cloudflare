@@ -13,22 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersResponseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Body content to include in the response.
+        /// The content to return.
         /// </summary>
-        [Input("content")]
-        public Input<string>? Content { get; set; }
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// HTTP content type to send in the response.
+        /// The type of the content to return.
         /// </summary>
-        [Input("contentType")]
-        public Input<string>? ContentType { get; set; }
+        [Input("contentType", required: true)]
+        public Input<string> ContentType { get; set; } = null!;
 
         /// <summary>
-        /// HTTP status code to send in the response.
+        /// The status code to return.
         /// </summary>
-        [Input("statusCode")]
-        public Input<int>? StatusCode { get; set; }
+        [Input("statusCode", required: true)]
+        public Input<int> StatusCode { get; set; } = null!;
 
         public RulesetRuleActionParametersResponseGetArgs()
         {

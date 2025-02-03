@@ -15,8 +15,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource for managing Email Routing settings.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,9 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myZone = new EmailRoutingSettings("myZone", EmailRoutingSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .enabled("true")
+ *         var exampleEmailRoutingSettings = new EmailRoutingSettings("exampleEmailRoutingSettings", EmailRoutingSettingsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -52,6 +49,12 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example &#39;&lt;zone_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingSettings:EmailRoutingSettings")
@@ -71,14 +74,14 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * State of the zone settings for Email Routing.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * @return State of the zone settings for Email Routing.
      * 
      */
     public Output<Boolean> enabled() {
@@ -141,28 +144,28 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Email Routing settings identifier.
+     * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
-     * @return Email Routing settings identifier.
+     * @return Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
      */
     public Output<String> tag() {
         return this.tag;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

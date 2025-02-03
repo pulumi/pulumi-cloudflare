@@ -27,10 +27,8 @@ class ZeroTrustDeviceManagedNetworksArgs:
                  type: pulumi.Input[str]):
         """
         The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration containing information for the WARP client to detect the managed network.
-        :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
-        :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
+        :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
+        :param pulumi.Input[str] type: The type of device managed network.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "config", config)
@@ -40,9 +38,6 @@ class ZeroTrustDeviceManagedNetworksArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -52,9 +47,6 @@ class ZeroTrustDeviceManagedNetworksArgs:
     @property
     @pulumi.getter
     def config(self) -> pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs']:
-        """
-        The configuration containing information for the WARP client to detect the managed network.
-        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -65,7 +57,7 @@ class ZeroTrustDeviceManagedNetworksArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the Device Managed Network. Must be unique.
+        The name of the device managed network. This name must be unique.
         """
         return pulumi.get(self, "name")
 
@@ -77,7 +69,7 @@ class ZeroTrustDeviceManagedNetworksArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of Device Managed Network. Available values: `tls`.
+        The type of device managed network.
         """
         return pulumi.get(self, "type")
 
@@ -92,13 +84,13 @@ class _ZeroTrustDeviceManagedNetworksState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs'] config: The configuration containing information for the WARP client to detect the managed network.
-        :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
-        :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
+        :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
+        :param pulumi.Input[str] network_id: API UUID.
+        :param pulumi.Input[str] type: The type of device managed network.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -106,15 +98,14 @@ class _ZeroTrustDeviceManagedNetworksState:
             pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -124,9 +115,6 @@ class _ZeroTrustDeviceManagedNetworksState:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['ZeroTrustDeviceManagedNetworksConfigArgs']]:
-        """
-        The configuration containing information for the WARP client to detect the managed network.
-        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -137,7 +125,7 @@ class _ZeroTrustDeviceManagedNetworksState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Device Managed Network. Must be unique.
+        The name of the device managed network. This name must be unique.
         """
         return pulumi.get(self, "name")
 
@@ -146,10 +134,22 @@ class _ZeroTrustDeviceManagedNetworksState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        API UUID.
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_id", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of Device Managed Network. Available values: `tls`.
+        The type of device managed network.
         """
         return pulumi.get(self, "type")
 
@@ -169,36 +169,18 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("managed_networks",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="managed-network-1",
-            type="tls",
-            config={
-                "tls_sockaddr": "foobar:1234",
-                "sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example <account_id>/<device_managed_networks_id>
+        $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration containing information for the WARP client to detect the managed network.
-        :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
-        :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
+        :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
+        :param pulumi.Input[str] type: The type of device managed network.
         """
         ...
     @overload
@@ -207,28 +189,12 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
                  args: ZeroTrustDeviceManagedNetworksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("managed_networks",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="managed-network-1",
-            type="tls",
-            config={
-                "tls_sockaddr": "foobar:1234",
-                "sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-            })
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example <account_id>/<device_managed_networks_id>
+        $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -271,6 +237,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["network_id"] = None
         super(ZeroTrustDeviceManagedNetworks, __self__).__init__(
             'cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks',
             resource_name,
@@ -284,6 +251,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'ZeroTrustDeviceManagedNetworks':
         """
         Get an existing ZeroTrustDeviceManagedNetworks resource's state with the given name, id, and optional extra
@@ -292,10 +260,9 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration containing information for the WARP client to detect the managed network.
-        :param pulumi.Input[str] name: The name of the Device Managed Network. Must be unique.
-        :param pulumi.Input[str] type: The type of Device Managed Network. Available values: `tls`.
+        :param pulumi.Input[str] name: The name of the device managed network. This name must be unique.
+        :param pulumi.Input[str] network_id: API UUID.
+        :param pulumi.Input[str] type: The type of device managed network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,38 +271,41 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_id"] = network_id
         __props__.__dict__["type"] = type
         return ZeroTrustDeviceManagedNetworks(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ZeroTrustDeviceManagedNetworksConfig']:
-        """
-        The configuration containing information for the WARP client to detect the managed network.
-        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the Device Managed Network. Must be unique.
+        The name of the device managed network. This name must be unique.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> pulumi.Output[str]:
+        """
+        API UUID.
+        """
+        return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of Device Managed Network. Available values: `tls`.
+        The type of device managed network.
         """
         return pulumi.get(self, "type")
 

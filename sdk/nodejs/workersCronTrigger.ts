@@ -2,42 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Worker Cron Triggers allow users to map a cron expression to a Worker script
- * using a `ScheduledEvent` listener that enables Workers to be executed on a
- * schedule. Worker Cron Triggers are ideal for running periodic jobs for
- * maintenance or calling third-party APIs to collect up-to-date data.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
- *
- * const exampleScript = new cloudflare.WorkersScript("example_script", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example-script",
- *     content: std.file({
- *         input: "path/to/my.js",
- *     }).then(invoke => invoke.result),
- * });
- * const exampleTrigger = new cloudflare.WorkersCronTrigger("example_trigger", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     scriptName: exampleScript.name,
- *     schedules: [
- *         "*&#47;5 * * * *",
- *         "10 7 * * mon-fri",
- *     ],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example <account_id>/<script_name>
+ * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example '<account_id>/<script_name>'
  * ```
  */
 export class WorkersCronTrigger extends pulumi.CustomResource {
@@ -69,15 +44,12 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
+    public readonly schedules!: pulumi.Output<outputs.WorkersCronTriggerSchedule[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    public readonly schedules!: pulumi.Output<string[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     public readonly scriptName!: pulumi.Output<string>;
 
@@ -122,15 +94,12 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
  */
 export interface WorkersCronTriggerState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkersCronTriggerSchedule>[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    schedules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName?: pulumi.Input<string>;
 }
@@ -140,15 +109,12 @@ export interface WorkersCronTriggerState {
  */
 export interface WorkersCronTriggerArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
+    schedules: pulumi.Input<pulumi.Input<inputs.WorkersCronTriggerSchedule>[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    schedules: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: pulumi.Input<string>;
 }

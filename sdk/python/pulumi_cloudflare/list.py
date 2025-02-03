@@ -13,8 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['ListArgs', 'List']
 
@@ -24,29 +22,25 @@ class ListArgs:
                  account_id: pulumi.Input[str],
                  kind: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a List resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
-        :param pulumi.Input[str] name: The name of the list.
-        :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
+        :param pulumi.Input[str] description: An informative summary of the list.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if items is not None:
-            pulumi.set(__self__, "items", items)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -58,7 +52,7 @@ class ListArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         """
         return pulumi.get(self, "kind")
 
@@ -70,7 +64,7 @@ class ListArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the list.
+        An informative name for the list. Use this name in filter and rule expressions.
         """
         return pulumi.get(self, "name")
 
@@ -82,7 +76,7 @@ class ListArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description of the list.
+        An informative summary of the list.
         """
         return pulumi.get(self, "description")
 
@@ -90,51 +84,51 @@ class ListArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
-    @property
-    @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
-        """
-        The items in the list.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]):
-        pulumi.set(self, "items", value)
-
 
 @pulumi.input_type
 class _ListState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 num_items: Optional[pulumi.Input[float]] = None,
+                 num_referencing_filters: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering List resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the list was created.
+        :param pulumi.Input[str] description: An informative summary of the list.
+        :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the list was last modified.
+        :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
+        :param pulumi.Input[float] num_items: The number of items in the list.
+        :param pulumi.Input[float] num_referencing_filters: The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if items is not None:
-            pulumi.set(__self__, "items", items)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if num_items is not None:
+            pulumi.set(__self__, "num_items", num_items)
+        if num_referencing_filters is not None:
+            pulumi.set(__self__, "num_referencing_filters", num_referencing_filters)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -143,10 +137,22 @@ class _ListState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 3339 timestamp of when the list was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description of the list.
+        An informative summary of the list.
         """
         return pulumi.get(self, "description")
 
@@ -156,21 +162,9 @@ class _ListState:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
-        """
-        The items in the list.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         """
         return pulumi.get(self, "kind")
 
@@ -179,16 +173,52 @@ class _ListState:
         pulumi.set(self, "kind", value)
 
     @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 3339 timestamp of when the list was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the list.
+        An informative name for the list. Use this name in filter and rule expressions.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="numItems")
+    def num_items(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of items in the list.
+        """
+        return pulumi.get(self, "num_items")
+
+    @num_items.setter
+    def num_items(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "num_items", value)
+
+    @property
+    @pulumi.getter(name="numReferencingFilters")
+    def num_referencing_filters(self) -> Optional[pulumi.Input[float]]:
+        """
+        The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        """
+        return pulumi.get(self, "num_referencing_filters")
+
+    @num_referencing_filters.setter
+    def num_referencing_filters(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "num_referencing_filters", value)
 
 
 class List(pulumi.CustomResource):
@@ -198,26 +228,35 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_list = cloudflare.List("example_list",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            kind="ip",
+            name="list1",
+            description="This is a note")
+        ```
+
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+        $ pulumi import cloudflare:index/list:List example '<account_id>/<list_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] description: An informative summary of the list.
+        :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
         """
         ...
     @overload
@@ -228,10 +267,21 @@ class List(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_list = cloudflare.List("example_list",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            kind="ip",
+            name="list1",
+            description="This is a note")
+        ```
+
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+        $ pulumi import cloudflare:index/list:List example '<account_id>/<list_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,7 +301,6 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -267,13 +316,16 @@ class List(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
-            __props__.__dict__["items"] = items
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__.__dict__["kind"] = kind
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["num_items"] = None
+            __props__.__dict__["num_referencing_filters"] = None
         super(List, __self__).__init__(
             'cloudflare:index/list:List',
             resource_name,
@@ -285,10 +337,13 @@ class List(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'List':
+            modified_on: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            num_items: Optional[pulumi.Input[float]] = None,
+            num_referencing_filters: Optional[pulumi.Input[float]] = None) -> 'List':
         """
         Get an existing List resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -296,60 +351,90 @@ class List(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] created_on: The RFC 3339 timestamp of when the list was created.
+        :param pulumi.Input[str] description: An informative summary of the list.
+        :param pulumi.Input[str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+        :param pulumi.Input[str] modified_on: The RFC 3339 timestamp of when the list was last modified.
+        :param pulumi.Input[str] name: An informative name for the list. Use this name in filter and rule expressions.
+        :param pulumi.Input[float] num_items: The number of items in the list.
+        :param pulumi.Input[float] num_referencing_filters: The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ListState.__new__(_ListState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
-        __props__.__dict__["items"] = items
         __props__.__dict__["kind"] = kind
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
+        __props__.__dict__["num_items"] = num_items
+        __props__.__dict__["num_referencing_filters"] = num_referencing_filters
         return List(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
+        """
+        The RFC 3339 timestamp of when the list was created.
+        """
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional description of the list.
+        An informative summary of the list.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def items(self) -> pulumi.Output[Optional[Sequence['outputs.ListItem']]]:
-        """
-        The items in the list.
-        """
-        return pulumi.get(self, "items")
-
-    @property
-    @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        The RFC 3339 timestamp of when the list was last modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the list.
+        An informative name for the list. Use this name in filter and rule expressions.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="numItems")
+    def num_items(self) -> pulumi.Output[float]:
+        """
+        The number of items in the list.
+        """
+        return pulumi.get(self, "num_items")
+
+    @property
+    @pulumi.getter(name="numReferencingFilters")
+    def num_referencing_filters(self) -> pulumi.Output[float]:
+        """
+        The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        """
+        return pulumi.get(self, "num_referencing_filters")
 

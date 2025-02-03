@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,24 +15,24 @@ public final class ZeroTrustDnsLocationEndpointsIpv4Args extends com.pulumi.reso
 
     public static final ZeroTrustDnsLocationEndpointsIpv4Args Empty = new ZeroTrustDnsLocationEndpointsIpv4Args();
 
-    @Import(name="authenticationEnabled")
-    private @Nullable Output<Boolean> authenticationEnabled;
+    /**
+     * True if the endpoint is enabled for this location.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
-    }
-
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
-
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     private ZeroTrustDnsLocationEndpointsIpv4Args() {}
 
     private ZeroTrustDnsLocationEndpointsIpv4Args(ZeroTrustDnsLocationEndpointsIpv4Args $) {
-        this.authenticationEnabled = $.authenticationEnabled;
         this.enabled = $.enabled;
     }
 
@@ -55,28 +54,28 @@ public final class ZeroTrustDnsLocationEndpointsIpv4Args extends com.pulumi.reso
             $ = new ZeroTrustDnsLocationEndpointsIpv4Args(Objects.requireNonNull(defaults));
         }
 
-        public Builder authenticationEnabled(@Nullable Output<Boolean> authenticationEnabled) {
-            $.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-
-        public Builder authenticationEnabled(Boolean authenticationEnabled) {
-            return authenticationEnabled(Output.of(authenticationEnabled));
-        }
-
-        public Builder enabled(Output<Boolean> enabled) {
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled True if the endpoint is enabled for this location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         public ZeroTrustDnsLocationEndpointsIpv4Args build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsIpv4Args", "enabled");
-            }
             return $;
         }
     }

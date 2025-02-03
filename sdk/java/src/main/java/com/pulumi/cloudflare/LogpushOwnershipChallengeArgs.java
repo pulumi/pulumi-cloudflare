@@ -17,14 +17,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     public static final LogpushOwnershipChallengeArgs Empty = new LogpushOwnershipChallengeArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Import(name="destinationConf", required=true)
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Output<String> destinationConf() {
@@ -47,14 +47,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -88,7 +88,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

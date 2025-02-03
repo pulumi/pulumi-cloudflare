@@ -14,22 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryString
     {
         /// <summary>
-        /// List of query string parameters to exclude from the custom key.
+        /// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
         /// </summary>
-        public readonly ImmutableArray<string> Excludes;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude? Exclude;
         /// <summary>
-        /// List of query string parameters to include in the custom key.
+        /// A list of query string parameters used to build the cache key.
         /// </summary>
-        public readonly ImmutableArray<string> Includes;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude? Include;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKeyCustomKeyQueryString(
-            ImmutableArray<string> excludes,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude? exclude,
 
-            ImmutableArray<string> includes)
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude? include)
         {
-            Excludes = excludes;
-            Includes = includes;
+            Exclude = exclude;
+            Include = include;
         }
     }
 }

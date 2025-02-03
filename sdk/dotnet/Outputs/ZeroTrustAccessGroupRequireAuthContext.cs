@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessGroupRequireAuthContext
     {
         /// <summary>
-        /// The ACID of the Authentication Context.
+        /// The ACID of an Authentication context.
         /// </summary>
         public readonly string AcId;
         /// <summary>
-        /// The ID of the Authentication Context.
+        /// The ID of an Authentication context.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the Azure identity provider.
+        /// The ID of your Azure identity provider.
         /// </summary>
         public readonly string IdentityProviderId;
 

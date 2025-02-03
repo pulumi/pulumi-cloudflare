@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-//
 // ## Example Usage
 //
 // ```go
@@ -20,15 +18,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLists(ctx, &cloudflare.GetListsArgs{
-//				AccountId: "f037e56e89293a057740de681ac9abbe",
+//			_, err := cloudflare.LookupLists(ctx, &cloudflare.LookupListsArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -38,9 +36,9 @@ import (
 //	}
 //
 // ```
-func GetLists(ctx *pulumi.Context, args *GetListsArgs, opts ...pulumi.InvokeOption) (*GetListsResult, error) {
+func LookupLists(ctx *pulumi.Context, args *LookupListsArgs, opts ...pulumi.InvokeOption) (*LookupListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetListsResult
+	var rv LookupListsResult
 	err := ctx.Invoke("cloudflare:index/getLists:getLists", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,68 +47,81 @@ func GetLists(ctx *pulumi.Context, args *GetListsArgs, opts ...pulumi.InvokeOpti
 }
 
 // A collection of arguments for invoking getLists.
-type GetListsArgs struct {
-	// The account identifier to target for the resource.
+type LookupListsArgs struct {
+	// Identifier
 	AccountId string `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getLists.
-type GetListsResult struct {
-	// The account identifier to target for the resource.
+type LookupListsResult struct {
+	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
-	Lists []GetListsList `pulumi:"lists"`
+	Id string `pulumi:"id"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The items returned by the data source
+	Results []GetListsResult `pulumi:"results"`
 }
 
-func GetListsOutput(ctx *pulumi.Context, args GetListsOutputArgs, opts ...pulumi.InvokeOption) GetListsResultOutput {
+func LookupListsOutput(ctx *pulumi.Context, args LookupListsOutputArgs, opts ...pulumi.InvokeOption) LookupListsResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetListsResultOutput, error) {
-			args := v.(GetListsArgs)
+		ApplyT(func(v interface{}) (LookupListsResultOutput, error) {
+			args := v.(LookupListsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLists:getLists", args, GetListsResultOutput{}, options).(GetListsResultOutput), nil
-		}).(GetListsResultOutput)
+			return ctx.InvokeOutput("cloudflare:index/getLists:getLists", args, LookupListsResultOutput{}, options).(LookupListsResultOutput), nil
+		}).(LookupListsResultOutput)
 }
 
 // A collection of arguments for invoking getLists.
-type GetListsOutputArgs struct {
-	// The account identifier to target for the resource.
+type LookupListsOutputArgs struct {
+	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Max items to fetch, default: 1000
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
 
-func (GetListsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListsArgs)(nil)).Elem()
+func (LookupListsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupListsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getLists.
-type GetListsResultOutput struct{ *pulumi.OutputState }
+type LookupListsResultOutput struct{ *pulumi.OutputState }
 
-func (GetListsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListsResult)(nil)).Elem()
+func (LookupListsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupListsResult)(nil)).Elem()
 }
 
-func (o GetListsResultOutput) ToGetListsResultOutput() GetListsResultOutput {
+func (o LookupListsResultOutput) ToLookupListsResultOutput() LookupListsResultOutput {
 	return o
 }
 
-func (o GetListsResultOutput) ToGetListsResultOutputWithContext(ctx context.Context) GetListsResultOutput {
+func (o LookupListsResultOutput) ToLookupListsResultOutputWithContext(ctx context.Context) LookupListsResultOutput {
 	return o
 }
 
-// The account identifier to target for the resource.
-func (o GetListsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListsResult) string { return v.AccountId }).(pulumi.StringOutput)
+// Identifier
+func (o LookupListsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetListsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupListsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetListsResultOutput) Lists() GetListsListArrayOutput {
-	return o.ApplyT(func(v GetListsResult) []GetListsList { return v.Lists }).(GetListsListArrayOutput)
+// Max items to fetch, default: 1000
+func (o LookupListsResultOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupListsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// The items returned by the data source
+func (o LookupListsResultOutput) Results() GetListsResultArrayOutput {
+	return o.ApplyT(func(v LookupListsResult) []GetListsResult { return v.Results }).(GetListsResultArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetListsResultOutput{})
+	pulumi.RegisterOutputType(LookupListsResultOutput{})
 }

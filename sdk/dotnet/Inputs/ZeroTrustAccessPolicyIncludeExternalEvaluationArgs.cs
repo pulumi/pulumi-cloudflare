@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The API endpoint containing your business logic.
         /// </summary>
-        [Input("evaluateUrl")]
-        public Input<string>? EvaluateUrl { get; set; }
+        [Input("evaluateUrl", required: true)]
+        public Input<string> EvaluateUrl { get; set; } = null!;
 
         /// <summary>
         /// The API endpoint containing the key that Access uses to verify that the response came from your API.
         /// </summary>
-        [Input("keysUrl")]
-        public Input<string>? KeysUrl { get; set; }
+        [Input("keysUrl", required: true)]
+        public Input<string> KeysUrl { get; set; } = null!;
 
         public ZeroTrustAccessPolicyIncludeExternalEvaluationArgs()
         {

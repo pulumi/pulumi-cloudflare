@@ -10,149 +10,73 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
-    /// across all zones within the same account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // IP List
-    ///     var exampleIpList = new Cloudflare.List("example_ip_list", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example_list",
-    ///         Description = "example IPs for a list",
-    ///         Kind = "ip",
-    ///     });
-    /// 
-    ///     // IP List Item
-    ///     var exampleIpItem = new Cloudflare.ListItem("example_ip_item", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ListId = exampleIpList.Id,
-    ///         Comment = "List Item Comment",
-    ///         Ip = "192.0.2.0",
-    ///     });
-    /// 
-    ///     // Redirect List
-    ///     var exampleRedirectList = new Cloudflare.List("example_redirect_list", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example_list",
-    ///         Description = "example Redirects for a list",
-    ///         Kind = "redirect",
-    ///     });
-    /// 
-    ///     // Redirect List Item
-    ///     var exampleRedirectItem = new Cloudflare.ListItem("example_redirect_item", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ListId = exampleIpList.Id,
-    ///         Redirect = new Cloudflare.Inputs.ListItemRedirectArgs
-    ///         {
-    ///             SourceUrl = "https://source.tld/",
-    ///             TargetUrl = "https://target.tld",
-    ///             StatusCode = 302,
-    ///             SubpathMatching = true,
-    ///         },
-    ///     });
-    /// 
-    ///     // ASN List
-    ///     var exampleAsnList = new Cloudflare.List("example_asn_list", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example_asn_list",
-    ///         Description = "example ASNs for a list",
-    ///         Kind = "asn",
-    ///     });
-    /// 
-    ///     // ASN List Item
-    ///     var exampleAsnItem = new Cloudflare.ListItem("example_asn_item", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ListId = exampleAsnList.Id,
-    ///         Comment = "List Item Comment",
-    ///         Asn = 6789,
-    ///     });
-    /// 
-    ///     // Hostname List
-    ///     var exampleHostnameList = new Cloudflare.List("example_hostname_list", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example_hostname_list",
-    ///         Description = "example Hostnames for a list",
-    ///         Kind = "hostname",
-    ///     });
-    /// 
-    ///     // Hostname List Item
-    ///     var exampleHostnameItem = new Cloudflare.ListItem("example_hostname_item", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ListId = exampleHostnameList.Id,
-    ///         Comment = "List Item Comment",
-    ///         Hostname = new Cloudflare.Inputs.ListItemHostnameArgs
-    ///         {
-    ///             UrlHostname = "example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/listItem:ListItem example &lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/listItem:ListItem")]
     public partial class ListItem : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// A non-negative 32 bit integer
         /// </summary>
         [Output("asn")]
         public Output<int?> Asn { get; private set; } = null!;
 
         /// <summary>
-        /// An optional comment for the item.
+        /// An informative summary of the list item.
         /// </summary>
         [Output("comment")]
-        public Output<string?> Comment { get; private set; } = null!;
+        public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// The RFC 3339 timestamp of when the item was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         /// </summary>
         [Output("hostname")]
         public Output<Outputs.ListItemHostname?> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         /// </summary>
         [Output("ip")]
         public Output<string?> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// The list identifier to target for the resource.
+        /// The unique ID of the item in the List.
+        /// </summary>
+        [Output("itemId")]
+        public Output<string> ItemId { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the list.
         /// </summary>
         [Output("listId")]
         public Output<string> ListId { get; private set; } = null!;
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// The RFC 3339 timestamp of when the item was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique operation ID of the asynchronous action.
+        /// </summary>
+        [Output("operationId")]
+        public Output<string> OperationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The definition of the redirect.
         /// </summary>
         [Output("redirect")]
         public Output<Outputs.ListItemRedirect?> Redirect { get; private set; } = null!;
@@ -204,43 +128,37 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// A non-negative 32 bit integer
         /// </summary>
         [Input("asn")]
         public Input<int>? Asn { get; set; }
 
         /// <summary>
-        /// An optional comment for the item.
-        /// </summary>
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        /// <summary>
-        /// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         /// </summary>
         [Input("hostname")]
         public Input<Inputs.ListItemHostnameArgs>? Hostname { get; set; }
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// The list identifier to target for the resource.
+        /// The unique ID of the list.
         /// </summary>
         [Input("listId", required: true)]
         public Input<string> ListId { get; set; } = null!;
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// The definition of the redirect.
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.ListItemRedirectArgs>? Redirect { get; set; }
@@ -254,43 +172,67 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// A non-negative 32 bit integer
         /// </summary>
         [Input("asn")]
         public Input<int>? Asn { get; set; }
 
         /// <summary>
-        /// An optional comment for the item.
+        /// An informative summary of the list item.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// The RFC 3339 timestamp of when the item was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         /// </summary>
         [Input("hostname")]
         public Input<Inputs.ListItemHostnameGetArgs>? Hostname { get; set; }
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// The list identifier to target for the resource.
+        /// The unique ID of the item in the List.
+        /// </summary>
+        [Input("itemId")]
+        public Input<string>? ItemId { get; set; }
+
+        /// <summary>
+        /// The unique ID of the list.
         /// </summary>
         [Input("listId")]
         public Input<string>? ListId { get; set; }
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+        /// The RFC 3339 timestamp of when the item was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// The unique operation ID of the asynchronous action.
+        /// </summary>
+        [Input("operationId")]
+        public Input<string>? OperationId { get; set; }
+
+        /// <summary>
+        /// The definition of the redirect.
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.ListItemRedirectGetArgs>? Redirect { get; set; }

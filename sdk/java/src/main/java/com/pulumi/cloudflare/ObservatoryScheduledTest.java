@@ -6,6 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ObservatoryScheduledTestArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ObservatoryScheduledTestState;
+import com.pulumi.cloudflare.outputs.ObservatoryScheduledTestSchedule;
+import com.pulumi.cloudflare.outputs.ObservatoryScheduledTestTest;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,8 +16,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Observatory Scheduled Test resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,11 +41,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ObservatoryScheduledTest("example", ObservatoryScheduledTestArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleObservatoryScheduledTest = new ObservatoryScheduledTest("exampleObservatoryScheduledTest", ObservatoryScheduledTestArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .url("example.com")
- *             .region("us-central1")
- *             .frequency("WEEKLY")
  *             .build());
  * 
  *     }
@@ -57,63 +55,83 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &lt;zone_id&gt;:&lt;url&gt;:&lt;region&gt;
+ * $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &#39;&lt;zone_id&gt;/&lt;url&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")
 public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResource {
     /**
-     * The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+     * The frequency of the test.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output<String> frequency;
 
     /**
-     * @return The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+     * @return The frequency of the test.
      * 
      */
     public Output<String> frequency() {
         return this.frequency;
     }
     /**
-     * The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+     * A test region.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+     * @return A test region.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * The test schedule.
+     * 
+     */
+    @Export(name="schedule", refs={ObservatoryScheduledTestSchedule.class}, tree="[0]")
+    private Output<ObservatoryScheduledTestSchedule> schedule;
+
+    /**
+     * @return The test schedule.
+     * 
+     */
+    public Output<ObservatoryScheduledTestSchedule> schedule() {
+        return this.schedule;
+    }
+    @Export(name="test", refs={ObservatoryScheduledTestTest.class}, tree="[0]")
+    private Output<ObservatoryScheduledTestTest> test;
+
+    public Output<ObservatoryScheduledTestTest> test() {
+        return this.test;
+    }
+    /**
+     * A URL.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+     * @return A URL.
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PagesProjectDeploymentConfigsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for preview deploys.
+        /// Configs for preview deploys.
         /// </summary>
         [Input("preview")]
         public Input<Inputs.PagesProjectDeploymentConfigsPreviewGetArgs>? Preview { get; set; }
 
         /// <summary>
-        /// Configuration for production deploys.
+        /// Configs for production deploys.
         /// </summary>
         [Input("production")]
         public Input<Inputs.PagesProjectDeploymentConfigsProductionGetArgs>? Production { get; set; }

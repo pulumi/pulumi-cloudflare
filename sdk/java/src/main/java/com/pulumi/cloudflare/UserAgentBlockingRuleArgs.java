@@ -7,9 +7,10 @@ import com.pulumi.cloudflare.inputs.UserAgentBlockingRuleConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,14 +18,14 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
     public static final UserAgentBlockingRuleArgs Empty = new UserAgentBlockingRuleArgs();
 
     /**
-     * The configuration object for the current rule.
+     * The rule configuration.
      * 
      */
     @Import(name="configuration", required=true)
     private Output<UserAgentBlockingRuleConfigurationArgs> configuration;
 
     /**
-     * @return The configuration object for the current rule.
+     * @return The rule configuration.
      * 
      */
     public Output<UserAgentBlockingRuleConfigurationArgs> configuration() {
@@ -32,29 +33,14 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * An informative summary of the rule.
-     * 
-     */
-    @Import(name="description", required=true)
-    private Output<String> description;
-
-    /**
-     * @return An informative summary of the rule.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-
-    /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * The action to apply to a matched request.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
      * 
      */
     public Output<String> mode() {
@@ -62,29 +48,29 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * When true, indicates that the rule is currently paused.
+     * The unique identifier of the User Agent Blocking rule.
      * 
      */
-    @Import(name="paused", required=true)
-    private Output<Boolean> paused;
+    @Import(name="uaRuleId")
+    private @Nullable Output<String> uaRuleId;
 
     /**
-     * @return When true, indicates that the rule is currently paused.
+     * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    public Output<Boolean> paused() {
-        return this.paused;
+    public Optional<Output<String>> uaRuleId() {
+        return Optional.ofNullable(this.uaRuleId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -95,9 +81,8 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
 
     private UserAgentBlockingRuleArgs(UserAgentBlockingRuleArgs $) {
         this.configuration = $.configuration;
-        this.description = $.description;
         this.mode = $.mode;
-        this.paused = $.paused;
+        this.uaRuleId = $.uaRuleId;
         this.zoneId = $.zoneId;
     }
 
@@ -120,7 +105,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param configuration The configuration object for the current rule.
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -131,7 +116,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param configuration The configuration object for the current rule.
+         * @param configuration The rule configuration.
          * 
          * @return builder
          * 
@@ -141,28 +126,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description An informative summary of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description An informative summary of the rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -173,7 +137,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mode The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+         * @param mode The action to apply to a matched request.
          * 
          * @return builder
          * 
@@ -183,28 +147,28 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paused When true, indicates that the rule is currently paused.
+         * @param uaRuleId The unique identifier of the User Agent Blocking rule.
          * 
          * @return builder
          * 
          */
-        public Builder paused(Output<Boolean> paused) {
-            $.paused = paused;
+        public Builder uaRuleId(@Nullable Output<String> uaRuleId) {
+            $.uaRuleId = uaRuleId;
             return this;
         }
 
         /**
-         * @param paused When true, indicates that the rule is currently paused.
+         * @param uaRuleId The unique identifier of the User Agent Blocking rule.
          * 
          * @return builder
          * 
          */
-        public Builder paused(Boolean paused) {
-            return paused(Output.of(paused));
+        public Builder uaRuleId(String uaRuleId) {
+            return uaRuleId(Output.of(uaRuleId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -215,7 +179,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -228,14 +192,8 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
             if ($.configuration == null) {
                 throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "configuration");
             }
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "description");
-            }
             if ($.mode == null) {
                 throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "mode");
-            }
-            if ($.paused == null) {
-                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "paused");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "zoneId");

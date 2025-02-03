@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.CloudConnectorRulesRuleParameters;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,66 +14,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudConnectorRulesRule {
     /**
-     * @return Brief summary of the cloud connector rule and its intended use.
+     * @return Cloud Provider type
      * 
      */
+    private @Nullable String cloudProvider;
     private @Nullable String description;
-    /**
-     * @return Whether the headers rule is active.
-     * 
-     */
     private @Nullable Boolean enabled;
+    private @Nullable String expression;
+    private @Nullable String id;
     /**
-     * @return Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-     * 
-     */
-    private String expression;
-    /**
-     * @return Cloud Connector Rule Parameters
+     * @return Parameters of Cloud Connector Rule
      * 
      */
     private @Nullable CloudConnectorRulesRuleParameters parameters;
-    /**
-     * @return Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
-     * 
-     */
-    private String provider;
 
     private CloudConnectorRulesRule() {}
     /**
-     * @return Brief summary of the cloud connector rule and its intended use.
+     * @return Cloud Provider type
      * 
      */
+    public Optional<String> cloudProvider() {
+        return Optional.ofNullable(this.cloudProvider);
+    }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    /**
-     * @return Whether the headers rule is active.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return Criteria for an HTTP request to trigger the cloud connector rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-     * 
-     */
-    public String expression() {
-        return this.expression;
+    public Optional<String> expression() {
+        return Optional.ofNullable(this.expression);
+    }
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
-     * @return Cloud Connector Rule Parameters
+     * @return Parameters of Cloud Connector Rule
      * 
      */
     public Optional<CloudConnectorRulesRuleParameters> parameters() {
         return Optional.ofNullable(this.parameters);
-    }
-    /**
-     * @return Type of provider. Available values: `aws_s3`, `cloudflare_r2`, `azure_storage`, `gcp_storage`
-     * 
-     */
-    public String provider() {
-        return this.provider;
     }
 
     public static Builder builder() {
@@ -86,21 +65,29 @@ public final class CloudConnectorRulesRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String cloudProvider;
         private @Nullable String description;
         private @Nullable Boolean enabled;
-        private String expression;
+        private @Nullable String expression;
+        private @Nullable String id;
         private @Nullable CloudConnectorRulesRuleParameters parameters;
-        private String provider;
         public Builder() {}
         public Builder(CloudConnectorRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cloudProvider = defaults.cloudProvider;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
+    	      this.id = defaults.id;
     	      this.parameters = defaults.parameters;
-    	      this.provider = defaults.provider;
         }
 
+        @CustomType.Setter
+        public Builder cloudProvider(@Nullable String cloudProvider) {
+
+            this.cloudProvider = cloudProvider;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -114,11 +101,15 @@ public final class CloudConnectorRulesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder expression(String expression) {
-            if (expression == null) {
-              throw new MissingRequiredPropertyException("CloudConnectorRulesRule", "expression");
-            }
+        public Builder expression(@Nullable String expression) {
+
             this.expression = expression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -127,21 +118,14 @@ public final class CloudConnectorRulesRule {
             this.parameters = parameters;
             return this;
         }
-        @CustomType.Setter
-        public Builder provider(String provider) {
-            if (provider == null) {
-              throw new MissingRequiredPropertyException("CloudConnectorRulesRule", "provider");
-            }
-            this.provider = provider;
-            return this;
-        }
         public CloudConnectorRulesRule build() {
             final var _resultValue = new CloudConnectorRulesRule();
+            _resultValue.cloudProvider = cloudProvider;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.expression = expression;
+            _resultValue.id = id;
             _resultValue.parameters = parameters;
-            _resultValue.provider = provider;
             return _resultValue;
         }
     }

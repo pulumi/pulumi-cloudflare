@@ -8,69 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Posture Integration resource. Device
-// posture integrations configure third-party data providers for device
-// posture rules.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDevicePostureIntegration(ctx, "example", &cloudflare.ZeroTrustDevicePostureIntegrationArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("Device posture integration"),
-//				Type:      pulumi.String("workspace_one"),
-//				Interval:  pulumi.String("24h"),
-//				Configs: cloudflare.ZeroTrustDevicePostureIntegrationConfigArray{
-//					&cloudflare.ZeroTrustDevicePostureIntegrationConfigArgs{
-//						ApiUrl:       pulumi.String("https://example.com/api"),
-//						AuthUrl:      pulumi.String("https://example.com/connect/token"),
-//						ClientId:     pulumi.String("client-id"),
-//						ClientSecret: pulumi.String("client-secret"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example <account_id>/<device_posture_integration_id>
+// $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '<account_id>/<integration_id>'
 // ```
 type ZeroTrustDevicePostureIntegration struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The device posture integration's connection authorization parameters.
-	Configs    ZeroTrustDevicePostureIntegrationConfigArrayOutput `pulumi:"configs"`
-	Identifier pulumi.StringPtrOutput                             `pulumi:"identifier"`
-	// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-	Interval pulumi.StringPtrOutput `pulumi:"interval"`
-	// Name of the device posture integration.
+	// The configuration object containing third-party integration information.
+	Config ZeroTrustDevicePostureIntegrationConfigOutput `pulumi:"config"`
+	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+	Interval pulumi.StringOutput `pulumi:"interval"`
+	// The name of the device posture integration.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+	// The type of device posture integration.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -83,6 +42,12 @@ func NewZeroTrustDevicePostureIntegration(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
+	if args.Interval == nil {
+		return nil, errors.New("invalid value for required argument 'Interval'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -113,30 +78,26 @@ func GetZeroTrustDevicePostureIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDevicePostureIntegration resources.
 type zeroTrustDevicePostureIntegrationState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The device posture integration's connection authorization parameters.
-	Configs    []ZeroTrustDevicePostureIntegrationConfig `pulumi:"configs"`
-	Identifier *string                                   `pulumi:"identifier"`
-	// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+	// The configuration object containing third-party integration information.
+	Config *ZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
+	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	Interval *string `pulumi:"interval"`
-	// Name of the device posture integration.
+	// The name of the device posture integration.
 	Name *string `pulumi:"name"`
-	// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+	// The type of device posture integration.
 	Type *string `pulumi:"type"`
 }
 
 type ZeroTrustDevicePostureIntegrationState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The device posture integration's connection authorization parameters.
-	Configs    ZeroTrustDevicePostureIntegrationConfigArrayInput
-	Identifier pulumi.StringPtrInput
-	// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+	// The configuration object containing third-party integration information.
+	Config ZeroTrustDevicePostureIntegrationConfigPtrInput
+	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
 	Interval pulumi.StringPtrInput
-	// Name of the device posture integration.
+	// The name of the device posture integration.
 	Name pulumi.StringPtrInput
-	// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+	// The type of device posture integration.
 	Type pulumi.StringPtrInput
 }
 
@@ -145,31 +106,27 @@ func (ZeroTrustDevicePostureIntegrationState) ElementType() reflect.Type {
 }
 
 type zeroTrustDevicePostureIntegrationArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The device posture integration's connection authorization parameters.
-	Configs    []ZeroTrustDevicePostureIntegrationConfig `pulumi:"configs"`
-	Identifier *string                                   `pulumi:"identifier"`
-	// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-	Interval *string `pulumi:"interval"`
-	// Name of the device posture integration.
+	// The configuration object containing third-party integration information.
+	Config ZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
+	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+	Interval string `pulumi:"interval"`
+	// The name of the device posture integration.
 	Name string `pulumi:"name"`
-	// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+	// The type of device posture integration.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustDevicePostureIntegration resource.
 type ZeroTrustDevicePostureIntegrationArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The device posture integration's connection authorization parameters.
-	Configs    ZeroTrustDevicePostureIntegrationConfigArrayInput
-	Identifier pulumi.StringPtrInput
-	// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-	Interval pulumi.StringPtrInput
-	// Name of the device posture integration.
+	// The configuration object containing third-party integration information.
+	Config ZeroTrustDevicePostureIntegrationConfigInput
+	// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+	Interval pulumi.StringInput
+	// The name of the device posture integration.
 	Name pulumi.StringInput
-	// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+	// The type of device posture integration.
 	Type pulumi.StringInput
 }
 
@@ -260,33 +217,28 @@ func (o ZeroTrustDevicePostureIntegrationOutput) ToZeroTrustDevicePostureIntegra
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustDevicePostureIntegrationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The device posture integration's connection authorization parameters.
-func (o ZeroTrustDevicePostureIntegrationOutput) Configs() ZeroTrustDevicePostureIntegrationConfigArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) ZeroTrustDevicePostureIntegrationConfigArrayOutput {
-		return v.Configs
-	}).(ZeroTrustDevicePostureIntegrationConfigArrayOutput)
+// The configuration object containing third-party integration information.
+func (o ZeroTrustDevicePostureIntegrationOutput) Config() ZeroTrustDevicePostureIntegrationConfigOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) ZeroTrustDevicePostureIntegrationConfigOutput {
+		return v.Config
+	}).(ZeroTrustDevicePostureIntegrationConfigOutput)
 }
 
-func (o ZeroTrustDevicePostureIntegrationOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+func (o ZeroTrustDevicePostureIntegrationOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.Interval }).(pulumi.StringOutput)
 }
 
-// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-func (o ZeroTrustDevicePostureIntegrationOutput) Interval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringPtrOutput { return v.Interval }).(pulumi.StringPtrOutput)
-}
-
-// Name of the device posture integration.
+// The name of the device posture integration.
 func (o ZeroTrustDevicePostureIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`, `customS2s`.
+// The type of device posture integration.
 func (o ZeroTrustDevicePostureIntegrationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

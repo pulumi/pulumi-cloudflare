@@ -16,45 +16,29 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
 
     public static final ZeroTrustDeviceManagedNetworksState Empty = new ZeroTrustDeviceManagedNetworksState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     @Import(name="config")
     private @Nullable Output<ZeroTrustDeviceManagedNetworksConfigArgs> config;
 
-    /**
-     * @return The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     public Optional<Output<ZeroTrustDeviceManagedNetworksConfigArgs>> config() {
         return Optional.ofNullable(this.config);
     }
 
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Device Managed Network. Must be unique.
+     * @return The name of the device managed network. This name must be unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,14 +46,29 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
     }
 
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * API UUID.
+     * 
+     */
+    @Import(name="networkId")
+    private @Nullable Output<String> networkId;
+
+    /**
+     * @return API UUID.
+     * 
+     */
+    public Optional<Output<String>> networkId() {
+        return Optional.ofNullable(this.networkId);
+    }
+
+    /**
+     * The type of device managed network.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of Device Managed Network. Available values: `tls`.
+     * @return The type of device managed network.
      * 
      */
     public Optional<Output<String>> type() {
@@ -82,6 +81,7 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
         this.accountId = $.accountId;
         this.config = $.config;
         this.name = $.name;
+        this.networkId = $.networkId;
         this.type = $.type;
     }
 
@@ -103,50 +103,26 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
             $ = new ZeroTrustDeviceManagedNetworksState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(@Nullable Output<ZeroTrustDeviceManagedNetworksConfigArgs> config) {
             $.config = config;
             return this;
         }
 
-        /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(ZeroTrustDeviceManagedNetworksConfigArgs config) {
             return config(Output.of(config));
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -157,7 +133,7 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -167,7 +143,28 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param networkId API UUID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(@Nullable Output<String> networkId) {
+            $.networkId = networkId;
+            return this;
+        }
+
+        /**
+         * @param networkId API UUID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(String networkId) {
+            return networkId(Output.of(networkId));
+        }
+
+        /**
+         * @param type The type of device managed network.
          * 
          * @return builder
          * 
@@ -178,7 +175,7 @@ public final class ZeroTrustDeviceManagedNetworksState extends com.pulumi.resour
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param type The type of device managed network.
          * 
          * @return builder
          * 

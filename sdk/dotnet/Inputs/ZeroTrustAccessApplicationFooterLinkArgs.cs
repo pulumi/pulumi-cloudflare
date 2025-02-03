@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationFooterLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the footer link.
+        /// The hypertext in the footer link.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The URL of the footer link.
+        /// the hyperlink in the footer link.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public ZeroTrustAccessApplicationFooterLinkArgs()
         {

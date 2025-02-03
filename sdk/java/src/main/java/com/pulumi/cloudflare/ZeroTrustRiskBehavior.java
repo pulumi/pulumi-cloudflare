@@ -6,49 +6,69 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustRiskBehaviorState;
-import com.pulumi.cloudflare.outputs.ZeroTrustRiskBehaviorBehavior;
+import com.pulumi.cloudflare.outputs.ZeroTrustRiskBehaviorBehaviors;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustRiskBehavior;
+ * import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustRiskBehavior = new ZeroTrustRiskBehavior("exampleZeroTrustRiskBehavior", ZeroTrustRiskBehaviorArgs.builder()
+ *             .accountId("account_id")
+ *             .behaviors(Map.of("foo", Map.ofEntries(
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("riskLevel", "low")
+ *             )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")
 public class ZeroTrustRiskBehavior extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * Zero Trust risk behaviors configured on this account
-     * 
-     */
-    @Export(name="behaviors", refs={List.class,ZeroTrustRiskBehaviorBehavior.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustRiskBehaviorBehavior>> behaviors;
+    @Export(name="behaviors", refs={Map.class,String.class,ZeroTrustRiskBehaviorBehaviors.class}, tree="[0,1,2]")
+    private Output<Map<String,ZeroTrustRiskBehaviorBehaviors>> behaviors;
 
-    /**
-     * @return Zero Trust risk behaviors configured on this account
-     * 
-     */
-    public Output<Optional<List<ZeroTrustRiskBehaviorBehavior>>> behaviors() {
-        return Codegen.optional(this.behaviors);
+    public Output<Map<String,ZeroTrustRiskBehaviorBehaviors>> behaviors() {
+        return this.behaviors;
     }
 
     /**

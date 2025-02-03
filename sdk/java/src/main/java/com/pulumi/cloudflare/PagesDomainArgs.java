@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,44 +17,36 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainArgs Empty = new PagesDomainArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="domain", required=true)
-    private Output<String> domain;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
-    /**
-     * @return Custom domain. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> domain() {
-        return this.domain;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Output<String> projectName() {
@@ -63,7 +57,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
 
     private PagesDomainArgs(PagesDomainArgs $) {
         this.accountId = $.accountId;
-        this.domain = $.domain;
+        this.name = $.name;
         this.projectName = $.projectName;
     }
 
@@ -86,7 +80,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -97,7 +91,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -106,29 +100,17 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domain(Output<String> domain) {
-            $.domain = domain;
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
             return this;
         }
 
-        /**
-         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domain(String domain) {
-            return domain(Output.of(domain));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
-         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+         * @param projectName Name of the project.
          * 
          * @return builder
          * 
@@ -139,7 +121,7 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+         * @param projectName Name of the project.
          * 
          * @return builder
          * 
@@ -151,9 +133,6 @@ public final class PagesDomainArgs extends com.pulumi.resources.ResourceArgs {
         public PagesDomainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "accountId");
-            }
-            if ($.domain == null) {
-                throw new MissingRequiredPropertyException("PagesDomainArgs", "domain");
             }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("PagesDomainArgs", "projectName");

@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectSource {
-    /**
-     * @return Configuration for the source of the Cloudflare Pages project.
-     * 
-     */
     private @Nullable PagesProjectSourceConfig config;
-    /**
-     * @return Project host type.
-     * 
-     */
     private @Nullable String type;
 
     private PagesProjectSource() {}
-    /**
-     * @return Configuration for the source of the Cloudflare Pages project.
-     * 
-     */
     public Optional<PagesProjectSourceConfig> config() {
         return Optional.ofNullable(this.config);
     }
-    /**
-     * @return Project host type.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

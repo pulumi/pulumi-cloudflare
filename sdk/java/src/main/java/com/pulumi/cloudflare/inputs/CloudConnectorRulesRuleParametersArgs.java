@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CloudConnectorRulesRuleParametersArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +16,18 @@ public final class CloudConnectorRulesRuleParametersArgs extends com.pulumi.reso
     public static final CloudConnectorRulesRuleParametersArgs Empty = new CloudConnectorRulesRuleParametersArgs();
 
     /**
-     * Host parameter for cloud connector rule
+     * Host to perform Cloud Connection to
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
-     * @return Host parameter for cloud connector rule
+     * @return Host to perform Cloud Connection to
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     private CloudConnectorRulesRuleParametersArgs() {}
@@ -54,18 +55,18 @@ public final class CloudConnectorRulesRuleParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host Host parameter for cloud connector rule
+         * @param host Host to perform Cloud Connection to
          * 
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
         /**
-         * @param host Host parameter for cloud connector rule
+         * @param host Host to perform Cloud Connection to
          * 
          * @return builder
          * 
@@ -75,9 +76,6 @@ public final class CloudConnectorRulesRuleParametersArgs extends com.pulumi.reso
         }
 
         public CloudConnectorRulesRuleParametersArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("CloudConnectorRulesRuleParametersArgs", "host");
-            }
             return $;
         }
     }

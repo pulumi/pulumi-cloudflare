@@ -13,50 +13,40 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationSaasAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        /// The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
         /// </summary>
         [Input("accessTokenLifetime")]
         public Input<string>? AccessTokenLifetime { get; set; }
 
         /// <summary>
-        /// Allow PKCE flow without a client secret.
+        /// If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
         /// </summary>
         [Input("allowPkceWithoutClientSecret")]
         public Input<bool>? AllowPkceWithoutClientSecret { get; set; }
 
         /// <summary>
-        /// The URL where this applications tile redirects users.
+        /// The URL where this applications tile redirects users
         /// </summary>
         [Input("appLauncherUrl")]
         public Input<string>? AppLauncherUrl { get; set; }
 
         /// <summary>
-        /// **Modifying this attribute will force creation of a new resource.**
+        /// Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
         /// <summary>
-        /// The application client id.
+        /// The application client id
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        [Input("clientSecret")]
-        private Input<string>? _clientSecret;
-
         /// <summary>
-        /// The application client secret, only returned on initial apply.
+        /// The application client secret, only returned on POST request.
         /// </summary>
-        public Input<string>? ClientSecret
-        {
-            get => _clientSecret;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -64,12 +54,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("consumerServiceUrl")]
         public Input<string>? ConsumerServiceUrl { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("customAttributes")]
         private InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeGetArgs>? _customAttributes;
-
-        /// <summary>
-        /// Custom attribute mapped from IDPs.
-        /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeGetArgs> CustomAttributes
         {
             get => _customAttributes ?? (_customAttributes = new InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeGetArgs>());
@@ -78,10 +67,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("customClaims")]
         private InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomClaimGetArgs>? _customClaims;
-
-        /// <summary>
-        /// Custom claim mapped from IDPs.
-        /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomClaimGetArgs> CustomClaims
         {
             get => _customClaims ?? (_customClaims = new InputList<Inputs.ZeroTrustAccessApplicationSaasAppCustomClaimGetArgs>());
@@ -89,7 +74,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The relay state used if not provided by the identity provider.
+        /// The URL that the user will be redirected to after a successful login for IDP initiated logins.
         /// </summary>
         [Input("defaultRelayState")]
         public Input<string>? DefaultRelayState { get; set; }
@@ -98,7 +83,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// The OIDC flows supported by this application.
+        /// The OIDC flows supported by this application
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -107,19 +92,16 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
         /// </summary>
         [Input("groupFilterRegex")]
         public Input<string>? GroupFilterRegex { get; set; }
 
-        /// <summary>
-        /// Hybrid and Implicit Flow options.
-        /// </summary>
         [Input("hybridAndImplicitOptions")]
         public Input<Inputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsGetArgs>? HybridAndImplicitOptions { get; set; }
 
         /// <summary>
-        /// The unique identifier for the SaaS application.
+        /// The unique identifier for your SaaS application.
         /// </summary>
         [Input("idpEntityId")]
         public Input<string>? IdpEntityId { get; set; }
@@ -137,7 +119,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NameIdTransformJsonata { get; set; }
 
         /// <summary>
-        /// The public certificate that will be used to verify identities.
+        /// The Access public certificate that will be used to verify your identity.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -146,7 +128,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _redirectUris;
 
         /// <summary>
-        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
         /// </summary>
         public InputList<string> RedirectUris
         {
@@ -155,16 +137,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         [Input("refreshTokenOptions")]
-        private InputList<Inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionGetArgs>? _refreshTokenOptions;
-
-        /// <summary>
-        /// Refresh token grant options.
-        /// </summary>
-        public InputList<Inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionGetArgs> RefreshTokenOptions
-        {
-            get => _refreshTokenOptions ?? (_refreshTokenOptions = new InputList<Inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionGetArgs>());
-            set => _refreshTokenOptions = value;
-        }
+        public Input<Inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsGetArgs>? RefreshTokenOptions { get; set; }
 
         /// <summary>
         /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -176,7 +149,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Define the user information shared with access.
+        /// Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
         /// </summary>
         public InputList<string> Scopes
         {
@@ -191,10 +164,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? SpEntityId { get; set; }
 
         /// <summary>
-        /// The endpoint where the SaaS application will send login requests.
+        /// The endpoint where your SaaS application will send login requests.
         /// </summary>
         [Input("ssoEndpoint")]
         public Input<string>? SsoEndpoint { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessApplicationSaasAppGetArgs()
         {

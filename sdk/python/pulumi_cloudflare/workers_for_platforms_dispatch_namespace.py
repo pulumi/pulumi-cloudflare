@@ -20,20 +20,21 @@ __all__ = ['WorkersForPlatformsDispatchNamespaceArgs', 'WorkersForPlatformsDispa
 class WorkersForPlatformsDispatchNamespaceArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 name: pulumi.Input[str]):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkersForPlatformsDispatchNamespace resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the Workers for Platforms namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] name: The name of the dispatch namespace
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -43,14 +44,14 @@ class WorkersForPlatformsDispatchNamespaceArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
+    def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Workers for Platforms namespace.
+        The name of the dispatch namespace
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[str]):
+    def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
 
@@ -58,22 +59,50 @@ class WorkersForPlatformsDispatchNamespaceArgs:
 class _WorkersForPlatformsDispatchNamespaceState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 modified_by: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 script_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering WorkersForPlatformsDispatchNamespace resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the Workers for Platforms namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] created_by: Identifier
+        :param pulumi.Input[str] created_on: When the script was created.
+        :param pulumi.Input[str] modified_by: Identifier
+        :param pulumi.Input[str] modified_on: When the script was last modified.
+        :param pulumi.Input[str] name: The name of the dispatch namespace
+        :param pulumi.Input[str] namespace_id: API Resource UUID tag.
+        :param pulumi.Input[str] namespace_name: Name of the Workers for Platforms dispatch namespace.
+        :param pulumi.Input[int] script_count: The current number of scripts in this Dispatch Namespace
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if modified_by is not None:
+            pulumi.set(__self__, "modified_by", modified_by)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+        if script_count is not None:
+            pulumi.set(__self__, "script_count", script_count)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -82,16 +111,100 @@ class _WorkersForPlatformsDispatchNamespaceState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the script was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="modifiedBy")
+    def modified_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "modified_by")
+
+    @modified_by.setter
+    def modified_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_by", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the script was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Workers for Platforms namespace.
+        The name of the dispatch namespace
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Resource UUID tag.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Workers for Platforms dispatch namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="scriptCount")
+    def script_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The current number of scripts in this Dispatch Namespace
+        """
+        return pulumi.get(self, "script_count")
+
+    @script_count.setter
+    def script_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "script_count", value)
 
 
 class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
@@ -103,37 +216,27 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
-        to manage Cloudflare Workers for Platforms dispatch namespaces.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
-        example = cloudflare.WorkersForPlatformsDispatchNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example-namespace")
-        customer_worker1 = cloudflare.WorkersScript("customer_worker_1",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="customer-worker-1",
-            content=std.file(input="script.js").result,
-            dispatch_namespace=example.name,
-            tags=["free"])
+        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-dispatch-namespace")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example <account_id>/<namespace_name>
+        $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '<account_id>/<dispatch_namespace>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the Workers for Platforms namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] name: The name of the dispatch namespace
         """
         ...
     @overload
@@ -142,31 +245,21 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
                  args: WorkersForPlatformsDispatchNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
-        to manage Cloudflare Workers for Platforms dispatch namespaces.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
-        example = cloudflare.WorkersForPlatformsDispatchNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example-namespace")
-        customer_worker1 = cloudflare.WorkersScript("customer_worker_1",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="customer-worker-1",
-            content=std.file(input="script.js").result,
-            dispatch_namespace=example.name,
-            tags=["free"])
+        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-dispatch-namespace")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example <account_id>/<namespace_name>
+        $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '<account_id>/<dispatch_namespace>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -198,9 +291,14 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_by"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["namespace_id"] = None
+            __props__.__dict__["namespace_name"] = None
+            __props__.__dict__["script_count"] = None
         super(WorkersForPlatformsDispatchNamespace, __self__).__init__(
             'cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace',
             resource_name,
@@ -212,7 +310,14 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'WorkersForPlatformsDispatchNamespace':
+            created_by: Optional[pulumi.Input[str]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
+            modified_by: Optional[pulumi.Input[str]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace_id: Optional[pulumi.Input[str]] = None,
+            namespace_name: Optional[pulumi.Input[str]] = None,
+            script_count: Optional[pulumi.Input[int]] = None) -> 'WorkersForPlatformsDispatchNamespace':
         """
         Get an existing WorkersForPlatformsDispatchNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -220,30 +325,100 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the Workers for Platforms namespace.
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] created_by: Identifier
+        :param pulumi.Input[str] created_on: When the script was created.
+        :param pulumi.Input[str] modified_by: Identifier
+        :param pulumi.Input[str] modified_on: When the script was last modified.
+        :param pulumi.Input[str] name: The name of the dispatch namespace
+        :param pulumi.Input[str] namespace_id: API Resource UUID tag.
+        :param pulumi.Input[str] namespace_name: Name of the Workers for Platforms dispatch namespace.
+        :param pulumi.Input[int] script_count: The current number of scripts in this Dispatch Namespace
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersForPlatformsDispatchNamespaceState.__new__(_WorkersForPlatformsDispatchNamespaceState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["modified_by"] = modified_by
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_id"] = namespace_id
+        __props__.__dict__["namespace_name"] = namespace_name
+        __props__.__dict__["script_count"] = script_count
         return WorkersForPlatformsDispatchNamespace(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
         """
-        The name of the Workers for Platforms namespace.
+        Identifier
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
+        """
+        When the script was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="modifiedBy")
+    def modified_by(self) -> pulumi.Output[str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "modified_by")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        When the script was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the dispatch namespace
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Output[str]:
+        """
+        API Resource UUID tag.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Output[str]:
+        """
+        Name of the Workers for Platforms dispatch namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter(name="scriptCount")
+    def script_count(self) -> pulumi.Output[int]:
+        """
+        The current number of scripts in this Dispatch Namespace
+        """
+        return pulumi.get(self, "script_count")
 

@@ -15,20 +15,20 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The name of the SAML attribute.
         /// </summary>
-        [Input("attributeName")]
-        public Input<string>? AttributeName { get; set; }
+        [Input("attributeName", required: true)]
+        public Input<string> AttributeName { get; set; } = null!;
 
         /// <summary>
         /// The SAML attribute value to look for.
         /// </summary>
-        [Input("attributeValue")]
-        public Input<string>? AttributeValue { get; set; }
+        [Input("attributeValue", required: true)]
+        public Input<string> AttributeValue { get; set; } = null!;
 
         /// <summary>
         /// The ID of your SAML identity provider.
         /// </summary>
-        [Input("identityProviderId")]
-        public Input<string>? IdentityProviderId { get; set; }
+        [Input("identityProviderId", required: true)]
+        public Input<string> IdentityProviderId { get; set; } = null!;
 
         public ZeroTrustAccessPolicyExcludeSamlArgs()
         {

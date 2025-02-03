@@ -19,54 +19,56 @@ __all__ = ['LeakedCredentialCheckRuleArgs', 'LeakedCredentialCheckRule']
 @pulumi.input_type
 class LeakedCredentialCheckRuleArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[str],
-                 username: pulumi.Input[str],
-                 zone_id: pulumi.Input[str]):
+                 zone_id: pulumi.Input[str],
+                 password: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheckRule resource.
+        :param pulumi.Input[str] zone_id: Identifier
         :param pulumi.Input[str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        The ruleset expression to use in matching the password in a request
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> pulumi.Input[str]:
-        """
-        The ruleset expression to use in matching the username in a request.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[str]):
-        pulumi.set(self, "username", value)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ruleset expression to use in matching the password in a request
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ruleset expression to use in matching the username in a request
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -78,8 +80,8 @@ class _LeakedCredentialCheckRuleState:
         """
         Input properties used for looking up and filtering LeakedCredentialCheckRule resources.
         :param pulumi.Input[str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -104,7 +106,7 @@ class _LeakedCredentialCheckRuleState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The ruleset expression to use in matching the username in a request.
+        The ruleset expression to use in matching the username in a request
         """
         return pulumi.get(self, "username")
 
@@ -116,7 +118,7 @@ class _LeakedCredentialCheckRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -135,36 +137,23 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable the Leaked Credentials Check detection before trying
-        # to add detections.
-        example = cloudflare.LeakedCredentialCheck("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
-            enabled=True)
-        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example",
-            zone_id=example.zone_id,
-            username="lookup_json_string(http.request.body.raw, \\"user\\")",
-            password="lookup_json_string(http.request.body.raw, \\"pass\\")")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example <zone_id>/<resource_id>
+        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            password="lookup_json_string(http.request.body.raw, \\"secret\\")",
+            username="lookup_json_string(http.request.body.raw, \\"user\\")")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -173,29 +162,16 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
                  args: LeakedCredentialCheckRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable the Leaked Credentials Check detection before trying
-        # to add detections.
-        example = cloudflare.LeakedCredentialCheck("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
-            enabled=True)
-        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example",
-            zone_id=example.zone_id,
-            username="lookup_json_string(http.request.body.raw, \\"user\\")",
-            password="lookup_json_string(http.request.body.raw, \\"pass\\")")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example <zone_id>/<resource_id>
+        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            password="lookup_json_string(http.request.body.raw, \\"secret\\")",
+            username="lookup_json_string(http.request.body.raw, \\"user\\")")
         ```
 
         :param str resource_name: The name of the resource.
@@ -225,11 +201,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LeakedCredentialCheckRuleArgs.__new__(LeakedCredentialCheckRuleArgs)
 
-            if password is None and not opts.urn:
-                raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = password
-            if username is None and not opts.urn:
-                raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -255,8 +227,8 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] username: The ruleset expression to use in matching the username in a request
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,7 +241,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         The ruleset expression to use in matching the password in a request
         """
@@ -277,9 +249,9 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> pulumi.Output[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
-        The ruleset expression to use in matching the username in a request.
+        The ruleset expression to use in matching the username in a request
         """
         return pulumi.get(self, "username")
 
@@ -287,7 +259,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

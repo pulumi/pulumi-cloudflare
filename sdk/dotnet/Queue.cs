@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides the ability to manage Cloudflare Workers Queue features.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,10 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.Queue("example", new()
+    ///     var exampleQueue = new Cloudflare.Queue("example_queue", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "my-queue",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         QueueName = "example-queue",
     ///     });
     /// 
     /// });
@@ -34,23 +32,44 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/queue:Queue example &lt;account_id&gt;/&lt;queue_id&gt;
+    /// $ pulumi import cloudflare:index/queue:Queue example '&lt;account_id&gt;/&lt;queue_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/queue:Queue")]
     public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// A Resource identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the queue.
-        /// </summary>
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        [Output("consumers")]
+        public Output<ImmutableArray<Outputs.QueueConsumer>> Consumers { get; private set; } = null!;
+
+        [Output("consumersTotalCount")]
+        public Output<double> ConsumersTotalCount { get; private set; } = null!;
+
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        [Output("producers")]
+        public Output<ImmutableArray<Outputs.QueueProducer>> Producers { get; private set; } = null!;
+
+        [Output("producersTotalCount")]
+        public Output<double> ProducersTotalCount { get; private set; } = null!;
+
+        [Output("queueId")]
+        public Output<string> QueueId { get; private set; } = null!;
+
+        [Output("queueName")]
+        public Output<string> QueueName { get; private set; } = null!;
+
+        [Output("settings")]
+        public Output<Outputs.QueueSettings> Settings { get; private set; } = null!;
 
 
         /// <summary>
@@ -99,16 +118,16 @@ namespace Pulumi.Cloudflare
     public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// A Resource identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the queue.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("queueName", required: true)]
+        public Input<string> QueueName { get; set; } = null!;
+
+        [Input("settings")]
+        public Input<Inputs.QueueSettingsArgs>? Settings { get; set; }
 
         public QueueArgs()
         {
@@ -119,16 +138,47 @@ namespace Pulumi.Cloudflare
     public sealed class QueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// A Resource identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The name of the queue.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("consumers")]
+        private InputList<Inputs.QueueConsumerGetArgs>? _consumers;
+        public InputList<Inputs.QueueConsumerGetArgs> Consumers
+        {
+            get => _consumers ?? (_consumers = new InputList<Inputs.QueueConsumerGetArgs>());
+            set => _consumers = value;
+        }
+
+        [Input("consumersTotalCount")]
+        public Input<double>? ConsumersTotalCount { get; set; }
+
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        [Input("producers")]
+        private InputList<Inputs.QueueProducerGetArgs>? _producers;
+        public InputList<Inputs.QueueProducerGetArgs> Producers
+        {
+            get => _producers ?? (_producers = new InputList<Inputs.QueueProducerGetArgs>());
+            set => _producers = value;
+        }
+
+        [Input("producersTotalCount")]
+        public Input<double>? ProducersTotalCount { get; set; }
+
+        [Input("queueId")]
+        public Input<string>? QueueId { get; set; }
+
+        [Input("queueName")]
+        public Input<string>? QueueName { get; set; }
+
+        [Input("settings")]
+        public Input<Inputs.QueueSettingsGetArgs>? Settings { get; set; }
 
         public QueueState()
         {

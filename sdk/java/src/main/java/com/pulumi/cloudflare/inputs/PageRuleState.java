@@ -33,6 +33,36 @@ public final class PageRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The timestamp of when the Page Rule was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      * 
      */
@@ -96,6 +126,8 @@ public final class PageRuleState extends com.pulumi.resources.ResourceArgs {
 
     private PageRuleState(PageRuleState $) {
         this.actions = $.actions;
+        this.createdOn = $.createdOn;
+        this.modifiedOn = $.modifiedOn;
         this.priority = $.priority;
         this.status = $.status;
         this.target = $.target;
@@ -139,6 +171,48 @@ public final class PageRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder actions(PageRuleActionsArgs actions) {
             return actions(Output.of(actions));
+        }
+
+        /**
+         * @param createdOn The timestamp of when the Page Rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The timestamp of when the Page Rule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param modifiedOn The timestamp of when the Page Rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The timestamp of when the Page Rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         /**

@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage a Cloudflare Workers KV Pair.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,25 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "example_ns", &cloudflare.WorkersKvNamespaceArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Title:     pulumi.String("test-namespace"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkersKv(ctx, "example", &cloudflare.WorkersKvArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				NamespaceId: exampleNs.ID(),
-//				Key:         pulumi.String("test-key"),
-//				Value:       pulumi.String("test value"),
+//			_, err := cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				NamespaceId: pulumi.String("0f2ac74b498b48028cb68387c421e279"),
+//				KeyName:     pulumi.String("My-Key"),
+//				Metadata:    pulumi.String("{\"someMetadataKey\": \"someMetadataValue\"}"),
+//				Value:       pulumi.String("Some Value"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,18 +45,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+// $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
 // ```
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-	Key pulumi.StringOutput `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	// Arbitrary JSON to be associated with a key/value pair.
+	Metadata pulumi.StringPtrOutput `pulumi:"metadata"`
+	// Namespace identifier tag.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
-	// Value of the KV pair.
+	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -78,8 +72,8 @@ func NewWorkersKv(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Key == nil {
-		return nil, errors.New("invalid value for required argument 'Key'")
+	if args.KeyName == nil {
+		return nil, errors.New("invalid value for required argument 'KeyName'")
 	}
 	if args.NamespaceId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceId'")
@@ -110,24 +104,28 @@ func GetWorkersKv(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKv resources.
 type workersKvState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-	Key *string `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+	KeyName *string `pulumi:"keyName"`
+	// Arbitrary JSON to be associated with a key/value pair.
+	Metadata *string `pulumi:"metadata"`
+	// Namespace identifier tag.
 	NamespaceId *string `pulumi:"namespaceId"`
-	// Value of the KV pair.
+	// A byte sequence to be stored, up to 25 MiB in length.
 	Value *string `pulumi:"value"`
 }
 
 type WorkersKvState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-	Key pulumi.StringPtrInput
-	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+	KeyName pulumi.StringPtrInput
+	// Arbitrary JSON to be associated with a key/value pair.
+	Metadata pulumi.StringPtrInput
+	// Namespace identifier tag.
 	NamespaceId pulumi.StringPtrInput
-	// Value of the KV pair.
+	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringPtrInput
 }
 
@@ -136,25 +134,29 @@ func (WorkersKvState) ElementType() reflect.Type {
 }
 
 type workersKvArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-	Key string `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+	KeyName string `pulumi:"keyName"`
+	// Arbitrary JSON to be associated with a key/value pair.
+	Metadata *string `pulumi:"metadata"`
+	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
-	// Value of the KV pair.
+	// A byte sequence to be stored, up to 25 MiB in length.
 	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-	Key pulumi.StringInput
-	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+	KeyName pulumi.StringInput
+	// Arbitrary JSON to be associated with a key/value pair.
+	Metadata pulumi.StringPtrInput
+	// Namespace identifier tag.
 	NamespaceId pulumi.StringInput
-	// Value of the KV pair.
+	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringInput
 }
 
@@ -245,22 +247,27 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o WorkersKvOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-func (o WorkersKvOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+func (o WorkersKvOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+// Arbitrary JSON to be associated with a key/value pair.
+func (o WorkersKvOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringPtrOutput { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// Namespace identifier tag.
 func (o WorkersKvOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
-// Value of the KV pair.
+// A byte sequence to be stored, up to 25 MiB in length.
 func (o WorkersKvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

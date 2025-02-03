@@ -21,23 +21,31 @@ class R2BucketArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 location: Optional[pulumi.Input[str]] = None):
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a R2Bucket resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the R2 bucket.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] name: Name of the bucket
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[str] location: Location of the bucket
+        :param pulumi.Input[str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -49,7 +57,7 @@ class R2BucketArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the R2 bucket.
+        Name of the bucket
         """
         return pulumi.get(self, "name")
 
@@ -59,9 +67,21 @@ class R2BucketArgs:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
+    @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        Location of the bucket
         """
         return pulumi.get(self, "location")
 
@@ -69,31 +89,55 @@ class R2BucketArgs:
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Storage class for newly uploaded objects, unless specified otherwise.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class", value)
+
 
 @pulumi.input_type
 class _R2BucketState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 creation_date: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering R2Bucket resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
-        :param pulumi.Input[str] name: The name of the R2 bucket.
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] creation_date: Creation timestamp
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[str] location: Location of the bucket
+        :param pulumi.Input[str] name: Name of the bucket
+        :param pulumi.Input[str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if creation_date is not None:
+            pulumi.set(__self__, "creation_date", creation_date)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -102,10 +146,34 @@ class _R2BucketState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp
+        """
+        return pulumi.get(self, "creation_date")
+
+    @creation_date.setter
+    def creation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_date", value)
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        Location of the bucket
         """
         return pulumi.get(self, "location")
 
@@ -117,13 +185,25 @@ class _R2BucketState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the R2 bucket.
+        Name of the bucket
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Storage class for newly uploaded objects, unless specified otherwise.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class", value)
 
 
 class R2Bucket(pulumi.CustomResource):
@@ -132,8 +212,10 @@ class R2Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -142,10 +224,11 @@ class R2Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.R2Bucket("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-bucket",
-            location="enam")
+        example_r2_bucket = cloudflare.R2Bucket("example_r2_bucket",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example-bucket",
+            location="apac",
+            storage_class="Standard")
         ```
 
         > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
@@ -153,14 +236,16 @@ class R2Bucket(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/r2Bucket:R2Bucket default <account id>/<bucket name>
+        $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
-        :param pulumi.Input[str] name: The name of the R2 bucket.
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[str] location: Location of the bucket
+        :param pulumi.Input[str] name: Name of the bucket
+        :param pulumi.Input[str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
         """
         ...
     @overload
@@ -175,10 +260,11 @@ class R2Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.R2Bucket("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-bucket",
-            location="enam")
+        example_r2_bucket = cloudflare.R2Bucket("example_r2_bucket",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="example-bucket",
+            location="apac",
+            storage_class="Standard")
         ```
 
         > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
@@ -186,7 +272,7 @@ class R2Bucket(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/r2Bucket:R2Bucket default <account id>/<bucket name>
+        $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -205,8 +291,10 @@ class R2Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 jurisdiction: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -219,10 +307,13 @@ class R2Bucket(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["location"] = location
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["storage_class"] = storage_class
+            __props__.__dict__["creation_date"] = None
         super(R2Bucket, __self__).__init__(
             'cloudflare:index/r2Bucket:R2Bucket',
             resource_name,
@@ -234,8 +325,11 @@ class R2Bucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            creation_date: Optional[pulumi.Input[str]] = None,
+            jurisdiction: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'R2Bucket':
+            name: Optional[pulumi.Input[str]] = None,
+            storage_class: Optional[pulumi.Input[str]] = None) -> 'R2Bucket':
         """
         Get an existing R2Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -243,32 +337,54 @@ class R2Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
-        :param pulumi.Input[str] name: The name of the R2 bucket.
+        :param pulumi.Input[str] account_id: Account ID
+        :param pulumi.Input[str] creation_date: Creation timestamp
+        :param pulumi.Input[str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[str] location: Location of the bucket
+        :param pulumi.Input[str] name: Name of the bucket
+        :param pulumi.Input[str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _R2BucketState.__new__(_R2BucketState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["creation_date"] = creation_date
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["storage_class"] = storage_class
         return R2Bucket(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Account ID
         """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter
-    def location(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> pulumi.Output[str]:
         """
-        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        Creation timestamp
+        """
+        return pulumi.get(self, "creation_date")
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[str]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Location of the bucket
         """
         return pulumi.get(self, "location")
 
@@ -276,7 +392,15 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the R2 bucket.
+        Name of the bucket
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Output[str]:
+        """
+        Storage class for newly uploaded objects, unless specified otherwise.
+        """
+        return pulumi.get(self, "storage_class")
 

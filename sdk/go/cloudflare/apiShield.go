@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage API Shield configurations.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShield(ctx, "example", &cloudflare.ApiShieldArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewApiShield(ctx, "example_api_shield", &cloudflare.ApiShieldArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AuthIdCharacteristics: cloudflare.ApiShieldAuthIdCharacteristicArray{
 //					&cloudflare.ApiShieldAuthIdCharacteristicArgs{
-//						Name: pulumi.String("my-example-header"),
+//						Name: pulumi.String("authorization"),
 //						Type: pulumi.String("header"),
 //					},
 //				},
@@ -45,12 +43,21 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/apiShield:ApiShield example '<zone_id>'
+// ```
 type ApiShield struct {
 	pulumi.CustomResourceState
 
-	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayOutput `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	Errors                ApiShieldErrorArrayOutput                `pulumi:"errors"`
+	Messages              ApiShieldMessageArrayOutput              `pulumi:"messages"`
+	// Whether the API call was successful
+	Success pulumi.BoolOutput `pulumi:"success"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -61,6 +68,9 @@ func NewApiShield(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AuthIdCharacteristics == nil {
+		return nil, errors.New("invalid value for required argument 'AuthIdCharacteristics'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -87,16 +97,22 @@ func GetApiShield(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShield resources.
 type apiShieldState struct {
-	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	Errors                []ApiShieldError                `pulumi:"errors"`
+	Messages              []ApiShieldMessage              `pulumi:"messages"`
+	// Whether the API call was successful
+	Success *bool `pulumi:"success"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldState struct {
-	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	Errors                ApiShieldErrorArrayInput
+	Messages              ApiShieldMessageArrayInput
+	// Whether the API call was successful
+	Success pulumi.BoolPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -105,17 +121,15 @@ func (ApiShieldState) ElementType() reflect.Type {
 }
 
 type apiShieldArgs struct {
-	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShield resource.
 type ApiShieldArgs struct {
-	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -206,12 +220,24 @@ func (o ApiShieldOutput) ToApiShieldOutputWithContext(ctx context.Context) ApiSh
 	return o
 }
 
-// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 func (o ApiShieldOutput) AuthIdCharacteristics() ApiShieldAuthIdCharacteristicArrayOutput {
 	return o.ApplyT(func(v *ApiShield) ApiShieldAuthIdCharacteristicArrayOutput { return v.AuthIdCharacteristics }).(ApiShieldAuthIdCharacteristicArrayOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+func (o ApiShieldOutput) Errors() ApiShieldErrorArrayOutput {
+	return o.ApplyT(func(v *ApiShield) ApiShieldErrorArrayOutput { return v.Errors }).(ApiShieldErrorArrayOutput)
+}
+
+func (o ApiShieldOutput) Messages() ApiShieldMessageArrayOutput {
+	return o.ApplyT(func(v *ApiShield) ApiShieldMessageArrayOutput { return v.Messages }).(ApiShieldMessageArrayOutput)
+}
+
+// Whether the API call was successful
+func (o ApiShieldOutput) Success() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApiShield) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
+}
+
+// Identifier
 func (o ApiShieldOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShield) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

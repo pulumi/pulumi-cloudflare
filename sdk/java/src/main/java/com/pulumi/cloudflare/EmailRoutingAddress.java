@@ -14,8 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,8 +39,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var example = new EmailRoutingAddress("example", EmailRoutingAddressArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *         var exampleEmailRoutingAddress = new EmailRoutingAddress("exampleEmailRoutingAddress", EmailRoutingAddressArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .email("user}{@literal @}{@code example.com")
  *             .build());
  * 
@@ -55,21 +53,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &lt;account_id&gt;/&lt;email_routing_id&gt;
+ * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &#39;&lt;account_id&gt;/&lt;destination_address_identifier&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -104,28 +102,28 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * The date and time the destination address has been modified.
+     * The date and time the destination address was last modified.
      * 
      */
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
-     * @return The date and time the destination address has been modified.
+     * @return The date and time the destination address was last modified.
      * 
      */
     public Output<String> modified() {
         return this.modified;
     }
     /**
-     * Destination address identifier.
+     * Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
-     * @return Destination address identifier.
+     * @return Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
      */
     public Output<String> tag() {

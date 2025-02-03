@@ -8,59 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceManagedNetworks(ctx, "managed_networks", &cloudflare.ZeroTrustDeviceManagedNetworksArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("managed-network-1"),
-//				Type:      pulumi.String("tls"),
-//				Config: &cloudflare.ZeroTrustDeviceManagedNetworksConfigArgs{
-//					TlsSockaddr: pulumi.String("foobar:1234"),
-//					Sha256:      pulumi.String("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example <account_id>/<device_managed_networks_id>
+// $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
 // ```
 type ZeroTrustDeviceManagedNetworks struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
-	Config ZeroTrustDeviceManagedNetworksConfigOutput `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	AccountId pulumi.StringOutput                        `pulumi:"accountId"`
+	Config    ZeroTrustDeviceManagedNetworksConfigOutput `pulumi:"config"`
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId pulumi.StringOutput `pulumi:"networkId"`
+	// The type of device managed network.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,24 +74,24 @@ func GetZeroTrustDeviceManagedNetworks(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
 type zeroTrustDeviceManagedNetworksState struct {
-	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
-	Config *ZeroTrustDeviceManagedNetworksConfig `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	AccountId *string                               `pulumi:"accountId"`
+	Config    *ZeroTrustDeviceManagedNetworksConfig `pulumi:"config"`
+	// The name of the device managed network. This name must be unique.
 	Name *string `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId *string `pulumi:"networkId"`
+	// The type of device managed network.
 	Type *string `pulumi:"type"`
 }
 
 type ZeroTrustDeviceManagedNetworksState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The configuration containing information for the WARP client to detect the managed network.
-	Config ZeroTrustDeviceManagedNetworksConfigPtrInput
-	// The name of the Device Managed Network. Must be unique.
+	Config    ZeroTrustDeviceManagedNetworksConfigPtrInput
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringPtrInput
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId pulumi.StringPtrInput
+	// The type of device managed network.
 	Type pulumi.StringPtrInput
 }
 
@@ -132,25 +100,21 @@ func (ZeroTrustDeviceManagedNetworksState) ElementType() reflect.Type {
 }
 
 type zeroTrustDeviceManagedNetworksArgs struct {
-	// The account identifier to target for the resource.
-	AccountId string `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
-	Config ZeroTrustDeviceManagedNetworksConfig `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	AccountId string                               `pulumi:"accountId"`
+	Config    ZeroTrustDeviceManagedNetworksConfig `pulumi:"config"`
+	// The name of the device managed network. This name must be unique.
 	Name string `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// The type of device managed network.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
 type ZeroTrustDeviceManagedNetworksArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The configuration containing information for the WARP client to detect the managed network.
-	Config ZeroTrustDeviceManagedNetworksConfigInput
-	// The name of the Device Managed Network. Must be unique.
+	Config    ZeroTrustDeviceManagedNetworksConfigInput
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringInput
-	// The type of Device Managed Network. Available values: `tls`.
+	// The type of device managed network.
 	Type pulumi.StringInput
 }
 
@@ -241,22 +205,25 @@ func (o ZeroTrustDeviceManagedNetworksOutput) ToZeroTrustDeviceManagedNetworksOu
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustDeviceManagedNetworksOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The configuration containing information for the WARP client to detect the managed network.
 func (o ZeroTrustDeviceManagedNetworksOutput) Config() ZeroTrustDeviceManagedNetworksConfigOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) ZeroTrustDeviceManagedNetworksConfigOutput { return v.Config }).(ZeroTrustDeviceManagedNetworksConfigOutput)
 }
 
-// The name of the Device Managed Network. Must be unique.
+// The name of the device managed network. This name must be unique.
 func (o ZeroTrustDeviceManagedNetworksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of Device Managed Network. Available values: `tls`.
+// API UUID.
+func (o ZeroTrustDeviceManagedNetworksOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The type of device managed network.
 func (o ZeroTrustDeviceManagedNetworksOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

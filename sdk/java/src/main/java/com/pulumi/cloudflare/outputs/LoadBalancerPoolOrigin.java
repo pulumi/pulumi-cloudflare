@@ -5,11 +5,9 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.LoadBalancerPoolOriginHeader;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,64 +15,76 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolOrigin {
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * @return The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
      * 
      */
-    private String address;
+    private @Nullable String address;
     /**
-     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * @return This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+     * 
+     */
+    private @Nullable String disabledAt;
+    /**
+     * @return Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return HTTP request headers.
+     * @return The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
-    private @Nullable List<LoadBalancerPoolOriginHeader> headers;
+    private @Nullable LoadBalancerPoolOriginHeader header;
     /**
      * @return A human-identifiable name for the origin.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
      */
     private @Nullable String virtualNetworkId;
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+     * @return The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
      * 
      */
     private @Nullable Double weight;
 
     private LoadBalancerPoolOrigin() {}
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * @return The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
      * 
      */
-    public String address() {
-        return this.address;
+    public Optional<String> address() {
+        return Optional.ofNullable(this.address);
     }
     /**
-     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * @return This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+     * 
+     */
+    public Optional<String> disabledAt() {
+        return Optional.ofNullable(this.disabledAt);
+    }
+    /**
+     * @return Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return HTTP request headers.
+     * @return The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
-    public List<LoadBalancerPoolOriginHeader> headers() {
-        return this.headers == null ? List.of() : this.headers;
+    public Optional<LoadBalancerPoolOriginHeader> header() {
+        return Optional.ofNullable(this.header);
     }
     /**
      * @return A human-identifiable name for the origin.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
@@ -84,7 +94,7 @@ public final class LoadBalancerPoolOrigin {
         return Optional.ofNullable(this.virtualNetworkId);
     }
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+     * @return The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
      * 
      */
     public Optional<Double> weight() {
@@ -100,29 +110,35 @@ public final class LoadBalancerPoolOrigin {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String address;
+        private @Nullable String address;
+        private @Nullable String disabledAt;
         private @Nullable Boolean enabled;
-        private @Nullable List<LoadBalancerPoolOriginHeader> headers;
-        private String name;
+        private @Nullable LoadBalancerPoolOriginHeader header;
+        private @Nullable String name;
         private @Nullable String virtualNetworkId;
         private @Nullable Double weight;
         public Builder() {}
         public Builder(LoadBalancerPoolOrigin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.disabledAt = defaults.disabledAt;
     	      this.enabled = defaults.enabled;
-    	      this.headers = defaults.headers;
+    	      this.header = defaults.header;
     	      this.name = defaults.name;
     	      this.virtualNetworkId = defaults.virtualNetworkId;
     	      this.weight = defaults.weight;
         }
 
         @CustomType.Setter
-        public Builder address(String address) {
-            if (address == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerPoolOrigin", "address");
-            }
+        public Builder address(@Nullable String address) {
+
             this.address = address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disabledAt(@Nullable String disabledAt) {
+
+            this.disabledAt = disabledAt;
             return this;
         }
         @CustomType.Setter
@@ -132,19 +148,14 @@ public final class LoadBalancerPoolOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder headers(@Nullable List<LoadBalancerPoolOriginHeader> headers) {
+        public Builder header(@Nullable LoadBalancerPoolOriginHeader header) {
 
-            this.headers = headers;
+            this.header = header;
             return this;
         }
-        public Builder headers(LoadBalancerPoolOriginHeader... headers) {
-            return headers(List.of(headers));
-        }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerPoolOrigin", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
@@ -163,8 +174,9 @@ public final class LoadBalancerPoolOrigin {
         public LoadBalancerPoolOrigin build() {
             final var _resultValue = new LoadBalancerPoolOrigin();
             _resultValue.address = address;
+            _resultValue.disabledAt = disabledAt;
             _resultValue.enabled = enabled;
-            _resultValue.headers = headers;
+            _resultValue.header = header;
             _resultValue.name = name;
             _resultValue.virtualNetworkId = virtualNetworkId;
             _resultValue.weight = weight;

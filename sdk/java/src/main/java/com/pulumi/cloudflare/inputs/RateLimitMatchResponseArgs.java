@@ -6,10 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.String;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,56 +16,26 @@ public final class RateLimitMatchResponseArgs extends com.pulumi.resources.Resou
     public static final RateLimitMatchResponseArgs Empty = new RateLimitMatchResponseArgs();
 
     /**
-     * List of HTTP headers maps to match the origin response on.
-     * 
-     */
-    @Import(name="headers")
-    private @Nullable Output<List<Map<String,String>>> headers;
-
-    /**
-     * @return List of HTTP headers maps to match the origin response on.
-     * 
-     */
-    public Optional<Output<List<Map<String,String>>>> headers() {
-        return Optional.ofNullable(this.headers);
-    }
-
-    /**
-     * Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+     * When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+     * Notes: This field is deprecated. Instead, use response headers and set &#34;origin*traffic&#34; to &#34;false&#34; to avoid legacy behaviour interacting with the &#34;response*headers&#34; property.
      * 
      */
     @Import(name="originTraffic")
     private @Nullable Output<Boolean> originTraffic;
 
     /**
-     * @return Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+     * @return When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+     * Notes: This field is deprecated. Instead, use response headers and set &#34;origin*traffic&#34; to &#34;false&#34; to avoid legacy behaviour interacting with the &#34;response*headers&#34; property.
      * 
      */
     public Optional<Output<Boolean>> originTraffic() {
         return Optional.ofNullable(this.originTraffic);
     }
 
-    /**
-     * HTTP Status codes, can be one, many or indicate all by not providing this value.
-     * 
-     */
-    @Import(name="statuses")
-    private @Nullable Output<List<Integer>> statuses;
-
-    /**
-     * @return HTTP Status codes, can be one, many or indicate all by not providing this value.
-     * 
-     */
-    public Optional<Output<List<Integer>>> statuses() {
-        return Optional.ofNullable(this.statuses);
-    }
-
     private RateLimitMatchResponseArgs() {}
 
     private RateLimitMatchResponseArgs(RateLimitMatchResponseArgs $) {
-        this.headers = $.headers;
         this.originTraffic = $.originTraffic;
-        this.statuses = $.statuses;
     }
 
     public static Builder builder() {
@@ -91,38 +57,8 @@ public final class RateLimitMatchResponseArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers List of HTTP headers maps to match the origin response on.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(@Nullable Output<List<Map<String,String>>> headers) {
-            $.headers = headers;
-            return this;
-        }
-
-        /**
-         * @param headers List of HTTP headers maps to match the origin response on.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(List<Map<String,String>> headers) {
-            return headers(Output.of(headers));
-        }
-
-        /**
-         * @param headers List of HTTP headers maps to match the origin response on.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(Map<String,String>... headers) {
-            return headers(List.of(headers));
-        }
-
-        /**
-         * @param originTraffic Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+         * @param originTraffic When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+         * Notes: This field is deprecated. Instead, use response headers and set &#34;origin*traffic&#34; to &#34;false&#34; to avoid legacy behaviour interacting with the &#34;response*headers&#34; property.
          * 
          * @return builder
          * 
@@ -133,44 +69,14 @@ public final class RateLimitMatchResponseArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param originTraffic Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+         * @param originTraffic When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+         * Notes: This field is deprecated. Instead, use response headers and set &#34;origin*traffic&#34; to &#34;false&#34; to avoid legacy behaviour interacting with the &#34;response*headers&#34; property.
          * 
          * @return builder
          * 
          */
         public Builder originTraffic(Boolean originTraffic) {
             return originTraffic(Output.of(originTraffic));
-        }
-
-        /**
-         * @param statuses HTTP Status codes, can be one, many or indicate all by not providing this value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(@Nullable Output<List<Integer>> statuses) {
-            $.statuses = statuses;
-            return this;
-        }
-
-        /**
-         * @param statuses HTTP Status codes, can be one, many or indicate all by not providing this value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(List<Integer> statuses) {
-            return statuses(Output.of(statuses));
-        }
-
-        /**
-         * @param statuses HTTP Status codes, can be one, many or indicate all by not providing this value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(Integer... statuses) {
-            return statuses(List.of(statuses));
         }
 
         public RateLimitMatchResponseArgs build() {

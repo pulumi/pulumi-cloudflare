@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersFromList {
     /**
-     * @return Expression to use for the list lookup.
+     * @return Expression that evaluates to the list lookup key.
      * 
      */
     private @Nullable String key;
     /**
-     * @return Name of the list.
+     * @return The name of the list to match against.
      * 
      */
     private @Nullable String name;
 
     private RulesetRuleActionParametersFromList() {}
     /**
-     * @return Expression to use for the list lookup.
+     * @return Expression that evaluates to the list lookup key.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Name of the list.
+     * @return The name of the list to match against.
      * 
      */
     public Optional<String> name() {

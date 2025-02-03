@@ -17,73 +17,90 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Gateway Certificate resource. A Teams Certificate can
- * be specified for Gateway TLS interception and block pages.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayCertificate;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustGatewayCertificate = new ZeroTrustGatewayCertificate("exampleZeroTrustGatewayCertificate", ZeroTrustGatewayCertificateArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .validityPeriodDays(1826)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example &#39;&lt;account_id&gt;/&lt;certificate_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")
 public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     * 
-     */
-    @Export(name="activate", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> activate;
-
-    /**
-     * @return Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> activate() {
-        return Codegen.optional(this.activate);
-    }
-    /**
-     * The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * 
      */
     @Export(name="bindingStatus", refs={String.class}, tree="[0]")
     private Output<String> bindingStatus;
 
     /**
-     * @return The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * 
      */
     public Output<String> bindingStatus() {
         return this.bindingStatus;
+    }
+    /**
+     * The CA certificate
+     * 
+     */
+    @Export(name="certificate", refs={String.class}, tree="[0]")
+    private Output<String> certificate;
+
+    /**
+     * @return The CA certificate
+     * 
+     */
+    public Output<String> certificate() {
+        return this.certificate;
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
-    }
-    /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-     * 
-     */
-    @Export(name="custom", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> custom;
-
-    /**
-     * @return The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
-     * 
-     */
-    public Output<Optional<Boolean>> custom() {
-        return Codegen.optional(this.custom);
     }
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
@@ -92,38 +109,80 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.expiresOn;
     }
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+     * The SHA256 fingerprint of the certificate.
      * 
      */
-    @Export(name="gatewayManaged", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> gatewayManaged;
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    private Output<String> fingerprint;
 
     /**
-     * @return The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gateway_managed`.
+     * @return The SHA256 fingerprint of the certificate.
      * 
      */
-    public Output<Optional<Boolean>> gatewayManaged() {
-        return Codegen.optional(this.gatewayManaged);
+    public Output<String> fingerprint() {
+        return this.fingerprint;
     }
     /**
-     * Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * Use this certificate for Gateway TLS interception
      * 
      */
     @Export(name="inUse", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inUse;
 
     /**
-     * @return Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * @return Use this certificate for Gateway TLS interception
      * 
      */
     public Output<Boolean> inUse() {
         return this.inUse;
     }
-    @Export(name="qsPackId", refs={String.class}, tree="[0]")
-    private Output<String> qsPackId;
+    /**
+     * The organization that issued the certificate.
+     * 
+     */
+    @Export(name="issuerOrg", refs={String.class}, tree="[0]")
+    private Output<String> issuerOrg;
 
-    public Output<String> qsPackId() {
-        return this.qsPackId;
+    /**
+     * @return The organization that issued the certificate.
+     * 
+     */
+    public Output<String> issuerOrg() {
+        return this.issuerOrg;
+    }
+    /**
+     * The entire issuer field of the certificate.
+     * 
+     */
+    @Export(name="issuerRaw", refs={String.class}, tree="[0]")
+    private Output<String> issuerRaw;
+
+    /**
+     * @return The entire issuer field of the certificate.
+     * 
+     */
+    public Output<String> issuerRaw() {
+        return this.issuerRaw;
+    }
+    /**
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
     @Export(name="uploadedOn", refs={String.class}, tree="[0]")
     private Output<String> uploadedOn;
@@ -132,14 +191,14 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.uploadedOn;
     }
     /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      * 
      */
     @Export(name="validityPeriodDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> validityPeriodDays;
 
     /**
-     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gateway_managed`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      * 
      */
     public Output<Optional<Integer>> validityPeriodDays() {

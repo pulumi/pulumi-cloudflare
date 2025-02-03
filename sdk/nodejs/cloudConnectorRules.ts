@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+ * ## Example Usage
  */
 export class CloudConnectorRules extends pulumi.CustomResource {
     /**
@@ -38,11 +38,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
     }
 
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      */
-    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[] | undefined>;
+    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -63,6 +63,9 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CloudConnectorRulesArgs | undefined;
+            if ((!args || args.rules === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -79,11 +82,11 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  */
 export interface CloudConnectorRulesState {
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -93,11 +96,11 @@ export interface CloudConnectorRulesState {
  */
 export interface CloudConnectorRulesArgs {
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

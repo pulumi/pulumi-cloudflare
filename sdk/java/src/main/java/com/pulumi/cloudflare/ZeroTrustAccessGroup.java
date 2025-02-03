@@ -13,82 +13,189 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Group resource. Access Groups are used
- * in conjunction with Access Policies to restrict access to a
- * particular resource based on group membership.
+ * ## Example Usage
  * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessGroup;
+ * import com.pulumi.cloudflare.ZeroTrustAccessGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustAccessGroup = new ZeroTrustAccessGroup("exampleZeroTrustAccessGroup", ZeroTrustAccessGroupArgs.builder()
+ *             .includes(ZeroTrustAccessGroupIncludeArgs.builder()
+ *                 .group(ZeroTrustAccessGroupIncludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .name("Allow devs")
+ *             .zoneId("zone_id")
+ *             .excludes(ZeroTrustAccessGroupExcludeArgs.builder()
+ *                 .group(ZeroTrustAccessGroupExcludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .isDefault(true)
+ *             .requires(ZeroTrustAccessGroupRequireArgs.builder()
+ *                 .group(ZeroTrustAccessGroupRequireGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example &lt;account_id&gt;/&lt;group_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;group_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup")
 public class ZeroTrustAccessGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    @Export(name="excludes", refs={List.class,ZeroTrustAccessGroupExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessGroupExclude>> excludes;
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
 
-    public Output<Optional<List<ZeroTrustAccessGroupExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
+    /**
+     * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     * 
+     */
+    @Export(name="excludes", refs={List.class,ZeroTrustAccessGroupExclude.class}, tree="[0,1]")
+    private Output<List<ZeroTrustAccessGroupExclude>> excludes;
+
+    /**
+     * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     * 
+     */
+    public Output<List<ZeroTrustAccessGroupExclude>> excludes() {
+        return this.excludes;
+    }
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     * 
+     */
     @Export(name="includes", refs={List.class,ZeroTrustAccessGroupInclude.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessGroupInclude>> includes;
 
+    /**
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     * 
+     */
     public Output<List<ZeroTrustAccessGroupInclude>> includes() {
         return this.includes;
     }
+    /**
+     * Whether this is the default group
+     * 
+     */
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefault;
+
+    /**
+     * @return Whether this is the default group
+     * 
+     */
+    public Output<Optional<Boolean>> isDefault() {
+        return Codegen.optional(this.isDefault);
+    }
+    /**
+     * The name of the Access group.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the Access group.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     * 
+     */
     @Export(name="requires", refs={List.class,ZeroTrustAccessGroupRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessGroupRequire>> requires;
+    private Output<List<ZeroTrustAccessGroupRequire>> requires;
 
-    public Output<Optional<List<ZeroTrustAccessGroupRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    /**
+     * @return Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     * 
+     */
+    public Output<List<ZeroTrustAccessGroupRequire>> requires() {
+        return this.requires;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

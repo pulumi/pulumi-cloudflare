@@ -5,24 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.LogpullRetention("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     enabled: true,
+ * const exampleLogpullRetention = new cloudflare.LogpullRetention("example_logpull_retention", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     flag: true,
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
  * ```
  */
 export class LogpullRetention extends pulumi.CustomResource {
@@ -54,11 +46,11 @@ export class LogpullRetention extends pulumi.CustomResource {
     }
 
     /**
-     * Whether you wish to retain logs or not.
+     * The log retention flag for Logpull API.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly flag!: pulumi.Output<boolean | undefined>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -75,17 +67,14 @@ export class LogpullRetention extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpullRetentionState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["flag"] = state ? state.flag : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpullRetentionArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["flag"] = args ? args.flag : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -98,11 +87,11 @@ export class LogpullRetention extends pulumi.CustomResource {
  */
 export interface LogpullRetentionState {
     /**
-     * Whether you wish to retain logs or not.
+     * The log retention flag for Logpull API.
      */
-    enabled?: pulumi.Input<boolean>;
+    flag?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -112,11 +101,11 @@ export interface LogpullRetentionState {
  */
 export interface LogpullRetentionArgs {
     /**
-     * Whether you wish to retain logs or not.
+     * The log retention flag for Logpull API.
      */
-    enabled: pulumi.Input<boolean>;
+    flag?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

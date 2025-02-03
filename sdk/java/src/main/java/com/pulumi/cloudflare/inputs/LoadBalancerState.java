@@ -4,19 +4,17 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
-import com.pulumi.cloudflare.inputs.LoadBalancerCountryPoolArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
-import com.pulumi.cloudflare.inputs.LoadBalancerPopPoolArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
-import com.pulumi.cloudflare.inputs.LoadBalancerRegionPoolArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
-import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributeArgs;
+import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -27,74 +25,66 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerState Empty = new LoadBalancerState();
 
     /**
-     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      * 
      */
-    @Import(name="adaptiveRoutings")
-    private @Nullable Output<List<LoadBalancerAdaptiveRoutingArgs>> adaptiveRoutings;
+    @Import(name="adaptiveRouting")
+    private @Nullable Output<LoadBalancerAdaptiveRoutingArgs> adaptiveRouting;
 
     /**
-     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      * 
      */
-    public Optional<Output<List<LoadBalancerAdaptiveRoutingArgs>>> adaptiveRoutings() {
-        return Optional.ofNullable(this.adaptiveRoutings);
+    public Optional<Output<LoadBalancerAdaptiveRoutingArgs>> adaptiveRouting() {
+        return Optional.ofNullable(this.adaptiveRouting);
     }
 
     /**
-     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      * 
      */
     @Import(name="countryPools")
-    private @Nullable Output<List<LoadBalancerCountryPoolArgs>> countryPools;
+    private @Nullable Output<Map<String,List<String>>> countryPools;
 
     /**
-     * @return A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * @return A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      * 
      */
-    public Optional<Output<List<LoadBalancerCountryPoolArgs>>> countryPools() {
+    public Optional<Output<Map<String,List<String>>>> countryPools() {
         return Optional.ofNullable(this.countryPools);
     }
 
-    /**
-     * The RFC3339 timestamp of when the load balancer was created.
-     * 
-     */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer was created.
-     * 
-     */
     public Optional<Output<String>> createdOn() {
         return Optional.ofNullable(this.createdOn);
     }
 
     /**
-     * A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
      * 
      */
-    @Import(name="defaultPoolIds")
-    private @Nullable Output<List<String>> defaultPoolIds;
+    @Import(name="defaultPools")
+    private @Nullable Output<List<String>> defaultPools;
 
     /**
-     * @return A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * @return A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
      * 
      */
-    public Optional<Output<List<String>>> defaultPoolIds() {
-        return Optional.ofNullable(this.defaultPoolIds);
+    public Optional<Output<List<String>>> defaultPools() {
+        return Optional.ofNullable(this.defaultPools);
     }
 
     /**
-     * Free text description.
+     * Object description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Free text description.
+     * @return Object description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -102,14 +92,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable the load balancer. Defaults to `true`.
+     * Whether to enable (the default) this load balancer.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable the load balancer. Defaults to `true`.
+     * @return Whether to enable (the default) this load balancer.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -120,56 +110,48 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * The pool ID to use when all other pools are detected as unhealthy.
      * 
      */
-    @Import(name="fallbackPoolId")
-    private @Nullable Output<String> fallbackPoolId;
+    @Import(name="fallbackPool")
+    private @Nullable Output<String> fallbackPool;
 
     /**
      * @return The pool ID to use when all other pools are detected as unhealthy.
      * 
      */
-    public Optional<Output<String>> fallbackPoolId() {
-        return Optional.ofNullable(this.fallbackPoolId);
+    public Optional<Output<String>> fallbackPool() {
+        return Optional.ofNullable(this.fallbackPool);
     }
 
     /**
-     * Controls location-based steering for non-proxied requests.
+     * Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
      * 
      */
-    @Import(name="locationStrategies")
-    private @Nullable Output<List<LoadBalancerLocationStrategyArgs>> locationStrategies;
+    @Import(name="locationStrategy")
+    private @Nullable Output<LoadBalancerLocationStrategyArgs> locationStrategy;
 
     /**
-     * @return Controls location-based steering for non-proxied requests.
+     * @return Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
      * 
      */
-    public Optional<Output<List<LoadBalancerLocationStrategyArgs>>> locationStrategies() {
-        return Optional.ofNullable(this.locationStrategies);
+    public Optional<Output<LoadBalancerLocationStrategyArgs>> locationStrategy() {
+        return Optional.ofNullable(this.locationStrategy);
     }
 
-    /**
-     * The RFC3339 timestamp of when the load balancer was last modified.
-     * 
-     */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer was last modified.
-     * 
-     */
     public Optional<Output<String>> modifiedOn() {
         return Optional.ofNullable(this.modifiedOn);
     }
 
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the Load Balancer will take precedence and the DNS record will not be used.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * @return The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the Load Balancer will take precedence and the DNS record will not be used.
      * 
      */
     public Optional<Output<String>> name() {
@@ -177,29 +159,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * List of networks where Load Balancer or Pool is enabled.
+     * 
+     */
+    @Import(name="networks")
+    private @Nullable Output<List<String>> networks;
+
+    /**
+     * @return List of networks where Load Balancer or Pool is enabled.
+     * 
+     */
+    public Optional<Output<List<String>>> networks() {
+        return Optional.ofNullable(this.networks);
+    }
+
+    /**
+     * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      * 
      */
     @Import(name="popPools")
-    private @Nullable Output<List<LoadBalancerPopPoolArgs>> popPools;
+    private @Nullable Output<Map<String,List<String>>> popPools;
 
     /**
-     * @return A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * @return (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      * 
      */
-    public Optional<Output<List<LoadBalancerPopPoolArgs>>> popPools() {
+    public Optional<Output<Map<String,List<String>>>> popPools() {
         return Optional.ofNullable(this.popPools);
     }
 
     /**
-     * Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * Whether the hostname should be gray clouded (false) or orange clouded (true).
      * 
      */
     @Import(name="proxied")
     private @Nullable Output<Boolean> proxied;
 
     /**
-     * @return Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * @return Whether the hostname should be gray clouded (false) or orange clouded (true).
      * 
      */
     public Optional<Output<Boolean>> proxied() {
@@ -207,44 +204,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests. When `steering_policy=&#34;least_connections&#34;`, pool weights are used to scale each pool&#39;s open connections.
+     * Configures pool weights.
      * 
      */
-    @Import(name="randomSteerings")
-    private @Nullable Output<List<LoadBalancerRandomSteeringArgs>> randomSteerings;
+    @Import(name="randomSteering")
+    private @Nullable Output<LoadBalancerRandomSteeringArgs> randomSteering;
 
     /**
-     * @return Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests. When `steering_policy=&#34;least_connections&#34;`, pool weights are used to scale each pool&#39;s open connections.
+     * @return Configures pool weights.
      * 
      */
-    public Optional<Output<List<LoadBalancerRandomSteeringArgs>>> randomSteerings() {
-        return Optional.ofNullable(this.randomSteerings);
+    public Optional<Output<LoadBalancerRandomSteeringArgs>> randomSteering() {
+        return Optional.ofNullable(this.randomSteering);
     }
 
     /**
-     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      * 
      */
     @Import(name="regionPools")
-    private @Nullable Output<List<LoadBalancerRegionPoolArgs>> regionPools;
+    private @Nullable Output<Map<String,List<String>>> regionPools;
 
     /**
-     * @return A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * @return A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      * 
      */
-    public Optional<Output<List<LoadBalancerRegionPoolArgs>>> regionPools() {
+    public Optional<Output<Map<String,List<String>>>> regionPools() {
         return Optional.ofNullable(this.regionPools);
     }
 
     /**
-     * A list of rules for this load balancer to execute.
+     * BETA Field Not General Access: A list of rules for this load balancer to execute.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<LoadBalancerRuleArgs>> rules;
 
     /**
-     * @return A list of rules for this load balancer to execute.
+     * @return BETA Field Not General Access: A list of rules for this load balancer to execute.
      * 
      */
     public Optional<Output<List<LoadBalancerRuleArgs>>> rules() {
@@ -252,14 +249,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are:
      * 
      */
     @Import(name="sessionAffinity")
     private @Nullable Output<String> sessionAffinity;
 
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * @return Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are:
      * 
      */
     public Optional<Output<String>> sessionAffinity() {
@@ -267,44 +264,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure attributes for session affinity.
+     * Configures attributes for session affinity.
      * 
      */
     @Import(name="sessionAffinityAttributes")
-    private @Nullable Output<List<LoadBalancerSessionAffinityAttributeArgs>> sessionAffinityAttributes;
+    private @Nullable Output<LoadBalancerSessionAffinityAttributesArgs> sessionAffinityAttributes;
 
     /**
-     * @return Configure attributes for session affinity.
+     * @return Configures attributes for session affinity.
      * 
      */
-    public Optional<Output<List<LoadBalancerSessionAffinityAttributeArgs>>> sessionAffinityAttributes() {
+    public Optional<Output<LoadBalancerSessionAffinityAttributesArgs>> sessionAffinityAttributes() {
         return Optional.ofNullable(this.sessionAffinityAttributes);
     }
 
     /**
-     * Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
      * 
      */
     @Import(name="sessionAffinityTtl")
-    private @Nullable Output<Integer> sessionAffinityTtl;
+    private @Nullable Output<Double> sessionAffinityTtl;
 
     /**
-     * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * @return Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
      * 
      */
-    public Optional<Output<Integer>> sessionAffinityTtl() {
+    public Optional<Output<Double>> sessionAffinityTtl() {
         return Optional.ofNullable(this.sessionAffinityTtl);
     }
 
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+     * Steering Policy for this load balancer.
      * 
      */
     @Import(name="steeringPolicy")
     private @Nullable Output<String> steeringPolicy;
 
     /**
-     * @return The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+     * @return Steering Policy for this load balancer.
      * 
      */
     public Optional<Output<String>> steeringPolicy() {
@@ -312,31 +309,23 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      * 
      */
     @Import(name="ttl")
-    private @Nullable Output<Integer> ttl;
+    private @Nullable Output<Double> ttl;
 
     /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      * 
      */
-    public Optional<Output<Integer>> ttl() {
+    public Optional<Output<Double>> ttl() {
         return Optional.ofNullable(this.ttl);
     }
 
-    /**
-     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
-    /**
-     * @return The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -344,19 +333,20 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     private LoadBalancerState() {}
 
     private LoadBalancerState(LoadBalancerState $) {
-        this.adaptiveRoutings = $.adaptiveRoutings;
+        this.adaptiveRouting = $.adaptiveRouting;
         this.countryPools = $.countryPools;
         this.createdOn = $.createdOn;
-        this.defaultPoolIds = $.defaultPoolIds;
+        this.defaultPools = $.defaultPools;
         this.description = $.description;
         this.enabled = $.enabled;
-        this.fallbackPoolId = $.fallbackPoolId;
-        this.locationStrategies = $.locationStrategies;
+        this.fallbackPool = $.fallbackPool;
+        this.locationStrategy = $.locationStrategy;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
+        this.networks = $.networks;
         this.popPools = $.popPools;
         this.proxied = $.proxied;
-        this.randomSteerings = $.randomSteerings;
+        this.randomSteering = $.randomSteering;
         this.regionPools = $.regionPools;
         this.rules = $.rules;
         this.sessionAffinity = $.sessionAffinity;
@@ -386,121 +376,89 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param adaptiveRouting Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
          * 
          * @return builder
          * 
          */
-        public Builder adaptiveRoutings(@Nullable Output<List<LoadBalancerAdaptiveRoutingArgs>> adaptiveRoutings) {
-            $.adaptiveRoutings = adaptiveRoutings;
+        public Builder adaptiveRouting(@Nullable Output<LoadBalancerAdaptiveRoutingArgs> adaptiveRouting) {
+            $.adaptiveRouting = adaptiveRouting;
             return this;
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param adaptiveRouting Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
          * 
          * @return builder
          * 
          */
-        public Builder adaptiveRoutings(List<LoadBalancerAdaptiveRoutingArgs> adaptiveRoutings) {
-            return adaptiveRoutings(Output.of(adaptiveRoutings));
+        public Builder adaptiveRouting(LoadBalancerAdaptiveRoutingArgs adaptiveRouting) {
+            return adaptiveRouting(Output.of(adaptiveRouting));
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param countryPools A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
          * 
          * @return builder
          * 
          */
-        public Builder adaptiveRoutings(LoadBalancerAdaptiveRoutingArgs... adaptiveRoutings) {
-            return adaptiveRoutings(List.of(adaptiveRoutings));
-        }
-
-        /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder countryPools(@Nullable Output<List<LoadBalancerCountryPoolArgs>> countryPools) {
+        public Builder countryPools(@Nullable Output<Map<String,List<String>>> countryPools) {
             $.countryPools = countryPools;
             return this;
         }
 
         /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+         * @param countryPools A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
          * 
          * @return builder
          * 
          */
-        public Builder countryPools(List<LoadBalancerCountryPoolArgs> countryPools) {
+        public Builder countryPools(Map<String,List<String>> countryPools) {
             return countryPools(Output.of(countryPools));
         }
 
-        /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder countryPools(LoadBalancerCountryPoolArgs... countryPools) {
-            return countryPools(List.of(countryPools));
-        }
-
-        /**
-         * @param createdOn The RFC3339 timestamp of when the load balancer was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(@Nullable Output<String> createdOn) {
             $.createdOn = createdOn;
             return this;
         }
 
-        /**
-         * @param createdOn The RFC3339 timestamp of when the load balancer was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPools A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
          * 
          * @return builder
          * 
          */
-        public Builder defaultPoolIds(@Nullable Output<List<String>> defaultPoolIds) {
-            $.defaultPoolIds = defaultPoolIds;
+        public Builder defaultPools(@Nullable Output<List<String>> defaultPools) {
+            $.defaultPools = defaultPools;
             return this;
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPools A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
          * 
          * @return builder
          * 
          */
-        public Builder defaultPoolIds(List<String> defaultPoolIds) {
-            return defaultPoolIds(Output.of(defaultPoolIds));
+        public Builder defaultPools(List<String> defaultPools) {
+            return defaultPools(Output.of(defaultPools));
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPools A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
          * 
          * @return builder
          * 
          */
-        public Builder defaultPoolIds(String... defaultPoolIds) {
-            return defaultPoolIds(List.of(defaultPoolIds));
+        public Builder defaultPools(String... defaultPools) {
+            return defaultPools(List.of(defaultPools));
         }
 
         /**
-         * @param description Free text description.
+         * @param description Object description.
          * 
          * @return builder
          * 
@@ -511,7 +469,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Free text description.
+         * @param description Object description.
          * 
          * @return builder
          * 
@@ -521,7 +479,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the load balancer. Defaults to `true`.
+         * @param enabled Whether to enable (the default) this load balancer.
          * 
          * @return builder
          * 
@@ -532,7 +490,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the load balancer. Defaults to `true`.
+         * @param enabled Whether to enable (the default) this load balancer.
          * 
          * @return builder
          * 
@@ -542,80 +500,58 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fallbackPoolId The pool ID to use when all other pools are detected as unhealthy.
+         * @param fallbackPool The pool ID to use when all other pools are detected as unhealthy.
          * 
          * @return builder
          * 
          */
-        public Builder fallbackPoolId(@Nullable Output<String> fallbackPoolId) {
-            $.fallbackPoolId = fallbackPoolId;
+        public Builder fallbackPool(@Nullable Output<String> fallbackPool) {
+            $.fallbackPool = fallbackPool;
             return this;
         }
 
         /**
-         * @param fallbackPoolId The pool ID to use when all other pools are detected as unhealthy.
+         * @param fallbackPool The pool ID to use when all other pools are detected as unhealthy.
          * 
          * @return builder
          * 
          */
-        public Builder fallbackPoolId(String fallbackPoolId) {
-            return fallbackPoolId(Output.of(fallbackPoolId));
+        public Builder fallbackPool(String fallbackPool) {
+            return fallbackPool(Output.of(fallbackPool));
         }
 
         /**
-         * @param locationStrategies Controls location-based steering for non-proxied requests.
+         * @param locationStrategy Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
          * 
          * @return builder
          * 
          */
-        public Builder locationStrategies(@Nullable Output<List<LoadBalancerLocationStrategyArgs>> locationStrategies) {
-            $.locationStrategies = locationStrategies;
+        public Builder locationStrategy(@Nullable Output<LoadBalancerLocationStrategyArgs> locationStrategy) {
+            $.locationStrategy = locationStrategy;
             return this;
         }
 
         /**
-         * @param locationStrategies Controls location-based steering for non-proxied requests.
+         * @param locationStrategy Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
          * 
          * @return builder
          * 
          */
-        public Builder locationStrategies(List<LoadBalancerLocationStrategyArgs> locationStrategies) {
-            return locationStrategies(Output.of(locationStrategies));
+        public Builder locationStrategy(LoadBalancerLocationStrategyArgs locationStrategy) {
+            return locationStrategy(Output.of(locationStrategy));
         }
 
-        /**
-         * @param locationStrategies Controls location-based steering for non-proxied requests.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locationStrategies(LoadBalancerLocationStrategyArgs... locationStrategies) {
-            return locationStrategies(List.of(locationStrategies));
-        }
-
-        /**
-         * @param modifiedOn The RFC3339 timestamp of when the load balancer was last modified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
             $.modifiedOn = modifiedOn;
             return this;
         }
 
-        /**
-         * @param modifiedOn The RFC3339 timestamp of when the load balancer was last modified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(String modifiedOn) {
             return modifiedOn(Output.of(modifiedOn));
         }
 
         /**
-         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+         * @param name The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the Load Balancer will take precedence and the DNS record will not be used.
          * 
          * @return builder
          * 
@@ -626,7 +562,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+         * @param name The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the Load Balancer will take precedence and the DNS record will not be used.
          * 
          * @return builder
          * 
@@ -636,38 +572,59 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+         * @param networks List of networks where Load Balancer or Pool is enabled.
          * 
          * @return builder
          * 
          */
-        public Builder popPools(@Nullable Output<List<LoadBalancerPopPoolArgs>> popPools) {
+        public Builder networks(@Nullable Output<List<String>> networks) {
+            $.networks = networks;
+            return this;
+        }
+
+        /**
+         * @param networks List of networks where Load Balancer or Pool is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(List<String> networks) {
+            return networks(Output.of(networks));
+        }
+
+        /**
+         * @param networks List of networks where Load Balancer or Pool is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(String... networks) {
+            return networks(List.of(networks));
+        }
+
+        /**
+         * @param popPools (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder popPools(@Nullable Output<Map<String,List<String>>> popPools) {
             $.popPools = popPools;
             return this;
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+         * @param popPools (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
          * 
          * @return builder
          * 
          */
-        public Builder popPools(List<LoadBalancerPopPoolArgs> popPools) {
+        public Builder popPools(Map<String,List<String>> popPools) {
             return popPools(Output.of(popPools));
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder popPools(LoadBalancerPopPoolArgs... popPools) {
-            return popPools(List.of(popPools));
-        }
-
-        /**
-         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+         * @param proxied Whether the hostname should be gray clouded (false) or orange clouded (true).
          * 
          * @return builder
          * 
@@ -678,7 +635,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+         * @param proxied Whether the hostname should be gray clouded (false) or orange clouded (true).
          * 
          * @return builder
          * 
@@ -688,69 +645,49 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests. When `steering_policy=&#34;least_connections&#34;`, pool weights are used to scale each pool&#39;s open connections.
+         * @param randomSteering Configures pool weights.
          * 
          * @return builder
          * 
          */
-        public Builder randomSteerings(@Nullable Output<List<LoadBalancerRandomSteeringArgs>> randomSteerings) {
-            $.randomSteerings = randomSteerings;
+        public Builder randomSteering(@Nullable Output<LoadBalancerRandomSteeringArgs> randomSteering) {
+            $.randomSteering = randomSteering;
             return this;
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests. When `steering_policy=&#34;least_connections&#34;`, pool weights are used to scale each pool&#39;s open connections.
+         * @param randomSteering Configures pool weights.
          * 
          * @return builder
          * 
          */
-        public Builder randomSteerings(List<LoadBalancerRandomSteeringArgs> randomSteerings) {
-            return randomSteerings(Output.of(randomSteerings));
+        public Builder randomSteering(LoadBalancerRandomSteeringArgs randomSteering) {
+            return randomSteering(Output.of(randomSteering));
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests. When `steering_policy=&#34;least_connections&#34;`, pool weights are used to scale each pool&#39;s open connections.
+         * @param regionPools A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
          * 
          * @return builder
          * 
          */
-        public Builder randomSteerings(LoadBalancerRandomSteeringArgs... randomSteerings) {
-            return randomSteerings(List.of(randomSteerings));
-        }
-
-        /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder regionPools(@Nullable Output<List<LoadBalancerRegionPoolArgs>> regionPools) {
+        public Builder regionPools(@Nullable Output<Map<String,List<String>>> regionPools) {
             $.regionPools = regionPools;
             return this;
         }
 
         /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+         * @param regionPools A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
          * 
          * @return builder
          * 
          */
-        public Builder regionPools(List<LoadBalancerRegionPoolArgs> regionPools) {
+        public Builder regionPools(Map<String,List<String>> regionPools) {
             return regionPools(Output.of(regionPools));
         }
 
         /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder regionPools(LoadBalancerRegionPoolArgs... regionPools) {
-            return regionPools(List.of(regionPools));
-        }
-
-        /**
-         * @param rules A list of rules for this load balancer to execute.
+         * @param rules BETA Field Not General Access: A list of rules for this load balancer to execute.
          * 
          * @return builder
          * 
@@ -761,7 +698,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of rules for this load balancer to execute.
+         * @param rules BETA Field Not General Access: A list of rules for this load balancer to execute.
          * 
          * @return builder
          * 
@@ -771,7 +708,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of rules for this load balancer to execute.
+         * @param rules BETA Field Not General Access: A list of rules for this load balancer to execute.
          * 
          * @return builder
          * 
@@ -781,7 +718,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are:
          * 
          * @return builder
          * 
@@ -792,7 +729,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are:
          * 
          * @return builder
          * 
@@ -802,59 +739,49 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityAttributes Configure attributes for session affinity.
+         * @param sessionAffinityAttributes Configures attributes for session affinity.
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityAttributes(@Nullable Output<List<LoadBalancerSessionAffinityAttributeArgs>> sessionAffinityAttributes) {
+        public Builder sessionAffinityAttributes(@Nullable Output<LoadBalancerSessionAffinityAttributesArgs> sessionAffinityAttributes) {
             $.sessionAffinityAttributes = sessionAffinityAttributes;
             return this;
         }
 
         /**
-         * @param sessionAffinityAttributes Configure attributes for session affinity.
+         * @param sessionAffinityAttributes Configures attributes for session affinity.
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityAttributes(List<LoadBalancerSessionAffinityAttributeArgs> sessionAffinityAttributes) {
+        public Builder sessionAffinityAttributes(LoadBalancerSessionAffinityAttributesArgs sessionAffinityAttributes) {
             return sessionAffinityAttributes(Output.of(sessionAffinityAttributes));
         }
 
         /**
-         * @param sessionAffinityAttributes Configure attributes for session affinity.
+         * @param sessionAffinityTtl Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityAttributes(LoadBalancerSessionAffinityAttributeArgs... sessionAffinityAttributes) {
-            return sessionAffinityAttributes(List.of(sessionAffinityAttributes));
-        }
-
-        /**
-         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sessionAffinityTtl(@Nullable Output<Integer> sessionAffinityTtl) {
+        public Builder sessionAffinityTtl(@Nullable Output<Double> sessionAffinityTtl) {
             $.sessionAffinityTtl = sessionAffinityTtl;
             return this;
         }
 
         /**
-         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+         * @param sessionAffinityTtl Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityTtl(Integer sessionAffinityTtl) {
+        public Builder sessionAffinityTtl(Double sessionAffinityTtl) {
             return sessionAffinityTtl(Output.of(sessionAffinityTtl));
         }
 
         /**
-         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+         * @param steeringPolicy Steering Policy for this load balancer.
          * 
          * @return builder
          * 
@@ -865,7 +792,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+         * @param steeringPolicy Steering Policy for this load balancer.
          * 
          * @return builder
          * 
@@ -875,43 +802,31 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(@Nullable Output<Integer> ttl) {
+        public Builder ttl(@Nullable Output<Double> ttl) {
             $.ttl = ttl;
             return this;
         }
 
         /**
-         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(Integer ttl) {
+        public Builder ttl(Double ttl) {
             return ttl(Output.of(ttl));
         }
 
-        /**
-         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
-        /**
-         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

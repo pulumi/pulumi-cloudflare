@@ -10,132 +10,160 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Access Service Tokens are used for service-to-service communication
- * when an application is behind Cloudflare Access.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessServiceToken;
+ * import com.pulumi.cloudflare.ZeroTrustAccessServiceTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustAccessServiceToken = new ZeroTrustAccessServiceToken("exampleZeroTrustAccessServiceToken", ZeroTrustAccessServiceTokenArgs.builder()
+ *             .name("CI/CD token")
+ *             .zoneId("zone_id")
+ *             .duration("60m")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * If you are importing an Access Service Token you will not have the
- * 
- * client_secret available in the state for use. The client_secret is only
- * 
- * available once, at creation. In most cases, it is better to just create a new
- * 
- * resource should you need to reference it in other resources.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example &lt;account_id&gt;/&lt;service_token_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;service_token_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken")
 public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
-     * @return Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * @return The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      * 
      */
     public Output<String> clientId() {
         return this.clientId;
     }
     /**
-     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+     * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      * 
      */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
-     * @return A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+     * @return The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      * 
      */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
     @Export(name="duration", refs={String.class}, tree="[0]")
     private Output<String> duration;
 
     /**
-     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * @return The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
     public Output<String> duration() {
         return this.duration;
     }
-    /**
-     * Date when the token expires.
-     * 
-     */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
-    /**
-     * @return Date when the token expires.
-     * 
-     */
     public Output<String> expiresAt() {
         return this.expiresAt;
     }
-    @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> minDaysForRenewal;
+    @Export(name="lastSeenAt", refs={String.class}, tree="[0]")
+    private Output<String> lastSeenAt;
 
-    public Output<Optional<Integer>> minDaysForRenewal() {
-        return Codegen.optional(this.minDaysForRenewal);
+    public Output<String> lastSeenAt() {
+        return this.lastSeenAt;
     }
     /**
-     * Friendly name of the token&#39;s intent.
+     * The name of the service token.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the token&#39;s intent.
+     * @return The name of the service token.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {
@@ -181,9 +209,6 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "clientSecret"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

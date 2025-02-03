@@ -32,21 +32,6 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
     }
 
     /**
-     * Deprecated. Use `identity_update_behavior`.
-     * 
-     */
-    @Import(name="groupMemberDeprovision")
-    private @Nullable Output<Boolean> groupMemberDeprovision;
-
-    /**
-     * @return Deprecated. Use `identity_update_behavior`.
-     * 
-     */
-    public Optional<Output<Boolean>> groupMemberDeprovision() {
-        return Optional.ofNullable(this.groupMemberDeprovision);
-    }
-
-    /**
      * Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
      * 
      */
@@ -59,6 +44,21 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
      */
     public Optional<Output<String>> identityUpdateBehavior() {
         return Optional.ofNullable(this.identityUpdateBehavior);
+    }
+
+    /**
+     * The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+     * 
+     */
+    @Import(name="scimBaseUrl")
+    private @Nullable Output<String> scimBaseUrl;
+
+    /**
+     * @return The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+     * 
+     */
+    public Optional<Output<String>> scimBaseUrl() {
+        return Optional.ofNullable(this.scimBaseUrl);
     }
 
     /**
@@ -77,14 +77,14 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
     }
 
     /**
-     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+     * @return A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -110,8 +110,8 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
 
     private ZeroTrustAccessIdentityProviderScimConfigArgs(ZeroTrustAccessIdentityProviderScimConfigArgs $) {
         this.enabled = $.enabled;
-        this.groupMemberDeprovision = $.groupMemberDeprovision;
         this.identityUpdateBehavior = $.identityUpdateBehavior;
+        this.scimBaseUrl = $.scimBaseUrl;
         this.seatDeprovision = $.seatDeprovision;
         this.secret = $.secret;
         this.userDeprovision = $.userDeprovision;
@@ -157,27 +157,6 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
         }
 
         /**
-         * @param groupMemberDeprovision Deprecated. Use `identity_update_behavior`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupMemberDeprovision(@Nullable Output<Boolean> groupMemberDeprovision) {
-            $.groupMemberDeprovision = groupMemberDeprovision;
-            return this;
-        }
-
-        /**
-         * @param groupMemberDeprovision Deprecated. Use `identity_update_behavior`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groupMemberDeprovision(Boolean groupMemberDeprovision) {
-            return groupMemberDeprovision(Output.of(groupMemberDeprovision));
-        }
-
-        /**
          * @param identityUpdateBehavior Indicates how a SCIM event updates a user identity used for policy evaluation. Use &#34;automatic&#34; to automatically update a user&#39;s identity and augment it with fields from the SCIM user resource. Use &#34;reauth&#34; to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With &#34;reauth&#34; identities will not contain fields from the SCIM user resource. With &#34;no_action&#34; identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
          * 
          * @return builder
@@ -196,6 +175,27 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
          */
         public Builder identityUpdateBehavior(String identityUpdateBehavior) {
             return identityUpdateBehavior(Output.of(identityUpdateBehavior));
+        }
+
+        /**
+         * @param scimBaseUrl The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimBaseUrl(@Nullable Output<String> scimBaseUrl) {
+            $.scimBaseUrl = scimBaseUrl;
+            return this;
+        }
+
+        /**
+         * @param scimBaseUrl The base URL of Cloudflare&#39;s SCIM V2.0 API endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimBaseUrl(String scimBaseUrl) {
+            return scimBaseUrl(Output.of(scimBaseUrl));
         }
 
         /**
@@ -220,7 +220,7 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
         }
 
         /**
-         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ZeroTrustAccessIdentityProviderScimConfigArgs extends com.pul
         }
 
         /**
-         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity*providers/:idpID/refresh*scim_secret.
+         * @param secret A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
          * 
          * @return builder
          * 

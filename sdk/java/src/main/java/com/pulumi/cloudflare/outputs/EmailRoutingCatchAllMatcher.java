@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class EmailRoutingCatchAllMatcher {
     /**
-     * @return Type of matcher. Available values: `all`.
+     * @return Type of matcher. Default is &#39;all&#39;.
      * 
      */
     private String type;
 
     private EmailRoutingCatchAllMatcher() {}
     /**
-     * @return Type of matcher. Available values: `all`.
+     * @return Type of matcher. Default is &#39;all&#39;.
      * 
      */
     public String type() {

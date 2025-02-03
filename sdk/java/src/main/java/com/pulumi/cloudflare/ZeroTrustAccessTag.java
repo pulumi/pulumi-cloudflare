@@ -12,71 +12,107 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to customize the pages your end users will see
- * when trying to reach applications behind Cloudflare Access.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessTag;
+ * import com.pulumi.cloudflare.ZeroTrustAccessTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustAccessTag = new ZeroTrustAccessTag("exampleZeroTrustAccessTag", ZeroTrustAccessTagArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("engineers")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag example &#39;&lt;account_id&gt;/&lt;tag_name&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag")
 public class ZeroTrustAccessTag extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * Number of apps associated with the tag.
+     * The number of applications that have this tag
      * 
      */
     @Export(name="appCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> appCount;
 
     /**
-     * @return Number of apps associated with the tag.
+     * @return The number of applications that have this tag
      * 
      */
     public Output<Integer> appCount() {
         return this.appCount;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Tag.
+     * @return The name of the tag
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
 
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

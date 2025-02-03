@@ -5,8 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to customize the pages your end users will see
- * when trying to reach applications behind Cloudflare Access.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessTag = new cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "engineers",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag example '<account_id>/<tag_name>'
+ * ```
  */
 export class ZeroTrustAccessTag extends pulumi.CustomResource {
     /**
@@ -37,21 +52,19 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of apps associated with the tag.
+     * The number of applications that have this tag
      */
-    public readonly appCount!: pulumi.Output<number>;
+    public /*out*/ readonly appCount!: pulumi.Output<number>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-     */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustAccessTag resource with the given unique name, arguments, and options.
@@ -68,17 +81,22 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
             const state = argsOrState as ZeroTrustAccessTagState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["appCount"] = state ? state.appCount : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessTagArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["appCount"] = args ? args.appCount : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["appCount"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustAccessTag.__pulumiType, name, resourceInputs, opts);
@@ -90,21 +108,19 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessTagState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of apps associated with the tag.
+     * The number of applications that have this tag
      */
     appCount?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      */
     name?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-     */
-    zoneId?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -112,19 +128,11 @@ export interface ZeroTrustAccessTagState {
  */
 export interface ZeroTrustAccessTagArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * Number of apps associated with the tag.
-     */
-    appCount?: pulumi.Input<number>;
-    /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      */
     name: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-     */
-    zoneId?: pulumi.Input<string>;
 }

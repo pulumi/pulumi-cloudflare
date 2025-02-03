@@ -3,13 +3,11 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.CustomSslCustomSslOptionsArgs;
-import com.pulumi.cloudflare.inputs.CustomSslCustomSslPriorityArgs;
+import com.pulumi.cloudflare.inputs.CustomSslGeoRestrictionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,36 +18,104 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     public static final CustomSslArgs Empty = new CustomSslArgs();
 
     /**
-     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * 
      */
-    @Import(name="customSslOptions")
-    private @Nullable Output<CustomSslCustomSslOptionsArgs> customSslOptions;
+    @Import(name="bundleMethod")
+    private @Nullable Output<String> bundleMethod;
 
     /**
-     * @return The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * 
      */
-    public Optional<Output<CustomSslCustomSslOptionsArgs>> customSslOptions() {
-        return Optional.ofNullable(this.customSslOptions);
-    }
-
-    @Import(name="customSslPriorities")
-    private @Nullable Output<List<CustomSslCustomSslPriorityArgs>> customSslPriorities;
-
-    public Optional<Output<List<CustomSslCustomSslPriorityArgs>>> customSslPriorities() {
-        return Optional.ofNullable(this.customSslPriorities);
+    public Optional<Output<String>> bundleMethod() {
+        return Optional.ofNullable(this.bundleMethod);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * 
+     */
+    @Import(name="certificate", required=true)
+    private Output<String> certificate;
+
+    /**
+     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * 
+     */
+    public Output<String> certificate() {
+        return this.certificate;
+    }
+
+    /**
+     * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     * 
+     */
+    @Import(name="geoRestrictions")
+    private @Nullable Output<CustomSslGeoRestrictionsArgs> geoRestrictions;
+
+    /**
+     * @return Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     * 
+     */
+    public Optional<Output<CustomSslGeoRestrictionsArgs>> geoRestrictions() {
+        return Optional.ofNullable(this.geoRestrictions);
+    }
+
+    /**
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
+    /**
+     * The zone&#39;s private key.
+     * 
+     */
+    @Import(name="privateKey", required=true)
+    private Output<String> privateKey;
+
+    /**
+     * @return The zone&#39;s private key.
+     * 
+     */
+    public Output<String> privateKey() {
+        return this.privateKey;
+    }
+
+    /**
+     * The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -59,8 +125,12 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     private CustomSslArgs() {}
 
     private CustomSslArgs(CustomSslArgs $) {
-        this.customSslOptions = $.customSslOptions;
-        this.customSslPriorities = $.customSslPriorities;
+        this.bundleMethod = $.bundleMethod;
+        this.certificate = $.certificate;
+        this.geoRestrictions = $.geoRestrictions;
+        this.policy = $.policy;
+        this.privateKey = $.privateKey;
+        this.type = $.type;
         this.zoneId = $.zoneId;
     }
 
@@ -83,41 +153,133 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
          * 
          * @return builder
          * 
          */
-        public Builder customSslOptions(@Nullable Output<CustomSslCustomSslOptionsArgs> customSslOptions) {
-            $.customSslOptions = customSslOptions;
+        public Builder bundleMethod(@Nullable Output<String> bundleMethod) {
+            $.bundleMethod = bundleMethod;
             return this;
         }
 
         /**
-         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
          * 
          * @return builder
          * 
          */
-        public Builder customSslOptions(CustomSslCustomSslOptionsArgs customSslOptions) {
-            return customSslOptions(Output.of(customSslOptions));
-        }
-
-        public Builder customSslPriorities(@Nullable Output<List<CustomSslCustomSslPriorityArgs>> customSslPriorities) {
-            $.customSslPriorities = customSslPriorities;
-            return this;
-        }
-
-        public Builder customSslPriorities(List<CustomSslCustomSslPriorityArgs> customSslPriorities) {
-            return customSslPriorities(Output.of(customSslPriorities));
-        }
-
-        public Builder customSslPriorities(CustomSslCustomSslPriorityArgs... customSslPriorities) {
-            return customSslPriorities(List.of(customSslPriorities));
+        public Builder bundleMethod(String bundleMethod) {
+            return bundleMethod(Output.of(bundleMethod));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(Output<String> certificate) {
+            $.certificate = certificate;
+            return this;
+        }
+
+        /**
+         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificate(String certificate) {
+            return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param geoRestrictions Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoRestrictions(@Nullable Output<CustomSslGeoRestrictionsArgs> geoRestrictions) {
+            $.geoRestrictions = geoRestrictions;
+            return this;
+        }
+
+        /**
+         * @param geoRestrictions Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geoRestrictions(CustomSslGeoRestrictionsArgs geoRestrictions) {
+            return geoRestrictions(Output.of(geoRestrictions));
+        }
+
+        /**
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as &#39;country: IN&#39;, as well as &#39;region: EU&#39; which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
+        }
+
+        /**
+         * @param privateKey The zone&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(Output<String> privateKey) {
+            $.privateKey = privateKey;
+            return this;
+        }
+
+        /**
+         * @param privateKey The zone&#39;s private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(String privateKey) {
+            return privateKey(Output.of(privateKey));
+        }
+
+        /**
+         * @param type The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type &#39;legacy_custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -128,7 +290,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -138,6 +300,12 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CustomSslArgs build() {
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("CustomSslArgs", "certificate");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("CustomSslArgs", "privateKey");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("CustomSslArgs", "zoneId");
             }

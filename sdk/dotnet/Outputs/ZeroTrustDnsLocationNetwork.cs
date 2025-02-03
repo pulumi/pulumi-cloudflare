@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDnsLocationNetwork
     {
         /// <summary>
-        /// CIDR notation representation of the network IP.
+        /// The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
         /// </summary>
         public readonly string Network;
 

@@ -12,30 +12,33 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectSourceConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Toggle deployments on this repo. Defaults to `true`.
-        /// </summary>
         [Input("deploymentsEnabled")]
         public Input<bool>? DeploymentsEnabled { get; set; }
 
-        /// <summary>
-        /// Project owner username. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// Enable Pages to comment on Pull Requests. Defaults to `true`.
-        /// </summary>
+        [Input("pathExcludes")]
+        private InputList<string>? _pathExcludes;
+        public InputList<string> PathExcludes
+        {
+            get => _pathExcludes ?? (_pathExcludes = new InputList<string>());
+            set => _pathExcludes = value;
+        }
+
+        [Input("pathIncludes")]
+        private InputList<string>? _pathIncludes;
+        public InputList<string> PathIncludes
+        {
+            get => _pathIncludes ?? (_pathIncludes = new InputList<string>());
+            set => _pathIncludes = value;
+        }
+
         [Input("prCommentsEnabled")]
         public Input<bool>? PrCommentsEnabled { get; set; }
 
         [Input("previewBranchExcludes")]
         private InputList<string>? _previewBranchExcludes;
-
-        /// <summary>
-        /// Branches will be excluded from automatic deployment.
-        /// </summary>
         public InputList<string> PreviewBranchExcludes
         {
             get => _previewBranchExcludes ?? (_previewBranchExcludes = new InputList<string>());
@@ -44,37 +47,21 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("previewBranchIncludes")]
         private InputList<string>? _previewBranchIncludes;
-
-        /// <summary>
-        /// Branches will be included for automatic deployment.
-        /// </summary>
         public InputList<string> PreviewBranchIncludes
         {
             get => _previewBranchIncludes ?? (_previewBranchIncludes = new InputList<string>());
             set => _previewBranchIncludes = value;
         }
 
-        /// <summary>
-        /// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-        /// </summary>
         [Input("previewDeploymentSetting")]
         public Input<string>? PreviewDeploymentSetting { get; set; }
 
-        /// <summary>
-        /// Project production branch name.
-        /// </summary>
-        [Input("productionBranch", required: true)]
-        public Input<string> ProductionBranch { get; set; } = null!;
+        [Input("productionBranch")]
+        public Input<string>? ProductionBranch { get; set; }
 
-        /// <summary>
-        /// Enable production deployments. Defaults to `true`.
-        /// </summary>
-        [Input("productionDeploymentEnabled")]
-        public Input<bool>? ProductionDeploymentEnabled { get; set; }
+        [Input("productionDeploymentsEnabled")]
+        public Input<bool>? ProductionDeploymentsEnabled { get; set; }
 
-        /// <summary>
-        /// Project repository name. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 

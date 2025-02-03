@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
-    /// 
     /// !&gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
     ///    backup of your data before replacing a D1 Database.
     /// 
@@ -25,10 +23,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.D1Database("example", new()
+    ///     var exampleD1Database = new Cloudflare.D1Database("example_d1_database", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "terraform-database",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "my-database",
+    ///         PrimaryLocationHint = "wnam",
     ///     });
     /// 
     /// });
@@ -37,27 +36,45 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/d1Database:D1Database example &lt;account id&gt;/&lt;database id&gt;
+    /// $ pulumi import cloudflare:index/d1Database:D1Database example '&lt;account_id&gt;/&lt;database_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/d1Database:D1Database")]
     public partial class D1Database : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the D1 Database.
+        /// Specifies the timestamp the resource was created as an ISO8601 string.
         /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The D1 database's size, in bytes.
+        /// </summary>
+        [Output("fileSize")]
+        public Output<double> FileSize { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("numTables")]
+        public Output<double> NumTables { get; private set; } = null!;
+
         /// <summary>
-        /// The backend version of the database.
+        /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         /// </summary>
+        [Output("primaryLocationHint")]
+        public Output<string?> PrimaryLocationHint { get; private set; } = null!;
+
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
+
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -108,16 +125,19 @@ namespace Pulumi.Cloudflare
     public sealed class D1DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the D1 Database.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        /// </summary>
+        [Input("primaryLocationHint")]
+        public Input<string>? PrimaryLocationHint { get; set; }
 
         public D1DatabaseArgs()
         {
@@ -128,20 +148,38 @@ namespace Pulumi.Cloudflare
     public sealed class D1DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account identifier tag.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The name of the D1 Database.
+        /// Specifies the timestamp the resource was created as an ISO8601 string.
         /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The D1 database's size, in bytes.
+        /// </summary>
+        [Input("fileSize")]
+        public Input<double>? FileSize { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("numTables")]
+        public Input<double>? NumTables { get; set; }
+
         /// <summary>
-        /// The backend version of the database.
+        /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         /// </summary>
+        [Input("primaryLocationHint")]
+        public Input<string>? PrimaryLocationHint { get; set; }
+
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
+
         [Input("version")]
         public Input<string>? Version { get; set; }
 

@@ -14,28 +14,28 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtl
     {
         /// <summary>
-        /// Status code for which the edge TTL is applied.
+        /// Set the ttl for responses with this specific status code
         /// </summary>
         public readonly int? StatusCode;
         /// <summary>
-        /// Status code range for which the edge TTL is applied.
+        /// The range of status codes used to apply the selected mode.
         /// </summary>
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> StatusCodeRanges;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange? StatusCodeRange;
         /// <summary>
-        /// Status code edge TTL value.
+        /// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
         /// </summary>
-        public readonly int? Value;
+        public readonly int Value;
 
         [OutputConstructor]
         private RulesetRuleActionParametersEdgeTtlStatusCodeTtl(
             int? statusCode,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges,
+            Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange? statusCodeRange,
 
-            int? value)
+            int value)
         {
             StatusCode = statusCode;
-            StatusCodeRanges = statusCodeRanges;
+            StatusCodeRange = statusCodeRange;
             Value = value;
         }
     }

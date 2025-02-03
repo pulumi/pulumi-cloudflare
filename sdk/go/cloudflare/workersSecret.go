@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Worker secret resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersSecret(ctx, "my_secret", &cloudflare.WorkersSecretArgs{
-//				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:       pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
-//				ScriptName: pulumi.String("script_1"),
-//				SecretText: pulumi.String("my_secret_value"),
+//			_, err := cloudflare.NewWorkersSecret(ctx, "example_workers_secret", &cloudflare.WorkersSecretArgs{
+//				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DispatchNamespace: pulumi.String("my-dispatch-namespace"),
+//				ScriptName:        pulumi.String("this-is_my_script-01"),
+//				Name:              pulumi.String("MY_SECRET"),
+//				Text:              pulumi.String("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"),
+//				Type:              pulumi.String("secret_text"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,19 +46,23 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workersSecret:WorkersSecret example <account_id>/<script_name>/<secret_name>
+// $ pulumi import cloudflare:index/workersSecret:WorkersSecret example '<account_id>/<dispatch_namespace>/<script_name>/<secret_name>'
 // ```
 type WorkersSecret struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace pulumi.StringOutput `pulumi:"dispatchNamespace"`
+	// The name of this secret, this is what will be used to access it inside the Worker.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
-	// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-	SecretText pulumi.StringOutput `pulumi:"secretText"`
+	// The value of the secret.
+	Text pulumi.StringPtrOutput `pulumi:"text"`
+	// The type of secret to put.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewWorkersSecret registers a new resource with the given unique name, arguments, and options.
@@ -71,22 +75,15 @@ func NewWorkersSecret(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.DispatchNamespace == nil {
+		return nil, errors.New("invalid value for required argument 'DispatchNamespace'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
-	if args.SecretText == nil {
-		return nil, errors.New("invalid value for required argument 'SecretText'")
-	}
-	if args.SecretText != nil {
-		args.SecretText = pulumi.ToSecret(args.SecretText).(pulumi.StringInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"secretText",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersSecret
 	err := ctx.RegisterResource("cloudflare:index/workersSecret:WorkersSecret", name, args, &resource, opts...)
@@ -110,25 +107,33 @@ func GetWorkersSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersSecret resources.
 type workersSecretState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace *string `pulumi:"dispatchNamespace"`
+	// The name of this secret, this is what will be used to access it inside the Worker.
 	Name *string `pulumi:"name"`
-	// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `pulumi:"scriptName"`
-	// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-	SecretText *string `pulumi:"secretText"`
+	// The value of the secret.
+	Text *string `pulumi:"text"`
+	// The type of secret to put.
+	Type *string `pulumi:"type"`
 }
 
 type WorkersSecretState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace pulumi.StringPtrInput
+	// The name of this secret, this is what will be used to access it inside the Worker.
 	Name pulumi.StringPtrInput
-	// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringPtrInput
-	// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-	SecretText pulumi.StringPtrInput
+	// The value of the secret.
+	Text pulumi.StringPtrInput
+	// The type of secret to put.
+	Type pulumi.StringPtrInput
 }
 
 func (WorkersSecretState) ElementType() reflect.Type {
@@ -136,26 +141,34 @@ func (WorkersSecretState) ElementType() reflect.Type {
 }
 
 type workersSecretArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace string `pulumi:"dispatchNamespace"`
+	// The name of this secret, this is what will be used to access it inside the Worker.
 	Name string `pulumi:"name"`
-	// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
-	// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-	SecretText string `pulumi:"secretText"`
+	// The value of the secret.
+	Text *string `pulumi:"text"`
+	// The type of secret to put.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a WorkersSecret resource.
 type WorkersSecretArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace pulumi.StringInput
+	// The name of this secret, this is what will be used to access it inside the Worker.
 	Name pulumi.StringInput
-	// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
-	// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-	SecretText pulumi.StringInput
+	// The value of the secret.
+	Text pulumi.StringPtrInput
+	// The type of secret to put.
+	Type pulumi.StringPtrInput
 }
 
 func (WorkersSecretArgs) ElementType() reflect.Type {
@@ -245,24 +258,34 @@ func (o WorkersSecretOutput) ToWorkersSecretOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o WorkersSecretOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+// Name of the Workers for Platforms dispatch namespace.
+func (o WorkersSecretOutput) DispatchNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.DispatchNamespace }).(pulumi.StringOutput)
+}
+
+// The name of this secret, this is what will be used to access it inside the Worker.
 func (o WorkersSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+// Name of the script, used in URLs and route configuration.
 func (o WorkersSecretOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }
 
-// The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
-func (o WorkersSecretOutput) SecretText() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.SecretText }).(pulumi.StringOutput)
+// The value of the secret.
+func (o WorkersSecretOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersSecret) pulumi.StringPtrOutput { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// The type of secret to put.
+func (o WorkersSecretOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersSecret) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type WorkersSecretArrayOutput struct{ *pulumi.OutputState }

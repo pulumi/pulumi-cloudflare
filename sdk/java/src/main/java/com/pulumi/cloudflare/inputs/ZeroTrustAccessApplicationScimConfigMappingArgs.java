@@ -79,14 +79,14 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
     }
 
     /**
-     * How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
      * 
      */
     @Import(name="strictness")
     private @Nullable Output<String> strictness;
 
     /**
-     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * @return The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
      * 
      */
     public Optional<Output<String>> strictness() {
@@ -222,7 +222,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
         }
 
         /**
-         * @param strictness How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+         * @param strictness The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ZeroTrustAccessApplicationScimConfigMappingArgs extends com.p
         }
 
         /**
-         * @param strictness How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+         * @param strictness The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
          * 
          * @return builder
          * 

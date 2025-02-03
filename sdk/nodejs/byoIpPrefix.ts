@@ -5,27 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
- * which are used with or without Magic Transit.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ByoIpPrefix("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     prefixId: "d41d8cd98f00b204e9800998ecf8427e",
- *     description: "Example IP Prefix",
- *     advertisement: "on",
+ * const exampleByoIpPrefix = new cloudflare.ByoIpPrefix("example_byo_ip_prefix", {
+ *     accountId: "258def64c72dae45f3e4c8516e2111f2",
+ *     asn: 209242,
+ *     cidr: "192.0.2.0/24",
+ *     loaDocumentId: "d933b1530bc56c9953cf8ce166da8004",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+ * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
  * ```
  */
 export class ByoIpPrefix extends pulumi.CustomResource {
@@ -57,21 +54,47 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      */
-    public readonly advertisement!: pulumi.Output<string>;
+    public /*out*/ readonly advertised!: pulumi.Output<boolean>;
     /**
-     * Description of the BYO IP prefix.
+     * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
      */
-    public readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly advertisedModifiedAt!: pulumi.Output<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Approval state of the prefix (P = pending, V = active).
      */
-    public readonly prefixId!: pulumi.Output<string>;
+    public /*out*/ readonly approved!: pulumi.Output<string>;
+    /**
+     * Autonomous System Number (ASN) the prefix will be advertised under.
+     */
+    public readonly asn!: pulumi.Output<number>;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    public readonly cidr!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Description of the prefix.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Identifier for the uploaded LOA document.
+     */
+    public readonly loaDocumentId!: pulumi.Output<string>;
+    public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
+    /**
+     * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     */
+    public /*out*/ readonly onDemandEnabled!: pulumi.Output<boolean>;
+    /**
+     * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     */
+    public /*out*/ readonly onDemandLocked!: pulumi.Output<boolean>;
 
     /**
      * Create a ByoIpPrefix resource with the given unique name, arguments, and options.
@@ -87,21 +110,43 @@ export class ByoIpPrefix extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ByoIpPrefixState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["advertisement"] = state ? state.advertisement : undefined;
+            resourceInputs["advertised"] = state ? state.advertised : undefined;
+            resourceInputs["advertisedModifiedAt"] = state ? state.advertisedModifiedAt : undefined;
+            resourceInputs["approved"] = state ? state.approved : undefined;
+            resourceInputs["asn"] = state ? state.asn : undefined;
+            resourceInputs["cidr"] = state ? state.cidr : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["prefixId"] = state ? state.prefixId : undefined;
+            resourceInputs["loaDocumentId"] = state ? state.loaDocumentId : undefined;
+            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
+            resourceInputs["onDemandEnabled"] = state ? state.onDemandEnabled : undefined;
+            resourceInputs["onDemandLocked"] = state ? state.onDemandLocked : undefined;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.prefixId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'prefixId'");
+            if ((!args || args.asn === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'asn'");
+            }
+            if ((!args || args.cidr === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cidr'");
+            }
+            if ((!args || args.loaDocumentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'loaDocumentId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["advertisement"] = args ? args.advertisement : undefined;
+            resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["prefixId"] = args ? args.prefixId : undefined;
+            resourceInputs["loaDocumentId"] = args ? args.loaDocumentId : undefined;
+            resourceInputs["advertised"] = undefined /*out*/;
+            resourceInputs["advertisedModifiedAt"] = undefined /*out*/;
+            resourceInputs["approved"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["modifiedAt"] = undefined /*out*/;
+            resourceInputs["onDemandEnabled"] = undefined /*out*/;
+            resourceInputs["onDemandLocked"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ByoIpPrefix.__pulumiType, name, resourceInputs, opts);
@@ -113,21 +158,47 @@ export class ByoIpPrefix extends pulumi.CustomResource {
  */
 export interface ByoIpPrefixState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      */
-    advertisement?: pulumi.Input<string>;
+    advertised?: pulumi.Input<boolean>;
     /**
-     * Description of the BYO IP prefix.
+     * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+     */
+    advertisedModifiedAt?: pulumi.Input<string>;
+    /**
+     * Approval state of the prefix (P = pending, V = active).
+     */
+    approved?: pulumi.Input<string>;
+    /**
+     * Autonomous System Number (ASN) the prefix will be advertised under.
+     */
+    asn?: pulumi.Input<number>;
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    cidr?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the prefix.
      */
     description?: pulumi.Input<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Identifier for the uploaded LOA document.
      */
-    prefixId?: pulumi.Input<string>;
+    loaDocumentId?: pulumi.Input<string>;
+    modifiedAt?: pulumi.Input<string>;
+    /**
+     * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     */
+    onDemandEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     */
+    onDemandLocked?: pulumi.Input<boolean>;
 }
 
 /**
@@ -135,19 +206,23 @@ export interface ByoIpPrefixState {
  */
 export interface ByoIpPrefixArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Autonomous System Number (ASN) the prefix will be advertised under.
      */
-    advertisement?: pulumi.Input<string>;
+    asn: pulumi.Input<number>;
     /**
-     * Description of the BYO IP prefix.
+     * IP Prefix in Classless Inter-Domain Routing format.
+     */
+    cidr: pulumi.Input<string>;
+    /**
+     * Description of the prefix.
      */
     description?: pulumi.Input<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Identifier for the uploaded LOA document.
      */
-    prefixId: pulumi.Input<string>;
+    loaDocumentId: pulumi.Input<string>;
 }

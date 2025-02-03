@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Account resource. Account is the basic resource for
-// working with Cloudflare zones, teams and users.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,17 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccount(ctx, "example", &cloudflare.AccountArgs{
-//				Name:             pulumi.String("some-enterprise-account"),
-//				Type:             pulumi.String("enterprise"),
-//				EnforceTwofactor: pulumi.Bool(true),
+//			_, err := cloudflare.NewAccount(ctx, "example_account", &cloudflare.AccountArgs{
+//				Name: pulumi.String("name"),
+//				Type: pulumi.String("standard"),
+//				Unit: &cloudflare.AccountUnitArgs{
+//					Id: pulumi.String("f267e341f3dd4697bd3b9f71dd96247f"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -46,17 +45,21 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/account:Account example <account_id>
+// $ pulumi import cloudflare:index/account:Account example '<account_id>'
 // ```
 type Account struct {
 	pulumi.CustomResourceState
 
-	// Whether 2FA is enforced on the account. Defaults to `false`.
-	EnforceTwofactor pulumi.BoolPtrOutput `pulumi:"enforceTwofactor"`
-	// The name of the account that is displayed in the Cloudflare dashboard.
+	// Timestamp for the creation of the account
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Account name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// Account settings
+	Settings AccountSettingsOutput `pulumi:"settings"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	Unit AccountUnitOutput `pulumi:"unit"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -68,6 +71,9 @@ func NewAccount(ctx *pulumi.Context,
 
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
@@ -92,21 +98,29 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// Whether 2FA is enforced on the account. Defaults to `false`.
-	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
-	// The name of the account that is displayed in the Cloudflare dashboard.
+	// Timestamp for the creation of the account
+	CreatedOn *string `pulumi:"createdOn"`
+	// Account name
 	Name *string `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+	// Account settings
+	Settings *AccountSettings `pulumi:"settings"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	Type *string `pulumi:"type"`
+	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	Unit *AccountUnit `pulumi:"unit"`
 }
 
 type AccountState struct {
-	// Whether 2FA is enforced on the account. Defaults to `false`.
-	EnforceTwofactor pulumi.BoolPtrInput
-	// The name of the account that is displayed in the Cloudflare dashboard.
+	// Timestamp for the creation of the account
+	CreatedOn pulumi.StringPtrInput
+	// Account name
 	Name pulumi.StringPtrInput
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+	// Account settings
+	Settings AccountSettingsPtrInput
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	Type pulumi.StringPtrInput
+	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	Unit AccountUnitPtrInput
 }
 
 func (AccountState) ElementType() reflect.Type {
@@ -114,22 +128,26 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// Whether 2FA is enforced on the account. Defaults to `false`.
-	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
-	// The name of the account that is displayed in the Cloudflare dashboard.
+	// Account name
 	Name string `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
-	Type *string `pulumi:"type"`
+	// Account settings
+	Settings *AccountSettings `pulumi:"settings"`
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+	Type string `pulumi:"type"`
+	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	Unit *AccountUnit `pulumi:"unit"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// Whether 2FA is enforced on the account. Defaults to `false`.
-	EnforceTwofactor pulumi.BoolPtrInput
-	// The name of the account that is displayed in the Cloudflare dashboard.
+	// Account name
 	Name pulumi.StringInput
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
-	Type pulumi.StringPtrInput
+	// Account settings
+	Settings AccountSettingsPtrInput
+	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+	Type pulumi.StringInput
+	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	Unit AccountUnitPtrInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {
@@ -219,19 +237,29 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
-// Whether 2FA is enforced on the account. Defaults to `false`.
-func (o AccountOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.EnforceTwofactor }).(pulumi.BoolPtrOutput)
+// Timestamp for the creation of the account
+func (o AccountOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// The name of the account that is displayed in the Cloudflare dashboard.
+// Account name
 func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
-func (o AccountOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+// Account settings
+func (o AccountOutput) Settings() AccountSettingsOutput {
+	return o.ApplyT(func(v *Account) AccountSettingsOutput { return v.Settings }).(AccountSettingsOutput)
+}
+
+// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+func (o AccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+func (o AccountOutput) Unit() AccountUnitOutput {
+	return o.ApplyT(func(v *Account) AccountUnitOutput { return v.Unit }).(AccountUnitOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

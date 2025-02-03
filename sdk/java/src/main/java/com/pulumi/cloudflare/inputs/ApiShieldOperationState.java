@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ApiShieldOperationFeaturesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,44 +17,58 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
     public static final ApiShieldOperationState Empty = new ApiShieldOperationState();
 
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
-     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * @return The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      * 
      */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
+    @Import(name="features")
+    private @Nullable Output<ApiShieldOperationFeaturesArgs> features;
+
+    public Optional<Output<ApiShieldOperationFeaturesArgs>> features() {
+        return Optional.ofNullable(this.features);
+    }
+
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return RFC3986-compliant host
+     * @return RFC3986-compliant host.
      * 
      */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    @Import(name="lastUpdated")
+    private @Nullable Output<String> lastUpdated;
+
+    public Optional<Output<String>> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
+    }
+
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The HTTP method used to access the endpoint
+     * @return The HTTP method used to access the endpoint.
      * 
      */
     public Optional<Output<String>> method() {
@@ -61,14 +76,29 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * UUID
+     * 
+     */
+    @Import(name="operationId")
+    private @Nullable Output<String> operationId;
+
+    /**
+     * @return UUID
+     * 
+     */
+    public Optional<Output<String>> operationId() {
+        return Optional.ofNullable(this.operationId);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -79,8 +109,11 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
 
     private ApiShieldOperationState(ApiShieldOperationState $) {
         this.endpoint = $.endpoint;
+        this.features = $.features;
         this.host = $.host;
+        this.lastUpdated = $.lastUpdated;
         this.method = $.method;
+        this.operationId = $.operationId;
         this.zoneId = $.zoneId;
     }
 
@@ -103,7 +136,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
          * 
          * @return builder
          * 
@@ -114,7 +147,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+         * @param endpoint The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
          * 
          * @return builder
          * 
@@ -123,8 +156,17 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
             return endpoint(Output.of(endpoint));
         }
 
+        public Builder features(@Nullable Output<ApiShieldOperationFeaturesArgs> features) {
+            $.features = features;
+            return this;
+        }
+
+        public Builder features(ApiShieldOperationFeaturesArgs features) {
+            return features(Output.of(features));
+        }
+
         /**
-         * @param host RFC3986-compliant host
+         * @param host RFC3986-compliant host.
          * 
          * @return builder
          * 
@@ -135,7 +177,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param host RFC3986-compliant host
+         * @param host RFC3986-compliant host.
          * 
          * @return builder
          * 
@@ -144,8 +186,17 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
             return host(Output.of(host));
         }
 
+        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
+            $.lastUpdated = lastUpdated;
+            return this;
+        }
+
+        public Builder lastUpdated(String lastUpdated) {
+            return lastUpdated(Output.of(lastUpdated));
+        }
+
         /**
-         * @param method The HTTP method used to access the endpoint
+         * @param method The HTTP method used to access the endpoint.
          * 
          * @return builder
          * 
@@ -156,7 +207,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param method The HTTP method used to access the endpoint
+         * @param method The HTTP method used to access the endpoint.
          * 
          * @return builder
          * 
@@ -166,7 +217,28 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param operationId UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationId(@Nullable Output<String> operationId) {
+            $.operationId = operationId;
+            return this;
+        }
+
+        /**
+         * @param operationId UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationId(String operationId) {
+            return operationId(Output.of(operationId));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -177,7 +249,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

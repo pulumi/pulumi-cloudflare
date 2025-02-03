@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyState;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyApprovalGroup;
-import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequire;
@@ -23,234 +22,298 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Policy resource. Access Policies are
- * used in conjunction with Access Applications to restrict access to
- * a particular resource.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
- *    However, if you&#39;re using a scoped access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34; zone needs to use the `zone_id` argument.
- *    If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
- *    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
+ * &gt; If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
+ *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
  *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
- *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_access_policy&#39; resource.
+ *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_zero_trust_access_policy&#39; resource.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessPolicy;
+ * import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleZeroTrustAccessPolicy = new ZeroTrustAccessPolicy("exampleZeroTrustAccessPolicy", ZeroTrustAccessPolicyArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .decision("allow")
+ *             .includes(ZeroTrustAccessPolicyIncludeArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyIncludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .name("Allow devs")
+ *             .approvalGroups(            
+ *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                     .approvals_needed(1)
+ *                     .email_addresses(                    
+ *                         "test1}{@literal @}{@code cloudflare.com",
+ *                         "test2}{@literal @}{@code cloudflare.com")
+ *                     .email_list_uuid("email_list_uuid")
+ *                     .build(),
+ *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                     .approvals_needed(3)
+ *                     .email_addresses(                    
+ *                         "test}{@literal @}{@code cloudflare.com",
+ *                         "test2}{@literal @}{@code cloudflare.com")
+ *                     .email_list_uuid("597147a1-976b-4ef2-9af0-81d5d007fc34")
+ *                     .build())
+ *             .approvalRequired(true)
+ *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyExcludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .isolationRequired(false)
+ *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
+ *             .purposeJustificationRequired(true)
+ *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyRequireGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .sessionDuration("24h")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy")
 public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Number of access applications currently using this policy.
      * 
      */
-    @Export(name="applicationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> applicationId;
+    @Export(name="appCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> appCount;
 
     /**
-     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * @return Number of access applications currently using this policy.
      * 
      */
-    public Output<Optional<String>> applicationId() {
-        return Codegen.optional(this.applicationId);
+    public Output<Integer> appCount() {
+        return this.appCount;
     }
+    /**
+     * Administrators who can approve a temporary authentication request.
+     * 
+     */
     @Export(name="approvalGroups", refs={List.class,ZeroTrustAccessPolicyApprovalGroup.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyApprovalGroup>> approvalGroups;
+    private Output<List<ZeroTrustAccessPolicyApprovalGroup>> approvalGroups;
 
-    public Output<Optional<List<ZeroTrustAccessPolicyApprovalGroup>>> approvalGroups() {
-        return Codegen.optional(this.approvalGroups);
+    /**
+     * @return Administrators who can approve a temporary authentication request.
+     * 
+     */
+    public Output<List<ZeroTrustAccessPolicyApprovalGroup>> approvalGroups() {
+        return this.approvalGroups;
     }
+    /**
+     * Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     @Export(name="approvalRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> approvalRequired;
-
-    public Output<Optional<Boolean>> approvalRequired() {
-        return Codegen.optional(this.approvalRequired);
-    }
-    /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    @Export(name="connectionRules", refs={ZeroTrustAccessPolicyConnectionRules.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustAccessPolicyConnectionRules> connectionRules;
+    private Output<Boolean> approvalRequired;
 
     /**
-     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
+     * @return Requires the user to request access from an administrator at the start of each session.
      * 
      */
-    public Output<Optional<ZeroTrustAccessPolicyConnectionRules>> connectionRules() {
-        return Codegen.optional(this.connectionRules);
+    public Output<Boolean> approvalRequired() {
+        return this.approvalRequired;
+    }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * 
      */
     @Export(name="decision", refs={String.class}, tree="[0]")
     private Output<String> decision;
 
     /**
-     * @return Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * 
      */
     public Output<String> decision() {
         return this.decision;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustAccessPolicyExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyExclude>> excludes;
+    private Output<List<ZeroTrustAccessPolicyExclude>> excludes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<ZeroTrustAccessPolicyExclude>> excludes() {
+        return this.excludes;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     @Export(name="includes", refs={List.class,ZeroTrustAccessPolicyInclude.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessPolicyInclude>> includes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     public Output<List<ZeroTrustAccessPolicyInclude>> includes() {
         return this.includes;
     }
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     @Export(name="isolationRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isolationRequired;
+    private Output<Boolean> isolationRequired;
 
     /**
-     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * @return Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
-    public Output<Optional<Boolean>> isolationRequired() {
-        return Codegen.optional(this.isolationRequired);
+    public Output<Boolean> isolationRequired() {
+        return this.isolationRequired;
     }
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Policy.
+     * @return The name of the Access policy.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    @Export(name="precedence", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> precedence;
-
-    /**
-     * @return The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    public Output<Optional<Integer>> precedence() {
-        return Codegen.optional(this.precedence);
-    }
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * A custom message that will appear on the purpose justification screen.
      * 
      */
     @Export(name="purposeJustificationPrompt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * @return A custom message that will appear on the purpose justification screen.
      * 
      */
     public Output<Optional<String>> purposeJustificationPrompt() {
         return Codegen.optional(this.purposeJustificationPrompt);
     }
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      * 
      */
     @Export(name="purposeJustificationRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> purposeJustificationRequired;
+    private Output<Boolean> purposeJustificationRequired;
 
     /**
-     * @return Whether to prompt the user for a justification for accessing the resource.
+     * @return Require users to enter a justification when they log in to the application.
      * 
      */
-    public Output<Optional<Boolean>> purposeJustificationRequired() {
-        return Codegen.optional(this.purposeJustificationRequired);
+    public Output<Boolean> purposeJustificationRequired() {
+        return this.purposeJustificationRequired;
     }
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     @Export(name="requires", refs={List.class,ZeroTrustAccessPolicyRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyRequire>> requires;
+    private Output<List<ZeroTrustAccessPolicyRequire>> requires;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    public Output<List<ZeroTrustAccessPolicyRequire>> requires() {
+        return this.requires;
+    }
+    @Export(name="reusable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> reusable;
+
+    public Output<Boolean> reusable() {
+        return this.reusable;
     }
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sessionDuration;
+    private Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
-    public Output<Optional<String>> sessionDuration() {
-        return Codegen.optional(this.sessionDuration);
+    public Output<String> sessionDuration() {
+        return this.sessionDuration;
     }
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
 
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

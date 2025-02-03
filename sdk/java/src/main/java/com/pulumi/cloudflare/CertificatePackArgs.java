@@ -3,8 +3,6 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
-import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,14 +20,14 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     public static final CertificatePackArgs Empty = new CertificatePackArgs();
 
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
      * 
      */
     @Import(name="certificateAuthority", required=true)
     private Output<String> certificateAuthority;
 
     /**
-     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
      * 
      */
     public Output<String> certificateAuthority() {
@@ -37,14 +35,14 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     @Import(name="cloudflareBranding")
     private @Nullable Output<Boolean> cloudflareBranding;
 
     /**
-     * @return Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     public Optional<Output<Boolean>> cloudflareBranding() {
@@ -52,14 +50,14 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+     * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
     @Import(name="hosts", required=true)
     private Output<List<String>> hosts;
 
     /**
-     * @return List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+     * @return Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      * 
      */
     public Output<List<String>> hosts() {
@@ -67,58 +65,44 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+     * Type of certificate pack.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+     * @return Type of certificate pack.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
 
-    @Import(name="validationErrors")
-    private @Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors;
-
-    public Optional<Output<List<CertificatePackValidationErrorArgs>>> validationErrors() {
-        return Optional.ofNullable(this.validationErrors);
-    }
-
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+     * Validation Method selected for the order.
      * 
      */
     @Import(name="validationMethod", required=true)
     private Output<String> validationMethod;
 
     /**
-     * @return Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+     * @return Validation Method selected for the order.
      * 
      */
     public Output<String> validationMethod() {
         return this.validationMethod;
     }
 
-    @Import(name="validationRecords")
-    private @Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords;
-
-    public Optional<Output<List<CertificatePackValidationRecordArgs>>> validationRecords() {
-        return Optional.ofNullable(this.validationRecords);
-    }
-
     /**
-     * How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+     * Validity Days selected for the order.
      * 
      */
     @Import(name="validityDays", required=true)
     private Output<Integer> validityDays;
 
     /**
-     * @return How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+     * @return Validity Days selected for the order.
      * 
      */
     public Output<Integer> validityDays() {
@@ -126,29 +110,14 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="waitForActiveStatus")
-    private @Nullable Output<Boolean> waitForActiveStatus;
-
-    /**
-     * @return Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<Boolean>> waitForActiveStatus() {
-        return Optional.ofNullable(this.waitForActiveStatus);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -162,11 +131,8 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         this.cloudflareBranding = $.cloudflareBranding;
         this.hosts = $.hosts;
         this.type = $.type;
-        this.validationErrors = $.validationErrors;
         this.validationMethod = $.validationMethod;
-        this.validationRecords = $.validationRecords;
         this.validityDays = $.validityDays;
-        this.waitForActiveStatus = $.waitForActiveStatus;
         this.zoneId = $.zoneId;
     }
 
@@ -189,7 +155,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
          * 
          * @return builder
          * 
@@ -200,7 +166,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
          * 
          * @return builder
          * 
@@ -210,7 +176,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cloudflareBranding Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -221,7 +187,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cloudflareBranding Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -231,7 +197,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -242,7 +208,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -252,7 +218,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hosts List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+         * @param hosts Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
          * 
          * @return builder
          * 
@@ -262,7 +228,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Type of certificate pack.
          * 
          * @return builder
          * 
@@ -273,7 +239,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Type of certificate pack.
          * 
          * @return builder
          * 
@@ -282,21 +248,8 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
             return type(Output.of(type));
         }
 
-        public Builder validationErrors(@Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors) {
-            $.validationErrors = validationErrors;
-            return this;
-        }
-
-        public Builder validationErrors(List<CertificatePackValidationErrorArgs> validationErrors) {
-            return validationErrors(Output.of(validationErrors));
-        }
-
-        public Builder validationErrors(CertificatePackValidationErrorArgs... validationErrors) {
-            return validationErrors(List.of(validationErrors));
-        }
-
         /**
-         * @param validationMethod Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+         * @param validationMethod Validation Method selected for the order.
          * 
          * @return builder
          * 
@@ -307,7 +260,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param validationMethod Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+         * @param validationMethod Validation Method selected for the order.
          * 
          * @return builder
          * 
@@ -316,21 +269,8 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
             return validationMethod(Output.of(validationMethod));
         }
 
-        public Builder validationRecords(@Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords) {
-            $.validationRecords = validationRecords;
-            return this;
-        }
-
-        public Builder validationRecords(List<CertificatePackValidationRecordArgs> validationRecords) {
-            return validationRecords(Output.of(validationRecords));
-        }
-
-        public Builder validationRecords(CertificatePackValidationRecordArgs... validationRecords) {
-            return validationRecords(List.of(validationRecords));
-        }
-
         /**
-         * @param validityDays How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityDays Validity Days selected for the order.
          * 
          * @return builder
          * 
@@ -341,7 +281,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param validityDays How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+         * @param validityDays Validity Days selected for the order.
          * 
          * @return builder
          * 
@@ -351,28 +291,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitForActiveStatus Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForActiveStatus(@Nullable Output<Boolean> waitForActiveStatus) {
-            $.waitForActiveStatus = waitForActiveStatus;
-            return this;
-        }
-
-        /**
-         * @param waitForActiveStatus Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder waitForActiveStatus(Boolean waitForActiveStatus) {
-            return waitForActiveStatus(Output.of(waitForActiveStatus));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -383,7 +302,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

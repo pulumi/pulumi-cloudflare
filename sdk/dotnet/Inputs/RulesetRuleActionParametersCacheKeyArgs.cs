@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cache by device type.
+        /// Separate cached content based on the visitor’s device type
         /// </summary>
         [Input("cacheByDeviceType")]
         public Input<bool>? CacheByDeviceType { get; set; }
 
         /// <summary>
-        /// Cache deception armor.
+        /// Protect from web cache deception attacks while allowing static assets to be cached
         /// </summary>
         [Input("cacheDeceptionArmor")]
         public Input<bool>? CacheDeceptionArmor { get; set; }
 
         /// <summary>
-        /// Custom key parameters for the request.
+        /// Customize which components of the request are included or excluded from the cache key.
         /// </summary>
         [Input("customKey")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs>? CustomKey { get; set; }
 
         /// <summary>
-        /// Ignore query strings order.
+        /// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
         /// </summary>
         [Input("ignoreQueryStringsOrder")]
         public Input<bool>? IgnoreQueryStringsOrder { get; set; }

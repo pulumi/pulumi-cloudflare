@@ -10,40 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Cloudflare API tokens.
+    /// ## Example Usage
     /// 
-    /// Read more about permission groups and their applicable scopes in the
-    /// [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/apiToken:ApiToken example '&lt;token_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiToken:ApiToken")]
     public partial class ApiToken : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Conditions under which the token should be considered valid.
-        /// </summary>
         [Output("condition")]
-        public Output<Outputs.ApiTokenCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.ApiTokenCondition> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
         /// </summary>
         [Output("expiresOn")]
         public Output<string?> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the token was issued.
+        /// The time on which the token was created.
         /// </summary>
         [Output("issuedOn")]
         public Output<string> IssuedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the token was last modified.
+        /// Last time the token was used.
+        /// </summary>
+        [Output("lastUsedOn")]
+        public Output<string> LastUsedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Last time the token was modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the API Token.
+        /// Token name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -55,16 +61,19 @@ namespace Pulumi.Cloudflare
         public Output<string?> NotBefore { get; private set; } = null!;
 
         /// <summary>
-        /// Permissions policy. Multiple policy blocks can be defined.
+        /// List of access policies assigned to the token.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<Outputs.ApiTokenPolicy>> Policies { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the token.
+        /// </summary>
         [Output("status")]
-        public Output<string> Status { get; private set; } = null!;
+        public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the API Token.
+        /// The token value.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -92,10 +101,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "value",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -119,20 +124,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class ApiTokenArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Conditions under which the token should be considered valid.
-        /// </summary>
         [Input("condition")]
         public Input<Inputs.ApiTokenConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
         /// </summary>
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// Name of the API Token.
+        /// Token name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -147,13 +149,19 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ApiTokenPolicyArgs>? _policies;
 
         /// <summary>
-        /// Permissions policy. Multiple policy blocks can be defined.
+        /// List of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.ApiTokenPolicyArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.ApiTokenPolicyArgs>());
             set => _policies = value;
         }
+
+        /// <summary>
+        /// Status of the token.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public ApiTokenArgs()
         {
@@ -163,32 +171,35 @@ namespace Pulumi.Cloudflare
 
     public sealed class ApiTokenState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Conditions under which the token should be considered valid.
-        /// </summary>
         [Input("condition")]
         public Input<Inputs.ApiTokenConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
         /// </summary>
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// Timestamp of when the token was issued.
+        /// The time on which the token was created.
         /// </summary>
         [Input("issuedOn")]
         public Input<string>? IssuedOn { get; set; }
 
         /// <summary>
-        /// Timestamp of when the token was last modified.
+        /// Last time the token was used.
+        /// </summary>
+        [Input("lastUsedOn")]
+        public Input<string>? LastUsedOn { get; set; }
+
+        /// <summary>
+        /// Last time the token was modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Name of the API Token.
+        /// Token name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -203,7 +214,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ApiTokenPolicyGetArgs>? _policies;
 
         /// <summary>
-        /// Permissions policy. Multiple policy blocks can be defined.
+        /// List of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.ApiTokenPolicyGetArgs> Policies
         {
@@ -211,24 +222,17 @@ namespace Pulumi.Cloudflare
             set => _policies = value;
         }
 
+        /// <summary>
+        /// Status of the token.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        [Input("value")]
-        private Input<string>? _value;
-
         /// <summary>
-        /// The value of the API Token.
+        /// The token value.
         /// </summary>
-        public Input<string>? Value
-        {
-            get => _value;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ApiTokenState()
         {

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsIpv6Network {
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv6 address or IPv6 CIDR.
      * 
      */
     private String network;
 
     private ZeroTrustDnsLocationEndpointsIpv6Network() {}
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv6 address or IPv6 CIDR.
      * 
      */
     public String network() {

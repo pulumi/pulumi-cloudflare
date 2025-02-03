@@ -4,13 +4,11 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleFixedResponse;
-import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverride;
+import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrides;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,86 +16,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerRule {
     /**
-     * @return The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     private @Nullable String condition;
     /**
-     * @return A disabled rule will not be executed.
+     * @return Disable this specific rule. It will no longer be evaluated by this load balancer.
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
      * 
      */
     private @Nullable LoadBalancerRuleFixedResponse fixedResponse;
     /**
-     * @return Human readable name for this rule.
+     * @return Name of this rule. Only used for human readability.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
      * 
      */
-    private @Nullable List<LoadBalancerRuleOverride> overrides;
+    private @Nullable LoadBalancerRuleOverrides overrides;
     /**
-     * @return Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
      * 
      */
     private @Nullable Integer priority;
     /**
-     * @return Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+     * @return If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
      * 
      */
     private @Nullable Boolean terminates;
 
     private LoadBalancerRule() {}
     /**
-     * @return The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
     /**
-     * @return A disabled rule will not be executed.
+     * @return Disable this specific rule. It will no longer be evaluated by this load balancer.
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
      * 
      */
     public Optional<LoadBalancerRuleFixedResponse> fixedResponse() {
         return Optional.ofNullable(this.fixedResponse);
     }
     /**
-     * @return Human readable name for this rule.
+     * @return Name of this rule. Only used for human readability.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
      * 
      */
-    public List<LoadBalancerRuleOverride> overrides() {
-        return this.overrides == null ? List.of() : this.overrides;
+    public Optional<LoadBalancerRuleOverrides> overrides() {
+        return Optional.ofNullable(this.overrides);
     }
     /**
-     * @return Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
      * 
      */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }
     /**
-     * @return Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+     * @return If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
      * 
      */
     public Optional<Boolean> terminates() {
@@ -116,8 +114,8 @@ public final class LoadBalancerRule {
         private @Nullable String condition;
         private @Nullable Boolean disabled;
         private @Nullable LoadBalancerRuleFixedResponse fixedResponse;
-        private String name;
-        private @Nullable List<LoadBalancerRuleOverride> overrides;
+        private @Nullable String name;
+        private @Nullable LoadBalancerRuleOverrides overrides;
         private @Nullable Integer priority;
         private @Nullable Boolean terminates;
         public Builder() {}
@@ -151,21 +149,16 @@ public final class LoadBalancerRule {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("LoadBalancerRule", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder overrides(@Nullable List<LoadBalancerRuleOverride> overrides) {
+        public Builder overrides(@Nullable LoadBalancerRuleOverrides overrides) {
 
             this.overrides = overrides;
             return this;
-        }
-        public Builder overrides(LoadBalancerRuleOverride... overrides) {
-            return overrides(List.of(overrides));
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {

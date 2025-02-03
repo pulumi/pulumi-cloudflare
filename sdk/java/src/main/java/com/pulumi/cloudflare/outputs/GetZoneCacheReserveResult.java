@@ -12,28 +12,43 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneCacheReserveResult {
     /**
-     * @return The status of Cache Reserve support.
+     * @return Whether the setting is editable
      * 
      */
-    private Boolean enabled;
+    private Boolean editable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Last time this setting was modified.
+     * 
+     */
+    private String modifiedOn;
+    /**
+     * @return The value of the feature
+     * 
+     */
+    private String value;
+    /**
+     * @return Identifier
      * 
      */
     private String zoneId;
+    /**
+     * @return ID of the zone setting.
+     * 
+     */
+    private String zoneSettingId;
 
     private GetZoneCacheReserveResult() {}
     /**
-     * @return The status of Cache Reserve support.
+     * @return Whether the setting is editable
      * 
      */
-    public Boolean enabled() {
-        return this.enabled;
+    public Boolean editable() {
+        return this.editable;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -43,11 +58,32 @@ public final class GetZoneCacheReserveResult {
         return this.id;
     }
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Last time this setting was modified.
+     * 
+     */
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * @return The value of the feature
+     * 
+     */
+    public String value() {
+        return this.value;
+    }
+    /**
+     * @return Identifier
      * 
      */
     public String zoneId() {
         return this.zoneId;
+    }
+    /**
+     * @return ID of the zone setting.
+     * 
+     */
+    public String zoneSettingId() {
+        return this.zoneSettingId;
     }
 
     public static Builder builder() {
@@ -59,23 +95,29 @@ public final class GetZoneCacheReserveResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean enabled;
+        private Boolean editable;
         private String id;
+        private String modifiedOn;
+        private String value;
         private String zoneId;
+        private String zoneSettingId;
         public Builder() {}
         public Builder(GetZoneCacheReserveResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.enabled = defaults.enabled;
+    	      this.editable = defaults.editable;
     	      this.id = defaults.id;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.value = defaults.value;
     	      this.zoneId = defaults.zoneId;
+    	      this.zoneSettingId = defaults.zoneSettingId;
         }
 
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "enabled");
+        public Builder editable(Boolean editable) {
+            if (editable == null) {
+              throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "editable");
             }
-            this.enabled = enabled;
+            this.editable = editable;
             return this;
         }
         @CustomType.Setter
@@ -87,6 +129,22 @@ public final class GetZoneCacheReserveResult {
             return this;
         }
         @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "value");
+            }
+            this.value = value;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
               throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "zoneId");
@@ -94,11 +152,22 @@ public final class GetZoneCacheReserveResult {
             this.zoneId = zoneId;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneSettingId(String zoneSettingId) {
+            if (zoneSettingId == null) {
+              throw new MissingRequiredPropertyException("GetZoneCacheReserveResult", "zoneSettingId");
+            }
+            this.zoneSettingId = zoneSettingId;
+            return this;
+        }
         public GetZoneCacheReserveResult build() {
             final var _resultValue = new GetZoneCacheReserveResult();
-            _resultValue.enabled = enabled;
+            _resultValue.editable = editable;
             _resultValue.id = id;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.value = value;
             _resultValue.zoneId = zoneId;
+            _resultValue.zoneSettingId = zoneSettingId;
             return _resultValue;
         }
     }

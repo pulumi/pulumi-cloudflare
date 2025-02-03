@@ -13,21 +13,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Identity Provider resource. Identity
- * Providers are used as an authentication or authorisation source
- * within Access.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProvider;
  * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProviderArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderScimConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,52 +44,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // one time pin
- *         var pinLogin = new ZeroTrustAccessIdentityProvider("pinLogin", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("PIN login")
+ *         var exampleZeroTrustAccessIdentityProvider = new ZeroTrustAccessIdentityProvider("exampleZeroTrustAccessIdentityProvider", ZeroTrustAccessIdentityProviderArgs.builder()
+ *             .config(ZeroTrustAccessIdentityProviderConfigArgs.builder()
+ *                 .claims(                
+ *                     "email_verified",
+ *                     "preferred_username",
+ *                     "custom_claim_name")
+ *                 .client_id("<your client id>")
+ *                 .client_secret("<your client secret>")
+ *                 .conditional_access_enabled(true)
+ *                 .directory_id("<your azure directory uuid>")
+ *                 .email_claim_name("custom_claim_name")
+ *                 .prompt("login")
+ *                 .support_groups(true)
+ *                 .build())
+ *             .name("Widget Corps IDP")
  *             .type("onetimepin")
- *             .build());
- * 
- *         // oauth
- *         var githubOauth = new ZeroTrustAccessIdentityProvider("githubOauth", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("GitHub OAuth")
- *             .type("github")
- *             .configs(ZeroTrustAccessIdentityProviderConfigArgs.builder()
- *                 .clientId("example")
- *                 .clientSecret("secret_key")
- *                 .build())
- *             .build());
- * 
- *         // saml
- *         var jumpcloudSaml = new ZeroTrustAccessIdentityProvider("jumpcloudSaml", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("JumpCloud SAML")
- *             .type("saml")
- *             .configs(ZeroTrustAccessIdentityProviderConfigArgs.builder()
- *                 .issuerUrl("jumpcloud")
- *                 .ssoTargetUrl("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess")
- *                 .attributes(                
- *                     "email",
- *                     "username")
- *                 .signRequest(false)
- *                 .idpPublicCert("""
- * MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o                """)
- *                 .build())
- *             .build());
- * 
- *         // okta
- *         var okta = new ZeroTrustAccessIdentityProvider("okta", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Okta")
- *             .type("okta")
- *             .configs(ZeroTrustAccessIdentityProviderConfigArgs.builder()
- *                 .clientId("example")
- *                 .clientSecret("secret_key")
- *                 .apiToken("okta_api_token")
- *                 .oktaAccount("https://example.com")
+ *             .zoneId("zone_id")
+ *             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .identity_update_behavior("automatic")
+ *                 .seat_deprovision(true)
+ *                 .user_deprovision(true)
  *                 .build())
  *             .build());
  * 
@@ -112,91 +78,91 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example &lt;account_id&gt;/&lt;identity_provider_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider")
 public class ZeroTrustAccessIdentityProvider extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    @Export(name="configs", refs={List.class,ZeroTrustAccessIdentityProviderConfig.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessIdentityProviderConfig>> configs;
+    @Export(name="config", refs={ZeroTrustAccessIdentityProviderConfig.class}, tree="[0]")
+    private Output<ZeroTrustAccessIdentityProviderConfig> config;
 
     /**
-     * @return Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * @return The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    public Output<List<ZeroTrustAccessIdentityProviderConfig>> configs() {
-        return this.configs;
+    public Output<ZeroTrustAccessIdentityProviderConfig> config() {
+        return this.config;
     }
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Identity Provider configuration.
+     * @return The name of the identity provider, shown to users on the login page.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    @Export(name="scimConfigs", refs={List.class,ZeroTrustAccessIdentityProviderScimConfig.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessIdentityProviderScimConfig>> scimConfigs;
+    @Export(name="scimConfig", refs={ZeroTrustAccessIdentityProviderScimConfig.class}, tree="[0]")
+    private Output<ZeroTrustAccessIdentityProviderScimConfig> scimConfig;
 
     /**
-     * @return Configuration for SCIM settings for a given IDP.
+     * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    public Output<List<ZeroTrustAccessIdentityProviderScimConfig>> scimConfigs() {
-        return this.scimConfigs;
+    public Output<ZeroTrustAccessIdentityProviderScimConfig> scimConfig() {
+        return this.scimConfig;
     }
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {

@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersCacheKeyArgs Empty = new RulesetRuleActionParametersCacheKeyArgs();
 
     /**
-     * Cache by device type.
+     * Separate cached content based on the visitor’s device type
      * 
      */
     @Import(name="cacheByDeviceType")
     private @Nullable Output<Boolean> cacheByDeviceType;
 
     /**
-     * @return Cache by device type.
+     * @return Separate cached content based on the visitor’s device type
      * 
      */
     public Optional<Output<Boolean>> cacheByDeviceType() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Cache deception armor.
+     * Protect from web cache deception attacks while allowing static assets to be cached
      * 
      */
     @Import(name="cacheDeceptionArmor")
     private @Nullable Output<Boolean> cacheDeceptionArmor;
 
     /**
-     * @return Cache deception armor.
+     * @return Protect from web cache deception attacks while allowing static assets to be cached
      * 
      */
     public Optional<Output<Boolean>> cacheDeceptionArmor() {
@@ -47,14 +47,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Custom key parameters for the request.
+     * Customize which components of the request are included or excluded from the cache key.
      * 
      */
     @Import(name="customKey")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey;
 
     /**
-     * @return Custom key parameters for the request.
+     * @return Customize which components of the request are included or excluded from the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKey() {
@@ -62,14 +62,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Ignore query strings order.
+     * Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
      * 
      */
     @Import(name="ignoreQueryStringsOrder")
     private @Nullable Output<Boolean> ignoreQueryStringsOrder;
 
     /**
-     * @return Ignore query strings order.
+     * @return Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
      * 
      */
     public Optional<Output<Boolean>> ignoreQueryStringsOrder() {
@@ -104,7 +104,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheByDeviceType Cache by device type.
+         * @param cacheByDeviceType Separate cached content based on the visitor’s device type
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheByDeviceType Cache by device type.
+         * @param cacheByDeviceType Separate cached content based on the visitor’s device type
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheDeceptionArmor Cache deception armor.
+         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheDeceptionArmor Cache deception armor.
+         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param customKey Custom key parameters for the request.
+         * @param customKey Customize which components of the request are included or excluded from the cache key.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param customKey Custom key parameters for the request.
+         * @param customKey Customize which components of the request are included or excluded from the cache key.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param ignoreQueryStringsOrder Ignore query strings order.
+         * @param ignoreQueryStringsOrder Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param ignoreQueryStringsOrder Ignore query strings order.
+         * @param ignoreQueryStringsOrder Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
          * 
          * @return builder
          * 

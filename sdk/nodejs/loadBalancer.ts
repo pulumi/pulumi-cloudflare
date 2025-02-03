@@ -7,67 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Load Balancer resource. This sits in front of
- * a number of defined pools of origins and provides various options
- * for geographically-aware load balancing. Note that the load balancing
- * feature must be enabled in your Cloudflare account before you can use
- * this resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleLoadBalancerPool = new cloudflare.LoadBalancerPool("example", {
- *     name: "example-lb-pool",
- *     origins: [{
- *         name: "example-1",
- *         address: "192.0.2.1",
- *         enabled: false,
- *     }],
- * });
- * // Define a load balancer which always points to a pool we define below.
- * // In normal usage, would have different pools set for different pops
- * // (cloudflare points-of-presence) and/or for different regions.
- * // Within each pop or region we can define multiple pools in failover order.
- * const example = new cloudflare.LoadBalancer("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "example-load-balancer.example.com",
- *     fallbackPoolId: exampleLoadBalancerPool.id,
- *     defaultPoolIds: [exampleLoadBalancerPool.id],
- *     description: "example load balancer using geo-balancing",
- *     proxied: true,
- *     steeringPolicy: "geo",
- *     popPools: [{
- *         pop: "LAX",
- *         poolIds: [exampleLoadBalancerPool.id],
- *     }],
- *     countryPools: [{
- *         country: "US",
- *         poolIds: [exampleLoadBalancerPool.id],
- *     }],
- *     regionPools: [{
- *         region: "WNAM",
- *         poolIds: [exampleLoadBalancerPool.id],
- *     }],
- *     rules: [{
- *         name: "example rule",
- *         condition: "http.request.uri.path contains \"testing\"",
- *         fixedResponse: {
- *             messageBody: "hello",
- *             statusCode: 200,
- *             contentType: "html",
- *             location: "www.example.com",
- *         },
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example <zone_id>/<load_balancer_id>
+ * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {
@@ -99,88 +44,83 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    public readonly adaptiveRoutings!: pulumi.Output<outputs.LoadBalancerAdaptiveRouting[] | undefined>;
+    public readonly adaptiveRouting!: pulumi.Output<outputs.LoadBalancerAdaptiveRouting>;
     /**
-     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    public readonly countryPools!: pulumi.Output<outputs.LoadBalancerCountryPool[] | undefined>;
-    /**
-     * The RFC3339 timestamp of when the load balancer was created.
-     */
+    public readonly countryPools!: pulumi.Output<{[key: string]: string[]}>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * A list of pool IDs ordered by their failover priority. Used whenever `popPools`/`countryPools`/`regionPools` are not defined.
+     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
-    public readonly defaultPoolIds!: pulumi.Output<string[]>;
+    public readonly defaultPools!: pulumi.Output<string[]>;
     /**
-     * Free text description.
+     * Object description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Enable or disable the load balancer. Defaults to `true`.
+     * Whether to enable (the default) this load balancer.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    public readonly fallbackPoolId!: pulumi.Output<string>;
+    public readonly fallbackPool!: pulumi.Output<string>;
     /**
-     * Controls location-based steering for non-proxied requests.
+     * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    public readonly locationStrategies!: pulumi.Output<outputs.LoadBalancerLocationStrategy[] | undefined>;
-    /**
-     * The RFC3339 timestamp of when the load balancer was last modified.
-     */
+    public readonly locationStrategy!: pulumi.Output<outputs.LoadBalancerLocationStrategy>;
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+     * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * List of networks where Load Balancer or Pool is enabled.
      */
-    public readonly popPools!: pulumi.Output<outputs.LoadBalancerPopPool[] | undefined>;
+    public readonly networks!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
-    public readonly proxied!: pulumi.Output<boolean | undefined>;
+    public readonly popPools!: pulumi.Output<{[key: string]: string[]}>;
     /**
-     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
+     * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
-    public readonly randomSteerings!: pulumi.Output<outputs.LoadBalancerRandomSteering[] | undefined>;
+    public readonly proxied!: pulumi.Output<boolean>;
     /**
-     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * Configures pool weights.
      */
-    public readonly regionPools!: pulumi.Output<outputs.LoadBalancerRegionPool[] | undefined>;
+    public readonly randomSteering!: pulumi.Output<outputs.LoadBalancerRandomSteering>;
     /**
-     * A list of rules for this load balancer to execute.
+     * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    public readonly rules!: pulumi.Output<outputs.LoadBalancerRule[] | undefined>;
+    public readonly regionPools!: pulumi.Output<{[key: string]: string[]}>;
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
+     * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
-    public readonly sessionAffinity!: pulumi.Output<string | undefined>;
+    public readonly rules!: pulumi.Output<outputs.LoadBalancerRule[]>;
     /**
-     * Configure attributes for session affinity.
+     * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
      */
-    public readonly sessionAffinityAttributes!: pulumi.Output<outputs.LoadBalancerSessionAffinityAttribute[] | undefined>;
+    public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * Configures attributes for session affinity.
      */
-    public readonly sessionAffinityTtl!: pulumi.Output<number | undefined>;
+    public readonly sessionAffinityAttributes!: pulumi.Output<outputs.LoadBalancerSessionAffinityAttributes>;
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
+     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+     */
+    public readonly sessionAffinityTtl!: pulumi.Output<number>;
+    /**
+     * Steering Policy for this load balancer.
      */
     public readonly steeringPolicy!: pulumi.Output<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     public readonly ttl!: pulumi.Output<number>;
-    /**
-     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-     */
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -196,19 +136,20 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["adaptiveRoutings"] = state ? state.adaptiveRoutings : undefined;
+            resourceInputs["adaptiveRouting"] = state ? state.adaptiveRouting : undefined;
             resourceInputs["countryPools"] = state ? state.countryPools : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
+            resourceInputs["defaultPools"] = state ? state.defaultPools : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["fallbackPoolId"] = state ? state.fallbackPoolId : undefined;
-            resourceInputs["locationStrategies"] = state ? state.locationStrategies : undefined;
+            resourceInputs["fallbackPool"] = state ? state.fallbackPool : undefined;
+            resourceInputs["locationStrategy"] = state ? state.locationStrategy : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["popPools"] = state ? state.popPools : undefined;
             resourceInputs["proxied"] = state ? state.proxied : undefined;
-            resourceInputs["randomSteerings"] = state ? state.randomSteerings : undefined;
+            resourceInputs["randomSteering"] = state ? state.randomSteering : undefined;
             resourceInputs["regionPools"] = state ? state.regionPools : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
@@ -219,11 +160,11 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.defaultPoolIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'defaultPoolIds'");
+            if ((!args || args.defaultPools === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'defaultPools'");
             }
-            if ((!args || args.fallbackPoolId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'fallbackPoolId'");
+            if ((!args || args.fallbackPool === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'fallbackPool'");
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
@@ -231,17 +172,18 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["adaptiveRoutings"] = args ? args.adaptiveRoutings : undefined;
+            resourceInputs["adaptiveRouting"] = args ? args.adaptiveRouting : undefined;
             resourceInputs["countryPools"] = args ? args.countryPools : undefined;
-            resourceInputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
+            resourceInputs["defaultPools"] = args ? args.defaultPools : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["fallbackPoolId"] = args ? args.fallbackPoolId : undefined;
-            resourceInputs["locationStrategies"] = args ? args.locationStrategies : undefined;
+            resourceInputs["fallbackPool"] = args ? args.fallbackPool : undefined;
+            resourceInputs["locationStrategy"] = args ? args.locationStrategy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["popPools"] = args ? args.popPools : undefined;
             resourceInputs["proxied"] = args ? args.proxied : undefined;
-            resourceInputs["randomSteerings"] = args ? args.randomSteerings : undefined;
+            resourceInputs["randomSteering"] = args ? args.randomSteering : undefined;
             resourceInputs["regionPools"] = args ? args.regionPools : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
@@ -263,88 +205,83 @@ export class LoadBalancer extends pulumi.CustomResource {
  */
 export interface LoadBalancerState {
     /**
-     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    adaptiveRoutings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAdaptiveRouting>[]>;
+    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting>;
     /**
-     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerCountryPool>[]>;
-    /**
-     * The RFC3339 timestamp of when the load balancer was created.
-     */
+    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     createdOn?: pulumi.Input<string>;
     /**
-     * A list of pool IDs ordered by their failover priority. Used whenever `popPools`/`countryPools`/`regionPools` are not defined.
+     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
-    defaultPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Free text description.
+     * Object description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable or disable the load balancer. Defaults to `true`.
+     * Whether to enable (the default) this load balancer.
      */
     enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    fallbackPoolId?: pulumi.Input<string>;
+    fallbackPool?: pulumi.Input<string>;
     /**
-     * Controls location-based steering for non-proxied requests.
+     * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    locationStrategies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerLocationStrategy>[]>;
-    /**
-     * The RFC3339 timestamp of when the load balancer was last modified.
-     */
+    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy>;
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+     * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
     name?: pulumi.Input<string>;
     /**
-     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * List of networks where Load Balancer or Pool is enabled.
      */
-    popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+     */
+    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    /**
+     * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
     proxied?: pulumi.Input<boolean>;
     /**
-     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
+     * Configures pool weights.
      */
-    randomSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRandomSteering>[]>;
+    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering>;
     /**
-     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
+    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * A list of rules for this load balancer to execute.
+     * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
+     * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Configure attributes for session affinity.
+     * Configures attributes for session affinity.
      */
-    sessionAffinityAttributes?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSessionAffinityAttribute>[]>;
+    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes>;
     /**
-     * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
      */
     sessionAffinityTtl?: pulumi.Input<number>;
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
+     * Steering Policy for this load balancer.
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     ttl?: pulumi.Input<number>;
-    /**
-     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -353,79 +290,80 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
-     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    adaptiveRoutings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAdaptiveRouting>[]>;
+    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting>;
     /**
-     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerCountryPool>[]>;
+    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * A list of pool IDs ordered by their failover priority. Used whenever `popPools`/`countryPools`/`regionPools` are not defined.
+     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
-    defaultPoolIds: pulumi.Input<pulumi.Input<string>[]>;
+    defaultPools: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Free text description.
+     * Object description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable or disable the load balancer. Defaults to `true`.
+     * Whether to enable (the default) this load balancer.
      */
     enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    fallbackPoolId: pulumi.Input<string>;
+    fallbackPool: pulumi.Input<string>;
     /**
-     * Controls location-based steering for non-proxied requests.
+     * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    locationStrategies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerLocationStrategy>[]>;
+    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy>;
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+     * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
     name: pulumi.Input<string>;
     /**
-     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * List of networks where Load Balancer or Pool is enabled.
      */
-    popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+     */
+    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    /**
+     * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
     proxied?: pulumi.Input<boolean>;
     /**
-     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
+     * Configures pool weights.
      */
-    randomSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRandomSteering>[]>;
+    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering>;
     /**
-     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
+    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * A list of rules for this load balancer to execute.
+     * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
+     * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Configure attributes for session affinity.
+     * Configures attributes for session affinity.
      */
-    sessionAffinityAttributes?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSessionAffinityAttribute>[]>;
+    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes>;
     /**
-     * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
      */
     sessionAffinityTtl?: pulumi.Input<number>;
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
+     * Steering Policy for this load balancer.
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     ttl?: pulumi.Input<number>;
-    /**
-     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-     */
     zoneId: pulumi.Input<string>;
 }

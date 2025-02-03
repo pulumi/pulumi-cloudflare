@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage User Agent Blocking Rules.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,70 +20,43 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example1 = new Cloudflare.UserAgentBlockingRule("example_1", new()
+    ///     var exampleUserAgentBlockingRule = new Cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Mode = "js_challenge",
-    ///         Paused = false,
-    ///         Description = "My description 1",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
     ///         {
-    ///             Target = "ua",
-    ///             Value = "Chrome",
+    ///             Target = "ip",
+    ///             Value = "198.51.100.4",
     ///         },
-    ///     });
-    /// 
-    ///     var example2 = new Cloudflare.UserAgentBlockingRule("example_2", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Mode = "challenge",
-    ///         Paused = true,
-    ///         Description = "My description 22",
-    ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
-    ///         {
-    ///             Target = "ua",
-    ///             Value = "Mozilla",
-    ///         },
+    ///         Mode = "block",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")]
     public partial class UserAgentBlockingRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration object for the current rule.
+        /// The rule configuration.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.UserAgentBlockingRuleConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// An informative summary of the rule.
-        /// </summary>
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+        /// The action to apply to a matched request.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// When true, indicates that the rule is currently paused.
+        /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        [Output("paused")]
-        public Output<bool> Paused { get; private set; } = null!;
+        [Output("uaRuleId")]
+        public Output<string?> UaRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -137,31 +108,25 @@ namespace Pulumi.Cloudflare
     public sealed class UserAgentBlockingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration object for the current rule.
+        /// The rule configuration.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.UserAgentBlockingRuleConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// An informative summary of the rule.
-        /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
-
-        /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+        /// The action to apply to a matched request.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
-        /// When true, indicates that the rule is currently paused.
+        /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        [Input("paused", required: true)]
-        public Input<bool> Paused { get; set; } = null!;
+        [Input("uaRuleId")]
+        public Input<string>? UaRuleId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -175,31 +140,25 @@ namespace Pulumi.Cloudflare
     public sealed class UserAgentBlockingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration object for the current rule.
+        /// The rule configuration.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.UserAgentBlockingRuleConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// An informative summary of the rule.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+        /// The action to apply to a matched request.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// When true, indicates that the rule is currently paused.
+        /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        [Input("paused")]
-        public Input<bool>? Paused { get; set; }
+        [Input("uaRuleId")]
+        public Input<string>? UaRuleId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

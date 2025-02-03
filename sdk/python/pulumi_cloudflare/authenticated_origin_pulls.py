@@ -13,47 +13,41 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AuthenticatedOriginPullsArgs', 'AuthenticatedOriginPulls']
 
 @pulumi.input_type
 class AuthenticatedOriginPullsArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[bool],
+                 configs: pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]],
                  zone_id: pulumi.Input[str],
-                 authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AuthenticatedOriginPulls resource.
-        :param pulumi.Input[bool] enabled: Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] authenticated_origin_pulls_certificate: The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "zone_id", zone_id)
-        if authenticated_origin_pulls_certificate is not None:
-            pulumi.set(__self__, "authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Input[bool]:
-        """
-        Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        """
-        return pulumi.get(self, "enabled")
+    def configs(self) -> pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]]:
+        return pulumi.get(self, "configs")
 
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "enabled", value)
+    @configs.setter
+    def configs(self, value: pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]]):
+        pulumi.set(self, "configs", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -62,22 +56,10 @@ class AuthenticatedOriginPullsArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter(name="authenticatedOriginPullsCertificate")
-    def authenticated_origin_pulls_certificate(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        """
-        return pulumi.get(self, "authenticated_origin_pulls_certificate")
-
-    @authenticated_origin_pulls_certificate.setter
-    def authenticated_origin_pulls_certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authenticated_origin_pulls_certificate", value)
-
-    @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        The hostname on the origin for which the client certificate uploaded will be used.
         """
         return pulumi.get(self, "hostname")
 
@@ -89,43 +71,159 @@ class AuthenticatedOriginPullsArgs:
 @pulumi.input_type
 class _AuthenticatedOriginPullsState:
     def __init__(__self__, *,
-                 authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
+                 cert_id: Optional[pulumi.Input[str]] = None,
+                 cert_status: Optional[pulumi.Input[str]] = None,
+                 cert_updated_at: Optional[pulumi.Input[str]] = None,
+                 cert_uploaded_on: Optional[pulumi.Input[str]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 expires_on: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 signature: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
-        :param pulumi.Input[str] authenticated_origin_pulls_certificate: The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        :param pulumi.Input[bool] enabled: Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] cert_id: Identifier
+        :param pulumi.Input[str] cert_status: Status of the certificate or the association.
+        :param pulumi.Input[str] cert_updated_at: The time when the certificate was updated.
+        :param pulumi.Input[str] cert_uploaded_on: The time when the certificate was uploaded.
+        :param pulumi.Input[str] certificate: The hostname certificate.
+        :param pulumi.Input[str] created_at: The time when the certificate was created.
+        :param pulumi.Input[bool] enabled: Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
+        :param pulumi.Input[str] expires_on: The date when the certificate expires.
+        :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
+        :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
+        :param pulumi.Input[str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[str] status: Status of the certificate or the association.
+        :param pulumi.Input[str] updated_at: The time when the certificate was updated.
+        :param pulumi.Input[str] zone_id: Identifier
         """
-        if authenticated_origin_pulls_certificate is not None:
-            pulumi.set(__self__, "authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
+        if cert_status is not None:
+            pulumi.set(__self__, "cert_status", cert_status)
+        if cert_updated_at is not None:
+            pulumi.set(__self__, "cert_updated_at", cert_updated_at)
+        if cert_uploaded_on is not None:
+            pulumi.set(__self__, "cert_uploaded_on", cert_uploaded_on)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if expires_on is not None:
+            pulumi.set(__self__, "expires_on", expires_on)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="authenticatedOriginPullsCertificate")
-    def authenticated_origin_pulls_certificate(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        Identifier
         """
-        return pulumi.get(self, "authenticated_origin_pulls_certificate")
+        return pulumi.get(self, "cert_id")
 
-    @authenticated_origin_pulls_certificate.setter
-    def authenticated_origin_pulls_certificate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "authenticated_origin_pulls_certificate", value)
+    @cert_id.setter
+    def cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @property
+    @pulumi.getter(name="certStatus")
+    def cert_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the certificate or the association.
+        """
+        return pulumi.get(self, "cert_status")
+
+    @cert_status.setter
+    def cert_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_status", value)
+
+    @property
+    @pulumi.getter(name="certUpdatedAt")
+    def cert_updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the certificate was updated.
+        """
+        return pulumi.get(self, "cert_updated_at")
+
+    @cert_updated_at.setter
+    def cert_updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_updated_at", value)
+
+    @property
+    @pulumi.getter(name="certUploadedOn")
+    def cert_uploaded_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the certificate was uploaded.
+        """
+        return pulumi.get(self, "cert_uploaded_on")
+
+    @cert_uploaded_on.setter
+    def cert_uploaded_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_uploaded_on", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]]]:
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthenticatedOriginPullsConfigArgs']]]]):
+        pulumi.set(self, "configs", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the certificate was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+        Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
         """
         return pulumi.get(self, "enabled")
 
@@ -134,10 +232,22 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when the certificate expires.
+        """
+        return pulumi.get(self, "expires_on")
+
+    @expires_on.setter
+    def expires_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_on", value)
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        The hostname on the origin for which the client certificate uploaded will be used.
         """
         return pulumi.get(self, "hostname")
 
@@ -146,10 +256,70 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "hostname", value)
 
     @property
+    @pulumi.getter
+    def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate authority that issued the certificate.
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The serial number on the uploaded certificate.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial_number", value)
+
+    @property
+    @pulumi.getter
+    def signature(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of hash used for the certificate.
+        """
+        return pulumi.get(self, "signature")
+
+    @signature.setter
+    def signature(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the certificate or the association.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the certificate was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -163,75 +333,17 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
-        resource is required to use Per-Zone or Per-Hostname Authenticated
-        Origin Pulls.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Authenticated Origin Pulls
-        my_aop = cloudflare.AuthenticatedOriginPulls("my_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
-        # Per-Zone Authenticated Origin Pulls
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-zone")
-        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("my_per_zone_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
-            enabled=True)
-        # Per-Hostname Authenticated Origin Pulls
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-hostname")
-        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
-            hostname="aop.example.com",
-            enabled=True)
-        ```
-
-        ## Import
-
-        global
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
-        ```
-
-        per zone
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
-        ```
-
-        per hostname
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authenticated_origin_pulls_certificate: The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        :param pulumi.Input[bool] enabled: Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -240,62 +352,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                  args: AuthenticatedOriginPullsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
-        resource is required to use Per-Zone or Per-Hostname Authenticated
-        Origin Pulls.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Authenticated Origin Pulls
-        my_aop = cloudflare.AuthenticatedOriginPulls("my_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
-        # Per-Zone Authenticated Origin Pulls
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-zone")
-        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("my_per_zone_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
-            enabled=True)
-        # Per-Hostname Authenticated Origin Pulls
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-hostname")
-        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
-            hostname="aop.example.com",
-            enabled=True)
-        ```
-
-        ## Import
-
-        global
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
-        ```
-
-        per zone
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
-        ```
-
-        per hostname
-
-        ```sh
-        $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
-        ```
 
         :param str resource_name: The name of the resource.
         :param AuthenticatedOriginPullsArgs args: The arguments to use to populate this resource's properties.
@@ -312,8 +369,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -325,14 +381,26 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AuthenticatedOriginPullsArgs.__new__(AuthenticatedOriginPullsArgs)
 
-            __props__.__dict__["authenticated_origin_pulls_certificate"] = authenticated_origin_pulls_certificate
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
-            __props__.__dict__["enabled"] = enabled
+            if configs is None and not opts.urn:
+                raise TypeError("Missing required property 'configs'")
+            __props__.__dict__["configs"] = configs
             __props__.__dict__["hostname"] = hostname
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["cert_id"] = None
+            __props__.__dict__["cert_status"] = None
+            __props__.__dict__["cert_updated_at"] = None
+            __props__.__dict__["cert_uploaded_on"] = None
+            __props__.__dict__["certificate"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["enabled"] = None
+            __props__.__dict__["expires_on"] = None
+            __props__.__dict__["issuer"] = None
+            __props__.__dict__["serial_number"] = None
+            __props__.__dict__["signature"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["updated_at"] = None
         super(AuthenticatedOriginPulls, __self__).__init__(
             'cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls',
             resource_name,
@@ -343,9 +411,21 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
+            cert_id: Optional[pulumi.Input[str]] = None,
+            cert_status: Optional[pulumi.Input[str]] = None,
+            cert_updated_at: Optional[pulumi.Input[str]] = None,
+            cert_uploaded_on: Optional[pulumi.Input[str]] = None,
+            certificate: Optional[pulumi.Input[str]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            expires_on: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
+            issuer: Optional[pulumi.Input[str]] = None,
+            serial_number: Optional[pulumi.Input[str]] = None,
+            signature: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AuthenticatedOriginPulls':
         """
         Get an existing AuthenticatedOriginPulls resource's state with the given name, id, and optional extra
@@ -354,50 +434,166 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authenticated_origin_pulls_certificate: The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        :param pulumi.Input[bool] enabled: Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] cert_id: Identifier
+        :param pulumi.Input[str] cert_status: Status of the certificate or the association.
+        :param pulumi.Input[str] cert_updated_at: The time when the certificate was updated.
+        :param pulumi.Input[str] cert_uploaded_on: The time when the certificate was uploaded.
+        :param pulumi.Input[str] certificate: The hostname certificate.
+        :param pulumi.Input[str] created_at: The time when the certificate was created.
+        :param pulumi.Input[bool] enabled: Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
+        :param pulumi.Input[str] expires_on: The date when the certificate expires.
+        :param pulumi.Input[str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
+        :param pulumi.Input[str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[str] serial_number: The serial number on the uploaded certificate.
+        :param pulumi.Input[str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[str] status: Status of the certificate or the association.
+        :param pulumi.Input[str] updated_at: The time when the certificate was updated.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AuthenticatedOriginPullsState.__new__(_AuthenticatedOriginPullsState)
 
-        __props__.__dict__["authenticated_origin_pulls_certificate"] = authenticated_origin_pulls_certificate
+        __props__.__dict__["cert_id"] = cert_id
+        __props__.__dict__["cert_status"] = cert_status
+        __props__.__dict__["cert_updated_at"] = cert_updated_at
+        __props__.__dict__["cert_uploaded_on"] = cert_uploaded_on
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["configs"] = configs
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["issuer"] = issuer
+        __props__.__dict__["serial_number"] = serial_number
+        __props__.__dict__["signature"] = signature
+        __props__.__dict__["status"] = status
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return AuthenticatedOriginPulls(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="authenticatedOriginPullsCertificate")
-    def authenticated_origin_pulls_certificate(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Output[str]:
         """
-        The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        Identifier
         """
-        return pulumi.get(self, "authenticated_origin_pulls_certificate")
+        return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter(name="certStatus")
+    def cert_status(self) -> pulumi.Output[str]:
+        """
+        Status of the certificate or the association.
+        """
+        return pulumi.get(self, "cert_status")
+
+    @property
+    @pulumi.getter(name="certUpdatedAt")
+    def cert_updated_at(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate was updated.
+        """
+        return pulumi.get(self, "cert_updated_at")
+
+    @property
+    @pulumi.getter(name="certUploadedOn")
+    def cert_uploaded_on(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate was uploaded.
+        """
+        return pulumi.get(self, "cert_uploaded_on")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Output[str]:
+        """
+        The hostname certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter
+    def configs(self) -> pulumi.Output[Sequence['outputs.AuthenticatedOriginPullsConfig']]:
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate was created.
+        """
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+        Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> pulumi.Output[str]:
+        """
+        The date when the certificate expires.
+        """
+        return pulumi.get(self, "expires_on")
 
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        The hostname on the origin for which the client certificate uploaded will be used.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> pulumi.Output[str]:
+        """
+        The certificate authority that issued the certificate.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> pulumi.Output[str]:
+        """
+        The serial number on the uploaded certificate.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter
+    def signature(self) -> pulumi.Output[str]:
+        """
+        The type of hash used for the certificate.
+        """
+        return pulumi.get(self, "signature")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the certificate or the association.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate was updated.
+        """
+        return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

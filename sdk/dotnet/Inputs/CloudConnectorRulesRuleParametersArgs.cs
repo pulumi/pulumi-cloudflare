@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CloudConnectorRulesRuleParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Host parameter for cloud connector rule
+        /// Host to perform Cloud Connection to
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         public CloudConnectorRulesRuleParametersArgs()
         {

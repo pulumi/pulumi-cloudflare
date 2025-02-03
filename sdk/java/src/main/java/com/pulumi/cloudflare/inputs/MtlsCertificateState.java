@@ -17,14 +17,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     public static final MtlsCertificateState Empty = new MtlsCertificateState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+     * Indicates whether the certificate is a CA or leaf certificate.
      * 
      */
     @Import(name="ca")
     private @Nullable Output<Boolean> ca;
 
     /**
-     * @return Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Indicates whether the certificate is a CA or leaf certificate.
      * 
      */
     public Optional<Output<Boolean>> ca() {
@@ -47,14 +47,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+     * The uploaded root CA certificate.
      * 
      */
     @Import(name="certificates")
     private @Nullable Output<String> certificates;
 
     /**
-     * @return Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+     * @return The uploaded root CA certificate.
      * 
      */
     public Optional<Output<String>> certificates() {
@@ -62,14 +62,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * When the certificate expires.
      * 
      */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return When the certificate expires.
      * 
      */
     public Optional<Output<String>> expiresOn() {
@@ -77,14 +77,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
      * 
      */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The certificate authority that issued the certificate.
      * 
      */
     public Optional<Output<String>> issuer() {
@@ -92,14 +92,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+     * Optional unique name for the certificate. Only used for human readability.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Optional unique name for the certificate. Only used for human readability.
      * 
      */
     public Optional<Output<String>> name() {
@@ -107,14 +107,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+     * The private key for the certificate
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+     * @return The private key for the certificate
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -122,14 +122,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The certificate serial number.
      * 
      */
     @Import(name="serialNumber")
     private @Nullable Output<String> serialNumber;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The certificate serial number.
      * 
      */
     public Optional<Output<String>> serialNumber() {
@@ -137,14 +137,14 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The type of hash used for the certificate.
      * 
      */
     @Import(name="signature")
     private @Nullable Output<String> signature;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The type of hash used for the certificate.
      * 
      */
     public Optional<Output<String>> signature() {
@@ -152,14 +152,29 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * This is the time the certificate was updated.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    /**
+     * @return This is the time the certificate was updated.
+     * 
+     */
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * This is the time the certificate was uploaded.
      * 
      */
     @Import(name="uploadedOn")
     private @Nullable Output<String> uploadedOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return This is the time the certificate was uploaded.
      * 
      */
     public Optional<Output<String>> uploadedOn() {
@@ -178,6 +193,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         this.privateKey = $.privateKey;
         this.serialNumber = $.serialNumber;
         this.signature = $.signature;
+        this.updatedAt = $.updatedAt;
         this.uploadedOn = $.uploadedOn;
     }
 
@@ -200,7 +216,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -211,7 +227,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -221,7 +237,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ca Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param ca Indicates whether the certificate is a CA or leaf certificate.
          * 
          * @return builder
          * 
@@ -232,7 +248,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ca Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param ca Indicates whether the certificate is a CA or leaf certificate.
          * 
          * @return builder
          * 
@@ -242,7 +258,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param certificates Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+         * @param certificates The uploaded root CA certificate.
          * 
          * @return builder
          * 
@@ -253,7 +269,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param certificates Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+         * @param certificates The uploaded root CA certificate.
          * 
          * @return builder
          * 
@@ -263,7 +279,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * @param expiresOn When the certificate expires.
          * 
          * @return builder
          * 
@@ -274,7 +290,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * @param expiresOn When the certificate expires.
          * 
          * @return builder
          * 
@@ -284,7 +300,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * @param issuer The certificate authority that issued the certificate.
          * 
          * @return builder
          * 
@@ -295,7 +311,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * @param issuer The certificate authority that issued the certificate.
          * 
          * @return builder
          * 
@@ -305,7 +321,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param name Optional unique name for the certificate. Only used for human readability.
          * 
          * @return builder
          * 
@@ -316,7 +332,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param name Optional unique name for the certificate. Only used for human readability.
          * 
          * @return builder
          * 
@@ -326,7 +342,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKey The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The private key for the certificate
          * 
          * @return builder
          * 
@@ -337,7 +353,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param privateKey The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The private key for the certificate
          * 
          * @return builder
          * 
@@ -347,7 +363,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
+         * @param serialNumber The certificate serial number.
          * 
          * @return builder
          * 
@@ -358,7 +374,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
+         * @param serialNumber The certificate serial number.
          * 
          * @return builder
          * 
@@ -368,7 +384,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * @param signature The type of hash used for the certificate.
          * 
          * @return builder
          * 
@@ -379,7 +395,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * @param signature The type of hash used for the certificate.
          * 
          * @return builder
          * 
@@ -389,7 +405,28 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * @param updatedAt This is the time the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt This is the time the certificate was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param uploadedOn This is the time the certificate was uploaded.
          * 
          * @return builder
          * 
@@ -400,7 +437,7 @@ public final class MtlsCertificateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * @param uploadedOn This is the time the certificate was uploaded.
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomAttributeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A friendly name for the attribute as provided to the SaaS app.
+        /// The SAML FriendlyName of the attribute.
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NameFormat { get; set; }
 
         /// <summary>
-        /// True if the attribute must be always present.
+        /// If the attribute is required when building a SAML assertion.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        [Input("source", required: true)]
-        public Input<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceGetArgs> Source { get; set; } = null!;
+        [Input("source")]
+        public Input<Inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceGetArgs>? Source { get; set; }
 
         public ZeroTrustAccessApplicationSaasAppCustomAttributeGetArgs()
         {

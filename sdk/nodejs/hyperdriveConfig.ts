@@ -7,32 +7,27 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const noDefaults = new cloudflare.HyperdriveConfig("no_defaults", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "my-hyperdrive-config",
+ * const exampleHyperdriveConfig = new cloudflare.HyperdriveConfig("example_hyperdrive_config", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "example-hyperdrive",
  *     origin: {
  *         database: "postgres",
- *         password: "my-password",
- *         host: "my-database.example.com",
+ *         host: "database.example.com",
+ *         password: "password",
  *         port: 5432,
  *         scheme: "postgres",
- *         user: "my-user",
+ *         user: "postgres",
+ *     },
+ *     caching: {
+ *         disabled: true,
  *     },
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example <account_id>/<hyperdrive_config_id>
  * ```
  */
 export class HyperdriveConfig extends pulumi.CustomResource {
@@ -64,25 +59,20 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * The caching details for the Hyperdrive configuration.
-     */
     public readonly caching!: pulumi.Output<outputs.HyperdriveConfigCaching>;
     /**
-     * The name of the Hyperdrive configuration.
+     * When the Hyperdrive configuration was created.
      */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * When the Hyperdrive configuration was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The origin details for the Hyperdrive configuration.
-     */
     public readonly origin!: pulumi.Output<outputs.HyperdriveConfigOrigin>;
-    /**
-     * The identifier of this resource. This is the hyperdrive config value.
-     */
-    public readonly resourceId!: pulumi.Output<string>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -99,9 +89,10 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             const state = argsOrState as HyperdriveConfigState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["caching"] = state ? state.caching : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -117,7 +108,8 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["caching"] = args ? args.caching : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HyperdriveConfig.__pulumiType, name, resourceInputs, opts);
@@ -129,25 +121,20 @@ export class HyperdriveConfig extends pulumi.CustomResource {
  */
 export interface HyperdriveConfigState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * The caching details for the Hyperdrive configuration.
-     */
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
     /**
-     * The name of the Hyperdrive configuration.
+     * When the Hyperdrive configuration was created.
      */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * When the Hyperdrive configuration was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-    /**
-     * The origin details for the Hyperdrive configuration.
-     */
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
-    /**
-     * The identifier of this resource. This is the hyperdrive config value.
-     */
-    resourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -155,23 +142,10 @@ export interface HyperdriveConfigState {
  */
 export interface HyperdriveConfigArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
-    /**
-     * The caching details for the Hyperdrive configuration.
-     */
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
-    /**
-     * The name of the Hyperdrive configuration.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The origin details for the Hyperdrive configuration.
-     */
     origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
-    /**
-     * The identifier of this resource. This is the hyperdrive config value.
-     */
-    resourceId?: pulumi.Input<string>;
 }

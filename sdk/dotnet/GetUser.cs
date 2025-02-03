@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetUser
     {
         /// <summary>
-        /// Use this data source to retrieve information about the currently authenticated user.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,28 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var me = Cloudflare.GetUser.Invoke();
-        /// 
-        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
-        /// 
-        ///     var example = new Cloudflare.ApiToken("example", new()
-        ///     {
-        ///         Name = "Terraform Cloud (Terraform)",
-        ///         Policies = new[]
-        ///         {
-        ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
-        ///             {
-        ///                 PermissionGroups = new[]
-        ///                 {
-        ///                     all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.User_Details_Read),
-        ///                 },
-        ///                 Resources = 
-        ///                 {
-        ///                     { $"com.cloudflare.api.user.{me.Apply(getUserResult =&gt; getUserResult.Id)}", "*" },
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
+        ///     var exampleUser = Cloudflare.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -54,8 +31,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about the currently authenticated user.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -66,28 +41,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var me = Cloudflare.GetUser.Invoke();
-        /// 
-        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
-        /// 
-        ///     var example = new Cloudflare.ApiToken("example", new()
-        ///     {
-        ///         Name = "Terraform Cloud (Terraform)",
-        ///         Policies = new[]
-        ///         {
-        ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
-        ///             {
-        ///                 PermissionGroups = new[]
-        ///                 {
-        ///                     all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.User_Details_Read),
-        ///                 },
-        ///                 Resources = 
-        ///                 {
-        ///                     { $"com.cloudflare.api.user.{me.Apply(getUserResult =&gt; getUserResult.Id)}", "*" },
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
+        ///     var exampleUser = Cloudflare.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -96,8 +50,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about the currently authenticated user.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -108,28 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var me = Cloudflare.GetUser.Invoke();
-        /// 
-        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
-        /// 
-        ///     var example = new Cloudflare.ApiToken("example", new()
-        ///     {
-        ///         Name = "Terraform Cloud (Terraform)",
-        ///         Policies = new[]
-        ///         {
-        ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
-        ///             {
-        ///                 PermissionGroups = new[]
-        ///                 {
-        ///                     all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.User_Details_Read),
-        ///                 },
-        ///                 Resources = 
-        ///                 {
-        ///                     { $"com.cloudflare.api.user.{me.Apply(getUserResult =&gt; getUserResult.Id)}", "*" },
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
+        ///     var exampleUser = Cloudflare.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -143,29 +74,14 @@ namespace Pulumi.Cloudflare
     public sealed class GetUserResult
     {
         /// <summary>
-        /// The user's email address.
-        /// </summary>
-        public readonly string Email;
-        /// <summary>
-        /// The user's unique identifier.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The user's username.
-        /// </summary>
-        public readonly string Username;
 
         [OutputConstructor]
-        private GetUserResult(
-            string email,
-
-            string id,
-
-            string username)
+        private GetUserResult(string id)
         {
-            Email = email;
             Id = id;
-            Username = username;
         }
     }
 }

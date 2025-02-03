@@ -17,14 +17,14 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
     public static final HyperdriveConfigCachingArgs Empty = new HyperdriveConfigCachingArgs();
 
     /**
-     * Disable caching for this Hyperdrive configuration.
+     * When set to true, disables the caching of SQL responses. (Default: false)
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When set to true, disables the caching of SQL responses. (Default: false)
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -32,14 +32,14 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Configure the `max_age` value of this Hyperdrive configuration.
+     * When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
      * 
      */
     @Import(name="maxAge")
     private @Nullable Output<Integer> maxAge;
 
     /**
-     * @return Configure the `max_age` value of this Hyperdrive configuration.
+     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
      * 
      */
     public Optional<Output<Integer>> maxAge() {
@@ -47,14 +47,14 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Disable caching for this Hyperdrive configuration.
+     * When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
      * 
      */
     @Import(name="staleWhileRevalidate")
     private @Nullable Output<Integer> staleWhileRevalidate;
 
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
      * 
      */
     public Optional<Output<Integer>> staleWhileRevalidate() {
@@ -88,7 +88,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disabled Disable caching for this Hyperdrive configuration.
+         * @param disabled When set to true, disables the caching of SQL responses. (Default: false)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disabled Disable caching for this Hyperdrive configuration.
+         * @param disabled When set to true, disables the caching of SQL responses. (Default: false)
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxAge Configure the `max_age` value of this Hyperdrive configuration.
+         * @param maxAge When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxAge Configure the `max_age` value of this Hyperdrive configuration.
+         * @param maxAge When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param staleWhileRevalidate Disable caching for this Hyperdrive configuration.
+         * @param staleWhileRevalidate When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param staleWhileRevalidate Disable caching for this Hyperdrive configuration.
+         * @param staleWhileRevalidate When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
          * 
          * @return builder
          * 

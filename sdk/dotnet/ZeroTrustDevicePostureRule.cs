@@ -10,79 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var eaxmple = new Cloudflare.ZeroTrustDevicePostureRule("eaxmple", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Corporate devices posture rule",
-    ///         Type = "os_version",
-    ///         Description = "Device posture rule for corporate devices.",
-    ///         Schedule = "24h",
-    ///         Expiration = "24h",
-    ///         Matches = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureRuleMatchArgs
-    ///             {
-    ///                 Platform = "linux",
-    ///             },
-    ///         },
-    ///         Inputs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureRuleInputArgs
-    ///             {
-    ///                 Id = corporateDevices.Id,
-    ///                 Version = "1.0.0",
-    ///                 Operator = "&lt;",
-    ///                 OsDistroName = "ubuntu",
-    ///                 OsDistroRevision = "1.0.0",
-    ///                 OsVersionExtra = "(a)",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule")]
     public partial class ZeroTrustDevicePostureRule : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the device posture rule.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         /// </summary>
         [Output("expiration")]
         public Output<string?> Expiration { get; private set; } = null!;
 
         /// <summary>
-        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// The value to be checked against.
         /// </summary>
-        [Output("inputs")]
-        public Output<ImmutableArray<Outputs.ZeroTrustDevicePostureRuleInput>> Inputs { get; private set; } = null!;
+        [Output("input")]
+        public Output<Outputs.ZeroTrustDevicePostureRuleInput> Input { get; private set; } = null!;
 
         /// <summary>
         /// The conditions that the client must match to run the rule.
@@ -91,19 +49,19 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDevicePostureRuleMatch>> Matches { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the device posture rule.
+        /// The name of the device posture rule.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        /// The type of device posture rule.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -154,32 +112,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The description of the device posture rule.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
-        [Input("inputs")]
-        private InputList<Inputs.ZeroTrustDevicePostureRuleInputArgs>? _inputs;
-
         /// <summary>
-        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// The value to be checked against.
         /// </summary>
-        public InputList<Inputs.ZeroTrustDevicePostureRuleInputArgs> Inputs
-        {
-            get => _inputs ?? (_inputs = new InputList<Inputs.ZeroTrustDevicePostureRuleInputArgs>());
-            set => _inputs = value;
-        }
+        [Input("input")]
+        public Input<Inputs.ZeroTrustDevicePostureRuleInputArgs>? Input { get; set; }
 
         [Input("matches")]
         private InputList<Inputs.ZeroTrustDevicePostureRuleMatchArgs>? _matches;
@@ -194,19 +146,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the device posture rule.
+        /// The name of the device posture rule.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        /// The type of device posture rule.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -219,32 +171,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureRuleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// The description of the device posture rule.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
-        [Input("inputs")]
-        private InputList<Inputs.ZeroTrustDevicePostureRuleInputGetArgs>? _inputs;
-
         /// <summary>
-        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// The value to be checked against.
         /// </summary>
-        public InputList<Inputs.ZeroTrustDevicePostureRuleInputGetArgs> Inputs
-        {
-            get => _inputs ?? (_inputs = new InputList<Inputs.ZeroTrustDevicePostureRuleInputGetArgs>());
-            set => _inputs = value;
-        }
+        [Input("input")]
+        public Input<Inputs.ZeroTrustDevicePostureRuleInputGetArgs>? Input { get; set; }
 
         [Input("matches")]
         private InputList<Inputs.ZeroTrustDevicePostureRuleMatchGetArgs>? _matches;
@@ -259,19 +205,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the device posture rule.
+        /// The name of the device posture rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        /// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+        /// The type of device posture rule.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

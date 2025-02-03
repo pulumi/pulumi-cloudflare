@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
     public static final RulesetRuleActionParametersOverridesCategoryArgs Empty = new RulesetRuleActionParametersOverridesCategoryArgs();
 
     /**
-     * Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * The action to override rules in the category with.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override rules in the category with.
      * 
      */
     public Optional<Output<String>> action() {
@@ -32,33 +33,48 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
     }
 
     /**
-     * Tag name to apply the ruleset rule override to.
+     * The name of the category to override.
      * 
      */
-    @Import(name="category")
-    private @Nullable Output<String> category;
+    @Import(name="category", required=true)
+    private Output<String> category;
 
     /**
-     * @return Tag name to apply the ruleset rule override to.
+     * @return The name of the category to override.
      * 
      */
-    public Optional<Output<String>> category() {
-        return Optional.ofNullable(this.category);
+    public Output<String> category() {
+        return this.category;
     }
 
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Whether to enable execution of rules in the category.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Whether to enable execution of rules in the category.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * The sensitivity level to use for rules in the category.
+     * 
+     */
+    @Import(name="sensitivityLevel")
+    private @Nullable Output<String> sensitivityLevel;
+
+    /**
+     * @return The sensitivity level to use for rules in the category.
+     * 
+     */
+    public Optional<Output<String>> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     private RulesetRuleActionParametersOverridesCategoryArgs() {}
@@ -67,6 +83,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         this.action = $.action;
         this.category = $.category;
         this.enabled = $.enabled;
+        this.sensitivityLevel = $.sensitivityLevel;
     }
 
     public static Builder builder() {
@@ -88,7 +105,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param action Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to override rules in the category with.
          * 
          * @return builder
          * 
@@ -99,7 +116,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param action Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action The action to override rules in the category with.
          * 
          * @return builder
          * 
@@ -109,18 +126,18 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param category Tag name to apply the ruleset rule override to.
+         * @param category The name of the category to override.
          * 
          * @return builder
          * 
          */
-        public Builder category(@Nullable Output<String> category) {
+        public Builder category(Output<String> category) {
             $.category = category;
             return this;
         }
 
         /**
-         * @param category Tag name to apply the ruleset rule override to.
+         * @param category The name of the category to override.
          * 
          * @return builder
          * 
@@ -130,7 +147,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Whether to enable execution of rules in the category.
          * 
          * @return builder
          * 
@@ -141,7 +158,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Whether to enable execution of rules in the category.
          * 
          * @return builder
          * 
@@ -150,7 +167,31 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
+            $.sensitivityLevel = sensitivityLevel;
+            return this;
+        }
+
+        /**
+         * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevel(String sensitivityLevel) {
+            return sensitivityLevel(Output.of(sensitivityLevel));
+        }
+
         public RulesetRuleActionParametersOverridesCategoryArgs build() {
+            if ($.category == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersOverridesCategoryArgs", "category");
+            }
             return $;
         }
     }

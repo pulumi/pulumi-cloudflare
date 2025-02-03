@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,42 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SpectrumApplicationEdgeIps {
     /**
-     * @return The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
      * 
      */
     private @Nullable String connectivity;
     /**
-     * @return The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     private @Nullable List<String> ips;
     /**
-     * @return The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private SpectrumApplicationEdgeIps() {}
     /**
-     * @return The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     * @return The IP versions supported for inbound connections on Spectrum anycast IPs.
      * 
      */
     public Optional<String> connectivity() {
         return Optional.ofNullable(this.connectivity);
     }
     /**
-     * @return The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return The array of customer owned IPs we broadcast via anycast for this hostname and application.
      * 
      */
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
     /**
-     * @return The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     * @return The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -63,7 +62,7 @@ public final class SpectrumApplicationEdgeIps {
     public static final class Builder {
         private @Nullable String connectivity;
         private @Nullable List<String> ips;
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(SpectrumApplicationEdgeIps defaults) {
     	      Objects.requireNonNull(defaults);
@@ -88,10 +87,8 @@ public final class SpectrumApplicationEdgeIps {
             return ips(List.of(ips));
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("SpectrumApplicationEdgeIps", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
