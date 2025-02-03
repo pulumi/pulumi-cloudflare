@@ -18,3 +18,6 @@ team: ecosystem
 pulumiConvert: 1
 registryDocs: true
 integrationTestProvider: true
+freeDiskSpaceBeforeBuild: true
+freeDiskSpaceBeforeSdkBuild: true
+freeDiskSpaceBeforeTest: true
