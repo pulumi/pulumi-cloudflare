@@ -46,6 +46,13 @@ jobs:
     outputs:
       version: ${{ steps.provider-version.outputs.version }}
     steps:
+    # Run as first step so we don't delete things that have just been installed
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be # v1.3.1
+      with:
+        tool-cache: false
+        swap-storage: false
+        dotnet: false
     - name: Checkout Repo
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
@@ -99,16 +106,5 @@ jobs:
 
           Maintainer note: consult the [runbook](https://github.com/pulumi/platform-providers-team/blob/main/playbooks/tf-provider-updating.md) for dealing with any breaking changes.
 
-    - name: Upload codegen binary for cloudflare
-      uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
-      with:
-        name: pulumi-tfgen-cloudflare
-        path: ${{ github.workspace }}/bin/pulumi-tfgen-cloudflare
-        retention-days: 30
-
-    - name: Upload schema-embed.json
-      uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
-      with:
-        name: schema-embed.json
-        path: provider/cmd/pulumi-resource-cloudflare/schema-embed.json
-        retention-days: 30
+    - name: Upload artifacts
+      uses: ./.github/actions/upload-prerequisites
