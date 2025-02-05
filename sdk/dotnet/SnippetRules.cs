@@ -10,19 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+    /// ## Example Usage
     /// </summary>
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SnippetRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.SnippetRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleArgs> Rules
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.SnippetRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleGetArgs> Rules
         {
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

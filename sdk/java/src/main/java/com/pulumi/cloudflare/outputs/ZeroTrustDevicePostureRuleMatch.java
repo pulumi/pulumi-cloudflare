@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDevicePostureRuleMatch {
-    /**
-     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-     * 
-     */
     private @Nullable String platform;
 
     private ZeroTrustDevicePostureRuleMatch() {}
-    /**
-     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
-     * 
-     */
     public Optional<String> platform() {
         return Optional.ofNullable(this.platform);
     }

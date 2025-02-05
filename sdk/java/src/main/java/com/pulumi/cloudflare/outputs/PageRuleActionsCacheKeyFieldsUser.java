@@ -36,13 +36,6 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.PageRule;
      * import com.pulumi.cloudflare.PageRuleArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsCookieArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsHeaderArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsHostArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsUserArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -127,13 +120,6 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.PageRule;
      * import com.pulumi.cloudflare.PageRuleArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsCookieArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsHeaderArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsHostArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs;
-     * import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsUserArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

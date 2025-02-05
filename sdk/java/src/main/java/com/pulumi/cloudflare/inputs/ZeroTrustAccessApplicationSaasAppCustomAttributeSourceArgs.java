@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,29 +17,29 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
     public static final ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs Empty = new ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs();
 
     /**
-     * The name of the attribute as provided by the IDP.
+     * The name of the IdP attribute.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP attribute.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * A mapping from IdP ID to claim name.
+     * A mapping from IdP ID to attribute name.
      * 
      */
     @Import(name="nameByIdp")
     private @Nullable Output<Map<String,String>> nameByIdp;
 
     /**
-     * @return A mapping from IdP ID to claim name.
+     * @return A mapping from IdP ID to attribute name.
      * 
      */
     public Optional<Output<Map<String,String>>> nameByIdp() {
@@ -73,18 +72,18 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-         * @param name The name of the attribute as provided by the IDP.
+         * @param name The name of the IdP attribute.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the attribute as provided by the IDP.
+         * @param name The name of the IdP attribute.
          * 
          * @return builder
          * 
@@ -94,7 +93,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-         * @param nameByIdp A mapping from IdP ID to claim name.
+         * @param nameByIdp A mapping from IdP ID to attribute name.
          * 
          * @return builder
          * 
@@ -105,7 +104,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         /**
-         * @param nameByIdp A mapping from IdP ID to claim name.
+         * @param nameByIdp A mapping from IdP ID to attribute name.
          * 
          * @return builder
          * 
@@ -115,9 +114,6 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs ex
         }
 
         public ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs", "name");
-            }
             return $;
         }
     }

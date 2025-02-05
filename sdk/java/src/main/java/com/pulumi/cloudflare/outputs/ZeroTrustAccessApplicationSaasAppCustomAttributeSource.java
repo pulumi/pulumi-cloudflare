@@ -4,35 +4,35 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP attribute.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return A mapping from IdP ID to claim name.
+     * @return A mapping from IdP ID to attribute name.
      * 
      */
     private @Nullable Map<String,String> nameByIdp;
 
     private ZeroTrustAccessApplicationSaasAppCustomAttributeSource() {}
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP attribute.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return A mapping from IdP ID to claim name.
+     * @return A mapping from IdP ID to attribute name.
      * 
      */
     public Map<String,String> nameByIdp() {
@@ -48,7 +48,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
+        private @Nullable String name;
         private @Nullable Map<String,String> nameByIdp;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasAppCustomAttributeSource defaults) {
@@ -58,10 +58,8 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomAttributeSource", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

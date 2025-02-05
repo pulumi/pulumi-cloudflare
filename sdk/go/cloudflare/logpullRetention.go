@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLogpullRetention(ctx, "example", &cloudflare.LogpullRetentionArgs{
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Enabled: pulumi.Bool(true),
+//			_, err := cloudflare.NewLogpullRetention(ctx, "example_logpull_retention", &cloudflare.LogpullRetentionArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Flag:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -40,18 +38,12 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
-// ```
 type LogpullRetention struct {
 	pulumi.CustomResourceState
 
-	// Whether you wish to retain logs or not.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The log retention flag for Logpull API.
+	Flag pulumi.BoolPtrOutput `pulumi:"flag"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -62,9 +54,6 @@ func NewLogpullRetention(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -91,16 +80,16 @@ func GetLogpullRetention(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogpullRetention resources.
 type logpullRetentionState struct {
-	// Whether you wish to retain logs or not.
-	Enabled *bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The log retention flag for Logpull API.
+	Flag *bool `pulumi:"flag"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LogpullRetentionState struct {
-	// Whether you wish to retain logs or not.
-	Enabled pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The log retention flag for Logpull API.
+	Flag pulumi.BoolPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -109,17 +98,17 @@ func (LogpullRetentionState) ElementType() reflect.Type {
 }
 
 type logpullRetentionArgs struct {
-	// Whether you wish to retain logs or not.
-	Enabled bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The log retention flag for Logpull API.
+	Flag *bool `pulumi:"flag"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LogpullRetention resource.
 type LogpullRetentionArgs struct {
-	// Whether you wish to retain logs or not.
-	Enabled pulumi.BoolInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The log retention flag for Logpull API.
+	Flag pulumi.BoolPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -210,12 +199,12 @@ func (o LogpullRetentionOutput) ToLogpullRetentionOutputWithContext(ctx context.
 	return o
 }
 
-// Whether you wish to retain logs or not.
-func (o LogpullRetentionOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LogpullRetention) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+// The log retention flag for Logpull API.
+func (o LogpullRetentionOutput) Flag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogpullRetention) pulumi.BoolPtrOutput { return v.Flag }).(pulumi.BoolPtrOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o LogpullRetentionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpullRetention) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

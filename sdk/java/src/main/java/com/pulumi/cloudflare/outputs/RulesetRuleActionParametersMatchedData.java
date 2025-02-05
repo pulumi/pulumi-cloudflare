@@ -4,26 +4,25 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersMatchedData {
     /**
-     * @return Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     * @return The public key to encrypt matched data logs with.
      * 
      */
-    private @Nullable String publicKey;
+    private String publicKey;
 
     private RulesetRuleActionParametersMatchedData() {}
     /**
-     * @return Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     * @return The public key to encrypt matched data logs with.
      * 
      */
-    public Optional<String> publicKey() {
-        return Optional.ofNullable(this.publicKey);
+    public String publicKey() {
+        return this.publicKey;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class RulesetRuleActionParametersMatchedData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String publicKey;
+        private String publicKey;
         public Builder() {}
         public Builder(RulesetRuleActionParametersMatchedData defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class RulesetRuleActionParametersMatchedData {
         }
 
         @CustomType.Setter
-        public Builder publicKey(@Nullable String publicKey) {
-
+        public Builder publicKey(String publicKey) {
+            if (publicKey == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersMatchedData", "publicKey");
+            }
             this.publicKey = publicKey;
             return this;
         }

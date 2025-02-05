@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.LoadBalancerMonitorState;
-import com.pulumi.cloudflare.outputs.LoadBalancerMonitorHeader;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,289 +14,323 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * If Cloudflare&#39;s Load Balancing to load-balance across multiple
- * origin servers or data centers, you configure one of these Monitors
- * to actively check the availability of those servers over HTTP(S) or
- * TCP.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LoadBalancerMonitor;
+ * import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleLoadBalancerMonitor = new LoadBalancerMonitor("exampleLoadBalancerMonitor", LoadBalancerMonitorArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .allowInsecure(true)
+ *             .consecutiveDown(0)
+ *             .consecutiveUp(0)
+ *             .description("Login page monitor")
+ *             .expectedBody("alive")
+ *             .expectedCodes("2xx")
+ *             .followRedirects(true)
+ *             .header(Map.ofEntries(
+ *                 Map.entry("Host", "example.com"),
+ *                 Map.entry("X-App-ID", "abc123")
+ *             ))
+ *             .interval(0)
+ *             .method("GET")
+ *             .path("/health")
+ *             .port(0)
+ *             .probeZone("example.com")
+ *             .retries(0)
+ *             .timeout(0)
+ *             .type("http")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &lt;account_id&gt;/&lt;load_balancer_monitor_id&gt;
+ * $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &#39;&lt;account_id&gt;/&lt;monitor_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="allowInsecure", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowInsecure;
+    private Output<Boolean> allowInsecure;
 
     /**
-     * @return Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<Boolean>> allowInsecure() {
-        return Codegen.optional(this.allowInsecure);
+    public Output<Boolean> allowInsecure() {
+        return this.allowInsecure;
     }
     /**
-     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
      * 
      */
     @Export(name="consecutiveDown", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> consecutiveDown;
+    private Output<Integer> consecutiveDown;
 
     /**
-     * @return To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * @return To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
      * 
      */
-    public Output<Optional<Integer>> consecutiveDown() {
-        return Codegen.optional(this.consecutiveDown);
+    public Output<Integer> consecutiveDown() {
+        return this.consecutiveDown;
     }
     /**
-     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      * 
      */
     @Export(name="consecutiveUp", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> consecutiveUp;
+    private Output<Integer> consecutiveUp;
 
     /**
-     * @return To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * @return To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      * 
      */
-    public Output<Optional<Integer>> consecutiveUp() {
-        return Codegen.optional(this.consecutiveUp);
+    public Output<Integer> consecutiveUp() {
+        return this.consecutiveUp;
     }
-    /**
-     * The RFC3339 timestamp of when the load balancer monitor was created.
-     * 
-     */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer monitor was created.
-     * 
-     */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * Free text description.
+     * Object description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Free text description.
+     * @return Object description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="expectedBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedBody;
 
     /**
-     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     public Output<Optional<String>> expectedBody() {
         return Codegen.optional(this.expectedBody);
     }
     /**
-     * The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is &#34;http&#34; or &#34;https&#34;.
+     * The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="expectedCodes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedCodes;
 
     /**
-     * @return The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     public Output<Optional<String>> expectedCodes() {
         return Codegen.optional(this.expectedCodes);
     }
     /**
-     * Follow redirects if returned by the origin. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="followRedirects", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> followRedirects;
+    private Output<Boolean> followRedirects;
 
     /**
-     * @return Follow redirects if returned by the origin. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<Boolean>> followRedirects() {
-        return Codegen.optional(this.followRedirects);
+    public Output<Boolean> followRedirects() {
+        return this.followRedirects;
     }
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    @Export(name="headers", refs={List.class,LoadBalancerMonitorHeader.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<LoadBalancerMonitorHeader>> headers;
+    @Export(name="header", refs={Map.class,String.class,List.class}, tree="[0,1,[2,1]]")
+    private Output</* @Nullable */ Map<String,List<String>>> header;
 
     /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<List<LoadBalancerMonitorHeader>>> headers() {
-        return Codegen.optional(this.headers);
+    public Output<Optional<Map<String,List<String>>>> header() {
+        return Codegen.optional(this.header);
     }
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
      * 
      */
     @Export(name="interval", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> interval;
+    private Output<Integer> interval;
 
     /**
-     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
      * 
      */
-    public Output<Optional<Integer>> interval() {
-        return Codegen.optional(this.interval);
+    public Output<Integer> interval() {
+        return this.interval;
     }
     /**
-     * The method to use for the health check.
+     * The method to use for the health check. This defaults to &#39;GET&#39; for HTTP/HTTPS based checks and &#39;connection_established&#39; for TCP based health checks.
      * 
      */
     @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
-     * @return The method to use for the health check.
+     * @return The method to use for the health check. This defaults to &#39;GET&#39; for HTTP/HTTPS based checks and &#39;connection_established&#39; for TCP based health checks.
      * 
      */
     public Output<String> method() {
         return this.method;
     }
-    /**
-     * The RFC3339 timestamp of when the load balancer monitor was last modified.
-     * 
-     */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer monitor was last modified.
-     * 
-     */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The endpoint path to health check against.
+     * The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
-     * @return The endpoint path to health check against.
+     * @return The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     public Output<String> path() {
         return this.path;
     }
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor.
+     * The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> port;
+    private Output<Integer> port;
 
     /**
-     * @return The port number to use for the healthcheck, required when creating a TCP monitor.
+     * @return The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
      * 
      */
-    public Output<Optional<Integer>> port() {
-        return Codegen.optional(this.port);
+    public Output<Integer> port() {
+        return this.port;
     }
     /**
-     * Assign this monitor to emulate the specified zone while probing. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="probeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> probeZone;
 
     /**
-     * @return Assign this monitor to emulate the specified zone while probing. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     public Output<Optional<String>> probeZone() {
         return Codegen.optional(this.probeZone);
     }
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
     @Export(name="retries", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> retries;
+    private Output<Integer> retries;
 
     /**
-     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
-    public Output<Optional<Integer>> retries() {
-        return Codegen.optional(this.retries);
+    public Output<Integer> retries() {
+        return this.retries;
     }
     /**
-     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * The timeout (in seconds) before marking the health check as failed.
      * 
      */
     @Export(name="timeout", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> timeout;
+    private Output<Integer> timeout;
 
     /**
-     * @return The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * @return The timeout (in seconds) before marking the health check as failed.
      * 
      */
-    public Output<Optional<Integer>> timeout() {
-        return Codegen.optional(this.timeout);
+    public Output<Integer> timeout() {
+        return this.timeout;
     }
     /**
-     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
+     * The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;,&#39;HTTPS&#39;, &#39;TCP&#39;, &#39;ICMP-PING&#39;, &#39;UDP-ICMP&#39;, and &#39;SMTP&#39;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
+     * @return The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;,&#39;HTTPS&#39;, &#39;TCP&#39;, &#39;ICMP-PING&#39;, &#39;UDP-ICMP&#39;, and &#39;SMTP&#39;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

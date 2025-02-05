@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+ * ## Example Usage
  */
 export class SnippetRules extends pulumi.CustomResource {
     /**
@@ -38,11 +38,11 @@ export class SnippetRules extends pulumi.CustomResource {
     }
 
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[] | undefined>;
+    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -79,11 +79,11 @@ export class SnippetRules extends pulumi.CustomResource {
  */
 export interface SnippetRulesState {
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -93,11 +93,11 @@ export interface SnippetRulesState {
  */
 export interface SnippetRulesArgs {
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

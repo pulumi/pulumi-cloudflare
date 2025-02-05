@@ -107,6 +107,8 @@ class PageRuleArgs:
 class _PageRuleState:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input['PageRuleActionsArgs']] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -114,6 +116,8 @@ class _PageRuleState:
         """
         Input properties used for looking up and filtering PageRule resources.
         :param pulumi.Input['PageRuleActionsArgs'] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[str] created_on: The timestamp of when the Page Rule was created.
+        :param pulumi.Input[str] modified_on: The timestamp of when the Page Rule was last modified.
         :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
@@ -121,6 +125,10 @@ class _PageRuleState:
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if status is not None:
@@ -141,6 +149,30 @@ class _PageRuleState:
     @actions.setter
     def actions(self, value: Optional[pulumi.Input['PageRuleActionsArgs']]):
         pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the Page Rule was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the Page Rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
 
     @property
     @pulumi.getter
@@ -205,28 +237,6 @@ class PageRule(pulumi.CustomResource):
         """
         Provides a Cloudflare page rule resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a page rule to the domain
-        foobar = cloudflare.PageRule("foobar",
-            zone_id=cloudflare_zone_id,
-            target=f"sub.{cloudflare_zone}/page",
-            priority=1,
-            actions={
-                "ssl": "flexible",
-                "email_obfuscation": "on",
-                "minifies": [{
-                    "html": "off",
-                    "css": "on",
-                    "js": "on",
-                }],
-            })
-        ```
-
         ## Import
 
         Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
@@ -251,28 +261,6 @@ class PageRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare page rule resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a page rule to the domain
-        foobar = cloudflare.PageRule("foobar",
-            zone_id=cloudflare_zone_id,
-            target=f"sub.{cloudflare_zone}/page",
-            priority=1,
-            actions={
-                "ssl": "flexible",
-                "email_obfuscation": "on",
-                "minifies": [{
-                    "html": "off",
-                    "css": "on",
-                    "js": "on",
-                }],
-            })
-        ```
 
         ## Import
 
@@ -322,6 +310,8 @@ class PageRule(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
         super(PageRule, __self__).__init__(
             'cloudflare:index/pageRule:PageRule',
             resource_name,
@@ -333,6 +323,8 @@ class PageRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             actions: Optional[pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None,
@@ -345,6 +337,8 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict']] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[str] created_on: The timestamp of when the Page Rule was created.
+        :param pulumi.Input[str] modified_on: The timestamp of when the Page Rule was last modified.
         :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
@@ -355,6 +349,8 @@ class PageRule(pulumi.CustomResource):
         __props__ = _PageRuleState.__new__(_PageRuleState)
 
         __props__.__dict__["actions"] = actions
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["priority"] = priority
         __props__.__dict__["status"] = status
         __props__.__dict__["target"] = target
@@ -370,8 +366,24 @@ class PageRule(pulumi.CustomResource):
         return pulumi.get(self, "actions")
 
     @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
+        """
+        The timestamp of when the Page Rule was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        The timestamp of when the Page Rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[int]]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         """
@@ -379,7 +391,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[str]]:
+    def status(self) -> pulumi.Output[str]:
         """
         Whether the page rule is active or disabled.
         """

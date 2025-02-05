@@ -18,14 +18,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     public static final MtlsCertificateArgs Empty = new MtlsCertificateArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -33,14 +33,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+     * Indicates whether the certificate is a CA or leaf certificate.
      * 
      */
     @Import(name="ca", required=true)
     private Output<Boolean> ca;
 
     /**
-     * @return Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Indicates whether the certificate is a CA or leaf certificate.
      * 
      */
     public Output<Boolean> ca() {
@@ -48,14 +48,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+     * The uploaded root CA certificate.
      * 
      */
     @Import(name="certificates", required=true)
     private Output<String> certificates;
 
     /**
-     * @return Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+     * @return The uploaded root CA certificate.
      * 
      */
     public Output<String> certificates() {
@@ -63,14 +63,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+     * Optional unique name for the certificate. Only used for human readability.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Optional unique name for the certificate. Only used for human readability.
      * 
      */
     public Optional<Output<String>> name() {
@@ -78,14 +78,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+     * The private key for the certificate
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+     * @return The private key for the certificate
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -121,7 +121,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ca Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param ca Indicates whether the certificate is a CA or leaf certificate.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ca Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param ca Indicates whether the certificate is a CA or leaf certificate.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificates Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+         * @param certificates The uploaded root CA certificate.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificates Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
+         * @param certificates The uploaded root CA certificate.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param name Optional unique name for the certificate. Only used for human readability.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param name Optional unique name for the certificate. Only used for human readability.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privateKey The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The private key for the certificate
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privateKey The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
+         * @param privateKey The private key for the certificate
          * 
          * @return builder
          * 

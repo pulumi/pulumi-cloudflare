@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which manages Cloudflare Pages projects.
- *
  * > If you are using a `source` block configuration, you must first have a
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages] documentation on how to link your accounts.
@@ -18,7 +16,7 @@ import * as utilities from "./utilities";
  * !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
  *
  * ```sh
- * $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
+ * $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
  * ```
  */
 export class PagesProject extends pulumi.CustomResource {
@@ -50,19 +48,23 @@ export class PagesProject extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      */
-    public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
+    public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig>;
+    /**
+     * Most recent deployment to the repo.
+     */
+    public /*out*/ readonly canonicalDeployment!: pulumi.Output<outputs.PagesProjectCanonicalDeployment>;
     /**
      * When the project was created.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      */
     public readonly deploymentConfigs!: pulumi.Output<outputs.PagesProjectDeploymentConfigs>;
     /**
@@ -70,17 +72,18 @@ export class PagesProject extends pulumi.CustomResource {
      */
     public /*out*/ readonly domains!: pulumi.Output<string[]>;
     /**
+     * Most recent deployment to the repo.
+     */
+    public /*out*/ readonly latestDeployment!: pulumi.Output<outputs.PagesProjectLatestDeployment>;
+    /**
      * Name of the project.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      */
-    public readonly productionBranch!: pulumi.Output<string>;
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     */
-    public readonly source!: pulumi.Output<outputs.PagesProjectSource | undefined>;
+    public readonly productionBranch!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly source!: pulumi.Output<outputs.PagesProjectSource>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
@@ -101,9 +104,11 @@ export class PagesProject extends pulumi.CustomResource {
             const state = argsOrState as PagesProjectState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["buildConfig"] = state ? state.buildConfig : undefined;
+            resourceInputs["canonicalDeployment"] = state ? state.canonicalDeployment : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["deploymentConfigs"] = state ? state.deploymentConfigs : undefined;
             resourceInputs["domains"] = state ? state.domains : undefined;
+            resourceInputs["latestDeployment"] = state ? state.latestDeployment : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["productionBranch"] = state ? state.productionBranch : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
@@ -116,17 +121,16 @@ export class PagesProject extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.productionBranch === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'productionBranch'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
             resourceInputs["deploymentConfigs"] = args ? args.deploymentConfigs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["productionBranch"] = args ? args.productionBranch : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["canonicalDeployment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;
+            resourceInputs["latestDeployment"] = undefined /*out*/;
+            resourceInputs["source"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,19 +143,23 @@ export class PagesProject extends pulumi.CustomResource {
  */
 export interface PagesProjectState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
+    /**
+     * Most recent deployment to the repo.
+     */
+    canonicalDeployment?: pulumi.Input<inputs.PagesProjectCanonicalDeployment>;
     /**
      * When the project was created.
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      */
     deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
     /**
@@ -159,16 +167,17 @@ export interface PagesProjectState {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Most recent deployment to the repo.
+     */
+    latestDeployment?: pulumi.Input<inputs.PagesProjectLatestDeployment>;
+    /**
      * Name of the project.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      */
     productionBranch?: pulumi.Input<string>;
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     */
     source?: pulumi.Input<inputs.PagesProjectSource>;
     /**
      * The Cloudflare subdomain associated with the project.
@@ -181,15 +190,15 @@ export interface PagesProjectState {
  */
 export interface PagesProjectArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      */
     deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
     /**
@@ -197,11 +206,7 @@ export interface PagesProjectArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      */
-    productionBranch: pulumi.Input<string>;
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     */
-    source?: pulumi.Input<inputs.PagesProjectSource>;
+    productionBranch?: pulumi.Input<string>;
 }

@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetDcvDelegationResult {
     /**
-     * @return The DCV Delegation hostname
-     * 
-     */
-    private String hostname;
-    /**
-     * @return The DCV Delegation unique identifier
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The DCV Delegation unique identifier.
+     * 
+     */
+    private String uuid;
+    /**
+     * @return Identifier
      * 
      */
     private String zoneId;
 
     private GetDcvDelegationResult() {}
     /**
-     * @return The DCV Delegation hostname
-     * 
-     */
-    public String hostname() {
-        return this.hostname;
-    }
-    /**
-     * @return The DCV Delegation unique identifier
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The DCV Delegation unique identifier.
+     * 
+     */
+    public String uuid() {
+        return this.uuid;
+    }
+    /**
+     * @return Identifier
      * 
      */
     public String zoneId() {
@@ -58,31 +58,31 @@ public final class GetDcvDelegationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String hostname;
         private String id;
+        private String uuid;
         private String zoneId;
         public Builder() {}
         public Builder(GetDcvDelegationResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.uuid = defaults.uuid;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder hostname(String hostname) {
-            if (hostname == null) {
-              throw new MissingRequiredPropertyException("GetDcvDelegationResult", "hostname");
-            }
-            this.hostname = hostname;
-            return this;
-        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetDcvDelegationResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetDcvDelegationResult", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
@@ -95,8 +95,8 @@ public final class GetDcvDelegationResult {
         }
         public GetDcvDelegationResult build() {
             final var _resultValue = new GetDcvDelegationResult();
-            _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.uuid = uuid;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

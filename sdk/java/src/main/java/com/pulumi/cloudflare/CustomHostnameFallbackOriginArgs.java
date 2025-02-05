@@ -15,14 +15,14 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
     public static final CustomHostnameFallbackOriginArgs Empty = new CustomHostnameFallbackOriginArgs();
 
     /**
-     * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     @Import(name="origin", required=true)
     private Output<String> origin;
 
     /**
-     * @return Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+     * @return Your origin hostname that requests to your custom hostnames will be sent to.
      * 
      */
     public Output<String> origin() {
@@ -30,14 +30,14 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param origin Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+         * @param origin Your origin hostname that requests to your custom hostnames will be sent to.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param origin Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+         * @param origin Your origin hostname that requests to your custom hostnames will be sent to.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

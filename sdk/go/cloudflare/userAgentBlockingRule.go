@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage User Agent Blocking Rules.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,35 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example_1", &cloudflare.UserAgentBlockingRuleArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Mode:        pulumi.String("js_challenge"),
-//				Paused:      pulumi.Bool(false),
-//				Description: pulumi.String("My description 1"),
+//			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example_user_agent_blocking_rule", &cloudflare.UserAgentBlockingRuleArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
-//					Target: pulumi.String("ua"),
-//					Value:  pulumi.String("Chrome"),
+//					Target: pulumi.String("ip"),
+//					Value:  pulumi.String("198.51.100.4"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewUserAgentBlockingRule(ctx, "example_2", &cloudflare.UserAgentBlockingRuleArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Mode:        pulumi.String("challenge"),
-//				Paused:      pulumi.Bool(true),
-//				Description: pulumi.String("My description 22"),
-//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
-//					Target: pulumi.String("ua"),
-//					Value:  pulumi.String("Mozilla"),
-//				},
+//				Mode: pulumi.String("block"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,24 +42,16 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example <zone_id>/<user_agent_blocking_rule_id>
-// ```
 type UserAgentBlockingRule struct {
 	pulumi.CustomResourceState
 
-	// The configuration object for the current rule.
+	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationOutput `pulumi:"configuration"`
-	// An informative summary of the rule.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// When true, indicates that the rule is currently paused.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the User Agent Blocking rule.
+	UaRuleId pulumi.StringPtrOutput `pulumi:"uaRuleId"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -90,14 +65,8 @@ func NewUserAgentBlockingRule(ctx *pulumi.Context,
 	if args.Configuration == nil {
 		return nil, errors.New("invalid value for required argument 'Configuration'")
 	}
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	if args.Mode == nil {
 		return nil, errors.New("invalid value for required argument 'Mode'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -125,28 +94,24 @@ func GetUserAgentBlockingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserAgentBlockingRule resources.
 type userAgentBlockingRuleState struct {
-	// The configuration object for the current rule.
+	// The rule configuration.
 	Configuration *UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
-	// An informative summary of the rule.
-	Description *string `pulumi:"description"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode *string `pulumi:"mode"`
-	// When true, indicates that the rule is currently paused.
-	Paused *bool `pulumi:"paused"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the User Agent Blocking rule.
+	UaRuleId *string `pulumi:"uaRuleId"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type UserAgentBlockingRuleState struct {
-	// The configuration object for the current rule.
+	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationPtrInput
-	// An informative summary of the rule.
-	Description pulumi.StringPtrInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode pulumi.StringPtrInput
-	// When true, indicates that the rule is currently paused.
-	Paused pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the User Agent Blocking rule.
+	UaRuleId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -155,29 +120,25 @@ func (UserAgentBlockingRuleState) ElementType() reflect.Type {
 }
 
 type userAgentBlockingRuleArgs struct {
-	// The configuration object for the current rule.
+	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
-	// An informative summary of the rule.
-	Description string `pulumi:"description"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode string `pulumi:"mode"`
-	// When true, indicates that the rule is currently paused.
-	Paused bool `pulumi:"paused"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the User Agent Blocking rule.
+	UaRuleId *string `pulumi:"uaRuleId"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a UserAgentBlockingRule resource.
 type UserAgentBlockingRuleArgs struct {
-	// The configuration object for the current rule.
+	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationInput
-	// An informative summary of the rule.
-	Description pulumi.StringInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+	// The action to apply to a matched request.
 	Mode pulumi.StringInput
-	// When true, indicates that the rule is currently paused.
-	Paused pulumi.BoolInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique identifier of the User Agent Blocking rule.
+	UaRuleId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -268,27 +229,22 @@ func (o UserAgentBlockingRuleOutput) ToUserAgentBlockingRuleOutputWithContext(ct
 	return o
 }
 
-// The configuration object for the current rule.
+// The rule configuration.
 func (o UserAgentBlockingRuleOutput) Configuration() UserAgentBlockingRuleConfigurationOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) UserAgentBlockingRuleConfigurationOutput { return v.Configuration }).(UserAgentBlockingRuleConfigurationOutput)
 }
 
-// An informative summary of the rule.
-func (o UserAgentBlockingRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// The action to apply to a matched request. Available values: `block`, `challenge`, `jsChallenge`, `managedChallenge`.
+// The action to apply to a matched request.
 func (o UserAgentBlockingRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// When true, indicates that the rule is currently paused.
-func (o UserAgentBlockingRuleOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+// The unique identifier of the User Agent Blocking rule.
+func (o UserAgentBlockingRuleOutput) UaRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringPtrOutput { return v.UaRuleId }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o UserAgentBlockingRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

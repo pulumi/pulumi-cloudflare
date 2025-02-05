@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which manages Cloudflare account members.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,20 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountMember(ctx, "example", &cloudflare.AccountMemberArgs{
-//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				EmailAddress: pulumi.String("user@example.com"),
-//				RoleIds: pulumi.StringArray{
-//					pulumi.String("68b329da9893e34099c7d8ad5cb9c940"),
-//					pulumi.String("d784fa8b6d98d27699781bd9a7cf19f0"),
+//			_, err := cloudflare.NewAccountMember(ctx, "example_account_member", &cloudflare.AccountMemberArgs{
+//				AccountId: pulumi.String("eb78d65290b24279ba6f44721b3ea3c4"),
+//				Email:     pulumi.String("user@example.com"),
+//				Roles: pulumi.StringArray{
+//					pulumi.String("3536bcfad5faccb999b47003c79917fb"),
 //				},
+//				Status: pulumi.String("accepted"),
 //			})
 //			if err != nil {
 //				return err
@@ -48,19 +46,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+// $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
 // ```
 type AccountMember struct {
 	pulumi.CustomResourceState
 
-	// Account ID to create the account member in.
+	// Account identifier tag.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-	EmailAddress pulumi.StringOutput `pulumi:"emailAddress"`
-	// List of account role IDs that you want to assign to a member.
-	RoleIds pulumi.StringArrayOutput `pulumi:"roleIds"`
-	// A member's status in the account. Available values: `accepted`, `pending`.
-	Status pulumi.StringOutput `pulumi:"status"`
+	// The contact email address of the user.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// Array of policies associated with this member.
+	Policies AccountMemberPolicyArrayOutput `pulumi:"policies"`
+	// Array of roles associated with this member.
+	Roles  pulumi.StringArrayOutput `pulumi:"roles"`
+	Status pulumi.StringOutput      `pulumi:"status"`
+	// Details of the user associated to the membership.
+	User AccountMemberUserOutput `pulumi:"user"`
 }
 
 // NewAccountMember registers a new resource with the given unique name, arguments, and options.
@@ -73,11 +74,8 @@ func NewAccountMember(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.EmailAddress == nil {
-		return nil, errors.New("invalid value for required argument 'EmailAddress'")
-	}
-	if args.RoleIds == nil {
-		return nil, errors.New("invalid value for required argument 'RoleIds'")
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountMember
@@ -102,25 +100,31 @@ func GetAccountMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountMember resources.
 type accountMemberState struct {
-	// Account ID to create the account member in.
+	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-	EmailAddress *string `pulumi:"emailAddress"`
-	// List of account role IDs that you want to assign to a member.
-	RoleIds []string `pulumi:"roleIds"`
-	// A member's status in the account. Available values: `accepted`, `pending`.
-	Status *string `pulumi:"status"`
+	// The contact email address of the user.
+	Email *string `pulumi:"email"`
+	// Array of policies associated with this member.
+	Policies []AccountMemberPolicy `pulumi:"policies"`
+	// Array of roles associated with this member.
+	Roles  []string `pulumi:"roles"`
+	Status *string  `pulumi:"status"`
+	// Details of the user associated to the membership.
+	User *AccountMemberUser `pulumi:"user"`
 }
 
 type AccountMemberState struct {
-	// Account ID to create the account member in.
+	// Account identifier tag.
 	AccountId pulumi.StringPtrInput
-	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-	EmailAddress pulumi.StringPtrInput
-	// List of account role IDs that you want to assign to a member.
-	RoleIds pulumi.StringArrayInput
-	// A member's status in the account. Available values: `accepted`, `pending`.
+	// The contact email address of the user.
+	Email pulumi.StringPtrInput
+	// Array of policies associated with this member.
+	Policies AccountMemberPolicyArrayInput
+	// Array of roles associated with this member.
+	Roles  pulumi.StringArrayInput
 	Status pulumi.StringPtrInput
+	// Details of the user associated to the membership.
+	User AccountMemberUserPtrInput
 }
 
 func (AccountMemberState) ElementType() reflect.Type {
@@ -128,25 +132,27 @@ func (AccountMemberState) ElementType() reflect.Type {
 }
 
 type accountMemberArgs struct {
-	// Account ID to create the account member in.
+	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-	EmailAddress string `pulumi:"emailAddress"`
-	// List of account role IDs that you want to assign to a member.
-	RoleIds []string `pulumi:"roleIds"`
-	// A member's status in the account. Available values: `accepted`, `pending`.
-	Status *string `pulumi:"status"`
+	// The contact email address of the user.
+	Email string `pulumi:"email"`
+	// Array of policies associated with this member.
+	Policies []AccountMemberPolicy `pulumi:"policies"`
+	// Array of roles associated with this member.
+	Roles  []string `pulumi:"roles"`
+	Status *string  `pulumi:"status"`
 }
 
 // The set of arguments for constructing a AccountMember resource.
 type AccountMemberArgs struct {
-	// Account ID to create the account member in.
+	// Account identifier tag.
 	AccountId pulumi.StringInput
-	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-	EmailAddress pulumi.StringInput
-	// List of account role IDs that you want to assign to a member.
-	RoleIds pulumi.StringArrayInput
-	// A member's status in the account. Available values: `accepted`, `pending`.
+	// The contact email address of the user.
+	Email pulumi.StringInput
+	// Array of policies associated with this member.
+	Policies AccountMemberPolicyArrayInput
+	// Array of roles associated with this member.
+	Roles  pulumi.StringArrayInput
 	Status pulumi.StringPtrInput
 }
 
@@ -237,24 +243,33 @@ func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Account ID to create the account member in.
+// Account identifier tag.
 func (o AccountMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
-func (o AccountMemberOutput) EmailAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.EmailAddress }).(pulumi.StringOutput)
+// The contact email address of the user.
+func (o AccountMemberOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// List of account role IDs that you want to assign to a member.
-func (o AccountMemberOutput) RoleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.RoleIds }).(pulumi.StringArrayOutput)
+// Array of policies associated with this member.
+func (o AccountMemberOutput) Policies() AccountMemberPolicyArrayOutput {
+	return o.ApplyT(func(v *AccountMember) AccountMemberPolicyArrayOutput { return v.Policies }).(AccountMemberPolicyArrayOutput)
 }
 
-// A member's status in the account. Available values: `accepted`, `pending`.
+// Array of roles associated with this member.
+func (o AccountMemberOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 func (o AccountMemberOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Details of the user associated to the membership.
+func (o AccountMemberOutput) User() AccountMemberUserOutput {
+	return o.ApplyT(func(v *AccountMember) AccountMemberUserOutput { return v.User }).(AccountMemberUserOutput)
 }
 
 type AccountMemberArrayOutput struct{ *pulumi.OutputState }

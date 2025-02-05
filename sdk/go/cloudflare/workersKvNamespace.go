@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to manage Cloudflare Workers KV Namespace features.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example", &cloudflare.WorkersKvNamespaceArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Title:     pulumi.String("test-namespace"),
+//			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example_workers_kv_namespace", &cloudflare.WorkersKvNamespaceArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Title:     pulumi.String("My Own Namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,14 +42,16 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
+// $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
 // ```
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Title value of the Worker KV Namespace.
+	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
+	// A human-readable string name for a Namespace.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -91,16 +91,20 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKvNamespace resources.
 type workersKvNamespaceState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Title value of the Worker KV Namespace.
+	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+	SupportsUrlEncoding *bool `pulumi:"supportsUrlEncoding"`
+	// A human-readable string name for a Namespace.
 	Title *string `pulumi:"title"`
 }
 
 type WorkersKvNamespaceState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Title value of the Worker KV Namespace.
+	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+	SupportsUrlEncoding pulumi.BoolPtrInput
+	// A human-readable string name for a Namespace.
 	Title pulumi.StringPtrInput
 }
 
@@ -109,17 +113,17 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 }
 
 type workersKvNamespaceArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Title value of the Worker KV Namespace.
+	// A human-readable string name for a Namespace.
 	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// Title value of the Worker KV Namespace.
+	// A human-readable string name for a Namespace.
 	Title pulumi.StringInput
 }
 
@@ -210,12 +214,17 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Title value of the Worker KV Namespace.
+// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
+func (o WorkersKvNamespaceOutput) SupportsUrlEncoding() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.BoolOutput { return v.SupportsUrlEncoding }).(pulumi.BoolOutput)
+}
+
+// A human-readable string name for a Namespace.
 func (o WorkersKvNamespaceOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

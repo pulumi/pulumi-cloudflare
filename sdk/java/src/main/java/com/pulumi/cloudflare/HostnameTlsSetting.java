@@ -10,12 +10,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -41,11 +41,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostnameTlsSetting("example", HostnameTlsSettingArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .hostname("sub.example.com")
- *             .setting("min_tls_version")
- *             .value("1.2")
+ *         var exampleHostnameTlsSetting = new HostnameTlsSetting("exampleHostnameTlsSetting", HostnameTlsSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("ciphers")
+ *             .hostname("app.example.com")
+ *             .value(            
+ *                 "ECDHE-RSA-AES128-GCM-SHA256",
+ *                 "AES128-GCM-SHA256")
  *             .build());
  * 
  *     }
@@ -57,75 +59,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
+ * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &#39;&lt;zone_id&gt;/&lt;setting_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/hostnameTlsSetting:HostnameTlsSetting")
 public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
+    /**
+     * This is the time the tls setting was originally created for this hostname.
+     * 
+     */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
+    /**
+     * @return This is the time the tls setting was originally created for this hostname.
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
-    private Output<String> hostname;
+    private Output</* @Nullable */ String> hostname;
 
     /**
-     * @return Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname for which the tls settings are set.
      * 
      */
-    public Output<String> hostname() {
-        return this.hostname;
+    public Output<Optional<String>> hostname() {
+        return Codegen.optional(this.hostname);
     }
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      * 
      */
-    @Export(name="setting", refs={String.class}, tree="[0]")
-    private Output<String> setting;
+    @Export(name="settingId", refs={String.class}, tree="[0]")
+    private Output<String> settingId;
 
     /**
-     * @return TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * @return The TLS Setting name.
      * 
      */
-    public Output<String> setting() {
-        return this.setting;
+    public Output<String> settingId() {
+        return this.settingId;
     }
+    /**
+     * Deployment status for the given tls setting.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return Deployment status for the given tls setting.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * This is the time the tls setting was updated.
+     * 
+     */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
+    /**
+     * @return This is the time the tls setting was updated.
+     * 
+     */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
     /**
-     * TLS setting value.
+     * The tls setting value.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
-    private Output<String> value;
+    @Export(name="value", refs={Double.class}, tree="[0]")
+    private Output<Double> value;
 
     /**
-     * @return TLS setting value.
+     * @return The tls setting value.
      * 
      */
-    public Output<String> value() {
+    public Output<Double> value() {
         return this.value;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

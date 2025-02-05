@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
         /// </summary>
-        public readonly string Sha256;
+        public readonly string? Sha256;
         /// <summary>
         /// A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDeviceManagedNetworksConfig(
-            string sha256,
+            string? sha256,
 
             string tlsSockaddr)
         {

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class EmailRoutingCatchAllMatcherGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of matcher. Available values: `all`.
+        /// Type of matcher. Default is 'all'.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

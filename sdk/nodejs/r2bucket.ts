@@ -11,10 +11,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.R2Bucket("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "terraform-bucket",
- *     location: "enam",
+ * const exampleR2Bucket = new cloudflare.R2Bucket("example_r2_bucket", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "example-bucket",
+ *     location: "apac",
+ *     storageClass: "Standard",
  * });
  * ```
  *
@@ -23,7 +24,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/r2Bucket:R2Bucket default <account id>/<bucket name>
+ * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>'
  * ```
  */
 export class R2Bucket extends pulumi.CustomResource {
@@ -55,17 +56,29 @@ export class R2Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Account ID
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * Creation timestamp
      */
-    public readonly location!: pulumi.Output<string>;
+    public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
-     * The name of the R2 bucket.
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
+    /**
+     * Location of the bucket
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the bucket
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Storage class for newly uploaded objects, unless specified otherwise.
+     */
+    public readonly storageClass!: pulumi.Output<string>;
 
     /**
      * Create a R2Bucket resource with the given unique name, arguments, and options.
@@ -81,8 +94,11 @@ export class R2Bucket extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as R2BucketState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
         } else {
             const args = argsOrState as R2BucketArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -92,8 +108,11 @@ export class R2Bucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
+            resourceInputs["creationDate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(R2Bucket.__pulumiType, name, resourceInputs, opts);
@@ -105,17 +124,29 @@ export class R2Bucket extends pulumi.CustomResource {
  */
 export interface R2BucketState {
     /**
-     * The account identifier to target for the resource.
+     * Account ID
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * Creation timestamp
+     */
+    creationDate?: pulumi.Input<string>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
+     * Location of the bucket
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the R2 bucket.
+     * Name of the bucket
      */
     name?: pulumi.Input<string>;
+    /**
+     * Storage class for newly uploaded objects, unless specified otherwise.
+     */
+    storageClass?: pulumi.Input<string>;
 }
 
 /**
@@ -123,15 +154,23 @@ export interface R2BucketState {
  */
 export interface R2BucketArgs {
     /**
-     * The account identifier to target for the resource.
+     * Account ID
      */
     accountId: pulumi.Input<string>;
     /**
-     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
+     * Location of the bucket
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the R2 bucket.
+     * Name of the bucket
      */
     name: pulumi.Input<string>;
+    /**
+     * Storage class for newly uploaded objects, unless specified otherwise.
+     */
+    storageClass?: pulumi.Input<string>;
 }

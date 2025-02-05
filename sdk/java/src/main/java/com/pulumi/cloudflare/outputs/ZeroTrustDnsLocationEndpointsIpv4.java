@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,15 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsIpv4 {
-    private @Nullable Boolean authenticationEnabled;
-    private Boolean enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    private @Nullable Boolean enabled;
 
     private ZeroTrustDnsLocationEndpointsIpv4() {}
-    public Optional<Boolean> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
-    }
-    public Boolean enabled() {
-        return this.enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     public static Builder builder() {
@@ -32,32 +35,21 @@ public final class ZeroTrustDnsLocationEndpointsIpv4 {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean authenticationEnabled;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         public Builder() {}
         public Builder(ZeroTrustDnsLocationEndpointsIpv4 defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.authenticationEnabled = defaults.authenticationEnabled;
     	      this.enabled = defaults.enabled;
         }
 
         @CustomType.Setter
-        public Builder authenticationEnabled(@Nullable Boolean authenticationEnabled) {
+        public Builder enabled(@Nullable Boolean enabled) {
 
-            this.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsIpv4", "enabled");
-            }
             this.enabled = enabled;
             return this;
         }
         public ZeroTrustDnsLocationEndpointsIpv4 build() {
             final var _resultValue = new ZeroTrustDnsLocationEndpointsIpv4();
-            _resultValue.authenticationEnabled = authenticationEnabled;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,29 +17,59 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     public static final TieredCacheState Empty = new TieredCacheState();
 
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Whether the setting is editable
      * 
      */
-    @Import(name="cacheType")
-    private @Nullable Output<String> cacheType;
+    @Import(name="editable")
+    private @Nullable Output<Boolean> editable;
 
     /**
-     * @return The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * @return Whether the setting is editable
      * 
      */
-    public Optional<Output<String>> cacheType() {
-        return Optional.ofNullable(this.cacheType);
+    public Optional<Output<Boolean>> editable() {
+        return Optional.ofNullable(this.editable);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * Enable or disable the Smart Tiered Cache
+     * 
+     */
+    @Import(name="value")
+    private @Nullable Output<String> value;
+
+    /**
+     * @return Enable or disable the Smart Tiered Cache
+     * 
+     */
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -48,7 +79,9 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     private TieredCacheState() {}
 
     private TieredCacheState(TieredCacheState $) {
-        this.cacheType = $.cacheType;
+        this.editable = $.editable;
+        this.modifiedOn = $.modifiedOn;
+        this.value = $.value;
         this.zoneId = $.zoneId;
     }
 
@@ -71,28 +104,70 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+         * @param editable Whether the setting is editable
          * 
          * @return builder
          * 
          */
-        public Builder cacheType(@Nullable Output<String> cacheType) {
-            $.cacheType = cacheType;
+        public Builder editable(@Nullable Output<Boolean> editable) {
+            $.editable = editable;
             return this;
         }
 
         /**
-         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+         * @param editable Whether the setting is editable
          * 
          * @return builder
          * 
          */
-        public Builder cacheType(String cacheType) {
-            return cacheType(Output.of(cacheType));
+        public Builder editable(Boolean editable) {
+            return editable(Output.of(editable));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param value Enable or disable the Smart Tiered Cache
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(@Nullable Output<String> value) {
+            $.value = value;
+            return this;
+        }
+
+        /**
+         * @param value Enable or disable the Smart Tiered Cache
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(String value) {
+            return value(Output.of(value));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +178,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

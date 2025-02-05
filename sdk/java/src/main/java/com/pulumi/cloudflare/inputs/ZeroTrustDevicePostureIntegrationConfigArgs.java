@@ -16,14 +16,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     public static final ZeroTrustDevicePostureIntegrationConfigArgs Empty = new ZeroTrustDevicePostureIntegrationConfigArgs();
 
     /**
-     * The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
      * 
      */
     @Import(name="accessClientId")
     private @Nullable Output<String> accessClientId;
 
     /**
-     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
      * 
      */
     public Optional<Output<String>> accessClientId() {
@@ -31,14 +31,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
      * 
      */
     @Import(name="accessClientSecret")
     private @Nullable Output<String> accessClientSecret;
 
     /**
-     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
      * 
      */
     public Optional<Output<String>> accessClientSecret() {
@@ -46,14 +46,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The third-party API&#39;s URL.
+     * The Workspace One API URL provided in the Workspace One Admin Dashboard.
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return The third-party API&#39;s URL.
+     * @return The Workspace One API URL provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -61,14 +61,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The third-party authorization API URL.
+     * The Workspace One Authorization URL depending on your region.
      * 
      */
     @Import(name="authUrl")
     private @Nullable Output<String> authUrl;
 
     /**
-     * @return The third-party authorization API URL.
+     * @return The Workspace One Authorization URL depending on your region.
      * 
      */
     public Optional<Output<String>> authUrl() {
@@ -76,14 +76,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The client identifier for authenticating API calls.
+     * The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The client identifier for authenticating API calls.
+     * @return The Workspace One client ID provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -91,14 +91,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The client key for authenticating API calls.
+     * The Uptycs client secret.
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return The client key for authenticating API calls.
+     * @return The Uptycs client secret.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -106,14 +106,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The client secret for authenticating API calls.
+     * The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return The client secret for authenticating API calls.
+     * @return The Workspace One client secret provided in the Workspace One Admin Dashboard.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -121,14 +121,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * The customer identifier for authenticating API calls.
+     * The Crowdstrike customer ID.
      * 
      */
     @Import(name="customerId")
     private @Nullable Output<String> customerId;
 
     /**
-     * @return The customer identifier for authenticating API calls.
+     * @return The Crowdstrike customer ID.
      * 
      */
     public Optional<Output<String>> customerId() {
@@ -167,7 +167,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientId The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientId The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientSecret The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientSecret The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param apiUrl The third-party API&#39;s URL.
+         * @param apiUrl The Workspace One API URL provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param apiUrl The third-party API&#39;s URL.
+         * @param apiUrl The Workspace One API URL provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param authUrl The third-party authorization API URL.
+         * @param authUrl The Workspace One Authorization URL depending on your region.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param authUrl The third-party authorization API URL.
+         * @param authUrl The Workspace One Authorization URL depending on your region.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientId The client identifier for authenticating API calls.
+         * @param clientId The Workspace One client ID provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientId The client identifier for authenticating API calls.
+         * @param clientId The Workspace One client ID provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientKey The client key for authenticating API calls.
+         * @param clientKey The Uptycs client secret.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientKey The client key for authenticating API calls.
+         * @param clientKey The Uptycs client secret.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientSecret The client secret for authenticating API calls.
+         * @param clientSecret The Workspace One client secret provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param clientSecret The client secret for authenticating API calls.
+         * @param clientSecret The Workspace One client secret provided in the Workspace One Admin Dashboard.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param customerId The customer identifier for authenticating API calls.
+         * @param customerId The Crowdstrike customer ID.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param customerId The customer identifier for authenticating API calls.
+         * @param customerId The Crowdstrike customer ID.
          * 
          * @return builder
          * 

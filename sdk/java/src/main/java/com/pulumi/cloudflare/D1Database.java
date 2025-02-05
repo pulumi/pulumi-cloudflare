@@ -10,12 +10,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
- * 
  * !&gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
  *    backup of your data before replacing a D1 Database.
  * 
@@ -44,9 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new D1Database("example", D1DatabaseArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("terraform-database")
+ *         var exampleD1Database = new D1Database("exampleD1Database", D1DatabaseArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("my-database")
+ *             .primaryLocationHint("wnam")
  *             .build());
  * 
  *     }
@@ -58,51 +59,89 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/d1Database:D1Database example &lt;account id&gt;/&lt;database id&gt;
+ * $ pulumi import cloudflare:index/d1Database:D1Database example &#39;&lt;account_id&gt;/&lt;database_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/d1Database:D1Database")
 public class D1Database extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Account identifier tag.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The name of the D1 Database.
+     * Specifies the timestamp the resource was created as an ISO8601 string.
      * 
      */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return Specifies the timestamp the resource was created as an ISO8601 string.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * The D1 database&#39;s size, in bytes.
+     * 
+     */
+    @Export(name="fileSize", refs={Double.class}, tree="[0]")
+    private Output<Double> fileSize;
+
+    /**
+     * @return The D1 database&#39;s size, in bytes.
+     * 
+     */
+    public Output<Double> fileSize() {
+        return this.fileSize;
+    }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The name of the D1 Database.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="numTables", refs={Double.class}, tree="[0]")
+    private Output<Double> numTables;
+
+    public Output<Double> numTables() {
+        return this.numTables;
+    }
     /**
-     * The backend version of the database.
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      * 
      */
+    @Export(name="primaryLocationHint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> primaryLocationHint;
+
+    /**
+     * @return Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * 
+     */
+    public Output<Optional<String>> primaryLocationHint() {
+        return Codegen.optional(this.primaryLocationHint);
+    }
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    public Output<String> uuid() {
+        return this.uuid;
+    }
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
-    /**
-     * @return The backend version of the database.
-     * 
-     */
     public Output<String> version() {
         return this.version;
     }

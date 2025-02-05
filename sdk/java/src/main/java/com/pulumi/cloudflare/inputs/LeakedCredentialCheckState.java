@@ -17,14 +17,14 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
     public static final LeakedCredentialCheckState Empty = new LeakedCredentialCheckState();
 
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of the Leaked Credential Check detection
+     * @return Whether or not Leaked Credential Checks are enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -72,7 +72,7 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled State of the Leaked Credential Check detection
+         * @param enabled Whether or not Leaked Credential Checks are enabled
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled State of the Leaked Credential Check detection
+         * @param enabled Whether or not Leaked Credential Checks are enabled
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class LeakedCredentialCheckState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

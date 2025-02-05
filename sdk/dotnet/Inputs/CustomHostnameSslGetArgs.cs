@@ -13,13 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CustomHostnameSslGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
 
+        /// <summary>
+        /// The Certificate Authority that will issue the certificate
+        /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
+
+        /// <summary>
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+        /// </summary>
+        [Input("cloudflareBranding")]
+        public Input<bool>? CloudflareBranding { get; set; }
 
         /// <summary>
         /// If a custom uploaded certificate is used.
@@ -34,47 +43,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CustomKey { get; set; }
 
         /// <summary>
-        /// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+        /// Domain control validation (DCV) method used for this hostname.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
-        [Input("settings")]
-        private InputList<Inputs.CustomHostnameSslSettingGetArgs>? _settings;
-
         /// <summary>
-        /// SSL/TLS settings for the certificate.
+        /// SSL specific settings.
         /// </summary>
-        public InputList<Inputs.CustomHostnameSslSettingGetArgs> Settings
-        {
-            get => _settings ?? (_settings = new InputList<Inputs.CustomHostnameSslSettingGetArgs>());
-            set => _settings = value;
-        }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
+        [Input("settings")]
+        public Input<Inputs.CustomHostnameSslSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+        /// Level of validation to be used for this hostname. Domain validation (dv) must be used.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        [Input("validationErrors")]
-        private InputList<Inputs.CustomHostnameSslValidationErrorGetArgs>? _validationErrors;
-        public InputList<Inputs.CustomHostnameSslValidationErrorGetArgs> ValidationErrors
-        {
-            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CustomHostnameSslValidationErrorGetArgs>());
-            set => _validationErrors = value;
-        }
-
-        [Input("validationRecords")]
-        private InputList<Inputs.CustomHostnameSslValidationRecordGetArgs>? _validationRecords;
-        public InputList<Inputs.CustomHostnameSslValidationRecordGetArgs> ValidationRecords
-        {
-            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CustomHostnameSslValidationRecordGetArgs>());
-            set => _validationRecords = value;
-        }
 
         /// <summary>
         /// Indicates whether the certificate covers a wildcard.

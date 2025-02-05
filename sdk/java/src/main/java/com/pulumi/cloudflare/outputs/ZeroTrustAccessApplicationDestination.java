@@ -12,86 +12,78 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationDestination {
     /**
-     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The CIDR range of the destination. Single IPs will be computed as /32.
      * 
      */
     private @Nullable String cidr;
     /**
-     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * @return The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
      * 
      */
     private @Nullable String hostname;
     /**
-     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
      * 
      */
     private @Nullable String l4Protocol;
     /**
-     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
     private @Nullable String portRange;
-    /**
-     * @return The destination type. Available values: `public`, `private`. Defaults to `public`.
-     * 
-     */
     private @Nullable String type;
     /**
-     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+     * @return The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
      * 
      */
     private @Nullable String uri;
     /**
-     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The VNET ID to match the destination. When omitted, all VNETs will match.
      * 
      */
     private @Nullable String vnetId;
 
     private ZeroTrustAccessApplicationDestination() {}
     /**
-     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The CIDR range of the destination. Single IPs will be computed as /32.
      * 
      */
     public Optional<String> cidr() {
         return Optional.ofNullable(this.cidr);
     }
     /**
-     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * @return The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
      * 
      */
     public Optional<String> l4Protocol() {
         return Optional.ofNullable(this.l4Protocol);
     }
     /**
-     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
     public Optional<String> portRange() {
         return Optional.ofNullable(this.portRange);
     }
-    /**
-     * @return The destination type. Available values: `public`, `private`. Defaults to `public`.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+     * @return The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
      * 
      */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }
     /**
-     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The VNET ID to match the destination. When omitted, all VNETs will match.
      * 
      */
     public Optional<String> vnetId() {

@@ -20,11 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.R2Bucket("example", new()
+    ///     var exampleR2Bucket = new Cloudflare.R2Bucket("example_r2_bucket", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "terraform-bucket",
-    ///         Location = "enam",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "example-bucket",
+    ///         Location = "apac",
+    ///         StorageClass = "Standard",
     ///     });
     /// 
     /// });
@@ -35,29 +36,47 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket default &lt;account id&gt;/&lt;bucket name&gt;
+    /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2Bucket:R2Bucket")]
     public partial class R2Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account ID
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        /// Creation timestamp
         /// </summary>
-        [Output("location")]
-        public Output<string> Location { get; private set; } = null!;
+        [Output("creationDate")]
+        public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the R2 bucket.
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
+        /// <summary>
+        /// Location of the bucket
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the bucket
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// </summary>
+        [Output("storageClass")]
+        public Output<string> StorageClass { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,22 +125,34 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account ID
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
+        /// Location of the bucket
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the R2 bucket.
+        /// Name of the bucket
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// </summary>
+        [Input("storageClass")]
+        public Input<string>? StorageClass { get; set; }
 
         public R2BucketArgs()
         {
@@ -132,22 +163,40 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Account ID
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`, `OC`
+        /// Creation timestamp
+        /// </summary>
+        [Input("creationDate")]
+        public Input<string>? CreationDate { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
+        /// Location of the bucket
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the R2 bucket.
+        /// Name of the bucket
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Storage class for newly uploaded objects, unless specified otherwise.
+        /// </summary>
+        [Input("storageClass")]
+        public Input<string>? StorageClass { get; set; }
 
         public R2BucketState()
         {

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZoneFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -15,47 +16,16 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZoneArgs Empty = new GetZoneArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="filter")
+    private @Nullable Output<GetZoneFilterArgs> filter;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Optional<Output<GetZoneFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * The name of the zone. Must provide only one of `zone_id`, `name`.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    /**
-     * @return The name of the zone. Must provide only one of `zone_id`, `name`.
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-     * 
-     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
-    /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-     * 
-     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -63,8 +33,7 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
     private GetZoneArgs() {}
 
     private GetZoneArgs(GetZoneArgs $) {
-        this.accountId = $.accountId;
-        this.name = $.name;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -86,65 +55,20 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZoneArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
+        public Builder filter(@Nullable Output<GetZoneFilterArgs> filter) {
+            $.filter = filter;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
+        public Builder filter(GetZoneFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
-        /**
-         * @param name The name of the zone. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name The name of the zone. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

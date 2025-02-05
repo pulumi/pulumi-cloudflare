@@ -2,26 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage a schema in API Shield Schema Validation 2.0.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
  *
- * const petstoreSchema = new cloudflare.ApiShieldSchema("petstore_schema", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "myschema",
+ * const exampleApiShieldSchema = new cloudflare.ApiShieldSchema("example_api_shield_schema", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     file: "file.txt",
  *     kind: "openapi_v3",
- *     validationEnabled: true,
- *     source: std.file({
- *         input: "./schemas/petstore.json",
- *     }).then(invoke => invoke.result),
+ *     name: "petstore schema",
+ *     validationEnabled: "true",
  * });
  * ```
  */
@@ -53,24 +50,32 @@ export class ApiShieldSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiShieldSchema.__pulumiType;
     }
 
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
+     * Schema file bytes
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    public readonly file!: pulumi.Output<string>;
     /**
-     * Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * Kind of schema
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string>;
     /**
-     * Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * Name of the schema
      */
-    public readonly source!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly schema!: pulumi.Output<outputs.ApiShieldSchemaSchema>;
+    public readonly schemaId!: pulumi.Output<string | undefined>;
+    /**
+     * Source of the schema
+     */
+    public /*out*/ readonly source!: pulumi.Output<string>;
+    public /*out*/ readonly uploadDetails!: pulumi.Output<outputs.ApiShieldSchemaUploadDetails>;
     /**
      * Flag whether schema is enabled for validation.
      */
-    public readonly validationEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly validationEnabled!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -87,27 +92,37 @@ export class ApiShieldSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldSchemaState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["file"] = state ? state.file : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["schemaId"] = state ? state.schemaId : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["uploadDetails"] = state ? state.uploadDetails : undefined;
             resourceInputs["validationEnabled"] = state ? state.validationEnabled : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ApiShieldSchemaArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.file === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'file'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'source'");
+            if ((!args || args.kind === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'kind'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["schemaId"] = args ? args.schemaId : undefined;
             resourceInputs["validationEnabled"] = args ? args.validationEnabled : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["uploadDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldSchema.__pulumiType, name, resourceInputs, opts);
@@ -118,24 +133,32 @@ export class ApiShieldSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiShieldSchema resources.
  */
 export interface ApiShieldSchemaState {
+    createdAt?: pulumi.Input<string>;
     /**
-     * Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
+     * Schema file bytes
+     */
+    file?: pulumi.Input<string>;
+    /**
+     * Kind of schema
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * Name of the schema
      */
     name?: pulumi.Input<string>;
+    schema?: pulumi.Input<inputs.ApiShieldSchemaSchema>;
+    schemaId?: pulumi.Input<string>;
     /**
-     * Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * Source of the schema
      */
     source?: pulumi.Input<string>;
+    uploadDetails?: pulumi.Input<inputs.ApiShieldSchemaUploadDetails>;
     /**
      * Flag whether schema is enabled for validation.
      */
-    validationEnabled?: pulumi.Input<boolean>;
+    validationEnabled?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -145,23 +168,24 @@ export interface ApiShieldSchemaState {
  */
 export interface ApiShieldSchemaArgs {
     /**
-     * Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
+     * Schema file bytes
      */
-    kind?: pulumi.Input<string>;
+    file: pulumi.Input<string>;
     /**
-     * Name of the schema. **Modifying this attribute will force creation of a new resource.**
+     * Kind of schema
      */
-    name: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
-     * Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+     * Name of the schema
      */
-    source: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string>;
     /**
      * Flag whether schema is enabled for validation.
      */
-    validationEnabled?: pulumi.Input<boolean>;
+    validationEnabled?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -12,13 +12,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Zone Hold resource that prevents adding
- * the hostname to another account for use.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,9 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZoneHold("example", ZoneHoldArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .hold(true)
+ *         var exampleZoneHold = new ZoneHold("exampleZoneHold", ZoneHoldArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -58,63 +53,69 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zoneHold:ZoneHold example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zoneHold:ZoneHold example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zoneHold:ZoneHold")
 public class ZoneHold extends com.pulumi.resources.CustomResource {
-    /**
-     * Enablement status of the zone hold.
-     * 
-     */
     @Export(name="hold", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hold;
 
-    /**
-     * @return Enablement status of the zone hold.
-     * 
-     */
     public Output<Boolean> hold() {
         return this.hold;
     }
     /**
-     * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      * 
      */
     @Export(name="holdAfter", refs={String.class}, tree="[0]")
     private Output<String> holdAfter;
 
     /**
-     * @return The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * @return If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      * 
      */
     public Output<String> holdAfter() {
         return this.holdAfter;
     }
     /**
-     * Whether to extend to block any subdomain of the given zone.
+     * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+     * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
      * 
      */
     @Export(name="includeSubdomains", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> includeSubdomains;
+    private Output<Boolean> includeSubdomains;
 
     /**
-     * @return Whether to extend to block any subdomain of the given zone.
+     * @return If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * &#39;example.com&#39; and include_subdomains=true will block &#39;example.com&#39;,
+     * &#39;staging.example.com&#39;, &#39;api.staging.example.com&#39;, etc.
      * 
      */
-    public Output<Optional<Boolean>> includeSubdomains() {
-        return Codegen.optional(this.includeSubdomains);
+    public Output<Boolean> includeSubdomains() {
+        return this.includeSubdomains;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

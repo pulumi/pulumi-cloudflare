@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectDeploymentConfigs
     {
         /// <summary>
-        /// Configuration for preview deploys.
+        /// Configs for preview deploys.
         /// </summary>
         public readonly Outputs.PagesProjectDeploymentConfigsPreview? Preview;
         /// <summary>
-        /// Configuration for production deploys.
+        /// Configs for production deploys.
         /// </summary>
         public readonly Outputs.PagesProjectDeploymentConfigsProduction? Production;
 

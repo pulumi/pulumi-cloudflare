@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _actions;
 
         /// <summary>
-        /// Targeted actions for alert.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> Actions
         {
@@ -24,11 +24,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _actions = value;
         }
 
+        [Input("affectedAsns")]
+        private InputList<string>? _affectedAsns;
+
+        /// <summary>
+        /// Used for configuring radar_notification
+        /// </summary>
+        public InputList<string> AffectedAsns
+        {
+            get => _affectedAsns ?? (_affectedAsns = new InputList<string>());
+            set => _affectedAsns = value;
+        }
+
         [Input("affectedComponents")]
         private InputList<string>? _affectedComponents;
 
         /// <summary>
-        /// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        /// Used for configuring incident_alert
         /// </summary>
         public InputList<string> AffectedComponents
         {
@@ -36,11 +48,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _affectedComponents = value;
         }
 
+        [Input("affectedLocations")]
+        private InputList<string>? _affectedLocations;
+
+        /// <summary>
+        /// Used for configuring radar_notification
+        /// </summary>
+        public InputList<string> AffectedLocations
+        {
+            get => _affectedLocations ?? (_affectedLocations = new InputList<string>());
+            set => _affectedLocations = value;
+        }
+
         [Input("airportCodes")]
         private InputList<string>? _airportCodes;
 
         /// <summary>
-        /// Filter on Points of Presence.
+        /// Used for configuring maintenance*event*notification
         /// </summary>
         public InputList<string> AirportCodes
         {
@@ -52,7 +76,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _alertTriggerPreferences;
 
         /// <summary>
-        /// Alert trigger preferences. Example: `slo`.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> AlertTriggerPreferences
         {
@@ -60,11 +84,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _alertTriggerPreferences = value;
         }
 
+        [Input("alertTriggerPreferencesValues")]
+        private InputList<string>? _alertTriggerPreferencesValues;
+
+        /// <summary>
+        /// Usage depends on specific alert type
+        /// </summary>
+        public InputList<string> AlertTriggerPreferencesValues
+        {
+            get => _alertTriggerPreferencesValues ?? (_alertTriggerPreferencesValues = new InputList<string>());
+            set => _alertTriggerPreferencesValues = value;
+        }
+
         [Input("enableds")]
         private InputList<string>? _enableds;
 
         /// <summary>
-        /// State of the pool to alert on.
+        /// Used for configuring load*balancing*pool*enablement*alert
         /// </summary>
         public InputList<string> Enableds
         {
@@ -76,7 +112,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _environments;
 
         /// <summary>
-        /// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public InputList<string> Environments
         {
@@ -88,7 +124,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _eventSources;
 
         /// <summary>
-        /// Source configuration to alert on for pool or origin.
+        /// Used for configuring load*balancing*health_alert
         /// </summary>
         public InputList<string> EventSources
         {
@@ -100,7 +136,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _eventTypes;
 
         /// <summary>
-        /// Stream event type to alert on.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> EventTypes
         {
@@ -112,7 +148,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _events;
 
         /// <summary>
-        /// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public InputList<string> Events
         {
@@ -124,7 +160,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// Alert grouping.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -136,7 +172,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _healthCheckIds;
 
         /// <summary>
-        /// Identifier health check. Required when using `filters.0.status`.
+        /// Used for configuring health*check*status_notification
         /// </summary>
         public InputList<string> HealthCheckIds
         {
@@ -148,7 +184,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _incidentImpacts;
 
         /// <summary>
-        /// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        /// Used for configuring incident_alert
         /// </summary>
         public InputList<string> IncidentImpacts
         {
@@ -160,7 +196,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _inputIds;
 
         /// <summary>
-        /// Stream input id to alert on.
+        /// Used for configuring stream*live*notifications
         /// </summary>
         public InputList<string> InputIds
         {
@@ -168,11 +204,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _inputIds = value;
         }
 
+        [Input("insightClasses")]
+        private InputList<string>? _insightClasses;
+
+        /// <summary>
+        /// Used for configuring security*insights*alert
+        /// </summary>
+        public InputList<string> InsightClasses
+        {
+            get => _insightClasses ?? (_insightClasses = new InputList<string>());
+            set => _insightClasses = value;
+        }
+
         [Input("limits")]
         private InputList<string>? _limits;
 
         /// <summary>
-        /// A numerical limit. Example: `100`.
+        /// Used for configuring billing*usage*alert
         /// </summary>
         public InputList<string> Limits
         {
@@ -180,11 +228,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _limits = value;
         }
 
+        [Input("logoTags")]
+        private InputList<string>? _logoTags;
+
+        /// <summary>
+        /// Used for configuring logo*match*alert
+        /// </summary>
+        public InputList<string> LogoTags
+        {
+            get => _logoTags ?? (_logoTags = new InputList<string>());
+            set => _logoTags = value;
+        }
+
         [Input("megabitsPerSeconds")]
         private InputList<string>? _megabitsPerSeconds;
 
         /// <summary>
-        /// Megabits per second threshold for dos alert.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public InputList<string> MegabitsPerSeconds
         {
@@ -196,7 +256,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _newHealths;
 
         /// <summary>
-        /// Health status to alert on for pool or origin.
+        /// Used for configuring load*balancing*health_alert
         /// </summary>
         public InputList<string> NewHealths
         {
@@ -208,7 +268,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _newStatuses;
 
         /// <summary>
-        /// Tunnel health status to alert on.
+        /// Used for configuring tunnel*health*event
         /// </summary>
         public InputList<string> NewStatuses
         {
@@ -220,7 +280,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _packetsPerSeconds;
 
         /// <summary>
-        /// Packets per second threshold for dos alert.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public InputList<string> PacketsPerSeconds
         {
@@ -232,7 +292,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _poolIds;
 
         /// <summary>
-        /// Load balancer pool identifier.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> PoolIds
         {
@@ -240,11 +300,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _poolIds = value;
         }
 
+        [Input("popNames")]
+        private InputList<string>? _popNames;
+
+        /// <summary>
+        /// Usage depends on specific alert type
+        /// </summary>
+        public InputList<string> PopNames
+        {
+            get => _popNames ?? (_popNames = new InputList<string>());
+            set => _popNames = value;
+        }
+
         [Input("products")]
         private InputList<string>? _products;
 
         /// <summary>
-        /// Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+        /// Used for configuring billing*usage*alert
         /// </summary>
         public InputList<string> Products
         {
@@ -256,7 +328,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _projectIds;
 
         /// <summary>
-        /// Identifier of pages project.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public InputList<string> ProjectIds
         {
@@ -268,7 +340,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// Protocol to alert on for dos.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public InputList<string> Protocols
         {
@@ -276,11 +348,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _protocols = value;
         }
 
+        [Input("queryTags")]
+        private InputList<string>? _queryTags;
+
+        /// <summary>
+        /// Usage depends on specific alert type
+        /// </summary>
+        public InputList<string> QueryTags
+        {
+            get => _queryTags ?? (_queryTags = new InputList<string>());
+            set => _queryTags = value;
+        }
+
         [Input("requestsPerSeconds")]
         private InputList<string>? _requestsPerSeconds;
 
         /// <summary>
-        /// Requests per second threshold for dos alert.
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public InputList<string> RequestsPerSeconds
         {
@@ -292,7 +376,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _selectors;
 
         /// <summary>
-        /// Selectors for alert. Valid options depend on the alert type.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> Selectors
         {
@@ -302,6 +386,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Used for configuring clickhouse*alert*fw*ent*anomaly
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
@@ -312,7 +400,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _slos;
 
         /// <summary>
-        /// A numerical limit. Example: `99.9`.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> Slos
         {
@@ -324,7 +412,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _statuses;
 
         /// <summary>
-        /// Status to alert on.
+        /// Used for configuring health*check*status_notification
         /// </summary>
         public InputList<string> Statuses
         {
@@ -336,7 +424,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _targetHostnames;
 
         /// <summary>
-        /// Target host to alert on for dos.
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public InputList<string> TargetHostnames
         {
@@ -348,7 +436,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _targetIps;
 
         /// <summary>
-        /// Target ip to alert on for dos in CIDR notation.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public InputList<string> TargetIps
         {
@@ -360,7 +448,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _targetZoneNames;
 
         /// <summary>
-        /// Target domain to alert on.
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public InputList<string> TargetZoneNames
         {
@@ -368,11 +456,23 @@ namespace Pulumi.Cloudflare.Inputs
             set => _targetZoneNames = value;
         }
 
+        [Input("trafficExclusions")]
+        private InputList<string>? _trafficExclusions;
+
+        /// <summary>
+        /// Used for configuring traffic*anomalies*alert
+        /// </summary>
+        public InputList<string> TrafficExclusions
+        {
+            get => _trafficExclusions ?? (_trafficExclusions = new InputList<string>());
+            set => _trafficExclusions = value;
+        }
+
         [Input("tunnelIds")]
         private InputList<string>? _tunnelIds;
 
         /// <summary>
-        /// Tunnel IDs to alert on.
+        /// Used for configuring tunnel*health*event
         /// </summary>
         public InputList<string> TunnelIds
         {
@@ -384,7 +484,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _tunnelNames;
 
         /// <summary>
-        /// Tunnel Names to alert on.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> TunnelNames
         {
@@ -396,7 +496,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _wheres;
 
         /// <summary>
-        /// Filter for alert.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> Wheres
         {
@@ -408,7 +508,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _zones;
 
         /// <summary>
-        /// A list of zone identifiers.
+        /// Usage depends on specific alert type
         /// </summary>
         public InputList<string> Zones
         {

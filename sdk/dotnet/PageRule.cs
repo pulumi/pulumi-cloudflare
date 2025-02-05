@@ -12,41 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare page rule resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Add a page rule to the domain
-    ///     var foobar = new Cloudflare.PageRule("foobar", new()
-    ///     {
-    ///         ZoneId = cloudflareZoneId,
-    ///         Target = $"sub.{cloudflareZone}/page",
-    ///         Priority = 1,
-    ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
-    ///         {
-    ///             Ssl = "flexible",
-    ///             EmailObfuscation = "on",
-    ///             Minifies = new[]
-    ///             {
-    ///                 new Cloudflare.Inputs.PageRuleActionsMinifyArgs
-    ///                 {
-    ///                     Html = "off",
-    ///                     Css = "on",
-    ///                     Js = "on",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
@@ -65,16 +30,28 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.PageRuleActions> Actions { get; private set; } = null!;
 
         /// <summary>
+        /// The timestamp of when the Page Rule was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp of when the Page Rule was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
         /// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         /// </summary>
         [Output("priority")]
-        public Output<int?> Priority { get; private set; } = null!;
+        public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
         /// Whether the page rule is active or disabled.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The URL pattern to target with the page rule.
@@ -177,6 +154,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("actions")]
         public Input<Inputs.PageRuleActionsGetArgs>? Actions { get; set; }
+
+        /// <summary>
+        /// The timestamp of when the Page Rule was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// The timestamp of when the Page Rule was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
         /// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).

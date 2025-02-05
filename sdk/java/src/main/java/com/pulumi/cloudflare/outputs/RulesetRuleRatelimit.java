@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -15,98 +16,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleRatelimit {
     /**
-     * @return List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
      * 
      */
-    private @Nullable List<String> characteristics;
+    private List<String> characteristics;
     /**
-     * @return Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
      * 
      */
     private @Nullable String countingExpression;
     /**
-     * @return Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * @return Period of time in seconds after which the action will be disabled following its first execution.
      * 
      */
     private @Nullable Integer mitigationTimeout;
     /**
-     * @return The period of time to consider (in seconds) when evaluating the request rate.
+     * @return Period in seconds over which the counter is being incremented.
      * 
      */
-    private @Nullable Integer period;
+    private Integer period;
     /**
-     * @return The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * @return The threshold of requests per period after which the action will be executed for the first time.
      * 
      */
     private @Nullable Integer requestsPerPeriod;
     /**
-     * @return Whether to include requests to origin within the Rate Limiting count.
+     * @return Defines if ratelimit counting is only done when an origin is reached.
      * 
      */
     private @Nullable Boolean requestsToOrigin;
     /**
-     * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * @return The score threshold per period for which the action will be executed the first time.
      * 
      */
     private @Nullable Integer scorePerPeriod;
     /**
-     * @return Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
      * 
      */
     private @Nullable String scoreResponseHeaderName;
 
     private RulesetRuleRatelimit() {}
     /**
-     * @return List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
      * 
      */
     public List<String> characteristics() {
-        return this.characteristics == null ? List.of() : this.characteristics;
+        return this.characteristics;
     }
     /**
-     * @return Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
      * 
      */
     public Optional<String> countingExpression() {
         return Optional.ofNullable(this.countingExpression);
     }
     /**
-     * @return Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * @return Period of time in seconds after which the action will be disabled following its first execution.
      * 
      */
     public Optional<Integer> mitigationTimeout() {
         return Optional.ofNullable(this.mitigationTimeout);
     }
     /**
-     * @return The period of time to consider (in seconds) when evaluating the request rate.
+     * @return Period in seconds over which the counter is being incremented.
      * 
      */
-    public Optional<Integer> period() {
-        return Optional.ofNullable(this.period);
+    public Integer period() {
+        return this.period;
     }
     /**
-     * @return The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * @return The threshold of requests per period after which the action will be executed for the first time.
      * 
      */
     public Optional<Integer> requestsPerPeriod() {
         return Optional.ofNullable(this.requestsPerPeriod);
     }
     /**
-     * @return Whether to include requests to origin within the Rate Limiting count.
+     * @return Defines if ratelimit counting is only done when an origin is reached.
      * 
      */
     public Optional<Boolean> requestsToOrigin() {
         return Optional.ofNullable(this.requestsToOrigin);
     }
     /**
-     * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * @return The score threshold per period for which the action will be executed the first time.
      * 
      */
     public Optional<Integer> scorePerPeriod() {
         return Optional.ofNullable(this.scorePerPeriod);
     }
     /**
-     * @return Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
      * 
      */
     public Optional<String> scoreResponseHeaderName() {
@@ -122,10 +123,10 @@ public final class RulesetRuleRatelimit {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> characteristics;
+        private List<String> characteristics;
         private @Nullable String countingExpression;
         private @Nullable Integer mitigationTimeout;
-        private @Nullable Integer period;
+        private Integer period;
         private @Nullable Integer requestsPerPeriod;
         private @Nullable Boolean requestsToOrigin;
         private @Nullable Integer scorePerPeriod;
@@ -144,8 +145,10 @@ public final class RulesetRuleRatelimit {
         }
 
         @CustomType.Setter
-        public Builder characteristics(@Nullable List<String> characteristics) {
-
+        public Builder characteristics(List<String> characteristics) {
+            if (characteristics == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleRatelimit", "characteristics");
+            }
             this.characteristics = characteristics;
             return this;
         }
@@ -165,8 +168,10 @@ public final class RulesetRuleRatelimit {
             return this;
         }
         @CustomType.Setter
-        public Builder period(@Nullable Integer period) {
-
+        public Builder period(Integer period) {
+            if (period == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleRatelimit", "period");
+            }
             this.period = period;
             return this;
         }

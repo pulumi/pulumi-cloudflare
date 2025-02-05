@@ -2,30 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Tunnel exposes applications running on your local web server on any
- * network with an internet connection without manually adding DNS
- * records or configuring a firewall or router.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ZeroTrustTunnelCloudflared("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "my-tunnel",
- *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+ * const exampleZeroTrustTunnelCloudflared = new cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     name: "blog",
+ *     configSrc: "local",
+ *     tunnelSecret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example <account_id>/<tunnel_id>
+ * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '<account_id>/<tunnel_id>'
  * ```
  */
 export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
@@ -57,29 +56,61 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Usable CNAME for accessing the Tunnel.
+     * Cloudflare account ID
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    public /*out*/ readonly accountTag!: pulumi.Output<string>;
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      */
-    public readonly configSrc!: pulumi.Output<string | undefined>;
+    public readonly configSrc!: pulumi.Output<string>;
     /**
-     * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+     */
+    public /*out*/ readonly connections!: pulumi.Output<outputs.ZeroTrustTunnelCloudflaredConnection[]>;
+    /**
+     * Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+     */
+    public /*out*/ readonly connsActiveAt!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+     */
+    public /*out*/ readonly connsInactiveAt!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the resource was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    /**
+     * Metadata associated with the tunnel.
+     */
+    public /*out*/ readonly metadata!: pulumi.Output<string>;
+    /**
+     * A user-friendly name for a tunnel.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      */
-    public readonly secret!: pulumi.Output<string>;
+    public /*out*/ readonly remoteConfig!: pulumi.Output<boolean>;
     /**
-     * Token used by a connector to authenticate and run the tunnel.
+     * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      */
-    public /*out*/ readonly tunnelToken!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The type of tunnel.
+     */
+    public /*out*/ readonly tunType!: pulumi.Output<string>;
+    /**
+     * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+     */
+    public readonly tunnelSecret!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustTunnelCloudflared resource with the given unique name, arguments, and options.
@@ -95,11 +126,19 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustTunnelCloudflaredState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["accountTag"] = state ? state.accountTag : undefined;
             resourceInputs["configSrc"] = state ? state.configSrc : undefined;
+            resourceInputs["connections"] = state ? state.connections : undefined;
+            resourceInputs["connsActiveAt"] = state ? state.connsActiveAt : undefined;
+            resourceInputs["connsInactiveAt"] = state ? state.connsInactiveAt : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["tunnelToken"] = state ? state.tunnelToken : undefined;
+            resourceInputs["remoteConfig"] = state ? state.remoteConfig : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tunType"] = state ? state.tunType : undefined;
+            resourceInputs["tunnelSecret"] = state ? state.tunnelSecret : undefined;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -108,19 +147,22 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.secret === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secret'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["configSrc"] = args ? args.configSrc : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["cname"] = undefined /*out*/;
-            resourceInputs["tunnelToken"] = undefined /*out*/;
+            resourceInputs["tunnelSecret"] = args ? args.tunnelSecret : undefined;
+            resourceInputs["accountTag"] = undefined /*out*/;
+            resourceInputs["connections"] = undefined /*out*/;
+            resourceInputs["connsActiveAt"] = undefined /*out*/;
+            resourceInputs["connsInactiveAt"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["remoteConfig"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["tunType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secret", "tunnelToken"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustTunnelCloudflared.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -130,29 +172,61 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
  */
 export interface ZeroTrustTunnelCloudflaredState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Usable CNAME for accessing the Tunnel.
+     * Cloudflare account ID
      */
-    cname?: pulumi.Input<string>;
+    accountTag?: pulumi.Input<string>;
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      */
     configSrc?: pulumi.Input<string>;
     /**
-     * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+     */
+    connections?: pulumi.Input<pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConnection>[]>;
+    /**
+     * Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+     */
+    connsActiveAt?: pulumi.Input<string>;
+    /**
+     * Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+     */
+    connsInactiveAt?: pulumi.Input<string>;
+    /**
+     * Timestamp of when the resource was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Metadata associated with the tunnel.
+     */
+    metadata?: pulumi.Input<string>;
+    /**
+     * A user-friendly name for a tunnel.
      */
     name?: pulumi.Input<string>;
     /**
-     * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      */
-    secret?: pulumi.Input<string>;
+    remoteConfig?: pulumi.Input<boolean>;
     /**
-     * Token used by a connector to authenticate and run the tunnel.
+     * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      */
-    tunnelToken?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    /**
+     * The type of tunnel.
+     */
+    tunType?: pulumi.Input<string>;
+    /**
+     * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+     */
+    tunnelSecret?: pulumi.Input<string>;
 }
 
 /**
@@ -160,19 +234,19 @@ export interface ZeroTrustTunnelCloudflaredState {
  */
 export interface ZeroTrustTunnelCloudflaredArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId: pulumi.Input<string>;
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      */
     configSrc?: pulumi.Input<string>;
     /**
-     * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * A user-friendly name for a tunnel.
      */
     name: pulumi.Input<string>;
     /**
-     * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      */
-    secret: pulumi.Input<string>;
+    tunnelSecret?: pulumi.Input<string>;
 }

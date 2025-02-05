@@ -5,25 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Zone Hold resource that prevents adding
- * the hostname to another account for use.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ZoneHold("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     hold: true,
- * });
+ * const exampleZoneHold = new cloudflare.ZoneHold("example_zone_hold", {zoneId: "023e105f4ecef8ad9ca31a8372d0c353"});
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zoneHold:ZoneHold example <zone_id>
+ * $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
  * ```
  */
 export class ZoneHold extends pulumi.CustomResource {
@@ -54,20 +48,24 @@ export class ZoneHold extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneHold.__pulumiType;
     }
 
+    public /*out*/ readonly hold!: pulumi.Output<boolean>;
     /**
-     * Enablement status of the zone hold.
-     */
-    public readonly hold!: pulumi.Output<boolean>;
-    /**
-     * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      */
     public readonly holdAfter!: pulumi.Output<string>;
     /**
-     * Whether to extend to block any subdomain of the given zone.
+     * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * 'example.com' and include_subdomains=true will block 'example.com',
+     * 'staging.example.com', 'api.staging.example.com', etc.
      */
-    public readonly includeSubdomains!: pulumi.Output<boolean | undefined>;
+    public readonly includeSubdomains!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -90,16 +88,13 @@ export class ZoneHold extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneHoldArgs | undefined;
-            if ((!args || args.hold === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hold'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["hold"] = args ? args.hold : undefined;
             resourceInputs["holdAfter"] = args ? args.holdAfter : undefined;
             resourceInputs["includeSubdomains"] = args ? args.includeSubdomains : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["hold"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneHold.__pulumiType, name, resourceInputs, opts);
@@ -110,20 +105,24 @@ export class ZoneHold extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneHold resources.
  */
 export interface ZoneHoldState {
-    /**
-     * Enablement status of the zone hold.
-     */
     hold?: pulumi.Input<boolean>;
     /**
-     * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      */
     holdAfter?: pulumi.Input<string>;
     /**
-     * Whether to extend to block any subdomain of the given zone.
+     * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * 'example.com' and include_subdomains=true will block 'example.com',
+     * 'staging.example.com', 'api.staging.example.com', etc.
      */
     includeSubdomains?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -133,19 +132,22 @@ export interface ZoneHoldState {
  */
 export interface ZoneHoldArgs {
     /**
-     * Enablement status of the zone hold.
-     */
-    hold: pulumi.Input<boolean>;
-    /**
-     * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+     * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+     * then automatically re-enabled by the system at the time specified
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+     * no effect on an existing, enabled hold. Providing an empty string will set its value
+     * to the current time.
      */
     holdAfter?: pulumi.Input<string>;
     /**
-     * Whether to extend to block any subdomain of the given zone.
+     * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+     * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+     * 'example.com' and include_subdomains=true will block 'example.com',
+     * 'staging.example.com', 'api.staging.example.com', etc.
      */
     includeSubdomains?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

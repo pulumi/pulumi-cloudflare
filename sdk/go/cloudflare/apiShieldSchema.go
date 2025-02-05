@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,26 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "./schemas/petstore.json",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewApiShieldSchema(ctx, "petstore_schema", &cloudflare.ApiShieldSchemaArgs{
-//				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:              pulumi.String("myschema"),
+//			_, err := cloudflare.NewApiShieldSchema(ctx, "example_api_shield_schema", &cloudflare.ApiShieldSchemaArgs{
+//				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				File:              pulumi.String("file.txt"),
 //				Kind:              pulumi.String("openapi_v3"),
-//				ValidationEnabled: pulumi.Bool(true),
-//				Source:            pulumi.String(invokeFile.Result),
+//				Name:              pulumi.String("petstore schema"),
+//				ValidationEnabled: pulumi.String("true"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,15 +44,21 @@ import (
 type ApiShieldSchema struct {
 	pulumi.CustomResourceState
 
-	// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-	Source pulumi.StringOutput `pulumi:"source"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Schema file bytes
+	File pulumi.StringOutput `pulumi:"file"`
+	// Kind of schema
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Name of the schema
+	Name     pulumi.StringPtrOutput      `pulumi:"name"`
+	Schema   ApiShieldSchemaSchemaOutput `pulumi:"schema"`
+	SchemaId pulumi.StringPtrOutput      `pulumi:"schemaId"`
+	// Source of the schema
+	Source        pulumi.StringOutput                `pulumi:"source"`
+	UploadDetails ApiShieldSchemaUploadDetailsOutput `pulumi:"uploadDetails"`
 	// Flag whether schema is enabled for validation.
-	ValidationEnabled pulumi.BoolPtrOutput `pulumi:"validationEnabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	ValidationEnabled pulumi.StringPtrOutput `pulumi:"validationEnabled"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -72,11 +69,11 @@ func NewApiShieldSchema(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.File == nil {
+		return nil, errors.New("invalid value for required argument 'File'")
 	}
-	if args.Source == nil {
-		return nil, errors.New("invalid value for required argument 'Source'")
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -104,28 +101,40 @@ func GetApiShieldSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShieldSchema resources.
 type apiShieldSchemaState struct {
-	// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
+	CreatedAt *string `pulumi:"createdAt"`
+	// Schema file bytes
+	File *string `pulumi:"file"`
+	// Kind of schema
 	Kind *string `pulumi:"kind"`
-	// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-	Name *string `pulumi:"name"`
-	// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-	Source *string `pulumi:"source"`
+	// Name of the schema
+	Name     *string                `pulumi:"name"`
+	Schema   *ApiShieldSchemaSchema `pulumi:"schema"`
+	SchemaId *string                `pulumi:"schemaId"`
+	// Source of the schema
+	Source        *string                       `pulumi:"source"`
+	UploadDetails *ApiShieldSchemaUploadDetails `pulumi:"uploadDetails"`
 	// Flag whether schema is enabled for validation.
-	ValidationEnabled *bool `pulumi:"validationEnabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	ValidationEnabled *string `pulumi:"validationEnabled"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldSchemaState struct {
-	// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
+	CreatedAt pulumi.StringPtrInput
+	// Schema file bytes
+	File pulumi.StringPtrInput
+	// Kind of schema
 	Kind pulumi.StringPtrInput
-	// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-	Name pulumi.StringPtrInput
-	// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-	Source pulumi.StringPtrInput
+	// Name of the schema
+	Name     pulumi.StringPtrInput
+	Schema   ApiShieldSchemaSchemaPtrInput
+	SchemaId pulumi.StringPtrInput
+	// Source of the schema
+	Source        pulumi.StringPtrInput
+	UploadDetails ApiShieldSchemaUploadDetailsPtrInput
 	// Flag whether schema is enabled for validation.
-	ValidationEnabled pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	ValidationEnabled pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -134,29 +143,31 @@ func (ApiShieldSchemaState) ElementType() reflect.Type {
 }
 
 type apiShieldSchemaArgs struct {
-	// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
-	Kind *string `pulumi:"kind"`
-	// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-	Name string `pulumi:"name"`
-	// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-	Source string `pulumi:"source"`
+	// Schema file bytes
+	File string `pulumi:"file"`
+	// Kind of schema
+	Kind string `pulumi:"kind"`
+	// Name of the schema
+	Name     *string `pulumi:"name"`
+	SchemaId *string `pulumi:"schemaId"`
 	// Flag whether schema is enabled for validation.
-	ValidationEnabled *bool `pulumi:"validationEnabled"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	ValidationEnabled *string `pulumi:"validationEnabled"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldSchema resource.
 type ApiShieldSchemaArgs struct {
-	// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
-	Kind pulumi.StringPtrInput
-	// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-	Name pulumi.StringInput
-	// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
-	Source pulumi.StringInput
+	// Schema file bytes
+	File pulumi.StringInput
+	// Kind of schema
+	Kind pulumi.StringInput
+	// Name of the schema
+	Name     pulumi.StringPtrInput
+	SchemaId pulumi.StringPtrInput
 	// Flag whether schema is enabled for validation.
-	ValidationEnabled pulumi.BoolPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	ValidationEnabled pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -247,27 +258,48 @@ func (o ApiShieldSchemaOutput) ToApiShieldSchemaOutputWithContext(ctx context.Co
 	return o
 }
 
-// Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
-func (o ApiShieldSchemaOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+func (o ApiShieldSchemaOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Name of the schema. **Modifying this attribute will force creation of a new resource.**
-func (o ApiShieldSchemaOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Schema file bytes
+func (o ApiShieldSchemaOutput) File() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }
 
-// Schema file bytes. **Modifying this attribute will force creation of a new resource.**
+// Kind of schema
+func (o ApiShieldSchemaOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the schema
+func (o ApiShieldSchemaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiShieldSchemaOutput) Schema() ApiShieldSchemaSchemaOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) ApiShieldSchemaSchemaOutput { return v.Schema }).(ApiShieldSchemaSchemaOutput)
+}
+
+func (o ApiShieldSchemaOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.SchemaId }).(pulumi.StringPtrOutput)
+}
+
+// Source of the schema
 func (o ApiShieldSchemaOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
-// Flag whether schema is enabled for validation.
-func (o ApiShieldSchemaOutput) ValidationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApiShieldSchema) pulumi.BoolPtrOutput { return v.ValidationEnabled }).(pulumi.BoolPtrOutput)
+func (o ApiShieldSchemaOutput) UploadDetails() ApiShieldSchemaUploadDetailsOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) ApiShieldSchemaUploadDetailsOutput { return v.UploadDetails }).(ApiShieldSchemaUploadDetailsOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Flag whether schema is enabled for validation.
+func (o ApiShieldSchemaOutput) ValidationEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.ValidationEnabled }).(pulumi.StringPtrOutput)
+}
+
+// Identifier
 func (o ApiShieldSchemaOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

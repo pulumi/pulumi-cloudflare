@@ -7,24 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
- * allows you to create and deploy rules and rulesets.
- *
- * Cloudflare uses the Ruleset Engine in different products, allowing
- * you to configure several products using the same basic syntax.
+ * ## Example Usage
  *
  * ## Import
  *
- * Import an account scoped Ruleset configuration.
- *
  * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
- * ```
- *
- * Import a zone scoped Ruleset configuration.
- *
- * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+ * $ pulumi import cloudflare:index/ruleset:Ruleset example '<{accounts|zones}/{account_id|zone_id}>/<ruleset_id>'
  * ```
  */
 export class Ruleset extends pulumi.CustomResource {
@@ -56,31 +44,31 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+     * The phase of the ruleset.
      */
     public readonly phase!: pulumi.Output<string>;
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      */
-    public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
+    public readonly rules!: pulumi.Output<outputs.RulesetRule[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -115,6 +103,9 @@ export class Ruleset extends pulumi.CustomResource {
             if ((!args || args.phase === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'phase'");
             }
+            if ((!args || args.rules === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -133,31 +124,31 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+     * The phase of the ruleset.
      */
     phase?: pulumi.Input<string>;
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -167,31 +158,31 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
+     * The phase of the ruleset.
      */
     phase: pulumi.Input<string>;
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

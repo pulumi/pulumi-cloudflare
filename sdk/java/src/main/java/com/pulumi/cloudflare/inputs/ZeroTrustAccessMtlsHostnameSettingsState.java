@@ -18,14 +18,14 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
     public static final ZeroTrustAccessMtlsHostnameSettingsState Empty = new ZeroTrustAccessMtlsHostnameSettingsState();
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -40,14 +40,14 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -81,7 +81,7 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ZeroTrustAccessMtlsHostnameSettingsState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

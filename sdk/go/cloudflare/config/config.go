@@ -4,38 +4,12 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 var _ = internal.GetEnvOrDefault
-
-// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-// environment variable.
-func GetApiBasePath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "cloudflare:apiBasePath")
-}
-
-// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-func GetApiClientLogging(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "cloudflare:apiClientLogging")
-	if err == nil {
-		return v
-	}
-	var value bool
-	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
-		value = d.(bool)
-	}
-	return value
-}
-
-// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-// environment variable.
-func GetApiHostname(ctx *pulumi.Context) string {
-	return config.Get(ctx, "cloudflare:apiHostname")
-}
 
 // The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 // keys are [now considered legacy by
@@ -58,66 +32,16 @@ func GetApiUserServiceKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiUserServiceKey")
 }
 
+// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+// variable.
+func GetBaseUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "cloudflare:baseUrl")
+}
+
 // A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
 // variable. Required when using `apiKey`. Conflicts with `apiToken`.
 func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:email")
-}
-
-// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-// `CLOUDFLARE_MAX_BACKOFF` environment variable.
-func GetMaxBackoff(ctx *pulumi.Context) int {
-	v, err := config.TryInt(ctx, "cloudflare:maxBackoff")
-	if err == nil {
-		return v
-	}
-	var value int
-	if d := internal.GetEnvOrDefault(30, internal.ParseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
-		value = d.(int)
-	}
-	return value
-}
-
-// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-// `CLOUDFLARE_MIN_BACKOFF` environment variable.
-func GetMinBackoff(ctx *pulumi.Context) int {
-	v, err := config.TryInt(ctx, "cloudflare:minBackoff")
-	if err == nil {
-		return v
-	}
-	var value int
-	if d := internal.GetEnvOrDefault(1, internal.ParseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
-		value = d.(int)
-	}
-	return value
-}
-
-// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-// `CLOUDFLARE_RETRIES` environment variable.
-func GetRetries(ctx *pulumi.Context) int {
-	v, err := config.TryInt(ctx, "cloudflare:retries")
-	if err == nil {
-		return v
-	}
-	var value int
-	if d := internal.GetEnvOrDefault(3, internal.ParseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
-		value = d.(int)
-	}
-	return value
-}
-
-// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-// variable.
-func GetRps(ctx *pulumi.Context) int {
-	v, err := config.TryInt(ctx, "cloudflare:rps")
-	if err == nil {
-		return v
-	}
-	var value int
-	if d := internal.GetEnvOrDefault(4, internal.ParseEnvInt, "CLOUDFLARE_RPS"); d != nil {
-		value = d.(int)
-	}
-	return value
 }
 func GetUserAgentOperatorSuffix(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:userAgentOperatorSuffix")

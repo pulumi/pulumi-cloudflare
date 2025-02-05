@@ -10,16 +10,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare Logpush ownership
- * challenges to use in a Logpush Job. On it&#39;s own, doesn&#39;t do much
- * however this resource should be used in conjunction to create
- * Logpush jobs.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,9 +41,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new LogpushOwnershipChallenge("example", LogpushOwnershipChallengeArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .destinationConf("s3://my-bucket-path?region=us-west-2")
+ *         var exampleLogpushOwnershipChallenge = new LogpushOwnershipChallenge("exampleLogpushOwnershipChallenge", LogpushOwnershipChallengeArgs.builder()
+ *             .destinationConf("s3://mybucket/logs?region=us-west-2")
+ *             .zoneId("zone_id")
  *             .build());
  * 
  *     }
@@ -60,56 +56,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")
 public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Export(name="destinationConf", refs={String.class}, tree="[0]")
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Output<String> destinationConf() {
         return this.destinationConf;
     }
-    /**
-     * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     * 
-     */
-    @Export(name="ownershipChallengeFilename", refs={String.class}, tree="[0]")
-    private Output<String> ownershipChallengeFilename;
+    @Export(name="filename", refs={String.class}, tree="[0]")
+    private Output<String> filename;
 
-    /**
-     * @return The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     * 
-     */
-    public Output<String> ownershipChallengeFilename() {
-        return this.ownershipChallengeFilename;
+    public Output<String> filename() {
+        return this.filename;
+    }
+    @Export(name="message", refs={String.class}, tree="[0]")
+    private Output<String> message;
+
+    public Output<String> message() {
+        return this.message;
+    }
+    @Export(name="valid", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> valid;
+
+    public Output<Boolean> valid() {
+        return this.valid;
     }
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {

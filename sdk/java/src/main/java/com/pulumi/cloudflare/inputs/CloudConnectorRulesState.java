@@ -18,14 +18,14 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
     public static final CloudConnectorRulesState Empty = new CloudConnectorRulesState();
 
     /**
-     * List of Cloud Connector Rules
+     * List of Cloud Connector rules
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<CloudConnectorRulesRuleArgs>> rules;
 
     /**
-     * @return List of Cloud Connector Rules
+     * @return List of Cloud Connector rules
      * 
      */
     public Optional<Output<List<CloudConnectorRulesRuleArgs>>> rules() {
@@ -33,14 +33,14 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -73,7 +73,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rules List of Cloud Connector Rules
+         * @param rules List of Cloud Connector rules
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CloudConnectorRulesState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersAlgorithm
     {
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of compression algorithm to enable.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersAlgorithm(string name)
+        private RulesetRuleActionParametersAlgorithm(string? name)
         {
             Name = name;
         }

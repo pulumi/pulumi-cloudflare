@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     public static final WorkersForPlatformsDispatchNamespaceState Empty = new WorkersForPlatformsDispatchNamespaceState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,25 +32,137 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     }
 
     /**
-     * The name of the Workers for Platforms namespace.
+     * Identifier
+     * 
+     */
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    /**
+     * When the script was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return When the script was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * Identifier
+     * 
+     */
+    @Import(name="modifiedBy")
+    private @Nullable Output<String> modifiedBy;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> modifiedBy() {
+        return Optional.ofNullable(this.modifiedBy);
+    }
+
+    /**
+     * When the script was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return When the script was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * The name of the dispatch namespace
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Workers for Platforms namespace.
+     * @return The name of the dispatch namespace
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * API Resource UUID tag.
+     * 
+     */
+    @Import(name="namespaceId")
+    private @Nullable Output<String> namespaceId;
+
+    /**
+     * @return API Resource UUID tag.
+     * 
+     */
+    public Optional<Output<String>> namespaceId() {
+        return Optional.ofNullable(this.namespaceId);
+    }
+
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Import(name="namespaceName")
+    private @Nullable Output<String> namespaceName;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Optional<Output<String>> namespaceName() {
+        return Optional.ofNullable(this.namespaceName);
+    }
+
+    /**
+     * The current number of scripts in this Dispatch Namespace
+     * 
+     */
+    @Import(name="scriptCount")
+    private @Nullable Output<Integer> scriptCount;
+
+    /**
+     * @return The current number of scripts in this Dispatch Namespace
+     * 
+     */
+    public Optional<Output<Integer>> scriptCount() {
+        return Optional.ofNullable(this.scriptCount);
+    }
+
     private WorkersForPlatformsDispatchNamespaceState() {}
 
     private WorkersForPlatformsDispatchNamespaceState(WorkersForPlatformsDispatchNamespaceState $) {
         this.accountId = $.accountId;
+        this.createdBy = $.createdBy;
+        this.createdOn = $.createdOn;
+        this.modifiedBy = $.modifiedBy;
+        this.modifiedOn = $.modifiedOn;
         this.name = $.name;
+        this.namespaceId = $.namespaceId;
+        this.namespaceName = $.namespaceName;
+        this.scriptCount = $.scriptCount;
     }
 
     public static Builder builder() {
@@ -71,7 +184,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -82,7 +195,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -92,7 +205,91 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Workers for Platforms namespace.
+         * @param createdBy Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        /**
+         * @param createdBy Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
+        }
+
+        /**
+         * @param createdOn When the script was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn When the script was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param modifiedBy Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedBy(@Nullable Output<String> modifiedBy) {
+            $.modifiedBy = modifiedBy;
+            return this;
+        }
+
+        /**
+         * @param modifiedBy Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedBy(String modifiedBy) {
+            return modifiedBy(Output.of(modifiedBy));
+        }
+
+        /**
+         * @param modifiedOn When the script was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn When the script was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param name The name of the dispatch namespace
          * 
          * @return builder
          * 
@@ -103,13 +300,76 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Workers for Platforms namespace.
+         * @param name The name of the dispatch namespace
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param namespaceId API Resource UUID tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceId(@Nullable Output<String> namespaceId) {
+            $.namespaceId = namespaceId;
+            return this;
+        }
+
+        /**
+         * @param namespaceId API Resource UUID tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceId(String namespaceId) {
+            return namespaceId(Output.of(namespaceId));
+        }
+
+        /**
+         * @param namespaceName Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceName(@Nullable Output<String> namespaceName) {
+            $.namespaceName = namespaceName;
+            return this;
+        }
+
+        /**
+         * @param namespaceName Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceName(String namespaceName) {
+            return namespaceName(Output.of(namespaceName));
+        }
+
+        /**
+         * @param scriptCount The current number of scripts in this Dispatch Namespace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptCount(@Nullable Output<Integer> scriptCount) {
+            $.scriptCount = scriptCount;
+            return this;
+        }
+
+        /**
+         * @param scriptCount The current number of scripts in this Dispatch Namespace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptCount(Integer scriptCount) {
+            return scriptCount(Output.of(scriptCount));
         }
 
         public WorkersForPlatformsDispatchNamespaceState build() {

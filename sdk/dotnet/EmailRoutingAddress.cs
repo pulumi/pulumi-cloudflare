@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,9 +20,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.EmailRoutingAddress("example", new()
+    ///     var exampleEmailRoutingAddress = new Cloudflare.EmailRoutingAddress("example_email_routing_address", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "user@example.com",
     ///     });
     /// 
@@ -34,14 +32,14 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &lt;account_id&gt;/&lt;email_routing_id&gt;
+    /// $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '&lt;account_id&gt;/&lt;destination_address_identifier&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")]
     public partial class EmailRoutingAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -59,13 +57,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time the destination address has been modified.
+        /// The date and time the destination address was last modified.
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
-        /// Destination address identifier.
+        /// Destination address tag. (Deprecated, replaced by destination address identifier)
         /// </summary>
         [Output("tag")]
         public Output<string> Tag { get; private set; } = null!;
@@ -123,7 +121,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -143,7 +141,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -161,13 +159,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The date and time the destination address has been modified.
+        /// The date and time the destination address was last modified.
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
 
         /// <summary>
-        /// Destination address identifier.
+        /// Destination address tag. (Deprecated, replaced by destination address identifier)
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

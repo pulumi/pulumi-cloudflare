@@ -6,19 +6,16 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccountArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccountState;
+import com.pulumi.cloudflare.outputs.AccountSettings;
+import com.pulumi.cloudflare.outputs.AccountUnit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Account resource. Account is the basic resource for
- * working with Cloudflare zones, teams and users.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -31,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Account;
  * import com.pulumi.cloudflare.AccountArgs;
+ * import com.pulumi.cloudflare.inputs.AccountUnitArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,10 +42,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Account("example", AccountArgs.builder()
- *             .name("some-enterprise-account")
- *             .type("enterprise")
- *             .enforceTwofactor(true)
+ *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
+ *             .name("name")
+ *             .type("standard")
+ *             .unit(AccountUnitArgs.builder()
+ *                 .id("f267e341f3dd4697bd3b9f71dd96247f")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -59,53 +59,81 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/account:Account example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/account:Account example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**
-     * Whether 2FA is enforced on the account. Defaults to `false`.
+     * Timestamp for the creation of the account
      * 
      */
-    @Export(name="enforceTwofactor", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enforceTwofactor;
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
 
     /**
-     * @return Whether 2FA is enforced on the account. Defaults to `false`.
+     * @return Timestamp for the creation of the account
      * 
      */
-    public Output<Optional<Boolean>> enforceTwofactor() {
-        return Codegen.optional(this.enforceTwofactor);
+    public Output<String> createdOn() {
+        return this.createdOn;
     }
     /**
-     * The name of the account that is displayed in the Cloudflare dashboard.
+     * Account name
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the account that is displayed in the Cloudflare dashboard.
+     * @return Account name
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * Account settings
+     * 
+     */
+    @Export(name="settings", refs={AccountSettings.class}, tree="[0]")
+    private Output<AccountSettings> settings;
+
+    /**
+     * @return Account settings
+     * 
+     */
+    public Output<AccountSettings> settings() {
+        return this.settings;
+    }
+    /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
+    }
+    /**
+     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * 
+     */
+    @Export(name="unit", refs={AccountUnit.class}, tree="[0]")
+    private Output<AccountUnit> unit;
+
+    /**
+     * @return information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * 
+     */
+    public Output<AccountUnit> unit() {
+        return this.unit;
     }
 
     /**

@@ -10,15 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Define Firewall rules using filter expressions for more control over
-    /// how traffic is matched to the rule. A filter expression permits
-    /// selecting traffic by multiple criteria allowing greater freedom in
-    /// rule creation.
-    /// 
-    /// Filter expressions needs to be created first before using Firewall
-    /// Rule.
-    /// 
-    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until January 15th, 2025.
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised  to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -34,71 +26,78 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wordpress = new Cloudflare.Filter("wordpress", new()
+    ///     var exampleFirewallRule = new Cloudflare.FirewallRule("example_firewall_rule", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Description = "Wordpress break-in attempts that are outside of the office",
-    ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
-    ///     });
-    /// 
-    ///     var wordpressFirewallRule = new Cloudflare.FirewallRule("wordpress", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Description = "Block wordpress break-in attempts",
-    ///         FilterId = wordpress.Id,
-    ///         Action = "block",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Action = new Cloudflare.Inputs.FirewallRuleActionArgs
+    ///         {
+    ///             Mode = "simulate",
+    ///             Response = new Cloudflare.Inputs.FirewallRuleActionResponseArgs
+    ///             {
+    ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
+    ///                 ContentType = "text/xml",
+    ///             },
+    ///             Timeout = 86400,
+    ///         },
+    ///         Filter = new Cloudflare.Inputs.FirewallRuleFilterArgs
+    ///         {
+    ///             Description = "Restrict access from these browsers on this address range.",
+    ///             Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+    ///             Paused = false,
+    ///             Ref = "FIL-100",
+    ///         },
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/firewallRule:FirewallRule example &lt;zone_id&gt;/&lt;firewall_rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/firewallRule:FirewallRule")]
     public partial class FirewallRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Output("action")]
-        public Output<string> Action { get; private set; } = null!;
+        public Output<Outputs.FirewallRuleAction> Action { get; private set; } = null!;
 
         /// <summary>
-        /// A description of the rule to help identify it.
+        /// An informative summary of the firewall rule.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("filter")]
+        public Output<Outputs.FirewallRuleFilter> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-        /// </summary>
-        [Output("filterId")]
-        public Output<string> FilterId { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether this filter based firewall rule is currently paused.
+        /// When true, indicates that the firewall rule is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool?> Paused { get; private set; } = null!;
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        /// The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         /// </summary>
         [Output("priority")]
-        public Output<int?> Priority { get; private set; } = null!;
+        public Output<double> Priority { get; private set; } = null!;
 
-        /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-        /// </summary>
         [Output("products")]
         public Output<ImmutableArray<string>> Products { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// A short reference tag. Allows you to select related firewall rules.
+        /// </summary>
+        [Output("ref")]
+        public Output<string> Ref { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the firewall rule.
+        /// </summary>
+        [Output("ruleId")]
+        public Output<string?> RuleId { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -150,49 +149,22 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
+        public Input<Inputs.FirewallRuleActionArgs> Action { get; set; } = null!;
+
+        [Input("filter", required: true)]
+        public Input<Inputs.FirewallRuleFilterArgs> Filter { get; set; } = null!;
 
         /// <summary>
-        /// A description of the rule to help identify it.
+        /// The unique identifier of the firewall rule.
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("ruleId")]
+        public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-        /// </summary>
-        [Input("filterId", required: true)]
-        public Input<string> FilterId { get; set; } = null!;
-
-        /// <summary>
-        /// Whether this filter based firewall rule is currently paused.
-        /// </summary>
-        [Input("paused")]
-        public Input<bool>? Paused { get; set; }
-
-        /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-        /// </summary>
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
-
-        [Input("products")]
-        private InputList<string>? _products;
-
-        /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-        /// </summary>
-        public InputList<string> Products
-        {
-            get => _products ?? (_products = new InputList<string>());
-            set => _products = value;
-        }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -206,41 +178,34 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+        /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
         /// </summary>
         [Input("action")]
-        public Input<string>? Action { get; set; }
+        public Input<Inputs.FirewallRuleActionGetArgs>? Action { get; set; }
 
         /// <summary>
-        /// A description of the rule to help identify it.
+        /// An informative summary of the firewall rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-        /// </summary>
-        [Input("filterId")]
-        public Input<string>? FilterId { get; set; }
+        [Input("filter")]
+        public Input<Inputs.FirewallRuleFilterGetArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Whether this filter based firewall rule is currently paused.
+        /// When true, indicates that the firewall rule is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        /// The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         /// </summary>
         [Input("priority")]
-        public Input<int>? Priority { get; set; }
+        public Input<double>? Priority { get; set; }
 
         [Input("products")]
         private InputList<string>? _products;
-
-        /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-        /// </summary>
         public InputList<string> Products
         {
             get => _products ?? (_products = new InputList<string>());
@@ -248,7 +213,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// A short reference tag. Allows you to select related firewall rules.
+        /// </summary>
+        [Input("ref")]
+        public Input<string>? Ref { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the firewall rule.
+        /// </summary>
+        [Input("ruleId")]
+        public Input<string>? RuleId { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

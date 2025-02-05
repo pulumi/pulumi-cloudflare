@@ -10,15 +10,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
- * 
  * &gt; Since v3.32.0
  *    all authentication schemes are supported for managing Origin CA certificates.
  *    Versions prior to v3.32.0 will still need to use `api_user_service_key`.
@@ -33,10 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.tls.privateKey;
- * import com.pulumi.tls.PrivateKeyArgs;
- * import com.pulumi.tls.certRequest;
- * import com.pulumi.tls.CertRequestArgs;
  * import com.pulumi.cloudflare.OriginCaCertificate;
  * import com.pulumi.cloudflare.OriginCaCertificateArgs;
  * import java.util.List;
@@ -52,18 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PrivateKey("example", PrivateKeyArgs.builder()
- *             .algorithm("RSA")
- *             .build());
- * 
- *         var exampleCertRequest = new CertRequest("exampleCertRequest", CertRequestArgs.builder()
- *             .privateKeyPem(example.privateKeyPem())
- *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .build());
- * 
  *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()
- *             .csr(exampleCertRequest.certRequestPem())
- *             .hostnames("example.com")
+ *             .csr("""
+ *   -----BEGIN CERTIFICATE REQUEST-----
+ *   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
+ *   Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
+ *   hvcNAQEBBQADggEPADCCAQoCggEBALxejtu4b+jPdFeFi6OUsye8TYJQBm3WfCvL
+ *   Hu5EvijMO/4Z2TImwASbwUF7Ir8OLgH+mGlQZeqyNvGoSOMEaZVXcYfpR1hlVak8
+ *   4GGVr+04IGfOCqaBokaBFIwzclGZbzKmLGwIQioNxGfqFm6RGYGA3be2Je2iseBc
+ *   N8GV1wYmvYE0RR+yWweJCTJ157exyRzu7sVxaEW9F87zBQLyOnwXc64rflXslRqi
+ *   g7F7w5IaQYOl8yvmk/jEPCAha7fkiUfEpj4N12+oPRiMvleJF98chxjD4MH39c5I
+ *   uOslULhrWunfh7GB1jwWNA9y44H0snrf+xvoy2TcHmxvma9Eln8CAwEAAaA6MDgG
+ *   CSqGSIb3DQEJDjErMCkwJwYDVR0RBCAwHoILZXhhbXBsZS5uZXSCD3d3dy5leGFt
+ *   cGxlLm5ldDANBgkqhkiG9w0BAQsFAAOCAQEAcBaX6dOnI8ncARrI9ZSF2AJX+8mx
+ *   pTHY2+Y2C0VvrVDGMtbBRH8R9yMbqWtlxeeNGf//LeMkSKSFa4kbpdx226lfui8/
+ *   auRDBTJGx2R1ccUxmLZXx4my0W5iIMxunu+kez+BDlu7bTT2io0uXMRHue4i6quH
+ *   yc5ibxvbJMjR7dqbcanVE10/34oprzXQsJ/VmSuZNXtjbtSKDlmcpw6To/eeAJ+J
+ *   hXykcUihvHyG4A1m2R6qpANBjnA0pHexfwM/SgfzvpbvUg0T1ubmer8BgTwCKIWs
+ *   dcWYTthM51JIqRBfNqy4QcBnX+GY05yltEEswQI55wdiS3CjTTA67sdbcQ==
+ *   -----END CERTIFICATE REQUEST-----
+ *             """)
+ *             .hostnames(            
+ *                 "example.com",
+ *                 "*.example.com")
  *             .requestType("origin-rsa")
  *             .requestedValidity(7)
  *             .build());
@@ -77,100 +82,94 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example &lt;certificate_id&gt;
+ * $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example &#39;&lt;certificate_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/originCaCertificate:OriginCaCertificate")
 public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The Origin CA certificate.
+     * The Origin CA certificate. Will be newline-encoded.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The Origin CA certificate.
+     * @return The Origin CA certificate. Will be newline-encoded.
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
     /**
-     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+     * The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
     @Export(name="csr", refs={String.class}, tree="[0]")
-    private Output<String> csr;
+    private Output</* @Nullable */ String> csr;
 
     /**
-     * @return The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+     * @return The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    public Output<String> csr() {
-        return this.csr;
+    public Output<Optional<String>> csr() {
+        return Codegen.optional(this.csr);
     }
     /**
-     * The datetime when the certificate will expire.
+     * When the certificate will expire.
      * 
      */
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
     /**
-     * @return The datetime when the certificate will expire.
+     * @return When the certificate will expire.
      * 
      */
     public Output<String> expiresOn() {
         return this.expiresOn;
     }
     /**
-     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+     * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> hostnames;
+    private Output</* @Nullable */ List<String>> hostnames;
 
     /**
-     * @return A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    public Output<List<String>> hostnames() {
-        return this.hostnames;
-    }
-    @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> minDaysForRenewal;
-
-    public Output<Optional<Integer>> minDaysForRenewal() {
-        return Codegen.optional(this.minDaysForRenewal);
+    public Output<Optional<List<String>>> hostnames() {
+        return Codegen.optional(this.hostnames);
     }
     /**
-     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+     * Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
      * 
      */
     @Export(name="requestType", refs={String.class}, tree="[0]")
-    private Output<String> requestType;
+    private Output</* @Nullable */ String> requestType;
 
     /**
-     * @return The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+     * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
      * 
      */
-    public Output<String> requestType() {
-        return this.requestType;
+    public Output<Optional<String>> requestType() {
+        return Codegen.optional(this.requestType);
     }
     /**
-     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+     * The number of days for which the certificate should be valid.
      * 
      */
-    @Export(name="requestedValidity", refs={Integer.class}, tree="[0]")
-    private Output<Integer> requestedValidity;
+    @Export(name="requestedValidity", refs={Double.class}, tree="[0]")
+    private Output<Double> requestedValidity;
 
     /**
-     * @return The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+     * @return The number of days for which the certificate should be valid.
      * 
      */
-    public Output<Integer> requestedValidity() {
+    public Output<Double> requestedValidity() {
         return this.requestedValidity;
     }
 
@@ -186,7 +185,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args) {
+    public OriginCaCertificate(java.lang.String name, @Nullable OriginCaCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,7 +194,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OriginCaCertificate(java.lang.String name, OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public OriginCaCertificate(java.lang.String name, @Nullable OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -203,7 +202,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/originCaCertificate:OriginCaCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static OriginCaCertificateArgs makeArgs(OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static OriginCaCertificateArgs makeArgs(@Nullable OriginCaCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

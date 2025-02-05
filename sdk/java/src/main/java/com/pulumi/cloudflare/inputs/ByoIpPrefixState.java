@@ -5,6 +5,8 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +18,14 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
     public static final ByoIpPrefixState Empty = new ByoIpPrefixState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,29 +33,96 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
      */
-    @Import(name="advertisement")
-    private @Nullable Output<String> advertisement;
+    @Import(name="advertised")
+    private @Nullable Output<Boolean> advertised;
 
     /**
-     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+     * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
      */
-    public Optional<Output<String>> advertisement() {
-        return Optional.ofNullable(this.advertisement);
+    public Optional<Output<Boolean>> advertised() {
+        return Optional.ofNullable(this.advertised);
     }
 
     /**
-     * Description of the BYO IP prefix.
+     * Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+     * 
+     */
+    @Import(name="advertisedModifiedAt")
+    private @Nullable Output<String> advertisedModifiedAt;
+
+    /**
+     * @return Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+     * 
+     */
+    public Optional<Output<String>> advertisedModifiedAt() {
+        return Optional.ofNullable(this.advertisedModifiedAt);
+    }
+
+    /**
+     * Approval state of the prefix (P = pending, V = active).
+     * 
+     */
+    @Import(name="approved")
+    private @Nullable Output<String> approved;
+
+    /**
+     * @return Approval state of the prefix (P = pending, V = active).
+     * 
+     */
+    public Optional<Output<String>> approved() {
+        return Optional.ofNullable(this.approved);
+    }
+
+    /**
+     * Autonomous System Number (ASN) the prefix will be advertised under.
+     * 
+     */
+    @Import(name="asn")
+    private @Nullable Output<Integer> asn;
+
+    /**
+     * @return Autonomous System Number (ASN) the prefix will be advertised under.
+     * 
+     */
+    public Optional<Output<Integer>> asn() {
+        return Optional.ofNullable(this.asn);
+    }
+
+    /**
+     * IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    @Import(name="cidr")
+    private @Nullable Output<String> cidr;
+
+    /**
+     * @return IP Prefix in Classless Inter-Domain Routing format.
+     * 
+     */
+    public Optional<Output<String>> cidr() {
+        return Optional.ofNullable(this.cidr);
+    }
+
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Description of the prefix.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the BYO IP prefix.
+     * @return Description of the prefix.
      * 
      */
     public Optional<Output<String>> description() {
@@ -61,27 +130,72 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * Identifier for the uploaded LOA document.
      * 
      */
-    @Import(name="prefixId")
-    private @Nullable Output<String> prefixId;
+    @Import(name="loaDocumentId")
+    private @Nullable Output<String> loaDocumentId;
 
     /**
-     * @return The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier for the uploaded LOA document.
      * 
      */
-    public Optional<Output<String>> prefixId() {
-        return Optional.ofNullable(this.prefixId);
+    public Optional<Output<String>> loaDocumentId() {
+        return Optional.ofNullable(this.loaDocumentId);
+    }
+
+    @Import(name="modifiedAt")
+    private @Nullable Output<String> modifiedAt;
+
+    public Optional<Output<String>> modifiedAt() {
+        return Optional.ofNullable(this.modifiedAt);
+    }
+
+    /**
+     * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     * 
+     */
+    @Import(name="onDemandEnabled")
+    private @Nullable Output<Boolean> onDemandEnabled;
+
+    /**
+     * @return Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> onDemandEnabled() {
+        return Optional.ofNullable(this.onDemandEnabled);
+    }
+
+    /**
+     * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     * 
+     */
+    @Import(name="onDemandLocked")
+    private @Nullable Output<Boolean> onDemandLocked;
+
+    /**
+     * @return Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     * 
+     */
+    public Optional<Output<Boolean>> onDemandLocked() {
+        return Optional.ofNullable(this.onDemandLocked);
     }
 
     private ByoIpPrefixState() {}
 
     private ByoIpPrefixState(ByoIpPrefixState $) {
         this.accountId = $.accountId;
-        this.advertisement = $.advertisement;
+        this.advertised = $.advertised;
+        this.advertisedModifiedAt = $.advertisedModifiedAt;
+        this.approved = $.approved;
+        this.asn = $.asn;
+        this.cidr = $.cidr;
+        this.createdAt = $.createdAt;
         this.description = $.description;
-        this.prefixId = $.prefixId;
+        this.loaDocumentId = $.loaDocumentId;
+        this.modifiedAt = $.modifiedAt;
+        this.onDemandEnabled = $.onDemandEnabled;
+        this.onDemandLocked = $.onDemandLocked;
     }
 
     public static Builder builder() {
@@ -103,7 +217,7 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -114,7 +228,7 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -124,28 +238,121 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+         * @param advertised Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
          * 
          * @return builder
          * 
          */
-        public Builder advertisement(@Nullable Output<String> advertisement) {
-            $.advertisement = advertisement;
+        public Builder advertised(@Nullable Output<Boolean> advertised) {
+            $.advertised = advertised;
             return this;
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
+         * @param advertised Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
          * 
          * @return builder
          * 
          */
-        public Builder advertisement(String advertisement) {
-            return advertisement(Output.of(advertisement));
+        public Builder advertised(Boolean advertised) {
+            return advertised(Output.of(advertised));
         }
 
         /**
-         * @param description Description of the BYO IP prefix.
+         * @param advertisedModifiedAt Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advertisedModifiedAt(@Nullable Output<String> advertisedModifiedAt) {
+            $.advertisedModifiedAt = advertisedModifiedAt;
+            return this;
+        }
+
+        /**
+         * @param advertisedModifiedAt Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advertisedModifiedAt(String advertisedModifiedAt) {
+            return advertisedModifiedAt(Output.of(advertisedModifiedAt));
+        }
+
+        /**
+         * @param approved Approval state of the prefix (P = pending, V = active).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approved(@Nullable Output<String> approved) {
+            $.approved = approved;
+            return this;
+        }
+
+        /**
+         * @param approved Approval state of the prefix (P = pending, V = active).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approved(String approved) {
+            return approved(Output.of(approved));
+        }
+
+        /**
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asn(@Nullable Output<Integer> asn) {
+            $.asn = asn;
+            return this;
+        }
+
+        /**
+         * @param asn Autonomous System Number (ASN) the prefix will be advertised under.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asn(Integer asn) {
+            return asn(Output.of(asn));
+        }
+
+        /**
+         * @param cidr IP Prefix in Classless Inter-Domain Routing format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(@Nullable Output<String> cidr) {
+            $.cidr = cidr;
+            return this;
+        }
+
+        /**
+         * @param cidr IP Prefix in Classless Inter-Domain Routing format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidr(String cidr) {
+            return cidr(Output.of(cidr));
+        }
+
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param description Description of the prefix.
          * 
          * @return builder
          * 
@@ -156,7 +363,7 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the BYO IP prefix.
+         * @param description Description of the prefix.
          * 
          * @return builder
          * 
@@ -166,24 +373,75 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+         * @param loaDocumentId Identifier for the uploaded LOA document.
          * 
          * @return builder
          * 
          */
-        public Builder prefixId(@Nullable Output<String> prefixId) {
-            $.prefixId = prefixId;
+        public Builder loaDocumentId(@Nullable Output<String> loaDocumentId) {
+            $.loaDocumentId = loaDocumentId;
             return this;
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
+         * @param loaDocumentId Identifier for the uploaded LOA document.
          * 
          * @return builder
          * 
          */
-        public Builder prefixId(String prefixId) {
-            return prefixId(Output.of(prefixId));
+        public Builder loaDocumentId(String loaDocumentId) {
+            return loaDocumentId(Output.of(loaDocumentId));
+        }
+
+        public Builder modifiedAt(@Nullable Output<String> modifiedAt) {
+            $.modifiedAt = modifiedAt;
+            return this;
+        }
+
+        public Builder modifiedAt(String modifiedAt) {
+            return modifiedAt(Output.of(modifiedAt));
+        }
+
+        /**
+         * @param onDemandEnabled Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandEnabled(@Nullable Output<Boolean> onDemandEnabled) {
+            $.onDemandEnabled = onDemandEnabled;
+            return this;
+        }
+
+        /**
+         * @param onDemandEnabled Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandEnabled(Boolean onDemandEnabled) {
+            return onDemandEnabled(Output.of(onDemandEnabled));
+        }
+
+        /**
+         * @param onDemandLocked Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandLocked(@Nullable Output<Boolean> onDemandLocked) {
+            $.onDemandLocked = onDemandLocked;
+            return this;
+        }
+
+        /**
+         * @param onDemandLocked Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandLocked(Boolean onDemandLocked) {
+            return onDemandLocked(Output.of(onDemandLocked));
         }
 
         public ByoIpPrefixState build() {

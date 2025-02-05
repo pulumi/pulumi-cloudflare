@@ -17,14 +17,14 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
     public static final RateLimitMatchRequestArgs Empty = new RateLimitMatchRequestArgs();
 
     /**
-     * HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
      * 
      */
     @Import(name="methods")
     private @Nullable Output<List<String>> methods;
 
     /**
-     * @return HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * @return The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
      * 
      */
     public Optional<Output<List<String>>> methods() {
@@ -32,14 +32,14 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
      * 
      */
     @Import(name="schemes")
     private @Nullable Output<List<String>> schemes;
 
     /**
-     * @return HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * @return The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
      * 
      */
     public Optional<Output<List<String>>> schemes() {
@@ -47,18 +47,18 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
      * 
      */
-    @Import(name="urlPattern")
-    private @Nullable Output<String> urlPattern;
+    @Import(name="url")
+    private @Nullable Output<String> url;
 
     /**
-     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * @return The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
      * 
      */
-    public Optional<Output<String>> urlPattern() {
-        return Optional.ofNullable(this.urlPattern);
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     private RateLimitMatchRequestArgs() {}
@@ -66,7 +66,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
     private RateLimitMatchRequestArgs(RateLimitMatchRequestArgs $) {
         this.methods = $.methods;
         this.schemes = $.schemes;
-        this.urlPattern = $.urlPattern;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -88,7 +88,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * @param methods The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * @param methods The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * @param methods The HTTP methods to match. You can specify a subset (for example, `[&#39;POST&#39;,&#39;PUT&#39;]`) or all methods (`[&#39;_ALL_&#39;]`). This field is optional when creating a rate limit.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * @param schemes The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * @param schemes The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * @param schemes The HTTP schemes to match. You can specify one scheme (`[&#39;HTTPS&#39;]`), both schemes (`[&#39;HTTP&#39;,&#39;HTTPS&#39;]`), or all schemes (`[&#39;_ALL_&#39;]`). This field is optional.
          * 
          * @return builder
          * 
@@ -150,24 +150,24 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param urlPattern The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+         * @param url The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
          * 
          * @return builder
          * 
          */
-        public Builder urlPattern(@Nullable Output<String> urlPattern) {
-            $.urlPattern = urlPattern;
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
             return this;
         }
 
         /**
-         * @param urlPattern The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+         * @param url The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
          * 
          * @return builder
          * 
          */
-        public Builder urlPattern(String urlPattern) {
-            return urlPattern(Output.of(urlPattern));
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public RateLimitMatchRequestArgs build() {

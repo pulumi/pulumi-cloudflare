@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZoneResult',
@@ -26,28 +28,58 @@ class GetZoneResult:
     """
     A collection of values returned by getZone.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, name_servers=None, paused=None, plan=None, status=None, vanity_name_servers=None, zone_id=None):
-        if account_id and not isinstance(account_id, str):
-            raise TypeError("Expected argument 'account_id' to be a str")
-        pulumi.set(__self__, "account_id", account_id)
+    def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, zone_id=None):
+        if account and not isinstance(account, dict):
+            raise TypeError("Expected argument 'account' to be a dict")
+        pulumi.set(__self__, "account", account)
+        if activated_on and not isinstance(activated_on, str):
+            raise TypeError("Expected argument 'activated_on' to be a str")
+        pulumi.set(__self__, "activated_on", activated_on)
+        if created_on and not isinstance(created_on, str):
+            raise TypeError("Expected argument 'created_on' to be a str")
+        pulumi.set(__self__, "created_on", created_on)
+        if development_mode and not isinstance(development_mode, float):
+            raise TypeError("Expected argument 'development_mode' to be a float")
+        pulumi.set(__self__, "development_mode", development_mode)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if meta and not isinstance(meta, dict):
+            raise TypeError("Expected argument 'meta' to be a dict")
+        pulumi.set(__self__, "meta", meta)
+        if modified_on and not isinstance(modified_on, str):
+            raise TypeError("Expected argument 'modified_on' to be a str")
+        pulumi.set(__self__, "modified_on", modified_on)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if name_servers and not isinstance(name_servers, list):
             raise TypeError("Expected argument 'name_servers' to be a list")
         pulumi.set(__self__, "name_servers", name_servers)
+        if original_dnshost and not isinstance(original_dnshost, str):
+            raise TypeError("Expected argument 'original_dnshost' to be a str")
+        pulumi.set(__self__, "original_dnshost", original_dnshost)
+        if original_name_servers and not isinstance(original_name_servers, list):
+            raise TypeError("Expected argument 'original_name_servers' to be a list")
+        pulumi.set(__self__, "original_name_servers", original_name_servers)
+        if original_registrar and not isinstance(original_registrar, str):
+            raise TypeError("Expected argument 'original_registrar' to be a str")
+        pulumi.set(__self__, "original_registrar", original_registrar)
+        if owner and not isinstance(owner, dict):
+            raise TypeError("Expected argument 'owner' to be a dict")
+        pulumi.set(__self__, "owner", owner)
         if paused and not isinstance(paused, bool):
             raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
-        if plan and not isinstance(plan, str):
-            raise TypeError("Expected argument 'plan' to be a str")
-        pulumi.set(__self__, "plan", plan)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if vanity_name_servers and not isinstance(vanity_name_servers, list):
             raise TypeError("Expected argument 'vanity_name_servers' to be a list")
         pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
@@ -56,75 +88,98 @@ class GetZoneResult:
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
-        """
-        The account identifier to target for the resource.
-        """
-        return pulumi.get(self, "account_id")
+    @pulumi.getter
+    def account(self) -> 'outputs.GetZoneAccountResult':
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="activatedOn")
+    def activated_on(self) -> str:
+        return pulumi.get(self, "activated_on")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> str:
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="developmentMode")
+    def development_mode(self) -> float:
+        return pulumi.get(self, "development_mode")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZoneFilterResult']:
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
+    def meta(self) -> 'outputs.GetZoneMetaResult':
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> str:
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the zone. Must provide only one of `zone_id`, `name`.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
-        """
-        Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
-        """
         return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter(name="originalDnshost")
+    def original_dnshost(self) -> str:
+        return pulumi.get(self, "original_dnshost")
+
+    @property
+    @pulumi.getter(name="originalNameServers")
+    def original_name_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "original_name_servers")
+
+    @property
+    @pulumi.getter(name="originalRegistrar")
+    def original_registrar(self) -> str:
+        return pulumi.get(self, "original_registrar")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> 'outputs.GetZoneOwnerResult':
+        return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def paused(self) -> bool:
-        """
-        Whether the zone is paused on Cloudflare.
-        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
-    def plan(self) -> str:
-        """
-        The name of the plan associated with the zone.
-        """
-        return pulumi.get(self, "plan")
+    def status(self) -> str:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
-    def status(self) -> str:
-        """
-        Status of the zone.
-        """
-        return pulumi.get(self, "status")
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vanityNameServers")
     def vanity_name_servers(self) -> Sequence[str]:
-        """
-        List of Vanity Nameservers (if set).
-        """
         return pulumi.get(self, "vanity_name_servers")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
-        """
-        The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-        """
+    def zone_id(self) -> Optional[str]:
         return pulumi.get(self, "zone_id")
 
 
@@ -134,113 +189,101 @@ class AwaitableGetZoneResult(GetZoneResult):
         if False:
             yield self
         return GetZoneResult(
-            account_id=self.account_id,
+            account=self.account,
+            activated_on=self.activated_on,
+            created_on=self.created_on,
+            development_mode=self.development_mode,
+            filter=self.filter,
             id=self.id,
+            meta=self.meta,
+            modified_on=self.modified_on,
             name=self.name,
             name_servers=self.name_servers,
+            original_dnshost=self.original_dnshost,
+            original_name_servers=self.original_name_servers,
+            original_registrar=self.original_registrar,
+            owner=self.owner,
             paused=self.paused,
-            plan=self.plan,
             status=self.status,
+            type=self.type,
             vanity_name_servers=self.vanity_name_servers,
             zone_id=self.zone_id)
 
 
-def get_zone(account_id: Optional[str] = None,
-             name: Optional[str] = None,
+def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict']] = None,
              zone_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
-    info. This is the singular alternative to `get_zones`.
-
-    > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
-    accounts to have the same zone created but in different states. If you are
-    using this setup, it is advised to use the `account_id` attribute on this
-    resource or swap to `get_zones` to further filter the results.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("example",
-        zone_id=example.id,
-        name="www",
-        content="203.0.113.1",
-        type="A",
-        proxied=True)
+    example_zone = cloudflare.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
-
-
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: The name of the zone. Must provide only one of `zone_id`, `name`.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult).value
 
     return AwaitableGetZoneResult(
-        account_id=pulumi.get(__ret__, 'account_id'),
+        account=pulumi.get(__ret__, 'account'),
+        activated_on=pulumi.get(__ret__, 'activated_on'),
+        created_on=pulumi.get(__ret__, 'created_on'),
+        development_mode=pulumi.get(__ret__, 'development_mode'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        meta=pulumi.get(__ret__, 'meta'),
+        modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
         name_servers=pulumi.get(__ret__, 'name_servers'),
+        original_dnshost=pulumi.get(__ret__, 'original_dnshost'),
+        original_name_servers=pulumi.get(__ret__, 'original_name_servers'),
+        original_registrar=pulumi.get(__ret__, 'original_registrar'),
+        owner=pulumi.get(__ret__, 'owner'),
         paused=pulumi.get(__ret__, 'paused'),
-        plan=pulumi.get(__ret__, 'plan'),
         status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
         vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
-                    name: Optional[pulumi.Input[Optional[str]]] = None,
+def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict']]]] = None,
                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
-    info. This is the singular alternative to `get_zones`.
-
-    > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
-    accounts to have the same zone created but in different states. If you are
-    using this setup, it is advised to use the `account_id` attribute on this
-    resource or swap to `get_zones` to further filter the results.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("example",
-        zone_id=example.id,
-        name="www",
-        content="203.0.113.1",
-        type="A",
-        proxied=True)
+    example_zone = cloudflare.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
-
-
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: The name of the zone. Must provide only one of `zone_id`, `name`.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult)
     return __ret__.apply(lambda __response__: GetZoneResult(
-        account_id=pulumi.get(__response__, 'account_id'),
+        account=pulumi.get(__response__, 'account'),
+        activated_on=pulumi.get(__response__, 'activated_on'),
+        created_on=pulumi.get(__response__, 'created_on'),
+        development_mode=pulumi.get(__response__, 'development_mode'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        meta=pulumi.get(__response__, 'meta'),
+        modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
         name_servers=pulumi.get(__response__, 'name_servers'),
+        original_dnshost=pulumi.get(__response__, 'original_dnshost'),
+        original_name_servers=pulumi.get(__response__, 'original_name_servers'),
+        original_registrar=pulumi.get(__response__, 'original_registrar'),
+        owner=pulumi.get(__response__, 'owner'),
         paused=pulumi.get(__response__, 'paused'),
-        plan=pulumi.get(__response__, 'plan'),
         status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
         vanity_name_servers=pulumi.get(__response__, 'vanity_name_servers'),
         zone_id=pulumi.get(__response__, 'zone_id')))

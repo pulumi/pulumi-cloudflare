@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingAddress(ctx, "example", &cloudflare.EmailRoutingAddressArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//			_, err := cloudflare.NewEmailRoutingAddress(ctx, "example_email_routing_address", &cloudflare.EmailRoutingAddressArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Email:     pulumi.String("user@example.com"),
 //			})
 //			if err != nil {
@@ -44,20 +42,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+// $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
 // ```
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The contact email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// The date and time the destination address has been modified.
+	// The date and time the destination address was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// Destination address identifier.
+	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified pulumi.StringOutput `pulumi:"verified"`
@@ -99,30 +97,30 @@ func GetEmailRoutingAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingAddress resources.
 type emailRoutingAddressState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created *string `pulumi:"created"`
 	// The contact email address of the user.
 	Email *string `pulumi:"email"`
-	// The date and time the destination address has been modified.
+	// The date and time the destination address was last modified.
 	Modified *string `pulumi:"modified"`
-	// Destination address identifier.
+	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	Tag *string `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified *string `pulumi:"verified"`
 }
 
 type EmailRoutingAddressState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
 	// The date and time the destination address has been created.
 	Created pulumi.StringPtrInput
 	// The contact email address of the user.
 	Email pulumi.StringPtrInput
-	// The date and time the destination address has been modified.
+	// The date and time the destination address was last modified.
 	Modified pulumi.StringPtrInput
-	// Destination address identifier.
+	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	Tag pulumi.StringPtrInput
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified pulumi.StringPtrInput
@@ -133,7 +131,7 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 }
 
 type emailRoutingAddressArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email string `pulumi:"email"`
@@ -141,7 +139,7 @@ type emailRoutingAddressArgs struct {
 
 // The set of arguments for constructing a EmailRoutingAddress resource.
 type EmailRoutingAddressArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
 	// The contact email address of the user.
 	Email pulumi.StringInput
@@ -234,7 +232,7 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx co
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o EmailRoutingAddressOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -249,12 +247,12 @@ func (o EmailRoutingAddressOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// The date and time the destination address has been modified.
+// The date and time the destination address was last modified.
 func (o EmailRoutingAddressOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
-// Destination address identifier.
+// Destination address tag. (Deprecated, replaced by destination address identifier)
 func (o EmailRoutingAddressOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

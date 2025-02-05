@@ -8,122 +8,52 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Load Balancer pool resource. This provides a
-// pool of origins that can be used by a Cloudflare Load Balancer.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLoadBalancerPool(ctx, "example", &cloudflare.LoadBalancerPoolArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("example-pool"),
-//				Origins: cloudflare.LoadBalancerPoolOriginArray{
-//					&cloudflare.LoadBalancerPoolOriginArgs{
-//						Name:    pulumi.String("example-1"),
-//						Address: pulumi.String("192.0.2.1"),
-//						Enabled: pulumi.Bool(false),
-//						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
-//							&cloudflare.LoadBalancerPoolOriginHeaderArgs{
-//								Header: pulumi.String("Host"),
-//								Values: pulumi.StringArray{
-//									pulumi.String("example-1"),
-//								},
-//							},
-//						},
-//					},
-//					&cloudflare.LoadBalancerPoolOriginArgs{
-//						Name:    pulumi.String("example-2"),
-//						Address: pulumi.String("192.0.2.2"),
-//						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
-//							&cloudflare.LoadBalancerPoolOriginHeaderArgs{
-//								Header: pulumi.String("Host"),
-//								Values: pulumi.StringArray{
-//									pulumi.String("example-2"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//				Latitude:          pulumi.Float64(55),
-//				Longitude:         pulumi.Float64(-12),
-//				Description:       pulumi.String("example load balancer pool"),
-//				Enabled:           pulumi.Bool(false),
-//				MinimumOrigins:    pulumi.Int(1),
-//				NotificationEmail: pulumi.String("someone@example.com"),
-//				LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
-//					&cloudflare.LoadBalancerPoolLoadSheddingArgs{
-//						DefaultPercent: pulumi.Float64(55),
-//						DefaultPolicy:  pulumi.String("random"),
-//						SessionPercent: pulumi.Float64(12),
-//						SessionPolicy:  pulumi.String("hash"),
-//					},
-//				},
-//				OriginSteerings: cloudflare.LoadBalancerPoolOriginSteeringArray{
-//					&cloudflare.LoadBalancerPoolOriginSteeringArgs{
-//						Policy: pulumi.String("random"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_pool_id>
+// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example '<account_id>/<pool_id>'
 // ```
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
-	// The RFC3339 timestamp of when the load balancer was created.
-	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Free text description.
+	CreatedOn    pulumi.StringOutput      `pulumi:"createdOn"`
+	// A human-readable description of the pool.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering.
+	// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+	DisabledAt pulumi.StringOutput `pulumi:"disabledAt"`
+	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
-	// Setting for controlling load shedding for this pool.
-	LoadSheddings LoadBalancerPoolLoadSheddingArrayOutput `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering.
+	// Configures load shedding policies and percentages for the pool.
+	LoadShedding LoadBalancerPoolLoadSheddingOutput `pulumi:"loadShedding"`
+	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude pulumi.Float64PtrOutput `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
-	MinimumOrigins pulumi.IntPtrOutput `pulumi:"minimumOrigins"`
-	// The RFC3339 timestamp of when the load balancer was last modified.
-	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The ID of the Monitor to use for health checking origins within this pool.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
+	MinimumOrigins pulumi.IntOutput    `pulumi:"minimumOrigins"`
+	ModifiedOn     pulumi.StringOutput `pulumi:"modifiedOn"`
+	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrOutput `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+	// List of networks where Load Balancer or Pool is enabled.
+	Networks pulumi.StringArrayOutput `pulumi:"networks"`
+	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
-	// Set an origin steering policy to control origin selection within a pool.
-	OriginSteerings LoadBalancerPoolOriginSteeringArrayOutput `pulumi:"originSteerings"`
+	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+	NotificationFilter LoadBalancerPoolNotificationFilterOutput `pulumi:"notificationFilter"`
+	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+	OriginSteering LoadBalancerPoolOriginSteeringOutput `pulumi:"originSteering"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
 }
@@ -167,67 +97,75 @@ func GetLoadBalancerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerPool resources.
 type loadBalancerPoolState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
-	// The RFC3339 timestamp of when the load balancer was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// Free text description.
+	CreatedOn    *string  `pulumi:"createdOn"`
+	// A human-readable description of the pool.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+	DisabledAt *string `pulumi:"disabledAt"`
+	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled *bool `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering.
+	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude *float64 `pulumi:"latitude"`
-	// Setting for controlling load shedding for this pool.
-	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering.
+	// Configures load shedding policies and percentages for the pool.
+	LoadShedding *LoadBalancerPoolLoadShedding `pulumi:"loadShedding"`
+	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude *float64 `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
-	MinimumOrigins *int `pulumi:"minimumOrigins"`
-	// The RFC3339 timestamp of when the load balancer was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The ID of the Monitor to use for health checking origins within this pool.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
+	MinimumOrigins *int    `pulumi:"minimumOrigins"`
+	ModifiedOn     *string `pulumi:"modifiedOn"`
+	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name *string `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+	// List of networks where Load Balancer or Pool is enabled.
+	Networks []string `pulumi:"networks"`
+	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
-	// Set an origin steering policy to control origin selection within a pool.
-	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
+	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+	NotificationFilter *LoadBalancerPoolNotificationFilter `pulumi:"notificationFilter"`
+	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+	OriginSteering *LoadBalancerPoolOriginSteering `pulumi:"originSteering"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
 
 type LoadBalancerPoolState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
-	// The RFC3339 timestamp of when the load balancer was created.
-	CreatedOn pulumi.StringPtrInput
-	// Free text description.
+	CreatedOn    pulumi.StringPtrInput
+	// A human-readable description of the pool.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+	DisabledAt pulumi.StringPtrInput
+	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled pulumi.BoolPtrInput
-	// The latitude this pool is physically located at; used for proximity steering.
+	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrInput
-	// Setting for controlling load shedding for this pool.
-	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
-	// The longitude this pool is physically located at; used for proximity steering.
+	// Configures load shedding policies and percentages for the pool.
+	LoadShedding LoadBalancerPoolLoadSheddingPtrInput
+	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude pulumi.Float64PtrInput
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
 	MinimumOrigins pulumi.IntPtrInput
-	// The RFC3339 timestamp of when the load balancer was last modified.
-	ModifiedOn pulumi.StringPtrInput
-	// The ID of the Monitor to use for health checking origins within this pool.
+	ModifiedOn     pulumi.StringPtrInput
+	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A short name (tag) for the pool.
+	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringPtrInput
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+	// List of networks where Load Balancer or Pool is enabled.
+	Networks pulumi.StringArrayInput
+	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
-	// Set an origin steering policy to control origin selection within a pool.
-	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
+	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+	NotificationFilter LoadBalancerPoolNotificationFilterPtrInput
+	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+	OriginSteering LoadBalancerPoolOriginSteeringPtrInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayInput
 }
@@ -237,60 +175,64 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 }
 
 type loadBalancerPoolArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
-	// Free text description.
+	// A human-readable description of the pool.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled *bool `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering.
+	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude *float64 `pulumi:"latitude"`
-	// Setting for controlling load shedding for this pool.
-	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering.
+	// Configures load shedding policies and percentages for the pool.
+	LoadShedding *LoadBalancerPoolLoadShedding `pulumi:"loadShedding"`
+	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude *float64 `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
-	// The ID of the Monitor to use for health checking origins within this pool.
+	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name string `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
-	// Set an origin steering policy to control origin selection within a pool.
-	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
+	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+	NotificationFilter *LoadBalancerPoolNotificationFilter `pulumi:"notificationFilter"`
+	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+	OriginSteering *LoadBalancerPoolOriginSteering `pulumi:"originSteering"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
 
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
-	// Free text description.
+	// A human-readable description of the pool.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled pulumi.BoolPtrInput
-	// The latitude this pool is physically located at; used for proximity steering.
+	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrInput
-	// Setting for controlling load shedding for this pool.
-	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
-	// The longitude this pool is physically located at; used for proximity steering.
+	// Configures load shedding policies and percentages for the pool.
+	LoadShedding LoadBalancerPoolLoadSheddingPtrInput
+	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude pulumi.Float64PtrInput
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
 	MinimumOrigins pulumi.IntPtrInput
-	// The ID of the Monitor to use for health checking origins within this pool.
+	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A short name (tag) for the pool.
+	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringInput
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
-	// Set an origin steering policy to control origin selection within a pool.
-	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
+	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+	NotificationFilter LoadBalancerPoolNotificationFilterPtrInput
+	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+	OriginSteering LoadBalancerPoolOriginSteeringPtrInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayInput
 }
@@ -382,74 +324,87 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o LoadBalancerPoolOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+// A list of regions from which to run health checks. Null means every Cloudflare data center.
 func (o LoadBalancerPoolOutput) CheckRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringArrayOutput { return v.CheckRegions }).(pulumi.StringArrayOutput)
 }
 
-// The RFC3339 timestamp of when the load balancer was created.
 func (o LoadBalancerPoolOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Free text description.
+// A human-readable description of the pool.
 func (o LoadBalancerPoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
-func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+func (o LoadBalancerPoolOutput) DisabledAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.DisabledAt }).(pulumi.StringOutput)
 }
 
-// The latitude this pool is physically located at; used for proximity steering.
+// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 func (o LoadBalancerPoolOutput) Latitude() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Latitude }).(pulumi.Float64PtrOutput)
 }
 
-// Setting for controlling load shedding for this pool.
-func (o LoadBalancerPoolOutput) LoadSheddings() LoadBalancerPoolLoadSheddingArrayOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingArrayOutput { return v.LoadSheddings }).(LoadBalancerPoolLoadSheddingArrayOutput)
+// Configures load shedding policies and percentages for the pool.
+func (o LoadBalancerPoolOutput) LoadShedding() LoadBalancerPoolLoadSheddingOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingOutput { return v.LoadShedding }).(LoadBalancerPoolLoadSheddingOutput)
 }
 
-// The longitude this pool is physically located at; used for proximity steering.
+// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 func (o LoadBalancerPoolOutput) Longitude() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Longitude }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
-func (o LoadBalancerPoolOutput) MinimumOrigins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.IntPtrOutput { return v.MinimumOrigins }).(pulumi.IntPtrOutput)
+// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
+func (o LoadBalancerPoolOutput) MinimumOrigins() pulumi.IntOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.IntOutput { return v.MinimumOrigins }).(pulumi.IntOutput)
 }
 
-// The RFC3339 timestamp of when the load balancer was last modified.
 func (o LoadBalancerPoolOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The ID of the Monitor to use for health checking origins within this pool.
+// The ID of the Monitor to use for checking the health of origins within this pool.
 func (o LoadBalancerPoolOutput) Monitor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Monitor }).(pulumi.StringPtrOutput)
 }
 
-// A short name (tag) for the pool.
+// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 func (o LoadBalancerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+// List of networks where Load Balancer or Pool is enabled.
+func (o LoadBalancerPoolOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringArrayOutput { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.NotificationEmail }).(pulumi.StringPtrOutput)
 }
 
-// Set an origin steering policy to control origin selection within a pool.
-func (o LoadBalancerPoolOutput) OriginSteerings() LoadBalancerPoolOriginSteeringArrayOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringArrayOutput { return v.OriginSteerings }).(LoadBalancerPoolOriginSteeringArrayOutput)
+// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+func (o LoadBalancerPoolOutput) NotificationFilter() LoadBalancerPoolNotificationFilterOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolNotificationFilterOutput { return v.NotificationFilter }).(LoadBalancerPoolNotificationFilterOutput)
+}
+
+// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+func (o LoadBalancerPoolOutput) OriginSteering() LoadBalancerPoolOriginSteeringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringOutput { return v.OriginSteering }).(LoadBalancerPoolOriginSteeringOutput)
 }
 
 // The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

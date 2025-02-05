@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationScimConfig
     {
         /// <summary>
-        /// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+        /// Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
         /// </summary>
         public readonly Outputs.ZeroTrustAccessApplicationScimConfigAuthentication? Authentication;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+        /// The UID of the IdP to use as the source for SCIM resources to provision to this application.
         /// </summary>
         public readonly string IdpUid;
         /// <summary>

@@ -15,8 +15,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -43,14 +41,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var managedNetworks = new ZeroTrustDeviceManagedNetworks("managedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("managed-network-1")
- *             .type("tls")
+ *         var exampleZeroTrustDeviceManagedNetworks = new ZeroTrustDeviceManagedNetworks("exampleZeroTrustDeviceManagedNetworks", ZeroTrustDeviceManagedNetworksArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .config(ZeroTrustDeviceManagedNetworksConfigArgs.builder()
- *                 .tlsSockaddr("foobar:1234")
+ *                 .tls_sockaddr("foobar:1234")
  *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
  *                 .build())
+ *             .name("managed-network-1")
+ *             .type("tls")
  *             .build());
  * 
  *     }
@@ -62,63 +60,61 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example &lt;account_id&gt;/&lt;device_managed_networks_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example &#39;&lt;account_id&gt;/&lt;network_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")
 public class ZeroTrustDeviceManagedNetworks extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     @Export(name="config", refs={ZeroTrustDeviceManagedNetworksConfig.class}, tree="[0]")
     private Output<ZeroTrustDeviceManagedNetworksConfig> config;
 
-    /**
-     * @return The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     public Output<ZeroTrustDeviceManagedNetworksConfig> config() {
         return this.config;
     }
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Device Managed Network. Must be unique.
+     * @return The name of the device managed network. This name must be unique.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * API UUID.
+     * 
+     */
+    @Export(name="networkId", refs={String.class}, tree="[0]")
+    private Output<String> networkId;
+
+    /**
+     * @return API UUID.
+     * 
+     */
+    public Output<String> networkId() {
+        return this.networkId;
+    }
+    /**
+     * The type of device managed network.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of Device Managed Network. Available values: `tls`.
+     * @return The type of device managed network.
      * 
      */
     public Output<String> type() {

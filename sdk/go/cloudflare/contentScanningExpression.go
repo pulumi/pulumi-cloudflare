@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,31 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Enable Content Scanning before trying to add custom scan expressions
-//			example, err := cloudflare.NewContentScanning(ctx, "example", &cloudflare.ContentScanningArgs{
-//				ZoneId:  pulumi.String("399c6f4950c01a5a141b99ff7fbcbd8b"),
-//				Enabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewContentScanningExpression(ctx, "first_example", &cloudflare.ContentScanningExpressionArgs{
-//				ZoneId:  example.ZoneId,
-//				Payload: pulumi.String("lookup_json_string(http.request.body.raw, \"file\")"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewContentScanningExpression(ctx, "second_example", &cloudflare.ContentScanningExpressionArgs{
-//				ZoneId:  example.ZoneId,
-//				Payload: pulumi.String("lookup_json_string(http.request.body.raw, \"document\")"),
+//			_, err := cloudflare.NewContentScanningExpression(ctx, "example_content_scanning_expression", &cloudflare.ContentScanningExpressionArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Bodies: cloudflare.ContentScanningExpressionBodyArray{
+//					&cloudflare.ContentScanningExpressionBodyArgs{
+//						Payload: pulumi.String("lookup_json_string(http.request.body.raw, \"file\")"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -55,18 +42,13 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example <zone_id>/<resource_id>
-// ```
 type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 
-	// Custom scan expression to tell the content scanner where to find the content objects.
-	Payload pulumi.StringOutput `pulumi:"payload"`
-	// The zone identifier to target for the resource.
+	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
+	// Identifier
+	ExpressionId pulumi.StringPtrOutput `pulumi:"expressionId"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -77,8 +59,8 @@ func NewContentScanningExpression(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Payload == nil {
-		return nil, errors.New("invalid value for required argument 'Payload'")
+	if args.Bodies == nil {
+		return nil, errors.New("invalid value for required argument 'Bodies'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -106,16 +88,18 @@ func GetContentScanningExpression(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContentScanningExpression resources.
 type contentScanningExpressionState struct {
-	// Custom scan expression to tell the content scanner where to find the content objects.
-	Payload *string `pulumi:"payload"`
-	// The zone identifier to target for the resource.
+	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
+	// Identifier
+	ExpressionId *string `pulumi:"expressionId"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContentScanningExpressionState struct {
-	// Custom scan expression to tell the content scanner where to find the content objects.
-	Payload pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	Bodies ContentScanningExpressionBodyArrayInput
+	// Identifier
+	ExpressionId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -124,17 +108,19 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 }
 
 type contentScanningExpressionArgs struct {
-	// Custom scan expression to tell the content scanner where to find the content objects.
-	Payload string `pulumi:"payload"`
-	// The zone identifier to target for the resource.
+	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
+	// Identifier
+	ExpressionId *string `pulumi:"expressionId"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ContentScanningExpression resource.
 type ContentScanningExpressionArgs struct {
-	// Custom scan expression to tell the content scanner where to find the content objects.
-	Payload pulumi.StringInput
-	// The zone identifier to target for the resource.
+	Bodies ContentScanningExpressionBodyArrayInput
+	// Identifier
+	ExpressionId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -225,12 +211,16 @@ func (o ContentScanningExpressionOutput) ToContentScanningExpressionOutputWithCo
 	return o
 }
 
-// Custom scan expression to tell the content scanner where to find the content objects.
-func (o ContentScanningExpressionOutput) Payload() pulumi.StringOutput {
-	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.Payload }).(pulumi.StringOutput)
+func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyArrayOutput {
+	return o.ApplyT(func(v *ContentScanningExpression) ContentScanningExpressionBodyArrayOutput { return v.Bodies }).(ContentScanningExpressionBodyArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
+func (o ContentScanningExpressionOutput) ExpressionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringPtrOutput { return v.ExpressionId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier
 func (o ContentScanningExpressionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

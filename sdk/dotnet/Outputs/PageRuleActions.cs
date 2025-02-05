@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
         /// </summary>
-        public readonly string? BrowserCacheTtl;
+        public readonly int? BrowserCacheTtl;
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         /// </summary>
-        public readonly ImmutableArray<Outputs.PageRuleActionsCacheTtlByStatus> CacheTtlByStatuses;
+        public readonly object? CacheTtlByStatus;
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
@@ -65,10 +65,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
         public readonly bool? DisablePerformance;
-        /// <summary>
-        /// Boolean of whether this action is enabled. Default: false.
-        /// </summary>
-        public readonly bool? DisableRailgun;
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
@@ -101,10 +97,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether this action is `"on"` or `"off"`.
         /// </summary>
         public readonly string? IpGeolocation;
-        /// <summary>
-        /// The configuration for HTML, CSS and JS minification. See below for full list of options.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.PageRuleActionsMinify> Minifies;
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.
         /// </summary>
@@ -144,10 +136,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Whether this action is `"on"` or `"off"`.
         /// </summary>
-        public readonly string? ServerSideExclude;
-        /// <summary>
-        /// Whether this action is `"on"` or `"off"`.
-        /// </summary>
         public readonly string? SortQueryStringForCache;
         /// <summary>
         /// Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
@@ -168,7 +156,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? automaticHttpsRewrites,
 
-            string? browserCacheTtl,
+            int? browserCacheTtl,
 
             string? browserCheck,
 
@@ -184,13 +172,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? cacheOnCookie,
 
-            ImmutableArray<Outputs.PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses,
+            object? cacheTtlByStatus,
 
             bool? disableApps,
 
             bool? disablePerformance,
-
-            bool? disableRailgun,
 
             bool? disableSecurity,
 
@@ -207,8 +193,6 @@ namespace Pulumi.Cloudflare.Outputs
             string? hostHeaderOverride,
 
             string? ipGeolocation,
-
-            ImmutableArray<Outputs.PageRuleActionsMinify> minifies,
 
             string? mirage,
 
@@ -228,8 +212,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? securityLevel,
 
-            string? serverSideExclude,
-
             string? sortQueryStringForCache,
 
             string? ssl,
@@ -248,10 +230,9 @@ namespace Pulumi.Cloudflare.Outputs
             CacheKeyFields = cacheKeyFields;
             CacheLevel = cacheLevel;
             CacheOnCookie = cacheOnCookie;
-            CacheTtlByStatuses = cacheTtlByStatuses;
+            CacheTtlByStatus = cacheTtlByStatus;
             DisableApps = disableApps;
             DisablePerformance = disablePerformance;
-            DisableRailgun = disableRailgun;
             DisableSecurity = disableSecurity;
             DisableZaraz = disableZaraz;
             EdgeCacheTtl = edgeCacheTtl;
@@ -260,7 +241,6 @@ namespace Pulumi.Cloudflare.Outputs
             ForwardingUrl = forwardingUrl;
             HostHeaderOverride = hostHeaderOverride;
             IpGeolocation = ipGeolocation;
-            Minifies = minifies;
             Mirage = mirage;
             OpportunisticEncryption = opportunisticEncryption;
             OriginErrorPagePassThru = originErrorPagePassThru;
@@ -270,7 +250,6 @@ namespace Pulumi.Cloudflare.Outputs
             ResponseBuffering = responseBuffering;
             RocketLoader = rocketLoader;
             SecurityLevel = securityLevel;
-            ServerSideExclude = serverSideExclude;
             SortQueryStringForCache = sortQueryStringForCache;
             Ssl = ssl;
             TrueClientIpHeader = trueClientIpHeader;

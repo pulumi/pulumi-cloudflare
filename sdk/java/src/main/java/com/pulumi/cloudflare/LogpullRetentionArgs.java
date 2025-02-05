@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,29 +18,29 @@ public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArg
     public static final LogpullRetentionArgs Empty = new LogpullRetentionArgs();
 
     /**
-     * Whether you wish to retain logs or not.
+     * The log retention flag for Logpull API.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="flag")
+    private @Nullable Output<Boolean> flag;
 
     /**
-     * @return Whether you wish to retain logs or not.
+     * @return The log retention flag for Logpull API.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> flag() {
+        return Optional.ofNullable(this.flag);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -48,7 +50,7 @@ public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArg
     private LogpullRetentionArgs() {}
 
     private LogpullRetentionArgs(LogpullRetentionArgs $) {
-        this.enabled = $.enabled;
+        this.flag = $.flag;
         this.zoneId = $.zoneId;
     }
 
@@ -71,28 +73,28 @@ public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether you wish to retain logs or not.
+         * @param flag The log retention flag for Logpull API.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
-            $.enabled = enabled;
+        public Builder flag(@Nullable Output<Boolean> flag) {
+            $.flag = flag;
             return this;
         }
 
         /**
-         * @param enabled Whether you wish to retain logs or not.
+         * @param flag The log retention flag for Logpull API.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
+        public Builder flag(Boolean flag) {
+            return flag(Output.of(flag));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +105,7 @@ public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -113,9 +115,6 @@ public final class LogpullRetentionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public LogpullRetentionArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("LogpullRetentionArgs", "enabled");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("LogpullRetentionArgs", "zoneId");
             }

@@ -7,7 +7,7 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUr
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersFromValueArgs Empty = new RulesetRuleActionParametersFromValueArgs();
 
     /**
-     * Preserve query string for redirect URL.
+     * Keep the query string of the original request.
      * 
      */
     @Import(name="preserveQueryString")
     private @Nullable Output<Boolean> preserveQueryString;
 
     /**
-     * @return Preserve query string for redirect URL.
+     * @return Keep the query string of the original request.
      * 
      */
     public Optional<Output<Boolean>> preserveQueryString() {
@@ -33,29 +33,29 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     }
 
     /**
-     * Status code for redirect.
+     * The status code to be used for the redirect.
      * 
      */
     @Import(name="statusCode")
-    private @Nullable Output<Integer> statusCode;
+    private @Nullable Output<Double> statusCode;
 
     /**
-     * @return Status code for redirect.
+     * @return The status code to be used for the redirect.
      * 
      */
-    public Optional<Output<Integer>> statusCode() {
+    public Optional<Output<Double>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
     /**
-     * Target URL for redirect.
+     * The URL to redirect the request to.
      * 
      */
     @Import(name="targetUrl")
     private @Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
 
     /**
-     * @return Target URL for redirect.
+     * @return The URL to redirect the request to.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrl() {
@@ -89,7 +89,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param preserveQueryString Preserve query string for redirect URL.
+         * @param preserveQueryString Keep the query string of the original request.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param preserveQueryString Preserve query string for redirect URL.
+         * @param preserveQueryString Keep the query string of the original request.
          * 
          * @return builder
          * 
@@ -110,28 +110,28 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param statusCode Status code for redirect.
+         * @param statusCode The status code to be used for the redirect.
          * 
          * @return builder
          * 
          */
-        public Builder statusCode(@Nullable Output<Integer> statusCode) {
+        public Builder statusCode(@Nullable Output<Double> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
         /**
-         * @param statusCode Status code for redirect.
+         * @param statusCode The status code to be used for the redirect.
          * 
          * @return builder
          * 
          */
-        public Builder statusCode(Integer statusCode) {
+        public Builder statusCode(Double statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
         /**
-         * @param targetUrl Target URL for redirect.
+         * @param targetUrl The URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param targetUrl Target URL for redirect.
+         * @param targetUrl The URL to redirect the request to.
          * 
          * @return builder
          * 

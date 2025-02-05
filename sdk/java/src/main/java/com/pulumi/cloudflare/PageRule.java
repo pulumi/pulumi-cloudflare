@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -31,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.PageRule;
  * import com.pulumi.cloudflare.PageRuleArgs;
- * import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,11 +51,7 @@ import javax.annotation.Nullable;
  *             .actions(PageRuleActionsArgs.builder()
  *                 .ssl("flexible")
  *                 .emailObfuscation("on")
- *                 .minifies(PageRuleActionsMinifyArgs.builder()
- *                     .html("off")
- *                     .css("on")
- *                     .js("on")
- *                     .build())
+ *                 .minify(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                 .build())
  *             .build());
  * 
@@ -93,32 +87,60 @@ public class PageRule extends com.pulumi.resources.CustomResource {
         return this.actions;
     }
     /**
+     * The timestamp of when the Page Rule was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The timestamp of when the Page Rule was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
+    private Output<Integer> priority;
 
     /**
      * @return The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      * 
      */
-    public Output<Optional<Integer>> priority() {
-        return Codegen.optional(this.priority);
+    public Output<Integer> priority() {
+        return this.priority;
     }
     /**
      * Whether the page rule is active or disabled.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
      * @return Whether the page rule is active or disabled.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * The URL pattern to target with the page rule.

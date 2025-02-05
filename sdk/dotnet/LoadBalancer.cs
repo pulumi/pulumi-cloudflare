@@ -10,237 +10,137 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Load Balancer resource. This sits in front of
-    /// a number of defined pools of origins and provides various options
-    /// for geographically-aware load balancing. Note that the load balancing
-    /// feature must be enabled in your Cloudflare account before you can use
-    /// this resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("example", new()
-    ///     {
-    ///         Name = "example-lb-pool",
-    ///         Origins = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
-    ///             {
-    ///                 Name = "example-1",
-    ///                 Address = "192.0.2.1",
-    ///                 Enabled = false,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Define a load balancer which always points to a pool we define below.
-    ///     // In normal usage, would have different pools set for different pops
-    ///     // (cloudflare points-of-presence) and/or for different regions.
-    ///     // Within each pop or region we can define multiple pools in failover order.
-    ///     var example = new Cloudflare.LoadBalancer("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "example-load-balancer.example.com",
-    ///         FallbackPoolId = exampleLoadBalancerPool.Id,
-    ///         DefaultPoolIds = new[]
-    ///         {
-    ///             exampleLoadBalancerPool.Id,
-    ///         },
-    ///         Description = "example load balancer using geo-balancing",
-    ///         Proxied = true,
-    ///         SteeringPolicy = "geo",
-    ///         PopPools = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPopPoolArgs
-    ///             {
-    ///                 Pop = "LAX",
-    ///                 PoolIds = new[]
-    ///                 {
-    ///                     exampleLoadBalancerPool.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///         CountryPools = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerCountryPoolArgs
-    ///             {
-    ///                 Country = "US",
-    ///                 PoolIds = new[]
-    ///                 {
-    ///                     exampleLoadBalancerPool.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///         RegionPools = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerRegionPoolArgs
-    ///             {
-    ///                 Region = "WNAM",
-    ///                 PoolIds = new[]
-    ///                 {
-    ///                     exampleLoadBalancerPool.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///         Rules = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerRuleArgs
-    ///             {
-    ///                 Name = "example rule",
-    ///                 Condition = "http.request.uri.path contains \"testing\"",
-    ///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
-    ///                 {
-    ///                     MessageBody = "hello",
-    ///                     StatusCode = 200,
-    ///                     ContentType = "html",
-    ///                     Location = "www.example.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &lt;zone_id&gt;/&lt;load_balancer_id&gt;
+    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;zone_id&gt;/&lt;load_balancer_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         /// </summary>
-        [Output("adaptiveRoutings")]
-        public Output<ImmutableArray<Outputs.LoadBalancerAdaptiveRouting>> AdaptiveRoutings { get; private set; } = null!;
+        [Output("adaptiveRouting")]
+        public Output<Outputs.LoadBalancerAdaptiveRouting> AdaptiveRouting { get; private set; } = null!;
 
         /// <summary>
-        /// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        /// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         /// </summary>
         [Output("countryPools")]
-        public Output<ImmutableArray<Outputs.LoadBalancerCountryPool>> CountryPools { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>> CountryPools { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was created.
-        /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
         /// </summary>
-        [Output("defaultPoolIds")]
-        public Output<ImmutableArray<string>> DefaultPoolIds { get; private set; } = null!;
+        [Output("defaultPools")]
+        public Output<ImmutableArray<string>> DefaultPools { get; private set; } = null!;
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the load balancer. Defaults to `true`.
+        /// Whether to enable (the default) this load balancer.
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The pool ID to use when all other pools are detected as unhealthy.
         /// </summary>
-        [Output("fallbackPoolId")]
-        public Output<string> FallbackPoolId { get; private set; } = null!;
+        [Output("fallbackPool")]
+        public Output<string> FallbackPool { get; private set; } = null!;
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests.
+        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         /// </summary>
-        [Output("locationStrategies")]
-        public Output<ImmutableArray<Outputs.LoadBalancerLocationStrategy>> LocationStrategies { get; private set; } = null!;
+        [Output("locationStrategy")]
+        public Output<Outputs.LoadBalancerLocationStrategy> LocationStrategy { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was last modified.
-        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+        /// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        /// List of networks where Load Balancer or Pool is enabled.
+        /// </summary>
+        [Output("networks")]
+        public Output<ImmutableArray<string>> Networks { get; private set; } = null!;
+
+        /// <summary>
+        /// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         /// </summary>
         [Output("popPools")]
-        public Output<ImmutableArray<Outputs.LoadBalancerPopPool>> PopPools { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>> PopPools { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+        /// Whether the hostname should be gray clouded (false) or orange clouded (true).
         /// </summary>
         [Output("proxied")]
-        public Output<bool?> Proxied { get; private set; } = null!;
+        public Output<bool> Proxied { get; private set; } = null!;
 
         /// <summary>
-        /// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
+        /// Configures pool weights.
         /// </summary>
-        [Output("randomSteerings")]
-        public Output<ImmutableArray<Outputs.LoadBalancerRandomSteering>> RandomSteerings { get; private set; } = null!;
+        [Output("randomSteering")]
+        public Output<Outputs.LoadBalancerRandomSteering> RandomSteering { get; private set; } = null!;
 
         /// <summary>
-        /// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        /// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
         /// </summary>
         [Output("regionPools")]
-        public Output<ImmutableArray<Outputs.LoadBalancerRegionPool>> RegionPools { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>> RegionPools { get; private set; } = null!;
 
         /// <summary>
-        /// A list of rules for this load balancer to execute.
+        /// BETA Field Not General Access: A list of rules for this load balancer to execute.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.LoadBalancerRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
         /// </summary>
         [Output("sessionAffinity")]
-        public Output<string?> SessionAffinity { get; private set; } = null!;
+        public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Configures attributes for session affinity.
         /// </summary>
         [Output("sessionAffinityAttributes")]
-        public Output<ImmutableArray<Outputs.LoadBalancerSessionAffinityAttribute>> SessionAffinityAttributes { get; private set; } = null!;
+        public Output<Outputs.LoadBalancerSessionAffinityAttributes> SessionAffinityAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
         /// </summary>
         [Output("sessionAffinityTtl")]
-        public Output<int?> SessionAffinityTtl { get; private set; } = null!;
+        public Output<double> SessionAffinityTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
+        /// Steering Policy for this load balancer.
         /// </summary>
         [Output("steeringPolicy")]
         public Output<string> SteeringPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         /// </summary>
         [Output("ttl")]
-        public Output<int> Ttl { get; private set; } = null!;
+        public Output<double> Ttl { get; private set; } = null!;
 
-        /// <summary>
-        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -290,50 +190,44 @@ namespace Pulumi.Cloudflare
 
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
-        [Input("adaptiveRoutings")]
-        private InputList<Inputs.LoadBalancerAdaptiveRoutingArgs>? _adaptiveRoutings;
-
         /// <summary>
-        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         /// </summary>
-        public InputList<Inputs.LoadBalancerAdaptiveRoutingArgs> AdaptiveRoutings
-        {
-            get => _adaptiveRoutings ?? (_adaptiveRoutings = new InputList<Inputs.LoadBalancerAdaptiveRoutingArgs>());
-            set => _adaptiveRoutings = value;
-        }
+        [Input("adaptiveRouting")]
+        public Input<Inputs.LoadBalancerAdaptiveRoutingArgs>? AdaptiveRouting { get; set; }
 
         [Input("countryPools")]
-        private InputList<Inputs.LoadBalancerCountryPoolArgs>? _countryPools;
+        private InputMap<ImmutableArray<string>>? _countryPools;
 
         /// <summary>
-        /// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        /// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         /// </summary>
-        public InputList<Inputs.LoadBalancerCountryPoolArgs> CountryPools
+        public InputMap<ImmutableArray<string>> CountryPools
         {
-            get => _countryPools ?? (_countryPools = new InputList<Inputs.LoadBalancerCountryPoolArgs>());
+            get => _countryPools ?? (_countryPools = new InputMap<ImmutableArray<string>>());
             set => _countryPools = value;
         }
 
-        [Input("defaultPoolIds", required: true)]
-        private InputList<string>? _defaultPoolIds;
+        [Input("defaultPools", required: true)]
+        private InputList<string>? _defaultPools;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
         /// </summary>
-        public InputList<string> DefaultPoolIds
+        public InputList<string> DefaultPools
         {
-            get => _defaultPoolIds ?? (_defaultPoolIds = new InputList<string>());
-            set => _defaultPoolIds = value;
+            get => _defaultPools ?? (_defaultPools = new InputList<string>());
+            set => _defaultPools = value;
         }
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable or disable the load balancer. Defaults to `true`.
+        /// Whether to enable (the default) this load balancer.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -341,66 +235,66 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The pool ID to use when all other pools are detected as unhealthy.
         /// </summary>
-        [Input("fallbackPoolId", required: true)]
-        public Input<string> FallbackPoolId { get; set; } = null!;
-
-        [Input("locationStrategies")]
-        private InputList<Inputs.LoadBalancerLocationStrategyArgs>? _locationStrategies;
+        [Input("fallbackPool", required: true)]
+        public Input<string> FallbackPool { get; set; } = null!;
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests.
+        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         /// </summary>
-        public InputList<Inputs.LoadBalancerLocationStrategyArgs> LocationStrategies
-        {
-            get => _locationStrategies ?? (_locationStrategies = new InputList<Inputs.LoadBalancerLocationStrategyArgs>());
-            set => _locationStrategies = value;
-        }
+        [Input("locationStrategy")]
+        public Input<Inputs.LoadBalancerLocationStrategyArgs>? LocationStrategy { get; set; }
 
         /// <summary>
-        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+        /// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("popPools")]
-        private InputList<Inputs.LoadBalancerPopPoolArgs>? _popPools;
+        [Input("networks")]
+        private InputList<string>? _networks;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        /// List of networks where Load Balancer or Pool is enabled.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPopPoolArgs> PopPools
+        public InputList<string> Networks
         {
-            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolArgs>());
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
+        [Input("popPools")]
+        private InputMap<ImmutableArray<string>>? _popPools;
+
+        /// <summary>
+        /// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> PopPools
+        {
+            get => _popPools ?? (_popPools = new InputMap<ImmutableArray<string>>());
             set => _popPools = value;
         }
 
         /// <summary>
-        /// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+        /// Whether the hostname should be gray clouded (false) or orange clouded (true).
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
 
-        [Input("randomSteerings")]
-        private InputList<Inputs.LoadBalancerRandomSteeringArgs>? _randomSteerings;
-
         /// <summary>
-        /// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
+        /// Configures pool weights.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRandomSteeringArgs> RandomSteerings
-        {
-            get => _randomSteerings ?? (_randomSteerings = new InputList<Inputs.LoadBalancerRandomSteeringArgs>());
-            set => _randomSteerings = value;
-        }
+        [Input("randomSteering")]
+        public Input<Inputs.LoadBalancerRandomSteeringArgs>? RandomSteering { get; set; }
 
         [Input("regionPools")]
-        private InputList<Inputs.LoadBalancerRegionPoolArgs>? _regionPools;
+        private InputMap<ImmutableArray<string>>? _regionPools;
 
         /// <summary>
-        /// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        /// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRegionPoolArgs> RegionPools
+        public InputMap<ImmutableArray<string>> RegionPools
         {
-            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolArgs>());
+            get => _regionPools ?? (_regionPools = new InputMap<ImmutableArray<string>>());
             set => _regionPools = value;
         }
 
@@ -408,7 +302,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerRuleArgs>? _rules;
 
         /// <summary>
-        /// A list of rules for this load balancer to execute.
+        /// BETA Field Not General Access: A list of rules for this load balancer to execute.
         /// </summary>
         public InputList<Inputs.LoadBalancerRuleArgs> Rules
         {
@@ -417,44 +311,35 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
-        [Input("sessionAffinityAttributes")]
-        private InputList<Inputs.LoadBalancerSessionAffinityAttributeArgs>? _sessionAffinityAttributes;
-
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Configures attributes for session affinity.
         /// </summary>
-        public InputList<Inputs.LoadBalancerSessionAffinityAttributeArgs> SessionAffinityAttributes
-        {
-            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputList<Inputs.LoadBalancerSessionAffinityAttributeArgs>());
-            set => _sessionAffinityAttributes = value;
-        }
+        [Input("sessionAffinityAttributes")]
+        public Input<Inputs.LoadBalancerSessionAffinityAttributesArgs>? SessionAffinityAttributes { get; set; }
 
         /// <summary>
-        /// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
         /// </summary>
         [Input("sessionAffinityTtl")]
-        public Input<int>? SessionAffinityTtl { get; set; }
+        public Input<double>? SessionAffinityTtl { get; set; }
 
         /// <summary>
-        /// The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
+        /// Steering Policy for this load balancer.
         /// </summary>
         [Input("steeringPolicy")]
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         /// </summary>
         [Input("ttl")]
-        public Input<int>? Ttl { get; set; }
+        public Input<double>? Ttl { get; set; }
 
-        /// <summary>
-        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
@@ -466,56 +351,47 @@ namespace Pulumi.Cloudflare
 
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
-        [Input("adaptiveRoutings")]
-        private InputList<Inputs.LoadBalancerAdaptiveRoutingGetArgs>? _adaptiveRoutings;
-
         /// <summary>
-        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         /// </summary>
-        public InputList<Inputs.LoadBalancerAdaptiveRoutingGetArgs> AdaptiveRoutings
-        {
-            get => _adaptiveRoutings ?? (_adaptiveRoutings = new InputList<Inputs.LoadBalancerAdaptiveRoutingGetArgs>());
-            set => _adaptiveRoutings = value;
-        }
+        [Input("adaptiveRouting")]
+        public Input<Inputs.LoadBalancerAdaptiveRoutingGetArgs>? AdaptiveRouting { get; set; }
 
         [Input("countryPools")]
-        private InputList<Inputs.LoadBalancerCountryPoolGetArgs>? _countryPools;
+        private InputMap<ImmutableArray<string>>? _countryPools;
 
         /// <summary>
-        /// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        /// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         /// </summary>
-        public InputList<Inputs.LoadBalancerCountryPoolGetArgs> CountryPools
+        public InputMap<ImmutableArray<string>> CountryPools
         {
-            get => _countryPools ?? (_countryPools = new InputList<Inputs.LoadBalancerCountryPoolGetArgs>());
+            get => _countryPools ?? (_countryPools = new InputMap<ImmutableArray<string>>());
             set => _countryPools = value;
         }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was created.
-        /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
-        [Input("defaultPoolIds")]
-        private InputList<string>? _defaultPoolIds;
+        [Input("defaultPools")]
+        private InputList<string>? _defaultPools;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
         /// </summary>
-        public InputList<string> DefaultPoolIds
+        public InputList<string> DefaultPools
         {
-            get => _defaultPoolIds ?? (_defaultPoolIds = new InputList<string>());
-            set => _defaultPoolIds = value;
+            get => _defaultPools ?? (_defaultPools = new InputList<string>());
+            set => _defaultPools = value;
         }
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable or disable the load balancer. Defaults to `true`.
+        /// Whether to enable (the default) this load balancer.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -523,72 +399,69 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The pool ID to use when all other pools are detected as unhealthy.
         /// </summary>
-        [Input("fallbackPoolId")]
-        public Input<string>? FallbackPoolId { get; set; }
-
-        [Input("locationStrategies")]
-        private InputList<Inputs.LoadBalancerLocationStrategyGetArgs>? _locationStrategies;
+        [Input("fallbackPool")]
+        public Input<string>? FallbackPool { get; set; }
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests.
+        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         /// </summary>
-        public InputList<Inputs.LoadBalancerLocationStrategyGetArgs> LocationStrategies
-        {
-            get => _locationStrategies ?? (_locationStrategies = new InputList<Inputs.LoadBalancerLocationStrategyGetArgs>());
-            set => _locationStrategies = value;
-        }
+        [Input("locationStrategy")]
+        public Input<Inputs.LoadBalancerLocationStrategyGetArgs>? LocationStrategy { get; set; }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer was last modified.
-        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
+        /// The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("popPools")]
-        private InputList<Inputs.LoadBalancerPopPoolGetArgs>? _popPools;
+        [Input("networks")]
+        private InputList<string>? _networks;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        /// List of networks where Load Balancer or Pool is enabled.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPopPoolGetArgs> PopPools
+        public InputList<string> Networks
         {
-            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolGetArgs>());
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
+        [Input("popPools")]
+        private InputMap<ImmutableArray<string>>? _popPools;
+
+        /// <summary>
+        /// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> PopPools
+        {
+            get => _popPools ?? (_popPools = new InputMap<ImmutableArray<string>>());
             set => _popPools = value;
         }
 
         /// <summary>
-        /// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.
+        /// Whether the hostname should be gray clouded (false) or orange clouded (true).
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
 
-        [Input("randomSteerings")]
-        private InputList<Inputs.LoadBalancerRandomSteeringGetArgs>? _randomSteerings;
-
         /// <summary>
-        /// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
+        /// Configures pool weights.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRandomSteeringGetArgs> RandomSteerings
-        {
-            get => _randomSteerings ?? (_randomSteerings = new InputList<Inputs.LoadBalancerRandomSteeringGetArgs>());
-            set => _randomSteerings = value;
-        }
+        [Input("randomSteering")]
+        public Input<Inputs.LoadBalancerRandomSteeringGetArgs>? RandomSteering { get; set; }
 
         [Input("regionPools")]
-        private InputList<Inputs.LoadBalancerRegionPoolGetArgs>? _regionPools;
+        private InputMap<ImmutableArray<string>>? _regionPools;
 
         /// <summary>
-        /// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        /// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRegionPoolGetArgs> RegionPools
+        public InputMap<ImmutableArray<string>> RegionPools
         {
-            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolGetArgs>());
+            get => _regionPools ?? (_regionPools = new InputMap<ImmutableArray<string>>());
             set => _regionPools = value;
         }
 
@@ -596,7 +469,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerRuleGetArgs>? _rules;
 
         /// <summary>
-        /// A list of rules for this load balancer to execute.
+        /// BETA Field Not General Access: A list of rules for this load balancer to execute.
         /// </summary>
         public InputList<Inputs.LoadBalancerRuleGetArgs> Rules
         {
@@ -605,44 +478,35 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
-        [Input("sessionAffinityAttributes")]
-        private InputList<Inputs.LoadBalancerSessionAffinityAttributeGetArgs>? _sessionAffinityAttributes;
-
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Configures attributes for session affinity.
         /// </summary>
-        public InputList<Inputs.LoadBalancerSessionAffinityAttributeGetArgs> SessionAffinityAttributes
-        {
-            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputList<Inputs.LoadBalancerSessionAffinityAttributeGetArgs>());
-            set => _sessionAffinityAttributes = value;
-        }
+        [Input("sessionAffinityAttributes")]
+        public Input<Inputs.LoadBalancerSessionAffinityAttributesGetArgs>? SessionAffinityAttributes { get; set; }
 
         /// <summary>
-        /// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
         /// </summary>
         [Input("sessionAffinityTtl")]
-        public Input<int>? SessionAffinityTtl { get; set; }
+        public Input<double>? SessionAffinityTtl { get; set; }
 
         /// <summary>
-        /// The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
+        /// Steering Policy for this load balancer.
         /// </summary>
         [Input("steeringPolicy")]
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         /// </summary>
         [Input("ttl")]
-        public Input<int>? Ttl { get; set; }
+        public Input<double>? Ttl { get; set; }
 
-        /// <summary>
-        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

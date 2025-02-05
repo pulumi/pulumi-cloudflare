@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDnsLocationEndpointsIpv4GetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authenticationEnabled")]
-        public Input<bool>? AuthenticationEnabled { get; set; }
-
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        /// <summary>
+        /// True if the endpoint is enabled for this location.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         public ZeroTrustDnsLocationEndpointsIpv4GetArgs()
         {

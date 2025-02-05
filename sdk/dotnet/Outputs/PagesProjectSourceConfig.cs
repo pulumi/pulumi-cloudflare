@@ -13,41 +13,16 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectSourceConfig
     {
-        /// <summary>
-        /// Toggle deployments on this repo. Defaults to `true`.
-        /// </summary>
         public readonly bool? DeploymentsEnabled;
-        /// <summary>
-        /// Project owner username. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         public readonly string? Owner;
-        /// <summary>
-        /// Enable Pages to comment on Pull Requests. Defaults to `true`.
-        /// </summary>
+        public readonly ImmutableArray<string> PathExcludes;
+        public readonly ImmutableArray<string> PathIncludes;
         public readonly bool? PrCommentsEnabled;
-        /// <summary>
-        /// Branches will be excluded from automatic deployment.
-        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchExcludes;
-        /// <summary>
-        /// Branches will be included for automatic deployment.
-        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchIncludes;
-        /// <summary>
-        /// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-        /// </summary>
         public readonly string? PreviewDeploymentSetting;
-        /// <summary>
-        /// Project production branch name.
-        /// </summary>
-        public readonly string ProductionBranch;
-        /// <summary>
-        /// Enable production deployments. Defaults to `true`.
-        /// </summary>
-        public readonly bool? ProductionDeploymentEnabled;
-        /// <summary>
-        /// Project repository name. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
+        public readonly string? ProductionBranch;
+        public readonly bool? ProductionDeploymentsEnabled;
         public readonly string? RepoName;
 
         [OutputConstructor]
@@ -55,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
             bool? deploymentsEnabled,
 
             string? owner,
+
+            ImmutableArray<string> pathExcludes,
+
+            ImmutableArray<string> pathIncludes,
 
             bool? prCommentsEnabled,
 
@@ -64,20 +43,22 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? previewDeploymentSetting,
 
-            string productionBranch,
+            string? productionBranch,
 
-            bool? productionDeploymentEnabled,
+            bool? productionDeploymentsEnabled,
 
             string? repoName)
         {
             DeploymentsEnabled = deploymentsEnabled;
             Owner = owner;
+            PathExcludes = pathExcludes;
+            PathIncludes = pathIncludes;
             PrCommentsEnabled = prCommentsEnabled;
             PreviewBranchExcludes = previewBranchExcludes;
             PreviewBranchIncludes = previewBranchIncludes;
             PreviewDeploymentSetting = previewDeploymentSetting;
             ProductionBranch = productionBranch;
-            ProductionDeploymentEnabled = productionDeploymentEnabled;
+            ProductionDeploymentsEnabled = productionDeploymentsEnabled;
             RepoName = repoName;
         }
     }

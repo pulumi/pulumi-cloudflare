@@ -3,11 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +17,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     public static final ListState Empty = new ListState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +32,29 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description of the list.
+     * The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * An informative summary of the list.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of the list.
+     * @return An informative summary of the list.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,29 +62,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items in the list.
-     * 
-     */
-    @Import(name="items")
-    private @Nullable Output<List<ListItemArgs>> items;
-
-    /**
-     * @return The items in the list.
-     * 
-     */
-    public Optional<Output<List<ListItemArgs>>> items() {
-        return Optional.ofNullable(this.items);
-    }
-
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * 
      */
     public Optional<Output<String>> kind() {
@@ -78,28 +77,76 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the list.
+     * The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The number of items in the list.
+     * 
+     */
+    @Import(name="numItems")
+    private @Nullable Output<Double> numItems;
+
+    /**
+     * @return The number of items in the list.
+     * 
+     */
+    public Optional<Output<Double>> numItems() {
+        return Optional.ofNullable(this.numItems);
+    }
+
+    /**
+     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    @Import(name="numReferencingFilters")
+    private @Nullable Output<Double> numReferencingFilters;
+
+    /**
+     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    public Optional<Output<Double>> numReferencingFilters() {
+        return Optional.ofNullable(this.numReferencingFilters);
+    }
+
     private ListState() {}
 
     private ListState(ListState $) {
         this.accountId = $.accountId;
+        this.createdOn = $.createdOn;
         this.description = $.description;
-        this.items = $.items;
         this.kind = $.kind;
+        this.modifiedOn = $.modifiedOn;
         this.name = $.name;
+        this.numItems = $.numItems;
+        this.numReferencingFilters = $.numReferencingFilters;
     }
 
     public static Builder builder() {
@@ -121,7 +168,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -132,7 +179,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -142,7 +189,28 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the list.
+         * @param createdOn The RFC 3339 timestamp of when the list was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The RFC 3339 timestamp of when the list was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param description An informative summary of the list.
          * 
          * @return builder
          * 
@@ -153,7 +221,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the list.
+         * @param description An informative summary of the list.
          * 
          * @return builder
          * 
@@ -163,38 +231,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(@Nullable Output<List<ListItemArgs>> items) {
-            $.items = items;
-            return this;
-        }
-
-        /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(List<ListItemArgs> items) {
-            return items(Output.of(items));
-        }
-
-        /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(ListItemArgs... items) {
-            return items(List.of(items));
-        }
-
-        /**
-         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+         * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
          * 
          * @return builder
          * 
@@ -205,7 +242,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+         * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
          * 
          * @return builder
          * 
@@ -215,7 +252,28 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param modifiedOn The RFC 3339 timestamp of when the list was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The RFC 3339 timestamp of when the list was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param name An informative name for the list. Use this name in filter and rule expressions.
          * 
          * @return builder
          * 
@@ -226,13 +284,55 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name An informative name for the list. Use this name in filter and rule expressions.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param numItems The number of items in the list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numItems(@Nullable Output<Double> numItems) {
+            $.numItems = numItems;
+            return this;
+        }
+
+        /**
+         * @param numItems The number of items in the list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numItems(Double numItems) {
+            return numItems(Output.of(numItems));
+        }
+
+        /**
+         * @param numReferencingFilters The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numReferencingFilters(@Nullable Output<Double> numReferencingFilters) {
+            $.numReferencingFilters = numReferencingFilters;
+            return this;
+        }
+
+        /**
+         * @param numReferencingFilters The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numReferencingFilters(Double numReferencingFilters) {
+            return numReferencingFilters(Output.of(numReferencingFilters));
         }
 
         public ListState build() {

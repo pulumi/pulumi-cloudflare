@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Origin Hostname where request is sent.
+        /// Override the resolved hostname.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Origin Port where request is sent.
+        /// Override the destination port.
         /// </summary>
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<double>? Port { get; set; }
 
         public RulesetRuleActionParametersOriginArgs()
         {

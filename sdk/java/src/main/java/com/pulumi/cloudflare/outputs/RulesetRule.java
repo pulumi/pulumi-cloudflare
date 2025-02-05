@@ -8,9 +8,9 @@ import com.pulumi.cloudflare.outputs.RulesetRuleExposedCredentialCheck;
 import com.pulumi.cloudflare.outputs.RulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,122 +18,134 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to perform when the rule matches.
      * 
      */
     private @Nullable String action;
     /**
-     * @return List of parameters that configure the behavior of the ruleset rule action.
+     * @return The parameters configuring the rule&#39;s action.
      * 
      */
     private @Nullable RulesetRuleActionParameters actionParameters;
     /**
-     * @return Brief summary of the ruleset rule and its intended use.
+     * @return The categories of the rule.
+     * 
+     */
+    private @Nullable List<String> categories;
+    /**
+     * @return An informative description of the rule.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Whether the rule is active.
+     * @return Whether the rule should be executed.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return List of parameters that configure exposed credential checks.
+     * @return Configure checks for exposed credentials.
      * 
      */
     private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
     /**
-     * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return The expression defining which traffic will match the rule.
      * 
      */
-    private String expression;
+    private @Nullable String expression;
     /**
-     * @return Unique rule identifier.
+     * @return The unique ID of the rule.
      * 
      */
     private @Nullable String id;
     /**
-     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
+     * @return An object configuring the rule&#39;s logging behavior.
      * 
      */
     private @Nullable RulesetRuleLogging logging;
     /**
-     * @return List of parameters that configure HTTP rate limiting behaviour.
+     * @return An object configuring the rule&#39;s ratelimit behavior.
      * 
      */
     private @Nullable RulesetRuleRatelimit ratelimit;
     /**
-     * @return Rule reference.
+     * @return The reference of the rule (the rule ID by default).
      * 
      */
     private @Nullable String ref;
 
     private RulesetRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to perform when the rule matches.
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return List of parameters that configure the behavior of the ruleset rule action.
+     * @return The parameters configuring the rule&#39;s action.
      * 
      */
     public Optional<RulesetRuleActionParameters> actionParameters() {
         return Optional.ofNullable(this.actionParameters);
     }
     /**
-     * @return Brief summary of the ruleset rule and its intended use.
+     * @return The categories of the rule.
+     * 
+     */
+    public List<String> categories() {
+        return this.categories == null ? List.of() : this.categories;
+    }
+    /**
+     * @return An informative description of the rule.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Whether the rule is active.
+     * @return Whether the rule should be executed.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return List of parameters that configure exposed credential checks.
+     * @return Configure checks for exposed credentials.
      * 
      */
     public Optional<RulesetRuleExposedCredentialCheck> exposedCredentialCheck() {
         return Optional.ofNullable(this.exposedCredentialCheck);
     }
     /**
-     * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * @return The expression defining which traffic will match the rule.
      * 
      */
-    public String expression() {
-        return this.expression;
+    public Optional<String> expression() {
+        return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Unique rule identifier.
+     * @return The unique ID of the rule.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
+     * @return An object configuring the rule&#39;s logging behavior.
      * 
      */
     public Optional<RulesetRuleLogging> logging() {
         return Optional.ofNullable(this.logging);
     }
     /**
-     * @return List of parameters that configure HTTP rate limiting behaviour.
+     * @return An object configuring the rule&#39;s ratelimit behavior.
      * 
      */
     public Optional<RulesetRuleRatelimit> ratelimit() {
         return Optional.ofNullable(this.ratelimit);
     }
     /**
-     * @return Rule reference.
+     * @return The reference of the rule (the rule ID by default).
      * 
      */
     public Optional<String> ref() {
@@ -151,10 +163,11 @@ public final class RulesetRule {
     public static final class Builder {
         private @Nullable String action;
         private @Nullable RulesetRuleActionParameters actionParameters;
+        private @Nullable List<String> categories;
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
-        private String expression;
+        private @Nullable String expression;
         private @Nullable String id;
         private @Nullable RulesetRuleLogging logging;
         private @Nullable RulesetRuleRatelimit ratelimit;
@@ -164,6 +177,7 @@ public final class RulesetRule {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.actionParameters = defaults.actionParameters;
+    	      this.categories = defaults.categories;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
@@ -187,6 +201,15 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
+        public Builder categories(@Nullable List<String> categories) {
+
+            this.categories = categories;
+            return this;
+        }
+        public Builder categories(String... categories) {
+            return categories(List.of(categories));
+        }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
 
             this.description = description;
@@ -205,10 +228,8 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder expression(String expression) {
-            if (expression == null) {
-              throw new MissingRequiredPropertyException("RulesetRule", "expression");
-            }
+        public Builder expression(@Nullable String expression) {
+
             this.expression = expression;
             return this;
         }
@@ -240,6 +261,7 @@ public final class RulesetRule {
             final var _resultValue = new RulesetRule();
             _resultValue.action = action;
             _resultValue.actionParameters = actionParameters;
+            _resultValue.categories = categories;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.exposedCredentialCheck = exposedCredentialCheck;

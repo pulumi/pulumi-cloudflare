@@ -17,14 +17,14 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
     public static final LoadBalancerRuleFixedResponseArgs Empty = new LoadBalancerRuleFixedResponseArgs();
 
     /**
-     * The value of the HTTP context-type header for this fixed response.
+     * The http &#39;Content-Type&#39; header to include in the response.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The value of the HTTP context-type header for this fixed response.
+     * @return The http &#39;Content-Type&#39; header to include in the response.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -32,14 +32,14 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
     }
 
     /**
-     * The value of the HTTP location header for this fixed response.
+     * The http &#39;Location&#39; header to include in the response.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The value of the HTTP location header for this fixed response.
+     * @return The http &#39;Location&#39; header to include in the response.
      * 
      */
     public Optional<Output<String>> location() {
@@ -47,14 +47,14 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
     }
 
     /**
-     * The text used as the html body for this fixed response.
+     * Text to include as the http body.
      * 
      */
     @Import(name="messageBody")
     private @Nullable Output<String> messageBody;
 
     /**
-     * @return The text used as the html body for this fixed response.
+     * @return Text to include as the http body.
      * 
      */
     public Optional<Output<String>> messageBody() {
@@ -62,14 +62,14 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
     }
 
     /**
-     * The HTTP status code used for this fixed response.
+     * The http status code to respond with.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return The HTTP status code used for this fixed response.
+     * @return The http status code to respond with.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -104,7 +104,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param contentType The value of the HTTP context-type header for this fixed response.
+         * @param contentType The http &#39;Content-Type&#39; header to include in the response.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param contentType The value of the HTTP context-type header for this fixed response.
+         * @param contentType The http &#39;Content-Type&#39; header to include in the response.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param location The value of the HTTP location header for this fixed response.
+         * @param location The http &#39;Location&#39; header to include in the response.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param location The value of the HTTP location header for this fixed response.
+         * @param location The http &#39;Location&#39; header to include in the response.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param messageBody The text used as the html body for this fixed response.
+         * @param messageBody Text to include as the http body.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param messageBody The text used as the html body for this fixed response.
+         * @param messageBody Text to include as the http body.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param statusCode The HTTP status code used for this fixed response.
+         * @param statusCode The http status code to respond with.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class LoadBalancerRuleFixedResponseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param statusCode The HTTP status code used for this fixed response.
+         * @param statusCode The http status code to respond with.
          * 
          * @return builder
          * 

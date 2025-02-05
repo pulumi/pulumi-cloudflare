@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +15,18 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
     public static final RulesetRuleLoggingArgs Empty = new RulesetRuleLoggingArgs();
 
     /**
-     * Override the default logging behavior when a rule is matched.
+     * Whether to generate a log when the rule matches.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
     /**
-     * @return Override the default logging behavior when a rule is matched.
+     * @return Whether to generate a log when the rule matches.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     private RulesetRuleLoggingArgs() {}
@@ -55,18 +54,18 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled Override the default logging behavior when a rule is matched.
+         * @param enabled Whether to generate a log when the rule matches.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Override the default logging behavior when a rule is matched.
+         * @param enabled Whether to generate a log when the rule matches.
          * 
          * @return builder
          * 
@@ -76,6 +75,9 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         public RulesetRuleLoggingArgs build() {
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleLoggingArgs", "enabled");
+            }
             return $;
         }
     }

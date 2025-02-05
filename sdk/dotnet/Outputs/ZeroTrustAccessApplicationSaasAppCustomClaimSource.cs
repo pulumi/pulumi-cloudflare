@@ -14,9 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomClaimSource
     {
         /// <summary>
-        /// The name of the attribute as provided by the IDP.
+        /// The name of the IdP claim.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// A mapping from IdP ID to claim name.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasAppCustomClaimSource(
-            string name,
+            string? name,
 
             ImmutableDictionary<string, string>? nameByIdp)
         {
