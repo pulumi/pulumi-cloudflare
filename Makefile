@@ -18,7 +18,8 @@ PULUMI_MISSING_DOCS_ERROR := true
 # Override during CI using `make [TARGET] PROVIDER_VERSION=""` or by setting a PROVIDER_VERSION environment variable
 # Local & branch builds will just used this fixed default version unless specified
 PROVIDER_VERSION ?= 6.0.0-alpha.0+dev
-# Use this normalised version everywhere rather than the raw input to ensure consistency.
+
+# Check version doesn't start with a "v" - this is a common mistake
 ifeq ($(shell echo $(PROVIDER_VERSION) | cut -c1),v)
 $(error PROVIDER_VERSION should not start with a "v")
 endif
@@ -236,7 +237,7 @@ test_provider:
 .PHONY: test_provider
 
 tfgen: schema
-schema: .make/schema
+schema: .make/schema 
 # This does actually have dependencies, but we're keeping it around for backwards compatibility for now
 tfgen_no_deps: .make/schema
 .make/schema: export PULUMI_HOME := $(WORKING_DIR)/.pulumi
