@@ -11,7 +11,7 @@ JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
-PULUMI_PROVIDER_BUILD_PARALLELISM ?=
+PULUMI_PROVIDER_BUILD_PARALLELISM ?= -p 2
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := true
 
@@ -269,11 +269,9 @@ bin/$(CODEGEN): provider/*.go provider/go.* .make/upstream
 
 # Apply patches to the upstream submodule, if it exists
 upstream: .make/upstream
-# Re-run if the upstream commit or the patches change
-.make/upstream: $(wildcard patches/*) $(shell ./upstream.sh file_target)
-ifneq ("$(wildcard upstream)","")
-	./upstream.sh init
-endif
+# Re-run if the upstream commit or the patches change.
+.make/upstream: $(wildcard patches/*) $(shell ./scripts/upstream.sh file_target)
+	./scripts/upstream.sh init
 	@touch $@
 .PHONY: upstream
 

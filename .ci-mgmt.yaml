@@ -21,3 +21,4 @@ integrationTestProvider: true
 freeDiskSpaceBeforeBuild: true
 freeDiskSpaceBeforeSdkBuild: true
 freeDiskSpaceBeforeTest: true
+goBuildParallelism: 2
