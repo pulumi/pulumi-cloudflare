@@ -76,7 +76,7 @@ jobs:
           kind: all
           email: bot@pulumi.com
           username: pulumi-bot
-          automerge: false
+          automerge: true
           target-version: ${{ steps.target_version.outputs.version }}
           allow-missing-docs: false
       - name: Comment on upgrade issue if automated PR failed
