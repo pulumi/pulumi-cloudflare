@@ -1890,6 +1890,11 @@ export type RateLimit = import("./rateLimit").RateLimit;
 export const RateLimit: typeof import("./rateLimit").RateLimit = null as any;
 utilities.lazyLoad(exports, ["RateLimit"], () => require("./rateLimit"));
 
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
 export { RegionalHostnameArgs, RegionalHostnameState } from "./regionalHostname";
 export type RegionalHostname = import("./regionalHostname").RegionalHostname;
 export const RegionalHostname: typeof import("./regionalHostname").RegionalHostname = null as any;
@@ -2497,6 +2502,8 @@ const _module = {
                 return new R2Bucket(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
                 return new RateLimit(name, <any>undefined, { urn })
+            case "cloudflare:index/record:Record":
+                return new Record(name, <any>undefined, { urn })
             case "cloudflare:index/regionalHostname:RegionalHostname":
                 return new RegionalHostname(name, <any>undefined, { urn })
             case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
@@ -2757,6 +2764,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queueConsumer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2Bucket", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/registrarDomain", _module)

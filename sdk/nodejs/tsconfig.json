@@ -393,6 +393,7 @@
         "queueConsumer.ts",
         "r2bucket.ts",
         "rateLimit.ts",
+        "record.ts",
         "regionalHostname.ts",
         "regionalTieredCache.ts",
         "registrarDomain.ts",

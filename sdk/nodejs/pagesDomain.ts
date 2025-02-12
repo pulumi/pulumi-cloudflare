@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * > A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflareRecord` resource for the domain you want to use.
+ *    a `cloudflare.Record` resource for the domain you want to use.
  *
  * ## Example Usage
  *

@@ -5544,6 +5544,168 @@ export interface RateLimitMatchResponse {
     originTraffic?: pulumi.Input<boolean>;
 }
 
+export interface RecordData {
+    /**
+     * Algorithm.
+     */
+    algorithm?: pulumi.Input<number>;
+    /**
+     * Altitude of location in meters.
+     */
+    altitude?: pulumi.Input<number>;
+    /**
+     * Certificate.
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * Digest.
+     */
+    digest?: pulumi.Input<string>;
+    /**
+     * Digest Type.
+     */
+    digestType?: pulumi.Input<number>;
+    /**
+     * fingerprint.
+     */
+    fingerprint?: pulumi.Input<string>;
+    /**
+     * Flags for the CAA record.
+     */
+    flags?: any;
+    /**
+     * Key Tag.
+     */
+    keyTag?: pulumi.Input<number>;
+    /**
+     * Degrees of latitude.
+     */
+    latDegrees?: pulumi.Input<number>;
+    /**
+     * Latitude direction.
+     */
+    latDirection?: pulumi.Input<string>;
+    /**
+     * Minutes of latitude.
+     */
+    latMinutes?: pulumi.Input<number>;
+    /**
+     * Seconds of latitude.
+     */
+    latSeconds?: pulumi.Input<number>;
+    /**
+     * Degrees of longitude.
+     */
+    longDegrees?: pulumi.Input<number>;
+    /**
+     * Longitude direction.
+     */
+    longDirection?: pulumi.Input<string>;
+    /**
+     * Minutes of longitude.
+     */
+    longMinutes?: pulumi.Input<number>;
+    /**
+     * Seconds of longitude.
+     */
+    longSeconds?: pulumi.Input<number>;
+    /**
+     * Matching Type.
+     */
+    matchingType?: pulumi.Input<number>;
+    /**
+     * Order.
+     */
+    order?: pulumi.Input<number>;
+    /**
+     * The port of the service.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Horizontal precision of location.
+     */
+    precisionHorz?: pulumi.Input<number>;
+    /**
+     * Vertical precision of location.
+     */
+    precisionVert?: pulumi.Input<number>;
+    /**
+     * Preference.
+     */
+    preference?: pulumi.Input<number>;
+    /**
+     * priority.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Protocol.
+     */
+    protocol?: pulumi.Input<number>;
+    /**
+     * Public Key.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Regex.
+     */
+    regex?: pulumi.Input<string>;
+    /**
+     * Replacement.
+     */
+    replacement?: pulumi.Input<string>;
+    /**
+     * Selector.
+     */
+    selector?: pulumi.Input<number>;
+    /**
+     * Service.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * Size of location in meters.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     */
+    tag?: pulumi.Input<string>;
+    /**
+     * target.
+     */
+    target?: pulumi.Input<string>;
+    /**
+     * Type.
+     */
+    type?: pulumi.Input<number>;
+    /**
+     * Usage.
+     */
+    usage?: pulumi.Input<number>;
+    /**
+     * Value of the record. This field's semantics depend on the chosen tag.
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * The record weight.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface RecordSettings {
+    /**
+     * If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+     */
+    flattenCname?: pulumi.Input<boolean>;
+    /**
+     * When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv4Only?: pulumi.Input<boolean>;
+    /**
+     * When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv6Only?: pulumi.Input<boolean>;
+}
+
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.

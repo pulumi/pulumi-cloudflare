@@ -382,6 +382,7 @@ from .queue import *
 from .queue_consumer import *
 from .r2_bucket import *
 from .rate_limit import *
+from .record import *
 from .regional_hostname import *
 from .regional_tiered_cache import *
 from .registrar_domain import *
@@ -1188,6 +1189,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/rateLimit:RateLimit": "RateLimit"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/record",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/record:Record": "Record"
   }
  },
  {

@@ -199,6 +199,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &R2Bucket{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
+	case "cloudflare:index/record:Record":
+		r = &Record{}
 	case "cloudflare:index/regionalHostname:RegionalHostname":
 		r = &RegionalHostname{}
 	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
@@ -839,6 +841,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/rateLimit",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/record",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

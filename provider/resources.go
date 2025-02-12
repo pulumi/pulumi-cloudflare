@@ -129,6 +129,7 @@ func Provider() info.Provider {
 				},
 			},
 			"cloudflare_snippet_rules": {Docs: &info.Doc{AllowMissing: true}},
+			"cloudflare_record":        {Docs: &info.Doc{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
