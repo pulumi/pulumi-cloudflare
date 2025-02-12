@@ -23077,6 +23077,168 @@ export interface RateLimitMatchResponse {
     originTraffic?: boolean;
 }
 
+export interface RecordData {
+    /**
+     * Algorithm.
+     */
+    algorithm?: number;
+    /**
+     * Altitude of location in meters.
+     */
+    altitude?: number;
+    /**
+     * Certificate.
+     */
+    certificate?: string;
+    /**
+     * Digest.
+     */
+    digest?: string;
+    /**
+     * Digest Type.
+     */
+    digestType?: number;
+    /**
+     * fingerprint.
+     */
+    fingerprint?: string;
+    /**
+     * Flags for the CAA record.
+     */
+    flags?: any;
+    /**
+     * Key Tag.
+     */
+    keyTag?: number;
+    /**
+     * Degrees of latitude.
+     */
+    latDegrees?: number;
+    /**
+     * Latitude direction.
+     */
+    latDirection?: string;
+    /**
+     * Minutes of latitude.
+     */
+    latMinutes: number;
+    /**
+     * Seconds of latitude.
+     */
+    latSeconds: number;
+    /**
+     * Degrees of longitude.
+     */
+    longDegrees?: number;
+    /**
+     * Longitude direction.
+     */
+    longDirection?: string;
+    /**
+     * Minutes of longitude.
+     */
+    longMinutes: number;
+    /**
+     * Seconds of longitude.
+     */
+    longSeconds: number;
+    /**
+     * Matching Type.
+     */
+    matchingType?: number;
+    /**
+     * Order.
+     */
+    order?: number;
+    /**
+     * The port of the service.
+     */
+    port?: number;
+    /**
+     * Horizontal precision of location.
+     */
+    precisionHorz: number;
+    /**
+     * Vertical precision of location.
+     */
+    precisionVert: number;
+    /**
+     * Preference.
+     */
+    preference?: number;
+    /**
+     * priority.
+     */
+    priority?: number;
+    /**
+     * Protocol.
+     */
+    protocol?: number;
+    /**
+     * Public Key.
+     */
+    publicKey?: string;
+    /**
+     * Regex.
+     */
+    regex?: string;
+    /**
+     * Replacement.
+     */
+    replacement?: string;
+    /**
+     * Selector.
+     */
+    selector?: number;
+    /**
+     * Service.
+     */
+    service?: string;
+    /**
+     * Size of location in meters.
+     */
+    size: number;
+    /**
+     * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+     */
+    tag?: string;
+    /**
+     * target.
+     */
+    target?: string;
+    /**
+     * Type.
+     */
+    type?: number;
+    /**
+     * Usage.
+     */
+    usage?: number;
+    /**
+     * Value of the record. This field's semantics depend on the chosen tag.
+     */
+    value?: string;
+    /**
+     * The record weight.
+     */
+    weight?: number;
+}
+
+export interface RecordSettings {
+    /**
+     * If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+     */
+    flattenCname: boolean;
+    /**
+     * When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv4Only: boolean;
+    /**
+     * When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+     */
+    ipv6Only: boolean;
+}
+
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.

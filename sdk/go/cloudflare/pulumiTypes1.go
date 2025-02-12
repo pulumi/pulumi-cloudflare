@@ -13,6 +13,299 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZeroTrustAccessPolicyIncludeGsuite struct {
+	// The email of the Google Workspace group.
+	Email string `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// ZeroTrustAccessPolicyIncludeGsuiteInput is an input type that accepts ZeroTrustAccessPolicyIncludeGsuiteArgs and ZeroTrustAccessPolicyIncludeGsuiteOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyIncludeGsuiteInput` via:
+//
+//	ZeroTrustAccessPolicyIncludeGsuiteArgs{...}
+type ZeroTrustAccessPolicyIncludeGsuiteInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyIncludeGsuiteOutput() ZeroTrustAccessPolicyIncludeGsuiteOutput
+	ToZeroTrustAccessPolicyIncludeGsuiteOutputWithContext(context.Context) ZeroTrustAccessPolicyIncludeGsuiteOutput
+}
+
+type ZeroTrustAccessPolicyIncludeGsuiteArgs struct {
+	// The email of the Google Workspace group.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (ZeroTrustAccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessPolicyIncludeGsuiteArgs) ToZeroTrustAccessPolicyIncludeGsuiteOutput() ZeroTrustAccessPolicyIncludeGsuiteOutput {
+	return i.ToZeroTrustAccessPolicyIncludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyIncludeGsuiteArgs) ToZeroTrustAccessPolicyIncludeGsuiteOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeGsuiteOutput)
+}
+
+func (i ZeroTrustAccessPolicyIncludeGsuiteArgs) ToZeroTrustAccessPolicyIncludeGsuitePtrOutput() ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return i.ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyIncludeGsuiteArgs) ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeGsuiteOutput).ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessPolicyIncludeGsuitePtrInput is an input type that accepts ZeroTrustAccessPolicyIncludeGsuiteArgs, ZeroTrustAccessPolicyIncludeGsuitePtr and ZeroTrustAccessPolicyIncludeGsuitePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyIncludeGsuitePtrInput` via:
+//
+//	        ZeroTrustAccessPolicyIncludeGsuiteArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessPolicyIncludeGsuitePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyIncludeGsuitePtrOutput() ZeroTrustAccessPolicyIncludeGsuitePtrOutput
+	ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(context.Context) ZeroTrustAccessPolicyIncludeGsuitePtrOutput
+}
+
+type zeroTrustAccessPolicyIncludeGsuitePtrType ZeroTrustAccessPolicyIncludeGsuiteArgs
+
+func ZeroTrustAccessPolicyIncludeGsuitePtr(v *ZeroTrustAccessPolicyIncludeGsuiteArgs) ZeroTrustAccessPolicyIncludeGsuitePtrInput {
+	return (*zeroTrustAccessPolicyIncludeGsuitePtrType)(v)
+}
+
+func (*zeroTrustAccessPolicyIncludeGsuitePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessPolicyIncludeGsuitePtrType) ToZeroTrustAccessPolicyIncludeGsuitePtrOutput() ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return i.ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessPolicyIncludeGsuitePtrType) ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeGsuitePtrOutput)
+}
+
+type ZeroTrustAccessPolicyIncludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyIncludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) ToZeroTrustAccessPolicyIncludeGsuiteOutput() ZeroTrustAccessPolicyIncludeGsuiteOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) ToZeroTrustAccessPolicyIncludeGsuiteOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuiteOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) ToZeroTrustAccessPolicyIncludeGsuitePtrOutput() ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return o.ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessPolicyIncludeGsuite) *ZeroTrustAccessPolicyIncludeGsuite {
+		return &v
+	}).(ZeroTrustAccessPolicyIncludeGsuitePtrOutput)
+}
+
+// The email of the Google Workspace group.
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of your Google Workspace identity provider.
+func (o ZeroTrustAccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessPolicyIncludeGsuitePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyIncludeGsuitePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuitePtrOutput) ToZeroTrustAccessPolicyIncludeGsuitePtrOutput() ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuitePtrOutput) ToZeroTrustAccessPolicyIncludeGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeGsuitePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeGsuitePtrOutput) Elem() ZeroTrustAccessPolicyIncludeGsuiteOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeGsuite) ZeroTrustAccessPolicyIncludeGsuite {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessPolicyIncludeGsuite
+		return ret
+	}).(ZeroTrustAccessPolicyIncludeGsuiteOutput)
+}
+
+// The email of the Google Workspace group.
+func (o ZeroTrustAccessPolicyIncludeGsuitePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeGsuite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your Google Workspace identity provider.
+func (o ZeroTrustAccessPolicyIncludeGsuitePtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeGsuite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessPolicyIncludeIp struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip string `pulumi:"ip"`
+}
+
+// ZeroTrustAccessPolicyIncludeIpInput is an input type that accepts ZeroTrustAccessPolicyIncludeIpArgs and ZeroTrustAccessPolicyIncludeIpOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyIncludeIpInput` via:
+//
+//	ZeroTrustAccessPolicyIncludeIpArgs{...}
+type ZeroTrustAccessPolicyIncludeIpInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyIncludeIpOutput() ZeroTrustAccessPolicyIncludeIpOutput
+	ToZeroTrustAccessPolicyIncludeIpOutputWithContext(context.Context) ZeroTrustAccessPolicyIncludeIpOutput
+}
+
+type ZeroTrustAccessPolicyIncludeIpArgs struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (ZeroTrustAccessPolicyIncludeIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIp)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessPolicyIncludeIpArgs) ToZeroTrustAccessPolicyIncludeIpOutput() ZeroTrustAccessPolicyIncludeIpOutput {
+	return i.ToZeroTrustAccessPolicyIncludeIpOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyIncludeIpArgs) ToZeroTrustAccessPolicyIncludeIpOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeIpOutput)
+}
+
+func (i ZeroTrustAccessPolicyIncludeIpArgs) ToZeroTrustAccessPolicyIncludeIpPtrOutput() ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return i.ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessPolicyIncludeIpArgs) ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeIpOutput).ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessPolicyIncludeIpPtrInput is an input type that accepts ZeroTrustAccessPolicyIncludeIpArgs, ZeroTrustAccessPolicyIncludeIpPtr and ZeroTrustAccessPolicyIncludeIpPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessPolicyIncludeIpPtrInput` via:
+//
+//	        ZeroTrustAccessPolicyIncludeIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessPolicyIncludeIpPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessPolicyIncludeIpPtrOutput() ZeroTrustAccessPolicyIncludeIpPtrOutput
+	ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(context.Context) ZeroTrustAccessPolicyIncludeIpPtrOutput
+}
+
+type zeroTrustAccessPolicyIncludeIpPtrType ZeroTrustAccessPolicyIncludeIpArgs
+
+func ZeroTrustAccessPolicyIncludeIpPtr(v *ZeroTrustAccessPolicyIncludeIpArgs) ZeroTrustAccessPolicyIncludeIpPtrInput {
+	return (*zeroTrustAccessPolicyIncludeIpPtrType)(v)
+}
+
+func (*zeroTrustAccessPolicyIncludeIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyIncludeIp)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessPolicyIncludeIpPtrType) ToZeroTrustAccessPolicyIncludeIpPtrOutput() ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return i.ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessPolicyIncludeIpPtrType) ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessPolicyIncludeIpPtrOutput)
+}
+
+type ZeroTrustAccessPolicyIncludeIpOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyIncludeIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIp)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpOutput) ToZeroTrustAccessPolicyIncludeIpOutput() ZeroTrustAccessPolicyIncludeIpOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpOutput) ToZeroTrustAccessPolicyIncludeIpOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpOutput) ToZeroTrustAccessPolicyIncludeIpPtrOutput() ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return o.ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpOutput) ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessPolicyIncludeIp) *ZeroTrustAccessPolicyIncludeIp {
+		return &v
+	}).(ZeroTrustAccessPolicyIncludeIpPtrOutput)
+}
+
+// An IPv4 or IPv6 CIDR block.
+func (o ZeroTrustAccessPolicyIncludeIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessPolicyIncludeIpPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessPolicyIncludeIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessPolicyIncludeIp)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpPtrOutput) ToZeroTrustAccessPolicyIncludeIpPtrOutput() ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpPtrOutput) ToZeroTrustAccessPolicyIncludeIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessPolicyIncludeIpPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessPolicyIncludeIpPtrOutput) Elem() ZeroTrustAccessPolicyIncludeIpOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeIp) ZeroTrustAccessPolicyIncludeIp {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessPolicyIncludeIp
+		return ret
+	}).(ZeroTrustAccessPolicyIncludeIpOutput)
+}
+
+// An IPv4 or IPv6 CIDR block.
+func (o ZeroTrustAccessPolicyIncludeIpPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeIp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZeroTrustAccessPolicyIncludeIpList struct {
 	// The ID of a previously created IP list.
 	Id string `pulumi:"id"`
@@ -59878,210 +60171,11 @@ func (o GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput) MapIndex(k 
 	}).(GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput)
 }
 
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces struct {
-	// ID of the Durabble Object namespace.
-	NamespaceId string `pulumi:"namespaceId"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs and GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs struct {
-	// ID of the Durabble Object namespace.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap and GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{ "key": GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return o
-}
-
-// ID of the Durabble Object namespace.
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput) NamespaceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces) string { return v.NamespaceId }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput() GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) ToGetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVars struct {
-	// The type of environment variable.
-	Type string `pulumi:"type"`
-	// Environment variable value.
-	Value string `pulumi:"value"`
-}
-
-// GetPagesProjectDeploymentConfigsPreviewEnvVarsInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs and GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewEnvVarsInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{...}
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs struct {
-	// The type of environment variable.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Environment variable value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput)
-}
-
-// GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput is an input type that accepts GetPagesProjectDeploymentConfigsPreviewEnvVarsMap and GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput` via:
-//
-//	GetPagesProjectDeploymentConfigsPreviewEnvVarsMap{ "key": GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{...} }
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput
-	ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMap map[string]GetPagesProjectDeploymentConfigsPreviewEnvVarsInput
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return i.ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectDeploymentConfigsPreviewEnvVarsMap) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return o
-}
-
-// The type of environment variable.
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewEnvVars) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Environment variable value.
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreviewEnvVars) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput() GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) ToGetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectDeploymentConfigsPreviewEnvVars {
-		return vs[0].(map[string]GetPagesProjectDeploymentConfigsPreviewEnvVars)[vs[1].(string)]
-	}).(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeGsuiteInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeGsuitePtrInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIpInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIpPtrInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIpListInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeIpListPtrInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessPolicyIncludeOktaInput)(nil)).Elem(), ZeroTrustAccessPolicyIncludeOktaArgs{})
@@ -60850,10 +60944,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewBrowsersMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1DatabasesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewD1DatabasesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewD1DatabasesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVarsInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewEnvVarsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsPreviewEnvVarsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsPreviewEnvVarsMap{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeGsuiteOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeGsuitePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeIpOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeIpPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeIpListOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeIpListPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessPolicyIncludeOktaOutput{})
@@ -61622,8 +61716,4 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewD1DatabasesOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewD1DatabasesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewEnvVarsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsPreviewEnvVarsMapOutput{})
 }

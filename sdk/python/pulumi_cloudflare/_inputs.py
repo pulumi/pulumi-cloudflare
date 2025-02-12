@@ -455,6 +455,10 @@ __all__ = [
     'RateLimitMatchRequestArgsDict',
     'RateLimitMatchResponseArgs',
     'RateLimitMatchResponseArgsDict',
+    'RecordDataArgs',
+    'RecordDataArgsDict',
+    'RecordSettingsArgs',
+    'RecordSettingsArgsDict',
     'RulesetRuleArgs',
     'RulesetRuleArgsDict',
     'RulesetRuleActionParametersArgs',
@@ -21012,6 +21016,810 @@ class RateLimitMatchResponseArgs:
     @origin_traffic.setter
     def origin_traffic(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "origin_traffic", value)
+
+
+if not MYPY:
+    class RecordDataArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[float]]
+        """
+        Algorithm.
+        """
+        altitude: NotRequired[pulumi.Input[float]]
+        """
+        Altitude of location in meters.
+        """
+        certificate: NotRequired[pulumi.Input[str]]
+        """
+        Certificate.
+        """
+        digest: NotRequired[pulumi.Input[str]]
+        """
+        Digest.
+        """
+        digest_type: NotRequired[pulumi.Input[float]]
+        """
+        Digest Type.
+        """
+        fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        fingerprint.
+        """
+        flags: NotRequired[Any]
+        """
+        Flags for the CAA record.
+        """
+        key_tag: NotRequired[pulumi.Input[float]]
+        """
+        Key Tag.
+        """
+        lat_degrees: NotRequired[pulumi.Input[float]]
+        """
+        Degrees of latitude.
+        """
+        lat_direction: NotRequired[pulumi.Input[str]]
+        """
+        Latitude direction.
+        """
+        lat_minutes: NotRequired[pulumi.Input[float]]
+        """
+        Minutes of latitude.
+        """
+        lat_seconds: NotRequired[pulumi.Input[float]]
+        """
+        Seconds of latitude.
+        """
+        long_degrees: NotRequired[pulumi.Input[float]]
+        """
+        Degrees of longitude.
+        """
+        long_direction: NotRequired[pulumi.Input[str]]
+        """
+        Longitude direction.
+        """
+        long_minutes: NotRequired[pulumi.Input[float]]
+        """
+        Minutes of longitude.
+        """
+        long_seconds: NotRequired[pulumi.Input[float]]
+        """
+        Seconds of longitude.
+        """
+        matching_type: NotRequired[pulumi.Input[float]]
+        """
+        Matching Type.
+        """
+        order: NotRequired[pulumi.Input[float]]
+        """
+        Order.
+        """
+        port: NotRequired[pulumi.Input[float]]
+        """
+        The port of the service.
+        """
+        precision_horz: NotRequired[pulumi.Input[float]]
+        """
+        Horizontal precision of location.
+        """
+        precision_vert: NotRequired[pulumi.Input[float]]
+        """
+        Vertical precision of location.
+        """
+        preference: NotRequired[pulumi.Input[float]]
+        """
+        Preference.
+        """
+        priority: NotRequired[pulumi.Input[float]]
+        """
+        priority.
+        """
+        protocol: NotRequired[pulumi.Input[float]]
+        """
+        Protocol.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        Public Key.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        Regex.
+        """
+        replacement: NotRequired[pulumi.Input[str]]
+        """
+        Replacement.
+        """
+        selector: NotRequired[pulumi.Input[float]]
+        """
+        Selector.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Service.
+        """
+        size: NotRequired[pulumi.Input[float]]
+        """
+        Size of location in meters.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        target.
+        """
+        type: NotRequired[pulumi.Input[float]]
+        """
+        Type.
+        """
+        usage: NotRequired[pulumi.Input[float]]
+        """
+        Usage.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the record. This field's semantics depend on the chosen tag.
+        """
+        weight: NotRequired[pulumi.Input[float]]
+        """
+        The record weight.
+        """
+elif False:
+    RecordDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RecordDataArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[float]] = None,
+                 altitude: Optional[pulumi.Input[float]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 digest_type: Optional[pulumi.Input[float]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 flags: Optional[Any] = None,
+                 key_tag: Optional[pulumi.Input[float]] = None,
+                 lat_degrees: Optional[pulumi.Input[float]] = None,
+                 lat_direction: Optional[pulumi.Input[str]] = None,
+                 lat_minutes: Optional[pulumi.Input[float]] = None,
+                 lat_seconds: Optional[pulumi.Input[float]] = None,
+                 long_degrees: Optional[pulumi.Input[float]] = None,
+                 long_direction: Optional[pulumi.Input[str]] = None,
+                 long_minutes: Optional[pulumi.Input[float]] = None,
+                 long_seconds: Optional[pulumi.Input[float]] = None,
+                 matching_type: Optional[pulumi.Input[float]] = None,
+                 order: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 precision_horz: Optional[pulumi.Input[float]] = None,
+                 precision_vert: Optional[pulumi.Input[float]] = None,
+                 preference: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 protocol: Optional[pulumi.Input[float]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None,
+                 replacement: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[float]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[float]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[float]] = None,
+                 usage: Optional[pulumi.Input[float]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] algorithm: Algorithm.
+        :param pulumi.Input[float] altitude: Altitude of location in meters.
+        :param pulumi.Input[str] certificate: Certificate.
+        :param pulumi.Input[str] digest: Digest.
+        :param pulumi.Input[float] digest_type: Digest Type.
+        :param pulumi.Input[str] fingerprint: fingerprint.
+        :param Any flags: Flags for the CAA record.
+        :param pulumi.Input[float] key_tag: Key Tag.
+        :param pulumi.Input[float] lat_degrees: Degrees of latitude.
+        :param pulumi.Input[str] lat_direction: Latitude direction.
+        :param pulumi.Input[float] lat_minutes: Minutes of latitude.
+        :param pulumi.Input[float] lat_seconds: Seconds of latitude.
+        :param pulumi.Input[float] long_degrees: Degrees of longitude.
+        :param pulumi.Input[str] long_direction: Longitude direction.
+        :param pulumi.Input[float] long_minutes: Minutes of longitude.
+        :param pulumi.Input[float] long_seconds: Seconds of longitude.
+        :param pulumi.Input[float] matching_type: Matching Type.
+        :param pulumi.Input[float] order: Order.
+        :param pulumi.Input[float] port: The port of the service.
+        :param pulumi.Input[float] precision_horz: Horizontal precision of location.
+        :param pulumi.Input[float] precision_vert: Vertical precision of location.
+        :param pulumi.Input[float] preference: Preference.
+        :param pulumi.Input[float] priority: priority.
+        :param pulumi.Input[float] protocol: Protocol.
+        :param pulumi.Input[str] public_key: Public Key.
+        :param pulumi.Input[str] regex: Regex.
+        :param pulumi.Input[str] replacement: Replacement.
+        :param pulumi.Input[float] selector: Selector.
+        :param pulumi.Input[str] service: Service.
+        :param pulumi.Input[float] size: Size of location in meters.
+        :param pulumi.Input[str] tag: Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        :param pulumi.Input[str] target: target.
+        :param pulumi.Input[float] type: Type.
+        :param pulumi.Input[float] usage: Usage.
+        :param pulumi.Input[str] value: Value of the record. This field's semantics depend on the chosen tag.
+        :param pulumi.Input[float] weight: The record weight.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if altitude is not None:
+            pulumi.set(__self__, "altitude", altitude)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if digest_type is not None:
+            pulumi.set(__self__, "digest_type", digest_type)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if key_tag is not None:
+            pulumi.set(__self__, "key_tag", key_tag)
+        if lat_degrees is not None:
+            pulumi.set(__self__, "lat_degrees", lat_degrees)
+        if lat_direction is not None:
+            pulumi.set(__self__, "lat_direction", lat_direction)
+        if lat_minutes is not None:
+            pulumi.set(__self__, "lat_minutes", lat_minutes)
+        if lat_seconds is not None:
+            pulumi.set(__self__, "lat_seconds", lat_seconds)
+        if long_degrees is not None:
+            pulumi.set(__self__, "long_degrees", long_degrees)
+        if long_direction is not None:
+            pulumi.set(__self__, "long_direction", long_direction)
+        if long_minutes is not None:
+            pulumi.set(__self__, "long_minutes", long_minutes)
+        if long_seconds is not None:
+            pulumi.set(__self__, "long_seconds", long_seconds)
+        if matching_type is not None:
+            pulumi.set(__self__, "matching_type", matching_type)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if precision_horz is not None:
+            pulumi.set(__self__, "precision_horz", precision_horz)
+        if precision_vert is not None:
+            pulumi.set(__self__, "precision_vert", precision_vert)
+        if preference is not None:
+            pulumi.set(__self__, "preference", preference)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if replacement is not None:
+            pulumi.set(__self__, "replacement", replacement)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[float]]:
+        """
+        Algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def altitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        Altitude of location in meters.
+        """
+        return pulumi.get(self, "altitude")
+
+    @altitude.setter
+    def altitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "altitude", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Digest.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="digestType")
+    def digest_type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Digest Type.
+        """
+        return pulumi.get(self, "digest_type")
+
+    @digest_type.setter
+    def digest_type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "digest_type", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        fingerprint.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[Any]:
+        """
+        Flags for the CAA record.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[Any]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> Optional[pulumi.Input[float]]:
+        """
+        Key Tag.
+        """
+        return pulumi.get(self, "key_tag")
+
+    @key_tag.setter
+    def key_tag(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "key_tag", value)
+
+    @property
+    @pulumi.getter(name="latDegrees")
+    def lat_degrees(self) -> Optional[pulumi.Input[float]]:
+        """
+        Degrees of latitude.
+        """
+        return pulumi.get(self, "lat_degrees")
+
+    @lat_degrees.setter
+    def lat_degrees(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_degrees", value)
+
+    @property
+    @pulumi.getter(name="latDirection")
+    def lat_direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Latitude direction.
+        """
+        return pulumi.get(self, "lat_direction")
+
+    @lat_direction.setter
+    def lat_direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lat_direction", value)
+
+    @property
+    @pulumi.getter(name="latMinutes")
+    def lat_minutes(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minutes of latitude.
+        """
+        return pulumi.get(self, "lat_minutes")
+
+    @lat_minutes.setter
+    def lat_minutes(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_minutes", value)
+
+    @property
+    @pulumi.getter(name="latSeconds")
+    def lat_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        Seconds of latitude.
+        """
+        return pulumi.get(self, "lat_seconds")
+
+    @lat_seconds.setter
+    def lat_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lat_seconds", value)
+
+    @property
+    @pulumi.getter(name="longDegrees")
+    def long_degrees(self) -> Optional[pulumi.Input[float]]:
+        """
+        Degrees of longitude.
+        """
+        return pulumi.get(self, "long_degrees")
+
+    @long_degrees.setter
+    def long_degrees(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_degrees", value)
+
+    @property
+    @pulumi.getter(name="longDirection")
+    def long_direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Longitude direction.
+        """
+        return pulumi.get(self, "long_direction")
+
+    @long_direction.setter
+    def long_direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_direction", value)
+
+    @property
+    @pulumi.getter(name="longMinutes")
+    def long_minutes(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minutes of longitude.
+        """
+        return pulumi.get(self, "long_minutes")
+
+    @long_minutes.setter
+    def long_minutes(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_minutes", value)
+
+    @property
+    @pulumi.getter(name="longSeconds")
+    def long_seconds(self) -> Optional[pulumi.Input[float]]:
+        """
+        Seconds of longitude.
+        """
+        return pulumi.get(self, "long_seconds")
+
+    @long_seconds.setter
+    def long_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "long_seconds", value)
+
+    @property
+    @pulumi.getter(name="matchingType")
+    def matching_type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Matching Type.
+        """
+        return pulumi.get(self, "matching_type")
+
+    @matching_type.setter
+    def matching_type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "matching_type", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[float]]:
+        """
+        Order.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[float]]:
+        """
+        The port of the service.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="precisionHorz")
+    def precision_horz(self) -> Optional[pulumi.Input[float]]:
+        """
+        Horizontal precision of location.
+        """
+        return pulumi.get(self, "precision_horz")
+
+    @precision_horz.setter
+    def precision_horz(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "precision_horz", value)
+
+    @property
+    @pulumi.getter(name="precisionVert")
+    def precision_vert(self) -> Optional[pulumi.Input[float]]:
+        """
+        Vertical precision of location.
+        """
+        return pulumi.get(self, "precision_vert")
+
+    @precision_vert.setter
+    def precision_vert(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "precision_vert", value)
+
+    @property
+    @pulumi.getter
+    def preference(self) -> Optional[pulumi.Input[float]]:
+        """
+        Preference.
+        """
+        return pulumi.get(self, "preference")
+
+    @preference.setter
+    def preference(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "preference", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[float]]:
+        """
+        priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[float]]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public Key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regex.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replacement.
+        """
+        return pulumi.get(self, "replacement")
+
+    @replacement.setter
+    def replacement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[float]]:
+        """
+        Selector.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "selector", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[float]]:
+        """
+        Size of location in meters.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[str]]:
+        """
+        target.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[float]]:
+        """
+        Type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Usage.
+        """
+        return pulumi.get(self, "usage")
+
+    @usage.setter
+    def usage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "usage", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the record. This field's semantics depend on the chosen tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[float]]:
+        """
+        The record weight.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class RecordSettingsArgsDict(TypedDict):
+        flatten_cname: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        """
+        ipv4_only: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        ipv6_only: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+elif False:
+    RecordSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RecordSettingsArgs:
+    def __init__(__self__, *,
+                 flatten_cname: Optional[pulumi.Input[bool]] = None,
+                 ipv4_only: Optional[pulumi.Input[bool]] = None,
+                 ipv6_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] flatten_cname: If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        :param pulumi.Input[bool] ipv4_only: When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        :param pulumi.Input[bool] ipv6_only: When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        if flatten_cname is not None:
+            pulumi.set(__self__, "flatten_cname", flatten_cname)
+        if ipv4_only is not None:
+            pulumi.set(__self__, "ipv4_only", ipv4_only)
+        if ipv6_only is not None:
+            pulumi.set(__self__, "ipv6_only", ipv6_only)
+
+    @property
+    @pulumi.getter(name="flattenCname")
+    def flatten_cname(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+        """
+        return pulumi.get(self, "flatten_cname")
+
+    @flatten_cname.setter
+    def flatten_cname(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flatten_cname", value)
+
+    @property
+    @pulumi.getter(name="ipv4Only")
+    def ipv4_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        return pulumi.get(self, "ipv4_only")
+
+    @ipv4_only.setter
+    def ipv4_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv4_only", value)
+
+    @property
+    @pulumi.getter(name="ipv6Only")
+    def ipv6_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+        """
+        return pulumi.get(self, "ipv6_only")
+
+    @ipv6_only.setter
+    def ipv6_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6_only", value)
 
 
 if not MYPY:

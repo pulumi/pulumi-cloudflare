@@ -13,6 +13,137 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessGroupsResultIsDefaultOkta struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustAccessGroupsResultIsDefaultOktaInput is an input type that accepts GetZeroTrustAccessGroupsResultIsDefaultOktaArgs and GetZeroTrustAccessGroupsResultIsDefaultOktaOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultIsDefaultOktaInput` via:
+//
+//	GetZeroTrustAccessGroupsResultIsDefaultOktaArgs{...}
+type GetZeroTrustAccessGroupsResultIsDefaultOktaInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutput() GetZeroTrustAccessGroupsResultIsDefaultOktaOutput
+	ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultIsDefaultOktaOutput
+}
+
+type GetZeroTrustAccessGroupsResultIsDefaultOktaArgs struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustAccessGroupsResultIsDefaultOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultOkta)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultIsDefaultOktaArgs) ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutput() GetZeroTrustAccessGroupsResultIsDefaultOktaOutput {
+	return i.ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultIsDefaultOktaArgs) ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultIsDefaultOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultIsDefaultOktaOutput)
+}
+
+type GetZeroTrustAccessGroupsResultIsDefaultOktaOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultIsDefaultOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultOkta)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultIsDefaultOktaOutput) ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutput() GetZeroTrustAccessGroupsResultIsDefaultOktaOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultIsDefaultOktaOutput) ToGetZeroTrustAccessGroupsResultIsDefaultOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultIsDefaultOktaOutput {
+	return o
+}
+
+// The ID of your Okta identity provider.
+func (o GetZeroTrustAccessGroupsResultIsDefaultOktaOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultIsDefaultOkta) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the Okta group.
+func (o GetZeroTrustAccessGroupsResultIsDefaultOktaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultIsDefaultOkta) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultIsDefaultSaml struct {
+	// The name of the SAML attribute.
+	AttributeName string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessGroupsResultIsDefaultSamlInput is an input type that accepts GetZeroTrustAccessGroupsResultIsDefaultSamlArgs and GetZeroTrustAccessGroupsResultIsDefaultSamlOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultIsDefaultSamlInput` via:
+//
+//	GetZeroTrustAccessGroupsResultIsDefaultSamlArgs{...}
+type GetZeroTrustAccessGroupsResultIsDefaultSamlInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutput() GetZeroTrustAccessGroupsResultIsDefaultSamlOutput
+	ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultIsDefaultSamlOutput
+}
+
+type GetZeroTrustAccessGroupsResultIsDefaultSamlArgs struct {
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessGroupsResultIsDefaultSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultSaml)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultIsDefaultSamlArgs) ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutput() GetZeroTrustAccessGroupsResultIsDefaultSamlOutput {
+	return i.ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultIsDefaultSamlArgs) ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultIsDefaultSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultIsDefaultSamlOutput)
+}
+
+type GetZeroTrustAccessGroupsResultIsDefaultSamlOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultSaml)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutput() GetZeroTrustAccessGroupsResultIsDefaultSamlOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) ToGetZeroTrustAccessGroupsResultIsDefaultSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultIsDefaultSamlOutput {
+	return o
+}
+
+// The name of the SAML attribute.
+func (o GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultIsDefaultSaml) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// The SAML attribute value to look for.
+func (o GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) AttributeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultIsDefaultSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
+}
+
+// The ID of your SAML identity provider.
+func (o GetZeroTrustAccessGroupsResultIsDefaultSamlOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultIsDefaultSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustAccessGroupsResultIsDefaultServiceToken struct {
 	// The ID of a Service Token.
 	TokenId string `pulumi:"tokenId"`
@@ -30365,6 +30496,8 @@ func (o GetZonesResultOwnerOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultOktaInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIsDefaultOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultSamlInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIsDefaultSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIsDefaultServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIsDefaultServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultRequireInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultRequireArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultRequireArrayInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultRequireArray{})
@@ -30790,6 +30923,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultAccountInput)(nil)).Elem(), GetZonesResultAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultMetaInput)(nil)).Elem(), GetZonesResultMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultOwnerInput)(nil)).Elem(), GetZonesResultOwnerArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIsDefaultOktaOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIsDefaultSamlOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIsDefaultServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultRequireOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultRequireArrayOutput{})

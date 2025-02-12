@@ -215,7 +215,7 @@ class PagesDomain(pulumi.CustomResource):
                  __props__=None):
         """
         > A DNS record for the domain is not automatically created. You need to create
-           a `cloudflare_record` resource for the domain you want to use.
+           a `Record` resource for the domain you want to use.
 
         ## Example Usage
 
@@ -248,7 +248,7 @@ class PagesDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > A DNS record for the domain is not automatically created. You need to create
-           a `cloudflare_record` resource for the domain you want to use.
+           a `Record` resource for the domain you want to use.
 
         ## Example Usage
 

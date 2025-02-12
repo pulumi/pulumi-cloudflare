@@ -1238,6 +1238,15 @@
                     }
                 }
             },
+            "cloudflare_record": {
+                "current": "cloudflare:index/record:Record",
+                "majorVersion": 6,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_regional_hostname": {
                 "current": "cloudflare:index/regionalHostname:RegionalHostname",
                 "majorVersion": 6
