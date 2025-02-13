@@ -166,7 +166,7 @@ func Provider() info.Provider {
 			},
 		},
 		EnableZeroDefaultSchemaVersion: true,
-		EnableAccurateBridgePreview:    true,
+		EnableAccurateBridgePreview:    false,
 	}
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
