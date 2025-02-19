@@ -25,7 +25,7 @@ import (
 
 const (
 	providerName           = "cloudflare"
-	defaultBaselineVersion = "5.25.0"
+	defaultBaselineVersion = "5.49.0"
 )
 
 type discardSink struct{}
@@ -54,7 +54,7 @@ func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 		})
 }
 
-func testUpgradeInProcess(
+func testUpgrade(
 	t *testing.T, dir1 string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt,
 ) auto.PreviewResult {
 	if testing.Short() {
@@ -81,16 +81,26 @@ func testUpgradeInProcess(
 
 func TestZoneUpgrade(t *testing.T) {
 	t.Skip("TODO: not working")
-	testUpgradeInProcess(
+	testUpgrade(
 		t, "test-programs/zone/zonev5", optproviderupgrade.NewSourcePath("test-programs/zone"))
 }
 
 func TestWorkerScriptUpgrade(t *testing.T) {
 	t.Skip("TODO")
-	testUpgradeInProcess(t, "test-programs/index_workerscript")
+	testUpgrade(t, "test-programs/index_workerscript")
 }
 
 func TestWorkerKVNamespaceUpgrade(t *testing.T) {
 	t.Skip("TODO")
-	testUpgradeInProcess(t, "test-programs/index_workerskvnamespace")
+	testUpgrade(t, "test-programs/index_workerskvnamespace")
+}
+
+func TestRecordUpgrade(t *testing.T) {
+	res := testUpgrade(t, "test-programs/record")
+	assertpreview.HasNoChanges(t, res)
+}
+
+func TestRulesetUpgrade(t *testing.T) {
+	res := testUpgrade(t, "test-programs/ruleset")
+	assertpreview.HasNoChanges(t, res)
 }
