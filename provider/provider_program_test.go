@@ -80,7 +80,6 @@ func testUpgrade(
 }
 
 func TestZoneUpgrade(t *testing.T) {
-	t.Skip("TODO: not working")
 	testUpgrade(
 		t, "test-programs/zone/zonev5", optproviderupgrade.NewSourcePath("test-programs/zone"))
 }
