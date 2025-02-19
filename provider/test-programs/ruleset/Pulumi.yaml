@@ -1,0 +1,31 @@
+name: cloudflare-ruleset
+runtime: yaml
+config:
+  cloudflare-zone-id:
+    type: string
+  cloudflare-account-id:
+    type: string
+resources:
+  randomName:
+    type: random:RandomString
+    properties:
+      length: 10
+      numeric: false
+      special: false
+      upper: false
+
+  myRuleset:
+    type: cloudflare:Ruleset
+    properties:
+      kind: root
+      name: ${randomName.result}
+      phase: http_request_redirect
+      rules:
+        - action: redirect
+          expression: "http.request.full_uri in {\"https://www.cloudflare.com\"}"
+          ref: redirect
+          actionParameters:
+            from_list:
+              name: "redirect_list"
+              key: "http.request.full_uri"
+      accountId: ${cloudflare-account-id}
