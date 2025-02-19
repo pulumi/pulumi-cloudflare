@@ -1,0 +1,362 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Wed, 19 Feb 2025 20:40:11 +0200
+Subject: [PATCH] update zone migration
+
+
+diff --git a/internal/services/zone/migrations.go b/internal/services/zone/migrations.go
+index b507ff14f..997f19104 100644
+--- a/internal/services/zone/migrations.go
++++ b/internal/services/zone/migrations.go
+@@ -5,208 +5,179 @@ package zone
+ import (
+ 	"context"
+ 
+-	"github.com/cloudflare/terraform-provider-cloudflare/internal/apijson"
+-	"github.com/cloudflare/terraform-provider-cloudflare/internal/customfield"
+-	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+-	"github.com/hashicorp/terraform-plugin-framework/attr"
+ 	"github.com/hashicorp/terraform-plugin-framework/resource"
+-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
+-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
+-	"github.com/hashicorp/terraform-plugin-framework/types"
+-	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
++	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
++	"github.com/hashicorp/terraform-plugin-go/tftypes"
+ )
+ 
+ var _ resource.ResourceWithUpgradeState = (*ZoneResource)(nil)
+ 
+-type ZoneModelV0 struct {
+-	ID                types.String                   `tfsdk:"id" json:"id,computed"`
+-	Zone              types.String                   `tfsdk:"zone" json:"name,required"`
+-	AccountID         types.String                   `tfsdk:"account_id" json:"account_id,required"`
+-	VanityNameServers *[]types.String                `tfsdk:"vanity_name_servers" json:"vanity_name_servers,optional"`
+-	Type              types.String                   `tfsdk:"type" json:"type,computed_optional"`
+-	Paused            types.Bool                     `tfsdk:"paused" json:"paused,computed"`
+-	Status            types.String                   `tfsdk:"status" json:"status,computed"`
+-	NameServers       customfield.List[types.String] `tfsdk:"name_servers" json:"name_servers,computed"`
+-	Meta              types.Map                      `tfsdk:"meta" json:"meta,computed"`
+-	JumpStart         types.Bool                     `tfsdk:"jump_start" json:"jump_start,optional"`
+-}
+-
+-func (m ZoneModelV0) MarshalJSON() (data []byte, err error) {
+-	return apijson.MarshalRoot(m)
++var zoneV0Data = tftypes.Object{
++	AttributeTypes: map[string]tftypes.Type{
++		"id":         tftypes.String,
++		"zone":       tftypes.String,
++		"account_id": tftypes.String,
++		"vanity_name_servers": tftypes.List{
++			ElementType: tftypes.String,
++		},
++		"type":   tftypes.String,
++		"paused": tftypes.Bool,
++		"status": tftypes.String,
++		"name_servers": tftypes.List{
++			ElementType: tftypes.String,
++		},
++		"meta": tftypes.Map{
++			ElementType: tftypes.Bool,
++		},
++		"jump_start": tftypes.Bool,
++	},
+ }
+ 
+-func (m ZoneModelV0) MarshalJSONForUpdate(state ZoneModel) (data []byte, err error) {
+-	return apijson.MarshalForPatch(m, state)
++var metaObjData = tftypes.Object{
++	AttributeTypes: map[string]tftypes.Type{
++		"cdn_only":                 tftypes.Bool,
++		"custom_certificate_quota": tftypes.Number,
++		"dns_only":                 tftypes.Bool,
++		"foundation_dns":           tftypes.Bool,
++		"page_rule_quota":          tftypes.Number,
++		"phishing_detected":        tftypes.Bool,
++		"step":                     tftypes.Number,
++	},
+ }
+ 
+-type ZoneMetaModelV0 struct {
+-	CDNOnly                types.Bool  `tfsdk:"cdn_only" json:"cdn_only,computed"`
+-	CustomCertificateQuota types.Int64 `tfsdk:"custom_certificate_quota" json:"custom_certificate_quota,computed"`
+-	DNSOnly                types.Bool  `tfsdk:"dns_only" json:"dns_only,computed"`
+-	FoundationDNS          types.Bool  `tfsdk:"foundation_dns" json:"foundation_dns,computed"`
+-	PageRuleQuota          types.Int64 `tfsdk:"page_rule_quota" json:"page_rule_quota,computed"`
+-	PhishingDetected       types.Bool  `tfsdk:"phishing_detected" json:"phishing_detected,computed"`
+-	Step                   types.Int64 `tfsdk:"step" json:"step,computed"`
++var zoneOwnerData = tftypes.Object{
++	AttributeTypes: map[string]tftypes.Type{
++		"id":   tftypes.String,
++		"name": tftypes.String,
++		"type": tftypes.String,
++	},
+ }
+ 
+-type ZoneOwnerModelV0 struct {
+-	ID   types.String `tfsdk:"id" json:"id,computed"`
+-	Name types.String `tfsdk:"name" json:"name,computed"`
+-	Type types.String `tfsdk:"type" json:"type,computed"`
++var zoneV1Data = tftypes.Object{
++	AttributeTypes: map[string]tftypes.Type{
++		"id":   tftypes.String,
++		"name": tftypes.String,
++		"account": tftypes.Object{
++			AttributeTypes: map[string]tftypes.Type{
++				"id": tftypes.String,
++			},
++		},
++		"vanity_name_servers": tftypes.List{
++			ElementType: tftypes.String,
++		},
++		"type":               tftypes.String,
++		"activated_on":       tftypes.String,
++		"created_on":         tftypes.String,
++		"development_mode":   tftypes.Number,
++		"modified_on":        tftypes.String,
++		"original_dnshost":   tftypes.String,
++		"original_registrar": tftypes.String,
++		"paused":             tftypes.Bool,
++		"status":             tftypes.String,
++		"name_servers": tftypes.List{
++			ElementType: tftypes.String,
++		},
++		"original_name_servers": tftypes.List{
++			ElementType: tftypes.String,
++		},
++		"meta": metaObjData,
++		"owner": zoneOwnerData,
++	},
++	OptionalAttributes: map[string]struct{}{
++		"activated_on":          {},
++		"created_on":            {},
++		"development_mode":      {},
++		"modified_on":           {},
++		"original_dnshost":      {},
++		"original_registrar":    {},
++		"original_name_servers": {},
++		"owner":                 {},
++	},
+ }
+ 
+ func (r *ZoneResource) UpgradeState(ctx context.Context) map[int64]resource.StateUpgrader {
+ 	return map[int64]resource.StateUpgrader{
+ 		0: {
+-			PriorSchema: &schema.Schema{
+-				Attributes: map[string]schema.Attribute{
+-					"id": schema.StringAttribute{
+-						Description:   "Identifier",
+-						Computed:      true,
+-						PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+-					},
+-					"zone": schema.StringAttribute{
+-						Description:   "The domain name",
+-						Required:      true,
+-						PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+-					},
+-					"account_id": schema.StringAttribute{
+-						Description: "The account ID",
+-						Required:    true,
+-					},
+-					"vanity_name_servers": schema.ListAttribute{
+-						Description: "An array of domains used for custom name servers. This is only\navailable for Business and Enterprise plans.",
+-						Optional:    true,
+-						ElementType: types.StringType,
+-					},
+-					"type": schema.StringAttribute{
+-						Description: "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+-						Computed:    true,
+-						Optional:    true,
+-						Validators: []validator.String{
+-							stringvalidator.OneOfCaseInsensitive(
+-								"full",
+-								"partial",
+-								"secondary",
+-							),
+-						},
+-						Default: stringdefault.StaticString("full"),
+-					},
+-					"paused": schema.BoolAttribute{
+-						Description: "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
+-						Computed:    true,
+-						Default:     booldefault.StaticBool(false),
+-					},
+-					"status": schema.StringAttribute{
+-						Description: "The zone status on Cloudflare.",
+-						Computed:    true,
+-						Validators: []validator.String{
+-							stringvalidator.OneOfCaseInsensitive(
+-								"initializing",
+-								"pending",
+-								"active",
+-								"moved",
+-							),
+-						},
+-					},
+-					"name_servers": schema.ListAttribute{
+-						Description: "The name servers Cloudflare assigns to a zone",
+-						Computed:    true,
+-						CustomType:  customfield.NewListType[types.String](ctx),
+-						ElementType: types.StringType,
+-					},
+-					"meta": schema.MapAttribute{
+-						Description: "Metadata about the zone",
+-						Computed:    true,
+-						ElementType: types.BoolType,
+-					},
+-					"jump_start": schema.BoolAttribute{
+-						Optional: true,
+-					},
+-				},
+-			},
+ 			StateUpgrader: func(ctx context.Context, req resource.UpgradeStateRequest, resp *resource.UpgradeStateResponse) {
+-				var priorStateData ZoneModelV0
+-				diags := req.State.Get(ctx, &priorStateData)
++				priorState, err := req.RawState.UnmarshalWithOpts(zoneV0Data, tfprotov6.UnmarshalOpts{
++					ValueFromJSONOpts: tftypes.ValueFromJSONOpts{
++						IgnoreUndefinedAttributes: true,
++					},
++				})
++				if err != nil {
++					resp.Diagnostics.AddError("Unable to Unmarshal Prior State", err.Error())
++					return
++				}
+ 
+-				resp.Diagnostics.Append(diags...)
+-				if resp.Diagnostics.HasError() {
++				var state map[string]tftypes.Value
++				err = priorState.As(&state)
++				if err != nil {
++					resp.Diagnostics.AddError("Unable to Parse Prior State", err.Error())
+ 					return
+ 				}
+ 
+-				metaDataObj, diags := basetypes.NewObjectValueFrom(
+-					ctx,
+-					map[string]attr.Type{
+-						"cdn_only":                 types.BoolType,
+-						"custom_certificate_quota": types.Int64Type,
+-						"dns_only":                 types.BoolType,
+-						"foundation_dns":           types.BoolType,
+-						"page_rule_quota":          types.Int64Type,
+-						"phishing_detected":        types.BoolType,
+-						"step":                     types.Int64Type,
+-					},
+-					map[string]attr.Value{
+-						"cdn_only":                 priorStateData.Meta.Elements()["cdn_only"],
+-						"custom_certificate_quota": basetypes.NewInt64Null(),
+-						"dns_only":                 priorStateData.Meta.Elements()["dns_only"],
+-						"foundation_dns":           priorStateData.Meta.Elements()["foundation_dns"],
+-						"page_rule_quota":          basetypes.NewInt64Null(),
+-						"phishing_detected":        priorStateData.Meta.Elements()["phishing_detected"],
+-						"step":                     basetypes.NewInt64Null(),
+-					},
+-				)
++				state["name"] = state["zone"]
++				delete(state, "zone")
+ 
+-				ownerObj, diags := basetypes.NewObjectValueFrom(
+-					ctx,
+-					map[string]attr.Type{
+-						"id":   types.StringType,
+-						"name": types.StringType,
+-						"type": types.StringType,
++				state["account"] = tftypes.NewValue(
++					tftypes.Object{
++						AttributeTypes: map[string]tftypes.Type{
++							"id": tftypes.String,
++						},
+ 					},
+-					map[string]attr.Value{
+-						"id":   basetypes.NewStringNull(),
+-						"name": basetypes.NewStringNull(),
+-						"type": basetypes.NewStringNull(),
++					map[string]tftypes.Value{
++						"id": state["account_id"],
+ 					},
+ 				)
++				delete(state, "account_id")
++				delete(state, "jump_start")
+ 
+-				upgradedStateData := ZoneModel{
+-					ID:   priorStateData.ID,
+-					Name: priorStateData.Zone,
+-					Account: &ZoneAccountModel{
+-						ID: priorStateData.AccountID,
+-					},
+-					VanityNameServers:   priorStateData.VanityNameServers,
+-					Type:                priorStateData.Type,
+-					ActivatedOn:         timetypes.NewRFC3339Null(),
+-					CreatedOn:           timetypes.NewRFC3339Null(),
+-					DevelopmentMode:     types.Float64Value(0),
+-					ModifiedOn:          timetypes.NewRFC3339Null(),
+-					OriginalDnshost:     types.StringNull(),
+-					OriginalRegistrar:   types.StringNull(),
+-					Paused:              priorStateData.Paused,
+-					Status:              priorStateData.Status,
+-					NameServers:         priorStateData.NameServers,
+-					OriginalNameServers: customfield.List[types.String]{},
+-					Meta: customfield.NestedObject[ZoneMetaModel]{
+-						ObjectValue: metaDataObj,
+-					},
+-					Owner: customfield.NestedObject[ZoneOwnerModel]{
+-						ObjectValue: ownerObj,
+-					},
++				var metaMap map[string]tftypes.Value
++				err = state["meta"].As(&metaMap)
++				if err != nil {
++					resp.Diagnostics.AddError("Unable to Parse Prior Meta", err.Error())
++					return
+ 				}
+ 
+-				diags = resp.State.Set(ctx, upgradedStateData)
+-
+-				resp.Diagnostics.Append(diags...)
+-				if resp.Diagnostics.HasError() {
++				metaObj := tftypes.NewValue(
++					metaObjData,
++					map[string]tftypes.Value{
++						"cdn_only":                 tftypes.NewValue(tftypes.Bool, false),
++						"custom_certificate_quota": tftypes.NewValue(tftypes.Number, 0),
++						"dns_only":                 tftypes.NewValue(tftypes.Bool, false),
++						"foundation_dns":           tftypes.NewValue(tftypes.Bool, false),
++						"page_rule_quota":          tftypes.NewValue(tftypes.Number, 0),
++						"phishing_detected":        tftypes.NewValue(tftypes.Bool, false),
++						"step":                     tftypes.NewValue(tftypes.Number, 0),
++					},
++				)
++				state["meta"] = metaObj
++
++				state["activated_on"] = tftypes.NewValue(tftypes.String, "2006-01-02T15:04:05+07:00")
++				state["created_on"] = tftypes.NewValue(tftypes.String, "2006-01-02T15:04:05+07:00")
++				state["development_mode"] = tftypes.NewValue(tftypes.Number, 0)
++				state["modified_on"] = tftypes.NewValue(tftypes.String, "2006-01-02T15:04:05+07:00")
++				state["original_dnshost"] = tftypes.NewValue(tftypes.String, "")
++				state["original_registrar"] = tftypes.NewValue(tftypes.String, "")
++				state["original_name_servers"] = tftypes.NewValue(tftypes.List{
++					ElementType: tftypes.String,
++				}, []tftypes.Value{})
++				state["owner"] = tftypes.NewValue(zoneOwnerData, map[string]tftypes.Value{
++					"id":   tftypes.NewValue(tftypes.String, ""),
++					"name": tftypes.NewValue(tftypes.String, ""),
++					"type": tftypes.NewValue(tftypes.String, ""),
++				})
++
++				dynamicValue, err := tfprotov6.NewDynamicValue(zoneV1Data, tftypes.NewValue(zoneV1Data, state))
++				if err != nil {
++					resp.Diagnostics.AddError(
++						"Unable to Convert Upgraded State",
++						err.Error(),
++					)
+ 					return
+ 				}
++
++				resp.DynamicValue = &dynamicValue
+ 			},
+ 		},
+ 	}
