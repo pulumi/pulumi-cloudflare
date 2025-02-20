@@ -12,11 +12,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Leaked Credential Check resource to be used for managing the status of the Cloudflare Leaked Credential detection within a specific zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,9 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Enable the Leaked Credentials Check detection
- *         var example = new LeakedCredentialCheck("example", LeakedCredentialCheckArgs.builder()
- *             .zoneId("399c6f4950c01a5a141b99ff7fbcbd8b")
+ *         var exampleLeakedCredentialCheck = new LeakedCredentialCheck("exampleLeakedCredentialCheck", LeakedCredentialCheckArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .enabled(true)
  *             .build());
  * 
@@ -54,38 +52,32 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example &lt;zone_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")
 public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
     /**
-     * State of the Leaked Credential Check detection
+     * Whether or not Leaked Credential Checks are enabled
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
+    private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return State of the Leaked Credential Check detection
+     * @return Whether or not Leaked Credential Checks are enabled
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Output<Optional<Boolean>> enabled() {
+        return Codegen.optional(this.enabled);
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

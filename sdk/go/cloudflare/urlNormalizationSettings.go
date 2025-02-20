@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage URL Normalization Settings.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,17 +19,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUrlNormalizationSettings(ctx, "example", &cloudflare.UrlNormalizationSettingsArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Type:   pulumi.String("cloudflare"),
+//			_, err := cloudflare.NewUrlNormalizationSettings(ctx, "example_url_normalization_settings", &cloudflare.UrlNormalizationSettingsArgs{
+//				ZoneId: pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
 //				Scope:  pulumi.String("incoming"),
+//				Type:   pulumi.String("cloudflare"),
 //			})
 //			if err != nil {
 //				return err
@@ -41,6 +39,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings example '<zone_id>'
+// ```
 type UrlNormalizationSettings struct {
 	pulumi.CustomResourceState
 
@@ -48,7 +52,7 @@ type UrlNormalizationSettings struct {
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique ID of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -95,7 +99,7 @@ type urlNormalizationSettingsState struct {
 	Scope *string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -104,7 +108,7 @@ type UrlNormalizationSettingsState struct {
 	Scope pulumi.StringPtrInput
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -117,7 +121,7 @@ type urlNormalizationSettingsArgs struct {
 	Scope string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -127,7 +131,7 @@ type UrlNormalizationSettingsArgs struct {
 	Scope pulumi.StringInput
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -228,7 +232,7 @@ func (o UrlNormalizationSettingsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlNormalizationSettings) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// The unique ID of the zone.
 func (o UrlNormalizationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlNormalizationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

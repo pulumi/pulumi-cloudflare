@@ -45,14 +45,14 @@ public final class UrlNormalizationSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -128,7 +128,7 @@ public final class UrlNormalizationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class UrlNormalizationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

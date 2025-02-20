@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Contains a map of target attribute keys to target attribute values.
         /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute> TargetAttributes;
+        public readonly ImmutableDictionary<string, ImmutableArray<string>> TargetAttributes;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationTargetCriteria(
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string protocol,
 
-            ImmutableArray<Outputs.ZeroTrustAccessApplicationTargetCriteriaTargetAttribute> targetAttributes)
+            ImmutableDictionary<string, ImmutableArray<string>> targetAttributes)
         {
             Port = port;
             Protocol = protocol;

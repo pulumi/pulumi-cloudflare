@@ -18,216 +18,163 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
- * across all zones within the same account.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.List;
- * import com.pulumi.cloudflare.ListArgs;
- * import com.pulumi.cloudflare.ListItem;
- * import com.pulumi.cloudflare.ListItemArgs;
- * import com.pulumi.cloudflare.inputs.ListItemRedirectArgs;
- * import com.pulumi.cloudflare.inputs.ListItemHostnameArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // IP List
- *         var exampleIpList = new List("exampleIpList", ListArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example_list")
- *             .description("example IPs for a list")
- *             .kind("ip")
- *             .build());
- * 
- *         // IP List Item
- *         var exampleIpItem = new ListItem("exampleIpItem", ListItemArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .listId(exampleIpList.id())
- *             .comment("List Item Comment")
- *             .ip("192.0.2.0")
- *             .build());
- * 
- *         // Redirect List
- *         var exampleRedirectList = new List("exampleRedirectList", ListArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example_list")
- *             .description("example Redirects for a list")
- *             .kind("redirect")
- *             .build());
- * 
- *         // Redirect List Item
- *         var exampleRedirectItem = new ListItem("exampleRedirectItem", ListItemArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .listId(exampleIpList.id())
- *             .redirect(ListItemRedirectArgs.builder()
- *                 .sourceUrl("https://source.tld/")
- *                 .targetUrl("https://target.tld")
- *                 .statusCode(302)
- *                 .subpathMatching(true)
- *                 .build())
- *             .build());
- * 
- *         // ASN List
- *         var exampleAsnList = new List("exampleAsnList", ListArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example_asn_list")
- *             .description("example ASNs for a list")
- *             .kind("asn")
- *             .build());
- * 
- *         // ASN List Item
- *         var exampleAsnItem = new ListItem("exampleAsnItem", ListItemArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .listId(exampleAsnList.id())
- *             .comment("List Item Comment")
- *             .asn(6789)
- *             .build());
- * 
- *         // Hostname List
- *         var exampleHostnameList = new List("exampleHostnameList", ListArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example_hostname_list")
- *             .description("example Hostnames for a list")
- *             .kind("hostname")
- *             .build());
- * 
- *         // Hostname List Item
- *         var exampleHostnameItem = new ListItem("exampleHostnameItem", ListItemArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .listId(exampleHostnameList.id())
- *             .comment("List Item Comment")
- *             .hostname(ListItemHostnameArgs.builder()
- *                 .urlHostname("example.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/listItem:ListItem example &lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;
- * ```
  * 
  */
 @ResourceType(type="cloudflare:index/listItem:ListItem")
 public class ListItem extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      * 
      */
     @Export(name="asn", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> asn;
 
     /**
-     * @return Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return A non-negative 32 bit integer
      * 
      */
     public Output<Optional<Integer>> asn() {
         return Codegen.optional(this.asn);
     }
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> comment;
+    private Output<String> comment;
 
     /**
-     * @return An optional comment for the item.
+     * @return An informative summary of the list item.
      * 
      */
-    public Output<Optional<String>> comment() {
-        return Codegen.optional(this.comment);
+    public Output<String> comment() {
+        return this.comment;
     }
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the item was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     @Export(name="hostname", refs={ListItemHostname.class}, tree="[0]")
     private Output</* @Nullable */ ListItemHostname> hostname;
 
     /**
-     * @return Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public Output<Optional<ListItemHostname>> hostname() {
         return Codegen.optional(this.hostname);
     }
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ip;
 
     /**
-     * @return IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      * 
      */
     public Output<Optional<String>> ip() {
         return Codegen.optional(this.ip);
     }
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the item in the List.
+     * 
+     */
+    @Export(name="itemId", refs={String.class}, tree="[0]")
+    private Output<String> itemId;
+
+    /**
+     * @return The unique ID of the item in the List.
+     * 
+     */
+    public Output<String> itemId() {
+        return this.itemId;
+    }
+    /**
+     * The unique ID of the list.
      * 
      */
     @Export(name="listId", refs={String.class}, tree="[0]")
     private Output<String> listId;
 
     /**
-     * @return The list identifier to target for the resource.
+     * @return The unique ID of the list.
      * 
      */
     public Output<String> listId() {
         return this.listId;
     }
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the item was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * The unique operation ID of the asynchronous action.
+     * 
+     */
+    @Export(name="operationId", refs={String.class}, tree="[0]")
+    private Output<String> operationId;
+
+    /**
+     * @return The unique operation ID of the asynchronous action.
+     * 
+     */
+    public Output<String> operationId() {
+        return this.operationId;
+    }
+    /**
+     * The definition of the redirect.
      * 
      */
     @Export(name="redirect", refs={ListItemRedirect.class}, tree="[0]")
     private Output</* @Nullable */ ListItemRedirect> redirect;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * @return The definition of the redirect.
      * 
      */
     public Output<Optional<ListItemRedirect>> redirect() {

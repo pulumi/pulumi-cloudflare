@@ -14,24 +14,27 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustTunnelCloudflaredConfigConfig
     {
         /// <summary>
-        /// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        /// List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
         /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule> IngressRules;
+        public readonly ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConfigConfigIngress> Ingresses;
+        /// <summary>
+        /// Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+        /// </summary>
         public readonly Outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest? OriginRequest;
         /// <summary>
-        /// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        /// Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
         /// </summary>
         public readonly Outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting? WarpRouting;
 
         [OutputConstructor]
         private ZeroTrustTunnelCloudflaredConfigConfig(
-            ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule> ingressRules,
+            ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses,
 
             Outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest? originRequest,
 
             Outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting? warpRouting)
         {
-            IngressRules = ingressRules;
+            Ingresses = ingresses;
             OriginRequest = originRequest;
             WarpRouting = warpRouting;
         }

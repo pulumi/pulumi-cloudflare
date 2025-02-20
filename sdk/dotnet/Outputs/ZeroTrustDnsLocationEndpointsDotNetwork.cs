@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDnsLocationEndpointsDotNetwork
     {
         /// <summary>
-        /// CIDR notation representation of the network IP.
+        /// The IP address or IP CIDR.
         /// </summary>
         public readonly string Network;
 

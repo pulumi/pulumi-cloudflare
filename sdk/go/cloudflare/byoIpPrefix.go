@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
-// which are used with or without Magic Transit.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
-//				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				Description:   pulumi.String("Example IP Prefix"),
-//				Advertisement: pulumi.String("on"),
+//			_, err := cloudflare.NewByoIpPrefix(ctx, "example_byo_ip_prefix", &cloudflare.ByoIpPrefixArgs{
+//				AccountId:     pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
+//				Asn:           pulumi.Int(209242),
+//				Cidr:          pulumi.String("192.0.2.0/24"),
+//				LoaDocumentId: pulumi.String("d933b1530bc56c9953cf8ce166da8004"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,19 +44,33 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+// $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
 // ```
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-	Advertisement pulumi.StringOutput `pulumi:"advertisement"`
-	// Description of the BYO IP prefix.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-	PrefixId pulumi.StringOutput `pulumi:"prefixId"`
+	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	Advertised pulumi.BoolOutput `pulumi:"advertised"`
+	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	AdvertisedModifiedAt pulumi.StringOutput `pulumi:"advertisedModifiedAt"`
+	// Approval state of the prefix (P = pending, V = active).
+	Approved pulumi.StringOutput `pulumi:"approved"`
+	// Autonomous System Number (ASN) the prefix will be advertised under.
+	Asn pulumi.IntOutput `pulumi:"asn"`
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Cidr      pulumi.StringOutput `pulumi:"cidr"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Description of the prefix.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Identifier for the uploaded LOA document.
+	LoaDocumentId pulumi.StringOutput `pulumi:"loaDocumentId"`
+	ModifiedAt    pulumi.StringOutput `pulumi:"modifiedAt"`
+	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	OnDemandEnabled pulumi.BoolOutput `pulumi:"onDemandEnabled"`
+	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	OnDemandLocked pulumi.BoolOutput `pulumi:"onDemandLocked"`
 }
 
 // NewByoIpPrefix registers a new resource with the given unique name, arguments, and options.
@@ -72,8 +83,14 @@ func NewByoIpPrefix(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.PrefixId == nil {
-		return nil, errors.New("invalid value for required argument 'PrefixId'")
+	if args.Asn == nil {
+		return nil, errors.New("invalid value for required argument 'Asn'")
+	}
+	if args.Cidr == nil {
+		return nil, errors.New("invalid value for required argument 'Cidr'")
+	}
+	if args.LoaDocumentId == nil {
+		return nil, errors.New("invalid value for required argument 'LoaDocumentId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ByoIpPrefix
@@ -98,25 +115,53 @@ func GetByoIpPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ByoIpPrefix resources.
 type byoIpPrefixState struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId *string `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-	Advertisement *string `pulumi:"advertisement"`
-	// Description of the BYO IP prefix.
+	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	Advertised *bool `pulumi:"advertised"`
+	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	AdvertisedModifiedAt *string `pulumi:"advertisedModifiedAt"`
+	// Approval state of the prefix (P = pending, V = active).
+	Approved *string `pulumi:"approved"`
+	// Autonomous System Number (ASN) the prefix will be advertised under.
+	Asn *int `pulumi:"asn"`
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Cidr      *string `pulumi:"cidr"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Description of the prefix.
 	Description *string `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-	PrefixId *string `pulumi:"prefixId"`
+	// Identifier for the uploaded LOA document.
+	LoaDocumentId *string `pulumi:"loaDocumentId"`
+	ModifiedAt    *string `pulumi:"modifiedAt"`
+	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	OnDemandEnabled *bool `pulumi:"onDemandEnabled"`
+	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	OnDemandLocked *bool `pulumi:"onDemandLocked"`
 }
 
 type ByoIpPrefixState struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringPtrInput
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-	Advertisement pulumi.StringPtrInput
-	// Description of the BYO IP prefix.
+	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	Advertised pulumi.BoolPtrInput
+	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	AdvertisedModifiedAt pulumi.StringPtrInput
+	// Approval state of the prefix (P = pending, V = active).
+	Approved pulumi.StringPtrInput
+	// Autonomous System Number (ASN) the prefix will be advertised under.
+	Asn pulumi.IntPtrInput
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Cidr      pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Description of the prefix.
 	Description pulumi.StringPtrInput
-	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-	PrefixId pulumi.StringPtrInput
+	// Identifier for the uploaded LOA document.
+	LoaDocumentId pulumi.StringPtrInput
+	ModifiedAt    pulumi.StringPtrInput
+	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	OnDemandEnabled pulumi.BoolPtrInput
+	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	OnDemandLocked pulumi.BoolPtrInput
 }
 
 func (ByoIpPrefixState) ElementType() reflect.Type {
@@ -124,26 +169,30 @@ func (ByoIpPrefixState) ElementType() reflect.Type {
 }
 
 type byoIpPrefixArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-	Advertisement *string `pulumi:"advertisement"`
-	// Description of the BYO IP prefix.
+	// Autonomous System Number (ASN) the prefix will be advertised under.
+	Asn int `pulumi:"asn"`
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Cidr string `pulumi:"cidr"`
+	// Description of the prefix.
 	Description *string `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-	PrefixId string `pulumi:"prefixId"`
+	// Identifier for the uploaded LOA document.
+	LoaDocumentId string `pulumi:"loaDocumentId"`
 }
 
 // The set of arguments for constructing a ByoIpPrefix resource.
 type ByoIpPrefixArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringInput
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-	Advertisement pulumi.StringPtrInput
-	// Description of the BYO IP prefix.
+	// Autonomous System Number (ASN) the prefix will be advertised under.
+	Asn pulumi.IntInput
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Cidr pulumi.StringInput
+	// Description of the prefix.
 	Description pulumi.StringPtrInput
-	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-	PrefixId pulumi.StringInput
+	// Identifier for the uploaded LOA document.
+	LoaDocumentId pulumi.StringInput
 }
 
 func (ByoIpPrefixArgs) ElementType() reflect.Type {
@@ -233,24 +282,62 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) B
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier of a Cloudflare account.
 func (o ByoIpPrefixOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
-func (o ByoIpPrefixOutput) Advertisement() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Advertisement }).(pulumi.StringOutput)
+// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+func (o ByoIpPrefixOutput) Advertised() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.BoolOutput { return v.Advertised }).(pulumi.BoolOutput)
 }
 
-// Description of the BYO IP prefix.
-func (o ByoIpPrefixOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+func (o ByoIpPrefixOutput) AdvertisedModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.AdvertisedModifiedAt }).(pulumi.StringOutput)
 }
 
-// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
-func (o ByoIpPrefixOutput) PrefixId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.PrefixId }).(pulumi.StringOutput)
+// Approval state of the prefix (P = pending, V = active).
+func (o ByoIpPrefixOutput) Approved() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Approved }).(pulumi.StringOutput)
+}
+
+// Autonomous System Number (ASN) the prefix will be advertised under.
+func (o ByoIpPrefixOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.IntOutput { return v.Asn }).(pulumi.IntOutput)
+}
+
+// IP Prefix in Classless Inter-Domain Routing format.
+func (o ByoIpPrefixOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
+}
+
+func (o ByoIpPrefixOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the prefix.
+func (o ByoIpPrefixOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the uploaded LOA document.
+func (o ByoIpPrefixOutput) LoaDocumentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.LoaDocumentId }).(pulumi.StringOutput)
+}
+
+func (o ByoIpPrefixOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+func (o ByoIpPrefixOutput) OnDemandEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.BoolOutput { return v.OnDemandEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+func (o ByoIpPrefixOutput) OnDemandLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.BoolOutput { return v.OnDemandLocked }).(pulumi.BoolOutput)
 }
 
 type ByoIpPrefixArrayOutput struct{ *pulumi.OutputState }

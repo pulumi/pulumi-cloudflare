@@ -8,66 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing Email Routing Addresses catch all behaviour.
-//
 // ## Example Usage
 //
-// ```go
-// package main
+// ## Import
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingCatchAll(ctx, "example", &cloudflare.EmailRoutingCatchAllArgs{
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:    pulumi.String("example catch all"),
-//				Enabled: pulumi.Bool(true),
-//				Matchers: cloudflare.EmailRoutingCatchAllMatcherArray{
-//					&cloudflare.EmailRoutingCatchAllMatcherArgs{
-//						Type: pulumi.String("all"),
-//					},
-//				},
-//				Actions: cloudflare.EmailRoutingCatchAllActionArray{
-//					&cloudflare.EmailRoutingCatchAllActionArgs{
-//						Type: pulumi.String("forward"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("destinationaddress@example.net"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// ```sh
+// $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
 // ```
 type EmailRoutingCatchAll struct {
 	pulumi.CustomResourceState
 
-	// List actions patterns.
+	// List actions for the catch-all routing rule.
 	Actions EmailRoutingCatchAllActionArrayOutput `pulumi:"actions"`
 	// Routing rule status.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Matching patterns to forward to your actions.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// List of matchers for the catch-all routing rule.
 	Matchers EmailRoutingCatchAllMatcherArrayOutput `pulumi:"matchers"`
 	// Routing rule name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Routing rule identifier.
+	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -83,9 +48,6 @@ func NewEmailRoutingCatchAll(ctx *pulumi.Context,
 	}
 	if args.Matchers == nil {
 		return nil, errors.New("invalid value for required argument 'Matchers'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -113,32 +75,32 @@ func GetEmailRoutingCatchAll(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingCatchAll resources.
 type emailRoutingCatchAllState struct {
-	// List actions patterns.
+	// List actions for the catch-all routing rule.
 	Actions []EmailRoutingCatchAllAction `pulumi:"actions"`
 	// Routing rule status.
 	Enabled *bool `pulumi:"enabled"`
-	// Matching patterns to forward to your actions.
+	// List of matchers for the catch-all routing rule.
 	Matchers []EmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
-	// Routing rule identifier.
+	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	Tag *string `pulumi:"tag"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type EmailRoutingCatchAllState struct {
-	// List actions patterns.
+	// List actions for the catch-all routing rule.
 	Actions EmailRoutingCatchAllActionArrayInput
 	// Routing rule status.
 	Enabled pulumi.BoolPtrInput
-	// Matching patterns to forward to your actions.
+	// List of matchers for the catch-all routing rule.
 	Matchers EmailRoutingCatchAllMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
-	// Routing rule identifier.
+	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	Tag pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -147,29 +109,29 @@ func (EmailRoutingCatchAllState) ElementType() reflect.Type {
 }
 
 type emailRoutingCatchAllArgs struct {
-	// List actions patterns.
+	// List actions for the catch-all routing rule.
 	Actions []EmailRoutingCatchAllAction `pulumi:"actions"`
 	// Routing rule status.
 	Enabled *bool `pulumi:"enabled"`
-	// Matching patterns to forward to your actions.
+	// List of matchers for the catch-all routing rule.
 	Matchers []EmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
-	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource.
+	Name *string `pulumi:"name"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingCatchAll resource.
 type EmailRoutingCatchAllArgs struct {
-	// List actions patterns.
+	// List actions for the catch-all routing rule.
 	Actions EmailRoutingCatchAllActionArrayInput
 	// Routing rule status.
 	Enabled pulumi.BoolPtrInput
-	// Matching patterns to forward to your actions.
+	// List of matchers for the catch-all routing rule.
 	Matchers EmailRoutingCatchAllMatcherArrayInput
 	// Routing rule name.
-	Name pulumi.StringInput
-	// The zone identifier to target for the resource.
+	Name pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -260,32 +222,32 @@ func (o EmailRoutingCatchAllOutput) ToEmailRoutingCatchAllOutputWithContext(ctx 
 	return o
 }
 
-// List actions patterns.
+// List actions for the catch-all routing rule.
 func (o EmailRoutingCatchAllOutput) Actions() EmailRoutingCatchAllActionArrayOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) EmailRoutingCatchAllActionArrayOutput { return v.Actions }).(EmailRoutingCatchAllActionArrayOutput)
 }
 
 // Routing rule status.
-func (o EmailRoutingCatchAllOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o EmailRoutingCatchAllOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Matching patterns to forward to your actions.
+// List of matchers for the catch-all routing rule.
 func (o EmailRoutingCatchAllOutput) Matchers() EmailRoutingCatchAllMatcherArrayOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) EmailRoutingCatchAllMatcherArrayOutput { return v.Matchers }).(EmailRoutingCatchAllMatcherArrayOutput)
 }
 
 // Routing rule name.
-func (o EmailRoutingCatchAllOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o EmailRoutingCatchAllOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Routing rule identifier.
+// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 func (o EmailRoutingCatchAllOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o EmailRoutingCatchAllOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -16,62 +16,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverrides {
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return An action to override all rules with. This option has lower precedence than rule and category overrides.
      * 
      */
     private @Nullable String action;
     /**
-     * @return List of tag-based overrides.
+     * @return A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
      * 
      */
     private @Nullable List<RulesetRuleActionParametersOverridesCategory> categories;
     /**
-     * @return Defines if the current ruleset-level override enables or disables the ruleset.
+     * @return Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return List of rule-based overrides.
+     * @return A list of rule-level overrides. This option has the highest precedence.
      * 
      */
     private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
     /**
-     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+     * @return A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
      * 
      */
     private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverrides() {}
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return An action to override all rules with. This option has lower precedence than rule and category overrides.
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return List of tag-based overrides.
+     * @return A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
      * 
      */
     public List<RulesetRuleActionParametersOverridesCategory> categories() {
         return this.categories == null ? List.of() : this.categories;
     }
     /**
-     * @return Defines if the current ruleset-level override enables or disables the ruleset.
+     * @return Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return List of rule-based overrides.
+     * @return A list of rule-level overrides. This option has the highest precedence.
      * 
      */
     public List<RulesetRuleActionParametersOverridesRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
     /**
-     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
+     * @return A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
      * 
      */
     public Optional<String> sensitivityLevel() {

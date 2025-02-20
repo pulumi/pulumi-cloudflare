@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,33 +16,33 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
     public static final UserAgentBlockingRuleConfigurationArgs Empty = new UserAgentBlockingRuleConfigurationArgs();
 
     /**
-     * The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
-    @Import(name="target", required=true)
-    private Output<String> target;
+    @Import(name="target")
+    private @Nullable Output<String> target;
 
     /**
-     * @return The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
      * 
      */
-    public Output<String> target() {
-        return this.target;
+    public Optional<Output<String>> target() {
+        return Optional.ofNullable(this.target);
     }
 
     /**
-     * The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+     * The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
-     * @return The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private UserAgentBlockingRuleConfigurationArgs() {}
@@ -70,18 +71,18 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param target The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
          * 
          * @return builder
          * 
          */
-        public Builder target(Output<String> target) {
+        public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
         /**
-         * @param target The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
          * 
          * @return builder
          * 
@@ -91,18 +92,18 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
          * 
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
          * 
          * @return builder
          * 
@@ -112,12 +113,6 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         public UserAgentBlockingRuleConfigurationArgs build() {
-            if ($.target == null) {
-                throw new MissingRequiredPropertyException("UserAgentBlockingRuleConfigurationArgs", "target");
-            }
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("UserAgentBlockingRuleConfigurationArgs", "value");
-            }
             return $;
         }
     }

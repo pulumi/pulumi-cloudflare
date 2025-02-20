@@ -4,26 +4,25 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersServeStale {
     /**
-     * @return Disable stale while updating.
+     * @return Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
      * 
      */
-    private @Nullable Boolean disableStaleWhileUpdating;
+    private Boolean disableStaleWhileUpdating;
 
     private RulesetRuleActionParametersServeStale() {}
     /**
-     * @return Disable stale while updating.
+     * @return Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
      * 
      */
-    public Optional<Boolean> disableStaleWhileUpdating() {
-        return Optional.ofNullable(this.disableStaleWhileUpdating);
+    public Boolean disableStaleWhileUpdating() {
+        return this.disableStaleWhileUpdating;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class RulesetRuleActionParametersServeStale {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean disableStaleWhileUpdating;
+        private Boolean disableStaleWhileUpdating;
         public Builder() {}
         public Builder(RulesetRuleActionParametersServeStale defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class RulesetRuleActionParametersServeStale {
         }
 
         @CustomType.Setter
-        public Builder disableStaleWhileUpdating(@Nullable Boolean disableStaleWhileUpdating) {
-
+        public Builder disableStaleWhileUpdating(Boolean disableStaleWhileUpdating) {
+            if (disableStaleWhileUpdating == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersServeStale", "disableStaleWhileUpdating");
+            }
             this.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }

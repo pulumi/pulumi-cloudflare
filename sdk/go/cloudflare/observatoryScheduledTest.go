@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Observatory Scheduled Test resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewObservatoryScheduledTest(ctx, "example", &cloudflare.ObservatoryScheduledTestArgs{
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Url:       pulumi.String("example.com"),
-//				Region:    pulumi.String("us-central1"),
-//				Frequency: pulumi.String("WEEKLY"),
+//			_, err := cloudflare.NewObservatoryScheduledTest(ctx, "example_observatory_scheduled_test", &cloudflare.ObservatoryScheduledTestArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Url:    pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,18 +42,21 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example <zone_id>:<url>:<region>
+// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
 // ```
 type ObservatoryScheduledTest struct {
 	pulumi.CustomResourceState
 
-	// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+	// The frequency of the test.
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
-	// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+	// A test region.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+	// The test schedule.
+	Schedule ObservatoryScheduledTestScheduleOutput `pulumi:"schedule"`
+	Test     ObservatoryScheduledTestTestOutput     `pulumi:"test"`
+	// A URL.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -68,12 +67,6 @@ func NewObservatoryScheduledTest(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Frequency == nil {
-		return nil, errors.New("invalid value for required argument 'Frequency'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
@@ -103,24 +96,30 @@ func GetObservatoryScheduledTest(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObservatoryScheduledTest resources.
 type observatoryScheduledTestState struct {
-	// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+	// The frequency of the test.
 	Frequency *string `pulumi:"frequency"`
-	// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+	// A test region.
 	Region *string `pulumi:"region"`
-	// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+	// The test schedule.
+	Schedule *ObservatoryScheduledTestSchedule `pulumi:"schedule"`
+	Test     *ObservatoryScheduledTestTest     `pulumi:"test"`
+	// A URL.
 	Url *string `pulumi:"url"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ObservatoryScheduledTestState struct {
-	// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+	// The frequency of the test.
 	Frequency pulumi.StringPtrInput
-	// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+	// A test region.
 	Region pulumi.StringPtrInput
-	// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+	// The test schedule.
+	Schedule ObservatoryScheduledTestSchedulePtrInput
+	Test     ObservatoryScheduledTestTestPtrInput
+	// A URL.
 	Url pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -129,25 +128,17 @@ func (ObservatoryScheduledTestState) ElementType() reflect.Type {
 }
 
 type observatoryScheduledTestArgs struct {
-	// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-	Frequency string `pulumi:"frequency"`
-	// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-	Region string `pulumi:"region"`
-	// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+	// A URL.
 	Url string `pulumi:"url"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ObservatoryScheduledTest resource.
 type ObservatoryScheduledTestArgs struct {
-	// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-	Frequency pulumi.StringInput
-	// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-	Region pulumi.StringInput
-	// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+	// A URL.
 	Url pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -238,22 +229,31 @@ func (o ObservatoryScheduledTestOutput) ToObservatoryScheduledTestOutputWithCont
 	return o
 }
 
-// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+// The frequency of the test.
 func (o ObservatoryScheduledTestOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+// A test region.
 func (o ObservatoryScheduledTestOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+// The test schedule.
+func (o ObservatoryScheduledTestOutput) Schedule() ObservatoryScheduledTestScheduleOutput {
+	return o.ApplyT(func(v *ObservatoryScheduledTest) ObservatoryScheduledTestScheduleOutput { return v.Schedule }).(ObservatoryScheduledTestScheduleOutput)
+}
+
+func (o ObservatoryScheduledTestOutput) Test() ObservatoryScheduledTestTestOutput {
+	return o.ApplyT(func(v *ObservatoryScheduledTest) ObservatoryScheduledTestTestOutput { return v.Test }).(ObservatoryScheduledTestTestOutput)
+}
+
+// A URL.
 func (o ObservatoryScheduledTestOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

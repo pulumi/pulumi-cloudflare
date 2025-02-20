@@ -3,20 +3,16 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.WorkersScriptAnalyticsEngineBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptD1DatabaseBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptHyperdriveConfigBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptKvNamespaceBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptPlacementArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptPlainTextBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptQueueBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptR2BucketBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptSecretTextBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptServiceBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkersScriptWebassemblyBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptTailConsumerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,36 +25,74 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     public static final WorkersScriptState Empty = new WorkersScriptState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="analyticsEngineBindings")
-    private @Nullable Output<List<WorkersScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings;
+    /**
+     * Configuration for assets within a Worker
+     * 
+     */
+    @Import(name="assets")
+    private @Nullable Output<WorkersScriptAssetsArgs> assets;
 
-    public Optional<Output<List<WorkersScriptAnalyticsEngineBindingArgs>>> analyticsEngineBindings() {
-        return Optional.ofNullable(this.analyticsEngineBindings);
+    /**
+     * @return Configuration for assets within a Worker
+     * 
+     */
+    public Optional<Output<WorkersScriptAssetsArgs>> assets() {
+        return Optional.ofNullable(this.assets);
     }
 
     /**
-     * The date to use for the compatibility flag.
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * 
+     */
+    @Import(name="bindings")
+    private @Nullable Output<List<WorkersScriptBindingArgs>> bindings;
+
+    /**
+     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * 
+     */
+    public Optional<Output<List<WorkersScriptBindingArgs>>> bindings() {
+        return Optional.ofNullable(this.bindings);
+    }
+
+    /**
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * 
+     */
+    @Import(name="bodyPart")
+    private @Nullable Output<String> bodyPart;
+
+    /**
+     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * 
+     */
+    public Optional<Output<String>> bodyPart() {
+        return Optional.ofNullable(this.bodyPart);
+    }
+
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
      */
     @Import(name="compatibilityDate")
     private @Nullable Output<String> compatibilityDate;
 
     /**
-     * @return The date to use for the compatibility flag.
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
      */
     public Optional<Output<String>> compatibilityDate() {
@@ -66,14 +100,14 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Compatibility flags used for Worker Scripts.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
     @Import(name="compatibilityFlags")
     private @Nullable Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Compatibility flags used for Worker Scripts.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
     public Optional<Output<List<String>>> compatibilityFlags() {
@@ -81,65 +115,119 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The script content.
+     * Module or Service Worker contents of the Worker.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The script content.
+     * @return Module or Service Worker contents of the Worker.
      * 
      */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
-    @Import(name="d1DatabaseBindings")
-    private @Nullable Output<List<WorkersScriptD1DatabaseBindingArgs>> d1DatabaseBindings;
-
-    public Optional<Output<List<WorkersScriptD1DatabaseBindingArgs>>> d1DatabaseBindings() {
-        return Optional.ofNullable(this.d1DatabaseBindings);
-    }
-
     /**
-     * Name of the Workers for Platforms dispatch namespace.
+     * When the script was created.
      * 
      */
-    @Import(name="dispatchNamespace")
-    private @Nullable Output<String> dispatchNamespace;
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
 
     /**
-     * @return Name of the Workers for Platforms dispatch namespace.
+     * @return When the script was created.
      * 
      */
-    public Optional<Output<String>> dispatchNamespace() {
-        return Optional.ofNullable(this.dispatchNamespace);
-    }
-
-    @Import(name="hyperdriveConfigBindings")
-    private @Nullable Output<List<WorkersScriptHyperdriveConfigBindingArgs>> hyperdriveConfigBindings;
-
-    public Optional<Output<List<WorkersScriptHyperdriveConfigBindingArgs>>> hyperdriveConfigBindings() {
-        return Optional.ofNullable(this.hyperdriveConfigBindings);
-    }
-
-    @Import(name="kvNamespaceBindings")
-    private @Nullable Output<List<WorkersScriptKvNamespaceBindingArgs>> kvNamespaceBindings;
-
-    public Optional<Output<List<WorkersScriptKvNamespaceBindingArgs>>> kvNamespaceBindings() {
-        return Optional.ofNullable(this.kvNamespaceBindings);
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
     }
 
     /**
-     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * Hashed script content, can be used in a If-None-Match header when updating.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return Hashed script content, can be used in a If-None-Match header when updating.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
+     * Whether a Worker contains assets.
+     * 
+     */
+    @Import(name="hasAssets")
+    private @Nullable Output<Boolean> hasAssets;
+
+    /**
+     * @return Whether a Worker contains assets.
+     * 
+     */
+    public Optional<Output<Boolean>> hasAssets() {
+        return Optional.ofNullable(this.hasAssets);
+    }
+
+    /**
+     * Whether a Worker contains modules.
+     * 
+     */
+    @Import(name="hasModules")
+    private @Nullable Output<Boolean> hasModules;
+
+    /**
+     * @return Whether a Worker contains modules.
+     * 
+     */
+    public Optional<Output<Boolean>> hasModules() {
+        return Optional.ofNullable(this.hasModules);
+    }
+
+    /**
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * 
+     */
+    @Import(name="keepAssets")
+    private @Nullable Output<Boolean> keepAssets;
+
+    /**
+     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * 
+     */
+    public Optional<Output<Boolean>> keepAssets() {
+        return Optional.ofNullable(this.keepAssets);
+    }
+
+    /**
+     * List of binding types to keep from previous_upload.
+     * 
+     */
+    @Import(name="keepBindings")
+    private @Nullable Output<List<String>> keepBindings;
+
+    /**
+     * @return List of binding types to keep from previous_upload.
+     * 
+     */
+    public Optional<Output<List<String>>> keepBindings() {
+        return Optional.ofNullable(this.keepBindings);
+    }
+
+    /**
+     * Whether Logpush is turned on for the Worker.
      * 
      */
     @Import(name="logpush")
     private @Nullable Output<Boolean> logpush;
 
     /**
-     * @return Enabling allows Worker events to be sent to a defined Logpush destination.
+     * @return Whether Logpush is turned on for the Worker.
      * 
      */
     public Optional<Output<Boolean>> logpush() {
@@ -147,114 +235,158 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to upload Worker as a module.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
-    @Import(name="module")
-    private @Nullable Output<Boolean> module;
+    @Import(name="mainModule")
+    private @Nullable Output<String> mainModule;
 
     /**
-     * @return Whether to upload Worker as a module.
+     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
-    public Optional<Output<Boolean>> module() {
-        return Optional.ofNullable(this.module);
+    public Optional<Output<String>> mainModule() {
+        return Optional.ofNullable(this.mainModule);
     }
 
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="migrations")
+    private @Nullable Output<WorkersScriptMigrationsArgs> migrations;
 
     /**
-     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * @return Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<Output<WorkersScriptMigrationsArgs>> migrations() {
+        return Optional.ofNullable(this.migrations);
     }
 
-    @Import(name="placements")
-    private @Nullable Output<List<WorkersScriptPlacementArgs>> placements;
+    /**
+     * When the script was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
 
-    public Optional<Output<List<WorkersScriptPlacementArgs>>> placements() {
-        return Optional.ofNullable(this.placements);
+    /**
+     * @return When the script was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
     }
 
-    @Import(name="plainTextBindings")
-    private @Nullable Output<List<WorkersScriptPlainTextBindingArgs>> plainTextBindings;
+    /**
+     * Observability settings for the Worker.
+     * 
+     */
+    @Import(name="observability")
+    private @Nullable Output<WorkersScriptObservabilityArgs> observability;
 
-    public Optional<Output<List<WorkersScriptPlainTextBindingArgs>>> plainTextBindings() {
-        return Optional.ofNullable(this.plainTextBindings);
+    /**
+     * @return Observability settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkersScriptObservabilityArgs>> observability() {
+        return Optional.ofNullable(this.observability);
     }
 
-    @Import(name="queueBindings")
-    private @Nullable Output<List<WorkersScriptQueueBindingArgs>> queueBindings;
+    /**
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    @Import(name="placement")
+    private @Nullable Output<WorkersScriptPlacementArgs> placement;
 
-    public Optional<Output<List<WorkersScriptQueueBindingArgs>>> queueBindings() {
-        return Optional.ofNullable(this.queueBindings);
+    /**
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    public Optional<Output<WorkersScriptPlacementArgs>> placement() {
+        return Optional.ofNullable(this.placement);
     }
 
-    @Import(name="r2BucketBindings")
-    private @Nullable Output<List<WorkersScriptR2BucketBindingArgs>> r2BucketBindings;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     * 
+     */
+    @Import(name="scriptName")
+    private @Nullable Output<String> scriptName;
 
-    public Optional<Output<List<WorkersScriptR2BucketBindingArgs>>> r2BucketBindings() {
-        return Optional.ofNullable(this.r2BucketBindings);
+    /**
+     * @return Name of the script, used in URLs and route configuration.
+     * 
+     */
+    public Optional<Output<String>> scriptName() {
+        return Optional.ofNullable(this.scriptName);
     }
 
-    @Import(name="secretTextBindings")
-    private @Nullable Output<List<WorkersScriptSecretTextBindingArgs>> secretTextBindings;
+    @Import(name="startupTimeMs")
+    private @Nullable Output<Integer> startupTimeMs;
 
-    public Optional<Output<List<WorkersScriptSecretTextBindingArgs>>> secretTextBindings() {
-        return Optional.ofNullable(this.secretTextBindings);
+    public Optional<Output<Integer>> startupTimeMs() {
+        return Optional.ofNullable(this.startupTimeMs);
     }
 
-    @Import(name="serviceBindings")
-    private @Nullable Output<List<WorkersScriptServiceBindingArgs>> serviceBindings;
+    /**
+     * List of Workers that will consume logs from the attached Worker.
+     * 
+     */
+    @Import(name="tailConsumers")
+    private @Nullable Output<List<WorkersScriptTailConsumerArgs>> tailConsumers;
 
-    public Optional<Output<List<WorkersScriptServiceBindingArgs>>> serviceBindings() {
-        return Optional.ofNullable(this.serviceBindings);
+    /**
+     * @return List of Workers that will consume logs from the attached Worker.
+     * 
+     */
+    public Optional<Output<List<WorkersScriptTailConsumerArgs>>> tailConsumers() {
+        return Optional.ofNullable(this.tailConsumers);
     }
 
-    @Import(name="tags")
-    private @Nullable Output<List<String>> tags;
+    /**
+     * Usage model for the Worker invocations.
+     * 
+     */
+    @Import(name="usageModel")
+    private @Nullable Output<String> usageModel;
 
-    public Optional<Output<List<String>>> tags() {
-        return Optional.ofNullable(this.tags);
-    }
-
-    @Import(name="webassemblyBindings")
-    private @Nullable Output<List<WorkersScriptWebassemblyBindingArgs>> webassemblyBindings;
-
-    public Optional<Output<List<WorkersScriptWebassemblyBindingArgs>>> webassemblyBindings() {
-        return Optional.ofNullable(this.webassemblyBindings);
+    /**
+     * @return Usage model for the Worker invocations.
+     * 
+     */
+    public Optional<Output<String>> usageModel() {
+        return Optional.ofNullable(this.usageModel);
     }
 
     private WorkersScriptState() {}
 
     private WorkersScriptState(WorkersScriptState $) {
         this.accountId = $.accountId;
-        this.analyticsEngineBindings = $.analyticsEngineBindings;
+        this.assets = $.assets;
+        this.bindings = $.bindings;
+        this.bodyPart = $.bodyPart;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
-        this.d1DatabaseBindings = $.d1DatabaseBindings;
-        this.dispatchNamespace = $.dispatchNamespace;
-        this.hyperdriveConfigBindings = $.hyperdriveConfigBindings;
-        this.kvNamespaceBindings = $.kvNamespaceBindings;
+        this.createdOn = $.createdOn;
+        this.etag = $.etag;
+        this.hasAssets = $.hasAssets;
+        this.hasModules = $.hasModules;
+        this.keepAssets = $.keepAssets;
+        this.keepBindings = $.keepBindings;
         this.logpush = $.logpush;
-        this.module = $.module;
-        this.name = $.name;
-        this.placements = $.placements;
-        this.plainTextBindings = $.plainTextBindings;
-        this.queueBindings = $.queueBindings;
-        this.r2BucketBindings = $.r2BucketBindings;
-        this.secretTextBindings = $.secretTextBindings;
-        this.serviceBindings = $.serviceBindings;
-        this.tags = $.tags;
-        this.webassemblyBindings = $.webassemblyBindings;
+        this.mainModule = $.mainModule;
+        this.migrations = $.migrations;
+        this.modifiedOn = $.modifiedOn;
+        this.observability = $.observability;
+        this.placement = $.placement;
+        this.scriptName = $.scriptName;
+        this.startupTimeMs = $.startupTimeMs;
+        this.tailConsumers = $.tailConsumers;
+        this.usageModel = $.usageModel;
     }
 
     public static Builder builder() {
@@ -276,7 +408,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -287,7 +419,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -296,21 +428,81 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
             return accountId(Output.of(accountId));
         }
 
-        public Builder analyticsEngineBindings(@Nullable Output<List<WorkersScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings) {
-            $.analyticsEngineBindings = analyticsEngineBindings;
+        /**
+         * @param assets Configuration for assets within a Worker
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assets(@Nullable Output<WorkersScriptAssetsArgs> assets) {
+            $.assets = assets;
             return this;
         }
 
-        public Builder analyticsEngineBindings(List<WorkersScriptAnalyticsEngineBindingArgs> analyticsEngineBindings) {
-            return analyticsEngineBindings(Output.of(analyticsEngineBindings));
-        }
-
-        public Builder analyticsEngineBindings(WorkersScriptAnalyticsEngineBindingArgs... analyticsEngineBindings) {
-            return analyticsEngineBindings(List.of(analyticsEngineBindings));
+        /**
+         * @param assets Configuration for assets within a Worker
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assets(WorkersScriptAssetsArgs assets) {
+            return assets(Output.of(assets));
         }
 
         /**
-         * @param compatibilityDate The date to use for the compatibility flag.
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindings(@Nullable Output<List<WorkersScriptBindingArgs>> bindings) {
+            $.bindings = bindings;
+            return this;
+        }
+
+        /**
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindings(List<WorkersScriptBindingArgs> bindings) {
+            return bindings(Output.of(bindings));
+        }
+
+        /**
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindings(WorkersScriptBindingArgs... bindings) {
+            return bindings(List.of(bindings));
+        }
+
+        /**
+         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bodyPart(@Nullable Output<String> bodyPart) {
+            $.bodyPart = bodyPart;
+            return this;
+        }
+
+        /**
+         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bodyPart(String bodyPart) {
+            return bodyPart(Output.of(bodyPart));
+        }
+
+        /**
+         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
          * 
          * @return builder
          * 
@@ -321,7 +513,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param compatibilityDate The date to use for the compatibility flag.
+         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
          * 
          * @return builder
          * 
@@ -331,7 +523,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -342,7 +534,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -352,7 +544,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -362,7 +554,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param content The script content.
+         * @param content Module or Service Worker contents of the Worker.
          * 
          * @return builder
          * 
@@ -373,7 +565,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param content The script content.
+         * @param content Module or Service Worker contents of the Worker.
          * 
          * @return builder
          * 
@@ -382,68 +574,144 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
             return content(Output.of(content));
         }
 
-        public Builder d1DatabaseBindings(@Nullable Output<List<WorkersScriptD1DatabaseBindingArgs>> d1DatabaseBindings) {
-            $.d1DatabaseBindings = d1DatabaseBindings;
-            return this;
-        }
-
-        public Builder d1DatabaseBindings(List<WorkersScriptD1DatabaseBindingArgs> d1DatabaseBindings) {
-            return d1DatabaseBindings(Output.of(d1DatabaseBindings));
-        }
-
-        public Builder d1DatabaseBindings(WorkersScriptD1DatabaseBindingArgs... d1DatabaseBindings) {
-            return d1DatabaseBindings(List.of(d1DatabaseBindings));
-        }
-
         /**
-         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * @param createdOn When the script was created.
          * 
          * @return builder
          * 
          */
-        public Builder dispatchNamespace(@Nullable Output<String> dispatchNamespace) {
-            $.dispatchNamespace = dispatchNamespace;
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
             return this;
         }
 
         /**
-         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * @param createdOn When the script was created.
          * 
          * @return builder
          * 
          */
-        public Builder dispatchNamespace(String dispatchNamespace) {
-            return dispatchNamespace(Output.of(dispatchNamespace));
-        }
-
-        public Builder hyperdriveConfigBindings(@Nullable Output<List<WorkersScriptHyperdriveConfigBindingArgs>> hyperdriveConfigBindings) {
-            $.hyperdriveConfigBindings = hyperdriveConfigBindings;
-            return this;
-        }
-
-        public Builder hyperdriveConfigBindings(List<WorkersScriptHyperdriveConfigBindingArgs> hyperdriveConfigBindings) {
-            return hyperdriveConfigBindings(Output.of(hyperdriveConfigBindings));
-        }
-
-        public Builder hyperdriveConfigBindings(WorkersScriptHyperdriveConfigBindingArgs... hyperdriveConfigBindings) {
-            return hyperdriveConfigBindings(List.of(hyperdriveConfigBindings));
-        }
-
-        public Builder kvNamespaceBindings(@Nullable Output<List<WorkersScriptKvNamespaceBindingArgs>> kvNamespaceBindings) {
-            $.kvNamespaceBindings = kvNamespaceBindings;
-            return this;
-        }
-
-        public Builder kvNamespaceBindings(List<WorkersScriptKvNamespaceBindingArgs> kvNamespaceBindings) {
-            return kvNamespaceBindings(Output.of(kvNamespaceBindings));
-        }
-
-        public Builder kvNamespaceBindings(WorkersScriptKvNamespaceBindingArgs... kvNamespaceBindings) {
-            return kvNamespaceBindings(List.of(kvNamespaceBindings));
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
         }
 
         /**
-         * @param logpush Enabling allows Worker events to be sent to a defined Logpush destination.
+         * @param etag Hashed script content, can be used in a If-None-Match header when updating.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag Hashed script content, can be used in a If-None-Match header when updating.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
+        }
+
+        /**
+         * @param hasAssets Whether a Worker contains assets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasAssets(@Nullable Output<Boolean> hasAssets) {
+            $.hasAssets = hasAssets;
+            return this;
+        }
+
+        /**
+         * @param hasAssets Whether a Worker contains assets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasAssets(Boolean hasAssets) {
+            return hasAssets(Output.of(hasAssets));
+        }
+
+        /**
+         * @param hasModules Whether a Worker contains modules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasModules(@Nullable Output<Boolean> hasModules) {
+            $.hasModules = hasModules;
+            return this;
+        }
+
+        /**
+         * @param hasModules Whether a Worker contains modules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasModules(Boolean hasModules) {
+            return hasModules(Output.of(hasModules));
+        }
+
+        /**
+         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepAssets(@Nullable Output<Boolean> keepAssets) {
+            $.keepAssets = keepAssets;
+            return this;
+        }
+
+        /**
+         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepAssets(Boolean keepAssets) {
+            return keepAssets(Output.of(keepAssets));
+        }
+
+        /**
+         * @param keepBindings List of binding types to keep from previous_upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepBindings(@Nullable Output<List<String>> keepBindings) {
+            $.keepBindings = keepBindings;
+            return this;
+        }
+
+        /**
+         * @param keepBindings List of binding types to keep from previous_upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepBindings(List<String> keepBindings) {
+            return keepBindings(Output.of(keepBindings));
+        }
+
+        /**
+         * @param keepBindings List of binding types to keep from previous_upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepBindings(String... keepBindings) {
+            return keepBindings(List.of(keepBindings));
+        }
+
+        /**
+         * @param logpush Whether Logpush is turned on for the Worker.
          * 
          * @return builder
          * 
@@ -454,7 +722,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param logpush Enabling allows Worker events to be sent to a defined Logpush destination.
+         * @param logpush Whether Logpush is turned on for the Worker.
          * 
          * @return builder
          * 
@@ -464,149 +732,190 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param module Whether to upload Worker as a module.
+         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
          * 
          * @return builder
          * 
          */
-        public Builder module(@Nullable Output<Boolean> module) {
-            $.module = module;
+        public Builder mainModule(@Nullable Output<String> mainModule) {
+            $.mainModule = mainModule;
             return this;
         }
 
         /**
-         * @param module Whether to upload Worker as a module.
+         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
          * 
          * @return builder
          * 
          */
-        public Builder module(Boolean module) {
-            return module(Output.of(module));
+        public Builder mainModule(String mainModule) {
+            return mainModule(Output.of(mainModule));
         }
 
         /**
-         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
+         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
+        public Builder migrations(@Nullable Output<WorkersScriptMigrationsArgs> migrations) {
+            $.migrations = migrations;
             return this;
         }
 
         /**
-         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
+         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder migrations(WorkersScriptMigrationsArgs migrations) {
+            return migrations(Output.of(migrations));
         }
 
-        public Builder placements(@Nullable Output<List<WorkersScriptPlacementArgs>> placements) {
-            $.placements = placements;
+        /**
+         * @param modifiedOn When the script was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
             return this;
         }
 
-        public Builder placements(List<WorkersScriptPlacementArgs> placements) {
-            return placements(Output.of(placements));
+        /**
+         * @param modifiedOn When the script was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
-        public Builder placements(WorkersScriptPlacementArgs... placements) {
-            return placements(List.of(placements));
-        }
-
-        public Builder plainTextBindings(@Nullable Output<List<WorkersScriptPlainTextBindingArgs>> plainTextBindings) {
-            $.plainTextBindings = plainTextBindings;
+        /**
+         * @param observability Observability settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observability(@Nullable Output<WorkersScriptObservabilityArgs> observability) {
+            $.observability = observability;
             return this;
         }
 
-        public Builder plainTextBindings(List<WorkersScriptPlainTextBindingArgs> plainTextBindings) {
-            return plainTextBindings(Output.of(plainTextBindings));
+        /**
+         * @param observability Observability settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observability(WorkersScriptObservabilityArgs observability) {
+            return observability(Output.of(observability));
         }
 
-        public Builder plainTextBindings(WorkersScriptPlainTextBindingArgs... plainTextBindings) {
-            return plainTextBindings(List.of(plainTextBindings));
-        }
-
-        public Builder queueBindings(@Nullable Output<List<WorkersScriptQueueBindingArgs>> queueBindings) {
-            $.queueBindings = queueBindings;
+        /**
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placement(@Nullable Output<WorkersScriptPlacementArgs> placement) {
+            $.placement = placement;
             return this;
         }
 
-        public Builder queueBindings(List<WorkersScriptQueueBindingArgs> queueBindings) {
-            return queueBindings(Output.of(queueBindings));
+        /**
+         * @param placement Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder placement(WorkersScriptPlacementArgs placement) {
+            return placement(Output.of(placement));
         }
 
-        public Builder queueBindings(WorkersScriptQueueBindingArgs... queueBindings) {
-            return queueBindings(List.of(queueBindings));
-        }
-
-        public Builder r2BucketBindings(@Nullable Output<List<WorkersScriptR2BucketBindingArgs>> r2BucketBindings) {
-            $.r2BucketBindings = r2BucketBindings;
+        /**
+         * @param scriptName Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptName(@Nullable Output<String> scriptName) {
+            $.scriptName = scriptName;
             return this;
         }
 
-        public Builder r2BucketBindings(List<WorkersScriptR2BucketBindingArgs> r2BucketBindings) {
-            return r2BucketBindings(Output.of(r2BucketBindings));
+        /**
+         * @param scriptName Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptName(String scriptName) {
+            return scriptName(Output.of(scriptName));
         }
 
-        public Builder r2BucketBindings(WorkersScriptR2BucketBindingArgs... r2BucketBindings) {
-            return r2BucketBindings(List.of(r2BucketBindings));
-        }
-
-        public Builder secretTextBindings(@Nullable Output<List<WorkersScriptSecretTextBindingArgs>> secretTextBindings) {
-            $.secretTextBindings = secretTextBindings;
+        public Builder startupTimeMs(@Nullable Output<Integer> startupTimeMs) {
+            $.startupTimeMs = startupTimeMs;
             return this;
         }
 
-        public Builder secretTextBindings(List<WorkersScriptSecretTextBindingArgs> secretTextBindings) {
-            return secretTextBindings(Output.of(secretTextBindings));
+        public Builder startupTimeMs(Integer startupTimeMs) {
+            return startupTimeMs(Output.of(startupTimeMs));
         }
 
-        public Builder secretTextBindings(WorkersScriptSecretTextBindingArgs... secretTextBindings) {
-            return secretTextBindings(List.of(secretTextBindings));
-        }
-
-        public Builder serviceBindings(@Nullable Output<List<WorkersScriptServiceBindingArgs>> serviceBindings) {
-            $.serviceBindings = serviceBindings;
+        /**
+         * @param tailConsumers List of Workers that will consume logs from the attached Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tailConsumers(@Nullable Output<List<WorkersScriptTailConsumerArgs>> tailConsumers) {
+            $.tailConsumers = tailConsumers;
             return this;
         }
 
-        public Builder serviceBindings(List<WorkersScriptServiceBindingArgs> serviceBindings) {
-            return serviceBindings(Output.of(serviceBindings));
+        /**
+         * @param tailConsumers List of Workers that will consume logs from the attached Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tailConsumers(List<WorkersScriptTailConsumerArgs> tailConsumers) {
+            return tailConsumers(Output.of(tailConsumers));
         }
 
-        public Builder serviceBindings(WorkersScriptServiceBindingArgs... serviceBindings) {
-            return serviceBindings(List.of(serviceBindings));
+        /**
+         * @param tailConsumers List of Workers that will consume logs from the attached Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tailConsumers(WorkersScriptTailConsumerArgs... tailConsumers) {
+            return tailConsumers(List.of(tailConsumers));
         }
 
-        public Builder tags(@Nullable Output<List<String>> tags) {
-            $.tags = tags;
+        /**
+         * @param usageModel Usage model for the Worker invocations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usageModel(@Nullable Output<String> usageModel) {
+            $.usageModel = usageModel;
             return this;
         }
 
-        public Builder tags(List<String> tags) {
-            return tags(Output.of(tags));
-        }
-
-        public Builder tags(String... tags) {
-            return tags(List.of(tags));
-        }
-
-        public Builder webassemblyBindings(@Nullable Output<List<WorkersScriptWebassemblyBindingArgs>> webassemblyBindings) {
-            $.webassemblyBindings = webassemblyBindings;
-            return this;
-        }
-
-        public Builder webassemblyBindings(List<WorkersScriptWebassemblyBindingArgs> webassemblyBindings) {
-            return webassemblyBindings(Output.of(webassemblyBindings));
-        }
-
-        public Builder webassemblyBindings(WorkersScriptWebassemblyBindingArgs... webassemblyBindings) {
-            return webassemblyBindings(List.of(webassemblyBindings));
+        /**
+         * @param usageModel Usage model for the Worker invocations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usageModel(String usageModel) {
+            return usageModel(Output.of(usageModel));
         }
 
         public WorkersScriptState build() {

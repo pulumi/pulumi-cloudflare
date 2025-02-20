@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersMatchedDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+        /// The public key to encrypt matched data logs with.
         /// </summary>
-        [Input("publicKey")]
-        public Input<string>? PublicKey { get; set; }
+        [Input("publicKey", required: true)]
+        public Input<string> PublicKey { get; set; } = null!;
 
         public RulesetRuleActionParametersMatchedDataArgs()
         {

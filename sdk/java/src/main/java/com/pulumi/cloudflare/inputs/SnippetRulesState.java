@@ -18,14 +18,14 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     public static final SnippetRulesState Empty = new SnippetRulesState();
 
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<SnippetRulesRuleArgs>> rules;
 
     /**
-     * @return List of Snippet Rules
+     * @return List of snippet rules
      * 
      */
     public Optional<Output<List<SnippetRulesRuleArgs>>> rules() {
@@ -33,14 +33,14 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -73,7 +73,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of Snippet Rules
+         * @param rules List of snippet rules
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SnippetRulesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

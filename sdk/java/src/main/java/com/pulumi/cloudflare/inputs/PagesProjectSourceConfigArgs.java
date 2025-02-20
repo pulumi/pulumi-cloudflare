@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -18,137 +17,79 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
 
     public static final PagesProjectSourceConfigArgs Empty = new PagesProjectSourceConfigArgs();
 
-    /**
-     * Toggle deployments on this repo. Defaults to `true`.
-     * 
-     */
     @Import(name="deploymentsEnabled")
     private @Nullable Output<Boolean> deploymentsEnabled;
 
-    /**
-     * @return Toggle deployments on this repo. Defaults to `true`.
-     * 
-     */
     public Optional<Output<Boolean>> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
 
-    /**
-     * Project owner username. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Project owner username. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
-    /**
-     * Enable Pages to comment on Pull Requests. Defaults to `true`.
-     * 
-     */
+    @Import(name="pathExcludes")
+    private @Nullable Output<List<String>> pathExcludes;
+
+    public Optional<Output<List<String>>> pathExcludes() {
+        return Optional.ofNullable(this.pathExcludes);
+    }
+
+    @Import(name="pathIncludes")
+    private @Nullable Output<List<String>> pathIncludes;
+
+    public Optional<Output<List<String>>> pathIncludes() {
+        return Optional.ofNullable(this.pathIncludes);
+    }
+
     @Import(name="prCommentsEnabled")
     private @Nullable Output<Boolean> prCommentsEnabled;
 
-    /**
-     * @return Enable Pages to comment on Pull Requests. Defaults to `true`.
-     * 
-     */
     public Optional<Output<Boolean>> prCommentsEnabled() {
         return Optional.ofNullable(this.prCommentsEnabled);
     }
 
-    /**
-     * Branches will be excluded from automatic deployment.
-     * 
-     */
     @Import(name="previewBranchExcludes")
     private @Nullable Output<List<String>> previewBranchExcludes;
 
-    /**
-     * @return Branches will be excluded from automatic deployment.
-     * 
-     */
     public Optional<Output<List<String>>> previewBranchExcludes() {
         return Optional.ofNullable(this.previewBranchExcludes);
     }
 
-    /**
-     * Branches will be included for automatic deployment.
-     * 
-     */
     @Import(name="previewBranchIncludes")
     private @Nullable Output<List<String>> previewBranchIncludes;
 
-    /**
-     * @return Branches will be included for automatic deployment.
-     * 
-     */
     public Optional<Output<List<String>>> previewBranchIncludes() {
         return Optional.ofNullable(this.previewBranchIncludes);
     }
 
-    /**
-     * Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-     * 
-     */
     @Import(name="previewDeploymentSetting")
     private @Nullable Output<String> previewDeploymentSetting;
 
-    /**
-     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-     * 
-     */
     public Optional<Output<String>> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
 
-    /**
-     * Project production branch name.
-     * 
-     */
-    @Import(name="productionBranch", required=true)
-    private Output<String> productionBranch;
+    @Import(name="productionBranch")
+    private @Nullable Output<String> productionBranch;
 
-    /**
-     * @return Project production branch name.
-     * 
-     */
-    public Output<String> productionBranch() {
-        return this.productionBranch;
+    public Optional<Output<String>> productionBranch() {
+        return Optional.ofNullable(this.productionBranch);
     }
 
-    /**
-     * Enable production deployments. Defaults to `true`.
-     * 
-     */
-    @Import(name="productionDeploymentEnabled")
-    private @Nullable Output<Boolean> productionDeploymentEnabled;
+    @Import(name="productionDeploymentsEnabled")
+    private @Nullable Output<Boolean> productionDeploymentsEnabled;
 
-    /**
-     * @return Enable production deployments. Defaults to `true`.
-     * 
-     */
-    public Optional<Output<Boolean>> productionDeploymentEnabled() {
-        return Optional.ofNullable(this.productionDeploymentEnabled);
+    public Optional<Output<Boolean>> productionDeploymentsEnabled() {
+        return Optional.ofNullable(this.productionDeploymentsEnabled);
     }
 
-    /**
-     * Project repository name. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
-    /**
-     * @return Project repository name. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> repoName() {
         return Optional.ofNullable(this.repoName);
     }
@@ -158,12 +99,14 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
     private PagesProjectSourceConfigArgs(PagesProjectSourceConfigArgs $) {
         this.deploymentsEnabled = $.deploymentsEnabled;
         this.owner = $.owner;
+        this.pathExcludes = $.pathExcludes;
+        this.pathIncludes = $.pathIncludes;
         this.prCommentsEnabled = $.prCommentsEnabled;
         this.previewBranchExcludes = $.previewBranchExcludes;
         this.previewBranchIncludes = $.previewBranchIncludes;
         this.previewDeploymentSetting = $.previewDeploymentSetting;
         this.productionBranch = $.productionBranch;
-        this.productionDeploymentEnabled = $.productionDeploymentEnabled;
+        this.productionDeploymentsEnabled = $.productionDeploymentsEnabled;
         this.repoName = $.repoName;
     }
 
@@ -185,219 +128,122 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
             $ = new PagesProjectSourceConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deploymentsEnabled Toggle deployments on this repo. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentsEnabled(@Nullable Output<Boolean> deploymentsEnabled) {
             $.deploymentsEnabled = deploymentsEnabled;
             return this;
         }
 
-        /**
-         * @param deploymentsEnabled Toggle deployments on this repo. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentsEnabled(Boolean deploymentsEnabled) {
             return deploymentsEnabled(Output.of(deploymentsEnabled));
         }
 
-        /**
-         * @param owner Project owner username. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Project owner username. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
-        /**
-         * @param prCommentsEnabled Enable Pages to comment on Pull Requests. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder pathExcludes(@Nullable Output<List<String>> pathExcludes) {
+            $.pathExcludes = pathExcludes;
+            return this;
+        }
+
+        public Builder pathExcludes(List<String> pathExcludes) {
+            return pathExcludes(Output.of(pathExcludes));
+        }
+
+        public Builder pathExcludes(String... pathExcludes) {
+            return pathExcludes(List.of(pathExcludes));
+        }
+
+        public Builder pathIncludes(@Nullable Output<List<String>> pathIncludes) {
+            $.pathIncludes = pathIncludes;
+            return this;
+        }
+
+        public Builder pathIncludes(List<String> pathIncludes) {
+            return pathIncludes(Output.of(pathIncludes));
+        }
+
+        public Builder pathIncludes(String... pathIncludes) {
+            return pathIncludes(List.of(pathIncludes));
+        }
+
         public Builder prCommentsEnabled(@Nullable Output<Boolean> prCommentsEnabled) {
             $.prCommentsEnabled = prCommentsEnabled;
             return this;
         }
 
-        /**
-         * @param prCommentsEnabled Enable Pages to comment on Pull Requests. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder prCommentsEnabled(Boolean prCommentsEnabled) {
             return prCommentsEnabled(Output.of(prCommentsEnabled));
         }
 
-        /**
-         * @param previewBranchExcludes Branches will be excluded from automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchExcludes(@Nullable Output<List<String>> previewBranchExcludes) {
             $.previewBranchExcludes = previewBranchExcludes;
             return this;
         }
 
-        /**
-         * @param previewBranchExcludes Branches will be excluded from automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchExcludes(List<String> previewBranchExcludes) {
             return previewBranchExcludes(Output.of(previewBranchExcludes));
         }
 
-        /**
-         * @param previewBranchExcludes Branches will be excluded from automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchExcludes(String... previewBranchExcludes) {
             return previewBranchExcludes(List.of(previewBranchExcludes));
         }
 
-        /**
-         * @param previewBranchIncludes Branches will be included for automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchIncludes(@Nullable Output<List<String>> previewBranchIncludes) {
             $.previewBranchIncludes = previewBranchIncludes;
             return this;
         }
 
-        /**
-         * @param previewBranchIncludes Branches will be included for automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchIncludes(List<String> previewBranchIncludes) {
             return previewBranchIncludes(Output.of(previewBranchIncludes));
         }
 
-        /**
-         * @param previewBranchIncludes Branches will be included for automatic deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewBranchIncludes(String... previewBranchIncludes) {
             return previewBranchIncludes(List.of(previewBranchIncludes));
         }
 
-        /**
-         * @param previewDeploymentSetting Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewDeploymentSetting(@Nullable Output<String> previewDeploymentSetting) {
             $.previewDeploymentSetting = previewDeploymentSetting;
             return this;
         }
 
-        /**
-         * @param previewDeploymentSetting Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder previewDeploymentSetting(String previewDeploymentSetting) {
             return previewDeploymentSetting(Output.of(previewDeploymentSetting));
         }
 
-        /**
-         * @param productionBranch Project production branch name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder productionBranch(Output<String> productionBranch) {
+        public Builder productionBranch(@Nullable Output<String> productionBranch) {
             $.productionBranch = productionBranch;
             return this;
         }
 
-        /**
-         * @param productionBranch Project production branch name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder productionBranch(String productionBranch) {
             return productionBranch(Output.of(productionBranch));
         }
 
-        /**
-         * @param productionDeploymentEnabled Enable production deployments. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder productionDeploymentEnabled(@Nullable Output<Boolean> productionDeploymentEnabled) {
-            $.productionDeploymentEnabled = productionDeploymentEnabled;
+        public Builder productionDeploymentsEnabled(@Nullable Output<Boolean> productionDeploymentsEnabled) {
+            $.productionDeploymentsEnabled = productionDeploymentsEnabled;
             return this;
         }
 
-        /**
-         * @param productionDeploymentEnabled Enable production deployments. Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder productionDeploymentEnabled(Boolean productionDeploymentEnabled) {
-            return productionDeploymentEnabled(Output.of(productionDeploymentEnabled));
+        public Builder productionDeploymentsEnabled(Boolean productionDeploymentsEnabled) {
+            return productionDeploymentsEnabled(Output.of(productionDeploymentsEnabled));
         }
 
-        /**
-         * @param repoName Project repository name. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoName(@Nullable Output<String> repoName) {
             $.repoName = repoName;
             return this;
         }
 
-        /**
-         * @param repoName Project repository name. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoName(String repoName) {
             return repoName(Output.of(repoName));
         }
 
         public PagesProjectSourceConfigArgs build() {
-            if ($.productionBranch == null) {
-                throw new MissingRequiredPropertyException("PagesProjectSourceConfigArgs", "productionBranch");
-            }
             return $;
         }
     }

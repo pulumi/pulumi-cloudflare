@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Waiting Room resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,35 +19,46 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Waiting Room
-//			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
-//				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:              pulumi.String("foo"),
-//				Host:              pulumi.String("foo.example.com"),
-//				Path:              pulumi.String("/"),
+//			_, err := cloudflare.NewWaitingRoom(ctx, "example_waiting_room", &cloudflare.WaitingRoomArgs{
+//				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Host:              pulumi.String("shop.example.com"),
+//				Name:              pulumi.String("production_webinar"),
 //				NewUsersPerMinute: pulumi.Int(200),
 //				TotalActiveUsers:  pulumi.Int(200),
-//				CookieSuffix:      pulumi.String("queue1"),
 //				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
 //					&cloudflare.WaitingRoomAdditionalRouteArgs{
-//						Host: pulumi.String("shop1.example.com"),
-//						Path: pulumi.String("/example-path"),
-//					},
-//					&cloudflare.WaitingRoomAdditionalRouteArgs{
 //						Host: pulumi.String("shop2.example.com"),
+//						Path: pulumi.String("/shop2/checkout"),
 //					},
 //				},
-//				QueueingStatusCode: pulumi.Int(200),
+//				CookieAttributes: &cloudflare.WaitingRoomCookieAttributesArgs{
+//					Samesite: pulumi.String("auto"),
+//					Secure:   pulumi.String("auto"),
+//				},
+//				CookieSuffix:            pulumi.String("abcd"),
+//				CustomPageHtml:          pulumi.String("{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"),
+//				DefaultTemplateLanguage: pulumi.String("en-US"),
+//				Description:             pulumi.String("Production - DO NOT MODIFY"),
+//				DisableSessionRenewal:   pulumi.Bool(false),
 //				EnabledOriginCommands: pulumi.StringArray{
 //					pulumi.String("revoke"),
 //				},
+//				JsonResponseEnabled: pulumi.Bool(false),
+//				Path:                pulumi.String("/shop/checkout"),
+//				QueueAll:            pulumi.Bool(true),
+//				QueueingMethod:      pulumi.String("fifo"),
+//				QueueingStatusCode:  pulumi.Int(200),
+//				SessionDuration:     pulumi.Int(1),
+//				Suspended:           pulumi.Bool(true),
+//				TurnstileAction:     pulumi.String("log"),
+//				TurnstileMode:       pulumi.String("off"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,51 +71,146 @@ import (
 //
 // ## Import
 //
-// Use the Zone ID and Waiting Room ID to import.
-//
 // ```sh
-// $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
+// $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '<zone_id>/<waiting_room_id>'
 // ```
 type WaitingRoom struct {
 	pulumi.CustomResourceState
 
-	// A list of additional hostname and paths combination to be applied on the waiting room.
+	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes WaitingRoomAdditionalRouteArrayOutput `pulumi:"additionalRoutes"`
-	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+	CookieAttributes WaitingRoomCookieAttributesOutput `pulumi:"cookieAttributes"`
+	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 	CookieSuffix pulumi.StringPtrOutput `pulumi:"cookieSuffix"`
-	// This is a templated html file that will be rendered at the edge.
-	CustomPageHtml pulumi.StringPtrOutput `pulumi:"customPageHtml"`
-	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
-	DefaultTemplateLanguage pulumi.StringPtrOutput `pulumi:"defaultTemplateLanguage"`
-	// A description to add more details about the waiting room.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Disables automatic renewal of session cookies.
-	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+	CreatedOn    pulumi.StringOutput    `pulumi:"createdOn"`
+	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
+	CustomPageHtml pulumi.StringOutput `pulumi:"customPageHtml"`
+	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+	// used.
+	DefaultTemplateLanguage pulumi.StringOutput `pulumi:"defaultTemplateLanguage"`
+	// A note that you can use to add more details about the waiting room.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+	// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+	// room again. If `false`, a user's session cookie will be automatically renewed on every request.
+	DisableSessionRenewal pulumi.BoolOutput `pulumi:"disableSessionRenewal"`
+	// A list of enabled origin commands.
 	EnabledOriginCommands pulumi.StringArrayOutput `pulumi:"enabledOriginCommands"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-	JsonResponseEnabled pulumi.BoolPtrOutput `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+	// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+	// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+	// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+	// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+	// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+	// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+	// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+	// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+	// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+	// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+	// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+	// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+	// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+	// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+	// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+	// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+	// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+	// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+	// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+	// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+	// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+	// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+	// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+	// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+	// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+	// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+	// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+	// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+	// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+	// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+	// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+	// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+	// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+	// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+	// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	JsonResponseEnabled pulumi.BoolOutput   `pulumi:"jsonResponseEnabled"`
+	ModifiedOn          pulumi.StringOutput `pulumi:"modifiedOn"`
+	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of new users that will be let into the route every minute.
+	// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 	NewUsersPerMinute pulumi.IntOutput `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Defaults to `/`.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// If queueAll is true, then all traffic will be sent to the waiting room.
-	QueueAll pulumi.BoolPtrOutput `pulumi:"queueAll"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
-	QueueingMethod pulumi.StringPtrOutput `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue. Defaults to `200`.
-	QueueingStatusCode pulumi.IntPtrOutput `pulumi:"queueingStatusCode"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
-	SessionDuration pulumi.IntPtrOutput `pulumi:"sessionDuration"`
-	// Suspends the waiting room.
-	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
-	// The total number of active user sessions on the route at a point in time.
+	// An ISO 8601 timestamp that marks when the next event will begin queueing.
+	NextEventPrequeueStartTime pulumi.StringOutput `pulumi:"nextEventPrequeueStartTime"`
+	// An ISO 8601 timestamp that marks when the next event will start.
+	NextEventStartTime pulumi.StringOutput `pulumi:"nextEventStartTime"`
+	// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+	// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+	// Wildcards and query parameters are not supported.
+	Path pulumi.StringOutput `pulumi:"path"`
+	// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+	// get to the route once this field is set and estimated time will become unavailable.
+	QueueAll pulumi.BoolOutput `pulumi:"queueAll"`
+	// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+	// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+	// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+	// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+	// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+	// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+	// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+	// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+	// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+	// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+	// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+	// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+	// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+	// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+	// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+	// prequeueing, the waiting room page **will not refresh automatically**.
+	QueueingMethod pulumi.StringOutput `pulumi:"queueingMethod"`
+	// HTTP status code returned to a user while in the queue.
+	QueueingStatusCode pulumi.IntOutput `pulumi:"queueingStatusCode"`
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+	// Cloudflare again in that time period, they will be treated as a new user that visits the route.
+	SessionDuration pulumi.IntOutput `pulumi:"sessionDuration"`
+	// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
+	Suspended pulumi.BoolOutput `pulumi:"suspended"`
+	// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 	TotalActiveUsers pulumi.IntOutput `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+	// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+	// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+	TurnstileAction pulumi.StringOutput `pulumi:"turnstileAction"`
+	// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+	// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+	// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+	// `invisible` requires Advanced Waiting Room.
+	TurnstileMode pulumi.StringOutput `pulumi:"turnstileMode"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -155,84 +259,278 @@ func GetWaitingRoom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoom resources.
 type waitingRoomState struct {
-	// A list of additional hostname and paths combination to be applied on the waiting room.
+	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes []WaitingRoomAdditionalRoute `pulumi:"additionalRoutes"`
-	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+	CookieAttributes *WaitingRoomCookieAttributes `pulumi:"cookieAttributes"`
+	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 	CookieSuffix *string `pulumi:"cookieSuffix"`
-	// This is a templated html file that will be rendered at the edge.
+	CreatedOn    *string `pulumi:"createdOn"`
+	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
+	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+	// used.
 	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
-	// A description to add more details about the waiting room.
+	// A note that you can use to add more details about the waiting room.
 	Description *string `pulumi:"description"`
-	// Disables automatic renewal of session cookies.
+	// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+	// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+	// room again. If `false`, a user's session cookie will be automatically renewed on every request.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+	// A list of enabled origin commands.
 	EnabledOriginCommands []string `pulumi:"enabledOriginCommands"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 	Host *string `pulumi:"host"`
-	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+	// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+	// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+	// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+	// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+	// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+	// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+	// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+	// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+	// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+	// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+	// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+	// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+	// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+	// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+	// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+	// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+	// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+	// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+	// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+	// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+	// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+	// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+	// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+	// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+	// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+	// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+	// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+	// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+	// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+	// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+	// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+	// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+	// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+	// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+	// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	JsonResponseEnabled *bool   `pulumi:"jsonResponseEnabled"`
+	ModifiedOn          *string `pulumi:"modifiedOn"`
+	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name *string `pulumi:"name"`
-	// The number of new users that will be let into the route every minute.
+	// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Defaults to `/`.
+	// An ISO 8601 timestamp that marks when the next event will begin queueing.
+	NextEventPrequeueStartTime *string `pulumi:"nextEventPrequeueStartTime"`
+	// An ISO 8601 timestamp that marks when the next event will start.
+	NextEventStartTime *string `pulumi:"nextEventStartTime"`
+	// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+	// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+	// Wildcards and query parameters are not supported.
 	Path *string `pulumi:"path"`
-	// If queueAll is true, then all traffic will be sent to the waiting room.
+	// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+	// get to the route once this field is set and estimated time will become unavailable.
 	QueueAll *bool `pulumi:"queueAll"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+	// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+	// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+	// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+	// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+	// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+	// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+	// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+	// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+	// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+	// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+	// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+	// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+	// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+	// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+	// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+	// prequeueing, the waiting room page **will not refresh automatically**.
 	QueueingMethod *string `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue. Defaults to `200`.
+	// HTTP status code returned to a user while in the queue.
 	QueueingStatusCode *int `pulumi:"queueingStatusCode"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+	// Cloudflare again in that time period, they will be treated as a new user that visits the route.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// Suspends the waiting room.
+	// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
 	Suspended *bool `pulumi:"suspended"`
-	// The total number of active user sessions on the route at a point in time.
+	// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+	// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+	// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+	TurnstileAction *string `pulumi:"turnstileAction"`
+	// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+	// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+	// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+	// `invisible` requires Advanced Waiting Room.
+	TurnstileMode *string `pulumi:"turnstileMode"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomState struct {
-	// A list of additional hostname and paths combination to be applied on the waiting room.
+	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes WaitingRoomAdditionalRouteArrayInput
-	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+	CookieAttributes WaitingRoomCookieAttributesPtrInput
+	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 	CookieSuffix pulumi.StringPtrInput
-	// This is a templated html file that will be rendered at the edge.
+	CreatedOn    pulumi.StringPtrInput
+	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml pulumi.StringPtrInput
-	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
+	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+	// used.
 	DefaultTemplateLanguage pulumi.StringPtrInput
-	// A description to add more details about the waiting room.
+	// A note that you can use to add more details about the waiting room.
 	Description pulumi.StringPtrInput
-	// Disables automatic renewal of session cookies.
+	// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+	// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+	// room again. If `false`, a user's session cookie will be automatically renewed on every request.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+	// A list of enabled origin commands.
 	EnabledOriginCommands pulumi.StringArrayInput
-	// Host name for which the waiting room will be applied (no wildcards).
+	// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 	Host pulumi.StringPtrInput
-	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
+	// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+	// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+	// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+	// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+	// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+	// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+	// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+	// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+	// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+	// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+	// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+	// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+	// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+	// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+	// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+	// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+	// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+	// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+	// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+	// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+	// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+	// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+	// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+	// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+	// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+	// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+	// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+	// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+	// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+	// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+	// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+	// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+	// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+	// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+	// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
 	JsonResponseEnabled pulumi.BoolPtrInput
-	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+	ModifiedOn          pulumi.StringPtrInput
+	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringPtrInput
-	// The number of new users that will be let into the route every minute.
+	// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 	NewUsersPerMinute pulumi.IntPtrInput
-	// The path within the host to enable the waiting room on. Defaults to `/`.
+	// An ISO 8601 timestamp that marks when the next event will begin queueing.
+	NextEventPrequeueStartTime pulumi.StringPtrInput
+	// An ISO 8601 timestamp that marks when the next event will start.
+	NextEventStartTime pulumi.StringPtrInput
+	// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+	// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+	// Wildcards and query parameters are not supported.
 	Path pulumi.StringPtrInput
-	// If queueAll is true, then all traffic will be sent to the waiting room.
+	// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+	// get to the route once this field is set and estimated time will become unavailable.
 	QueueAll pulumi.BoolPtrInput
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+	// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+	// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+	// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+	// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+	// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+	// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+	// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+	// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+	// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+	// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+	// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+	// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+	// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+	// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+	// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+	// prequeueing, the waiting room page **will not refresh automatically**.
 	QueueingMethod pulumi.StringPtrInput
-	// HTTP status code returned to a user while in the queue. Defaults to `200`.
+	// HTTP status code returned to a user while in the queue.
 	QueueingStatusCode pulumi.IntPtrInput
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+	// Cloudflare again in that time period, they will be treated as a new user that visits the route.
 	SessionDuration pulumi.IntPtrInput
-	// Suspends the waiting room.
+	// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
 	Suspended pulumi.BoolPtrInput
-	// The total number of active user sessions on the route at a point in time.
+	// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 	TotalActiveUsers pulumi.IntPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+	// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+	// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+	TurnstileAction pulumi.StringPtrInput
+	// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+	// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+	// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+	// `invisible` requires Advanced Waiting Room.
+	TurnstileMode pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -241,85 +539,267 @@ func (WaitingRoomState) ElementType() reflect.Type {
 }
 
 type waitingRoomArgs struct {
-	// A list of additional hostname and paths combination to be applied on the waiting room.
+	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes []WaitingRoomAdditionalRoute `pulumi:"additionalRoutes"`
-	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+	CookieAttributes *WaitingRoomCookieAttributes `pulumi:"cookieAttributes"`
+	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 	CookieSuffix *string `pulumi:"cookieSuffix"`
-	// This is a templated html file that will be rendered at the edge.
+	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
+	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+	// used.
 	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
-	// A description to add more details about the waiting room.
+	// A note that you can use to add more details about the waiting room.
 	Description *string `pulumi:"description"`
-	// Disables automatic renewal of session cookies.
+	// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+	// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+	// room again. If `false`, a user's session cookie will be automatically renewed on every request.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+	// A list of enabled origin commands.
 	EnabledOriginCommands []string `pulumi:"enabledOriginCommands"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 	Host string `pulumi:"host"`
-	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
+	// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+	// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+	// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+	// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+	// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+	// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+	// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+	// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+	// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+	// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+	// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+	// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+	// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+	// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+	// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+	// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+	// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+	// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+	// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+	// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+	// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+	// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+	// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+	// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+	// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+	// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+	// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+	// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+	// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+	// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+	// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+	// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+	// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+	// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+	// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name string `pulumi:"name"`
-	// The number of new users that will be let into the route every minute.
+	// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 	NewUsersPerMinute int `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Defaults to `/`.
+	// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+	// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+	// Wildcards and query parameters are not supported.
 	Path *string `pulumi:"path"`
-	// If queueAll is true, then all traffic will be sent to the waiting room.
+	// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+	// get to the route once this field is set and estimated time will become unavailable.
 	QueueAll *bool `pulumi:"queueAll"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+	// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+	// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+	// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+	// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+	// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+	// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+	// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+	// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+	// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+	// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+	// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+	// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+	// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+	// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+	// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+	// prequeueing, the waiting room page **will not refresh automatically**.
 	QueueingMethod *string `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue. Defaults to `200`.
+	// HTTP status code returned to a user while in the queue.
 	QueueingStatusCode *int `pulumi:"queueingStatusCode"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+	// Cloudflare again in that time period, they will be treated as a new user that visits the route.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// Suspends the waiting room.
+	// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
 	Suspended *bool `pulumi:"suspended"`
-	// The total number of active user sessions on the route at a point in time.
+	// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 	TotalActiveUsers int `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+	// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+	// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+	TurnstileAction *string `pulumi:"turnstileAction"`
+	// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+	// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+	// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+	// `invisible` requires Advanced Waiting Room.
+	TurnstileMode *string `pulumi:"turnstileMode"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoom resource.
 type WaitingRoomArgs struct {
-	// A list of additional hostname and paths combination to be applied on the waiting room.
+	// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 	AdditionalRoutes WaitingRoomAdditionalRouteArrayInput
-	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+	CookieAttributes WaitingRoomCookieAttributesPtrInput
+	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 	CookieSuffix pulumi.StringPtrInput
-	// This is a templated html file that will be rendered at the edge.
+	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml pulumi.StringPtrInput
-	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
+	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+	// used.
 	DefaultTemplateLanguage pulumi.StringPtrInput
-	// A description to add more details about the waiting room.
+	// A note that you can use to add more details about the waiting room.
 	Description pulumi.StringPtrInput
-	// Disables automatic renewal of session cookies.
+	// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+	// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+	// room again. If `false`, a user's session cookie will be automatically renewed on every request.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+	// A list of enabled origin commands.
 	EnabledOriginCommands pulumi.StringArrayInput
-	// Host name for which the waiting room will be applied (no wildcards).
+	// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 	Host pulumi.StringInput
-	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
+	// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+	// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+	// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+	// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+	// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+	// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+	// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+	// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+	// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+	// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+	// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+	// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+	// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+	// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+	// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+	// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+	// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+	// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+	// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+	// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+	// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+	// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+	// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+	// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+	// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+	// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+	// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+	// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+	// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+	// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+	// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+	// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+	// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+	// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+	// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+	// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
 	JsonResponseEnabled pulumi.BoolPtrInput
-	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringInput
-	// The number of new users that will be let into the route every minute.
+	// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 	NewUsersPerMinute pulumi.IntInput
-	// The path within the host to enable the waiting room on. Defaults to `/`.
+	// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+	// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+	// Wildcards and query parameters are not supported.
 	Path pulumi.StringPtrInput
-	// If queueAll is true, then all traffic will be sent to the waiting room.
+	// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+	// get to the route once this field is set and estimated time will become unavailable.
 	QueueAll pulumi.BoolPtrInput
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+	// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+	// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+	// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+	// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+	// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+	// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+	// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+	// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+	// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+	// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+	// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+	// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+	// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+	// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+	// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+	// prequeueing, the waiting room page **will not refresh automatically**.
 	QueueingMethod pulumi.StringPtrInput
-	// HTTP status code returned to a user while in the queue. Defaults to `200`.
+	// HTTP status code returned to a user while in the queue.
 	QueueingStatusCode pulumi.IntPtrInput
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+	// Cloudflare again in that time period, they will be treated as a new user that visits the route.
 	SessionDuration pulumi.IntPtrInput
-	// Suspends the waiting room.
+	// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
 	Suspended pulumi.BoolPtrInput
-	// The total number of active user sessions on the route at a point in time.
+	// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 	TotalActiveUsers pulumi.IntInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+	// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+	// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+	TurnstileAction pulumi.StringPtrInput
+	// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+	// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+	// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+	// `invisible` requires Advanced Waiting Room.
+	TurnstileMode pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -410,97 +890,215 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 	return o
 }
 
-// A list of additional hostname and paths combination to be applied on the waiting room.
+// Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
 func (o WaitingRoomOutput) AdditionalRoutes() WaitingRoomAdditionalRouteArrayOutput {
 	return o.ApplyT(func(v *WaitingRoom) WaitingRoomAdditionalRouteArrayOutput { return v.AdditionalRoutes }).(WaitingRoomAdditionalRouteArrayOutput)
 }
 
-// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
+func (o WaitingRoomOutput) CookieAttributes() WaitingRoomCookieAttributesOutput {
+	return o.ApplyT(func(v *WaitingRoom) WaitingRoomCookieAttributesOutput { return v.CookieAttributes }).(WaitingRoomCookieAttributesOutput)
+}
+
+// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
 func (o WaitingRoomOutput) CookieSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CookieSuffix }).(pulumi.StringPtrOutput)
 }
 
-// This is a templated html file that will be rendered at the edge.
-func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
+func (o WaitingRoomOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`, `bg-BG`, `hr-HR`, `cs-CZ`, `da-DK`, `fi-FI`, `lt-LT`, `ms-MY`, `nb-NO`, `ro-RO`, `el-GR`, `he-IL`, `hi-IN`, `hu-HU`, `sr-BA`, `sk-SK`, `sl-SI`, `sv-SE`, `tl-PH`, `th-TH`, `uk-UA`, `vi-VN`. Defaults to `en-US`.
-func (o WaitingRoomOutput) DefaultTemplateLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.DefaultTemplateLanguage }).(pulumi.StringPtrOutput)
+// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
+func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.CustomPageHtml }).(pulumi.StringOutput)
 }
 
-// A description to add more details about the waiting room.
-func (o WaitingRoomOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be
+// used.
+func (o WaitingRoomOutput) DefaultTemplateLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.DefaultTemplateLanguage }).(pulumi.StringOutput)
 }
 
-// Disables automatic renewal of session cookies.
-func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
+// A note that you can use to add more details about the waiting room.
+func (o WaitingRoomOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The list of enabled origin commands for the waiting room. Available values: `revoke`.
+// Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an
+// accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting
+// room again. If `false`, a user's session cookie will be automatically renewed on every request.
+func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolOutput { return v.DisableSessionRenewal }).(pulumi.BoolOutput)
+}
+
+// A list of enabled origin commands.
 func (o WaitingRoomOutput) EnabledOriginCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringArrayOutput { return v.EnabledOriginCommands }).(pulumi.StringArrayOutput)
 }
 
-// Host name for which the waiting room will be applied (no wildcards).
+// The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
 func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.JsonResponseEnabled }).(pulumi.BoolPtrOutput)
+// Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header
+// `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room
+// as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an
+// object containing the following fields: 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room
+// (always **true**). 2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If
+// **false**, they are not available. 3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the
+// current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is
+// set to `waitTime50Percentile`. 4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and
+// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain
+// entry the fastest (25th percentile). 5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and
+// `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain
+// entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin
+// website before `waitTime50Percentile` and half are expected to be let in after it. 6. `waitTime75Percentile`: Valid only
+// when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum
+// wait time for the 75% of users that gain entry the fastest (75th percentile). 7. `waitTimeFormatted`: String displaying
+// the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display
+// **unavailable**. 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting
+// new users at the moment. 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one
+// will be let into the origin website. 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the
+// user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another
+// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
+// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
+// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
+// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
+// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
+// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
+// gain access randomly. 15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in
+// mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or
+// `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin. 16.
+// `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue. 17. `isEventActive`: Boolean indicating if
+// an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time.
+// For additional information, look at the event properties `prequeueStartTime`, `eventStartTime`, and `eventEndTime` in
+// the documentation for creating waiting room events. Events are considered active between these start and end times, as
+// well as during the prequeueing period if it exists. 18. `isEventPrequeueing`: Valid only when `isEventActive` is
+// **true**. Boolean indicating if an event is currently prequeueing users before it starts. 19. `timeUntilEventStart`:
+// Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts. 20.
+// `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If
+// `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**. 21. `timeUntilEventEnd`:
+// Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends. 22.
+// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
+// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
+// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
+// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
+// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
+// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
+// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
+// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
+// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
+// "timeUntilEventEndFormatted": "unavailable", "shuffleAtEventStart": false } } If `jsonResponseEnabled` is **true** and
+// the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active
+// could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 5,
+// "waitTime50Percentile": 10, "waitTime75Percentile": 15, "waitTimeFormatted": "5 minutes to 15 minutes", "queueIsFull":
+// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
+// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
+// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
+// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolOutput { return v.JsonResponseEnabled }).(pulumi.BoolOutput)
 }
 
-// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
+func (o WaitingRoomOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 func (o WaitingRoomOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of new users that will be let into the route every minute.
+// Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
 func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.NewUsersPerMinute }).(pulumi.IntOutput)
 }
 
-// The path within the host to enable the waiting room on. Defaults to `/`.
-func (o WaitingRoomOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+// An ISO 8601 timestamp that marks when the next event will begin queueing.
+func (o WaitingRoomOutput) NextEventPrequeueStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.NextEventPrequeueStartTime }).(pulumi.StringOutput)
 }
 
-// If queueAll is true, then all traffic will be sent to the waiting room.
-func (o WaitingRoomOutput) QueueAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.QueueAll }).(pulumi.BoolPtrOutput)
+// An ISO 8601 timestamp that marks when the next event will start.
+func (o WaitingRoomOutput) NextEventStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.NextEventStartTime }).(pulumi.StringOutput)
 }
 
-// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
-func (o WaitingRoomOutput) QueueingMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.QueueingMethod }).(pulumi.StringPtrOutput)
+// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
+// If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
+// Wildcards and query parameters are not supported.
+func (o WaitingRoomOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
-// HTTP status code returned to a user while in the queue. Defaults to `200`.
-func (o WaitingRoomOutput) QueueingStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.IntPtrOutput { return v.QueueingStatusCode }).(pulumi.IntPtrOutput)
+// If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can
+// get to the route once this field is set and estimated time will become unavailable.
+func (o WaitingRoomOutput) QueueAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolOutput { return v.QueueAll }).(pulumi.BoolOutput)
 }
 
-// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
-func (o WaitingRoomOutput) SessionDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.IntPtrOutput { return v.SessionDuration }).(pulumi.IntPtrOutput)
+// Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only
+// available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an
+// event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a
+// waiting room page that refreshes automatically. The valid queueing methods are: 1. `fifo` **(default)**:
+// First-In-First-Out queue where customers gain access in the order they arrived. 2. `random`: Random queue where
+// customers gain access randomly, regardless of arrival time. 3. `passthrough`: Users will pass directly through the
+// waiting room and into the origin website. As a result, any configured limits will not be respected while this is
+// enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are
+// still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a
+// waiting room event, or vice versa. 4. `reject`: Users will be immediately rejected from the waiting room. As a result,
+// no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while
+// performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are
+// not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and
+// otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`,
+// `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is
+// prequeueing, the waiting room page **will not refresh automatically**.
+func (o WaitingRoomOutput) QueueingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.QueueingMethod }).(pulumi.StringOutput)
 }
 
-// Suspends the waiting room.
-func (o WaitingRoomOutput) Suspended() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+// HTTP status code returned to a user while in the queue.
+func (o WaitingRoomOutput) QueueingStatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.QueueingStatusCode }).(pulumi.IntOutput)
 }
 
-// The total number of active user sessions on the route at a point in time.
+// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by
+// Cloudflare again in that time period, they will be treated as a new user that visits the route.
+func (o WaitingRoomOutput) SessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.SessionDuration }).(pulumi.IntOutput)
+}
+
+// Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
+func (o WaitingRoomOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
 func (o WaitingRoomOutput) TotalActiveUsers() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.TotalActiveUsers }).(pulumi.IntOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Which action to take when a bot is detected using Turnstile. `log` will have no impact on queueing behavior, simply
+// keeping track of how many bots are detected in Waiting Room Analytics. `infiniteQueue` will send bots to a false
+// queueing state, where they will never reach your origin. `infiniteQueue` requires Advanced Waiting Room.
+func (o WaitingRoomOutput) TurnstileAction() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.TurnstileAction }).(pulumi.StringOutput)
+}
+
+// Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile
+// documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these
+// widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
+// `invisible` requires Advanced Waiting Room.
+func (o WaitingRoomOutput) TurnstileMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.TurnstileMode }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

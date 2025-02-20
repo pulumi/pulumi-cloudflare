@@ -4,25 +4,26 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersAlgorithm {
     /**
-     * @return Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of compression algorithm to enable.
      * 
      */
-    private String name;
+    private @Nullable String name;
 
     private RulesetRuleActionParametersAlgorithm() {}
     /**
-     * @return Name of the compression algorithm to use. Available values: `zstd`, `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of compression algorithm to enable.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class RulesetRuleActionParametersAlgorithm {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
+        private @Nullable String name;
         public Builder() {}
         public Builder(RulesetRuleActionParametersAlgorithm defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class RulesetRuleActionParametersAlgorithm {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("RulesetRuleActionParametersAlgorithm", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

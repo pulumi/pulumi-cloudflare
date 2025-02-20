@@ -26,16 +26,6 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-     * environment variable.
-     */
-    public readonly apiBasePath!: pulumi.Output<string | undefined>;
-    /**
-     * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-     * environment variable.
-     */
-    public readonly apiHostname!: pulumi.Output<string | undefined>;
-    /**
      * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
      * keys are [now considered legacy by
      * Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
@@ -54,6 +44,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly apiUserServiceKey!: pulumi.Output<string | undefined>;
     /**
+     * Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+     * variable.
+     */
+    public readonly baseUrl!: pulumi.Output<string | undefined>;
+    /**
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
      * variable. Required when using `apiKey`. Conflicts with `apiToken`.
      */
@@ -71,17 +66,11 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiBasePath"] = args ? args.apiBasePath : undefined;
-            resourceInputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
-            resourceInputs["apiHostname"] = args ? args.apiHostname : undefined;
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["apiUserServiceKey"] = args?.apiUserServiceKey ? pulumi.secret(args.apiUserServiceKey) : undefined;
+            resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
-            resourceInputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
-            resourceInputs["retries"] = pulumi.output((args ? args.retries : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
-            resourceInputs["rps"] = pulumi.output((args ? args.rps : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
             resourceInputs["userAgentOperatorSuffix"] = args ? args.userAgentOperatorSuffix : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -95,21 +84,6 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    /**
-     * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
-     * environment variable.
-     */
-    apiBasePath?: pulumi.Input<string>;
-    /**
-     * Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
-     * the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-     */
-    apiClientLogging?: pulumi.Input<boolean>;
-    /**
-     * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
-     * environment variable.
-     */
-    apiHostname?: pulumi.Input<string>;
     /**
      * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
      * keys are [now considered legacy by
@@ -129,29 +103,14 @@ export interface ProviderArgs {
      */
     apiUserServiceKey?: pulumi.Input<string>;
     /**
+     * Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
+     * variable.
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
      * variable. Required when using `apiKey`. Conflicts with `apiToken`.
      */
     email?: pulumi.Input<string>;
-    /**
-     * Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-     * `CLOUDFLARE_MAX_BACKOFF` environment variable.
-     */
-    maxBackoff?: pulumi.Input<number>;
-    /**
-     * Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
-     * `CLOUDFLARE_MIN_BACKOFF` environment variable.
-     */
-    minBackoff?: pulumi.Input<number>;
-    /**
-     * Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
-     * `CLOUDFLARE_RETRIES` environment variable.
-     */
-    retries?: pulumi.Input<number>;
-    /**
-     * RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
-     * variable.
-     */
-    rps?: pulumi.Input<number>;
     userAgentOperatorSuffix?: pulumi.Input<string>;
 }

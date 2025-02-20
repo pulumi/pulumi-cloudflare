@@ -13,38 +13,77 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.SnippetRules;
+ * import com.pulumi.cloudflare.SnippetRulesArgs;
+ * import com.pulumi.cloudflare.inputs.SnippetRulesRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleSnippetRules = new SnippetRules("exampleSnippetRules", SnippetRulesArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .rules(SnippetRulesRuleArgs.builder()
+ *                 .description("Rule description")
+ *                 .enabled(true)
+ *                 .expression("http.cookie eq \"a=b\"")
+ *                 .snippet_name("snippet_name_01")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      * 
      */
     @Export(name="rules", refs={List.class,SnippetRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SnippetRulesRule>> rules;
+    private Output<List<SnippetRulesRule>> rules;
 
     /**
-     * @return List of Snippet Rules
+     * @return List of snippet rules
      * 
      */
-    public Output<Optional<List<SnippetRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<SnippetRulesRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

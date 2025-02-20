@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionPlacement {
     /**
-     * @return Placement Mode for the Pages Function.
+     * @return Placement mode.
      * 
      */
     private @Nullable String mode;
 
     private PagesProjectDeploymentConfigsProductionPlacement() {}
     /**
-     * @return Placement Mode for the Pages Function.
+     * @return Placement mode.
      * 
      */
     public Optional<String> mode() {

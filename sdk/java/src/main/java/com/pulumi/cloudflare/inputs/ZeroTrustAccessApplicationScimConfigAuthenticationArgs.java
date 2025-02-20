@@ -62,9 +62,17 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
         return Optional.ofNullable(this.clientSecret);
     }
 
+    /**
+     * Password used to authenticate with the remote SCIM service.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -239,11 +247,23 @@ public final class ZeroTrustAccessApplicationScimConfigAuthenticationArgs extend
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param password Password used to authenticate with the remote SCIM service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Password used to authenticate with the remote SCIM service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }

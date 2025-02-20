@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Api shield operation
-//
 // ## Example Usage
 //
 // ```go
@@ -21,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldOperation(ctx, "example", &cloudflare.ApiShieldOperationArgs{
-//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			_, err := cloudflare.NewApiShieldOperation(ctx, "example_api_shield_operation", &cloudflare.ApiShieldOperationArgs{
+//				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Endpoint: pulumi.String("/api/v1/users/{var1}"),
+//				Host:     pulumi.String("www.example.com"),
 //				Method:   pulumi.String("GET"),
-//				Host:     pulumi.String("api.example.com"),
-//				Endpoint: pulumi.String("/path"),
 //			})
 //			if err != nil {
 //				return err
@@ -42,16 +40,26 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
+// ```
 type ApiShieldOperation struct {
 	pulumi.CustomResourceState
 
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// RFC3986-compliant host
-	Host pulumi.StringOutput `pulumi:"host"`
-	// The HTTP method used to access the endpoint
+	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+	Endpoint pulumi.StringOutput              `pulumi:"endpoint"`
+	Features ApiShieldOperationFeaturesOutput `pulumi:"features"`
+	// RFC3986-compliant host.
+	Host        pulumi.StringOutput `pulumi:"host"`
+	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
+	// The HTTP method used to access the endpoint.
 	Method pulumi.StringOutput `pulumi:"method"`
-	// The zone identifier to target for the resource.
+	// UUID
+	OperationId pulumi.StringOutput `pulumi:"operationId"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -97,24 +105,32 @@ func GetApiShieldOperation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShieldOperation resources.
 type apiShieldOperationState struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
-	Endpoint *string `pulumi:"endpoint"`
-	// RFC3986-compliant host
-	Host *string `pulumi:"host"`
-	// The HTTP method used to access the endpoint
+	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
+	Endpoint *string                     `pulumi:"endpoint"`
+	Features *ApiShieldOperationFeatures `pulumi:"features"`
+	// RFC3986-compliant host.
+	Host        *string `pulumi:"host"`
+	LastUpdated *string `pulumi:"lastUpdated"`
+	// The HTTP method used to access the endpoint.
 	Method *string `pulumi:"method"`
-	// The zone identifier to target for the resource.
+	// UUID
+	OperationId *string `pulumi:"operationId"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldOperationState struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint pulumi.StringPtrInput
-	// RFC3986-compliant host
-	Host pulumi.StringPtrInput
-	// The HTTP method used to access the endpoint
+	Features ApiShieldOperationFeaturesPtrInput
+	// RFC3986-compliant host.
+	Host        pulumi.StringPtrInput
+	LastUpdated pulumi.StringPtrInput
+	// The HTTP method used to access the endpoint.
 	Method pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// UUID
+	OperationId pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -123,25 +139,25 @@ func (ApiShieldOperationState) ElementType() reflect.Type {
 }
 
 type apiShieldOperationArgs struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint string `pulumi:"endpoint"`
-	// RFC3986-compliant host
+	// RFC3986-compliant host.
 	Host string `pulumi:"host"`
-	// The HTTP method used to access the endpoint
+	// The HTTP method used to access the endpoint.
 	Method string `pulumi:"method"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldOperation resource.
 type ApiShieldOperationArgs struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint pulumi.StringInput
-	// RFC3986-compliant host
+	// RFC3986-compliant host.
 	Host pulumi.StringInput
-	// The HTTP method used to access the endpoint
+	// The HTTP method used to access the endpoint.
 	Method pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -232,22 +248,35 @@ func (o ApiShieldOperationOutput) ToApiShieldOperationOutputWithContext(ctx cont
 	return o
 }
 
-// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 func (o ApiShieldOperationOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// RFC3986-compliant host
+func (o ApiShieldOperationOutput) Features() ApiShieldOperationFeaturesOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) ApiShieldOperationFeaturesOutput { return v.Features }).(ApiShieldOperationFeaturesOutput)
+}
+
+// RFC3986-compliant host.
 func (o ApiShieldOperationOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// The HTTP method used to access the endpoint
+func (o ApiShieldOperationOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// The HTTP method used to access the endpoint.
 func (o ApiShieldOperationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// UUID
+func (o ApiShieldOperationOutput) OperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o ApiShieldOperationOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

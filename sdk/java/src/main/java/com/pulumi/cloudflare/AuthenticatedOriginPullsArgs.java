@@ -3,11 +3,12 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,45 +18,22 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
 
     public static final AuthenticatedOriginPullsArgs Empty = new AuthenticatedOriginPullsArgs();
 
-    /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-     * 
-     */
-    @Import(name="authenticatedOriginPullsCertificate")
-    private @Nullable Output<String> authenticatedOriginPullsCertificate;
+    @Import(name="configs", required=true)
+    private Output<List<AuthenticatedOriginPullsConfigArgs>> configs;
 
-    /**
-     * @return The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-     * 
-     */
-    public Optional<Output<String>> authenticatedOriginPullsCertificate() {
-        return Optional.ofNullable(this.authenticatedOriginPullsCertificate);
+    public Output<List<AuthenticatedOriginPullsConfigArgs>> configs() {
+        return this.configs;
     }
 
     /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-     * 
-     */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
-
-    /**
-     * @return Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-     * 
-     */
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-
-    /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * @return The hostname on the origin for which the client certificate uploaded will be used.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -63,14 +41,14 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -80,8 +58,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
     private AuthenticatedOriginPullsArgs() {}
 
     private AuthenticatedOriginPullsArgs(AuthenticatedOriginPullsArgs $) {
-        this.authenticatedOriginPullsCertificate = $.authenticatedOriginPullsCertificate;
-        this.enabled = $.enabled;
+        this.configs = $.configs;
         this.hostname = $.hostname;
         this.zoneId = $.zoneId;
     }
@@ -104,50 +81,21 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
             $ = new AuthenticatedOriginPullsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authenticatedOriginPullsCertificate(@Nullable Output<String> authenticatedOriginPullsCertificate) {
-            $.authenticatedOriginPullsCertificate = authenticatedOriginPullsCertificate;
+        public Builder configs(Output<List<AuthenticatedOriginPullsConfigArgs>> configs) {
+            $.configs = configs;
             return this;
         }
 
-        /**
-         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authenticatedOriginPullsCertificate(String authenticatedOriginPullsCertificate) {
-            return authenticatedOriginPullsCertificate(Output.of(authenticatedOriginPullsCertificate));
+        public Builder configs(List<AuthenticatedOriginPullsConfigArgs> configs) {
+            return configs(Output.of(configs));
+        }
+
+        public Builder configs(AuthenticatedOriginPullsConfigArgs... configs) {
+            return configs(List.of(configs));
         }
 
         /**
-         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabled(Output<Boolean> enabled) {
-            $.enabled = enabled;
-            return this;
-        }
-
-        /**
-         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
-        }
-
-        /**
-         * @param hostname Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
          * 
          * @return builder
          * 
@@ -158,7 +106,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hostname Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+         * @param hostname The hostname on the origin for which the client certificate uploaded will be used.
          * 
          * @return builder
          * 
@@ -168,7 +116,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -179,7 +127,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -189,8 +137,8 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         public AuthenticatedOriginPullsArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsArgs", "enabled");
+            if ($.configs == null) {
+                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsArgs", "configs");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("AuthenticatedOriginPullsArgs", "zoneId");

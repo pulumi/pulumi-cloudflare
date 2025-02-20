@@ -8,140 +8,35 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
-// across all zones within the same account.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// IP List
-//			exampleIpList, err := cloudflare.NewList(ctx, "example_ip_list", &cloudflare.ListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("example_list"),
-//				Description: pulumi.String("example IPs for a list"),
-//				Kind:        pulumi.String("ip"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// IP List Item
-//			_, err = cloudflare.NewListItem(ctx, "example_ip_item", &cloudflare.ListItemArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ListId:    exampleIpList.ID(),
-//				Comment:   pulumi.String("List Item Comment"),
-//				Ip:        pulumi.String("192.0.2.0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Redirect List
-//			_, err = cloudflare.NewList(ctx, "example_redirect_list", &cloudflare.ListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("example_list"),
-//				Description: pulumi.String("example Redirects for a list"),
-//				Kind:        pulumi.String("redirect"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Redirect List Item
-//			_, err = cloudflare.NewListItem(ctx, "example_redirect_item", &cloudflare.ListItemArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ListId:    exampleIpList.ID(),
-//				Redirect: &cloudflare.ListItemRedirectArgs{
-//					SourceUrl:       pulumi.String("https://source.tld/"),
-//					TargetUrl:       pulumi.String("https://target.tld"),
-//					StatusCode:      pulumi.Int(302),
-//					SubpathMatching: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// ASN List
-//			exampleAsnList, err := cloudflare.NewList(ctx, "example_asn_list", &cloudflare.ListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("example_asn_list"),
-//				Description: pulumi.String("example ASNs for a list"),
-//				Kind:        pulumi.String("asn"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// ASN List Item
-//			_, err = cloudflare.NewListItem(ctx, "example_asn_item", &cloudflare.ListItemArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ListId:    exampleAsnList.ID(),
-//				Comment:   pulumi.String("List Item Comment"),
-//				Asn:       pulumi.Int(6789),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Hostname List
-//			exampleHostnameList, err := cloudflare.NewList(ctx, "example_hostname_list", &cloudflare.ListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("example_hostname_list"),
-//				Description: pulumi.String("example Hostnames for a list"),
-//				Kind:        pulumi.String("hostname"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Hostname List Item
-//			_, err = cloudflare.NewListItem(ctx, "example_hostname_item", &cloudflare.ListItemArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ListId:    exampleHostnameList.ID(),
-//				Comment:   pulumi.String("List Item Comment"),
-//				Hostname: &cloudflare.ListItemHostnameArgs{
-//					UrlHostname: pulumi.String("example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
-// ```
 type ListItem struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// Identifier
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
-	// An optional comment for the item.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An informative summary of the list item.
+	Comment pulumi.StringOutput `pulumi:"comment"`
+	// The RFC 3339 timestamp of when the item was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrOutput `pulumi:"hostname"`
-	// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
-	// The list identifier to target for the resource.
+	// The unique ID of the item in the List.
+	ItemId pulumi.StringOutput `pulumi:"itemId"`
+	// The unique ID of the list.
 	ListId pulumi.StringOutput `pulumi:"listId"`
-	// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The RFC 3339 timestamp of when the item was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// The unique operation ID of the asynchronous action.
+	OperationId pulumi.StringOutput `pulumi:"operationId"`
+	// The definition of the redirect.
 	Redirect ListItemRedirectPtrOutput `pulumi:"redirect"`
 }
 
@@ -152,9 +47,6 @@ func NewListItem(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.ListId == nil {
 		return nil, errors.New("invalid value for required argument 'ListId'")
 	}
@@ -181,36 +73,52 @@ func GetListItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListItem resources.
 type listItemState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
-	// An optional comment for the item.
+	// An informative summary of the list item.
 	Comment *string `pulumi:"comment"`
-	// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The RFC 3339 timestamp of when the item was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname *ListItemHostname `pulumi:"hostname"`
-	// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip *string `pulumi:"ip"`
-	// The list identifier to target for the resource.
+	// The unique ID of the item in the List.
+	ItemId *string `pulumi:"itemId"`
+	// The unique ID of the list.
 	ListId *string `pulumi:"listId"`
-	// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The RFC 3339 timestamp of when the item was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// The unique operation ID of the asynchronous action.
+	OperationId *string `pulumi:"operationId"`
+	// The definition of the redirect.
 	Redirect *ListItemRedirect `pulumi:"redirect"`
 }
 
 type ListItemState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
-	// An optional comment for the item.
+	// An informative summary of the list item.
 	Comment pulumi.StringPtrInput
-	// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The RFC 3339 timestamp of when the item was created.
+	CreatedOn pulumi.StringPtrInput
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrInput
-	// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip pulumi.StringPtrInput
-	// The list identifier to target for the resource.
+	// The unique ID of the item in the List.
+	ItemId pulumi.StringPtrInput
+	// The unique ID of the list.
 	ListId pulumi.StringPtrInput
-	// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The RFC 3339 timestamp of when the item was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// The unique operation ID of the asynchronous action.
+	OperationId pulumi.StringPtrInput
+	// The definition of the redirect.
 	Redirect ListItemRedirectPtrInput
 }
 
@@ -219,37 +127,33 @@ func (ListItemState) ElementType() reflect.Type {
 }
 
 type listItemArgs struct {
-	// The account identifier to target for the resource.
-	AccountId string `pulumi:"accountId"`
-	// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// Identifier
+	AccountId *string `pulumi:"accountId"`
+	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
-	// An optional comment for the item.
-	Comment *string `pulumi:"comment"`
-	// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname *ListItemHostname `pulumi:"hostname"`
-	// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip *string `pulumi:"ip"`
-	// The list identifier to target for the resource.
+	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
-	// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The definition of the redirect.
 	Redirect *ListItemRedirect `pulumi:"redirect"`
 }
 
 // The set of arguments for constructing a ListItem resource.
 type ListItemArgs struct {
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringInput
-	// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// Identifier
+	AccountId pulumi.StringPtrInput
+	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
-	// An optional comment for the item.
-	Comment pulumi.StringPtrInput
-	// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrInput
-	// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip pulumi.StringPtrInput
-	// The list identifier to target for the resource.
+	// The unique ID of the list.
 	ListId pulumi.StringInput
-	// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+	// The definition of the redirect.
 	Redirect ListItemRedirectPtrInput
 }
 
@@ -340,37 +244,57 @@ func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListIte
 	return o
 }
 
-// The account identifier to target for the resource.
-func (o ListItemOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// Identifier
+func (o ListItemOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+// A non-negative 32 bit integer
 func (o ListItemOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.IntPtrOutput { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
-// An optional comment for the item.
-func (o ListItemOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+// An informative summary of the list item.
+func (o ListItemOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
-// Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+// The RFC 3339 timestamp of when the item was created.
+func (o ListItemOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 func (o ListItemOutput) Hostname() ListItemHostnamePtrOutput {
 	return o.ApplyT(func(v *ListItem) ListItemHostnamePtrOutput { return v.Hostname }).(ListItemHostnamePtrOutput)
 }
 
-// IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 func (o ListItemOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// The list identifier to target for the resource.
+// The unique ID of the item in the List.
+func (o ListItemOutput) ItemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.ItemId }).(pulumi.StringOutput)
+}
+
+// The unique ID of the list.
 func (o ListItemOutput) ListId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.ListId }).(pulumi.StringOutput)
 }
 
-// Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+// The RFC 3339 timestamp of when the item was last modified.
+func (o ListItemOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The unique operation ID of the asynchronous action.
+func (o ListItemOutput) OperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
+}
+
+// The definition of the redirect.
 func (o ListItemOutput) Redirect() ListItemRedirectPtrOutput {
 	return o.ApplyT(func(v *ListItem) ListItemRedirectPtrOutput { return v.Redirect }).(ListItemRedirectPtrOutput)
 }

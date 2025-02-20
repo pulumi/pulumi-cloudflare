@@ -6,11 +6,9 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,29 +19,44 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     public static final LoadBalancerPoolOriginArgs Empty = new LoadBalancerPoolOriginArgs();
 
     /**
-     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
      * 
      */
-    @Import(name="address", required=true)
-    private Output<String> address;
+    @Import(name="address")
+    private @Nullable Output<String> address;
 
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * @return The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
      * 
      */
-    public Output<String> address() {
-        return this.address;
+    public Optional<Output<String>> address() {
+        return Optional.ofNullable(this.address);
     }
 
     /**
-     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+     * 
+     */
+    @Import(name="disabledAt")
+    private @Nullable Output<String> disabledAt;
+
+    /**
+     * @return This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+     * 
+     */
+    public Optional<Output<String>> disabledAt() {
+        return Optional.ofNullable(this.disabledAt);
+    }
+
+    /**
+     * Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * @return Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -51,33 +64,33 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * HTTP request headers.
+     * The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
-    @Import(name="headers")
-    private @Nullable Output<List<LoadBalancerPoolOriginHeaderArgs>> headers;
+    @Import(name="header")
+    private @Nullable Output<LoadBalancerPoolOriginHeaderArgs> header;
 
     /**
-     * @return HTTP request headers.
+     * @return The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
-    public Optional<Output<List<LoadBalancerPoolOriginHeaderArgs>>> headers() {
-        return Optional.ofNullable(this.headers);
+    public Optional<Output<LoadBalancerPoolOriginHeaderArgs>> header() {
+        return Optional.ofNullable(this.header);
     }
 
     /**
      * A human-identifiable name for the origin.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return A human-identifiable name for the origin.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -96,14 +109,14 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+     * The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Double> weight;
 
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+     * @return The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
      * 
      */
     public Optional<Output<Double>> weight() {
@@ -114,8 +127,9 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
 
     private LoadBalancerPoolOriginArgs(LoadBalancerPoolOriginArgs $) {
         this.address = $.address;
+        this.disabledAt = $.disabledAt;
         this.enabled = $.enabled;
-        this.headers = $.headers;
+        this.header = $.header;
         this.name = $.name;
         this.virtualNetworkId = $.virtualNetworkId;
         this.weight = $.weight;
@@ -140,18 +154,18 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+         * @param address The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
          * 
          * @return builder
          * 
          */
-        public Builder address(Output<String> address) {
+        public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
 
         /**
-         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+         * @param address The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual*network*id must also be set.
          * 
          * @return builder
          * 
@@ -161,7 +175,28 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+         * @param disabledAt This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledAt(@Nullable Output<String> disabledAt) {
+            $.disabledAt = disabledAt;
+            return this;
+        }
+
+        /**
+         * @param disabledAt This field shows up only if the origin is disabled. This field is set with the time the origin was disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledAt(String disabledAt) {
+            return disabledAt(Output.of(disabledAt));
+        }
+
+        /**
+         * @param enabled Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
          * 
          * @return builder
          * 
@@ -172,7 +207,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+         * @param enabled Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
          * 
          * @return builder
          * 
@@ -182,34 +217,24 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers HTTP request headers.
+         * @param header The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
          * 
          * @return builder
          * 
          */
-        public Builder headers(@Nullable Output<List<LoadBalancerPoolOriginHeaderArgs>> headers) {
-            $.headers = headers;
+        public Builder header(@Nullable Output<LoadBalancerPoolOriginHeaderArgs> header) {
+            $.header = header;
             return this;
         }
 
         /**
-         * @param headers HTTP request headers.
+         * @param header The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
          * 
          * @return builder
          * 
          */
-        public Builder headers(List<LoadBalancerPoolOriginHeaderArgs> headers) {
-            return headers(Output.of(headers));
-        }
-
-        /**
-         * @param headers HTTP request headers.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(LoadBalancerPoolOriginHeaderArgs... headers) {
-            return headers(List.of(headers));
+        public Builder header(LoadBalancerPoolOriginHeaderArgs header) {
+            return header(Output.of(header));
         }
 
         /**
@@ -218,7 +243,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -255,7 +280,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+         * @param weight The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
          * 
          * @return builder
          * 
@@ -266,7 +291,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
+         * @param weight The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
          * 
          * @return builder
          * 
@@ -276,12 +301,6 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         public LoadBalancerPoolOriginArgs build() {
-            if ($.address == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerPoolOriginArgs", "address");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerPoolOriginArgs", "name");
-            }
             return $;
         }
     }

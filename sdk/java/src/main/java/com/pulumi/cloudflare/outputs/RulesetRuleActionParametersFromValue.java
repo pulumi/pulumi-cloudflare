@@ -6,7 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValueTargetUrl;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersFromValue {
     /**
-     * @return Preserve query string for redirect URL.
+     * @return Keep the query string of the original request.
      * 
      */
     private @Nullable Boolean preserveQueryString;
     /**
-     * @return Status code for redirect.
+     * @return The status code to be used for the redirect.
      * 
      */
-    private @Nullable Integer statusCode;
+    private @Nullable Double statusCode;
     /**
-     * @return Target URL for redirect.
+     * @return The URL to redirect the request to.
      * 
      */
     private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private RulesetRuleActionParametersFromValue() {}
     /**
-     * @return Preserve query string for redirect URL.
+     * @return Keep the query string of the original request.
      * 
      */
     public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
     /**
-     * @return Status code for redirect.
+     * @return The status code to be used for the redirect.
      * 
      */
-    public Optional<Integer> statusCode() {
+    public Optional<Double> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return Target URL for redirect.
+     * @return The URL to redirect the request to.
      * 
      */
     public Optional<RulesetRuleActionParametersFromValueTargetUrl> targetUrl() {
@@ -62,7 +62,7 @@ public final class RulesetRuleActionParametersFromValue {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean preserveQueryString;
-        private @Nullable Integer statusCode;
+        private @Nullable Double statusCode;
         private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromValue defaults) {
@@ -79,7 +79,7 @@ public final class RulesetRuleActionParametersFromValue {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(@Nullable Integer statusCode) {
+        public Builder statusCode(@Nullable Double statusCode) {
 
             this.statusCode = statusCode;
             return this;

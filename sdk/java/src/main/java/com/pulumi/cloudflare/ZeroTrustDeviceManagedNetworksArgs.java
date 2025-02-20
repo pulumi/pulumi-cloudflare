@@ -15,45 +15,29 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
 
     public static final ZeroTrustDeviceManagedNetworksArgs Empty = new ZeroTrustDeviceManagedNetworksArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     @Import(name="config", required=true)
     private Output<ZeroTrustDeviceManagedNetworksConfigArgs> config;
 
-    /**
-     * @return The configuration containing information for the WARP client to detect the managed network.
-     * 
-     */
     public Output<ZeroTrustDeviceManagedNetworksConfigArgs> config() {
         return this.config;
     }
 
     /**
-     * The name of the Device Managed Network. Must be unique.
+     * The name of the device managed network. This name must be unique.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Device Managed Network. Must be unique.
+     * @return The name of the device managed network. This name must be unique.
      * 
      */
     public Output<String> name() {
@@ -61,14 +45,14 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
     }
 
     /**
-     * The type of Device Managed Network. Available values: `tls`.
+     * The type of device managed network.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of Device Managed Network. Available values: `tls`.
+     * @return The type of device managed network.
      * 
      */
     public Output<String> type() {
@@ -102,50 +86,26 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
             $ = new ZeroTrustDeviceManagedNetworksArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(Output<ZeroTrustDeviceManagedNetworksConfigArgs> config) {
             $.config = config;
             return this;
         }
 
-        /**
-         * @param config The configuration containing information for the WARP client to detect the managed network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(ZeroTrustDeviceManagedNetworksConfigArgs config) {
             return config(Output.of(config));
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -156,7 +116,7 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the Device Managed Network. Must be unique.
+         * @param name The name of the device managed network. This name must be unique.
          * 
          * @return builder
          * 
@@ -166,7 +126,7 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param type The type of device managed network.
          * 
          * @return builder
          * 
@@ -177,7 +137,7 @@ public final class ZeroTrustDeviceManagedNetworksArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The type of Device Managed Network. Available values: `tls`.
+         * @param type The type of device managed network.
          * 
          * @return builder
          * 

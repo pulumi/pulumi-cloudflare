@@ -14,59 +14,51 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasApp
     {
         /// <summary>
-        /// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        /// The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
         /// </summary>
         public readonly string? AccessTokenLifetime;
         /// <summary>
-        /// Allow PKCE flow without a client secret.
+        /// If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
         /// </summary>
         public readonly bool? AllowPkceWithoutClientSecret;
         /// <summary>
-        /// The URL where this applications tile redirects users.
+        /// The URL where this applications tile redirects users
         /// </summary>
         public readonly string? AppLauncherUrl;
         /// <summary>
-        /// **Modifying this attribute will force creation of a new resource.**
+        /// Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml"
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
-        /// The application client id.
+        /// The application client id
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// The application client secret, only returned on initial apply.
+        /// The application client secret, only returned on POST request.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         /// </summary>
         public readonly string? ConsumerServiceUrl;
-        /// <summary>
-        /// Custom attribute mapped from IDPs.
-        /// </summary>
+        public readonly string? CreatedAt;
         public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute> CustomAttributes;
-        /// <summary>
-        /// Custom claim mapped from IDPs.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomClaim> CustomClaims;
         /// <summary>
-        /// The relay state used if not provided by the identity provider.
+        /// The URL that the user will be redirected to after a successful login for IDP initiated logins.
         /// </summary>
         public readonly string? DefaultRelayState;
         /// <summary>
-        /// The OIDC flows supported by this application.
+        /// The OIDC flows supported by this application
         /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
         /// <summary>
-        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
         /// </summary>
         public readonly string? GroupFilterRegex;
-        /// <summary>
-        /// Hybrid and Implicit Flow options.
-        /// </summary>
         public readonly Outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions? HybridAndImplicitOptions;
         /// <summary>
-        /// The unique identifier for the SaaS application.
+        /// The unique identifier for your SaaS application.
         /// </summary>
         public readonly string? IdpEntityId;
         /// <summary>
@@ -78,23 +70,20 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NameIdTransformJsonata;
         /// <summary>
-        /// The public certificate that will be used to verify identities.
+        /// The Access public certificate that will be used to verify your identity.
         /// </summary>
         public readonly string? PublicKey;
         /// <summary>
-        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
-        /// <summary>
-        /// Refresh token grant options.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption> RefreshTokenOptions;
+        public readonly Outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptions? RefreshTokenOptions;
         /// <summary>
         /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         /// </summary>
         public readonly string? SamlAttributeTransformJsonata;
         /// <summary>
-        /// Define the user information shared with access.
+        /// Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
@@ -102,9 +91,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? SpEntityId;
         /// <summary>
-        /// The endpoint where the SaaS application will send login requests.
+        /// The endpoint where your SaaS application will send login requests.
         /// </summary>
         public readonly string? SsoEndpoint;
+        public readonly string? UpdatedAt;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasApp(
@@ -121,6 +111,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? clientSecret,
 
             string? consumerServiceUrl,
+
+            string? createdAt,
 
             ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes,
 
@@ -144,7 +136,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> redirectUris,
 
-            ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions,
+            Outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptions? refreshTokenOptions,
 
             string? samlAttributeTransformJsonata,
 
@@ -152,7 +144,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? spEntityId,
 
-            string? ssoEndpoint)
+            string? ssoEndpoint,
+
+            string? updatedAt)
         {
             AccessTokenLifetime = accessTokenLifetime;
             AllowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
@@ -161,6 +155,7 @@ namespace Pulumi.Cloudflare.Outputs
             ClientId = clientId;
             ClientSecret = clientSecret;
             ConsumerServiceUrl = consumerServiceUrl;
+            CreatedAt = createdAt;
             CustomAttributes = customAttributes;
             CustomClaims = customClaims;
             DefaultRelayState = defaultRelayState;
@@ -177,6 +172,7 @@ namespace Pulumi.Cloudflare.Outputs
             Scopes = scopes;
             SpEntityId = spEntityId;
             SsoEndpoint = ssoEndpoint;
+            UpdatedAt = updatedAt;
         }
     }
 }

@@ -10,19 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+    /// ## Example Usage
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudConnectorRules:CloudConnectorRules")]
     public partial class CloudConnectorRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// List of Cloud Connector rules
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.CloudConnectorRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -73,11 +73,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.CloudConnectorRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// List of Cloud Connector rules
         /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleArgs> Rules
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CloudConnectorRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// List of Cloud Connector rules
         /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleGetArgs> Rules
         {
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -16,23 +16,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The name of the SAML attribute.
         /// </summary>
-        public readonly string? AttributeName;
+        public readonly string AttributeName;
         /// <summary>
         /// The SAML attribute value to look for.
         /// </summary>
-        public readonly string? AttributeValue;
+        public readonly string AttributeValue;
         /// <summary>
         /// The ID of your SAML identity provider.
         /// </summary>
-        public readonly string? IdentityProviderId;
+        public readonly string IdentityProviderId;
 
         [OutputConstructor]
         private ZeroTrustAccessGroupExcludeSaml(
-            string? attributeName,
+            string attributeName,
 
-            string? attributeValue,
+            string attributeValue,
 
-            string? identityProviderId)
+            string identityProviderId)
         {
             AttributeName = attributeName;
             AttributeValue = attributeValue;

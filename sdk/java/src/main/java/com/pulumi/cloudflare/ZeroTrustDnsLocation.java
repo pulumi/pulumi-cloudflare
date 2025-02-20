@@ -19,9 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Location resource. Teams Locations are
- * referenced when creating secure web gateway policies.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -34,6 +31,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDnsLocation;
  * import com.pulumi.cloudflare.ZeroTrustDnsLocationArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDohArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDotArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv4Args;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6Args;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -48,18 +50,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustDnsLocation("example", ZeroTrustDnsLocationArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("office")
- *             .clientDefault(true)
+ *         var exampleZeroTrustDnsLocation = new ZeroTrustDnsLocation("exampleZeroTrustDnsLocation", ZeroTrustDnsLocationArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .name("Austin Office Location")
+ *             .clientDefault(false)
+ *             .dnsDestinationIpsId("0e4a32c6-6fb8-4858-9296-98f51631e8e6")
  *             .ecsSupport(false)
- *             .networks(            
- *                 ZeroTrustDnsLocationNetworkArgs.builder()
- *                     .network("203.0.113.1/32")
- *                     .build(),
- *                 ZeroTrustDnsLocationNetworkArgs.builder()
- *                     .network("203.0.113.2/32")
+ *             .endpoints(ZeroTrustDnsLocationEndpointsArgs.builder()
+ *                 .doh(ZeroTrustDnsLocationEndpointsDohArgs.builder()
+ *                     .enabled(true)
+ *                     .networks(ZeroTrustDnsLocationEndpointsDohNetworkArgs.builder()
+ *                         .network("2001:85a3::/64")
+ *                         .build())
+ *                     .requireToken(true)
  *                     .build())
+ *                 .dot(ZeroTrustDnsLocationEndpointsDotArgs.builder()
+ *                     .enabled(true)
+ *                     .networks(ZeroTrustDnsLocationEndpointsDotNetworkArgs.builder()
+ *                         .network("2001:85a3::/64")
+ *                         .build())
+ *                     .build())
+ *                 .ipv4(ZeroTrustDnsLocationEndpointsIpv4Args.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .ipv6(ZeroTrustDnsLocationEndpointsIpv6Args.builder()
+ *                     .enabled(true)
+ *                     .networks(ZeroTrustDnsLocationEndpointsIpv6NetworkArgs.builder()
+ *                         .network("2001:85a3::/64")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .networks(ZeroTrustDnsLocationNetworkArgs.builder()
+ *                 .network("192.0.2.1/32")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -71,193 +94,183 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example &#39;&lt;account_id&gt;/&lt;location_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")
 public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Indicator that anonymized logs are enabled.
-     * 
-     */
-    @Export(name="anonymizedLogsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> anonymizedLogsEnabled;
-
-    /**
-     * @return Indicator that anonymized logs are enabled.
-     * 
-     */
-    public Output<Boolean> anonymizedLogsEnabled() {
-        return this.anonymizedLogsEnabled;
-    }
-    /**
-     * Indicator that this is the default location.
+     * True if the location is the default location.
      * 
      */
     @Export(name="clientDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> clientDefault;
 
     /**
-     * @return Indicator that this is the default location.
+     * @return True if the location is the default location.
      * 
      */
     public Output<Optional<Boolean>> clientDefault() {
         return Codegen.optional(this.clientDefault);
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * IPv4 binding assigned to this location.
+     * The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      * 
      */
     @Export(name="dnsDestinationIpsId", refs={String.class}, tree="[0]")
-    private Output<String> dnsDestinationIpsId;
+    private Output</* @Nullable */ String> dnsDestinationIpsId;
 
     /**
-     * @return IPv4 binding assigned to this location.
+     * @return The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      * 
      */
-    public Output<String> dnsDestinationIpsId() {
-        return this.dnsDestinationIpsId;
+    public Output<Optional<String>> dnsDestinationIpsId() {
+        return Codegen.optional(this.dnsDestinationIpsId);
     }
     /**
-     * IPv6 block binding assigned to this location.
+     * The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
      * 
      */
     @Export(name="dnsDestinationIpv6BlockId", refs={String.class}, tree="[0]")
     private Output<String> dnsDestinationIpv6BlockId;
 
     /**
-     * @return IPv6 block binding assigned to this location.
+     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
      * 
      */
     public Output<String> dnsDestinationIpv6BlockId() {
         return this.dnsDestinationIpv6BlockId;
     }
     /**
-     * The FQDN that DoH clients should be pointed at.
+     * The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
      * 
      */
     @Export(name="dohSubdomain", refs={String.class}, tree="[0]")
     private Output<String> dohSubdomain;
 
     /**
-     * @return The FQDN that DoH clients should be pointed at.
+     * @return The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
      * 
      */
     public Output<String> dohSubdomain() {
         return this.dohSubdomain;
     }
     /**
-     * Indicator that this location needs to resolve EDNS queries.
+     * True if the location needs to resolve EDNS queries.
      * 
      */
     @Export(name="ecsSupport", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ecsSupport;
 
     /**
-     * @return Indicator that this location needs to resolve EDNS queries.
+     * @return True if the location needs to resolve EDNS queries.
      * 
      */
     public Output<Optional<Boolean>> ecsSupport() {
         return Codegen.optional(this.ecsSupport);
     }
     /**
-     * Endpoints assigned to this location.
+     * The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
      * 
      */
     @Export(name="endpoints", refs={ZeroTrustDnsLocationEndpoints.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustDnsLocationEndpoints> endpoints;
+    private Output<ZeroTrustDnsLocationEndpoints> endpoints;
 
     /**
-     * @return Endpoints assigned to this location.
+     * @return The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
      * 
      */
-    public Output<Optional<ZeroTrustDnsLocationEndpoints>> endpoints() {
-        return Codegen.optional(this.endpoints);
+    public Output<ZeroTrustDnsLocationEndpoints> endpoints() {
+        return this.endpoints;
     }
     /**
-     * Client IP address.
+     * IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
-     * @return Client IP address.
+     * @return IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
      * 
      */
     public Output<String> ip() {
         return this.ip;
     }
     /**
-     * IPv4 to direct all IPv4 DNS queries to.
+     * The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
      * 
      */
     @Export(name="ipv4Destination", refs={String.class}, tree="[0]")
     private Output<String> ipv4Destination;
 
     /**
-     * @return IPv4 to direct all IPv4 DNS queries to.
+     * @return The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
      * 
      */
     public Output<String> ipv4Destination() {
         return this.ipv4Destination;
     }
     /**
-     * Backup IPv4 to direct all IPv4 DNS queries to.
+     * The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
      * 
      */
     @Export(name="ipv4DestinationBackup", refs={String.class}, tree="[0]")
     private Output<String> ipv4DestinationBackup;
 
     /**
-     * @return Backup IPv4 to direct all IPv4 DNS queries to.
+     * @return The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
      * 
      */
     public Output<String> ipv4DestinationBackup() {
         return this.ipv4DestinationBackup;
     }
     /**
-     * Name of the teams location.
+     * The name of the location.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the teams location.
+     * @return The name of the location.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The networks CIDRs that comprise the location.
+     * A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      * 
      */
     @Export(name="networks", refs={List.class,ZeroTrustDnsLocationNetwork.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDnsLocationNetwork>> networks;
+    private Output<List<ZeroTrustDnsLocationNetwork>> networks;
 
     /**
-     * @return The networks CIDRs that comprise the location.
+     * @return A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      * 
      */
-    public Output<Optional<List<ZeroTrustDnsLocationNetwork>>> networks() {
-        return Codegen.optional(this.networks);
+    public Output<List<ZeroTrustDnsLocationNetwork>> networks() {
+        return this.networks;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

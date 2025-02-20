@@ -13,61 +13,73 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// The action to perform when the rule matches.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// List of parameters that configure the behavior of the ruleset rule action.
+        /// The parameters configuring the rule's action.
         /// </summary>
         [Input("actionParameters")]
         public Input<Inputs.RulesetRuleActionParametersGetArgs>? ActionParameters { get; set; }
 
+        [Input("categories")]
+        private InputList<string>? _categories;
+
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// The categories of the rule.
+        /// </summary>
+        public InputList<string> Categories
+        {
+            get => _categories ?? (_categories = new InputList<string>());
+            set => _categories = value;
+        }
+
+        /// <summary>
+        /// An informative description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the rule is active.
+        /// Whether the rule should be executed.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// List of parameters that configure exposed credential checks.
+        /// Configure checks for exposed credentials.
         /// </summary>
         [Input("exposedCredentialCheck")]
         public Input<Inputs.RulesetRuleExposedCredentialCheckGetArgs>? ExposedCredentialCheck { get; set; }
 
         /// <summary>
-        /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// The expression defining which traffic will match the rule.
         /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Unique rule identifier.
+        /// The unique ID of the rule.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// List parameters to configure how the rule generates logs. Only valid for skip action.
+        /// An object configuring the rule's logging behavior.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.RulesetRuleLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
-        /// List of parameters that configure HTTP rate limiting behaviour.
+        /// An object configuring the rule's ratelimit behavior.
         /// </summary>
         [Input("ratelimit")]
         public Input<Inputs.RulesetRuleRatelimitGetArgs>? Ratelimit { get; set; }
 
         /// <summary>
-        /// Rule reference.
+        /// The reference of the rule (the rule ID by default).
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }

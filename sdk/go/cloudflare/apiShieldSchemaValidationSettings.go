@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource to manage settings in API Shield Schema Validation 2.0.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, "example", &cloudflare.ApiShieldSchemaValidationSettingsArgs{
-//				ZoneId:                             pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				ValidationDefaultMitigationAction:  pulumi.String("log"),
+//			_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, "example_api_shield_schema_validation_settings", &cloudflare.ApiShieldSchemaValidationSettingsArgs{
+//				ZoneId:                             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ValidationDefaultMitigationAction:  pulumi.String("none"),
 //				ValidationOverrideMitigationAction: pulumi.String("none"),
 //			})
 //			if err != nil {
@@ -41,14 +39,22 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
+// ```
 type ApiShieldSchemaValidationSettings struct {
 	pulumi.CustomResourceState
 
-	// The default mitigation action used when there is no mitigation action defined on the operation.
+	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringOutput `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions.
+	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+	// special value `disableOverride` or `null`
 	ValidationOverrideMitigationAction pulumi.StringPtrOutput `pulumi:"validationOverrideMitigationAction"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -88,20 +94,24 @@ func GetApiShieldSchemaValidationSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShieldSchemaValidationSettings resources.
 type apiShieldSchemaValidationSettingsState struct {
-	// The default mitigation action used when there is no mitigation action defined on the operation.
+	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction *string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions.
+	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+	// special value `disableOverride` or `null`
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldSchemaValidationSettingsState struct {
-	// The default mitigation action used when there is no mitigation action defined on the operation.
+	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringPtrInput
-	// When set, this overrides both zone level and operation level mitigation actions.
+	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+	// special value `disableOverride` or `null`
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -110,21 +120,25 @@ func (ApiShieldSchemaValidationSettingsState) ElementType() reflect.Type {
 }
 
 type apiShieldSchemaValidationSettingsArgs struct {
-	// The default mitigation action used when there is no mitigation action defined on the operation.
+	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions.
+	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+	// special value `disableOverride` or `null`
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldSchemaValidationSettings resource.
 type ApiShieldSchemaValidationSettingsArgs struct {
-	// The default mitigation action used when there is no mitigation action defined on the operation.
+	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringInput
-	// When set, this overrides both zone level and operation level mitigation actions.
+	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+	// special value `disableOverride` or `null`
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -215,21 +229,23 @@ func (o ApiShieldSchemaValidationSettingsOutput) ToApiShieldSchemaValidationSett
 	return o
 }
 
-// The default mitigation action used when there is no mitigation action defined on the operation.
+// The default mitigation action used when there is no mitigation action defined on the operation
 func (o ApiShieldSchemaValidationSettingsOutput) ValidationDefaultMitigationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaValidationSettings) pulumi.StringOutput {
 		return v.ValidationDefaultMitigationAction
 	}).(pulumi.StringOutput)
 }
 
-// When set, this overrides both zone level and operation level mitigation actions.
+// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+// special value `disableOverride` or `null`
 func (o ApiShieldSchemaValidationSettingsOutput) ValidationOverrideMitigationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaValidationSettings) pulumi.StringPtrOutput {
 		return v.ValidationOverrideMitigationAction
 	}).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o ApiShieldSchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

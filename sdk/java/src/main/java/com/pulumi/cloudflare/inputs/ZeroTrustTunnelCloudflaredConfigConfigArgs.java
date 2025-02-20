@@ -3,12 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,36 +19,44 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigArgs extends com.pulumi
     public static final ZeroTrustTunnelCloudflaredConfigConfigArgs Empty = new ZeroTrustTunnelCloudflaredConfigConfigArgs();
 
     /**
-     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    @Import(name="ingressRules", required=true)
-    private Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs>> ingressRules;
+    @Import(name="ingresses")
+    private @Nullable Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressArgs>> ingresses;
 
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    public Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs>> ingressRules() {
-        return this.ingressRules;
+    public Optional<Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressArgs>>> ingresses() {
+        return Optional.ofNullable(this.ingresses);
     }
 
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     @Import(name="originRequest")
     private @Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs> originRequest;
 
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     public Optional<Output<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs>> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
 
     /**
-     * If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     @Import(name="warpRouting")
     private @Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs> warpRouting;
 
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     public Optional<Output<ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs>> warpRouting() {
@@ -59,7 +66,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigArgs extends com.pulumi
     private ZeroTrustTunnelCloudflaredConfigConfigArgs() {}
 
     private ZeroTrustTunnelCloudflaredConfigConfigArgs(ZeroTrustTunnelCloudflaredConfigConfigArgs $) {
-        this.ingressRules = $.ingressRules;
+        this.ingresses = $.ingresses;
         this.originRequest = $.originRequest;
         this.warpRouting = $.warpRouting;
     }
@@ -83,47 +90,59 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigArgs extends com.pulumi
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs>> ingressRules) {
-            $.ingressRules = ingressRules;
+        public Builder ingresses(@Nullable Output<List<ZeroTrustTunnelCloudflaredConfigConfigIngressArgs>> ingresses) {
+            $.ingresses = ingresses;
             return this;
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(List<ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs> ingressRules) {
-            return ingressRules(Output.of(ingressRules));
+        public Builder ingresses(List<ZeroTrustTunnelCloudflaredConfigConfigIngressArgs> ingresses) {
+            return ingresses(Output.of(ingresses));
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs... ingressRules) {
-            return ingressRules(List.of(ingressRules));
+        public Builder ingresses(ZeroTrustTunnelCloudflaredConfigConfigIngressArgs... ingresses) {
+            return ingresses(List.of(ingresses));
         }
 
+        /**
+         * @param originRequest Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originRequest(@Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs> originRequest) {
             $.originRequest = originRequest;
             return this;
         }
 
+        /**
+         * @param originRequest Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originRequest(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs originRequest) {
             return originRequest(Output.of(originRequest));
         }
 
         /**
-         * @param warpRouting If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+         * @param warpRouting Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
          * 
          * @return builder
          * 
@@ -134,7 +153,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigArgs extends com.pulumi
         }
 
         /**
-         * @param warpRouting If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+         * @param warpRouting Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
          * 
          * @return builder
          * 
@@ -144,9 +163,6 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigArgs extends com.pulumi
         }
 
         public ZeroTrustTunnelCloudflaredConfigConfigArgs build() {
-            if ($.ingressRules == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfigArgs", "ingressRules");
-            }
             return $;
         }
     }

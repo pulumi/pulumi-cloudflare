@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,29 +16,29 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
     public static final WaitingRoomAdditionalRouteArgs Empty = new WaitingRoomAdditionalRouteArgs();
 
     /**
-     * The additional host name for which the waiting room to be applied on (no wildcards).
+     * The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
-     * @return The additional host name for which the waiting room to be applied on (no wildcards).
+     * @return The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
-     * The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * @return Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      * 
      */
     public Optional<Output<String>> path() {
@@ -72,18 +71,18 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param host The additional host name for which the waiting room to be applied on (no wildcards).
+         * @param host The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
          * 
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
         /**
-         * @param host The additional host name for which the waiting room to be applied on (no wildcards).
+         * @param host The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
          * 
          * @return builder
          * 
@@ -93,7 +92,7 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param path The path within the additional host to enable the waiting room on. Defaults to `/`.
+         * @param path Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
          * 
          * @return builder
          * 
@@ -104,7 +103,7 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param path The path within the additional host to enable the waiting room on. Defaults to `/`.
+         * @param path Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
          * 
          * @return builder
          * 
@@ -114,9 +113,6 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
         }
 
         public WaitingRoomAdditionalRouteArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("WaitingRoomAdditionalRouteArgs", "host");
-            }
             return $;
         }
     }

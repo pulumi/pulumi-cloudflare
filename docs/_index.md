@@ -10,7 +10,7 @@ The Cloudflare provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/cloudflare`](https://www.npmjs.com/package/@pulumi/cloudflare)
 * Python: [`pulumi-cloudflare`](https://pypi.org/project/pulumi-cloudflare/)
-* Go: [`github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare`](https://github.com/pulumi/pulumi-cloudflare)
+* Go: [`github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare`](https://github.com/pulumi/pulumi-cloudflare)
 * .NET: [`Pulumi.Cloudflare`](https://www.nuget.org/packages/Pulumi.Cloudflare)
 * Java: [`com.pulumi/cloudflare`](https://central.sonatype.com/artifact/com.pulumi/cloudflare)
 ## Overview
@@ -103,7 +103,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

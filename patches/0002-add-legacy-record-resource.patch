@@ -1,0 +1,100 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Wed, 12 Feb 2025 20:14:31 +0200
+Subject: [PATCH] add legacy record resource
+
+
+diff --git a/internal/legacy_services/record/resource.go b/internal/legacy_services/record/resource.go
+new file mode 100644
+index 000000000..f2a4952b7
+--- /dev/null
++++ b/internal/legacy_services/record/resource.go
+@@ -0,0 +1,68 @@
++package record
++
++import (
++	"context"
++
++	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/dns_record"
++	"github.com/hashicorp/terraform-plugin-framework/resource"
++)
++
++// Ensure provider defined types fully satisfy framework interfaces.
++var _ resource.ResourceWithConfigure = (*RecordResource)(nil)
++var _ resource.ResourceWithModifyPlan = (*RecordResource)(nil)
++var _ resource.ResourceWithImportState = (*RecordResource)(nil)
++var _ resource.ResourceWithConfigValidators = (*RecordResource)(nil)
++var _ resource.ResourceWithUpgradeState = (*RecordResource)(nil)
++
++func NewResource() resource.Resource {
++	return &RecordResource{}
++}
++
++// RecordResource defines the resource implementation.
++type RecordResource struct {
++	dns_record.DNSRecordResource
++}
++
++func (r *RecordResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
++	resp.TypeName = req.ProviderTypeName + "_record"
++}
++
++func (r *RecordResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
++	r.DNSRecordResource.Configure(ctx, req, resp)
++}
++
++func (r *RecordResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
++	r.DNSRecordResource.Create(ctx, req, resp)
++}
++
++func (r *RecordResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
++	r.DNSRecordResource.Update(ctx, req, resp)
++}
++
++func (r *RecordResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
++	r.DNSRecordResource.Read(ctx, req, resp)
++}
++
++func (r *RecordResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
++	r.DNSRecordResource.Delete(ctx, req, resp)
++}
++
++func (r *RecordResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
++	r.DNSRecordResource.ImportState(ctx, req, resp)
++}
++
++func (r *RecordResource) ModifyPlan(ctx context.Context, req resource.ModifyPlanRequest, resp *resource.ModifyPlanResponse) {
++	r.DNSRecordResource.ModifyPlan(ctx, req, resp)
++}
++
++func (r *RecordResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
++	r.DNSRecordResource.Schema(ctx, req, resp)
++}
++
++func (r *RecordResource) ConfigValidators(ctx context.Context) []resource.ConfigValidator {
++	return r.DNSRecordResource.ConfigValidators(ctx)
++}
++
++func (r *RecordResource) UpgradeState(ctx context.Context) map[int64]resource.StateUpgrader {
++	return r.DNSRecordResource.UpgradeState(ctx)
++}
+diff --git a/internal/provider.go b/internal/provider.go
+index 59f4e8a1f..6d28ed045 100644
+--- a/internal/provider.go
++++ b/internal/provider.go
+@@ -11,6 +11,7 @@ import (
+ 	"github.com/cloudflare/cloudflare-go/v4"
+ 	"github.com/cloudflare/cloudflare-go/v4/option"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/consts"
++	"github.com/cloudflare/terraform-provider-cloudflare/internal/legacy_services/record"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/access_rule"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/account"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/services/account_member"
+@@ -532,6 +533,7 @@ func (p *CloudflareProvider) Resources(ctx context.Context) []func() resource.Re
+ 		leaked_credential_check.NewResource,
+ 		leaked_credential_check_rule.NewResource,
+ 		content_scanning_expression.NewResource,
++		record.NewResource,
+ 	}
+ }
+ 

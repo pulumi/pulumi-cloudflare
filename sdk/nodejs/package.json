@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/cloudflare",
-    "version": "5.0.0-alpha.0+dev",
+    "version": "6.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing Cloudflare cloud resources.",
     "keywords": [
         "pulumi",
@@ -23,6 +23,6 @@
     "pulumi": {
         "resource": true,
         "name": "cloudflare",
-        "version": "5.0.0-alpha.0+dev"
+        "version": "6.0.0-alpha.0+dev"
     }
 }

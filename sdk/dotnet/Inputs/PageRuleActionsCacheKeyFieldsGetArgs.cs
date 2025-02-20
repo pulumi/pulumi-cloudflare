@@ -27,20 +27,20 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Controls which Host header goes into Cache Key:
         /// </summary>
-        [Input("host", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsHostGetArgs> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsHostGetArgs>? Host { get; set; }
 
         /// <summary>
         /// Controls which URL query string parameters go into the Cache Key.
         /// </summary>
-        [Input("queryString", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsQueryStringGetArgs> QueryString { get; set; } = null!;
+        [Input("queryString")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsQueryStringGetArgs>? QueryString { get; set; }
 
         /// <summary>
         /// Controls which end user-related features go into the Cache Key.
         /// </summary>
-        [Input("user", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsUserGetArgs> User { get; set; } = null!;
+        [Input("user")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsUserGetArgs>? User { get; set; }
 
         public PageRuleActionsCacheKeyFieldsGetArgs()
         {

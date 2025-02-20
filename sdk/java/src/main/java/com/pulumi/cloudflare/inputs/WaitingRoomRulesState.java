@@ -18,44 +18,43 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     public static final WaitingRoomRulesState Empty = new WaitingRoomRulesState();
 
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      * 
      */
+    @Import(name="ruleId")
+    private @Nullable Output<String> ruleId;
+
+    /**
+     * @return The ID of the rule.
+     * 
+     */
+    public Optional<Output<String>> ruleId() {
+        return Optional.ofNullable(this.ruleId);
+    }
+
     @Import(name="rules")
     private @Nullable Output<List<WaitingRoomRulesRuleArgs>> rules;
 
-    /**
-     * @return List of rules to apply to the ruleset.
-     * 
-     */
     public Optional<Output<List<WaitingRoomRulesRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="waitingRoomId")
     private @Nullable Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> waitingRoomId() {
         return Optional.ofNullable(this.waitingRoomId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -65,6 +64,7 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
     private WaitingRoomRulesState() {}
 
     private WaitingRoomRulesState(WaitingRoomRulesState $) {
+        this.ruleId = $.ruleId;
         this.rules = $.rules;
         this.waitingRoomId = $.waitingRoomId;
         this.zoneId = $.zoneId;
@@ -89,59 +89,50 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param ruleId The ID of the rule.
          * 
          * @return builder
          * 
          */
+        public Builder ruleId(@Nullable Output<String> ruleId) {
+            $.ruleId = ruleId;
+            return this;
+        }
+
+        /**
+         * @param ruleId The ID of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleId(String ruleId) {
+            return ruleId(Output.of(ruleId));
+        }
+
         public Builder rules(@Nullable Output<List<WaitingRoomRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
-        /**
-         * @param rules List of rules to apply to the ruleset.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(List<WaitingRoomRulesRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
-        /**
-         * @param rules List of rules to apply to the ruleset.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(WaitingRoomRulesRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(@Nullable Output<String> waitingRoomId) {
             $.waitingRoomId = waitingRoomId;
             return this;
         }
 
-        /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitingRoomId(String waitingRoomId) {
             return waitingRoomId(Output.of(waitingRoomId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -152,7 +143,7 @@ public final class WaitingRoomRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

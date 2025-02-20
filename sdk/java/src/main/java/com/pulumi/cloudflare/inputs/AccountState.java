@@ -3,9 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccountSettingsArgs;
+import com.pulumi.cloudflare.inputs.AccountUnitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,29 +18,29 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     public static final AccountState Empty = new AccountState();
 
     /**
-     * Whether 2FA is enforced on the account. Defaults to `false`.
+     * Timestamp for the creation of the account
      * 
      */
-    @Import(name="enforceTwofactor")
-    private @Nullable Output<Boolean> enforceTwofactor;
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
 
     /**
-     * @return Whether 2FA is enforced on the account. Defaults to `false`.
+     * @return Timestamp for the creation of the account
      * 
      */
-    public Optional<Output<Boolean>> enforceTwofactor() {
-        return Optional.ofNullable(this.enforceTwofactor);
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
     }
 
     /**
-     * The name of the account that is displayed in the Cloudflare dashboard.
+     * Account name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the account that is displayed in the Cloudflare dashboard.
+     * @return Account name
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,26 +48,58 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * Account settings
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<AccountSettingsArgs> settings;
+
+    /**
+     * @return Account settings
+     * 
+     */
+    public Optional<Output<AccountSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
+    /**
+     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * 
+     */
+    @Import(name="unit")
+    private @Nullable Output<AccountUnitArgs> unit;
+
+    /**
+     * @return information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * 
+     */
+    public Optional<Output<AccountUnitArgs>> unit() {
+        return Optional.ofNullable(this.unit);
+    }
+
     private AccountState() {}
 
     private AccountState(AccountState $) {
-        this.enforceTwofactor = $.enforceTwofactor;
+        this.createdOn = $.createdOn;
         this.name = $.name;
+        this.settings = $.settings;
         this.type = $.type;
+        this.unit = $.unit;
     }
 
     public static Builder builder() {
@@ -88,28 +121,28 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enforceTwofactor Whether 2FA is enforced on the account. Defaults to `false`.
+         * @param createdOn Timestamp for the creation of the account
          * 
          * @return builder
          * 
          */
-        public Builder enforceTwofactor(@Nullable Output<Boolean> enforceTwofactor) {
-            $.enforceTwofactor = enforceTwofactor;
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
             return this;
         }
 
         /**
-         * @param enforceTwofactor Whether 2FA is enforced on the account. Defaults to `false`.
+         * @param createdOn Timestamp for the creation of the account
          * 
          * @return builder
          * 
          */
-        public Builder enforceTwofactor(Boolean enforceTwofactor) {
-            return enforceTwofactor(Output.of(enforceTwofactor));
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
         }
 
         /**
-         * @param name The name of the account that is displayed in the Cloudflare dashboard.
+         * @param name Account name
          * 
          * @return builder
          * 
@@ -120,7 +153,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the account that is displayed in the Cloudflare dashboard.
+         * @param name Account name
          * 
          * @return builder
          * 
@@ -130,7 +163,28 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+         * @param settings Account settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<AccountSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Account settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(AccountSettingsArgs settings) {
+            return settings(Output.of(settings));
+        }
+
+        /**
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
          * 
          * @return builder
          * 
@@ -141,13 +195,34 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param unit information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unit(@Nullable Output<AccountUnitArgs> unit) {
+            $.unit = unit;
+            return this;
+        }
+
+        /**
+         * @param unit information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unit(AccountUnitArgs unit) {
+            return unit(Output.of(unit));
         }
 
         public AccountState build() {

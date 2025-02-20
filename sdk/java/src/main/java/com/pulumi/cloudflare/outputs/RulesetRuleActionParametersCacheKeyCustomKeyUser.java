@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyUser {
     /**
-     * @return Add device type to the custom key.
+     * @return Use the user agent&#39;s device type in the cache key.
      * 
      */
     private @Nullable Boolean deviceType;
     /**
-     * @return Add geo data to the custom key.
+     * @return Use the user agents&#39;s country in the cache key.
      * 
      */
     private @Nullable Boolean geo;
     /**
-     * @return Add language data to the custom key.
+     * @return Use the user agent&#39;s language in the cache key.
      * 
      */
     private @Nullable Boolean lang;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyUser() {}
     /**
-     * @return Add device type to the custom key.
+     * @return Use the user agent&#39;s device type in the cache key.
      * 
      */
     public Optional<Boolean> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
     /**
-     * @return Add geo data to the custom key.
+     * @return Use the user agents&#39;s country in the cache key.
      * 
      */
     public Optional<Boolean> geo() {
         return Optional.ofNullable(this.geo);
     }
     /**
-     * @return Add language data to the custom key.
+     * @return Use the user agent&#39;s language in the cache key.
      * 
      */
     public Optional<Boolean> lang() {

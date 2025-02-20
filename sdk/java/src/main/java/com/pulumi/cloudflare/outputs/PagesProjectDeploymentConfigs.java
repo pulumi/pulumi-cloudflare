@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectDeploymentConfigs {
     /**
-     * @return Configuration for preview deploys.
+     * @return Configs for preview deploys.
      * 
      */
     private @Nullable PagesProjectDeploymentConfigsPreview preview;
     /**
-     * @return Configuration for production deploys.
+     * @return Configs for production deploys.
      * 
      */
     private @Nullable PagesProjectDeploymentConfigsProduction production;
 
     private PagesProjectDeploymentConfigs() {}
     /**
-     * @return Configuration for preview deploys.
+     * @return Configs for preview deploys.
      * 
      */
     public Optional<PagesProjectDeploymentConfigsPreview> preview() {
         return Optional.ofNullable(this.preview);
     }
     /**
-     * @return Configuration for production deploys.
+     * @return Configs for production deploys.
      * 
      */
     public Optional<PagesProjectDeploymentConfigsProduction> production() {

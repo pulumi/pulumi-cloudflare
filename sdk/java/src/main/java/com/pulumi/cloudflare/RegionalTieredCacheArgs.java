@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RegionalTieredCacheArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,26 +20,26 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
      * Value of the Regional Tiered Cache zone setting.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
      * @return Value of the Regional Tiered Cache zone setting.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -75,7 +77,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -91,7 +93,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -102,7 +104,7 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -112,9 +114,6 @@ public final class RegionalTieredCacheArgs extends com.pulumi.resources.Resource
         }
 
         public RegionalTieredCacheArgs build() {
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("RegionalTieredCacheArgs", "value");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("RegionalTieredCacheArgs", "zoneId");
             }

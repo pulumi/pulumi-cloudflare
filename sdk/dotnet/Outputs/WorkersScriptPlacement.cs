@@ -14,14 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptPlacement
     {
         /// <summary>
-        /// The placement mode for the Worker. Available values: `smart`.
+        /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
-        public readonly string Mode;
+        public readonly string? Mode;
+        /// <summary>
+        /// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
-        private WorkersScriptPlacement(string mode)
+        private WorkersScriptPlacement(
+            string? mode,
+
+            string? status)
         {
             Mode = mode;
+            Status = status;
         }
     }
 }

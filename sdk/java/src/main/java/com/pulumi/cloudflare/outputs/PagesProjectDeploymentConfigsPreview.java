@@ -3,10 +3,21 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewAiBindings;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewBrowsers;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewD1Databases;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewEnvVars;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewMtlsCertificates;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewPlacement;
-import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewServiceBinding;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewQueueProducers;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewR2Buckets;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewServices;
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +28,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectDeploymentConfigsPreview {
     /**
-     * @return Use latest compatibility date for Pages Functions. Defaults to `false`.
+     * @return Constellation bindings used for Pages Functions.
      * 
      */
-    private @Nullable Boolean alwaysUseLatestCompatibilityDate;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewAiBindings> aiBindings;
+    /**
+     * @return Analytics Engine bindings used for Pages Functions.
+     * 
+     */
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets> analyticsEngineDatasets;
+    /**
+     * @return Browser bindings used for Pages Functions.
+     * 
+     */
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewBrowsers> browsers;
     /**
      * @return Compatibility date used for Pages Functions.
      * 
@@ -32,63 +53,82 @@ public final class PagesProjectDeploymentConfigsPreview {
      */
     private @Nullable List<String> compatibilityFlags;
     /**
-     * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
+     * @return D1 databases used for Pages Functions.
      * 
      */
-    private @Nullable Map<String,String> d1Databases;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewD1Databases> d1Databases;
     /**
-     * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+     * @return Durabble Object namespaces used for Pages Functions.
      * 
      */
-    private @Nullable Map<String,String> durableObjectNamespaces;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces> durableObjectNamespaces;
     /**
-     * @return Environment variables for Pages Functions. Defaults to `map[]`.
+     * @return Environment variables for build configs.
      * 
      */
-    private @Nullable Map<String,String> environmentVariables;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewEnvVars> envVars;
     /**
-     * @return Fail open used for Pages Functions. Defaults to `false`.
+     * @return Hyperdrive bindings used for Pages Functions.
      * 
      */
-    private @Nullable Boolean failOpen;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewHyperdriveBindings> hyperdriveBindings;
     /**
-     * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
+     * @return KV namespaces used for Pages Functions.
      * 
      */
-    private @Nullable Map<String,String> kvNamespaces;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewKvNamespaces> kvNamespaces;
     /**
-     * @return Configuration for placement in the Cloudflare Pages project.
+     * @return mTLS bindings used for Pages Functions.
+     * 
+     */
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewMtlsCertificates> mtlsCertificates;
+    /**
+     * @return Placement setting used for Pages Functions.
      * 
      */
     private @Nullable PagesProjectDeploymentConfigsPreviewPlacement placement;
     /**
-     * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
+     * @return Queue Producer bindings used for Pages Functions.
      * 
      */
-    private @Nullable Map<String,String> r2Buckets;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewQueueProducers> queueProducers;
     /**
-     * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+     * @return R2 buckets used for Pages Functions.
      * 
      */
-    private @Nullable Map<String,String> secrets;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewR2Buckets> r2Buckets;
     /**
      * @return Services used for Pages Functions.
      * 
      */
-    private @Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewServices> services;
     /**
-     * @return Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+     * @return Vectorize bindings used for Pages Functions.
      * 
      */
-    private @Nullable String usageModel;
+    private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewVectorizeBindings> vectorizeBindings;
 
     private PagesProjectDeploymentConfigsPreview() {}
     /**
-     * @return Use latest compatibility date for Pages Functions. Defaults to `false`.
+     * @return Constellation bindings used for Pages Functions.
      * 
      */
-    public Optional<Boolean> alwaysUseLatestCompatibilityDate() {
-        return Optional.ofNullable(this.alwaysUseLatestCompatibilityDate);
+    public Map<String,PagesProjectDeploymentConfigsPreviewAiBindings> aiBindings() {
+        return this.aiBindings == null ? Map.of() : this.aiBindings;
+    }
+    /**
+     * @return Analytics Engine bindings used for Pages Functions.
+     * 
+     */
+    public Map<String,PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets> analyticsEngineDatasets() {
+        return this.analyticsEngineDatasets == null ? Map.of() : this.analyticsEngineDatasets;
+    }
+    /**
+     * @return Browser bindings used for Pages Functions.
+     * 
+     */
+    public Map<String,PagesProjectDeploymentConfigsPreviewBrowsers> browsers() {
+        return this.browsers == null ? Map.of() : this.browsers;
     }
     /**
      * @return Compatibility date used for Pages Functions.
@@ -105,74 +145,81 @@ public final class PagesProjectDeploymentConfigsPreview {
         return this.compatibilityFlags == null ? List.of() : this.compatibilityFlags;
     }
     /**
-     * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
+     * @return D1 databases used for Pages Functions.
      * 
      */
-    public Map<String,String> d1Databases() {
+    public Map<String,PagesProjectDeploymentConfigsPreviewD1Databases> d1Databases() {
         return this.d1Databases == null ? Map.of() : this.d1Databases;
     }
     /**
-     * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+     * @return Durabble Object namespaces used for Pages Functions.
      * 
      */
-    public Map<String,String> durableObjectNamespaces() {
+    public Map<String,PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces> durableObjectNamespaces() {
         return this.durableObjectNamespaces == null ? Map.of() : this.durableObjectNamespaces;
     }
     /**
-     * @return Environment variables for Pages Functions. Defaults to `map[]`.
+     * @return Environment variables for build configs.
      * 
      */
-    public Map<String,String> environmentVariables() {
-        return this.environmentVariables == null ? Map.of() : this.environmentVariables;
+    public Map<String,PagesProjectDeploymentConfigsPreviewEnvVars> envVars() {
+        return this.envVars == null ? Map.of() : this.envVars;
     }
     /**
-     * @return Fail open used for Pages Functions. Defaults to `false`.
+     * @return Hyperdrive bindings used for Pages Functions.
      * 
      */
-    public Optional<Boolean> failOpen() {
-        return Optional.ofNullable(this.failOpen);
+    public Map<String,PagesProjectDeploymentConfigsPreviewHyperdriveBindings> hyperdriveBindings() {
+        return this.hyperdriveBindings == null ? Map.of() : this.hyperdriveBindings;
     }
     /**
-     * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
+     * @return KV namespaces used for Pages Functions.
      * 
      */
-    public Map<String,String> kvNamespaces() {
+    public Map<String,PagesProjectDeploymentConfigsPreviewKvNamespaces> kvNamespaces() {
         return this.kvNamespaces == null ? Map.of() : this.kvNamespaces;
     }
     /**
-     * @return Configuration for placement in the Cloudflare Pages project.
+     * @return mTLS bindings used for Pages Functions.
+     * 
+     */
+    public Map<String,PagesProjectDeploymentConfigsPreviewMtlsCertificates> mtlsCertificates() {
+        return this.mtlsCertificates == null ? Map.of() : this.mtlsCertificates;
+    }
+    /**
+     * @return Placement setting used for Pages Functions.
      * 
      */
     public Optional<PagesProjectDeploymentConfigsPreviewPlacement> placement() {
         return Optional.ofNullable(this.placement);
     }
     /**
-     * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
+     * @return Queue Producer bindings used for Pages Functions.
      * 
      */
-    public Map<String,String> r2Buckets() {
-        return this.r2Buckets == null ? Map.of() : this.r2Buckets;
+    public Map<String,PagesProjectDeploymentConfigsPreviewQueueProducers> queueProducers() {
+        return this.queueProducers == null ? Map.of() : this.queueProducers;
     }
     /**
-     * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+     * @return R2 buckets used for Pages Functions.
      * 
      */
-    public Map<String,String> secrets() {
-        return this.secrets == null ? Map.of() : this.secrets;
+    public Map<String,PagesProjectDeploymentConfigsPreviewR2Buckets> r2Buckets() {
+        return this.r2Buckets == null ? Map.of() : this.r2Buckets;
     }
     /**
      * @return Services used for Pages Functions.
      * 
      */
-    public List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings() {
-        return this.serviceBindings == null ? List.of() : this.serviceBindings;
+    public Map<String,PagesProjectDeploymentConfigsPreviewServices> services() {
+        return this.services == null ? Map.of() : this.services;
     }
     /**
-     * @return Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+     * @return Vectorize bindings used for Pages Functions.
      * 
      */
-    public Optional<String> usageModel() {
-        return Optional.ofNullable(this.usageModel);
+    public Map<String,PagesProjectDeploymentConfigsPreviewVectorizeBindings> vectorizeBindings() {
+        return this.vectorizeBindings == null ? Map.of() : this.vectorizeBindings;
     }
 
     public static Builder builder() {
@@ -184,41 +231,59 @@ public final class PagesProjectDeploymentConfigsPreview {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean alwaysUseLatestCompatibilityDate;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewAiBindings> aiBindings;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets> analyticsEngineDatasets;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewBrowsers> browsers;
         private @Nullable String compatibilityDate;
         private @Nullable List<String> compatibilityFlags;
-        private @Nullable Map<String,String> d1Databases;
-        private @Nullable Map<String,String> durableObjectNamespaces;
-        private @Nullable Map<String,String> environmentVariables;
-        private @Nullable Boolean failOpen;
-        private @Nullable Map<String,String> kvNamespaces;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewD1Databases> d1Databases;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces> durableObjectNamespaces;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewEnvVars> envVars;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewHyperdriveBindings> hyperdriveBindings;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewKvNamespaces> kvNamespaces;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewMtlsCertificates> mtlsCertificates;
         private @Nullable PagesProjectDeploymentConfigsPreviewPlacement placement;
-        private @Nullable Map<String,String> r2Buckets;
-        private @Nullable Map<String,String> secrets;
-        private @Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings;
-        private @Nullable String usageModel;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewQueueProducers> queueProducers;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewR2Buckets> r2Buckets;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewServices> services;
+        private @Nullable Map<String,PagesProjectDeploymentConfigsPreviewVectorizeBindings> vectorizeBindings;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreview defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.alwaysUseLatestCompatibilityDate = defaults.alwaysUseLatestCompatibilityDate;
+    	      this.aiBindings = defaults.aiBindings;
+    	      this.analyticsEngineDatasets = defaults.analyticsEngineDatasets;
+    	      this.browsers = defaults.browsers;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.d1Databases = defaults.d1Databases;
     	      this.durableObjectNamespaces = defaults.durableObjectNamespaces;
-    	      this.environmentVariables = defaults.environmentVariables;
-    	      this.failOpen = defaults.failOpen;
+    	      this.envVars = defaults.envVars;
+    	      this.hyperdriveBindings = defaults.hyperdriveBindings;
     	      this.kvNamespaces = defaults.kvNamespaces;
+    	      this.mtlsCertificates = defaults.mtlsCertificates;
     	      this.placement = defaults.placement;
+    	      this.queueProducers = defaults.queueProducers;
     	      this.r2Buckets = defaults.r2Buckets;
-    	      this.secrets = defaults.secrets;
-    	      this.serviceBindings = defaults.serviceBindings;
-    	      this.usageModel = defaults.usageModel;
+    	      this.services = defaults.services;
+    	      this.vectorizeBindings = defaults.vectorizeBindings;
         }
 
         @CustomType.Setter
-        public Builder alwaysUseLatestCompatibilityDate(@Nullable Boolean alwaysUseLatestCompatibilityDate) {
+        public Builder aiBindings(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewAiBindings> aiBindings) {
 
-            this.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            this.aiBindings = aiBindings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder analyticsEngineDatasets(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets> analyticsEngineDatasets) {
+
+            this.analyticsEngineDatasets = analyticsEngineDatasets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder browsers(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewBrowsers> browsers) {
+
+            this.browsers = browsers;
             return this;
         }
         @CustomType.Setter
@@ -237,33 +302,39 @@ public final class PagesProjectDeploymentConfigsPreview {
             return compatibilityFlags(List.of(compatibilityFlags));
         }
         @CustomType.Setter
-        public Builder d1Databases(@Nullable Map<String,String> d1Databases) {
+        public Builder d1Databases(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewD1Databases> d1Databases) {
 
             this.d1Databases = d1Databases;
             return this;
         }
         @CustomType.Setter
-        public Builder durableObjectNamespaces(@Nullable Map<String,String> durableObjectNamespaces) {
+        public Builder durableObjectNamespaces(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces> durableObjectNamespaces) {
 
             this.durableObjectNamespaces = durableObjectNamespaces;
             return this;
         }
         @CustomType.Setter
-        public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
+        public Builder envVars(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewEnvVars> envVars) {
 
-            this.environmentVariables = environmentVariables;
+            this.envVars = envVars;
             return this;
         }
         @CustomType.Setter
-        public Builder failOpen(@Nullable Boolean failOpen) {
+        public Builder hyperdriveBindings(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewHyperdriveBindings> hyperdriveBindings) {
 
-            this.failOpen = failOpen;
+            this.hyperdriveBindings = hyperdriveBindings;
             return this;
         }
         @CustomType.Setter
-        public Builder kvNamespaces(@Nullable Map<String,String> kvNamespaces) {
+        public Builder kvNamespaces(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewKvNamespaces> kvNamespaces) {
 
             this.kvNamespaces = kvNamespaces;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mtlsCertificates(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewMtlsCertificates> mtlsCertificates) {
+
+            this.mtlsCertificates = mtlsCertificates;
             return this;
         }
         @CustomType.Setter
@@ -273,47 +344,47 @@ public final class PagesProjectDeploymentConfigsPreview {
             return this;
         }
         @CustomType.Setter
-        public Builder r2Buckets(@Nullable Map<String,String> r2Buckets) {
+        public Builder queueProducers(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewQueueProducers> queueProducers) {
+
+            this.queueProducers = queueProducers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder r2Buckets(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewR2Buckets> r2Buckets) {
 
             this.r2Buckets = r2Buckets;
             return this;
         }
         @CustomType.Setter
-        public Builder secrets(@Nullable Map<String,String> secrets) {
+        public Builder services(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewServices> services) {
 
-            this.secrets = secrets;
+            this.services = services;
             return this;
         }
         @CustomType.Setter
-        public Builder serviceBindings(@Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings) {
+        public Builder vectorizeBindings(@Nullable Map<String,PagesProjectDeploymentConfigsPreviewVectorizeBindings> vectorizeBindings) {
 
-            this.serviceBindings = serviceBindings;
-            return this;
-        }
-        public Builder serviceBindings(PagesProjectDeploymentConfigsPreviewServiceBinding... serviceBindings) {
-            return serviceBindings(List.of(serviceBindings));
-        }
-        @CustomType.Setter
-        public Builder usageModel(@Nullable String usageModel) {
-
-            this.usageModel = usageModel;
+            this.vectorizeBindings = vectorizeBindings;
             return this;
         }
         public PagesProjectDeploymentConfigsPreview build() {
             final var _resultValue = new PagesProjectDeploymentConfigsPreview();
-            _resultValue.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            _resultValue.aiBindings = aiBindings;
+            _resultValue.analyticsEngineDatasets = analyticsEngineDatasets;
+            _resultValue.browsers = browsers;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.d1Databases = d1Databases;
             _resultValue.durableObjectNamespaces = durableObjectNamespaces;
-            _resultValue.environmentVariables = environmentVariables;
-            _resultValue.failOpen = failOpen;
+            _resultValue.envVars = envVars;
+            _resultValue.hyperdriveBindings = hyperdriveBindings;
             _resultValue.kvNamespaces = kvNamespaces;
+            _resultValue.mtlsCertificates = mtlsCertificates;
             _resultValue.placement = placement;
+            _resultValue.queueProducers = queueProducers;
             _resultValue.r2Buckets = r2Buckets;
-            _resultValue.secrets = secrets;
-            _resultValue.serviceBindings = serviceBindings;
-            _resultValue.usageModel = usageModel;
+            _resultValue.services = services;
+            _resultValue.vectorizeBindings = vectorizeBindings;
             return _resultValue;
         }
     }

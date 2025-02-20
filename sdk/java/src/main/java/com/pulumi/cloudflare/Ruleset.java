@@ -17,122 +17,173 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
- * allows you to create and deploy rules and rulesets.
+ * ## Example Usage
  * 
- * Cloudflare uses the Ruleset Engine in different products, allowing
- * you to configure several products using the same basic syntax.
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Ruleset;
+ * import com.pulumi.cloudflare.RulesetArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleLoggingArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleRuleset = new Ruleset("exampleRuleset", RulesetArgs.builder()
+ *             .kind("managed")
+ *             .name("My ruleset")
+ *             .phase("ddos_l4")
+ *             .rules(RulesetRuleArgs.builder()
+ *                 .id("3a03d665bac047339bb530ecb439a90d")
+ *                 .action("block")
+ *                 .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .description("Block when the IP address is not 1.1.1.1")
+ *                 .enabled(true)
+ *                 .exposed_credential_check(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .expression("ip.src ne 1.1.1.1")
+ *                 .logging(RulesetRuleLoggingArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .ratelimit(RulesetRuleRatelimitArgs.builder()
+ *                     .characteristics("ip.src")
+ *                     .period(10)
+ *                     .countingExpression("http.request.body.raw eq \"abcd\"")
+ *                     .mitigationTimeout(600)
+ *                     .requestsPerPeriod(1000)
+ *                     .requestsToOrigin(true)
+ *                     .scorePerPeriod(400)
+ *                     .scoreResponseHeaderName("my-score")
+ *                     .build())
+ *                 .ref("my_ref")
+ *                 .build())
+ *             .zoneId("zone_id")
+ *             .description("My ruleset to execute managed rulesets")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Import an account scoped Ruleset configuration.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
- * ```
- * 
- * Import a zone scoped Ruleset configuration.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+ * $ pulumi import cloudflare:index/ruleset:Ruleset example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;ruleset_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/ruleset:Ruleset")
 public class Ruleset extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Brief summary of the ruleset and its intended use.
+     * An informative description of the ruleset.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset and its intended use.
+     * @return An informative description of the ruleset.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * The kind of the ruleset.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+     * @return The kind of the ruleset.
      * 
      */
     public Output<String> kind() {
         return this.kind;
     }
     /**
-     * Name of the ruleset.
+     * The human-readable name of the ruleset.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return The human-readable name of the ruleset.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * The phase of the ruleset.
      * 
      */
     @Export(name="phase", refs={String.class}, tree="[0]")
     private Output<String> phase;
 
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * @return The phase of the ruleset.
      * 
      */
     public Output<String> phase() {
         return this.phase;
     }
     /**
-     * List of rules to apply to the ruleset.
+     * The list of rules in the ruleset.
      * 
      */
     @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<RulesetRule>> rules;
+    private Output<List<RulesetRule>> rules;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The list of rules in the ruleset.
      * 
      */
-    public Output<Optional<List<RulesetRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<RulesetRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {

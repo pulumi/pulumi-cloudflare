@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,33 +16,25 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
     public static final EmailRoutingRuleActionArgs Empty = new EmailRoutingRuleActionArgs();
 
     /**
-     * Type of action. Available values: `forward`, `worker`, `drop`
+     * Type of supported action.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of action. Available values: `forward`, `worker`, `drop`
+     * @return Type of supported action.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
 
-    /**
-     * Value to match on. Required for `type` of `literal`.
-     * 
-     */
-    @Import(name="values")
-    private @Nullable Output<List<String>> values;
+    @Import(name="values", required=true)
+    private Output<List<String>> values;
 
-    /**
-     * @return Value to match on. Required for `type` of `literal`.
-     * 
-     */
-    public Optional<Output<List<String>>> values() {
-        return Optional.ofNullable(this.values);
+    public Output<List<String>> values() {
+        return this.values;
     }
 
     private EmailRoutingRuleActionArgs() {}
@@ -73,7 +63,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of action. Available values: `forward`, `worker`, `drop`
+         * @param type Type of supported action.
          * 
          * @return builder
          * 
@@ -84,7 +74,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of action. Available values: `forward`, `worker`, `drop`
+         * @param type Type of supported action.
          * 
          * @return builder
          * 
@@ -93,33 +83,15 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
             return type(Output.of(type));
         }
 
-        /**
-         * @param values Value to match on. Required for `type` of `literal`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(@Nullable Output<List<String>> values) {
+        public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Value to match on. Required for `type` of `literal`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values Value to match on. Required for `type` of `literal`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }
@@ -127,6 +99,9 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         public EmailRoutingRuleActionArgs build() {
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingRuleActionArgs", "type");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleActionArgs", "values");
             }
             return $;
         }

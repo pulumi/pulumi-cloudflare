@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +15,18 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
     public static final RulesetRuleActionParametersSniArgs Empty = new RulesetRuleActionParametersSniArgs();
 
     /**
-     * Value to define for SNI.
+     * The SNI override.
      * 
      */
-    @Import(name="value")
-    private @Nullable Output<String> value;
+    @Import(name="value", required=true)
+    private Output<String> value;
 
     /**
-     * @return Value to define for SNI.
+     * @return The SNI override.
      * 
      */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<String> value() {
+        return this.value;
     }
 
     private RulesetRuleActionParametersSniArgs() {}
@@ -55,18 +54,18 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param value Value to define for SNI.
+         * @param value The SNI override.
          * 
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<String> value) {
+        public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value Value to define for SNI.
+         * @param value The SNI override.
          * 
          * @return builder
          * 
@@ -76,6 +75,9 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         public RulesetRuleActionParametersSniArgs build() {
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersSniArgs", "value");
+            }
             return $;
         }
     }

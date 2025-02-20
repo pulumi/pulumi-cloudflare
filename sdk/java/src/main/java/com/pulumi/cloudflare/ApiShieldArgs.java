@@ -10,38 +10,28 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApiShieldArgs Empty = new ApiShieldArgs();
 
-    /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
-    @Import(name="authIdCharacteristics")
-    private @Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics;
+    @Import(name="authIdCharacteristics", required=true)
+    private Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics;
 
-    /**
-     * @return Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
-    public Optional<Output<List<ApiShieldAuthIdCharacteristicArgs>>> authIdCharacteristics() {
-        return Optional.ofNullable(this.authIdCharacteristics);
+    public Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics() {
+        return this.authIdCharacteristics;
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -73,39 +63,21 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApiShieldArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authIdCharacteristics(@Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics) {
+        public Builder authIdCharacteristics(Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics) {
             $.authIdCharacteristics = authIdCharacteristics;
             return this;
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authIdCharacteristics(List<ApiShieldAuthIdCharacteristicArgs> authIdCharacteristics) {
             return authIdCharacteristics(Output.of(authIdCharacteristics));
         }
 
-        /**
-         * @param authIdCharacteristics Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs... authIdCharacteristics) {
             return authIdCharacteristics(List.of(authIdCharacteristics));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -116,7 +88,7 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -126,6 +98,9 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApiShieldArgs build() {
+            if ($.authIdCharacteristics == null) {
+                throw new MissingRequiredPropertyException("ApiShieldArgs", "authIdCharacteristics");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ApiShieldArgs", "zoneId");
             }

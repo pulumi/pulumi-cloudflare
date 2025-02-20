@@ -13,39 +13,41 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ContentScanningExpressionArgs', 'ContentScanningExpression']
 
 @pulumi.input_type
 class ContentScanningExpressionArgs:
     def __init__(__self__, *,
-                 payload: pulumi.Input[str],
-                 zone_id: pulumi.Input[str]):
+                 bodies: pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]],
+                 zone_id: pulumi.Input[str],
+                 expression_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
-        :param pulumi.Input[str] payload: Custom scan expression to tell the content scanner where to find the content objects.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[str] expression_id: Identifier
         """
-        pulumi.set(__self__, "payload", payload)
+        pulumi.set(__self__, "bodies", bodies)
         pulumi.set(__self__, "zone_id", zone_id)
+        if expression_id is not None:
+            pulumi.set(__self__, "expression_id", expression_id)
 
     @property
     @pulumi.getter
-    def payload(self) -> pulumi.Input[str]:
-        """
-        Custom scan expression to tell the content scanner where to find the content objects.
-        """
-        return pulumi.get(self, "payload")
+    def bodies(self) -> pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]:
+        return pulumi.get(self, "bodies")
 
-    @payload.setter
-    def payload(self, value: pulumi.Input[str]):
-        pulumi.set(self, "payload", value)
+    @bodies.setter
+    def bodies(self, value: pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]):
+        pulumi.set(self, "bodies", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -53,39 +55,63 @@ class ContentScanningExpressionArgs:
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter(name="expressionId")
+    def expression_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "expression_id")
+
+    @expression_id.setter
+    def expression_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression_id", value)
+
 
 @pulumi.input_type
 class _ContentScanningExpressionState:
     def __init__(__self__, *,
-                 payload: Optional[pulumi.Input[str]] = None,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
+                 expression_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
-        :param pulumi.Input[str] payload: Custom scan expression to tell the content scanner where to find the content objects.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] expression_id: Identifier
+        :param pulumi.Input[str] zone_id: Identifier
         """
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+        if bodies is not None:
+            pulumi.set(__self__, "bodies", bodies)
+        if expression_id is not None:
+            pulumi.set(__self__, "expression_id", expression_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom scan expression to tell the content scanner where to find the content objects.
-        """
-        return pulumi.get(self, "payload")
+    def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]:
+        return pulumi.get(self, "bodies")
 
-    @payload.setter
-    def payload(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payload", value)
+    @bodies.setter
+    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
+        pulumi.set(self, "bodies", value)
+
+    @property
+    @pulumi.getter(name="expressionId")
+    def expression_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "expression_id")
+
+    @expression_id.setter
+    def expression_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression_id", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -99,40 +125,28 @@ class ContentScanningExpression(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 payload: Optional[pulumi.Input[str]] = None,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 expression_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable Content Scanning before trying to add custom scan expressions
-        example = cloudflare.ContentScanning("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
-            enabled=True)
-        first_example = cloudflare.ContentScanningExpression("first_example",
-            zone_id=example.zone_id,
-            payload="lookup_json_string(http.request.body.raw, \\"file\\")")
-        second_example = cloudflare.ContentScanningExpression("second_example",
-            zone_id=example.zone_id,
-            payload="lookup_json_string(http.request.body.raw, \\"document\\")")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example <zone_id>/<resource_id>
+        example_content_scanning_expression = cloudflare.ContentScanningExpression("example_content_scanning_expression",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bodies=[{
+                "payload": "lookup_json_string(http.request.body.raw, \\"file\\")",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] payload: Custom scan expression to tell the content scanner where to find the content objects.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] expression_id: Identifier
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -141,30 +155,17 @@ class ContentScanningExpression(pulumi.CustomResource):
                  args: ContentScanningExpressionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Enable Content Scanning before trying to add custom scan expressions
-        example = cloudflare.ContentScanning("example",
-            zone_id="399c6f4950c01a5a141b99ff7fbcbd8b",
-            enabled=True)
-        first_example = cloudflare.ContentScanningExpression("first_example",
-            zone_id=example.zone_id,
-            payload="lookup_json_string(http.request.body.raw, \\"file\\")")
-        second_example = cloudflare.ContentScanningExpression("second_example",
-            zone_id=example.zone_id,
-            payload="lookup_json_string(http.request.body.raw, \\"document\\")")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example <zone_id>/<resource_id>
+        example_content_scanning_expression = cloudflare.ContentScanningExpression("example_content_scanning_expression",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bodies=[{
+                "payload": "lookup_json_string(http.request.body.raw, \\"file\\")",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -182,7 +183,8 @@ class ContentScanningExpression(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 payload: Optional[pulumi.Input[str]] = None,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 expression_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -193,9 +195,10 @@ class ContentScanningExpression(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContentScanningExpressionArgs.__new__(ContentScanningExpressionArgs)
 
-            if payload is None and not opts.urn:
-                raise TypeError("Missing required property 'payload'")
-            __props__.__dict__["payload"] = payload
+            if bodies is None and not opts.urn:
+                raise TypeError("Missing required property 'bodies'")
+            __props__.__dict__["bodies"] = bodies
+            __props__.__dict__["expression_id"] = expression_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -209,7 +212,8 @@ class ContentScanningExpression(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            payload: Optional[pulumi.Input[str]] = None,
+            bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+            expression_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ContentScanningExpression':
         """
         Get an existing ContentScanningExpression resource's state with the given name, id, and optional extra
@@ -218,30 +222,36 @@ class ContentScanningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] payload: Custom scan expression to tell the content scanner where to find the content objects.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] expression_id: Identifier
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ContentScanningExpressionState.__new__(_ContentScanningExpressionState)
 
-        __props__.__dict__["payload"] = payload
+        __props__.__dict__["bodies"] = bodies
+        __props__.__dict__["expression_id"] = expression_id
         __props__.__dict__["zone_id"] = zone_id
         return ContentScanningExpression(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def payload(self) -> pulumi.Output[str]:
+    def bodies(self) -> pulumi.Output[Sequence['outputs.ContentScanningExpressionBody']]:
+        return pulumi.get(self, "bodies")
+
+    @property
+    @pulumi.getter(name="expressionId")
+    def expression_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Custom scan expression to tell the content scanner where to find the content objects.
+        Identifier
         """
-        return pulumi.get(self, "payload")
+        return pulumi.get(self, "expression_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

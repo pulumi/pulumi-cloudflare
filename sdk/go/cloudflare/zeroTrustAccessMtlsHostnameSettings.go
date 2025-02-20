@@ -7,65 +7,19 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessMtlsHostnameSettings(ctx, "example", &cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Settings: cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArray{
-//					&cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArgs{
-//						Hostname:                    pulumi.String("example.com"),
-//						ClientCertificateForwarding: pulumi.Bool(true),
-//						ChinaNetwork:                pulumi.Bool(false),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Account level mTLS hostname settings import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/<account_id>
-// ```
-//
-// Zone level mTLS hostname settings import.
-//
-// ```sh
-// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/<zone_id>
-// ```
 type ZeroTrustAccessMtlsHostnameSettings struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput                                `pulumi:"accountId"`
 	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -73,9 +27,12 @@ type ZeroTrustAccessMtlsHostnameSettings struct {
 func NewZeroTrustAccessMtlsHostnameSettings(ctx *pulumi.Context,
 	name string, args *ZeroTrustAccessMtlsHostnameSettingsArgs, opts ...pulumi.ResourceOption) (*ZeroTrustAccessMtlsHostnameSettings, error) {
 	if args == nil {
-		args = &ZeroTrustAccessMtlsHostnameSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Settings == nil {
+		return nil, errors.New("invalid value for required argument 'Settings'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessMtlsHostnameSettings
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", name, args, &resource, opts...)
@@ -99,18 +56,18 @@ func GetZeroTrustAccessMtlsHostnameSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessMtlsHostnameSettings resources.
 type zeroTrustAccessMtlsHostnameSettingsState struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                      `pulumi:"accountId"`
 	Settings  []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZeroTrustAccessMtlsHostnameSettingsState struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -119,19 +76,19 @@ func (ZeroTrustAccessMtlsHostnameSettingsState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessMtlsHostnameSettingsArgs struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                      `pulumi:"accountId"`
 	Settings  []ZeroTrustAccessMtlsHostnameSettingsSetting `pulumi:"settings"`
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessMtlsHostnameSettings resource.
 type ZeroTrustAccessMtlsHostnameSettingsArgs struct {
-	// The account identifier to target for the resource.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	Settings  ZeroTrustAccessMtlsHostnameSettingsSettingArrayInput
-	// The zone identifier to target for the resource.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -222,7 +179,7 @@ func (o ZeroTrustAccessMtlsHostnameSettingsOutput) ToZeroTrustAccessMtlsHostname
 	return o
 }
 
-// The account identifier to target for the resource.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o ZeroTrustAccessMtlsHostnameSettingsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -233,7 +190,7 @@ func (o ZeroTrustAccessMtlsHostnameSettingsOutput) Settings() ZeroTrustAccessMtl
 	}).(ZeroTrustAccessMtlsHostnameSettingsSettingArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o ZeroTrustAccessMtlsHostnameSettingsOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessMtlsHostnameSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

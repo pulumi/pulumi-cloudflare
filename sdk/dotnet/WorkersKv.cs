@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage a Cloudflare Workers KV Pair.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,18 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNs = new Cloudflare.WorkersKvNamespace("example_ns", new()
+    ///     var exampleWorkersKv = new Cloudflare.WorkersKv("example_workers_kv", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Title = "test-namespace",
-    ///     });
-    /// 
-    ///     var example = new Cloudflare.WorkersKv("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         NamespaceId = exampleNs.Id,
-    ///         Key = "test-key",
-    ///         Value = "test value",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
+    ///         KeyName = "My-Key",
+    ///         Metadata = "{\"someMetadataKey\": \"someMetadataValue\"}",
+    ///         Value = "Some Value",
     ///     });
     /// 
     /// });
@@ -42,32 +35,38 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;
+    /// $ pulumi import cloudflare:index/workersKv:WorkersKv example '&lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKv:WorkersKv")]
     public partial class WorkersKv : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         /// </summary>
-        [Output("key")]
-        public Output<string> Key { get; private set; } = null!;
+        [Output("keyName")]
+        public Output<string> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// Arbitrary JSON to be associated with a key/value pair.
+        /// </summary>
+        [Output("metadata")]
+        public Output<string?> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Namespace identifier tag.
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Value of the KV pair.
+        /// A byte sequence to be stored, up to 25 MiB in length.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -119,25 +118,31 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("keyName", required: true)]
+        public Input<string> KeyName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// Arbitrary JSON to be associated with a key/value pair.
+        /// </summary>
+        [Input("metadata")]
+        public Input<string>? Metadata { get; set; }
+
+        /// <summary>
+        /// Namespace identifier tag.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 
         /// <summary>
-        /// Value of the KV pair.
+        /// A byte sequence to be stored, up to 25 MiB in length.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -151,25 +156,31 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("keyName")]
+        public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        /// Arbitrary JSON to be associated with a key/value pair.
+        /// </summary>
+        [Input("metadata")]
+        public Input<string>? Metadata { get; set; }
+
+        /// <summary>
+        /// Namespace identifier tag.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// Value of the KV pair.
+        /// A byte sequence to be stored, up to 25 MiB in length.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

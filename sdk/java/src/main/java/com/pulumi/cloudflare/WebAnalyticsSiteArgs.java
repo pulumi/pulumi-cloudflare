@@ -18,14 +18,14 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
     public static final WebAnalyticsSiteArgs Empty = new WebAnalyticsSiteArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -33,29 +33,29 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
-    @Import(name="autoInstall", required=true)
-    private Output<Boolean> autoInstall;
+    @Import(name="autoInstall")
+    private @Nullable Output<Boolean> autoInstall;
 
     /**
-     * @return Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * @return If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
-    public Output<Boolean> autoInstall() {
-        return this.autoInstall;
+    public Optional<Output<Boolean>> autoInstall() {
+        return Optional.ofNullable(this.autoInstall);
     }
 
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * The hostname to use for gray-clouded sites.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname to use for gray-clouded sites.
      * 
      */
     public Optional<Output<String>> host() {
@@ -63,14 +63,14 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      * 
      */
     @Import(name="zoneTag")
     private @Nullable Output<String> zoneTag;
 
     /**
-     * @return The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier.
      * 
      */
     public Optional<Output<String>> zoneTag() {
@@ -105,7 +105,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -126,18 +126,18 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoInstall Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+         * @param autoInstall If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
          * 
          * @return builder
          * 
          */
-        public Builder autoInstall(Output<Boolean> autoInstall) {
+        public Builder autoInstall(@Nullable Output<Boolean> autoInstall) {
             $.autoInstall = autoInstall;
             return this;
         }
 
         /**
-         * @param autoInstall Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+         * @param autoInstall If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param host The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+         * @param host The hostname to use for gray-clouded sites.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param host The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+         * @param host The hostname to use for gray-clouded sites.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneTag The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneTag The zone identifier.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneTag The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneTag The zone identifier.
          * 
          * @return builder
          * 
@@ -191,9 +191,6 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         public WebAnalyticsSiteArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WebAnalyticsSiteArgs", "accountId");
-            }
-            if ($.autoInstall == null) {
-                throw new MissingRequiredPropertyException("WebAnalyticsSiteArgs", "autoInstall");
             }
             return $;
         }

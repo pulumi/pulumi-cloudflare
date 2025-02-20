@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.AddressMapIpArgs;
 import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -20,14 +19,14 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
     public static final AddressMapState Empty = new AddressMapState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier of a Cloudflare account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -64,15 +63,22 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.canModifyIps);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     @Import(name="defaultSni")
     private @Nullable Output<String> defaultSni;
 
     /**
-     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * @return If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      * 
      */
     public Optional<Output<String>> defaultSni() {
@@ -80,14 +86,14 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the address map.
+     * @return An optional description field which may be used to describe the types of IPs or zones on the map.
      * 
      */
     public Optional<Output<String>> description() {
@@ -95,48 +101,47 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the Address Map is enabled or not.
+     * @return Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * The set of IPs on the Address Map.
-     * 
-     */
     @Import(name="ips")
-    private @Nullable Output<List<AddressMapIpArgs>> ips;
+    private @Nullable Output<List<String>> ips;
 
-    /**
-     * @return The set of IPs on the Address Map.
-     * 
-     */
-    public Optional<Output<List<AddressMapIpArgs>>> ips() {
+    public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
     }
 
     /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
     @Import(name="memberships")
     private @Nullable Output<List<AddressMapMembershipArgs>> memberships;
 
     /**
-     * @return Zones and Accounts which will be assigned IPs on this Address Map.
+     * @return Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
     public Optional<Output<List<AddressMapMembershipArgs>>> memberships() {
         return Optional.ofNullable(this.memberships);
+    }
+
+    @Import(name="modifiedAt")
+    private @Nullable Output<String> modifiedAt;
+
+    public Optional<Output<String>> modifiedAt() {
+        return Optional.ofNullable(this.modifiedAt);
     }
 
     private AddressMapState() {}
@@ -145,11 +150,13 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.canDelete = $.canDelete;
         this.canModifyIps = $.canModifyIps;
+        this.createdAt = $.createdAt;
         this.defaultSni = $.defaultSni;
         this.description = $.description;
         this.enabled = $.enabled;
         this.ips = $.ips;
         this.memberships = $.memberships;
+        this.modifiedAt = $.modifiedAt;
     }
 
     public static Builder builder() {
@@ -171,7 +178,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -182,7 +189,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier of a Cloudflare account.
          * 
          * @return builder
          * 
@@ -233,8 +240,17 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
             return canModifyIps(Output.of(canModifyIps));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
          * 
          * @return builder
          * 
@@ -245,7 +261,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+         * @param defaultSni If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
          * 
          * @return builder
          * 
@@ -255,7 +271,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the address map.
+         * @param description An optional description field which may be used to describe the types of IPs or zones on the map.
          * 
          * @return builder
          * 
@@ -266,7 +282,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the address map.
+         * @param description An optional description field which may be used to describe the types of IPs or zones on the map.
          * 
          * @return builder
          * 
@@ -276,7 +292,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the Address Map is enabled or not.
+         * @param enabled Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
          * 
          * @return builder
          * 
@@ -287,7 +303,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the Address Map is enabled or not.
+         * @param enabled Whether the Address Map is enabled or not. Cloudflare&#39;s DNS will not respond with IP addresses on an Address Map until the map is enabled.
          * 
          * @return builder
          * 
@@ -296,39 +312,21 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(@Nullable Output<List<AddressMapIpArgs>> ips) {
+        public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(List<AddressMapIpArgs> ips) {
+        public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
-        /**
-         * @param ips The set of IPs on the Address Map.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(AddressMapIpArgs... ips) {
+        public Builder ips(String... ips) {
             return ips(List.of(ips));
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
@@ -339,7 +337,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
@@ -349,13 +347,22 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map.
+         * @param memberships Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
          * 
          * @return builder
          * 
          */
         public Builder memberships(AddressMapMembershipArgs... memberships) {
             return memberships(List.of(memberships));
+        }
+
+        public Builder modifiedAt(@Nullable Output<String> modifiedAt) {
+            $.modifiedAt = modifiedAt;
+            return this;
+        }
+
+        public Builder modifiedAt(String modifiedAt) {
+            return modifiedAt(Output.of(modifiedAt));
         }
 
         public AddressMapState build() {

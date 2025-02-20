@@ -6,8 +6,11 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetListsArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,24 +18,40 @@ public final class GetListsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetListsArgs Empty = new GetListsArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * Max items to fetch, default: 1000
+     * 
+     */
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
+
+    /**
+     * @return Max items to fetch, default: 1000
+     * 
+     */
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
     private GetListsArgs() {}
 
     private GetListsArgs(GetListsArgs $) {
         this.accountId = $.accountId;
+        this.maxItems = $.maxItems;
     }
 
     public static Builder builder() {
@@ -54,7 +73,7 @@ public final class GetListsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -65,13 +84,34 @@ public final class GetListsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param maxItems Max items to fetch, default: 1000
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param maxItems Max items to fetch, default: 1000
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
         }
 
         public GetListsArgs build() {

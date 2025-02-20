@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ApiTokenPolicyPermissionGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -15,38 +16,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiTokenPolicy {
     /**
-     * @return Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     * @return Allow or deny operations against the resources.
      * 
      */
-    private @Nullable String effect;
+    private String effect;
     /**
-     * @return List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     * @return Policy identifier.
      * 
      */
-    private List<String> permissionGroups;
+    private @Nullable String id;
     /**
-     * @return Describes what operations against which resources are allowed or denied.
+     * @return A set of permission groups that are specified to the policy.
+     * 
+     */
+    private List<ApiTokenPolicyPermissionGroup> permissionGroups;
+    /**
+     * @return A list of resource names that the policy applies to.
      * 
      */
     private Map<String,String> resources;
 
     private ApiTokenPolicy() {}
     /**
-     * @return Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     * @return Allow or deny operations against the resources.
      * 
      */
-    public Optional<String> effect() {
-        return Optional.ofNullable(this.effect);
+    public String effect() {
+        return this.effect;
     }
     /**
-     * @return List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     * @return Policy identifier.
      * 
      */
-    public List<String> permissionGroups() {
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return A set of permission groups that are specified to the policy.
+     * 
+     */
+    public List<ApiTokenPolicyPermissionGroup> permissionGroups() {
         return this.permissionGroups;
     }
     /**
-     * @return Describes what operations against which resources are allowed or denied.
+     * @return A list of resource names that the policy applies to.
      * 
      */
     public Map<String,String> resources() {
@@ -62,32 +75,42 @@ public final class ApiTokenPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String effect;
-        private List<String> permissionGroups;
+        private String effect;
+        private @Nullable String id;
+        private List<ApiTokenPolicyPermissionGroup> permissionGroups;
         private Map<String,String> resources;
         public Builder() {}
         public Builder(ApiTokenPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
+    	      this.id = defaults.id;
     	      this.permissionGroups = defaults.permissionGroups;
     	      this.resources = defaults.resources;
         }
 
         @CustomType.Setter
-        public Builder effect(@Nullable String effect) {
-
+        public Builder effect(String effect) {
+            if (effect == null) {
+              throw new MissingRequiredPropertyException("ApiTokenPolicy", "effect");
+            }
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
-        public Builder permissionGroups(List<String> permissionGroups) {
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder permissionGroups(List<ApiTokenPolicyPermissionGroup> permissionGroups) {
             if (permissionGroups == null) {
               throw new MissingRequiredPropertyException("ApiTokenPolicy", "permissionGroups");
             }
             this.permissionGroups = permissionGroups;
             return this;
         }
-        public Builder permissionGroups(String... permissionGroups) {
+        public Builder permissionGroups(ApiTokenPolicyPermissionGroup... permissionGroups) {
             return permissionGroups(List.of(permissionGroups));
         }
         @CustomType.Setter
@@ -101,6 +124,7 @@ public final class ApiTokenPolicy {
         public ApiTokenPolicy build() {
             final var _resultValue = new ApiTokenPolicy();
             _resultValue.effect = effect;
+            _resultValue.id = id;
             _resultValue.permissionGroups = permissionGroups;
             _resultValue.resources = resources;
             return _resultValue;

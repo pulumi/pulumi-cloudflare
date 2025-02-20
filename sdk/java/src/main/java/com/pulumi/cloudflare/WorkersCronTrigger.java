@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersCronTriggerArgs;
 import com.pulumi.cloudflare.inputs.WorkersCronTriggerState;
+import com.pulumi.cloudflare.outputs.WorkersCronTriggerSchedule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,106 +16,49 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Worker Cron Triggers allow users to map a cron expression to a Worker script
- * using a `ScheduledEvent` listener that enables Workers to be executed on a
- * schedule. Worker Cron Triggers are ideal for running periodic jobs for
- * maintenance or calling third-party APIs to collect up-to-date data.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersScript;
- * import com.pulumi.cloudflare.WorkersScriptArgs;
- * import com.pulumi.cloudflare.WorkersCronTrigger;
- * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var exampleScript = new WorkersScript("exampleScript", WorkersScriptArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example-script")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input("path/to/my.js")
- *                 .build()).result())
- *             .build());
- * 
- *         var exampleTrigger = new WorkersCronTrigger("exampleTrigger", WorkersCronTriggerArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .scriptName(exampleScript.name())
- *             .schedules(            
- *                 "*}&#47;{@code 5 * * * *",
- *                 "10 7 * * mon-fri")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example &lt;account_id&gt;/&lt;script_name&gt;
+ * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/workersCronTrigger:WorkersCronTrigger")
 public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * Cron expressions to execute the Worker script.
-     * 
-     */
-    @Export(name="schedules", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> schedules;
+    @Export(name="schedules", refs={List.class,WorkersCronTriggerSchedule.class}, tree="[0,1]")
+    private Output<List<WorkersCronTriggerSchedule>> schedules;
 
-    /**
-     * @return Cron expressions to execute the Worker script.
-     * 
-     */
-    public Output<List<String>> schedules() {
+    public Output<List<WorkersCronTriggerSchedule>> schedules() {
         return this.schedules;
     }
     /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Worker script to target for the schedules.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Output<String> scriptName() {
