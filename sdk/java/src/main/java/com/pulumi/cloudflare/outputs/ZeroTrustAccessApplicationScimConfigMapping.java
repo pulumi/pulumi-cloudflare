@@ -35,7 +35,7 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
      */
     private String schema;
     /**
-     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * @return The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
      * 
      */
     private @Nullable String strictness;
@@ -75,7 +75,7 @@ public final class ZeroTrustAccessApplicationScimConfigMapping {
         return this.schema;
     }
     /**
-     * @return How strictly to adhere to outbound resource schemas when provisioning to this mapping. &#34;strict&#34; will remove unknown values when provisioning, while &#34;passthrough&#34; will pass unknown values to the target.
+     * @return The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
      * 
      */
     public Optional<String> strictness() {

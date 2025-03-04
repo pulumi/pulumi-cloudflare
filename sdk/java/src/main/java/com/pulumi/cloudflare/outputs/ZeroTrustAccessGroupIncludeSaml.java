@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessGroupIncludeSaml {
@@ -15,39 +14,39 @@ public final class ZeroTrustAccessGroupIncludeSaml {
      * @return The name of the SAML attribute.
      * 
      */
-    private @Nullable String attributeName;
+    private String attributeName;
     /**
      * @return The SAML attribute value to look for.
      * 
      */
-    private @Nullable String attributeValue;
+    private String attributeValue;
     /**
      * @return The ID of your SAML identity provider.
      * 
      */
-    private @Nullable String identityProviderId;
+    private String identityProviderId;
 
     private ZeroTrustAccessGroupIncludeSaml() {}
     /**
      * @return The name of the SAML attribute.
      * 
      */
-    public Optional<String> attributeName() {
-        return Optional.ofNullable(this.attributeName);
+    public String attributeName() {
+        return this.attributeName;
     }
     /**
      * @return The SAML attribute value to look for.
      * 
      */
-    public Optional<String> attributeValue() {
-        return Optional.ofNullable(this.attributeValue);
+    public String attributeValue() {
+        return this.attributeValue;
     }
     /**
      * @return The ID of your SAML identity provider.
      * 
      */
-    public Optional<String> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public String identityProviderId() {
+        return this.identityProviderId;
     }
 
     public static Builder builder() {
@@ -59,9 +58,9 @@ public final class ZeroTrustAccessGroupIncludeSaml {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String attributeName;
-        private @Nullable String attributeValue;
-        private @Nullable String identityProviderId;
+        private String attributeName;
+        private String attributeValue;
+        private String identityProviderId;
         public Builder() {}
         public Builder(ZeroTrustAccessGroupIncludeSaml defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,20 +70,26 @@ public final class ZeroTrustAccessGroupIncludeSaml {
         }
 
         @CustomType.Setter
-        public Builder attributeName(@Nullable String attributeName) {
-
+        public Builder attributeName(String attributeName) {
+            if (attributeName == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSaml", "attributeName");
+            }
             this.attributeName = attributeName;
             return this;
         }
         @CustomType.Setter
-        public Builder attributeValue(@Nullable String attributeValue) {
-
+        public Builder attributeValue(String attributeValue) {
+            if (attributeValue == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSaml", "attributeValue");
+            }
             this.attributeValue = attributeValue;
             return this;
         }
         @CustomType.Setter
-        public Builder identityProviderId(@Nullable String identityProviderId) {
-
+        public Builder identityProviderId(String identityProviderId) {
+            if (identityProviderId == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessGroupIncludeSaml", "identityProviderId");
+            }
             this.identityProviderId = identityProviderId;
             return this;
         }

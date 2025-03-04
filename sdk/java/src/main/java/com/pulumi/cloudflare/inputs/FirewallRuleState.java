@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.FirewallRuleActionArgs;
+import com.pulumi.cloudflare.inputs.FirewallRuleFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,59 +21,51 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     public static final FirewallRuleState Empty = new FirewallRuleState();
 
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     @Import(name="action")
-    private @Nullable Output<String> action;
+    private @Nullable Output<FirewallRuleActionArgs> action;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * @return The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
-    public Optional<Output<String>> action() {
+    public Optional<Output<FirewallRuleActionArgs>> action() {
         return Optional.ofNullable(this.action);
     }
 
     /**
-     * A description of the rule to help identify it.
+     * An informative summary of the firewall rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of the rule to help identify it.
+     * @return An informative summary of the firewall rule.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    @Import(name="filterId")
-    private @Nullable Output<String> filterId;
+    @Import(name="filter")
+    private @Nullable Output<FirewallRuleFilterArgs> filter;
 
-    /**
-     * @return The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    public Optional<Output<String>> filterId() {
-        return Optional.ofNullable(this.filterId);
+    public Optional<Output<FirewallRuleFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * Whether this filter based firewall rule is currently paused.
+     * When true, indicates that the firewall rule is currently paused.
      * 
      */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
     /**
-     * @return Whether this filter based firewall rule is currently paused.
+     * @return When true, indicates that the firewall rule is currently paused.
      * 
      */
     public Optional<Output<Boolean>> paused() {
@@ -79,44 +73,66 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+     * The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      * 
      */
     @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    private @Nullable Output<Double> priority;
 
     /**
-     * @return The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+     * @return The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      * 
      */
-    public Optional<Output<Integer>> priority() {
+    public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
-    /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
     @Import(name="products")
     private @Nullable Output<List<String>> products;
 
-    /**
-     * @return List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
     public Optional<Output<List<String>>> products() {
         return Optional.ofNullable(this.products);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * A short reference tag. Allows you to select related firewall rules.
+     * 
+     */
+    @Import(name="ref")
+    private @Nullable Output<String> ref;
+
+    /**
+     * @return A short reference tag. Allows you to select related firewall rules.
+     * 
+     */
+    public Optional<Output<String>> ref() {
+        return Optional.ofNullable(this.ref);
+    }
+
+    /**
+     * The unique identifier of the firewall rule.
+     * 
+     */
+    @Import(name="ruleId")
+    private @Nullable Output<String> ruleId;
+
+    /**
+     * @return The unique identifier of the firewall rule.
+     * 
+     */
+    public Optional<Output<String>> ruleId() {
+        return Optional.ofNullable(this.ruleId);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -128,10 +144,12 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     private FirewallRuleState(FirewallRuleState $) {
         this.action = $.action;
         this.description = $.description;
-        this.filterId = $.filterId;
+        this.filter = $.filter;
         this.paused = $.paused;
         this.priority = $.priority;
         this.products = $.products;
+        this.ref = $.ref;
+        this.ruleId = $.ruleId;
         this.zoneId = $.zoneId;
     }
 
@@ -154,28 +172,28 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
          */
-        public Builder action(@Nullable Output<String> action) {
+        public Builder action(@Nullable Output<FirewallRuleActionArgs> action) {
             $.action = action;
             return this;
         }
 
         /**
-         * @param action The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
          */
-        public Builder action(String action) {
+        public Builder action(FirewallRuleActionArgs action) {
             return action(Output.of(action));
         }
 
         /**
-         * @param description A description of the rule to help identify it.
+         * @param description An informative summary of the firewall rule.
          * 
          * @return builder
          * 
@@ -186,7 +204,7 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description of the rule to help identify it.
+         * @param description An informative summary of the firewall rule.
          * 
          * @return builder
          * 
@@ -195,29 +213,17 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        /**
-         * @param filterId The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(@Nullable Output<String> filterId) {
-            $.filterId = filterId;
+        public Builder filter(@Nullable Output<FirewallRuleFilterArgs> filter) {
+            $.filter = filter;
             return this;
         }
 
-        /**
-         * @param filterId The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filterId(String filterId) {
-            return filterId(Output.of(filterId));
+        public Builder filter(FirewallRuleFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
-         * @param paused Whether this filter based firewall rule is currently paused.
+         * @param paused When true, indicates that the firewall rule is currently paused.
          * 
          * @return builder
          * 
@@ -228,7 +234,7 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Whether this filter based firewall rule is currently paused.
+         * @param paused When true, indicates that the firewall rule is currently paused.
          * 
          * @return builder
          * 
@@ -238,59 +244,83 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+         * @param priority The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
          * 
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<Integer> priority) {
+        public Builder priority(@Nullable Output<Double> priority) {
             $.priority = priority;
             return this;
         }
 
         /**
-         * @param priority The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+         * @param priority The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
          * 
          * @return builder
          * 
          */
-        public Builder priority(Integer priority) {
+        public Builder priority(Double priority) {
             return priority(Output.of(priority));
         }
 
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder products(@Nullable Output<List<String>> products) {
             $.products = products;
             return this;
         }
 
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder products(List<String> products) {
             return products(Output.of(products));
         }
 
-        /**
-         * @param products List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder products(String... products) {
             return products(List.of(products));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param ref A short reference tag. Allows you to select related firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(@Nullable Output<String> ref) {
+            $.ref = ref;
+            return this;
+        }
+
+        /**
+         * @param ref A short reference tag. Allows you to select related firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(String ref) {
+            return ref(Output.of(ref));
+        }
+
+        /**
+         * @param ruleId The unique identifier of the firewall rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleId(@Nullable Output<String> ruleId) {
+            $.ruleId = ruleId;
+            return this;
+        }
+
+        /**
+         * @param ruleId The unique identifier of the firewall rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleId(String ruleId) {
+            return ruleId(Output.of(ruleId));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -301,7 +331,7 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

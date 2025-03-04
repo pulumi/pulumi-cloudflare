@@ -15,8 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare&#39;s products.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -42,11 +40,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new NotificationPolicyWebhooks("example", NotificationPolicyWebhooksArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Webhooks destination")
- *             .url("https://example.com")
- *             .secret("my-secret")
+ *         var exampleNotificationPolicyWebhooks = new NotificationPolicyWebhooks("exampleNotificationPolicyWebhooks", NotificationPolicyWebhooksArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("Slack Webhook")
+ *             .url("https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd")
+ *             .secret("secret")
  *             .build());
  * 
  *     }
@@ -58,115 +56,123 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &lt;account_id&gt;/&lt;notification_webhook_id&gt;
+ * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &#39;&lt;account_id&gt;/&lt;webhook_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")
 public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account id
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account id
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Timestamp of when the notification webhook was created.
+     * Timestamp of when the webhook destination was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Timestamp of when the notification webhook was created.
+     * @return Timestamp of when the webhook destination was created.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Timestamp of when the notification webhook last failed.
+     * Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      * 
      */
     @Export(name="lastFailure", refs={String.class}, tree="[0]")
     private Output<String> lastFailure;
 
     /**
-     * @return Timestamp of when the notification webhook last failed.
+     * @return Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      * 
      */
     public Output<String> lastFailure() {
         return this.lastFailure;
     }
     /**
-     * Timestamp of when the notification webhook was last successful.
+     * Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      * 
      */
     @Export(name="lastSuccess", refs={String.class}, tree="[0]")
     private Output<String> lastSuccess;
 
     /**
-     * @return Timestamp of when the notification webhook was last successful.
+     * @return Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      * 
      */
     public Output<String> lastSuccess() {
         return this.lastSuccess;
     }
     /**
-     * The name of the webhook destination.
+     * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the webhook destination.
+     * @return The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secret;
 
     /**
-     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * @return Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      * 
      */
     public Output<Optional<String>> secret() {
         return Codegen.optional(this.secret);
     }
+    /**
+     * Type of webhook endpoint.
+     * 
+     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
+    /**
+     * @return Type of webhook endpoint.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * The POST endpoint to call when dispatching a notification.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> url;
+    private Output<String> url;
 
     /**
-     * @return The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * @return The POST endpoint to call when dispatching a notification.
      * 
      */
-    public Output<Optional<String>> url() {
-        return Codegen.optional(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     /**

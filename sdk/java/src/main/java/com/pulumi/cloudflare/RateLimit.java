@@ -7,25 +7,20 @@ import com.pulumi.cloudflare.RateLimitArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.RateLimitState;
 import com.pulumi.cloudflare.outputs.RateLimitAction;
-import com.pulumi.cloudflare.outputs.RateLimitCorrelate;
+import com.pulumi.cloudflare.outputs.RateLimitBypass;
 import com.pulumi.cloudflare.outputs.RateLimitMatch;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare rate limit resource for a given zone. This can
- * be used to limit the traffic you receive zone-wide, or matching more
- * specific types of requests/responses.
- * 
- * &gt; `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
+ * &gt; `cloudflare.RateLimit` is in a deprecation phase until January 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -43,12 +38,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.RateLimit;
  * import com.pulumi.cloudflare.RateLimitArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchRequestArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchResponseArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitCorrelateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,61 +56,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new RateLimit("example", RateLimitArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .threshold(2000)
- *             .period(2)
+ *         var exampleRateLimit = new RateLimit("exampleRateLimit", RateLimitArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .action(RateLimitActionArgs.builder()
+ *                 .mode("simulate")
+ *                 .response(RateLimitActionResponseArgs.builder()
+ *                     .body("<error>This request has been rate-limited.</error>")
+ *                     .contentType("text/xml")
+ *                     .build())
+ *                 .timeout(86400)
+ *                 .build())
  *             .match(RateLimitMatchArgs.builder()
+ *                 .headers(RateLimitMatchHeaderArgs.builder()
+ *                     .name("Cf-Cache-Status")
+ *                     .op("eq")
+ *                     .value("HIT")
+ *                     .build())
  *                 .request(RateLimitMatchRequestArgs.builder()
- *                     .urlPattern(String.format("%s/*", cloudflareZone))
+ *                     .methods(                    
+ *                         "GET",
+ *                         "POST")
  *                     .schemes(                    
  *                         "HTTP",
  *                         "HTTPS")
- *                     .methods(                    
- *                         "GET",
- *                         "POST",
- *                         "PUT",
- *                         "DELETE",
- *                         "PATCH",
- *                         "HEAD")
+ *                     .url("*.example.org/path*")
  *                     .build())
  *                 .response(RateLimitMatchResponseArgs.builder()
- *                     .statuses(                    
- *                         200,
- *                         201,
- *                         202,
- *                         301,
- *                         429)
- *                     .originTraffic(false)
- *                     .headers(                    
- *                         Map.ofEntries(
- *                             Map.entry("name", "Host"),
- *                             Map.entry("op", "eq"),
- *                             Map.entry("value", "localhost")
- *                         ),
- *                         Map.ofEntries(
- *                             Map.entry("name", "X-Example"),
- *                             Map.entry("op", "ne"),
- *                             Map.entry("value", "my-example")
- *                         ))
+ *                     .originTraffic(true)
  *                     .build())
  *                 .build())
- *             .action(RateLimitActionArgs.builder()
- *                 .mode("simulate")
- *                 .timeout(43200)
- *                 .response(RateLimitActionResponseArgs.builder()
- *                     .contentType("text/plain")
- *                     .body("custom response body")
- *                     .build())
- *                 .build())
- *             .correlate(RateLimitCorrelateArgs.builder()
- *                 .by("nat")
- *                 .build())
- *             .disabled(false)
- *             .description("example rate limit for a zone")
- *             .bypassUrlPatterns(            
- *                 "example.com/bypass1",
- *                 "example.com/bypass2")
+ *             .period(900)
+ *             .threshold(60)
  *             .build());
  * 
  *     }
@@ -128,125 +98,119 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
+ * $ pulumi import cloudflare:index/rateLimit:RateLimit example &#39;&lt;zone_id&gt;/&lt;rate_limit_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/rateLimit:RateLimit")
 public class RateLimit extends com.pulumi.resources.CustomResource {
     /**
-     * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     @Export(name="action", refs={RateLimitAction.class}, tree="[0]")
     private Output<RateLimitAction> action;
 
     /**
-     * @return The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * @return The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     public Output<RateLimitAction> action() {
         return this.action;
     }
-    @Export(name="bypassUrlPatterns", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> bypassUrlPatterns;
-
-    public Output<Optional<List<String>>> bypassUrlPatterns() {
-        return Codegen.optional(this.bypassUrlPatterns);
-    }
     /**
-     * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      * 
      */
-    @Export(name="correlate", refs={RateLimitCorrelate.class}, tree="[0]")
-    private Output</* @Nullable */ RateLimitCorrelate> correlate;
+    @Export(name="bypasses", refs={List.class,RateLimitBypass.class}, tree="[0,1]")
+    private Output<List<RateLimitBypass>> bypasses;
 
     /**
-     * @return Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+     * @return Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      * 
      */
-    public Output<Optional<RateLimitCorrelate>> correlate() {
-        return Codegen.optional(this.correlate);
+    public Output<List<RateLimitBypass>> bypasses() {
+        return this.bypasses;
     }
     /**
-     * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * Whether this ratelimit is currently disabled. Defaults to `false`.
+     * When true, indicates that the rate limit is currently disabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disabled;
+    private Output<Boolean> disabled;
 
     /**
-     * @return Whether this ratelimit is currently disabled. Defaults to `false`.
+     * @return When true, indicates that the rate limit is currently disabled.
      * 
      */
-    public Output<Optional<Boolean>> disabled() {
-        return Codegen.optional(this.disabled);
+    public Output<Boolean> disabled() {
+        return this.disabled;
     }
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * Determines which traffic the rate limit counts towards the threshold.
      * 
      */
     @Export(name="match", refs={RateLimitMatch.class}, tree="[0]")
     private Output<RateLimitMatch> match;
 
     /**
-     * @return Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * @return Determines which traffic the rate limit counts towards the threshold.
      * 
      */
     public Output<RateLimitMatch> match() {
         return this.match;
     }
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      * 
      */
-    @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output<Integer> period;
+    @Export(name="period", refs={Double.class}, tree="[0]")
+    private Output<Double> period;
 
     /**
-     * @return The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * @return The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      * 
      */
-    public Output<Integer> period() {
+    public Output<Double> period() {
         return this.period;
     }
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period.
+     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
      */
-    @Export(name="threshold", refs={Integer.class}, tree="[0]")
-    private Output<Integer> threshold;
+    @Export(name="threshold", refs={Double.class}, tree="[0]")
+    private Output<Double> threshold;
 
     /**
-     * @return The threshold that triggers the rate limit mitigations, combine with period.
+     * @return The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
      */
-    public Output<Integer> threshold() {
+    public Output<Double> threshold() {
         return this.threshold;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

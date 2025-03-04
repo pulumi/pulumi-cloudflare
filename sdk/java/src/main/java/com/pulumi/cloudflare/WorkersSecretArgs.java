@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,14 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkersSecretArgs Empty = new WorkersSecretArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -30,14 +32,29 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Import(name="dispatchNamespace", required=true)
+    private Output<String> dispatchNamespace;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Output<String> dispatchNamespace() {
+        return this.dispatchNamespace;
+    }
+
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * @return The name of this secret, this is what will be used to access it inside the Worker.
      * 
      */
     public Output<String> name() {
@@ -45,14 +62,14 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Import(name="scriptName", required=true)
     private Output<String> scriptName;
 
     /**
-     * @return The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Output<String> scriptName() {
@@ -60,27 +77,44 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * The value of the secret.
      * 
      */
-    @Import(name="secretText", required=true)
-    private Output<String> secretText;
+    @Import(name="text")
+    private @Nullable Output<String> text;
 
     /**
-     * @return The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * @return The value of the secret.
      * 
      */
-    public Output<String> secretText() {
-        return this.secretText;
+    public Optional<Output<String>> text() {
+        return Optional.ofNullable(this.text);
+    }
+
+    /**
+     * The type of secret to put.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of secret to put.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private WorkersSecretArgs() {}
 
     private WorkersSecretArgs(WorkersSecretArgs $) {
         this.accountId = $.accountId;
+        this.dispatchNamespace = $.dispatchNamespace;
         this.name = $.name;
         this.scriptName = $.scriptName;
-        this.secretText = $.secretText;
+        this.text = $.text;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -102,7 +136,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -113,7 +147,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -123,7 +157,28 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(Output<String> dispatchNamespace) {
+            $.dispatchNamespace = dispatchNamespace;
+            return this;
+        }
+
+        /**
+         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(String dispatchNamespace) {
+            return dispatchNamespace(Output.of(dispatchNamespace));
+        }
+
+        /**
+         * @param name The name of this secret, this is what will be used to access it inside the Worker.
          * 
          * @return builder
          * 
@@ -134,7 +189,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+         * @param name The name of this secret, this is what will be used to access it inside the Worker.
          * 
          * @return builder
          * 
@@ -144,7 +199,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -155,7 +210,7 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -165,38 +220,59 @@ public final class WorkersSecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretText The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+         * @param text The value of the secret.
          * 
          * @return builder
          * 
          */
-        public Builder secretText(Output<String> secretText) {
-            $.secretText = secretText;
+        public Builder text(@Nullable Output<String> text) {
+            $.text = text;
             return this;
         }
 
         /**
-         * @param secretText The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+         * @param text The value of the secret.
          * 
          * @return builder
          * 
          */
-        public Builder secretText(String secretText) {
-            return secretText(Output.of(secretText));
+        public Builder text(String text) {
+            return text(Output.of(text));
+        }
+
+        /**
+         * @param type The type of secret to put.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of secret to put.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public WorkersSecretArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WorkersSecretArgs", "accountId");
             }
+            if ($.dispatchNamespace == null) {
+                throw new MissingRequiredPropertyException("WorkersSecretArgs", "dispatchNamespace");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("WorkersSecretArgs", "name");
             }
             if ($.scriptName == null) {
                 throw new MissingRequiredPropertyException("WorkersSecretArgs", "scriptName");
-            }
-            if ($.secretText == null) {
-                throw new MissingRequiredPropertyException("WorkersSecretArgs", "secretText");
             }
             return $;
         }

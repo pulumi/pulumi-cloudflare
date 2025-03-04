@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A datasource to find Load Balancer Pools.
-//
 // ## Example Usage
 //
 // ```go
@@ -20,18 +18,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLoadBalancerPools(ctx, &cloudflare.GetLoadBalancerPoolsArgs{
-//				AccountId: "f037e56e89293a057740de681ac9abbe",
-//				Filter: cloudflare.GetLoadBalancerPoolsFilter{
-//					Name: pulumi.StringRef("example-lb-pool"),
-//				},
+//			_, err := cloudflare.LookupLoadBalancerPools(ctx, &cloudflare.LookupLoadBalancerPoolsArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Monitor:   pulumi.StringRef("monitor"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -41,9 +37,9 @@ import (
 //	}
 //
 // ```
-func GetLoadBalancerPools(ctx *pulumi.Context, args *GetLoadBalancerPoolsArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerPoolsResult, error) {
+func LookupLoadBalancerPools(ctx *pulumi.Context, args *LookupLoadBalancerPoolsArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetLoadBalancerPoolsResult
+	var rv LookupLoadBalancerPoolsResult
 	err := ctx.Invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -52,85 +48,92 @@ func GetLoadBalancerPools(ctx *pulumi.Context, args *GetLoadBalancerPoolsArgs, o
 }
 
 // A collection of arguments for invoking getLoadBalancerPools.
-type GetLoadBalancerPoolsArgs struct {
-	// The account identifier to target for the datasource lookups.
+type LookupLoadBalancerPoolsArgs struct {
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-	Filter *GetLoadBalancerPoolsFilter `pulumi:"filter"`
-	// A list of Load Balancer Pools details.
-	Pools []GetLoadBalancerPoolsPool `pulumi:"pools"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The ID of the Monitor to use for checking the health of origins within this pool.
+	Monitor *string `pulumi:"monitor"`
 }
 
 // A collection of values returned by getLoadBalancerPools.
-type GetLoadBalancerPoolsResult struct {
-	// The account identifier to target for the datasource lookups.
+type LookupLoadBalancerPoolsResult struct {
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-	Filter *GetLoadBalancerPoolsFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of Load Balancer Pools details.
-	Pools []GetLoadBalancerPoolsPool `pulumi:"pools"`
+	// Max items to fetch, default: 1000
+	MaxItems *int `pulumi:"maxItems"`
+	// The ID of the Monitor to use for checking the health of origins within this pool.
+	Monitor *string `pulumi:"monitor"`
+	// The items returned by the data source
+	Results []GetLoadBalancerPoolsResult `pulumi:"results"`
 }
 
-func GetLoadBalancerPoolsOutput(ctx *pulumi.Context, args GetLoadBalancerPoolsOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerPoolsResultOutput {
+func LookupLoadBalancerPoolsOutput(ctx *pulumi.Context, args LookupLoadBalancerPoolsOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerPoolsResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerPoolsResultOutput, error) {
-			args := v.(GetLoadBalancerPoolsArgs)
+		ApplyT(func(v interface{}) (LookupLoadBalancerPoolsResultOutput, error) {
+			args := v.(LookupLoadBalancerPoolsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args, GetLoadBalancerPoolsResultOutput{}, options).(GetLoadBalancerPoolsResultOutput), nil
-		}).(GetLoadBalancerPoolsResultOutput)
+			return ctx.InvokeOutput("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args, LookupLoadBalancerPoolsResultOutput{}, options).(LookupLoadBalancerPoolsResultOutput), nil
+		}).(LookupLoadBalancerPoolsResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerPools.
-type GetLoadBalancerPoolsOutputArgs struct {
-	// The account identifier to target for the datasource lookups.
+type LookupLoadBalancerPoolsOutputArgs struct {
+	// Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-	Filter GetLoadBalancerPoolsFilterPtrInput `pulumi:"filter"`
-	// A list of Load Balancer Pools details.
-	Pools GetLoadBalancerPoolsPoolArrayInput `pulumi:"pools"`
+	// Max items to fetch, default: 1000
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The ID of the Monitor to use for checking the health of origins within this pool.
+	Monitor pulumi.StringPtrInput `pulumi:"monitor"`
 }
 
-func (GetLoadBalancerPoolsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerPoolsArgs)(nil)).Elem()
+func (LookupLoadBalancerPoolsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerPoolsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getLoadBalancerPools.
-type GetLoadBalancerPoolsResultOutput struct{ *pulumi.OutputState }
+type LookupLoadBalancerPoolsResultOutput struct{ *pulumi.OutputState }
 
-func (GetLoadBalancerPoolsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancerPoolsResult)(nil)).Elem()
+func (LookupLoadBalancerPoolsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLoadBalancerPoolsResult)(nil)).Elem()
 }
 
-func (o GetLoadBalancerPoolsResultOutput) ToGetLoadBalancerPoolsResultOutput() GetLoadBalancerPoolsResultOutput {
+func (o LookupLoadBalancerPoolsResultOutput) ToLookupLoadBalancerPoolsResultOutput() LookupLoadBalancerPoolsResultOutput {
 	return o
 }
 
-func (o GetLoadBalancerPoolsResultOutput) ToGetLoadBalancerPoolsResultOutputWithContext(ctx context.Context) GetLoadBalancerPoolsResultOutput {
+func (o LookupLoadBalancerPoolsResultOutput) ToLookupLoadBalancerPoolsResultOutputWithContext(ctx context.Context) LookupLoadBalancerPoolsResultOutput {
 	return o
 }
 
-// The account identifier to target for the datasource lookups.
-func (o GetLoadBalancerPoolsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerPoolsResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-func (o GetLoadBalancerPoolsResultOutput) Filter() GetLoadBalancerPoolsFilterPtrOutput {
-	return o.ApplyT(func(v GetLoadBalancerPoolsResult) *GetLoadBalancerPoolsFilter { return v.Filter }).(GetLoadBalancerPoolsFilterPtrOutput)
+// Identifier
+func (o LookupLoadBalancerPoolsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetLoadBalancerPoolsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancerPoolsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupLoadBalancerPoolsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Load Balancer Pools details.
-func (o GetLoadBalancerPoolsResultOutput) Pools() GetLoadBalancerPoolsPoolArrayOutput {
-	return o.ApplyT(func(v GetLoadBalancerPoolsResult) []GetLoadBalancerPoolsPool { return v.Pools }).(GetLoadBalancerPoolsPoolArrayOutput)
+// Max items to fetch, default: 1000
+func (o LookupLoadBalancerPoolsResultOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Monitor to use for checking the health of origins within this pool.
+func (o LookupLoadBalancerPoolsResultOutput) Monitor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) *string { return v.Monitor }).(pulumi.StringPtrOutput)
+}
+
+// The items returned by the data source
+func (o LookupLoadBalancerPoolsResultOutput) Results() GetLoadBalancerPoolsResultArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) []GetLoadBalancerPoolsResult { return v.Results }).(GetLoadBalancerPoolsResultArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetLoadBalancerPoolsResultOutput{})
+	pulumi.RegisterOutputType(LookupLoadBalancerPoolsResultOutput{})
 }

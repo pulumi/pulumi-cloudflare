@@ -19,30 +19,22 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApiTokenArgs Empty = new ApiTokenArgs();
 
-    /**
-     * Conditions under which the token should be considered valid.
-     * 
-     */
     @Import(name="condition")
     private @Nullable Output<ApiTokenConditionArgs> condition;
 
-    /**
-     * @return Conditions under which the token should be considered valid.
-     * 
-     */
     public Optional<Output<ApiTokenConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
     /**
-     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
     /**
-     * @return The expiration time on or after which the token MUST NOT be accepted for processing.
+     * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
     public Optional<Output<String>> expiresOn() {
@@ -50,14 +42,14 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the API Token.
+     * Token name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the API Token.
+     * @return Token name.
      * 
      */
     public Output<String> name() {
@@ -80,18 +72,33 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Permissions policy. Multiple policy blocks can be defined.
+     * List of access policies assigned to the token.
      * 
      */
     @Import(name="policies", required=true)
     private Output<List<ApiTokenPolicyArgs>> policies;
 
     /**
-     * @return Permissions policy. Multiple policy blocks can be defined.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Output<List<ApiTokenPolicyArgs>> policies() {
         return this.policies;
+    }
+
+    /**
+     * Status of the token.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the token.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private ApiTokenArgs() {}
@@ -102,6 +109,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notBefore = $.notBefore;
         this.policies = $.policies;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -122,29 +130,17 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApiTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param condition Conditions under which the token should be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(@Nullable Output<ApiTokenConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        /**
-         * @param condition Conditions under which the token should be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(ApiTokenConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
         /**
-         * @param expiresOn The expiration time on or after which the token MUST NOT be accepted for processing.
+         * @param expiresOn The expiration time on or after which the JWT MUST NOT be accepted for processing.
          * 
          * @return builder
          * 
@@ -155,7 +151,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiresOn The expiration time on or after which the token MUST NOT be accepted for processing.
+         * @param expiresOn The expiration time on or after which the JWT MUST NOT be accepted for processing.
          * 
          * @return builder
          * 
@@ -165,7 +161,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the API Token.
+         * @param name Token name.
          * 
          * @return builder
          * 
@@ -176,7 +172,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the API Token.
+         * @param name Token name.
          * 
          * @return builder
          * 
@@ -207,7 +203,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -218,7 +214,7 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -228,13 +224,34 @@ public final class ApiTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Permissions policy. Multiple policy blocks can be defined.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
          */
         public Builder policies(ApiTokenPolicyArgs... policies) {
             return policies(List.of(policies));
+        }
+
+        /**
+         * @param status Status of the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public ApiTokenArgs build() {

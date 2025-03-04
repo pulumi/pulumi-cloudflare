@@ -8,30 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewList(ctx, "example_list", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Kind:        pulumi.String("ip"),
+//				Name:        pulumi.String("list1"),
+//				Description: pulumi.String("This is a note"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+// $ pulumi import cloudflare:index/list:List example '<account_id>/<list_id>'
 // ```
 type List struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// An optional description of the list.
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// An informative summary of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items in the list.
-	Items ListItemTypeArrayOutput `pulumi:"items"`
-	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the list.
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The number of items in the list.
+	NumItems pulumi.Float64Output `pulumi:"numItems"`
+	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	NumReferencingFilters pulumi.Float64Output `pulumi:"numReferencingFilters"`
 }
 
 // NewList registers a new resource with the given unique name, arguments, and options.
@@ -73,29 +106,41 @@ func GetList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering List resources.
 type listState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// An optional description of the list.
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// An informative summary of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
-	Items []ListItemType `pulumi:"items"`
-	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	Kind *string `pulumi:"kind"`
-	// The name of the list.
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name *string `pulumi:"name"`
+	// The number of items in the list.
+	NumItems *float64 `pulumi:"numItems"`
+	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	NumReferencingFilters *float64 `pulumi:"numReferencingFilters"`
 }
 
 type ListState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// An optional description of the list.
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn pulumi.StringPtrInput
+	// An informative summary of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
-	Items ListItemTypeArrayInput
-	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	Kind pulumi.StringPtrInput
-	// The name of the list.
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name pulumi.StringPtrInput
+	// The number of items in the list.
+	NumItems pulumi.Float64PtrInput
+	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	NumReferencingFilters pulumi.Float64PtrInput
 }
 
 func (ListState) ElementType() reflect.Type {
@@ -103,29 +148,25 @@ func (ListState) ElementType() reflect.Type {
 }
 
 type listArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// An optional description of the list.
+	// An informative summary of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
-	Items []ListItemType `pulumi:"items"`
-	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	Kind string `pulumi:"kind"`
-	// The name of the list.
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// An optional description of the list.
+	// An informative summary of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
-	Items ListItemTypeArrayInput
-	// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	Kind pulumi.StringInput
-	// The name of the list.
+	// An informative name for the list. Use this name in filter and rule expressions.
 	Name pulumi.StringInput
 }
 
@@ -216,29 +257,44 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o ListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// An optional description of the list.
+// The RFC 3339 timestamp of when the list was created.
+func (o ListOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// An informative summary of the list.
 func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items in the list.
-func (o ListOutput) Items() ListItemTypeArrayOutput {
-	return o.ApplyT(func(v *List) ListItemTypeArrayOutput { return v.Items }).(ListItemTypeArrayOutput)
-}
-
-// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 func (o ListOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the list.
+// The RFC 3339 timestamp of when the list was last modified.
+func (o ListOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// An informative name for the list. Use this name in filter and rule expressions.
 func (o ListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of items in the list.
+func (o ListOutput) NumItems() pulumi.Float64Output {
+	return o.ApplyT(func(v *List) pulumi.Float64Output { return v.NumItems }).(pulumi.Float64Output)
+}
+
+// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+func (o ListOutput) NumReferencingFilters() pulumi.Float64Output {
+	return o.ApplyT(func(v *List) pulumi.Float64Output { return v.NumReferencingFilters }).(pulumi.Float64Output)
 }
 
 type ListArrayOutput struct{ *pulumi.OutputState }

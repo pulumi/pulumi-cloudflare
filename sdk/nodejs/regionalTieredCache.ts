@@ -5,17 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
- * This can help improve performance for smart and custom tiered cache topologies.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.RegionalTieredCache("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleRegionalTieredCache = new cloudflare.RegionalTieredCache("example_regional_tiered_cache", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: "on",
  * });
  * ```
@@ -23,7 +20,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example <zone_id>
+ * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
  * ```
  */
 export class RegionalTieredCache extends pulumi.CustomResource {
@@ -55,11 +52,19 @@ export class RegionalTieredCache extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the setting is editable
+     */
+    public /*out*/ readonly editable!: pulumi.Output<boolean>;
+    /**
+     * Last time this setting was modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
      * Value of the Regional Tiered Cache zone setting.
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -76,18 +81,19 @@ export class RegionalTieredCache extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalTieredCacheState | undefined;
+            resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RegionalTieredCacheArgs | undefined;
-            if ((!args || args.value === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["editable"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionalTieredCache.__pulumiType, name, resourceInputs, opts);
@@ -99,11 +105,19 @@ export class RegionalTieredCache extends pulumi.CustomResource {
  */
 export interface RegionalTieredCacheState {
     /**
+     * Whether the setting is editable
+     */
+    editable?: pulumi.Input<boolean>;
+    /**
+     * Last time this setting was modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
      * Value of the Regional Tiered Cache zone setting.
      */
     value?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -115,9 +129,9 @@ export interface RegionalTieredCacheArgs {
     /**
      * Value of the Regional Tiered Cache zone setting.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

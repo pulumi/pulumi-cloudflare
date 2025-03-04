@@ -4,11 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,11 +16,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
      * 
      */
     private @Nullable List<String> excludes;
-    /**
-     * @return `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-     * 
-     */
-    private @Nullable Boolean ignore;
     /**
      * @return Only use values of specified query string parameters in Cache Key.
      * 
@@ -36,13 +29,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
      */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
-    }
-    /**
-     * @return `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
-     * 
-     */
-    public Optional<Boolean> ignore() {
-        return Optional.ofNullable(this.ignore);
     }
     /**
      * @return Only use values of specified query string parameters in Cache Key.
@@ -62,13 +48,11 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludes;
-        private @Nullable Boolean ignore;
         private @Nullable List<String> includes;
         public Builder() {}
         public Builder(PageRuleActionsCacheKeyFieldsQueryString defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludes = defaults.excludes;
-    	      this.ignore = defaults.ignore;
     	      this.includes = defaults.includes;
         }
 
@@ -82,12 +66,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
             return excludes(List.of(excludes));
         }
         @CustomType.Setter
-        public Builder ignore(@Nullable Boolean ignore) {
-
-            this.ignore = ignore;
-            return this;
-        }
-        @CustomType.Setter
         public Builder includes(@Nullable List<String> includes) {
 
             this.includes = includes;
@@ -99,7 +77,6 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
         public PageRuleActionsCacheKeyFieldsQueryString build() {
             final var _resultValue = new PageRuleActionsCacheKeyFieldsQueryString();
             _resultValue.excludes = excludes;
-            _resultValue.ignore = ignore;
             _resultValue.includes = includes;
             return _resultValue;
         }

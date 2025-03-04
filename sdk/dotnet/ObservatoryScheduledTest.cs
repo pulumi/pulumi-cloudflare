@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Observatory Scheduled Test resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,12 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ObservatoryScheduledTest("example", new()
+    ///     var exampleObservatoryScheduledTest = new Cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Url = "example.com",
-    ///         Region = "us-central1",
-    ///         Frequency = "WEEKLY",
     ///     });
     /// 
     /// });
@@ -36,32 +32,41 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &lt;zone_id&gt;:&lt;url&gt;:&lt;region&gt;
+    /// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '&lt;zone_id&gt;/&lt;url&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")]
     public partial class ObservatoryScheduledTest : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+        /// The frequency of the test.
         /// </summary>
         [Output("frequency")]
         public Output<string> Frequency { get; private set; } = null!;
 
         /// <summary>
-        /// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+        /// A test region.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        /// The test schedule.
+        /// </summary>
+        [Output("schedule")]
+        public Output<Outputs.ObservatoryScheduledTestSchedule> Schedule { get; private set; } = null!;
+
+        [Output("test")]
+        public Output<Outputs.ObservatoryScheduledTestTest> Test { get; private set; } = null!;
+
+        /// <summary>
+        /// A URL.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -113,25 +118,13 @@ namespace Pulumi.Cloudflare
     public sealed class ObservatoryScheduledTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("frequency", required: true)]
-        public Input<string> Frequency { get; set; } = null!;
-
-        /// <summary>
-        /// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        /// A URL.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -145,25 +138,34 @@ namespace Pulumi.Cloudflare
     public sealed class ObservatoryScheduledTestState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+        /// The frequency of the test.
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
-        /// The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+        /// A test region.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        /// The test schedule.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.ObservatoryScheduledTestScheduleGetArgs>? Schedule { get; set; }
+
+        [Input("test")]
+        public Input<Inputs.ObservatoryScheduledTestTestGetArgs>? Test { get; set; }
+
+        /// <summary>
+        /// A URL.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

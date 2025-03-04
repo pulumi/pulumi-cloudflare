@@ -14,18 +14,18 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomClaim
     {
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the claim.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// True if the attribute must be always present.
+        /// If the claim is required when building an OIDC token.
         /// </summary>
         public readonly bool? Required;
         /// <summary>
         /// The scope of the claim.
         /// </summary>
         public readonly string? Scope;
-        public readonly Outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource Source;
+        public readonly Outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource? Source;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasAppCustomClaim(
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? scope,
 
-            Outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource source)
+            Outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource? source)
         {
             Name = name;
             Required = required;

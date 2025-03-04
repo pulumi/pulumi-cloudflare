@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustTunnelCloudflaredResult',
@@ -26,16 +28,37 @@ class GetZeroTrustTunnelCloudflaredResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflared.
     """
-    def __init__(__self__, account_id=None, id=None, is_deleted=None, name=None, remote_config=None, status=None, tunnel_type=None):
+    def __init__(__self__, account_id=None, account_tag=None, connections=None, conns_active_at=None, conns_inactive_at=None, created_at=None, deleted_at=None, filter=None, id=None, metadata=None, name=None, remote_config=None, status=None, tun_type=None, tunnel_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if account_tag and not isinstance(account_tag, str):
+            raise TypeError("Expected argument 'account_tag' to be a str")
+        pulumi.set(__self__, "account_tag", account_tag)
+        if connections and not isinstance(connections, list):
+            raise TypeError("Expected argument 'connections' to be a list")
+        pulumi.set(__self__, "connections", connections)
+        if conns_active_at and not isinstance(conns_active_at, str):
+            raise TypeError("Expected argument 'conns_active_at' to be a str")
+        pulumi.set(__self__, "conns_active_at", conns_active_at)
+        if conns_inactive_at and not isinstance(conns_inactive_at, str):
+            raise TypeError("Expected argument 'conns_inactive_at' to be a str")
+        pulumi.set(__self__, "conns_inactive_at", conns_inactive_at)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if deleted_at and not isinstance(deleted_at, str):
+            raise TypeError("Expected argument 'deleted_at' to be a str")
+        pulumi.set(__self__, "deleted_at", deleted_at)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if is_deleted and not isinstance(is_deleted, bool):
-            raise TypeError("Expected argument 'is_deleted' to be a bool")
-        pulumi.set(__self__, "is_deleted", is_deleted)
+        if metadata and not isinstance(metadata, str):
+            raise TypeError("Expected argument 'metadata' to be a str")
+        pulumi.set(__self__, "metadata", metadata)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -45,39 +68,95 @@ class GetZeroTrustTunnelCloudflaredResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if tunnel_type and not isinstance(tunnel_type, str):
-            raise TypeError("Expected argument 'tunnel_type' to be a str")
-        pulumi.set(__self__, "tunnel_type", tunnel_type)
+        if tun_type and not isinstance(tun_type, str):
+            raise TypeError("Expected argument 'tun_type' to be a str")
+        pulumi.set(__self__, "tun_type", tun_type)
+        if tunnel_id and not isinstance(tunnel_id, str):
+            raise TypeError("Expected argument 'tunnel_id' to be a str")
+        pulumi.set(__self__, "tunnel_id", tunnel_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountTag")
+    def account_tag(self) -> str:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_tag")
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetZeroTrustTunnelCloudflaredConnectionResult']:
+        """
+        The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+        """
+        return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter(name="connsActiveAt")
+    def conns_active_at(self) -> str:
+        """
+        Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        """
+        return pulumi.get(self, "conns_active_at")
+
+    @property
+    @pulumi.getter(name="connsInactiveAt")
+    def conns_inactive_at(self) -> str:
+        """
+        Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        """
+        return pulumi.get(self, "conns_inactive_at")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        Timestamp of when the resource was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> str:
+        """
+        Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustTunnelCloudflaredFilterResult']:
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the tunnel.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="isDeleted")
-    def is_deleted(self) -> Optional[bool]:
+    @pulumi.getter
+    def metadata(self) -> str:
         """
-        If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        Metadata associated with the tunnel.
         """
-        return pulumi.get(self, "is_deleted")
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+        A user-friendly name for a tunnel.
         """
         return pulumi.get(self, "name")
 
@@ -85,7 +164,7 @@ class GetZeroTrustTunnelCloudflaredResult:
     @pulumi.getter(name="remoteConfig")
     def remote_config(self) -> bool:
         """
-        Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+        If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
         """
         return pulumi.get(self, "remote_config")
 
@@ -93,17 +172,25 @@ class GetZeroTrustTunnelCloudflaredResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+        The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         """
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="tunnelType")
-    def tunnel_type(self) -> str:
+    @pulumi.getter(name="tunType")
+    def tun_type(self) -> str:
         """
-        The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`.
+        The type of tunnel.
         """
-        return pulumi.get(self, "tunnel_type")
+        return pulumi.get(self, "tun_type")
+
+    @property
+    @pulumi.getter(name="tunnelId")
+    def tunnel_id(self) -> Optional[str]:
+        """
+        UUID of the tunnel.
+        """
+        return pulumi.get(self, "tunnel_id")
 
 
 class AwaitableGetZeroTrustTunnelCloudflaredResult(GetZeroTrustTunnelCloudflaredResult):
@@ -113,64 +200,102 @@ class AwaitableGetZeroTrustTunnelCloudflaredResult(GetZeroTrustTunnelCloudflared
             yield self
         return GetZeroTrustTunnelCloudflaredResult(
             account_id=self.account_id,
+            account_tag=self.account_tag,
+            connections=self.connections,
+            conns_active_at=self.conns_active_at,
+            conns_inactive_at=self.conns_inactive_at,
+            created_at=self.created_at,
+            deleted_at=self.deleted_at,
+            filter=self.filter,
             id=self.id,
-            is_deleted=self.is_deleted,
+            metadata=self.metadata,
             name=self.name,
             remote_config=self.remote_config,
             status=self.status,
-            tunnel_type=self.tunnel_type)
+            tun_type=self.tun_type,
+            tunnel_id=self.tunnel_id)
 
 
 def get_zero_trust_tunnel_cloudflared(account_id: Optional[str] = None,
-                                      is_deleted: Optional[bool] = None,
-                                      name: Optional[str] = None,
+                                      filter: Optional[Union['GetZeroTrustTunnelCloudflaredFilterArgs', 'GetZeroTrustTunnelCloudflaredFilterArgsDict']] = None,
+                                      tunnel_id: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredResult:
     """
-    Use this datasource to lookup a tunnel in an account.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_tunnel_cloudflared = cloudflare.get_zero_trust_tunnel_cloudflared(account_id="699d98642c564d2e855e9661899b7252",
+        tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+    ```
 
 
-    :param str account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-    :param bool is_deleted: If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-    :param str name: Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+    :param str account_id: Cloudflare account ID
+    :param str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['isDeleted'] = is_deleted
-    __args__['name'] = name
+    __args__['filter'] = filter
+    __args__['tunnelId'] = tunnel_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared', __args__, opts=opts, typ=GetZeroTrustTunnelCloudflaredResult).value
 
     return AwaitableGetZeroTrustTunnelCloudflaredResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        account_tag=pulumi.get(__ret__, 'account_tag'),
+        connections=pulumi.get(__ret__, 'connections'),
+        conns_active_at=pulumi.get(__ret__, 'conns_active_at'),
+        conns_inactive_at=pulumi.get(__ret__, 'conns_inactive_at'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        deleted_at=pulumi.get(__ret__, 'deleted_at'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
-        is_deleted=pulumi.get(__ret__, 'is_deleted'),
+        metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         remote_config=pulumi.get(__ret__, 'remote_config'),
         status=pulumi.get(__ret__, 'status'),
-        tunnel_type=pulumi.get(__ret__, 'tunnel_type'))
+        tun_type=pulumi.get(__ret__, 'tun_type'),
+        tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
 def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[str]] = None,
-                                             is_deleted: Optional[pulumi.Input[Optional[bool]]] = None,
-                                             name: Optional[pulumi.Input[str]] = None,
+                                             filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustTunnelCloudflaredFilterArgs', 'GetZeroTrustTunnelCloudflaredFilterArgsDict']]]] = None,
+                                             tunnel_id: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredResult]:
     """
-    Use this datasource to lookup a tunnel in an account.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_tunnel_cloudflared = cloudflare.get_zero_trust_tunnel_cloudflared(account_id="699d98642c564d2e855e9661899b7252",
+        tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+    ```
 
 
-    :param str account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-    :param bool is_deleted: If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-    :param str name: Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+    :param str account_id: Cloudflare account ID
+    :param str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['isDeleted'] = is_deleted
-    __args__['name'] = name
+    __args__['filter'] = filter
+    __args__['tunnelId'] = tunnel_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared', __args__, opts=opts, typ=GetZeroTrustTunnelCloudflaredResult)
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelCloudflaredResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        account_tag=pulumi.get(__response__, 'account_tag'),
+        connections=pulumi.get(__response__, 'connections'),
+        conns_active_at=pulumi.get(__response__, 'conns_active_at'),
+        conns_inactive_at=pulumi.get(__response__, 'conns_inactive_at'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        deleted_at=pulumi.get(__response__, 'deleted_at'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
-        is_deleted=pulumi.get(__response__, 'is_deleted'),
+        metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),
         remote_config=pulumi.get(__response__, 'remote_config'),
         status=pulumi.get(__response__, 'status'),
-        tunnel_type=pulumi.get(__response__, 'tunnel_type')))
+        tun_type=pulumi.get(__response__, 'tun_type'),
+        tunnel_id=pulumi.get(__response__, 'tunnel_id')))

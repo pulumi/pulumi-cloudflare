@@ -12,44 +12,81 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleList = new Cloudflare.List("example_list", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Kind = "ip",
+    ///         Name = "list1",
+    ///         Description = "This is a note",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
+    /// $ pulumi import cloudflare:index/list:List example '&lt;account_id&gt;/&lt;list_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/list:List")]
     public partial class List : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of the list.
+        /// The RFC 3339 timestamp of when the list was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// An informative summary of the list.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The items in the list.
-        /// </summary>
-        [Output("items")]
-        public Output<ImmutableArray<Outputs.ListItem>> Items { get; private set; } = null!;
-
-        /// <summary>
-        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the list.
+        /// The RFC 3339 timestamp of when the list was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// An informative name for the list. Use this name in filter and rule expressions.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of items in the list.
+        /// </summary>
+        [Output("numItems")]
+        public Output<double> NumItems { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        /// </summary>
+        [Output("numReferencingFilters")]
+        public Output<double> NumReferencingFilters { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,37 +135,25 @@ namespace Pulumi.Cloudflare
     public sealed class ListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// An optional description of the list.
+        /// An informative summary of the list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("items")]
-        private InputList<Inputs.ListItemArgs>? _items;
-
         /// <summary>
-        /// The items in the list.
-        /// </summary>
-        public InputList<Inputs.ListItemArgs> Items
-        {
-            get => _items ?? (_items = new InputList<Inputs.ListItemArgs>());
-            set => _items = value;
-        }
-
-        /// <summary>
-        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The name of the list.
+        /// An informative name for the list. Use this name in filter and rule expressions.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -142,40 +167,52 @@ namespace Pulumi.Cloudflare
     public sealed class ListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// An optional description of the list.
+        /// The RFC 3339 timestamp of when the list was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// An informative summary of the list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("items")]
-        private InputList<Inputs.ListItemGetArgs>? _items;
-
         /// <summary>
-        /// The items in the list.
-        /// </summary>
-        public InputList<Inputs.ListItemGetArgs> Items
-        {
-            get => _items ?? (_items = new InputList<Inputs.ListItemGetArgs>());
-            set => _items = value;
-        }
-
-        /// <summary>
-        /// The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+        /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The name of the list.
+        /// The RFC 3339 timestamp of when the list was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// An informative name for the list. Use this name in filter and rule expressions.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The number of items in the list.
+        /// </summary>
+        [Input("numItems")]
+        public Input<double>? NumItems { get; set; }
+
+        /// <summary>
+        /// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        /// </summary>
+        [Input("numReferencingFilters")]
+        public Input<double>? NumReferencingFilters { get; set; }
 
         public ListState()
         {

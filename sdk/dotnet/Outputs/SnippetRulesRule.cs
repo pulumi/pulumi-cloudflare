@@ -13,22 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class SnippetRulesRule
     {
-        /// <summary>
-        /// Brief summary of the snippet rule and its intended use.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// Whether the headers rule is active.
-        /// </summary>
         public readonly bool? Enabled;
+        public readonly string? Expression;
         /// <summary>
-        /// Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+        /// Snippet identifying name
         /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// Name of the snippet invoked by this rule.
-        /// </summary>
-        public readonly string SnippetName;
+        public readonly string? SnippetName;
 
         [OutputConstructor]
         private SnippetRulesRule(
@@ -36,9 +27,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? enabled,
 
-            string expression,
+            string? expression,
 
-            string snippetName)
+            string? snippetName)
         {
             Description = description;
             Enabled = enabled;

@@ -18,17 +18,20 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("canDelete")]
         public Input<bool>? CanDelete { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// Identifier of the account or zone.
+        /// The identifier for the membership (eg. a zone or account tag).
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
         /// The type of the membership.
         /// </summary>
-        [Input("kind", required: true)]
-        public Input<string> Kind { get; set; } = null!;
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         public AddressMapMembershipGetArgs()
         {

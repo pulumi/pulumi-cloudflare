@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,18 +17,18 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs extend
     public static final ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs Empty = new ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs();
 
     /**
-     * The name of the attribute as provided by the IDP.
+     * The name of the IdP claim.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided by the IDP.
+     * @return The name of the IdP claim.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -73,18 +72,18 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs extend
         }
 
         /**
-         * @param name The name of the attribute as provided by the IDP.
+         * @param name The name of the IdP claim.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the attribute as provided by the IDP.
+         * @param name The name of the IdP claim.
          * 
          * @return builder
          * 
@@ -115,9 +114,6 @@ public final class ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs extend
         }
 
         public ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs", "name");
-            }
             return $;
         }
     }

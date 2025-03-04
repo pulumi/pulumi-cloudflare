@@ -15,14 +15,14 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
     public static final WorkersKvNamespaceArgs Empty = new WorkersKvNamespaceArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -30,14 +30,14 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Title value of the Worker KV Namespace.
+     * A human-readable string name for a Namespace.
      * 
      */
     @Import(name="title", required=true)
     private Output<String> title;
 
     /**
-     * @return Title value of the Worker KV Namespace.
+     * @return A human-readable string name for a Namespace.
      * 
      */
     public Output<String> title() {
@@ -70,7 +70,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title Title value of the Worker KV Namespace.
+         * @param title A human-readable string name for a Namespace.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param title Title value of the Worker KV Namespace.
+         * @param title A human-readable string name for a Namespace.
          * 
          * @return builder
          * 

@@ -8,108 +8,44 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
-// resource is required to use Per-Zone or Per-Hostname Authenticated
-// Origin Pulls.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Authenticated Origin Pulls
-//			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "my_aop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Enabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Per-Zone Authenticated Origin Pulls
-//			myPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "my_per_zone_aop_cert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-//				Type:        pulumi.String("per-zone"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "my_per_zone_aop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				AuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),
-//				Enabled:                             pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Per-Hostname Authenticated Origin Pulls
-//			myPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "my_per_hostname_aop_cert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-//				Type:        pulumi.String("per-hostname"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "my_per_hostname_aop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				AuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),
-//				Hostname:                            pulumi.String("aop.example.com"),
-//				Enabled:                             pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// global
-//
-// ```sh
-// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
-// ```
-//
-// per zone
-//
-// ```sh
-// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
-// ```
-//
-// per hostname
-//
-// ```sh
-// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
-// ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 
-	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-	AuthenticatedOriginPullsCertificate pulumi.StringPtrOutput `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Identifier
+	CertId pulumi.StringOutput `pulumi:"certId"`
+	// Status of the certificate or the association.
+	CertStatus pulumi.StringOutput `pulumi:"certStatus"`
+	// The time when the certificate was updated.
+	CertUpdatedAt pulumi.StringOutput `pulumi:"certUpdatedAt"`
+	// The time when the certificate was uploaded.
+	CertUploadedOn pulumi.StringOutput `pulumi:"certUploadedOn"`
+	// The hostname certificate.
+	Certificate pulumi.StringOutput                       `pulumi:"certificate"`
+	Configs     AuthenticatedOriginPullsConfigArrayOutput `pulumi:"configs"`
+	// The time when the certificate was created.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+	// The date when the certificate expires.
+	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
+	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
+	Issuer pulumi.StringOutput `pulumi:"issuer"`
+	// The serial number on the uploaded certificate.
+	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
+	// The type of hash used for the certificate.
+	Signature pulumi.StringOutput `pulumi:"signature"`
+	// Status of the certificate or the association.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The time when the certificate was updated.
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -120,8 +56,8 @@ func NewAuthenticatedOriginPulls(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Enabled == nil {
-		return nil, errors.New("invalid value for required argument 'Enabled'")
+	if args.Configs == nil {
+		return nil, errors.New("invalid value for required argument 'Configs'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -149,24 +85,70 @@ func GetAuthenticatedOriginPulls(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
 type authenticatedOriginPullsState struct {
-	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-	AuthenticatedOriginPullsCertificate *string `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Identifier
+	CertId *string `pulumi:"certId"`
+	// Status of the certificate or the association.
+	CertStatus *string `pulumi:"certStatus"`
+	// The time when the certificate was updated.
+	CertUpdatedAt *string `pulumi:"certUpdatedAt"`
+	// The time when the certificate was uploaded.
+	CertUploadedOn *string `pulumi:"certUploadedOn"`
+	// The hostname certificate.
+	Certificate *string                          `pulumi:"certificate"`
+	Configs     []AuthenticatedOriginPullsConfig `pulumi:"configs"`
+	// The time when the certificate was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled *bool `pulumi:"enabled"`
-	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+	// The date when the certificate expires.
+	ExpiresOn *string `pulumi:"expiresOn"`
+	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `pulumi:"hostname"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
+	Issuer *string `pulumi:"issuer"`
+	// The serial number on the uploaded certificate.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// The type of hash used for the certificate.
+	Signature *string `pulumi:"signature"`
+	// Status of the certificate or the association.
+	Status *string `pulumi:"status"`
+	// The time when the certificate was updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsState struct {
-	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-	AuthenticatedOriginPullsCertificate pulumi.StringPtrInput
-	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Identifier
+	CertId pulumi.StringPtrInput
+	// Status of the certificate or the association.
+	CertStatus pulumi.StringPtrInput
+	// The time when the certificate was updated.
+	CertUpdatedAt pulumi.StringPtrInput
+	// The time when the certificate was uploaded.
+	CertUploadedOn pulumi.StringPtrInput
+	// The hostname certificate.
+	Certificate pulumi.StringPtrInput
+	Configs     AuthenticatedOriginPullsConfigArrayInput
+	// The time when the certificate was created.
+	CreatedAt pulumi.StringPtrInput
+	// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 	Enabled pulumi.BoolPtrInput
-	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+	// The date when the certificate expires.
+	ExpiresOn pulumi.StringPtrInput
+	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The certificate authority that issued the certificate.
+	Issuer pulumi.StringPtrInput
+	// The serial number on the uploaded certificate.
+	SerialNumber pulumi.StringPtrInput
+	// The type of hash used for the certificate.
+	Signature pulumi.StringPtrInput
+	// Status of the certificate or the association.
+	Status pulumi.StringPtrInput
+	// The time when the certificate was updated.
+	UpdatedAt pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -175,25 +157,19 @@ func (AuthenticatedOriginPullsState) ElementType() reflect.Type {
 }
 
 type authenticatedOriginPullsArgs struct {
-	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-	AuthenticatedOriginPullsCertificate *string `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-	Enabled bool `pulumi:"enabled"`
-	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+	Configs []AuthenticatedOriginPullsConfig `pulumi:"configs"`
+	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `pulumi:"hostname"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AuthenticatedOriginPulls resource.
 type AuthenticatedOriginPullsArgs struct {
-	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-	AuthenticatedOriginPullsCertificate pulumi.StringPtrInput
-	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-	Enabled pulumi.BoolInput
-	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+	Configs AuthenticatedOriginPullsConfigArrayInput
+	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -284,22 +260,81 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithCont
 	return o
 }
 
-// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-func (o AuthenticatedOriginPullsOutput) AuthenticatedOriginPullsCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.AuthenticatedOriginPullsCertificate }).(pulumi.StringPtrOutput)
+// Identifier
+func (o AuthenticatedOriginPullsOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
 }
 
-// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+// Status of the certificate or the association.
+func (o AuthenticatedOriginPullsOutput) CertStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertStatus }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was updated.
+func (o AuthenticatedOriginPullsOutput) CertUpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertUpdatedAt }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was uploaded.
+func (o AuthenticatedOriginPullsOutput) CertUploadedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertUploadedOn }).(pulumi.StringOutput)
+}
+
+// The hostname certificate.
+func (o AuthenticatedOriginPullsOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsOutput) Configs() AuthenticatedOriginPullsConfigArrayOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) AuthenticatedOriginPullsConfigArrayOutput { return v.Configs }).(AuthenticatedOriginPullsConfigArrayOutput)
+}
+
+// The time when the certificate was created.
+func (o AuthenticatedOriginPullsOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
 func (o AuthenticatedOriginPullsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+// The date when the certificate expires.
+func (o AuthenticatedOriginPullsOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// The hostname on the origin for which the client certificate uploaded will be used.
 func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// The certificate authority that issued the certificate.
+func (o AuthenticatedOriginPullsOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The serial number on the uploaded certificate.
+func (o AuthenticatedOriginPullsOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// The type of hash used for the certificate.
+func (o AuthenticatedOriginPullsOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
+}
+
+// Status of the certificate or the association.
+func (o AuthenticatedOriginPullsOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was updated.
+func (o AuthenticatedOriginPullsOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Identifier
 func (o AuthenticatedOriginPullsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

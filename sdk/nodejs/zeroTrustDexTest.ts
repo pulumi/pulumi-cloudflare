@@ -7,32 +7,36 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ZeroTrustDexTest("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "GET homepage",
- *     description: "Send a HTTP GET request to the home endpoint every half hour.",
- *     interval: "0h30m0s",
- *     enabled: true,
+ * const exampleZeroTrustDexTest = new cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
  *     data: {
- *         host: "https://example.com/home",
+ *         host: "https://dash.cloudflare.com",
  *         kind: "http",
  *         method: "GET",
  *     },
+ *     enabled: true,
+ *     interval: "30m",
+ *     name: "HTTP dash health check",
+ *     description: "Checks the dash endpoint every 30 minutes",
+ *     targetPolicies: [{
+ *         id: "id",
+ *         "default": true,
+ *         name: "name",
+ *     }],
+ *     targeted: true,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example <account_id>/<device_dex_test_id>
+ * $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
  * ```
  */
 export class ZeroTrustDexTest extends pulumi.CustomResource {
@@ -63,14 +67,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDexTest.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * Timestamp of when the Dex Test was created.
-     */
-    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
@@ -78,7 +75,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
     /**
      * Additional details about the test.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Determines whether or not the test is active.
      */
@@ -88,13 +85,18 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
      */
     public readonly interval!: pulumi.Output<string>;
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Timestamp of when the Dex Test was last updated.
+     * Device settings profiles targeted by this test
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    public readonly targetPolicies!: pulumi.Output<outputs.ZeroTrustDexTestTargetPolicy[]>;
+    public readonly targeted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The unique identifier for the test.
+     */
+    public /*out*/ readonly testId!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDexTest resource with the given unique name, arguments, and options.
@@ -110,13 +112,14 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDexTestState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["interval"] = state ? state.interval : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["targetPolicies"] = state ? state.targetPolicies : undefined;
+            resourceInputs["targeted"] = state ? state.targeted : undefined;
+            resourceInputs["testId"] = state ? state.testId : undefined;
         } else {
             const args = argsOrState as ZeroTrustDexTestArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -124,9 +127,6 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
             }
             if ((!args || args.data === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'data'");
-            }
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
             }
             if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
@@ -143,8 +143,9 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["interval"] = args ? args.interval : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["created"] = undefined /*out*/;
-            resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["targetPolicies"] = args ? args.targetPolicies : undefined;
+            resourceInputs["targeted"] = args ? args.targeted : undefined;
+            resourceInputs["testId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDexTest.__pulumiType, name, resourceInputs, opts);
@@ -155,14 +156,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDexTest resources.
  */
 export interface ZeroTrustDexTestState {
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * Timestamp of when the Dex Test was created.
-     */
-    created?: pulumi.Input<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
@@ -180,22 +174,24 @@ export interface ZeroTrustDexTestState {
      */
     interval?: pulumi.Input<string>;
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      */
     name?: pulumi.Input<string>;
     /**
-     * Timestamp of when the Dex Test was last updated.
+     * Device settings profiles targeted by this test
      */
-    updated?: pulumi.Input<string>;
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[]>;
+    targeted?: pulumi.Input<boolean>;
+    /**
+     * The unique identifier for the test.
+     */
+    testId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDexTest resource.
  */
 export interface ZeroTrustDexTestArgs {
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     */
     accountId: pulumi.Input<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
@@ -204,7 +200,7 @@ export interface ZeroTrustDexTestArgs {
     /**
      * Additional details about the test.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Determines whether or not the test is active.
      */
@@ -214,7 +210,12 @@ export interface ZeroTrustDexTestArgs {
      */
     interval: pulumi.Input<string>;
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      */
     name: pulumi.Input<string>;
+    /**
+     * Device settings profiles targeted by this test
+     */
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[]>;
+    targeted?: pulumi.Input<boolean>;
 }

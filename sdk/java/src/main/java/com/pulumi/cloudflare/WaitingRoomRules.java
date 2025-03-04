@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Waiting Room Rules resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,22 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WaitingRoomRules("example", WaitingRoomRulesArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .waitingRoomId("d41d8cd98f00b204e9800998ecf8427e")
- *             .rules(            
- *                 WaitingRoomRulesRuleArgs.builder()
- *                     .description("bypass ip list")
- *                     .expression("src.ip in {192.0.2.0 192.0.2.1}")
- *                     .action("bypass_waiting_room")
- *                     .status("enabled")
- *                     .build(),
- *                 WaitingRoomRulesRuleArgs.builder()
- *                     .description("bypass query string")
- *                     .expression("http.request.uri.query contains \"bypass=true\"")
- *                     .action("bypass_waiting_room")
- *                     .status("enabled")
- *                     .build())
+ *         var exampleWaitingRoomRules = new WaitingRoomRules("exampleWaitingRoomRules", WaitingRoomRulesArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .waitingRoomId("699d98642c564d2e855e9661899b7252")
+ *             .rules(WaitingRoomRulesRuleArgs.builder()
+ *                 .action("bypass_waiting_room")
+ *                 .expression("ip.src in {10.20.30.40}")
+ *                 .description("allow all traffic from 10.20.30.40")
+ *                 .enabled(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -69,52 +60,44 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/waitingRoomRules:WaitingRoomRules")
 public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
     /**
-     * List of rules to apply to the ruleset.
+     * The ID of the rule.
      * 
      */
-    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WaitingRoomRulesRule>> rules;
+    @Export(name="ruleId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ruleId;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return The ID of the rule.
      * 
      */
-    public Output<Optional<List<WaitingRoomRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<Optional<String>> ruleId() {
+        return Codegen.optional(this.ruleId);
     }
-    /**
-     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
+    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
+    private Output<List<WaitingRoomRulesRule>> rules;
+
+    public Output<List<WaitingRoomRulesRule>> rules() {
+        return this.rules;
+    }
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
-    /**
-     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

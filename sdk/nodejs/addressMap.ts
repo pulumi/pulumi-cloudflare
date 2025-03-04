@@ -7,45 +7,28 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides the ability to manage IP addresses that can be used by DNS records when
- * they are proxied through Cloudflare.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.AddressMap("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     description: "My address map",
- *     defaultSni: "*.example.com",
+ * const exampleAddressMap = new cloudflare.AddressMap("example_address_map", {
+ *     accountId: "258def64c72dae45f3e4c8516e2111f2",
+ *     description: "My Ecommerce zones",
  *     enabled: true,
- *     ips: [
- *         {
- *             ip: "192.0.2.1",
- *         },
- *         {
- *             ip: "203.0.113.1",
- *         },
- *     ],
- *     memberships: [
- *         {
- *             identifier: "92f17202ed8bd63d69a66b86a49a8f6b",
- *             kind: "account",
- *         },
- *         {
- *             identifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *             kind: "zone",
- *         },
- *     ],
+ *     ips: ["192.0.2.1"],
+ *     memberships: [{
+ *         identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *         kind: "zone",
+ *     }],
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/addressMap:AddressMap example <account_id>/<address_map_id>
+ * $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
  * ```
  */
 export class AddressMap extends pulumi.CustomResource {
@@ -77,7 +60,7 @@ export class AddressMap extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -88,26 +71,25 @@ export class AddressMap extends pulumi.CustomResource {
      * If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
      */
     public /*out*/ readonly canModifyIps!: pulumi.Output<boolean>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
     public readonly defaultSni!: pulumi.Output<string | undefined>;
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    public readonly ips!: pulumi.Output<string[] | undefined>;
     /**
-     * The set of IPs on the Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
-    public readonly ips!: pulumi.Output<outputs.AddressMapIp[] | undefined>;
-    /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
-     */
-    public readonly memberships!: pulumi.Output<outputs.AddressMapMembership[] | undefined>;
+    public readonly memberships!: pulumi.Output<outputs.AddressMapMembership[]>;
+    public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
 
     /**
      * Create a AddressMap resource with the given unique name, arguments, and options.
@@ -125,18 +107,17 @@ export class AddressMap extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["canDelete"] = state ? state.canDelete : undefined;
             resourceInputs["canModifyIps"] = state ? state.canModifyIps : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["defaultSni"] = state ? state.defaultSni : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["ips"] = state ? state.ips : undefined;
             resourceInputs["memberships"] = state ? state.memberships : undefined;
+            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
         } else {
             const args = argsOrState as AddressMapArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["defaultSni"] = args ? args.defaultSni : undefined;
@@ -146,6 +127,8 @@ export class AddressMap extends pulumi.CustomResource {
             resourceInputs["memberships"] = args ? args.memberships : undefined;
             resourceInputs["canDelete"] = undefined /*out*/;
             resourceInputs["canModifyIps"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["modifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressMap.__pulumiType, name, resourceInputs, opts);
@@ -157,7 +140,7 @@ export class AddressMap extends pulumi.CustomResource {
  */
 export interface AddressMapState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -168,26 +151,25 @@ export interface AddressMapState {
      * If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
      */
     canModifyIps?: pulumi.Input<boolean>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
     defaultSni?: pulumi.Input<string>;
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
     enabled?: pulumi.Input<boolean>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of IPs on the Address Map.
-     */
-    ips?: pulumi.Input<pulumi.Input<inputs.AddressMapIp>[]>;
-    /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
     memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[]>;
+    modifiedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -195,27 +177,24 @@ export interface AddressMapState {
  */
 export interface AddressMapArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier of a Cloudflare account.
      */
     accountId: pulumi.Input<string>;
     /**
-     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
+     * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
     defaultSni?: pulumi.Input<string>;
     /**
-     * Description of the address map.
+     * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the Address Map is enabled or not.
+     * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The set of IPs on the Address Map.
-     */
-    ips?: pulumi.Input<pulumi.Input<inputs.AddressMapIp>[]>;
-    /**
-     * Zones and Accounts which will be assigned IPs on this Address Map.
+     * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
     memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[]>;
 }

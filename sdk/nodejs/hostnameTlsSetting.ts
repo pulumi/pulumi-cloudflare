@@ -5,26 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.HostnameTlsSetting("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     hostname: "sub.example.com",
- *     setting: "min_tls_version",
- *     value: "1.2",
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example <zone_id>/<hostname>/<setting_name>
+ * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
  * ```
  */
 export class HostnameTlsSetting extends pulumi.CustomResource {
@@ -55,22 +41,32 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === HostnameTlsSetting.__pulumiType;
     }
 
+    /**
+     * This is the time the tls setting was originally created for this hostname.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    public readonly hostname!: pulumi.Output<string | undefined>;
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      */
-    public readonly setting!: pulumi.Output<string>;
+    public readonly settingId!: pulumi.Output<string>;
+    /**
+     * Deployment status for the given tls setting.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * This is the time the tls setting was updated.
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * TLS setting value.
+     * The tls setting value.
      */
-    public readonly value!: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -89,17 +85,15 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
             const state = argsOrState as HostnameTlsSettingState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["setting"] = state ? state.setting : undefined;
+            resourceInputs["settingId"] = state ? state.settingId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as HostnameTlsSettingArgs | undefined;
-            if ((!args || args.hostname === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hostname'");
-            }
-            if ((!args || args.setting === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'setting'");
+            if ((!args || args.settingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'settingId'");
             }
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
@@ -108,10 +102,11 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["setting"] = args ? args.setting : undefined;
+            resourceInputs["settingId"] = args ? args.settingId : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -123,22 +118,32 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HostnameTlsSetting resources.
  */
 export interface HostnameTlsSettingState {
+    /**
+     * This is the time the tls setting was originally created for this hostname.
+     */
     createdAt?: pulumi.Input<string>;
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      */
-    setting?: pulumi.Input<string>;
+    settingId?: pulumi.Input<string>;
+    /**
+     * Deployment status for the given tls setting.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * This is the time the tls setting was updated.
+     */
     updatedAt?: pulumi.Input<string>;
     /**
-     * TLS setting value.
+     * The tls setting value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -148,19 +153,19 @@ export interface HostnameTlsSettingState {
  */
 export interface HostnameTlsSettingArgs {
     /**
-     * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
+     * The hostname for which the tls settings are set.
      */
-    hostname: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
-     * TLS setting name. **Modifying this attribute will force creation of a new resource.**
+     * The TLS Setting name.
      */
-    setting: pulumi.Input<string>;
+    settingId: pulumi.Input<string>;
     /**
-     * TLS setting value.
+     * The tls setting value.
      */
-    value: pulumi.Input<string>;
+    value: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

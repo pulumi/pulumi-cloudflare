@@ -6,12 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CustomHostnameArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CustomHostnameState;
+import com.pulumi.cloudflare.outputs.CustomHostnameOwnershipVerification;
+import com.pulumi.cloudflare.outputs.CustomHostnameOwnershipVerificationHttp;
 import com.pulumi.cloudflare.outputs.CustomHostnameSsl;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -34,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.CustomHostname;
  * import com.pulumi.cloudflare.CustomHostnameArgs;
  * import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
+ * import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,12 +47,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomHostname("example", CustomHostnameArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .hostname("hostname.example.com")
- *             .ssls(CustomHostnameSslArgs.builder()
- *                 .method("txt")
+ *         var exampleCustomHostname = new CustomHostname("exampleCustomHostname", CustomHostnameArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .hostname("app.example.com")
+ *             .ssl(CustomHostnameSslArgs.builder()
+ *                 .bundle_method("ubiquitous")
+ *                 .certificate_authority("digicert")
+ *                 .cloudflare_branding(false)
+ *                 .custom_certificate("-----BEGIN CERTIFICATE-----\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\n-----END CERTIFICATE-----\\n")
+ *                 .custom_key("""
+ *     -----BEGIN RSA PRIVATE KEY-----
+ *     MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+ *     dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+ *     abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+ *     tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+ *     FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+ *     ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+ *     HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+ *     axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+ *     +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+ *     +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+ *     KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+ *     9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+ *     /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+ *     iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+ *     N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+ *     VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+ *     vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+ *     lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+ *     9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+ *     mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+ *     dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+ *     PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+ *     fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+ *     qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+ *     lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+ *     -----END RSA PRIVATE KEY-----
+ * 
+ *                 """)
+ *                 .method("http")
+ *                 .settings(CustomHostnameSslSettingsArgs.builder()
+ *                     .ciphers(                    
+ *                         "ECDHE-RSA-AES128-GCM-SHA256",
+ *                         "AES128-SHA")
+ *                     .earlyHints("on")
+ *                     .http2("on")
+ *                     .minTlsVersion("1.0")
+ *                     .tls13("on")
+ *                     .build())
+ *                 .type("dv")
+ *                 .wildcard(false)
  *                 .build())
+ *             .customMetadata(Map.of("foo", "string"))
  *             .build());
  * 
  *     }
@@ -64,131 +110,161 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+ * $ pulumi import cloudflare:index/customHostname:CustomHostname example &#39;&lt;zone_id&gt;/&lt;custom_hostname_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customHostname:CustomHostname")
 public class CustomHostname extends com.pulumi.resources.CustomResource {
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * This is the time the hostname was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return This is the time the hostname was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     @Export(name="customMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customMetadata;
 
     /**
-     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * @return Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     public Output<Optional<Map<String,String>>> customMetadata() {
         return Codegen.optional(this.customMetadata);
     }
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     @Export(name="customOriginServer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOriginServer;
 
     /**
-     * @return The custom origin server used for certificates.
+     * @return a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     public Output<Optional<String>> customOriginServer() {
         return Codegen.optional(this.customOriginServer);
     }
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     @Export(name="customOriginSni", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOriginSni;
 
     /**
-     * @return The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * @return A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     public Output<Optional<String>> customOriginSni() {
         return Codegen.optional(this.customOriginSni);
     }
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * @return The custom hostname that will point to your hostname via CNAME.
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
-    @Export(name="ownershipVerification", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> ownershipVerification;
+    /**
+     * This is a record which can be placed to activate a hostname.
+     * 
+     */
+    @Export(name="ownershipVerification", refs={CustomHostnameOwnershipVerification.class}, tree="[0]")
+    private Output<CustomHostnameOwnershipVerification> ownershipVerification;
 
-    public Output<Map<String,String>> ownershipVerification() {
+    /**
+     * @return This is a record which can be placed to activate a hostname.
+     * 
+     */
+    public Output<CustomHostnameOwnershipVerification> ownershipVerification() {
         return this.ownershipVerification;
     }
-    @Export(name="ownershipVerificationHttp", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> ownershipVerificationHttp;
+    /**
+     * This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
+    @Export(name="ownershipVerificationHttp", refs={CustomHostnameOwnershipVerificationHttp.class}, tree="[0]")
+    private Output<CustomHostnameOwnershipVerificationHttp> ownershipVerificationHttp;
 
-    public Output<Map<String,String>> ownershipVerificationHttp() {
+    /**
+     * @return This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
+    public Output<CustomHostnameOwnershipVerificationHttp> ownershipVerificationHttp() {
         return this.ownershipVerificationHttp;
     }
     /**
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Export(name="ssls", refs={List.class,CustomHostnameSsl.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CustomHostnameSsl>> ssls;
+    @Export(name="ssl", refs={CustomHostnameSsl.class}, tree="[0]")
+    private Output<CustomHostnameSsl> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Output<Optional<List<CustomHostnameSsl>>> ssls() {
-        return Codegen.optional(this.ssls);
+    public Output<CustomHostnameSsl> ssl() {
+        return this.ssl;
     }
     /**
-     * Status of the certificate.
+     * Status of the hostname&#39;s activation.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the certificate.
+     * @return Status of the hostname&#39;s activation.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    @Export(name="waitForSslPendingValidation", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> waitForSslPendingValidation;
+    @Export(name="verificationErrors", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> verificationErrors;
 
     /**
-     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * @return These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    public Output<Optional<Boolean>> waitForSslPendingValidation() {
-        return Codegen.optional(this.waitForSslPendingValidation);
+    public Output<List<String>> verificationErrors() {
+        return this.verificationErrors;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

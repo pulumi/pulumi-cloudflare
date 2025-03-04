@@ -5,20 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which manages Cloudflare Logpush ownership
- * challenges to use in a Logpush Job. On it's own, doesn't do much
- * however this resource should be used in conjunction to create
- * Logpush jobs.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.LogpushOwnershipChallenge("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     destinationConf: "s3://my-bucket-path?region=us-west-2",
+ * const exampleLogpushOwnershipChallenge = new cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge", {
+ *     destinationConf: "s3://mybucket/logs?region=us-west-2",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -51,19 +46,18 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     public readonly destinationConf!: pulumi.Output<string>;
+    public /*out*/ readonly filename!: pulumi.Output<string>;
+    public /*out*/ readonly message!: pulumi.Output<string>;
+    public /*out*/ readonly valid!: pulumi.Output<boolean>;
     /**
-     * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     */
-    public /*out*/ readonly ownershipChallengeFilename!: pulumi.Output<string>;
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -82,7 +76,9 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
             const state = argsOrState as LogpushOwnershipChallengeState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
-            resourceInputs["ownershipChallengeFilename"] = state ? state.ownershipChallengeFilename : undefined;
+            resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["message"] = state ? state.message : undefined;
+            resourceInputs["valid"] = state ? state.valid : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpushOwnershipChallengeArgs | undefined;
@@ -92,7 +88,9 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["ownershipChallengeFilename"] = undefined /*out*/;
+            resourceInputs["filename"] = undefined /*out*/;
+            resourceInputs["message"] = undefined /*out*/;
+            resourceInputs["valid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogpushOwnershipChallenge.__pulumiType, name, resourceInputs, opts);
@@ -104,19 +102,18 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
  */
 export interface LogpushOwnershipChallengeState {
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     destinationConf?: pulumi.Input<string>;
+    filename?: pulumi.Input<string>;
+    message?: pulumi.Input<string>;
+    valid?: pulumi.Input<boolean>;
     /**
-     * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
-     */
-    ownershipChallengeFilename?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -126,15 +123,15 @@ export interface LogpushOwnershipChallengeState {
  */
 export interface LogpushOwnershipChallengeArgs {
     /**
-     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     destinationConf: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

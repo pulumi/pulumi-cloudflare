@@ -11,13 +11,13 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Web Analytics Rule resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -28,11 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WebAnalyticsSite;
- * import com.pulumi.cloudflare.WebAnalyticsSiteArgs;
  * import com.pulumi.cloudflare.WebAnalyticsRule;
  * import com.pulumi.cloudflare.WebAnalyticsRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,22 +43,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .zoneTag("0da42c8d2132a9ddaf714f9e7c920711")
- *             .autoInstall(true)
- *             .build());
- * 
  *         var exampleWebAnalyticsRule = new WebAnalyticsRule("exampleWebAnalyticsRule", WebAnalyticsRuleArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .rulesetId(example.rulesetId())
- *             .host("*")
- *             .paths("/excluded")
- *             .inclusive(false)
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .rulesetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *             .host("example.com")
+ *             .inclusive(true)
  *             .isPaused(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(example)
- *                 .build());
+ *             .paths("*")
+ *             .build());
  * 
  *     }
  * }
@@ -69,94 +58,84 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example &lt;account_id&gt;/&lt;ruleset_id&gt;/&lt;rule_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/webAnalyticsRule:WebAnalyticsRule")
 public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The host to apply the rule to.
-     * 
-     */
-    @Export(name="host", refs={String.class}, tree="[0]")
-    private Output<String> host;
+    @Export(name="created", refs={String.class}, tree="[0]")
+    private Output<String> created;
 
-    /**
-     * @return The host to apply the rule to.
-     * 
-     */
-    public Output<String> host() {
-        return this.host;
+    public Output<String> created() {
+        return this.created;
+    }
+    @Export(name="host", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> host;
+
+    public Output<Optional<String>> host() {
+        return Codegen.optional(this.host);
     }
     /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * Whether the rule includes or excludes traffic from being measured.
      * 
      */
     @Export(name="inclusive", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> inclusive;
+    private Output</* @Nullable */ Boolean> inclusive;
 
     /**
-     * @return Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * @return Whether the rule includes or excludes traffic from being measured.
      * 
      */
-    public Output<Boolean> inclusive() {
-        return this.inclusive;
+    public Output<Optional<Boolean>> inclusive() {
+        return Codegen.optional(this.inclusive);
     }
     /**
      * Whether the rule is paused or not.
      * 
      */
     @Export(name="isPaused", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> isPaused;
+    private Output</* @Nullable */ Boolean> isPaused;
 
     /**
      * @return Whether the rule is paused or not.
      * 
      */
-    public Output<Boolean> isPaused() {
-        return this.isPaused;
+    public Output<Optional<Boolean>> isPaused() {
+        return Codegen.optional(this.isPaused);
     }
-    /**
-     * A list of paths to apply the rule to.
-     * 
-     */
     @Export(name="paths", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> paths;
+    private Output</* @Nullable */ List<String>> paths;
 
-    /**
-     * @return A list of paths to apply the rule to.
-     * 
-     */
-    public Output<List<String>> paths() {
-        return this.paths;
+    public Output<Optional<List<String>>> paths() {
+        return Codegen.optional(this.paths);
+    }
+    @Export(name="priority", refs={Double.class}, tree="[0]")
+    private Output<Double> priority;
+
+    public Output<Double> priority() {
+        return this.priority;
     }
     /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      * 
      */
     @Export(name="rulesetId", refs={String.class}, tree="[0]")
     private Output<String> rulesetId;
 
     /**
-     * @return The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * @return The Web Analytics ruleset identifier.
      * 
      */
     public Output<String> rulesetId() {

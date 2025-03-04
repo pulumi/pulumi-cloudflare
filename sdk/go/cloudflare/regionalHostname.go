@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Data Localization Suite Regional Hostname.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,31 +19,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Regionalized hostname record resources are managed independently from the
-//			// Regionalized Hostname resources.
-//			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:    pulumi.String("example.com"),
-//				Content: pulumi.String("192.0.2.1"),
-//				Type:    pulumi.String("A"),
-//				Ttl:     pulumi.Int(3600),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// The cloudflare_regional_hostname resource may exist with or without its
-//			// corresponding record resource.
-//			_, err = cloudflare.NewRegionalHostname(ctx, "example", &cloudflare.RegionalHostnameArgs{
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Hostname:  pulumi.String("example.com"),
-//				RegionKey: pulumi.String("eu"),
+//			_, err := cloudflare.NewRegionalHostname(ctx, "example_regional_hostname", &cloudflare.RegionalHostnameArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Hostname:  pulumi.String("foo.example.com"),
+//				RegionKey: pulumi.String("ca"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,16 +39,22 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
+// ```
 type RegionalHostname struct {
 	pulumi.CustomResourceState
 
-	// The RFC3339 timestamp of when the hostname was created.
+	// When the regional hostname was created
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// The hostname to regionalize.
+	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+	// Identifying key for the region
 	RegionKey pulumi.StringOutput `pulumi:"regionKey"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,24 +97,24 @@ func GetRegionalHostname(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionalHostname resources.
 type regionalHostnameState struct {
-	// The RFC3339 timestamp of when the hostname was created.
+	// When the regional hostname was created
 	CreatedOn *string `pulumi:"createdOn"`
-	// The hostname to regionalize.
+	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname *string `pulumi:"hostname"`
-	// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+	// Identifying key for the region
 	RegionKey *string `pulumi:"regionKey"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RegionalHostnameState struct {
-	// The RFC3339 timestamp of when the hostname was created.
+	// When the regional hostname was created
 	CreatedOn pulumi.StringPtrInput
-	// The hostname to regionalize.
+	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname pulumi.StringPtrInput
-	// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+	// Identifying key for the region
 	RegionKey pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -133,21 +123,21 @@ func (RegionalHostnameState) ElementType() reflect.Type {
 }
 
 type regionalHostnameArgs struct {
-	// The hostname to regionalize.
+	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname string `pulumi:"hostname"`
-	// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+	// Identifying key for the region
 	RegionKey string `pulumi:"regionKey"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a RegionalHostname resource.
 type RegionalHostnameArgs struct {
-	// The hostname to regionalize.
+	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname pulumi.StringInput
-	// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+	// Identifying key for the region
 	RegionKey pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -238,22 +228,22 @@ func (o RegionalHostnameOutput) ToRegionalHostnameOutputWithContext(ctx context.
 	return o
 }
 
-// The RFC3339 timestamp of when the hostname was created.
+// When the regional hostname was created
 func (o RegionalHostnameOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// The hostname to regionalize.
+// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 func (o RegionalHostnameOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
+// Identifying key for the region
 func (o RegionalHostnameOutput) RegionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.RegionKey }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o RegionalHostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

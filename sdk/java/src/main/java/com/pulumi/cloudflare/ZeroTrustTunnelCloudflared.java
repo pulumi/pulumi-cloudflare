@@ -6,20 +6,18 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredState;
+import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConnection;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Tunnel exposes applications running on your local web server on any
- * network with an internet connection without manually adding DNS
- * records or configuring a firewall or router.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,10 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustTunnelCloudflared("example", ZeroTrustTunnelCloudflaredArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("my-tunnel")
- *             .secret("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
+ *         var exampleZeroTrustTunnelCloudflared = new ZeroTrustTunnelCloudflared("exampleZeroTrustTunnelCloudflared", ZeroTrustTunnelCloudflaredArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .name("blog")
+ *             .configSrc("local")
+ *             .tunnelSecret("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
  *             .build());
  * 
  *     }
@@ -60,95 +59,207 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example &lt;account_id&gt;/&lt;tunnel_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")
 public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Usable CNAME for accessing the Tunnel.
+     * Cloudflare account ID
      * 
      */
-    @Export(name="cname", refs={String.class}, tree="[0]")
-    private Output<String> cname;
+    @Export(name="accountTag", refs={String.class}, tree="[0]")
+    private Output<String> accountTag;
 
     /**
-     * @return Usable CNAME for accessing the Tunnel.
+     * @return Cloudflare account ID
      * 
      */
-    public Output<String> cname() {
-        return this.cname;
+    public Output<String> accountTag() {
+        return this.accountTag;
     }
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * 
      */
     @Export(name="configSrc", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> configSrc;
+    private Output<String> configSrc;
 
     /**
-     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * 
      */
-    public Output<Optional<String>> configSrc() {
-        return Codegen.optional(this.configSrc);
+    public Output<String> configSrc() {
+        return this.configSrc;
     }
     /**
-     * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
+     * 
+     */
+    @Export(name="connections", refs={List.class,ZeroTrustTunnelCloudflaredConnection.class}, tree="[0,1]")
+    private Output<List<ZeroTrustTunnelCloudflaredConnection>> connections;
+
+    /**
+     * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
+     * 
+     */
+    public Output<List<ZeroTrustTunnelCloudflaredConnection>> connections() {
+        return this.connections;
+    }
+    /**
+     * Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
+     * 
+     */
+    @Export(name="connsActiveAt", refs={String.class}, tree="[0]")
+    private Output<String> connsActiveAt;
+
+    /**
+     * @return Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
+     * 
+     */
+    public Output<String> connsActiveAt() {
+        return this.connsActiveAt;
+    }
+    /**
+     * Timestamp of when the tunnel became inactive (no connections to Cloudflare&#39;s edge). If `null`, the tunnel is active.
+     * 
+     */
+    @Export(name="connsInactiveAt", refs={String.class}, tree="[0]")
+    private Output<String> connsInactiveAt;
+
+    /**
+     * @return Timestamp of when the tunnel became inactive (no connections to Cloudflare&#39;s edge). If `null`, the tunnel is active.
+     * 
+     */
+    public Output<String> connsInactiveAt() {
+        return this.connsInactiveAt;
+    }
+    /**
+     * Timestamp of when the resource was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    @Export(name="deletedAt", refs={String.class}, tree="[0]")
+    private Output<String> deletedAt;
+
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public Output<String> deletedAt() {
+        return this.deletedAt;
+    }
+    /**
+     * Metadata associated with the tunnel.
+     * 
+     */
+    @Export(name="metadata", refs={String.class}, tree="[0]")
+    private Output<String> metadata;
+
+    /**
+     * @return Metadata associated with the tunnel.
+     * 
+     */
+    public Output<String> metadata() {
+        return this.metadata;
+    }
+    /**
+     * A user-friendly name for a tunnel.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * @return A user-friendly name for a tunnel.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
-    private Output<String> secret;
+    @Export(name="remoteConfig", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> remoteConfig;
 
     /**
-     * @return 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Output<Boolean> remoteConfig() {
+        return this.remoteConfig;
     }
     /**
-     * Token used by a connector to authenticate and run the tunnel.
+     * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * 
      */
-    @Export(name="tunnelToken", refs={String.class}, tree="[0]")
-    private Output<String> tunnelToken;
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
 
     /**
-     * @return Token used by a connector to authenticate and run the tunnel.
+     * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * 
      */
-    public Output<String> tunnelToken() {
-        return this.tunnelToken;
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The type of tunnel.
+     * 
+     */
+    @Export(name="tunType", refs={String.class}, tree="[0]")
+    private Output<String> tunType;
+
+    /**
+     * @return The type of tunnel.
+     * 
+     */
+    public Output<String> tunType() {
+        return this.tunType;
+    }
+    /**
+     * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+     * 
+     */
+    @Export(name="tunnelSecret", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tunnelSecret;
+
+    /**
+     * @return Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
+     * 
+     */
+    public Output<Optional<String>> tunnelSecret() {
+        return Codegen.optional(this.tunnelSecret);
     }
 
     /**
@@ -190,10 +301,6 @@ public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResou
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "secret",
-                "tunnelToken"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

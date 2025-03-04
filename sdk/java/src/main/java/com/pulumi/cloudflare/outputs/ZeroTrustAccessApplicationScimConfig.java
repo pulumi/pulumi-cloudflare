@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationScimConfig {
     /**
-     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+     * @return Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      * 
      */
     private @Nullable ZeroTrustAccessApplicationScimConfigAuthentication authentication;
@@ -32,7 +32,7 @@ public final class ZeroTrustAccessApplicationScimConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     private String idpUid;
@@ -49,7 +49,7 @@ public final class ZeroTrustAccessApplicationScimConfig {
 
     private ZeroTrustAccessApplicationScimConfig() {}
     /**
-     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
+     * @return Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      * 
      */
     public Optional<ZeroTrustAccessApplicationScimConfigAuthentication> authentication() {
@@ -70,7 +70,7 @@ public final class ZeroTrustAccessApplicationScimConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The UIDs of the IdP to use as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public String idpUid() {

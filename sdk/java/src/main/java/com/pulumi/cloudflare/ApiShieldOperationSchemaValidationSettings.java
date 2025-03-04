@@ -15,8 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,8 +25,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldOperation;
- * import com.pulumi.cloudflare.ApiShieldOperationArgs;
  * import com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettings;
  * import com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettingsArgs;
  * import java.util.List;
@@ -44,17 +40,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShieldOperation("example", ApiShieldOperationArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .method("GET")
- *             .host("api.example.com")
- *             .endpoint("/path")
- *             .build());
- * 
  *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .operationId(example.id())
- *             .mitigationAction("block")
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *             .mitigationAction("log")
  *             .build());
  * 
  *     }
@@ -63,46 +52,58 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example &#39;&lt;zone_id&gt;/&lt;operation_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")
 public class ApiShieldOperationSchemaValidationSettings extends com.pulumi.resources.CustomResource {
     /**
-     * The mitigation action to apply to this operation.
+     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied
      * 
      */
     @Export(name="mitigationAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mitigationAction;
 
     /**
-     * @return The mitigation action to apply to this operation.
+     * @return When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+     * Level Schema Validation Settings for mitigation action that will be applied
      * 
      */
     public Output<Optional<String>> mitigationAction() {
         return Codegen.optional(this.mitigationAction);
     }
     /**
-     * Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      * 
      */
     @Export(name="operationId", refs={String.class}, tree="[0]")
     private Output<String> operationId;
 
     /**
-     * @return Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID
      * 
      */
     public Output<String> operationId() {
         return this.operationId;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

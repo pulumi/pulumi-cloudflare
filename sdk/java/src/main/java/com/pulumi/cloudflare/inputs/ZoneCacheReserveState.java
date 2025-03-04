@@ -17,40 +17,88 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
     public static final ZoneCacheReserveState Empty = new ZoneCacheReserveState();
 
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Whether the setting is editable
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="editable")
+    private @Nullable Output<Boolean> editable;
 
     /**
-     * @return Whether to enable or disable Cache Reserve support for a given zone.
+     * @return Whether the setting is editable
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Optional<Output<Boolean>> editable() {
+        return Optional.ofNullable(this.editable);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return Last time this setting was modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * Value of the Cache Reserve zone setting.
+     * 
+     */
+    @Import(name="value")
+    private @Nullable Output<String> value;
+
+    /**
+     * @return Value of the Cache Reserve zone setting.
+     * 
+     */
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
 
+    /**
+     * ID of the zone setting.
+     * 
+     */
+    @Import(name="zoneSettingId")
+    private @Nullable Output<String> zoneSettingId;
+
+    /**
+     * @return ID of the zone setting.
+     * 
+     */
+    public Optional<Output<String>> zoneSettingId() {
+        return Optional.ofNullable(this.zoneSettingId);
+    }
+
     private ZoneCacheReserveState() {}
 
     private ZoneCacheReserveState(ZoneCacheReserveState $) {
-        this.enabled = $.enabled;
+        this.editable = $.editable;
+        this.modifiedOn = $.modifiedOn;
+        this.value = $.value;
         this.zoneId = $.zoneId;
+        this.zoneSettingId = $.zoneSettingId;
     }
 
     public static Builder builder() {
@@ -72,28 +120,70 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Whether to enable or disable Cache Reserve support for a given zone.
+         * @param editable Whether the setting is editable
          * 
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
-            $.enabled = enabled;
+        public Builder editable(@Nullable Output<Boolean> editable) {
+            $.editable = editable;
             return this;
         }
 
         /**
-         * @param enabled Whether to enable or disable Cache Reserve support for a given zone.
+         * @param editable Whether the setting is editable
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
+        public Builder editable(Boolean editable) {
+            return editable(Output.of(editable));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn Last time this setting was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param value Value of the Cache Reserve zone setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(@Nullable Output<String> value) {
+            $.value = value;
+            return this;
+        }
+
+        /**
+         * @param value Value of the Cache Reserve zone setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(String value) {
+            return value(Output.of(value));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -104,13 +194,34 @@ public final class ZoneCacheReserveState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        /**
+         * @param zoneSettingId ID of the zone setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneSettingId(@Nullable Output<String> zoneSettingId) {
+            $.zoneSettingId = zoneSettingId;
+            return this;
+        }
+
+        /**
+         * @param zoneSettingId ID of the zone setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneSettingId(String zoneSettingId) {
+            return zoneSettingId(Output.of(zoneSettingId));
         }
 
         public ZoneCacheReserveState build() {

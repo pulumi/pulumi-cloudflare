@@ -17,14 +17,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     public static final NotificationPolicyWebhooksArgs Empty = new NotificationPolicyWebhooksArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account id
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account id
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The name of the webhook destination.
+     * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the webhook destination.
+     * @return The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      * 
      */
     public Output<String> name() {
@@ -47,14 +47,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     }
 
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+     * @return Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -62,18 +62,18 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * The POST endpoint to call when dispatching a notification.
      * 
      */
-    @Import(name="url")
-    private @Nullable Output<String> url;
+    @Import(name="url", required=true)
+    private Output<String> url;
 
     /**
-     * @return The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+     * @return The POST endpoint to call when dispatching a notification.
      * 
      */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
+    public Output<String> url() {
+        return this.url;
     }
 
     private NotificationPolicyWebhooksArgs() {}
@@ -104,7 +104,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account id
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account id
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name The name of the webhook destination.
+         * @param name The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name The name of the webhook destination.
+         * @param name The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+         * @param secret Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
+         * @param secret Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
          * 
          * @return builder
          * 
@@ -167,18 +167,18 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param url The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+         * @param url The POST endpoint to call when dispatching a notification.
          * 
          * @return builder
          * 
          */
-        public Builder url(@Nullable Output<String> url) {
+        public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
         /**
-         * @param url The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
+         * @param url The POST endpoint to call when dispatching a notification.
          * 
          * @return builder
          * 
@@ -193,6 +193,9 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("NotificationPolicyWebhooksArgs", "name");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyWebhooksArgs", "url");
             }
             return $;
         }

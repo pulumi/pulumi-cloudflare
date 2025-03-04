@@ -3,11 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRule;
+import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfigIngress;
 import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
 import com.pulumi.cloudflare.outputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRouting;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,30 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustTunnelCloudflaredConfigConfig {
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    private List<ZeroTrustTunnelCloudflaredConfigConfigIngressRule> ingressRules;
+    private @Nullable List<ZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses;
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     private @Nullable ZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest;
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     private @Nullable ZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting;
 
     private ZeroTrustTunnelCloudflaredConfigConfig() {}
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    public List<ZeroTrustTunnelCloudflaredConfigConfigIngressRule> ingressRules() {
-        return this.ingressRules;
+    public List<ZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses() {
+        return this.ingresses == null ? List.of() : this.ingresses;
     }
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     public Optional<ZeroTrustTunnelCloudflaredConfigConfigOriginRequest> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     public Optional<ZeroTrustTunnelCloudflaredConfigConfigWarpRouting> warpRouting() {
@@ -55,27 +62,25 @@ public final class ZeroTrustTunnelCloudflaredConfigConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<ZeroTrustTunnelCloudflaredConfigConfigIngressRule> ingressRules;
+        private @Nullable List<ZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses;
         private @Nullable ZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest;
         private @Nullable ZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting;
         public Builder() {}
         public Builder(ZeroTrustTunnelCloudflaredConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.ingressRules = defaults.ingressRules;
+    	      this.ingresses = defaults.ingresses;
     	      this.originRequest = defaults.originRequest;
     	      this.warpRouting = defaults.warpRouting;
         }
 
         @CustomType.Setter
-        public Builder ingressRules(List<ZeroTrustTunnelCloudflaredConfigConfigIngressRule> ingressRules) {
-            if (ingressRules == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfig", "ingressRules");
-            }
-            this.ingressRules = ingressRules;
+        public Builder ingresses(@Nullable List<ZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses) {
+
+            this.ingresses = ingresses;
             return this;
         }
-        public Builder ingressRules(ZeroTrustTunnelCloudflaredConfigConfigIngressRule... ingressRules) {
-            return ingressRules(List.of(ingressRules));
+        public Builder ingresses(ZeroTrustTunnelCloudflaredConfigConfigIngress... ingresses) {
+            return ingresses(List.of(ingresses));
         }
         @CustomType.Setter
         public Builder originRequest(@Nullable ZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest) {
@@ -91,7 +96,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfig {
         }
         public ZeroTrustTunnelCloudflaredConfigConfig build() {
             final var _resultValue = new ZeroTrustTunnelCloudflaredConfigConfig();
-            _resultValue.ingressRules = ingressRules;
+            _resultValue.ingresses = ingresses;
             _resultValue.originRequest = originRequest;
             _resultValue.warpRouting = warpRouting;
             return _resultValue;

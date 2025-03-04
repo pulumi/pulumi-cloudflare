@@ -4,10 +4,12 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDexTestDataArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDexTestTargetPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,34 +19,11 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
 
     public static final ZeroTrustDexTestState Empty = new ZeroTrustDexTestState();
 
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * Timestamp of when the Dex Test was created.
-     * 
-     */
-    @Import(name="created")
-    private @Nullable Output<String> created;
-
-    /**
-     * @return Timestamp of when the Dex Test was created.
-     * 
-     */
-    public Optional<Output<String>> created() {
-        return Optional.ofNullable(this.created);
     }
 
     /**
@@ -108,14 +87,14 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Device Dex Test. Must be unique.
+     * @return The name of the DEX test. Must be unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -123,31 +102,54 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Timestamp of when the Dex Test was last updated.
+     * Device settings profiles targeted by this test
      * 
      */
-    @Import(name="updated")
-    private @Nullable Output<String> updated;
+    @Import(name="targetPolicies")
+    private @Nullable Output<List<ZeroTrustDexTestTargetPolicyArgs>> targetPolicies;
 
     /**
-     * @return Timestamp of when the Dex Test was last updated.
+     * @return Device settings profiles targeted by this test
      * 
      */
-    public Optional<Output<String>> updated() {
-        return Optional.ofNullable(this.updated);
+    public Optional<Output<List<ZeroTrustDexTestTargetPolicyArgs>>> targetPolicies() {
+        return Optional.ofNullable(this.targetPolicies);
+    }
+
+    @Import(name="targeted")
+    private @Nullable Output<Boolean> targeted;
+
+    public Optional<Output<Boolean>> targeted() {
+        return Optional.ofNullable(this.targeted);
+    }
+
+    /**
+     * The unique identifier for the test.
+     * 
+     */
+    @Import(name="testId")
+    private @Nullable Output<String> testId;
+
+    /**
+     * @return The unique identifier for the test.
+     * 
+     */
+    public Optional<Output<String>> testId() {
+        return Optional.ofNullable(this.testId);
     }
 
     private ZeroTrustDexTestState() {}
 
     private ZeroTrustDexTestState(ZeroTrustDexTestState $) {
         this.accountId = $.accountId;
-        this.created = $.created;
         this.data = $.data;
         this.description = $.description;
         this.enabled = $.enabled;
         this.interval = $.interval;
         this.name = $.name;
-        this.updated = $.updated;
+        this.targetPolicies = $.targetPolicies;
+        this.targeted = $.targeted;
+        this.testId = $.testId;
     }
 
     public static Builder builder() {
@@ -168,46 +170,13 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
             $ = new ZeroTrustDexTestState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param created Timestamp of when the Dex Test was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder created(@Nullable Output<String> created) {
-            $.created = created;
-            return this;
-        }
-
-        /**
-         * @param created Timestamp of when the Dex Test was created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder created(String created) {
-            return created(Output.of(created));
         }
 
         /**
@@ -295,7 +264,7 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the Device Dex Test. Must be unique.
+         * @param name The name of the DEX test. Must be unique.
          * 
          * @return builder
          * 
@@ -306,7 +275,7 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the Device Dex Test. Must be unique.
+         * @param name The name of the DEX test. Must be unique.
          * 
          * @return builder
          * 
@@ -316,24 +285,64 @@ public final class ZeroTrustDexTestState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updated Timestamp of when the Dex Test was last updated.
+         * @param targetPolicies Device settings profiles targeted by this test
          * 
          * @return builder
          * 
          */
-        public Builder updated(@Nullable Output<String> updated) {
-            $.updated = updated;
+        public Builder targetPolicies(@Nullable Output<List<ZeroTrustDexTestTargetPolicyArgs>> targetPolicies) {
+            $.targetPolicies = targetPolicies;
             return this;
         }
 
         /**
-         * @param updated Timestamp of when the Dex Test was last updated.
+         * @param targetPolicies Device settings profiles targeted by this test
          * 
          * @return builder
          * 
          */
-        public Builder updated(String updated) {
-            return updated(Output.of(updated));
+        public Builder targetPolicies(List<ZeroTrustDexTestTargetPolicyArgs> targetPolicies) {
+            return targetPolicies(Output.of(targetPolicies));
+        }
+
+        /**
+         * @param targetPolicies Device settings profiles targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(ZeroTrustDexTestTargetPolicyArgs... targetPolicies) {
+            return targetPolicies(List.of(targetPolicies));
+        }
+
+        public Builder targeted(@Nullable Output<Boolean> targeted) {
+            $.targeted = targeted;
+            return this;
+        }
+
+        public Builder targeted(Boolean targeted) {
+            return targeted(Output.of(targeted));
+        }
+
+        /**
+         * @param testId The unique identifier for the test.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testId(@Nullable Output<String> testId) {
+            $.testId = testId;
+            return this;
+        }
+
+        /**
+         * @param testId The unique identifier for the test.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder testId(String testId) {
+            return testId(Output.of(testId));
         }
 
         public ZeroTrustDexTestState build() {

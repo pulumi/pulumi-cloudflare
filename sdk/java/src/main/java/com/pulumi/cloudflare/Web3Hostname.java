@@ -15,22 +15,57 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages Web3 hostnames for IPFS and Ethereum gateways.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Web3Hostname;
+ * import com.pulumi.cloudflare.Web3HostnameArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWeb3Hostname = new Web3Hostname("exampleWeb3Hostname", Web3HostnameArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("gateway.example.com")
+ *             .target("ethereum")
+ *             .description("This is my IPFS gateway.")
+ *             .dnslink("/ipns/onboarding.ipfs.cloudflare.com")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example &#39;&lt;zone_id&gt;/&lt;identifier&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/web3Hostname:Web3Hostname")
 public class Web3Hostname extends com.pulumi.resources.CustomResource {
-    /**
-     * Creation time.
-     * 
-     */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
-    /**
-     * @return Creation time.
-     * 
-     */
     public Output<String> createdOn() {
         return this.createdOn;
     }
@@ -62,17 +97,9 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dnslink() {
         return Codegen.optional(this.dnslink);
     }
-    /**
-     * Last modification time.
-     * 
-     */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
-    /**
-     * @return Last modification time.
-     * 
-     */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
@@ -119,14 +146,14 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
         return this.target;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

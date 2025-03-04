@@ -5,7 +5,6 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
-import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,14 +19,14 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final PagesProjectArgs Empty = new PagesProjectArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -35,14 +34,14 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * Configs for the project build process.
      * 
      */
     @Import(name="buildConfig")
     private @Nullable Output<PagesProjectBuildConfigArgs> buildConfig;
 
     /**
-     * @return Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+     * @return Configs for the project build process.
      * 
      */
     public Optional<Output<PagesProjectBuildConfigArgs>> buildConfig() {
@@ -50,14 +49,14 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for deployments in a project.
+     * Configs for deployments in a project.
      * 
      */
     @Import(name="deploymentConfigs")
     private @Nullable Output<PagesProjectDeploymentConfigsArgs> deploymentConfigs;
 
     /**
-     * @return Configuration for deployments in a project.
+     * @return Configs for deployments in a project.
      * 
      */
     public Optional<Output<PagesProjectDeploymentConfigsArgs>> deploymentConfigs() {
@@ -80,33 +79,18 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the branch that is used for the production environment.
+     * Production branch of the project. Used to identify production deployments.
      * 
      */
-    @Import(name="productionBranch", required=true)
-    private Output<String> productionBranch;
+    @Import(name="productionBranch")
+    private @Nullable Output<String> productionBranch;
 
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Production branch of the project. Used to identify production deployments.
      * 
      */
-    public Output<String> productionBranch() {
-        return this.productionBranch;
-    }
-
-    /**
-     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
-    @Import(name="source")
-    private @Nullable Output<PagesProjectSourceArgs> source;
-
-    /**
-     * @return Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-     * 
-     */
-    public Optional<Output<PagesProjectSourceArgs>> source() {
-        return Optional.ofNullable(this.source);
+    public Optional<Output<String>> productionBranch() {
+        return Optional.ofNullable(this.productionBranch);
     }
 
     private PagesProjectArgs() {}
@@ -117,7 +101,6 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.deploymentConfigs = $.deploymentConfigs;
         this.name = $.name;
         this.productionBranch = $.productionBranch;
-        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -139,7 +122,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -150,7 +133,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -160,7 +143,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+         * @param buildConfig Configs for the project build process.
          * 
          * @return builder
          * 
@@ -171,7 +154,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
+         * @param buildConfig Configs for the project build process.
          * 
          * @return builder
          * 
@@ -181,7 +164,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentConfigs Configuration for deployments in a project.
+         * @param deploymentConfigs Configs for deployments in a project.
          * 
          * @return builder
          * 
@@ -192,7 +175,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentConfigs Configuration for deployments in a project.
+         * @param deploymentConfigs Configs for deployments in a project.
          * 
          * @return builder
          * 
@@ -223,18 +206,18 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productionBranch The name of the branch that is used for the production environment.
+         * @param productionBranch Production branch of the project. Used to identify production deployments.
          * 
          * @return builder
          * 
          */
-        public Builder productionBranch(Output<String> productionBranch) {
+        public Builder productionBranch(@Nullable Output<String> productionBranch) {
             $.productionBranch = productionBranch;
             return this;
         }
 
         /**
-         * @param productionBranch The name of the branch that is used for the production environment.
+         * @param productionBranch Production branch of the project. Used to identify production deployments.
          * 
          * @return builder
          * 
@@ -243,36 +226,12 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
             return productionBranch(Output.of(productionBranch));
         }
 
-        /**
-         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
-            $.source = source;
-            return this;
-        }
-
-        /**
-         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder source(PagesProjectSourceArgs source) {
-            return source(Output.of(source));
-        }
-
         public PagesProjectArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("PagesProjectArgs", "accountId");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("PagesProjectArgs", "name");
-            }
-            if ($.productionBranch == null) {
-                throw new MissingRequiredPropertyException("PagesProjectArgs", "productionBranch");
             }
             return $;
         }

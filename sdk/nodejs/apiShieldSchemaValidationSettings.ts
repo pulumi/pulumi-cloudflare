@@ -5,19 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage settings in API Shield Schema Validation 2.0.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ApiShieldSchemaValidationSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     validationDefaultMitigationAction: "log",
+ * const exampleApiShieldSchemaValidationSettings = new cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     validationDefaultMitigationAction: "none",
  *     validationOverrideMitigationAction: "none",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
  * ```
  */
 export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
@@ -49,15 +53,17 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The default mitigation action used when there is no mitigation action defined on the operation.
+     * The default mitigation action used when there is no mitigation action defined on the operation
      */
     public readonly validationDefaultMitigationAction!: pulumi.Output<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions.
+     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disableOverride` or `null`
      */
     public readonly validationOverrideMitigationAction!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -99,15 +105,17 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
  */
 export interface ApiShieldSchemaValidationSettingsState {
     /**
-     * The default mitigation action used when there is no mitigation action defined on the operation.
+     * The default mitigation action used when there is no mitigation action defined on the operation
      */
     validationDefaultMitigationAction?: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions.
+     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disableOverride` or `null`
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -117,15 +125,17 @@ export interface ApiShieldSchemaValidationSettingsState {
  */
 export interface ApiShieldSchemaValidationSettingsArgs {
     /**
-     * The default mitigation action used when there is no mitigation action defined on the operation.
+     * The default mitigation action used when there is no mitigation action defined on the operation
      */
     validationDefaultMitigationAction: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions.
+     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
+     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
+     * special value `disableOverride` or `null`
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

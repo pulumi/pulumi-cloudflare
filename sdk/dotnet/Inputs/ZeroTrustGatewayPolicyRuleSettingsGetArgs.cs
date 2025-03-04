@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<string>? _addHeaders;
 
         /// <summary>
-        /// Add custom headers to allowed requests in the form of key-value pairs.
+        /// Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         /// </summary>
         public InputMap<string> AddHeaders
         {
@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Allow parent MSP accounts to enable bypass their children's rules.
+        /// Set by parent MSP accounts to enable their children to bypass this rule.
         /// </summary>
         [Input("allowChildBypass")]
         public Input<bool>? AllowChildBypass { get; set; }
 
         /// <summary>
-        /// Settings for auditing SSH usage.
+        /// Settings for the Audit SSH action.
         /// </summary>
         [Input("auditSsh")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshGetArgs>? AuditSsh { get; set; }
@@ -43,19 +43,19 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsGetArgs>? BisoAdminControls { get; set; }
 
         /// <summary>
-        /// Indicator of block page enablement.
+        /// Enable the custom block page.
         /// </summary>
         [Input("blockPageEnabled")]
         public Input<bool>? BlockPageEnabled { get; set; }
 
         /// <summary>
-        /// The displayed reason for a user being blocked.
+        /// The text describing why this block occurred, displayed on the custom block page (if enabled).
         /// </summary>
-        [Input("blockPageReason")]
-        public Input<string>? BlockPageReason { get; set; }
+        [Input("blockReason")]
+        public Input<string>? BlockReason { get; set; }
 
         /// <summary>
-        /// Allow child MSP accounts to bypass their parent's rule.
+        /// Set by children MSP accounts to bypass their parent's rules.
         /// </summary>
         [Input("bypassParentRule")]
         public Input<bool>? BypassParentRule { get; set; }
@@ -67,49 +67,55 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
 
         /// <summary>
-        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         [Input("dnsResolvers")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversGetArgs>? DnsResolvers { get; set; }
 
         /// <summary>
-        /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
         /// </summary>
         [Input("egress")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsEgressGetArgs>? Egress { get; set; }
 
         /// <summary>
-        /// Set to true, to ignore the category matches at CNAME domains in a response.
+        /// Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
         /// </summary>
         [Input("ignoreCnameCategoryMatches")]
         public Input<bool>? IgnoreCnameCategoryMatches { get; set; }
 
         /// <summary>
-        /// Disable DNSSEC validation (must be Allow rule).
+        /// INSECURE - disable DNSSEC validation (for Allow actions).
         /// </summary>
         [Input("insecureDisableDnssecValidation")]
         public Input<bool>? InsecureDisableDnssecValidation { get; set; }
 
         /// <summary>
-        /// Turns on IP category based filter on dns if the rule contains dns category checks.
+        /// Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
         /// </summary>
         [Input("ipCategories")]
         public Input<bool>? IpCategories { get; set; }
 
         /// <summary>
-        /// Settings to forward layer 4 traffic.
+        /// Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        /// </summary>
+        [Input("ipIndicatorFeeds")]
+        public Input<bool>? IpIndicatorFeeds { get; set; }
+
+        /// <summary>
+        /// Send matching traffic to the supplied destination IP address and port.
         /// </summary>
         [Input("l4override")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideGetArgs>? L4override { get; set; }
 
         /// <summary>
-        /// Notification settings on a block rule.
+        /// Configure a notification to display on the user's device when this rule is matched.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 
         /// <summary>
-        /// The host to override matching DNS queries with.
+        /// Override matching DNS queries with a hostname.
         /// </summary>
         [Input("overrideHost")]
         public Input<string>? OverrideHost { get; set; }
@@ -118,7 +124,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _overrideIps;
 
         /// <summary>
-        /// The IPs to override matching DNS queries with.
+        /// Override matching DNS queries with an IP or set of IPs.
         /// </summary>
         public InputList<string> OverrideIps
         {
@@ -127,10 +133,16 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configure DLP Payload Logging settings for this rule.
+        /// Configure DLP payload logging.
         /// </summary>
         [Input("payloadLog")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogGetArgs>? PayloadLog { get; set; }
+
+        /// <summary>
+        /// Settings that apply to quarantine rules
+        /// </summary>
+        [Input("quarantine")]
+        public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineGetArgs>? Quarantine { get; set; }
 
         /// <summary>
         /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
@@ -139,13 +151,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyGetArgs>? ResolveDnsInternally { get; set; }
 
         /// <summary>
-        /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         [Input("resolveDnsThroughCloudflare")]
         public Input<bool>? ResolveDnsThroughCloudflare { get; set; }
 
         /// <summary>
-        /// Configure untrusted certificate settings for this rule.
+        /// Configure behavior when an upstream cert is invalid or an SSL error occurs.
         /// </summary>
         [Input("untrustedCert")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertGetArgs>? UntrustedCert { get; set; }

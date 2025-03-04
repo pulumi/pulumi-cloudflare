@@ -17,14 +17,14 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
     public static final ZeroTrustTunnelCloudflaredArgs Empty = new ZeroTrustTunnelCloudflaredArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * 
      */
     @Import(name="configSrc")
     private @Nullable Output<String> configSrc;
 
     /**
-     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * 
      */
     public Optional<Output<String>> configSrc() {
@@ -47,14 +47,14 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
     }
 
     /**
-     * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * A user-friendly name for a tunnel.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+     * @return A user-friendly name for a tunnel.
      * 
      */
     public Output<String> name() {
@@ -62,18 +62,18 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
     }
 
     /**
-     * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<String> secret;
+    @Import(name="tunnelSecret")
+    private @Nullable Output<String> tunnelSecret;
 
     /**
-     * @return 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+     * @return Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Optional<Output<String>> tunnelSecret() {
+        return Optional.ofNullable(this.tunnelSecret);
     }
 
     private ZeroTrustTunnelCloudflaredArgs() {}
@@ -82,7 +82,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         this.accountId = $.accountId;
         this.configSrc = $.configSrc;
         this.name = $.name;
-        this.secret = $.secret;
+        this.tunnelSecret = $.tunnelSecret;
     }
 
     public static Builder builder() {
@@ -104,7 +104,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+         * @param name A user-friendly name for a tunnel.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
+         * @param name A user-friendly name for a tunnel.
          * 
          * @return builder
          * 
@@ -167,24 +167,24 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secret 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+         * @param tunnelSecret Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
          * 
          * @return builder
          * 
          */
-        public Builder secret(Output<String> secret) {
-            $.secret = secret;
+        public Builder tunnelSecret(@Nullable Output<String> tunnelSecret) {
+            $.tunnelSecret = tunnelSecret;
             return this;
         }
 
         /**
-         * @param secret 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+         * @param tunnelSecret Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
          * 
          * @return builder
          * 
          */
-        public Builder secret(String secret) {
-            return secret(Output.of(secret));
+        public Builder tunnelSecret(String tunnelSecret) {
+            return tunnelSecret(Output.of(tunnelSecret));
         }
 
         public ZeroTrustTunnelCloudflaredArgs build() {
@@ -193,9 +193,6 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredArgs", "name");
-            }
-            if ($.secret == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredArgs", "secret");
             }
             return $;
         }

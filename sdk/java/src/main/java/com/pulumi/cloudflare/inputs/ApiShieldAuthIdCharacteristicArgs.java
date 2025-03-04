@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
     public static final ApiShieldAuthIdCharacteristicArgs Empty = new ApiShieldAuthIdCharacteristicArgs();
 
     /**
-     * The name of the characteristic.
+     * The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The name of the characteristic.
+     * @return The name of the characteristic field, i.e., the header or cookie name.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * The type of characteristic. Available values: `header`, `cookie`.
+     * The type of characteristic.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
-     * @return The type of characteristic. Available values: `header`, `cookie`.
+     * @return The type of characteristic.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private ApiShieldAuthIdCharacteristicArgs() {}
@@ -71,18 +70,18 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the characteristic.
+         * @param name The name of the characteristic field, i.e., the header or cookie name.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the characteristic.
+         * @param name The name of the characteristic field, i.e., the header or cookie name.
          * 
          * @return builder
          * 
@@ -92,18 +91,18 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type The type of characteristic. Available values: `header`, `cookie`.
+         * @param type The type of characteristic.
          * 
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type The type of characteristic. Available values: `header`, `cookie`.
+         * @param type The type of characteristic.
          * 
          * @return builder
          * 
@@ -113,6 +112,12 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
         }
 
         public ApiShieldAuthIdCharacteristicArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ApiShieldAuthIdCharacteristicArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ApiShieldAuthIdCharacteristicArgs", "type");
+            }
             return $;
         }
     }

@@ -15,14 +15,14 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
     public static final ZeroTrustAccessPolicyExcludeAuthContextArgs Empty = new ZeroTrustAccessPolicyExcludeAuthContextArgs();
 
     /**
-     * The ACID of the Authentication Context.
+     * The ACID of an Authentication context.
      * 
      */
     @Import(name="acId", required=true)
     private Output<String> acId;
 
     /**
-     * @return The ACID of the Authentication Context.
+     * @return The ACID of an Authentication context.
      * 
      */
     public Output<String> acId() {
@@ -30,14 +30,14 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
     }
 
     /**
-     * The ID of the Authentication Context.
+     * The ID of an Authentication context.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of an Authentication context.
      * 
      */
     public Output<String> id() {
@@ -45,14 +45,14 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
     }
 
     /**
-     * The ID of the Azure identity provider.
+     * The ID of your Azure identity provider.
      * 
      */
     @Import(name="identityProviderId", required=true)
     private Output<String> identityProviderId;
 
     /**
-     * @return The ID of the Azure identity provider.
+     * @return The ID of your Azure identity provider.
      * 
      */
     public Output<String> identityProviderId() {
@@ -86,7 +86,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param acId The ACID of the Authentication Context.
+         * @param acId The ACID of an Authentication context.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param acId The ACID of the Authentication Context.
+         * @param acId The ACID of an Authentication context.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param id The ID of the Authentication Context.
+         * @param id The ID of an Authentication context.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param id The ID of the Authentication Context.
+         * @param id The ID of an Authentication context.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param identityProviderId The ID of the Azure identity provider.
+         * @param identityProviderId The ID of your Azure identity provider.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ZeroTrustAccessPolicyExcludeAuthContextArgs extends com.pulum
         }
 
         /**
-         * @param identityProviderId The ID of the Azure identity provider.
+         * @param identityProviderId The ID of your Azure identity provider.
          * 
          * @return builder
          * 

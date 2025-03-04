@@ -19,78 +19,39 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
     public static final HyperdriveConfigArgs Empty = new HyperdriveConfigArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The caching details for the Hyperdrive configuration.
-     * 
-     */
     @Import(name="caching")
     private @Nullable Output<HyperdriveConfigCachingArgs> caching;
 
-    /**
-     * @return The caching details for the Hyperdrive configuration.
-     * 
-     */
     public Optional<Output<HyperdriveConfigCachingArgs>> caching() {
         return Optional.ofNullable(this.caching);
     }
 
-    /**
-     * The name of the Hyperdrive configuration.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of the Hyperdrive configuration.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * The origin details for the Hyperdrive configuration.
-     * 
-     */
     @Import(name="origin", required=true)
     private Output<HyperdriveConfigOriginArgs> origin;
 
-    /**
-     * @return The origin details for the Hyperdrive configuration.
-     * 
-     */
     public Output<HyperdriveConfigOriginArgs> origin() {
         return this.origin;
-    }
-
-    /**
-     * The identifier of this resource. This is the hyperdrive config value.
-     * 
-     */
-    @Import(name="resourceId")
-    private @Nullable Output<String> resourceId;
-
-    /**
-     * @return The identifier of this resource. This is the hyperdrive config value.
-     * 
-     */
-    public Optional<Output<String>> resourceId() {
-        return Optional.ofNullable(this.resourceId);
     }
 
     private HyperdriveConfigArgs() {}
@@ -100,7 +61,6 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         this.caching = $.caching;
         this.name = $.name;
         this.origin = $.origin;
-        this.resourceId = $.resourceId;
     }
 
     public static Builder builder() {
@@ -122,7 +82,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -133,7 +93,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -142,88 +102,31 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param caching The caching details for the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder caching(@Nullable Output<HyperdriveConfigCachingArgs> caching) {
             $.caching = caching;
             return this;
         }
 
-        /**
-         * @param caching The caching details for the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder caching(HyperdriveConfigCachingArgs caching) {
             return caching(Output.of(caching));
         }
 
-        /**
-         * @param name The name of the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param origin The origin details for the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder origin(Output<HyperdriveConfigOriginArgs> origin) {
             $.origin = origin;
             return this;
         }
 
-        /**
-         * @param origin The origin details for the Hyperdrive configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
-        }
-
-        /**
-         * @param resourceId The identifier of this resource. This is the hyperdrive config value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder resourceId(@Nullable Output<String> resourceId) {
-            $.resourceId = resourceId;
-            return this;
-        }
-
-        /**
-         * @param resourceId The identifier of this resource. This is the hyperdrive config value.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder resourceId(String resourceId) {
-            return resourceId(Output.of(resourceId));
         }
 
         public HyperdriveConfigArgs build() {

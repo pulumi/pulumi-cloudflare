@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustTunnelCloudflaredConfigConfigWarpRouting
     {
-        /// <summary>
-        /// Whether WARP routing is enabled.
-        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

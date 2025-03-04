@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AccountArgs', 'Account']
 
@@ -20,25 +22,28 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 enforce_twofactor: Optional[pulumi.Input[bool]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: pulumi.Input[str],
+                 settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
+                 unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         pulumi.set(__self__, "name", name)
-        if enforce_twofactor is not None:
-            pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "type", type)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the account that is displayed in the Cloudflare dashboard.
+        Account name
         """
         return pulumi.get(self, "name")
 
@@ -47,66 +52,86 @@ class AccountArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="enforceTwofactor")
-    def enforce_twofactor(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether 2FA is enforced on the account. Defaults to `false`.
-        """
-        return pulumi.get(self, "enforce_twofactor")
-
-    @enforce_twofactor.setter
-    def enforce_twofactor(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enforce_twofactor", value)
-
-    @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['AccountSettingsArgs']]:
+        """
+        Account settings
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['AccountSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input['AccountUnitArgs']]:
+        """
+        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        """
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input['AccountUnitArgs']]):
+        pulumi.set(self, "unit", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 enforce_twofactor: Optional[pulumi.Input[bool]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
-        :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
-        if enforce_twofactor is not None:
-            pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
-    @pulumi.getter(name="enforceTwofactor")
-    def enforce_twofactor(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether 2FA is enforced on the account. Defaults to `false`.
+        Timestamp for the creation of the account
         """
-        return pulumi.get(self, "enforce_twofactor")
+        return pulumi.get(self, "created_on")
 
-    @enforce_twofactor.setter
-    def enforce_twofactor(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enforce_twofactor", value)
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the account that is displayed in the Cloudflare dashboard.
+        Account name
         """
         return pulumi.get(self, "name")
 
@@ -116,9 +141,21 @@ class _AccountState:
 
     @property
     @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['AccountSettingsArgs']]:
+        """
+        Account settings
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['AccountSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         """
         return pulumi.get(self, "type")
 
@@ -126,43 +163,56 @@ class _AccountState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input['AccountUnitArgs']]:
+        """
+        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        """
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input['AccountUnitArgs']]):
+        pulumi.set(self, "unit", value)
+
 
 class Account(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforce_twofactor: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Account resource. Account is the basic resource for
-        working with Cloudflare zones, teams and users.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Account("example",
-            name="some-enterprise-account",
-            type="enterprise",
-            enforce_twofactor=True)
+        example_account = cloudflare.Account("example_account",
+            name="name",
+            type="standard",
+            unit={
+                "id": "f267e341f3dd4697bd3b9f71dd96247f",
+            })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/account:Account example <account_id>
+        $ pulumi import cloudflare:index/account:Account example '<account_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
-        :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         ...
     @overload
@@ -171,25 +221,24 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Account resource. Account is the basic resource for
-        working with Cloudflare zones, teams and users.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Account("example",
-            name="some-enterprise-account",
-            type="enterprise",
-            enforce_twofactor=True)
+        example_account = cloudflare.Account("example_account",
+            name="name",
+            type="standard",
+            unit={
+                "id": "f267e341f3dd4697bd3b9f71dd96247f",
+            })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/account:Account example <account_id>
+        $ pulumi import cloudflare:index/account:Account example '<account_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -207,9 +256,10 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforce_twofactor: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -219,11 +269,15 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
-            __props__.__dict__["enforce_twofactor"] = enforce_twofactor
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["settings"] = settings
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["unit"] = unit
+            __props__.__dict__["created_on"] = None
         super(Account, __self__).__init__(
             'cloudflare:index/account:Account',
             resource_name,
@@ -234,9 +288,11 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enforce_twofactor: Optional[pulumi.Input[bool]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'Account':
+            settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -244,40 +300,60 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
-        :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] created_on: Timestamp for the creation of the account
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccountState.__new__(_AccountState)
 
-        __props__.__dict__["enforce_twofactor"] = enforce_twofactor
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["name"] = name
+        __props__.__dict__["settings"] = settings
         __props__.__dict__["type"] = type
+        __props__.__dict__["unit"] = unit
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="enforceTwofactor")
-    def enforce_twofactor(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
         """
-        Whether 2FA is enforced on the account. Defaults to `false`.
+        Timestamp for the creation of the account
         """
-        return pulumi.get(self, "enforce_twofactor")
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the account that is displayed in the Cloudflare dashboard.
+        Account name
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[str]]:
+    def settings(self) -> pulumi.Output['outputs.AccountSettings']:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        Account settings
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> pulumi.Output['outputs.AccountUnit']:
+        """
+        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        """
+        return pulumi.get(self, "unit")
 

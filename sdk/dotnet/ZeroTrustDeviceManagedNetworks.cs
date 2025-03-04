@@ -10,62 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var managedNetworks = new Cloudflare.ZeroTrustDeviceManagedNetworks("managed_networks", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "managed-network-1",
-    ///         Type = "tls",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustDeviceManagedNetworksConfigArgs
-    ///         {
-    ///             TlsSockaddr = "foobar:1234",
-    ///             Sha256 = "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example &lt;account_id&gt;/&lt;device_managed_networks_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '&lt;account_id&gt;/&lt;network_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")]
     public partial class ZeroTrustDeviceManagedNetworks : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The configuration containing information for the WARP client to detect the managed network.
-        /// </summary>
         [Output("config")]
         public Output<Outputs.ZeroTrustDeviceManagedNetworksConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Device Managed Network. Must be unique.
+        /// The name of the device managed network. This name must be unique.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Device Managed Network. Available values: `tls`.
+        /// API UUID.
+        /// </summary>
+        [Output("networkId")]
+        public Output<string> NetworkId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of device managed network.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -116,26 +91,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceManagedNetworksArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The configuration containing information for the WARP client to detect the managed network.
-        /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.ZeroTrustDeviceManagedNetworksConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Device Managed Network. Must be unique.
+        /// The name of the device managed network. This name must be unique.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of Device Managed Network. Available values: `tls`.
+        /// The type of device managed network.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -148,26 +117,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceManagedNetworksState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The configuration containing information for the WARP client to detect the managed network.
-        /// </summary>
         [Input("config")]
         public Input<Inputs.ZeroTrustDeviceManagedNetworksConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The name of the Device Managed Network. Must be unique.
+        /// The name of the device managed network. This name must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of Device Managed Network. Available values: `tls`.
+        /// API UUID.
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
+        /// The type of device managed network.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

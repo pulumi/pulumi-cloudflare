@@ -7,26 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource for managing Email Routing Addresses catch all behaviour.
- *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
+ * ## Import
  *
- * const example = new cloudflare.EmailRoutingCatchAll("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "example catch all",
- *     enabled: true,
- *     matchers: [{
- *         type: "all",
- *     }],
- *     actions: [{
- *         type: "forward",
- *         values: ["destinationaddress@example.net"],
- *     }],
- * });
+ * ```sh
+ * $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
  * ```
  */
 export class EmailRoutingCatchAll extends pulumi.CustomResource {
@@ -58,27 +44,27 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
     }
 
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      */
     public readonly actions!: pulumi.Output<outputs.EmailRoutingCatchAllAction[]>;
     /**
      * Routing rule status.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      */
     public readonly matchers!: pulumi.Output<outputs.EmailRoutingCatchAllMatcher[]>;
     /**
      * Routing rule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * Routing rule identifier.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -109,9 +95,6 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
             if ((!args || args.matchers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -132,7 +115,7 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
  */
 export interface EmailRoutingCatchAllState {
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      */
     actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllAction>[]>;
     /**
@@ -140,7 +123,7 @@ export interface EmailRoutingCatchAllState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      */
     matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllMatcher>[]>;
     /**
@@ -148,11 +131,11 @@ export interface EmailRoutingCatchAllState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Routing rule identifier.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      */
     tag?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -162,7 +145,7 @@ export interface EmailRoutingCatchAllState {
  */
 export interface EmailRoutingCatchAllArgs {
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      */
     actions: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllAction>[]>;
     /**
@@ -170,15 +153,15 @@ export interface EmailRoutingCatchAllArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      */
     matchers: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllMatcher>[]>;
     /**
      * Routing rule name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

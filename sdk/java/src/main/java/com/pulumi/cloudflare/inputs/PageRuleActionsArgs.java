@@ -4,15 +4,13 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsArgs;
-import com.pulumi.cloudflare.inputs.PageRuleActionsCacheTtlByStatusArgs;
 import com.pulumi.cloudflare.inputs.PageRuleActionsForwardingUrlArgs;
-import com.pulumi.cloudflare.inputs.PageRuleActionsMinifyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -57,13 +55,13 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="browserCacheTtl")
-    private @Nullable Output<String> browserCacheTtl;
+    private @Nullable Output<Integer> browserCacheTtl;
 
     /**
      * @return The Time To Live for the browser cache. `0` means &#39;Respect Existing Headers&#39;
      * 
      */
-    public Optional<Output<String>> browserCacheTtl() {
+    public Optional<Output<Integer>> browserCacheTtl() {
         return Optional.ofNullable(this.browserCacheTtl);
     }
 
@@ -176,15 +174,15 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
      * Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
      * 
      */
-    @Import(name="cacheTtlByStatuses")
-    private @Nullable Output<List<PageRuleActionsCacheTtlByStatusArgs>> cacheTtlByStatuses;
+    @Import(name="cacheTtlByStatus")
+    private @Nullable Output<Object> cacheTtlByStatus;
 
     /**
      * @return Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
      * 
      */
-    public Optional<Output<List<PageRuleActionsCacheTtlByStatusArgs>>> cacheTtlByStatuses() {
-        return Optional.ofNullable(this.cacheTtlByStatuses);
+    public Optional<Output<Object>> cacheTtlByStatus() {
+        return Optional.ofNullable(this.cacheTtlByStatus);
     }
 
     /**
@@ -215,21 +213,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Boolean>> disablePerformance() {
         return Optional.ofNullable(this.disablePerformance);
-    }
-
-    /**
-     * Boolean of whether this action is enabled. Default: false.
-     * 
-     */
-    @Import(name="disableRailgun")
-    private @Nullable Output<Boolean> disableRailgun;
-
-    /**
-     * @return Boolean of whether this action is enabled. Default: false.
-     * 
-     */
-    public Optional<Output<Boolean>> disableRailgun() {
-        return Optional.ofNullable(this.disableRailgun);
     }
 
     /**
@@ -350,21 +333,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> ipGeolocation() {
         return Optional.ofNullable(this.ipGeolocation);
-    }
-
-    /**
-     * The configuration for HTML, CSS and JS minification. See below for full list of options.
-     * 
-     */
-    @Import(name="minifies")
-    private @Nullable Output<List<PageRuleActionsMinifyArgs>> minifies;
-
-    /**
-     * @return The configuration for HTML, CSS and JS minification. See below for full list of options.
-     * 
-     */
-    public Optional<Output<List<PageRuleActionsMinifyArgs>>> minifies() {
-        return Optional.ofNullable(this.minifies);
     }
 
     /**
@@ -506,21 +474,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
      * Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
      * 
      */
-    @Import(name="serverSideExclude")
-    private @Nullable Output<String> serverSideExclude;
-
-    /**
-     * @return Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
-    public Optional<Output<String>> serverSideExclude() {
-        return Optional.ofNullable(this.serverSideExclude);
-    }
-
-    /**
-     * Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-     * 
-     */
     @Import(name="sortQueryStringForCache")
     private @Nullable Output<String> sortQueryStringForCache;
 
@@ -590,10 +543,9 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
         this.cacheKeyFields = $.cacheKeyFields;
         this.cacheLevel = $.cacheLevel;
         this.cacheOnCookie = $.cacheOnCookie;
-        this.cacheTtlByStatuses = $.cacheTtlByStatuses;
+        this.cacheTtlByStatus = $.cacheTtlByStatus;
         this.disableApps = $.disableApps;
         this.disablePerformance = $.disablePerformance;
-        this.disableRailgun = $.disableRailgun;
         this.disableSecurity = $.disableSecurity;
         this.disableZaraz = $.disableZaraz;
         this.edgeCacheTtl = $.edgeCacheTtl;
@@ -602,7 +554,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
         this.forwardingUrl = $.forwardingUrl;
         this.hostHeaderOverride = $.hostHeaderOverride;
         this.ipGeolocation = $.ipGeolocation;
-        this.minifies = $.minifies;
         this.mirage = $.mirage;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.originErrorPagePassThru = $.originErrorPagePassThru;
@@ -612,7 +563,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
         this.responseBuffering = $.responseBuffering;
         this.rocketLoader = $.rocketLoader;
         this.securityLevel = $.securityLevel;
-        this.serverSideExclude = $.serverSideExclude;
         this.sortQueryStringForCache = $.sortQueryStringForCache;
         this.ssl = $.ssl;
         this.trueClientIpHeader = $.trueClientIpHeader;
@@ -685,7 +635,7 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder browserCacheTtl(@Nullable Output<String> browserCacheTtl) {
+        public Builder browserCacheTtl(@Nullable Output<Integer> browserCacheTtl) {
             $.browserCacheTtl = browserCacheTtl;
             return this;
         }
@@ -696,7 +646,7 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder browserCacheTtl(String browserCacheTtl) {
+        public Builder browserCacheTtl(Integer browserCacheTtl) {
             return browserCacheTtl(Output.of(browserCacheTtl));
         }
 
@@ -848,34 +798,24 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cacheTtlByStatuses Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+         * @param cacheTtlByStatus Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
          * 
          * @return builder
          * 
          */
-        public Builder cacheTtlByStatuses(@Nullable Output<List<PageRuleActionsCacheTtlByStatusArgs>> cacheTtlByStatuses) {
-            $.cacheTtlByStatuses = cacheTtlByStatuses;
+        public Builder cacheTtlByStatus(@Nullable Output<Object> cacheTtlByStatus) {
+            $.cacheTtlByStatus = cacheTtlByStatus;
             return this;
         }
 
         /**
-         * @param cacheTtlByStatuses Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+         * @param cacheTtlByStatus Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
          * 
          * @return builder
          * 
          */
-        public Builder cacheTtlByStatuses(List<PageRuleActionsCacheTtlByStatusArgs> cacheTtlByStatuses) {
-            return cacheTtlByStatuses(Output.of(cacheTtlByStatuses));
-        }
-
-        /**
-         * @param cacheTtlByStatuses Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cacheTtlByStatuses(PageRuleActionsCacheTtlByStatusArgs... cacheTtlByStatuses) {
-            return cacheTtlByStatuses(List.of(cacheTtlByStatuses));
+        public Builder cacheTtlByStatus(Object cacheTtlByStatus) {
+            return cacheTtlByStatus(Output.of(cacheTtlByStatus));
         }
 
         /**
@@ -918,27 +858,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder disablePerformance(Boolean disablePerformance) {
             return disablePerformance(Output.of(disablePerformance));
-        }
-
-        /**
-         * @param disableRailgun Boolean of whether this action is enabled. Default: false.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disableRailgun(@Nullable Output<Boolean> disableRailgun) {
-            $.disableRailgun = disableRailgun;
-            return this;
-        }
-
-        /**
-         * @param disableRailgun Boolean of whether this action is enabled. Default: false.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disableRailgun(Boolean disableRailgun) {
-            return disableRailgun(Output.of(disableRailgun));
         }
 
         /**
@@ -1107,37 +1026,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipGeolocation(String ipGeolocation) {
             return ipGeolocation(Output.of(ipGeolocation));
-        }
-
-        /**
-         * @param minifies The configuration for HTML, CSS and JS minification. See below for full list of options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder minifies(@Nullable Output<List<PageRuleActionsMinifyArgs>> minifies) {
-            $.minifies = minifies;
-            return this;
-        }
-
-        /**
-         * @param minifies The configuration for HTML, CSS and JS minification. See below for full list of options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder minifies(List<PageRuleActionsMinifyArgs> minifies) {
-            return minifies(Output.of(minifies));
-        }
-
-        /**
-         * @param minifies The configuration for HTML, CSS and JS minification. See below for full list of options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder minifies(PageRuleActionsMinifyArgs... minifies) {
-            return minifies(List.of(minifies));
         }
 
         /**
@@ -1327,27 +1215,6 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder securityLevel(String securityLevel) {
             return securityLevel(Output.of(securityLevel));
-        }
-
-        /**
-         * @param serverSideExclude Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serverSideExclude(@Nullable Output<String> serverSideExclude) {
-            $.serverSideExclude = serverSideExclude;
-            return this;
-        }
-
-        /**
-         * @param serverSideExclude Whether this action is `&#34;on&#34;` or `&#34;off&#34;`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serverSideExclude(String serverSideExclude) {
-            return serverSideExclude(Output.of(serverSideExclude));
         }
 
         /**

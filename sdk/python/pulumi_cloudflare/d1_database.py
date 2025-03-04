@@ -20,20 +20,23 @@ __all__ = ['D1DatabaseArgs', 'D1Database']
 class D1DatabaseArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 name: pulumi.Input[str]):
+                 name: pulumi.Input[str],
+                 primary_location_hint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a D1Database resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the D1 Database.
+        :param pulumi.Input[str] account_id: Account identifier tag.
+        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if primary_location_hint is not None:
+            pulumi.set(__self__, "primary_location_hint", primary_location_hint)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
@@ -44,32 +47,57 @@ class D1DatabaseArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The name of the D1 Database.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="primaryLocationHint")
+    def primary_location_hint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        """
+        return pulumi.get(self, "primary_location_hint")
+
+    @primary_location_hint.setter
+    def primary_location_hint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_location_hint", value)
+
 
 @pulumi.input_type
 class _D1DatabaseState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 file_size: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 num_tables: Optional[pulumi.Input[float]] = None,
+                 primary_location_hint: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering D1Database resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the D1 Database.
-        :param pulumi.Input[str] version: The backend version of the database.
+        :param pulumi.Input[str] account_id: Account identifier tag.
+        :param pulumi.Input[str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
+        :param pulumi.Input[float] file_size: The D1 database's size, in bytes.
+        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if file_size is not None:
+            pulumi.set(__self__, "file_size", file_size)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if num_tables is not None:
+            pulumi.set(__self__, "num_tables", num_tables)
+        if primary_location_hint is not None:
+            pulumi.set(__self__, "primary_location_hint", primary_location_hint)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -77,7 +105,7 @@ class _D1DatabaseState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
@@ -86,11 +114,32 @@ class _D1DatabaseState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp the resource was created as an ISO8601 string.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> Optional[pulumi.Input[float]]:
+        """
+        The D1 database's size, in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @file_size.setter
+    def file_size(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "file_size", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the D1 Database.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -98,11 +147,38 @@ class _D1DatabaseState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="numTables")
+    def num_tables(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "num_tables")
+
+    @num_tables.setter
+    def num_tables(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "num_tables", value)
+
+    @property
+    @pulumi.getter(name="primaryLocationHint")
+    def primary_location_hint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        """
+        return pulumi.get(self, "primary_location_hint")
+
+    @primary_location_hint.setter
+    def primary_location_hint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_location_hint", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+    @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        The backend version of the database.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -117,10 +193,9 @@ class D1Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_location_hint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
-
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a
            backup of your data before replacing a D1 Database.
 
@@ -130,21 +205,22 @@ class D1Database(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.D1Database("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-database")
+        example_d1_database = cloudflare.D1Database("example_d1_database",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-database",
+            primary_location_hint="wnam")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+        $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the D1 Database.
+        :param pulumi.Input[str] account_id: Account identifier tag.
+        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         """
         ...
     @overload
@@ -153,8 +229,6 @@ class D1Database(pulumi.CustomResource):
                  args: D1DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
-
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a
            backup of your data before replacing a D1 Database.
 
@@ -164,15 +238,16 @@ class D1Database(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.D1Database("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-database")
+        example_d1_database = cloudflare.D1Database("example_d1_database",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-database",
+            primary_location_hint="wnam")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+        $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -192,6 +267,7 @@ class D1Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_location_hint: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -207,6 +283,11 @@ class D1Database(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["primary_location_hint"] = primary_location_hint
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["file_size"] = None
+            __props__.__dict__["num_tables"] = None
+            __props__.__dict__["uuid"] = None
             __props__.__dict__["version"] = None
         super(D1Database, __self__).__init__(
             'cloudflare:index/d1Database:D1Database',
@@ -219,7 +300,12 @@ class D1Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
+            file_size: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            num_tables: Optional[pulumi.Input[float]] = None,
+            primary_location_hint: Optional[pulumi.Input[str]] = None,
+            uuid: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'D1Database':
         """
         Get an existing D1Database resource's state with the given name, id, and optional extra
@@ -228,16 +314,22 @@ class D1Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: The name of the D1 Database.
-        :param pulumi.Input[str] version: The backend version of the database.
+        :param pulumi.Input[str] account_id: Account identifier tag.
+        :param pulumi.Input[str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
+        :param pulumi.Input[float] file_size: The D1 database's size, in bytes.
+        :param pulumi.Input[str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _D1DatabaseState.__new__(_D1DatabaseState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["file_size"] = file_size
         __props__.__dict__["name"] = name
+        __props__.__dict__["num_tables"] = num_tables
+        __props__.__dict__["primary_location_hint"] = primary_location_hint
+        __props__.__dict__["uuid"] = uuid
         __props__.__dict__["version"] = version
         return D1Database(resource_name, opts=opts, __props__=__props__)
 
@@ -245,23 +337,51 @@ class D1Database(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        Specifies the timestamp the resource was created as an ISO8601 string.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> pulumi.Output[float]:
+        """
+        The D1 database's size, in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the D1 Database.
-        """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="numTables")
+    def num_tables(self) -> pulumi.Output[float]:
+        return pulumi.get(self, "num_tables")
+
+    @property
+    @pulumi.getter(name="primaryLocationHint")
+    def primary_location_hint(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+        """
+        return pulumi.get(self, "primary_location_hint")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
-        """
-        The backend version of the database.
-        """
         return pulumi.get(self, "version")
 

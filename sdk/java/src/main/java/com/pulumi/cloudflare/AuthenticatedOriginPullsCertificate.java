@@ -10,15 +10,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls certificate
- * resource. An uploaded client certificate is required to use Per-Zone
- *  or Per-Hostname Authenticated Origin Pulls.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,20 +41,63 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Per-Zone Authenticated Origin Pulls certificate
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .certificate("-----INSERT CERTIFICATE-----")
- *             .privateKey("-----INSERT PRIVATE KEY-----")
- *             .type("per-zone")
- *             .build());
+ *         var exampleAuthenticatedOriginPullsCertificate = new AuthenticatedOriginPullsCertificate("exampleAuthenticatedOriginPullsCertificate", AuthenticatedOriginPullsCertificateArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .certificate("""
+ *   -----BEGIN CERTIFICATE-----
+ *   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+ *   BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+ *   aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+ *   MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+ *   ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+ *   CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+ *   CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+ *   KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+ *   0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+ *   dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+ *   izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+ *   9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+ *   GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+ *   BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+ *   MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+ *   2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+ *   Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+ *   SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+ *   2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+ *   YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+ *   -----END CERTIFICATE-----
  * 
- *         // Per-Hostname Authenticated Origin Pulls certificate
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .certificate("-----INSERT CERTIFICATE-----")
- *             .privateKey("-----INSERT PRIVATE KEY-----")
- *             .type("per-hostname")
+ *             """)
+ *             .privateKey("""
+ *   -----BEGIN RSA PRIVATE KEY-----
+ *   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+ *   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+ *   abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+ *   tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+ *   FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+ *   ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+ *   HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+ *   axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+ *   +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+ *   +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+ *   KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+ *   9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+ *   /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+ *   iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+ *   N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+ *   VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+ *   vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+ *   lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+ *   9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+ *   mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+ *   dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+ *   PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+ *   fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+ *   qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+ *   lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+ *   -----END RSA PRIVATE KEY-----
+ * 
+ *             """)
  *             .build());
  * 
  *     }
@@ -66,150 +106,144 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")
 public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s leaf certificate.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The public client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s leaf certificate.
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     * 
+     */
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> certificateId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<Optional<String>> certificateId() {
+        return Codegen.optional(this.certificateId);
+    }
+    /**
+     * Indicates whether zone-level authenticated origin pulls is enabled.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether zone-level authenticated origin pulls is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    /**
+     * When the certificate from the authority expires.
      * 
      */
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return When the certificate from the authority expires.
      * 
      */
     public Output<String> expiresOn() {
         return this.expiresOn;
     }
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
      * 
      */
     @Export(name="issuer", refs={String.class}, tree="[0]")
     private Output<String> issuer;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The certificate authority that issued the certificate.
      * 
      */
     public Output<String> issuer() {
         return this.issuer;
     }
     /**
-     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s private key.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
 
     /**
-     * @return The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s private key.
      * 
      */
     public Output<String> privateKey() {
         return this.privateKey;
     }
     /**
-     * **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Export(name="serialNumber", refs={String.class}, tree="[0]")
-    private Output<String> serialNumber;
-
-    /**
-     * @return **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> serialNumber() {
-        return this.serialNumber;
-    }
-    /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * The type of hash used for the certificate.
      * 
      */
     @Export(name="signature", refs={String.class}, tree="[0]")
     private Output<String> signature;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return The type of hash used for the certificate.
      * 
      */
     public Output<String> signature() {
         return this.signature;
     }
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * Status of the certificate activation.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return Status of the certificate activation.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
-
-    /**
-     * @return The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> type() {
-        return this.type;
-    }
-    /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * This is the time the certificate was uploaded.
      * 
      */
     @Export(name="uploadedOn", refs={String.class}, tree="[0]")
     private Output<String> uploadedOn;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return This is the time the certificate was uploaded.
      * 
      */
     public Output<String> uploadedOn() {
         return this.uploadedOn;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -255,9 +289,6 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "privateKey"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

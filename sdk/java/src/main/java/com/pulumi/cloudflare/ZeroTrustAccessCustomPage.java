@@ -16,9 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to customize the pages your end users will see
- * when trying to reach applications behind Cloudflare Access.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,11 +41,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustAccessCustomPage("example", ZeroTrustAccessCustomPageArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("example")
- *             .type("forbidden")
- *             .customHtml("<html><body><h1>Forbidden</h1></body></html>")
+ *         var exampleZeroTrustAccessCustomPage = new ZeroTrustAccessCustomPage("exampleZeroTrustAccessCustomPage", ZeroTrustAccessCustomPageArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
+ *             .name("name")
+ *             .type("identity_denied")
+ *             .appCount(0)
  *             .build());
  * 
  *     }
@@ -57,92 +55,110 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example &#39;&lt;account_id&gt;/&lt;custom_page_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      * 
      */
     @Export(name="appCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> appCount;
 
     /**
-     * @return Number of apps to display on the custom page.
+     * @return Number of apps the custom page is assigned to.
      * 
      */
     public Output<Optional<Integer>> appCount() {
         return Codegen.optional(this.appCount);
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      * 
      */
     @Export(name="customHtml", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> customHtml;
+    private Output<String> customHtml;
 
     /**
-     * @return Custom HTML to display on the custom page.
+     * @return Custom page HTML.
      * 
      */
-    public Output<Optional<String>> customHtml() {
-        return Codegen.optional(this.customHtml);
+    public Output<String> customHtml() {
+        return this.customHtml;
     }
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Custom Page configuration.
+     * @return Custom page name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * Custom page type.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * @return Custom page type.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    @Export(name="uid", refs={String.class}, tree="[0]")
+    private Output<String> uid;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> uid() {
+        return this.uid;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

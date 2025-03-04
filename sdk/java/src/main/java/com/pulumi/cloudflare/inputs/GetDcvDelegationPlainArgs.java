@@ -14,14 +14,14 @@ public final class GetDcvDelegationPlainArgs extends com.pulumi.resources.Invoke
     public static final GetDcvDelegationPlainArgs Empty = new GetDcvDelegationPlainArgs();
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetDcvDelegationPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

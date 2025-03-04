@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class HyperdriveConfigOrigin
     {
         /// <summary>
-        /// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        /// The Client ID of the Access token to use when connecting to the origin database.
         /// </summary>
         public readonly string? AccessClientId;
         /// <summary>
-        /// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        /// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
         /// </summary>
         public readonly string? AccessClientSecret;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// The password of the Hyperdrive configuration.
+        /// The password required to access your origin database. This value is write-only and never returned by the API.
         /// </summary>
         public readonly string Password;
         /// <summary>

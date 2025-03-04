@@ -24,16 +24,23 @@ class TurnstileWidgetArgs:
                  mode: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+                 clearance_level: Optional[pulumi.Input[str]] = None,
+                 ephemeral_id: Optional[pulumi.Input[bool]] = None,
                  offlabel: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TurnstileWidget resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
-        :param pulumi.Input[str] name: Human readable widget name.
-        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
+               set this to a meaningful string to make it easier to identify your
+               widget, and where it is used.
+        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
+               expensive challenges in response to malicious bots (ENT only).
+        :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+               this setting can determine the clearance level to be set
+        :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -42,6 +49,10 @@ class TurnstileWidgetArgs:
         pulumi.set(__self__, "name", name)
         if bot_fight_mode is not None:
             pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
+        if clearance_level is not None:
+            pulumi.set(__self__, "clearance_level", clearance_level)
+        if ephemeral_id is not None:
+            pulumi.set(__self__, "ephemeral_id", ephemeral_id)
         if offlabel is not None:
             pulumi.set(__self__, "offlabel", offlabel)
         if region is not None:
@@ -51,7 +62,7 @@ class TurnstileWidgetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -62,9 +73,6 @@ class TurnstileWidgetArgs:
     @property
     @pulumi.getter
     def domains(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Domains where the widget is deployed
-        """
         return pulumi.get(self, "domains")
 
     @domains.setter
@@ -75,7 +83,7 @@ class TurnstileWidgetArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
         """
-        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        Widget Mode
         """
         return pulumi.get(self, "mode")
 
@@ -87,7 +95,9 @@ class TurnstileWidgetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Human readable widget name.
+        Human readable widget name. Not unique. Cloudflare suggests that you
+        set this to a meaningful string to make it easier to identify your
+        widget, and where it is used.
         """
         return pulumi.get(self, "name")
 
@@ -99,7 +109,8 @@ class TurnstileWidgetArgs:
     @pulumi.getter(name="botFightMode")
     def bot_fight_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        expensive challenges in response to malicious bots (ENT only).
         """
         return pulumi.get(self, "bot_fight_mode")
 
@@ -108,10 +119,35 @@ class TurnstileWidgetArgs:
         pulumi.set(self, "bot_fight_mode", value)
 
     @property
+    @pulumi.getter(name="clearanceLevel")
+    def clearance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        this setting can determine the clearance level to be set
+        """
+        return pulumi.get(self, "clearance_level")
+
+    @clearance_level.setter
+    def clearance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clearance_level", value)
+
+    @property
+    @pulumi.getter(name="ephemeralId")
+    def ephemeral_id(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Return the Ephemeral ID in /siteverify (ENT only).
+        """
+        return pulumi.get(self, "ephemeral_id")
+
+    @ephemeral_id.setter
+    def ephemeral_id(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ephemeral_id", value)
+
+    @property
     @pulumi.getter
     def offlabel(self) -> Optional[pulumi.Input[bool]]:
         """
-        Do not show any Cloudflare branding on the widget (Enterprise only).
+        Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
 
@@ -137,31 +173,52 @@ class _TurnstileWidgetState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+                 clearance_level: Optional[pulumi.Input[str]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ephemeral_id: Optional[pulumi.Input[bool]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offlabel: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input[str]] = None):
+                 secret: Optional[pulumi.Input[str]] = None,
+                 sitekey: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TurnstileWidget resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
-        :param pulumi.Input[str] name: Human readable widget name.
-        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
+               expensive challenges in response to malicious bots (ENT only).
+        :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+               this setting can determine the clearance level to be set
+        :param pulumi.Input[str] created_on: When the widget was created.
+        :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] modified_on: When the widget was modified.
+        :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
+               set this to a meaningful string to make it easier to identify your
+               widget, and where it is used.
+        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         :param pulumi.Input[str] secret: Secret key for this widget.
+        :param pulumi.Input[str] sitekey: Widget item identifier tag.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if bot_fight_mode is not None:
             pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
+        if clearance_level is not None:
+            pulumi.set(__self__, "clearance_level", clearance_level)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if ephemeral_id is not None:
+            pulumi.set(__self__, "ephemeral_id", ephemeral_id)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if offlabel is not None:
@@ -170,12 +227,14 @@ class _TurnstileWidgetState:
             pulumi.set(__self__, "region", region)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if sitekey is not None:
+            pulumi.set(__self__, "sitekey", sitekey)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -187,7 +246,8 @@ class _TurnstileWidgetState:
     @pulumi.getter(name="botFightMode")
     def bot_fight_mode(self) -> Optional[pulumi.Input[bool]]:
         """
-        If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        expensive challenges in response to malicious bots (ENT only).
         """
         return pulumi.get(self, "bot_fight_mode")
 
@@ -196,11 +256,33 @@ class _TurnstileWidgetState:
         pulumi.set(self, "bot_fight_mode", value)
 
     @property
+    @pulumi.getter(name="clearanceLevel")
+    def clearance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        this setting can determine the clearance level to be set
+        """
+        return pulumi.get(self, "clearance_level")
+
+    @clearance_level.setter
+    def clearance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clearance_level", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the widget was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Domains where the widget is deployed
-        """
         return pulumi.get(self, "domains")
 
     @domains.setter
@@ -208,10 +290,22 @@ class _TurnstileWidgetState:
         pulumi.set(self, "domains", value)
 
     @property
+    @pulumi.getter(name="ephemeralId")
+    def ephemeral_id(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Return the Ephemeral ID in /siteverify (ENT only).
+        """
+        return pulumi.get(self, "ephemeral_id")
+
+    @ephemeral_id.setter
+    def ephemeral_id(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ephemeral_id", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        Widget Mode
         """
         return pulumi.get(self, "mode")
 
@@ -220,10 +314,24 @@ class _TurnstileWidgetState:
         pulumi.set(self, "mode", value)
 
     @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the widget was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Human readable widget name.
+        Human readable widget name. Not unique. Cloudflare suggests that you
+        set this to a meaningful string to make it easier to identify your
+        widget, and where it is used.
         """
         return pulumi.get(self, "name")
 
@@ -235,7 +343,7 @@ class _TurnstileWidgetState:
     @pulumi.getter
     def offlabel(self) -> Optional[pulumi.Input[bool]]:
         """
-        Do not show any Cloudflare branding on the widget (Enterprise only).
+        Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
 
@@ -267,6 +375,18 @@ class _TurnstileWidgetState:
     def secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret", value)
 
+    @property
+    @pulumi.getter
+    def sitekey(self) -> Optional[pulumi.Input[str]]:
+        """
+        Widget item identifier tag.
+        """
+        return pulumi.get(self, "sitekey")
+
+    @sitekey.setter
+    def sitekey(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sitekey", value)
+
 
 class TurnstileWidget(pulumi.CustomResource):
     @overload
@@ -275,44 +395,56 @@ class TurnstileWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+                 clearance_level: Optional[pulumi.Input[str]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ephemeral_id: Optional[pulumi.Input[bool]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offlabel: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TurnstileWidget("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example widget",
+        example_turnstile_widget = cloudflare.TurnstileWidget("example_turnstile_widget",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            domains=[
+                "203.0.113.1",
+                "cloudflare.com",
+                "blog.example.com",
+            ],
+            mode="non-interactive",
+            name="blog.cloudflare.com login form",
             bot_fight_mode=False,
-            domains=["example.com"],
-            mode="invisible",
+            clearance_level="no_clearance",
+            ephemeral_id=False,
+            offlabel=False,
             region="world")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
-        :param pulumi.Input[str] name: Human readable widget name.
-        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
+               expensive challenges in response to malicious bots (ENT only).
+        :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+               this setting can determine the clearance level to be set
+        :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
+               set this to a meaningful string to make it easier to identify your
+               widget, and where it is used.
+        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         """
         ...
@@ -322,27 +454,32 @@ class TurnstileWidget(pulumi.CustomResource):
                  args: TurnstileWidgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.TurnstileWidget("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example widget",
+        example_turnstile_widget = cloudflare.TurnstileWidget("example_turnstile_widget",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            domains=[
+                "203.0.113.1",
+                "cloudflare.com",
+                "blog.example.com",
+            ],
+            mode="non-interactive",
+            name="blog.cloudflare.com login form",
             bot_fight_mode=False,
-            domains=["example.com"],
-            mode="invisible",
+            clearance_level="no_clearance",
+            ephemeral_id=False,
+            offlabel=False,
             region="world")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -362,7 +499,9 @@ class TurnstileWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+                 clearance_level: Optional[pulumi.Input[str]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ephemeral_id: Optional[pulumi.Input[bool]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offlabel: Optional[pulumi.Input[bool]] = None,
@@ -380,9 +519,11 @@ class TurnstileWidget(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bot_fight_mode"] = bot_fight_mode
+            __props__.__dict__["clearance_level"] = clearance_level
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
+            __props__.__dict__["ephemeral_id"] = ephemeral_id
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
@@ -391,9 +532,10 @@ class TurnstileWidget(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["offlabel"] = offlabel
             __props__.__dict__["region"] = region
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
             __props__.__dict__["secret"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
+            __props__.__dict__["sitekey"] = None
         super(TurnstileWidget, __self__).__init__(
             'cloudflare:index/turnstileWidget:TurnstileWidget',
             resource_name,
@@ -406,12 +548,17 @@ class TurnstileWidget(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+            clearance_level: Optional[pulumi.Input[str]] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ephemeral_id: Optional[pulumi.Input[bool]] = None,
             mode: Optional[pulumi.Input[str]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offlabel: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            secret: Optional[pulumi.Input[str]] = None) -> 'TurnstileWidget':
+            secret: Optional[pulumi.Input[str]] = None,
+            sitekey: Optional[pulumi.Input[str]] = None) -> 'TurnstileWidget':
         """
         Get an existing TurnstileWidget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -419,14 +566,22 @@ class TurnstileWidget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
-        :param pulumi.Input[str] name: Human readable widget name.
-        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
+        :param pulumi.Input[str] account_id: Identifier
+        :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
+               expensive challenges in response to malicious bots (ENT only).
+        :param pulumi.Input[str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+               this setting can determine the clearance level to be set
+        :param pulumi.Input[str] created_on: When the widget was created.
+        :param pulumi.Input[bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] modified_on: When the widget was modified.
+        :param pulumi.Input[str] name: Human readable widget name. Not unique. Cloudflare suggests that you
+               set this to a meaningful string to make it easier to identify your
+               widget, and where it is used.
+        :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         :param pulumi.Input[str] secret: Secret key for this widget.
+        :param pulumi.Input[str] sitekey: Widget item identifier tag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -434,19 +589,24 @@ class TurnstileWidget(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["bot_fight_mode"] = bot_fight_mode
+        __props__.__dict__["clearance_level"] = clearance_level
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["domains"] = domains
+        __props__.__dict__["ephemeral_id"] = ephemeral_id
         __props__.__dict__["mode"] = mode
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["offlabel"] = offlabel
         __props__.__dict__["region"] = region
         __props__.__dict__["secret"] = secret
+        __props__.__dict__["sitekey"] = sitekey
         return TurnstileWidget(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -454,31 +614,64 @@ class TurnstileWidget(pulumi.CustomResource):
     @pulumi.getter(name="botFightMode")
     def bot_fight_mode(self) -> pulumi.Output[bool]:
         """
-        If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+        If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        expensive challenges in response to malicious bots (ENT only).
         """
         return pulumi.get(self, "bot_fight_mode")
 
     @property
+    @pulumi.getter(name="clearanceLevel")
+    def clearance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+        this setting can determine the clearance level to be set
+        """
+        return pulumi.get(self, "clearance_level")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[str]:
+        """
+        When the widget was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
     @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Domains where the widget is deployed
-        """
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="ephemeralId")
+    def ephemeral_id(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Return the Ephemeral ID in /siteverify (ENT only).
+        """
+        return pulumi.get(self, "ephemeral_id")
 
     @property
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        Widget Mode
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[str]:
+        """
+        When the widget was modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Human readable widget name.
+        Human readable widget name. Not unique. Cloudflare suggests that you
+        set this to a meaningful string to make it easier to identify your
+        widget, and where it is used.
         """
         return pulumi.get(self, "name")
 
@@ -486,7 +679,7 @@ class TurnstileWidget(pulumi.CustomResource):
     @pulumi.getter
     def offlabel(self) -> pulumi.Output[bool]:
         """
-        Do not show any Cloudflare branding on the widget (Enterprise only).
+        Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
 
@@ -505,4 +698,12 @@ class TurnstileWidget(pulumi.CustomResource):
         Secret key for this widget.
         """
         return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def sitekey(self) -> pulumi.Output[str]:
+        """
+        Widget item identifier tag.
+        """
+        return pulumi.get(self, "sitekey")
 

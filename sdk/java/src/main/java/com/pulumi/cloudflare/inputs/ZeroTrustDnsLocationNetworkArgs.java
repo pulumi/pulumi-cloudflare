@@ -15,14 +15,14 @@ public final class ZeroTrustDnsLocationNetworkArgs extends com.pulumi.resources.
     public static final ZeroTrustDnsLocationNetworkArgs Empty = new ZeroTrustDnsLocationNetworkArgs();
 
     /**
-     * CIDR notation representation of the network IP.
+     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
      * 
      */
     public Output<String> network() {
@@ -54,7 +54,7 @@ public final class ZeroTrustDnsLocationNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network CIDR notation representation of the network IP.
+         * @param network The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ZeroTrustDnsLocationNetworkArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param network CIDR notation representation of the network IP.
+         * @param network The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
          * 
          * @return builder
          * 

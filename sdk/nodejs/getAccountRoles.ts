@@ -7,22 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const accountRoles = cloudflare.getAccountRoles({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- * });
- * const rolesByName = accountRoles.then(accountRoles => .reduce((__obj, role) => ({ ...__obj, [role.name]: role })));
- * const member = new cloudflare.AccountMember("member", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     emailAddress: "user@example.com",
- *     roleIds: [rolesByName.Administrator?.id],
+ * const exampleAccountRoles = cloudflare.getAccountRoles({
+ *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
  * });
  * ```
  */
@@ -30,6 +22,7 @@ export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
+        "maxItems": args.maxItems,
     }, opts);
 }
 
@@ -38,9 +31,13 @@ export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeO
  */
 export interface GetAccountRolesArgs {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     accountId: string;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: number;
 }
 
 /**
@@ -48,7 +45,7 @@ export interface GetAccountRolesArgs {
  */
 export interface GetAccountRolesResult {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     readonly accountId: string;
     /**
@@ -56,27 +53,23 @@ export interface GetAccountRolesResult {
      */
     readonly id: string;
     /**
-     * A list of roles object.
+     * Max items to fetch, default: 1000
      */
-    readonly roles: outputs.GetAccountRolesRole[];
+    readonly maxItems?: number;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetAccountRolesResult[];
 }
 /**
- * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const accountRoles = cloudflare.getAccountRoles({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- * });
- * const rolesByName = accountRoles.then(accountRoles => .reduce((__obj, role) => ({ ...__obj, [role.name]: role })));
- * const member = new cloudflare.AccountMember("member", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     emailAddress: "user@example.com",
- *     roleIds: [rolesByName.Administrator?.id],
+ * const exampleAccountRoles = cloudflare.getAccountRoles({
+ *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
  * });
  * ```
  */
@@ -84,6 +77,7 @@ export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
+        "maxItems": args.maxItems,
     }, opts);
 }
 
@@ -92,7 +86,11 @@ export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pu
  */
 export interface GetAccountRolesOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: pulumi.Input<number>;
 }

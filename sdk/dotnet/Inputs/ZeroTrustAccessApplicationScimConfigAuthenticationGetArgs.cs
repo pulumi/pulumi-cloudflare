@@ -30,6 +30,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
+        /// <summary>
+        /// Password used to authenticate with the remote SCIM service.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 

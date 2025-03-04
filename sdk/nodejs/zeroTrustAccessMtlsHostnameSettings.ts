@@ -7,37 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.ZeroTrustAccessMtlsHostnameSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     settings: [{
- *         hostname: "example.com",
- *         clientCertificateForwarding: true,
- *         chinaNetwork: false,
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * Account level mTLS hostname settings import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/<account_id>
- * ```
- *
- * Zone level mTLS hostname settings import.
- *
- * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/<zone_id>
- * ```
  */
 export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     /**
@@ -68,12 +38,12 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-    public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[] | undefined>;
+    public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -84,7 +54,7 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZeroTrustAccessMtlsHostnameSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ZeroTrustAccessMtlsHostnameSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZeroTrustAccessMtlsHostnameSettingsArgs | ZeroTrustAccessMtlsHostnameSettingsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -95,6 +65,9 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessMtlsHostnameSettingsArgs | undefined;
+            if ((!args || args.settings === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'settings'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -109,12 +82,12 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessMtlsHostnameSettingsState {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     settings?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessMtlsHostnameSettingsSetting>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -124,12 +97,12 @@ export interface ZeroTrustAccessMtlsHostnameSettingsState {
  */
 export interface ZeroTrustAccessMtlsHostnameSettingsArgs {
     /**
-     * The account identifier to target for the resource.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
-    settings?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessMtlsHostnameSettingsSetting>[]>;
+    settings: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessMtlsHostnameSettingsSetting>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

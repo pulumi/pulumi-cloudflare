@@ -7,30 +7,80 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare custom SSL resource.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.CustomSsl("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     customSslOptions: {
- *         certificate: "-----INSERT CERTIFICATE-----",
- *         privateKey: "-----INSERT PRIVATE KEY-----",
- *         bundleMethod: "ubiquitous",
- *         geoRestrictions: "us",
- *         type: "legacy_custom",
+ * const exampleCustomSsl = new cloudflare.CustomSsl("example_custom_ssl", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     certificate: `  -----BEGIN CERTIFICATE-----
+ *   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+ *   BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+ *   aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+ *   MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+ *   ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+ *   CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+ *   CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+ *   KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+ *   0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+ *   dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+ *   izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+ *   9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+ *   GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+ *   BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+ *   MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+ *   2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+ *   Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+ *   SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+ *   2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+ *   YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+ *   -----END CERTIFICATE-----
+ *
+ * `,
+ *     privateKey: `  -----BEGIN RSA PRIVATE KEY-----
+ *   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+ *   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+ *   abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+ *   tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+ *   FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+ *   ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+ *   HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+ *   axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+ *   +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+ *   +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+ *   KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+ *   9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+ *   /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+ *   iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+ *   N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+ *   VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+ *   vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+ *   lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+ *   9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+ *   mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+ *   dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+ *   PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+ *   fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+ *   qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+ *   lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+ *   -----END RSA PRIVATE KEY-----
+ *
+ * `,
+ *     bundleMethod: "ubiquitous",
+ *     geoRestrictions: {
+ *         label: "us",
  *     },
+ *     policy: "(country: US) or (region: EU)",
+ *     type: "legacy_custom",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
+ * $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
  * ```
  */
 export class CustomSsl extends pulumi.CustomResource {
@@ -62,20 +112,61 @@ export class CustomSsl extends pulumi.CustomResource {
     }
 
     /**
-     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      */
-    public readonly customSslOptions!: pulumi.Output<outputs.CustomSslCustomSslOptions | undefined>;
-    public readonly customSslPriorities!: pulumi.Output<outputs.CustomSslCustomSslPriority[] | undefined>;
+    public readonly bundleMethod!: pulumi.Output<string>;
+    /**
+     * The zone's SSL certificate or certificate and the intermediate(s).
+     */
+    public readonly certificate!: pulumi.Output<string>;
+    /**
+     * When the certificate from the authority expires.
+     */
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    /**
+     * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     */
+    public readonly geoRestrictions!: pulumi.Output<outputs.CustomSslGeoRestrictions>;
     public /*out*/ readonly hosts!: pulumi.Output<string[]>;
+    /**
+     * The certificate authority that issued the certificate.
+     */
     public /*out*/ readonly issuer!: pulumi.Output<string>;
+    public /*out*/ readonly keylessServer!: pulumi.Output<outputs.CustomSslKeylessServer>;
+    /**
+     * When the certificate was last modified.
+     */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     */
+    public readonly policy!: pulumi.Output<string | undefined>;
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+     */
     public /*out*/ readonly priority!: pulumi.Output<number>;
+    /**
+     * The zone's private key.
+     */
+    public readonly privateKey!: pulumi.Output<string>;
+    /**
+     * The type of hash used for the certificate.
+     */
     public /*out*/ readonly signature!: pulumi.Output<string>;
+    /**
+     * Status of the zone's custom SSL.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -92,28 +183,44 @@ export class CustomSsl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomSslState | undefined;
-            resourceInputs["customSslOptions"] = state ? state.customSslOptions : undefined;
-            resourceInputs["customSslPriorities"] = state ? state.customSslPriorities : undefined;
+            resourceInputs["bundleMethod"] = state ? state.bundleMethod : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
+            resourceInputs["geoRestrictions"] = state ? state.geoRestrictions : undefined;
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["keylessServer"] = state ? state.keylessServer : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
             resourceInputs["signature"] = state ? state.signature : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomSslArgs | undefined;
+            if ((!args || args.certificate === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'certificate'");
+            }
+            if ((!args || args.privateKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'privateKey'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["customSslOptions"] = args ? args.customSslOptions : undefined;
-            resourceInputs["customSslPriorities"] = args ? args.customSslPriorities : undefined;
+            resourceInputs["bundleMethod"] = args ? args.bundleMethod : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["geoRestrictions"] = args ? args.geoRestrictions : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["keylessServer"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["signature"] = undefined /*out*/;
@@ -130,20 +237,61 @@ export class CustomSsl extends pulumi.CustomResource {
  */
 export interface CustomSslState {
     /**
-     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      */
-    customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
-    customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
+    bundleMethod?: pulumi.Input<string>;
+    /**
+     * The zone's SSL certificate or certificate and the intermediate(s).
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * When the certificate from the authority expires.
+     */
     expiresOn?: pulumi.Input<string>;
+    /**
+     * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     */
+    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions>;
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The certificate authority that issued the certificate.
+     */
     issuer?: pulumi.Input<string>;
+    keylessServer?: pulumi.Input<inputs.CustomSslKeylessServer>;
+    /**
+     * When the certificate was last modified.
+     */
     modifiedOn?: pulumi.Input<string>;
+    /**
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+     */
     priority?: pulumi.Input<number>;
+    /**
+     * The zone's private key.
+     */
+    privateKey?: pulumi.Input<string>;
+    /**
+     * The type of hash used for the certificate.
+     */
     signature?: pulumi.Input<string>;
+    /**
+     * Status of the zone's custom SSL.
+     */
     status?: pulumi.Input<string>;
+    /**
+     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * When the certificate was uploaded to Cloudflare.
+     */
     uploadedOn?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -153,12 +301,31 @@ export interface CustomSslState {
  */
 export interface CustomSslArgs {
     /**
-     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      */
-    customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
-    customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
+    bundleMethod?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone's SSL certificate or certificate and the intermediate(s).
+     */
+    certificate: pulumi.Input<string>;
+    /**
+     * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+     */
+    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions>;
+    /**
+     * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * The zone's private key.
+     */
+    privateKey: pulumi.Input<string>;
+    /**
+     * The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

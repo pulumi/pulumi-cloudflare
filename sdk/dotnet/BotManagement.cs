@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to configure Bot Management.
-    /// 
-    /// Specifically, this resource can be used to manage:
-    /// 
-    /// - **Bot Fight Mode**
-    /// - **Super Bot Fight Mode**
-    /// - **Bot Management for Enterprise**
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -28,15 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.BotManagement("example", new()
+    ///     var exampleBotManagement = new Cloudflare.BotManagement("example_bot_management", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AiBotsProtection = "block",
     ///         EnableJs = true,
-    ///         SbfmDefinitelyAutomated = "block",
-    ///         SbfmLikelyAutomated = "managed_challenge",
-    ///         SbfmVerifiedBots = "allow",
-    ///         SbfmStaticResourceProtection = false,
-    ///         OptimizeWordpress = true,
+    ///         FightMode = true,
     ///     });
     /// 
     /// });
@@ -45,7 +34,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/botManagement:BotManagement example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/botManagement:BotManagement example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/botManagement:BotManagement")]
@@ -55,10 +44,10 @@ namespace Pulumi.Cloudflare
         /// Enable rule to block AI Scrapers and Crawlers.
         /// </summary>
         [Output("aiBotsProtection")]
-        public Output<string> AiBotsProtection { get; private set; } = null!;
+        public Output<string?> AiBotsProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
         [Output("autoUpdateModel")]
         public Output<bool?> AutoUpdateModel { get; private set; } = null!;
@@ -94,7 +83,9 @@ namespace Pulumi.Cloudflare
         public Output<string?> SbfmLikelyAutomated { get; private set; } = null!;
 
         /// <summary>
-        /// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        /// Super Bot Fight Mode (SBFM) to enable static resource protection.
+        /// Enable if static resources on your application need bot protection.
+        /// Note: Static resource protection can also result in legitimate traffic being blocked.
         /// </summary>
         [Output("sbfmStaticResourceProtection")]
         public Output<bool?> SbfmStaticResourceProtection { get; private set; } = null!;
@@ -106,10 +97,16 @@ namespace Pulumi.Cloudflare
         public Output<string?> SbfmVerifiedBots { get; private set; } = null!;
 
         /// <summary>
+        /// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+        /// </summary>
+        [Output("staleZoneConfiguration")]
+        public Output<Outputs.BotManagementStaleZoneConfiguration> StaleZoneConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         /// </summary>
         [Output("suppressSessionScore")]
-        public Output<bool?> SuppressSessionScore { get; private set; } = null!;
+        public Output<bool> SuppressSessionScore { get; private set; } = null!;
 
         /// <summary>
         /// A read-only field that indicates whether the zone currently is running the latest ML model.
@@ -118,7 +115,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> UsingLatestModel { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -176,7 +173,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AiBotsProtection { get; set; }
 
         /// <summary>
-        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
         [Input("autoUpdateModel")]
         public Input<bool>? AutoUpdateModel { get; set; }
@@ -212,7 +209,9 @@ namespace Pulumi.Cloudflare
         public Input<string>? SbfmLikelyAutomated { get; set; }
 
         /// <summary>
-        /// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        /// Super Bot Fight Mode (SBFM) to enable static resource protection.
+        /// Enable if static resources on your application need bot protection.
+        /// Note: Static resource protection can also result in legitimate traffic being blocked.
         /// </summary>
         [Input("sbfmStaticResourceProtection")]
         public Input<bool>? SbfmStaticResourceProtection { get; set; }
@@ -230,7 +229,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SuppressSessionScore { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -250,7 +249,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AiBotsProtection { get; set; }
 
         /// <summary>
-        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
+        /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
         [Input("autoUpdateModel")]
         public Input<bool>? AutoUpdateModel { get; set; }
@@ -286,7 +285,9 @@ namespace Pulumi.Cloudflare
         public Input<string>? SbfmLikelyAutomated { get; set; }
 
         /// <summary>
-        /// Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
+        /// Super Bot Fight Mode (SBFM) to enable static resource protection.
+        /// Enable if static resources on your application need bot protection.
+        /// Note: Static resource protection can also result in legitimate traffic being blocked.
         /// </summary>
         [Input("sbfmStaticResourceProtection")]
         public Input<bool>? SbfmStaticResourceProtection { get; set; }
@@ -296,6 +297,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sbfmVerifiedBots")]
         public Input<string>? SbfmVerifiedBots { get; set; }
+
+        /// <summary>
+        /// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+        /// </summary>
+        [Input("staleZoneConfiguration")]
+        public Input<Inputs.BotManagementStaleZoneConfigurationGetArgs>? StaleZoneConfiguration { get; set; }
 
         /// <summary>
         /// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
@@ -310,7 +317,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? UsingLatestModel { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

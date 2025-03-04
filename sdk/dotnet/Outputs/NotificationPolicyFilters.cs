@@ -14,136 +14,171 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class NotificationPolicyFilters
     {
         /// <summary>
-        /// Targeted actions for alert.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `D1`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        /// Used for configuring radar_notification
+        /// </summary>
+        public readonly ImmutableArray<string> AffectedAsns;
+        /// <summary>
+        /// Used for configuring incident_alert
         /// </summary>
         public readonly ImmutableArray<string> AffectedComponents;
         /// <summary>
-        /// Filter on Points of Presence.
+        /// Used for configuring radar_notification
+        /// </summary>
+        public readonly ImmutableArray<string> AffectedLocations;
+        /// <summary>
+        /// Used for configuring maintenance*event*notification
         /// </summary>
         public readonly ImmutableArray<string> AirportCodes;
         /// <summary>
-        /// Alert trigger preferences. Example: `slo`.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> AlertTriggerPreferences;
         /// <summary>
-        /// State of the pool to alert on.
+        /// Usage depends on specific alert type
+        /// </summary>
+        public readonly ImmutableArray<string> AlertTriggerPreferencesValues;
+        /// <summary>
+        /// Used for configuring load*balancing*pool*enablement*alert
         /// </summary>
         public readonly ImmutableArray<string> Enableds;
         /// <summary>
-        /// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public readonly ImmutableArray<string> Environments;
         /// <summary>
-        /// Source configuration to alert on for pool or origin.
+        /// Used for configuring load*balancing*health_alert
         /// </summary>
         public readonly ImmutableArray<string> EventSources;
         /// <summary>
-        /// Stream event type to alert on.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> EventTypes;
         /// <summary>
-        /// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public readonly ImmutableArray<string> Events;
         /// <summary>
-        /// Alert grouping.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> GroupBies;
         /// <summary>
-        /// Identifier health check. Required when using `filters.0.status`.
+        /// Used for configuring health*check*status_notification
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckIds;
         /// <summary>
-        /// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        /// Used for configuring incident_alert
         /// </summary>
         public readonly ImmutableArray<string> IncidentImpacts;
         /// <summary>
-        /// Stream input id to alert on.
+        /// Used for configuring stream*live*notifications
         /// </summary>
         public readonly ImmutableArray<string> InputIds;
         /// <summary>
-        /// A numerical limit. Example: `100`.
+        /// Used for configuring security*insights*alert
+        /// </summary>
+        public readonly ImmutableArray<string> InsightClasses;
+        /// <summary>
+        /// Used for configuring billing*usage*alert
         /// </summary>
         public readonly ImmutableArray<string> Limits;
         /// <summary>
-        /// Megabits per second threshold for dos alert.
+        /// Used for configuring logo*match*alert
+        /// </summary>
+        public readonly ImmutableArray<string> LogoTags;
+        /// <summary>
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public readonly ImmutableArray<string> MegabitsPerSeconds;
         /// <summary>
-        /// Health status to alert on for pool or origin.
+        /// Used for configuring load*balancing*health_alert
         /// </summary>
         public readonly ImmutableArray<string> NewHealths;
         /// <summary>
-        /// Tunnel health status to alert on.
+        /// Used for configuring tunnel*health*event
         /// </summary>
         public readonly ImmutableArray<string> NewStatuses;
         /// <summary>
-        /// Packets per second threshold for dos alert.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public readonly ImmutableArray<string> PacketsPerSeconds;
         /// <summary>
-        /// Load balancer pool identifier.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> PoolIds;
         /// <summary>
-        /// Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+        /// Usage depends on specific alert type
+        /// </summary>
+        public readonly ImmutableArray<string> PopNames;
+        /// <summary>
+        /// Used for configuring billing*usage*alert
         /// </summary>
         public readonly ImmutableArray<string> Products;
         /// <summary>
-        /// Identifier of pages project.
+        /// Used for configuring pages*event*alert
         /// </summary>
         public readonly ImmutableArray<string> ProjectIds;
         /// <summary>
-        /// Protocol to alert on for dos.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         /// <summary>
-        /// Requests per second threshold for dos alert.
+        /// Usage depends on specific alert type
+        /// </summary>
+        public readonly ImmutableArray<string> QueryTags;
+        /// <summary>
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public readonly ImmutableArray<string> RequestsPerSeconds;
         /// <summary>
-        /// Selectors for alert. Valid options depend on the alert type.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> Selectors;
+        /// <summary>
+        /// Used for configuring clickhouse*alert*fw*ent*anomaly
+        /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>
-        /// A numerical limit. Example: `99.9`.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> Slos;
         /// <summary>
-        /// Status to alert on.
+        /// Used for configuring health*check*status_notification
         /// </summary>
         public readonly ImmutableArray<string> Statuses;
         /// <summary>
-        /// Target host to alert on for dos.
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public readonly ImmutableArray<string> TargetHostnames;
         /// <summary>
-        /// Target ip to alert on for dos in CIDR notation.
+        /// Used for configuring advanced*ddos*attack*l4*alert
         /// </summary>
         public readonly ImmutableArray<string> TargetIps;
         /// <summary>
-        /// Target domain to alert on.
+        /// Used for configuring advanced*ddos*attack*l7*alert
         /// </summary>
         public readonly ImmutableArray<string> TargetZoneNames;
         /// <summary>
-        /// Tunnel IDs to alert on.
+        /// Used for configuring traffic*anomalies*alert
+        /// </summary>
+        public readonly ImmutableArray<string> TrafficExclusions;
+        /// <summary>
+        /// Used for configuring tunnel*health*event
         /// </summary>
         public readonly ImmutableArray<string> TunnelIds;
         /// <summary>
-        /// Tunnel Names to alert on.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> TunnelNames;
         /// <summary>
-        /// Filter for alert.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> Wheres;
         /// <summary>
-        /// A list of zone identifiers.
+        /// Usage depends on specific alert type
         /// </summary>
         public readonly ImmutableArray<string> Zones;
 
@@ -151,11 +186,17 @@ namespace Pulumi.Cloudflare.Outputs
         private NotificationPolicyFilters(
             ImmutableArray<string> actions,
 
+            ImmutableArray<string> affectedAsns,
+
             ImmutableArray<string> affectedComponents,
+
+            ImmutableArray<string> affectedLocations,
 
             ImmutableArray<string> airportCodes,
 
             ImmutableArray<string> alertTriggerPreferences,
+
+            ImmutableArray<string> alertTriggerPreferencesValues,
 
             ImmutableArray<string> enableds,
 
@@ -175,7 +216,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> inputIds,
 
+            ImmutableArray<string> insightClasses,
+
             ImmutableArray<string> limits,
+
+            ImmutableArray<string> logoTags,
 
             ImmutableArray<string> megabitsPerSeconds,
 
@@ -187,11 +232,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> poolIds,
 
+            ImmutableArray<string> popNames,
+
             ImmutableArray<string> products,
 
             ImmutableArray<string> projectIds,
 
             ImmutableArray<string> protocols,
+
+            ImmutableArray<string> queryTags,
 
             ImmutableArray<string> requestsPerSeconds,
 
@@ -209,6 +258,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> targetZoneNames,
 
+            ImmutableArray<string> trafficExclusions,
+
             ImmutableArray<string> tunnelIds,
 
             ImmutableArray<string> tunnelNames,
@@ -218,9 +269,12 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> zones)
         {
             Actions = actions;
+            AffectedAsns = affectedAsns;
             AffectedComponents = affectedComponents;
+            AffectedLocations = affectedLocations;
             AirportCodes = airportCodes;
             AlertTriggerPreferences = alertTriggerPreferences;
+            AlertTriggerPreferencesValues = alertTriggerPreferencesValues;
             Enableds = enableds;
             Environments = environments;
             EventSources = eventSources;
@@ -230,15 +284,19 @@ namespace Pulumi.Cloudflare.Outputs
             HealthCheckIds = healthCheckIds;
             IncidentImpacts = incidentImpacts;
             InputIds = inputIds;
+            InsightClasses = insightClasses;
             Limits = limits;
+            LogoTags = logoTags;
             MegabitsPerSeconds = megabitsPerSeconds;
             NewHealths = newHealths;
             NewStatuses = newStatuses;
             PacketsPerSeconds = packetsPerSeconds;
             PoolIds = poolIds;
+            PopNames = popNames;
             Products = products;
             ProjectIds = projectIds;
             Protocols = protocols;
+            QueryTags = queryTags;
             RequestsPerSeconds = requestsPerSeconds;
             Selectors = selectors;
             Services = services;
@@ -247,6 +305,7 @@ namespace Pulumi.Cloudflare.Outputs
             TargetHostnames = targetHostnames;
             TargetIps = targetIps;
             TargetZoneNames = targetZoneNames;
+            TrafficExclusions = trafficExclusions;
             TunnelIds = tunnelIds;
             TunnelNames = tunnelNames;
             Wheres = wheres;

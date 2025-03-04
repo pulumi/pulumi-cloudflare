@@ -19,18 +19,22 @@ __all__ = ['ZoneHoldArgs', 'ZoneHold']
 @pulumi.input_type
 class ZoneHoldArgs:
     def __init__(__self__, *,
-                 hold: pulumi.Input[bool],
                  zone_id: pulumi.Input[str],
                  hold_after: Optional[pulumi.Input[str]] = None,
                  include_subdomains: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ZoneHold resource.
-        :param pulumi.Input[bool] hold: Enablement status of the zone hold.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
-        :param pulumi.Input[str] hold_after: The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
-        :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
+        :param pulumi.Input[str] zone_id: Identifier
+        :param pulumi.Input[str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+               then automatically re-enabled by the system at the time specified
+               in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+               no effect on an existing, enabled hold. Providing an empty string will set its value
+               to the current time.
+        :param pulumi.Input[bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+               as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+               'example.com' and include_subdomains=true will block 'example.com',
+               'staging.example.com', 'api.staging.example.com', etc.
         """
-        pulumi.set(__self__, "hold", hold)
         pulumi.set(__self__, "zone_id", zone_id)
         if hold_after is not None:
             pulumi.set(__self__, "hold_after", hold_after)
@@ -38,22 +42,10 @@ class ZoneHoldArgs:
             pulumi.set(__self__, "include_subdomains", include_subdomains)
 
     @property
-    @pulumi.getter
-    def hold(self) -> pulumi.Input[bool]:
-        """
-        Enablement status of the zone hold.
-        """
-        return pulumi.get(self, "hold")
-
-    @hold.setter
-    def hold(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "hold", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -65,7 +57,11 @@ class ZoneHoldArgs:
     @pulumi.getter(name="holdAfter")
     def hold_after(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        then automatically re-enabled by the system at the time specified
+        in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        no effect on an existing, enabled hold. Providing an empty string will set its value
+        to the current time.
         """
         return pulumi.get(self, "hold_after")
 
@@ -77,7 +73,10 @@ class ZoneHoldArgs:
     @pulumi.getter(name="includeSubdomains")
     def include_subdomains(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to extend to block any subdomain of the given zone.
+        If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        'example.com' and include_subdomains=true will block 'example.com',
+        'staging.example.com', 'api.staging.example.com', etc.
         """
         return pulumi.get(self, "include_subdomains")
 
@@ -95,10 +94,16 @@ class _ZoneHoldState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneHold resources.
-        :param pulumi.Input[bool] hold: Enablement status of the zone hold.
-        :param pulumi.Input[str] hold_after: The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
-        :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+               then automatically re-enabled by the system at the time specified
+               in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+               no effect on an existing, enabled hold. Providing an empty string will set its value
+               to the current time.
+        :param pulumi.Input[bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+               as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+               'example.com' and include_subdomains=true will block 'example.com',
+               'staging.example.com', 'api.staging.example.com', etc.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         if hold is not None:
             pulumi.set(__self__, "hold", hold)
@@ -112,9 +117,6 @@ class _ZoneHoldState:
     @property
     @pulumi.getter
     def hold(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enablement status of the zone hold.
-        """
         return pulumi.get(self, "hold")
 
     @hold.setter
@@ -125,7 +127,11 @@ class _ZoneHoldState:
     @pulumi.getter(name="holdAfter")
     def hold_after(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        then automatically re-enabled by the system at the time specified
+        in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        no effect on an existing, enabled hold. Providing an empty string will set its value
+        to the current time.
         """
         return pulumi.get(self, "hold_after")
 
@@ -137,7 +143,10 @@ class _ZoneHoldState:
     @pulumi.getter(name="includeSubdomains")
     def include_subdomains(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to extend to block any subdomain of the given zone.
+        If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        'example.com' and include_subdomains=true will block 'example.com',
+        'staging.example.com', 'api.staging.example.com', etc.
         """
         return pulumi.get(self, "include_subdomains")
 
@@ -149,7 +158,7 @@ class _ZoneHoldState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -163,38 +172,38 @@ class ZoneHold(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hold: Optional[pulumi.Input[bool]] = None,
                  hold_after: Optional[pulumi.Input[str]] = None,
                  include_subdomains: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Zone Hold resource that prevents adding
-        the hostname to another account for use.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZoneHold("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            hold=True)
+        example_zone_hold = cloudflare.ZoneHold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneHold:ZoneHold example <zone_id>
+        $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] hold: Enablement status of the zone hold.
-        :param pulumi.Input[str] hold_after: The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
-        :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+               then automatically re-enabled by the system at the time specified
+               in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+               no effect on an existing, enabled hold. Providing an empty string will set its value
+               to the current time.
+        :param pulumi.Input[bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+               as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+               'example.com' and include_subdomains=true will block 'example.com',
+               'staging.example.com', 'api.staging.example.com', etc.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         ...
     @overload
@@ -203,24 +212,19 @@ class ZoneHold(pulumi.CustomResource):
                  args: ZoneHoldArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Zone Hold resource that prevents adding
-        the hostname to another account for use.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ZoneHold("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            hold=True)
+        example_zone_hold = cloudflare.ZoneHold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/zoneHold:ZoneHold example <zone_id>
+        $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -238,7 +242,6 @@ class ZoneHold(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hold: Optional[pulumi.Input[bool]] = None,
                  hold_after: Optional[pulumi.Input[str]] = None,
                  include_subdomains: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -251,14 +254,12 @@ class ZoneHold(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneHoldArgs.__new__(ZoneHoldArgs)
 
-            if hold is None and not opts.urn:
-                raise TypeError("Missing required property 'hold'")
-            __props__.__dict__["hold"] = hold
             __props__.__dict__["hold_after"] = hold_after
             __props__.__dict__["include_subdomains"] = include_subdomains
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["hold"] = None
         super(ZoneHold, __self__).__init__(
             'cloudflare:index/zoneHold:ZoneHold',
             resource_name,
@@ -280,10 +281,16 @@ class ZoneHold(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] hold: Enablement status of the zone hold.
-        :param pulumi.Input[str] hold_after: The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
-        :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+               then automatically re-enabled by the system at the time specified
+               in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+               no effect on an existing, enabled hold. Providing an empty string will set its value
+               to the current time.
+        :param pulumi.Input[bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+               as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+               'example.com' and include_subdomains=true will block 'example.com',
+               'staging.example.com', 'api.staging.example.com', etc.
+        :param pulumi.Input[str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -298,24 +305,28 @@ class ZoneHold(pulumi.CustomResource):
     @property
     @pulumi.getter
     def hold(self) -> pulumi.Output[bool]:
-        """
-        Enablement status of the zone hold.
-        """
         return pulumi.get(self, "hold")
 
     @property
     @pulumi.getter(name="holdAfter")
     def hold_after(self) -> pulumi.Output[str]:
         """
-        The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+        If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+        then automatically re-enabled by the system at the time specified
+        in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+        no effect on an existing, enabled hold. Providing an empty string will set its value
+        to the current time.
         """
         return pulumi.get(self, "hold_after")
 
     @property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> pulumi.Output[Optional[bool]]:
+    def include_subdomains(self) -> pulumi.Output[bool]:
         """
-        Whether to extend to block any subdomain of the given zone.
+        If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+        as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+        'example.com' and include_subdomains=true will block 'example.com',
+        'staging.example.com', 'api.staging.example.com', etc.
         """
         return pulumi.get(self, "include_subdomains")
 
@@ -323,7 +334,7 @@ class ZoneHold(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

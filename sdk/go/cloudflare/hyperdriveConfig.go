@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,23 +19,26 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHyperdriveConfig(ctx, "no_defaults", &cloudflare.HyperdriveConfigArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("my-hyperdrive-config"),
+//			_, err := cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("example-hyperdrive"),
 //				Origin: &cloudflare.HyperdriveConfigOriginArgs{
 //					Database: pulumi.String("postgres"),
-//					Password: pulumi.String("my-password"),
-//					Host:     pulumi.String("my-database.example.com"),
+//					Host:     pulumi.String("database.example.com"),
+//					Password: pulumi.String("password"),
 //					Port:     pulumi.Int(5432),
 //					Scheme:   pulumi.String("postgres"),
-//					User:     pulumi.String("my-user"),
+//					User:     pulumi.String("postgres"),
+//				},
+//				Caching: &cloudflare.HyperdriveConfigCachingArgs{
+//					Disabled: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {
@@ -48,25 +49,18 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example <account_id>/<hyperdrive_config_id>
-// ```
 type HyperdriveConfig struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The caching details for the Hyperdrive configuration.
-	Caching HyperdriveConfigCachingOutput `pulumi:"caching"`
-	// The name of the Hyperdrive configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The origin details for the Hyperdrive configuration.
-	Origin HyperdriveConfigOriginOutput `pulumi:"origin"`
-	// The identifier of this resource. This is the hyperdrive config value.
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
+	// Identifier
+	AccountId pulumi.StringOutput           `pulumi:"accountId"`
+	Caching   HyperdriveConfigCachingOutput `pulumi:"caching"`
+	// When the Hyperdrive configuration was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// When the Hyperdrive configuration was last modified.
+	ModifiedOn pulumi.StringOutput          `pulumi:"modifiedOn"`
+	Name       pulumi.StringOutput          `pulumi:"name"`
+	Origin     HyperdriveConfigOriginOutput `pulumi:"origin"`
 }
 
 // NewHyperdriveConfig registers a new resource with the given unique name, arguments, and options.
@@ -108,29 +102,27 @@ func GetHyperdriveConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HyperdriveConfig resources.
 type hyperdriveConfigState struct {
-	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
-	// The caching details for the Hyperdrive configuration.
-	Caching *HyperdriveConfigCaching `pulumi:"caching"`
-	// The name of the Hyperdrive configuration.
-	Name *string `pulumi:"name"`
-	// The origin details for the Hyperdrive configuration.
-	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
-	// The identifier of this resource. This is the hyperdrive config value.
-	ResourceId *string `pulumi:"resourceId"`
+	// Identifier
+	AccountId *string                  `pulumi:"accountId"`
+	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
+	// When the Hyperdrive configuration was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// When the Hyperdrive configuration was last modified.
+	ModifiedOn *string                 `pulumi:"modifiedOn"`
+	Name       *string                 `pulumi:"name"`
+	Origin     *HyperdriveConfigOrigin `pulumi:"origin"`
 }
 
 type HyperdriveConfigState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// The caching details for the Hyperdrive configuration.
-	Caching HyperdriveConfigCachingPtrInput
-	// The name of the Hyperdrive configuration.
-	Name pulumi.StringPtrInput
-	// The origin details for the Hyperdrive configuration.
-	Origin HyperdriveConfigOriginPtrInput
-	// The identifier of this resource. This is the hyperdrive config value.
-	ResourceId pulumi.StringPtrInput
+	Caching   HyperdriveConfigCachingPtrInput
+	// When the Hyperdrive configuration was created.
+	CreatedOn pulumi.StringPtrInput
+	// When the Hyperdrive configuration was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	Origin     HyperdriveConfigOriginPtrInput
 }
 
 func (HyperdriveConfigState) ElementType() reflect.Type {
@@ -138,30 +130,20 @@ func (HyperdriveConfigState) ElementType() reflect.Type {
 }
 
 type hyperdriveConfigArgs struct {
-	// The account identifier to target for the resource.
-	AccountId string `pulumi:"accountId"`
-	// The caching details for the Hyperdrive configuration.
-	Caching *HyperdriveConfigCaching `pulumi:"caching"`
-	// The name of the Hyperdrive configuration.
-	Name string `pulumi:"name"`
-	// The origin details for the Hyperdrive configuration.
-	Origin HyperdriveConfigOrigin `pulumi:"origin"`
-	// The identifier of this resource. This is the hyperdrive config value.
-	ResourceId *string `pulumi:"resourceId"`
+	// Identifier
+	AccountId string                   `pulumi:"accountId"`
+	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
+	Name      string                   `pulumi:"name"`
+	Origin    HyperdriveConfigOrigin   `pulumi:"origin"`
 }
 
 // The set of arguments for constructing a HyperdriveConfig resource.
 type HyperdriveConfigArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// The caching details for the Hyperdrive configuration.
-	Caching HyperdriveConfigCachingPtrInput
-	// The name of the Hyperdrive configuration.
-	Name pulumi.StringInput
-	// The origin details for the Hyperdrive configuration.
-	Origin HyperdriveConfigOriginInput
-	// The identifier of this resource. This is the hyperdrive config value.
-	ResourceId pulumi.StringPtrInput
+	Caching   HyperdriveConfigCachingPtrInput
+	Name      pulumi.StringInput
+	Origin    HyperdriveConfigOriginInput
 }
 
 func (HyperdriveConfigArgs) ElementType() reflect.Type {
@@ -251,29 +233,31 @@ func (o HyperdriveConfigOutput) ToHyperdriveConfigOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o HyperdriveConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The caching details for the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) Caching() HyperdriveConfigCachingOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigCachingOutput { return v.Caching }).(HyperdriveConfigCachingOutput)
 }
 
-// The name of the Hyperdrive configuration.
+// When the Hyperdrive configuration was created.
+func (o HyperdriveConfigOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// When the Hyperdrive configuration was last modified.
+func (o HyperdriveConfigOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The origin details for the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigOriginOutput { return v.Origin }).(HyperdriveConfigOriginOutput)
-}
-
-// The identifier of this resource. This is the hyperdrive config value.
-func (o HyperdriveConfigOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 type HyperdriveConfigArrayOutput struct{ *pulumi.OutputState }

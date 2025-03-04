@@ -2,36 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Enable Content Scanning before trying to add custom scan expressions
- * const example = new cloudflare.ContentScanning("example", {
- *     zoneId: "399c6f4950c01a5a141b99ff7fbcbd8b",
- *     enabled: true,
+ * const exampleContentScanningExpression = new cloudflare.ContentScanningExpression("example_content_scanning_expression", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     bodies: [{
+ *         payload: "lookup_json_string(http.request.body.raw, \"file\")",
+ *     }],
  * });
- * const firstExample = new cloudflare.ContentScanningExpression("first_example", {
- *     zoneId: example.zoneId,
- *     payload: "lookup_json_string(http.request.body.raw, \"file\")",
- * });
- * const secondExample = new cloudflare.ContentScanningExpression("second_example", {
- *     zoneId: example.zoneId,
- *     payload: "lookup_json_string(http.request.body.raw, \"document\")",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example <zone_id>/<resource_id>
  * ```
  */
 export class ContentScanningExpression extends pulumi.CustomResource {
@@ -62,12 +49,13 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContentScanningExpression.__pulumiType;
     }
 
+    public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
+     * Identifier
      */
-    public readonly payload!: pulumi.Output<string>;
+    public readonly expressionId!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -84,17 +72,19 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
-            resourceInputs["payload"] = state ? state.payload : undefined;
+            resourceInputs["bodies"] = state ? state.bodies : undefined;
+            resourceInputs["expressionId"] = state ? state.expressionId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
-            if ((!args || args.payload === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'payload'");
+            if ((!args || args.bodies === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bodies'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["payload"] = args ? args.payload : undefined;
+            resourceInputs["bodies"] = args ? args.bodies : undefined;
+            resourceInputs["expressionId"] = args ? args.expressionId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -106,12 +96,13 @@ export class ContentScanningExpression extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContentScanningExpression resources.
  */
 export interface ContentScanningExpressionState {
+    bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
+     * Identifier
      */
-    payload?: pulumi.Input<string>;
+    expressionId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -120,12 +111,13 @@ export interface ContentScanningExpressionState {
  * The set of arguments for constructing a ContentScanningExpression resource.
  */
 export interface ContentScanningExpressionArgs {
+    bodies: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
+     * Identifier
      */
-    payload: pulumi.Input<string>;
+    expressionId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

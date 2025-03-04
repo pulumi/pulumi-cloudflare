@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsDohNetwork {
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IP address or IP CIDR.
      * 
      */
     private String network;
 
     private ZeroTrustDnsLocationEndpointsDohNetwork() {}
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IP address or IP CIDR.
      * 
      */
     public String network() {

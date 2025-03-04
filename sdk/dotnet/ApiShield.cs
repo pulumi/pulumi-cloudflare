@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage API Shield configurations.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,14 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ApiShield("example", new()
+    ///     var exampleApiShield = new Cloudflare.ApiShield("example_api_shield", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AuthIdCharacteristics = new[]
     ///         {
     ///             new Cloudflare.Inputs.ApiShieldAuthIdCharacteristicArgs
     ///             {
-    ///                 Name = "my-example-header",
+    ///                 Name = "authorization",
     ///                 Type = "header",
     ///             },
     ///         },
@@ -37,18 +35,33 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/apiShield:ApiShield example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShield:ApiShield")]
     public partial class ApiShield : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        /// </summary>
         [Output("authIdCharacteristics")]
         public Output<ImmutableArray<Outputs.ApiShieldAuthIdCharacteristic>> AuthIdCharacteristics { get; private set; } = null!;
 
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.ApiShieldError>> Errors { get; private set; } = null!;
+
+        [Output("messages")]
+        public Output<ImmutableArray<Outputs.ApiShieldMessage>> Messages { get; private set; } = null!;
+
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Whether the API call was successful
+        /// </summary>
+        [Output("success")]
+        public Output<bool> Success { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -99,12 +112,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ApiShieldArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authIdCharacteristics")]
+        [Input("authIdCharacteristics", required: true)]
         private InputList<Inputs.ApiShieldAuthIdCharacteristicArgs>? _authIdCharacteristics;
-
-        /// <summary>
-        /// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        /// </summary>
         public InputList<Inputs.ApiShieldAuthIdCharacteristicArgs> AuthIdCharacteristics
         {
             get => _authIdCharacteristics ?? (_authIdCharacteristics = new InputList<Inputs.ApiShieldAuthIdCharacteristicArgs>());
@@ -112,7 +121,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,18 +136,36 @@ namespace Pulumi.Cloudflare
     {
         [Input("authIdCharacteristics")]
         private InputList<Inputs.ApiShieldAuthIdCharacteristicGetArgs>? _authIdCharacteristics;
-
-        /// <summary>
-        /// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        /// </summary>
         public InputList<Inputs.ApiShieldAuthIdCharacteristicGetArgs> AuthIdCharacteristics
         {
             get => _authIdCharacteristics ?? (_authIdCharacteristics = new InputList<Inputs.ApiShieldAuthIdCharacteristicGetArgs>());
             set => _authIdCharacteristics = value;
         }
 
+        [Input("errors")]
+        private InputList<Inputs.ApiShieldErrorGetArgs>? _errors;
+        public InputList<Inputs.ApiShieldErrorGetArgs> Errors
+        {
+            get => _errors ?? (_errors = new InputList<Inputs.ApiShieldErrorGetArgs>());
+            set => _errors = value;
+        }
+
+        [Input("messages")]
+        private InputList<Inputs.ApiShieldMessageGetArgs>? _messages;
+        public InputList<Inputs.ApiShieldMessageGetArgs> Messages
+        {
+            get => _messages ?? (_messages = new InputList<Inputs.ApiShieldMessageGetArgs>());
+            set => _messages = value;
+        }
+
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Whether the API call was successful
+        /// </summary>
+        [Input("success")]
+        public Input<bool>? Success { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

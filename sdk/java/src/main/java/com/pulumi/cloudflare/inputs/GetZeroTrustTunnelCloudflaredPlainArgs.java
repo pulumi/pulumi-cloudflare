@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,56 +17,48 @@ public final class GetZeroTrustTunnelCloudflaredPlainArgs extends com.pulumi.res
     public static final GetZeroTrustTunnelCloudflaredPlainArgs Empty = new GetZeroTrustTunnelCloudflaredPlainArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public String accountId() {
         return this.accountId;
     }
 
-    /**
-     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="isDeleted")
-    private @Nullable Boolean isDeleted;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustTunnelCloudflaredFilter filter;
 
-    /**
-     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Boolean> isDeleted() {
-        return Optional.ofNullable(this.isDeleted);
+    public Optional<GetZeroTrustTunnelCloudflaredFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the tunnel.
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="tunnelId")
+    private @Nullable String tunnelId;
 
     /**
-     * @return Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID of the tunnel.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> tunnelId() {
+        return Optional.ofNullable(this.tunnelId);
     }
 
     private GetZeroTrustTunnelCloudflaredPlainArgs() {}
 
     private GetZeroTrustTunnelCloudflaredPlainArgs(GetZeroTrustTunnelCloudflaredPlainArgs $) {
         this.accountId = $.accountId;
-        this.isDeleted = $.isDeleted;
-        this.name = $.name;
+        this.filter = $.filter;
+        this.tunnelId = $.tunnelId;
     }
 
     public static Builder builder() {
@@ -88,7 +80,7 @@ public final class GetZeroTrustTunnelCloudflaredPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -98,34 +90,25 @@ public final class GetZeroTrustTunnelCloudflaredPlainArgs extends com.pulumi.res
             return this;
         }
 
-        /**
-         * @param isDeleted If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isDeleted(@Nullable Boolean isDeleted) {
-            $.isDeleted = isDeleted;
+        public Builder filter(@Nullable GetZeroTrustTunnelCloudflaredFilter filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param name Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
-            $.name = name;
+        public Builder tunnelId(@Nullable String tunnelId) {
+            $.tunnelId = tunnelId;
             return this;
         }
 
         public GetZeroTrustTunnelCloudflaredPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredPlainArgs", "accountId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredPlainArgs", "name");
             }
             return $;
         }

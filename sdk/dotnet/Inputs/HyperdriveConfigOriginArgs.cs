@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class HyperdriveConfigOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+        /// The Client ID of the Access token to use when connecting to the origin database.
         /// </summary>
         [Input("accessClientId")]
         public Input<string>? AccessClientId { get; set; }
 
         /// <summary>
-        /// Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+        /// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
         /// </summary>
         [Input("accessClientSecret")]
         public Input<string>? AccessClientSecret { get; set; }
@@ -36,21 +36,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
-        [Input("password", required: true)]
-        private Input<string>? _password;
-
         /// <summary>
-        /// The password of the Hyperdrive configuration.
+        /// The password required to access your origin database. This value is write-only and never returned by the API.
         /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
         /// The port (default: 5432 for Postgres) of your origin database.

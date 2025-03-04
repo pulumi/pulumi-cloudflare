@@ -18,14 +18,14 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     public static final TurnstileWidgetState Empty = new TurnstileWidgetState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,16 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     @Import(name="botFightMode")
     private @Nullable Output<Boolean> botFightMode;
 
     /**
-     * @return If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * @return If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     public Optional<Output<Boolean>> botFightMode() {
@@ -48,29 +50,68 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
      * 
      */
+    @Import(name="clearanceLevel")
+    private @Nullable Output<String> clearanceLevel;
+
+    /**
+     * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * 
+     */
+    public Optional<Output<String>> clearanceLevel() {
+        return Optional.ofNullable(this.clearanceLevel);
+    }
+
+    /**
+     * When the widget was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return When the widget was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
     @Import(name="domains")
     private @Nullable Output<List<String>> domains;
 
-    /**
-     * @return Domains where the widget is deployed
-     * 
-     */
     public Optional<Output<List<String>>> domains() {
         return Optional.ofNullable(this.domains);
     }
 
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    @Import(name="ephemeralId")
+    private @Nullable Output<Boolean> ephemeralId;
+
+    /**
+     * @return Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    public Optional<Output<Boolean>> ephemeralId() {
+        return Optional.ofNullable(this.ephemeralId);
+    }
+
+    /**
+     * Widget Mode
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * @return Widget Mode
      * 
      */
     public Optional<Output<String>> mode() {
@@ -78,14 +119,33 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Human readable widget name.
+     * When the widget was modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return When the widget was modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Human readable widget name.
+     * @return Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     public Optional<Output<String>> name() {
@@ -93,14 +153,14 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     @Import(name="offlabel")
     private @Nullable Output<Boolean> offlabel;
 
     /**
-     * @return Do not show any Cloudflare branding on the widget (Enterprise only).
+     * @return Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     public Optional<Output<Boolean>> offlabel() {
@@ -137,17 +197,37 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Widget item identifier tag.
+     * 
+     */
+    @Import(name="sitekey")
+    private @Nullable Output<String> sitekey;
+
+    /**
+     * @return Widget item identifier tag.
+     * 
+     */
+    public Optional<Output<String>> sitekey() {
+        return Optional.ofNullable(this.sitekey);
+    }
+
     private TurnstileWidgetState() {}
 
     private TurnstileWidgetState(TurnstileWidgetState $) {
         this.accountId = $.accountId;
         this.botFightMode = $.botFightMode;
+        this.clearanceLevel = $.clearanceLevel;
+        this.createdOn = $.createdOn;
         this.domains = $.domains;
+        this.ephemeralId = $.ephemeralId;
         this.mode = $.mode;
+        this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.offlabel = $.offlabel;
         this.region = $.region;
         this.secret = $.secret;
+        this.sitekey = $.sitekey;
     }
 
     public static Builder builder() {
@@ -169,7 +249,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -180,7 +260,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -190,7 +270,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param botFightMode If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+         * @param botFightMode If bot*fight*mode is set to `true`, Cloudflare issues computationally
+         * expensive challenges in response to malicious bots (ENT only).
          * 
          * @return builder
          * 
@@ -201,7 +282,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param botFightMode If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+         * @param botFightMode If bot*fight*mode is set to `true`, Cloudflare issues computationally
+         * expensive challenges in response to malicious bots (ENT only).
          * 
          * @return builder
          * 
@@ -211,38 +293,85 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param domains Domains where the widget is deployed
+         * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+         * this setting can determine the clearance level to be set
          * 
          * @return builder
          * 
          */
+        public Builder clearanceLevel(@Nullable Output<String> clearanceLevel) {
+            $.clearanceLevel = clearanceLevel;
+            return this;
+        }
+
+        /**
+         * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+         * this setting can determine the clearance level to be set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearanceLevel(String clearanceLevel) {
+            return clearanceLevel(Output.of(clearanceLevel));
+        }
+
+        /**
+         * @param createdOn When the widget was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn When the widget was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
         public Builder domains(@Nullable Output<List<String>> domains) {
             $.domains = domains;
             return this;
         }
 
-        /**
-         * @param domains Domains where the widget is deployed
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(List<String> domains) {
             return domains(Output.of(domains));
         }
 
-        /**
-         * @param domains Domains where the widget is deployed
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
 
         /**
-         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+         * @param ephemeralId Return the Ephemeral ID in /siteverify (ENT only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralId(@Nullable Output<Boolean> ephemeralId) {
+            $.ephemeralId = ephemeralId;
+            return this;
+        }
+
+        /**
+         * @param ephemeralId Return the Ephemeral ID in /siteverify (ENT only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralId(Boolean ephemeralId) {
+            return ephemeralId(Output.of(ephemeralId));
+        }
+
+        /**
+         * @param mode Widget Mode
          * 
          * @return builder
          * 
@@ -253,7 +382,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+         * @param mode Widget Mode
          * 
          * @return builder
          * 
@@ -263,7 +392,30 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Human readable widget name.
+         * @param modifiedOn When the widget was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn When the widget was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param name Human readable widget name. Not unique. Cloudflare suggests that you
+         * set this to a meaningful string to make it easier to identify your
+         * widget, and where it is used.
          * 
          * @return builder
          * 
@@ -274,7 +426,9 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Human readable widget name.
+         * @param name Human readable widget name. Not unique. Cloudflare suggests that you
+         * set this to a meaningful string to make it easier to identify your
+         * widget, and where it is used.
          * 
          * @return builder
          * 
@@ -284,7 +438,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param offlabel Do not show any Cloudflare branding on the widget (Enterprise only).
+         * @param offlabel Do not show any Cloudflare branding on the widget (ENT only).
          * 
          * @return builder
          * 
@@ -295,7 +449,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param offlabel Do not show any Cloudflare branding on the widget (Enterprise only).
+         * @param offlabel Do not show any Cloudflare branding on the widget (ENT only).
          * 
          * @return builder
          * 
@@ -344,6 +498,27 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
          */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
+        }
+
+        /**
+         * @param sitekey Widget item identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sitekey(@Nullable Output<String> sitekey) {
+            $.sitekey = sitekey;
+            return this;
+        }
+
+        /**
+         * @param sitekey Widget item identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sitekey(String sitekey) {
+            return sitekey(Output.of(sitekey));
         }
 
         public TurnstileWidgetState build() {
